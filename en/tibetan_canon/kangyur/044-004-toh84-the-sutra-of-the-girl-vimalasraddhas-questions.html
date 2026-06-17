@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 84 — The Questions of the Girl Vimalaśraddhā — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 84 — The Questions of the Girl Vimalaśraddhā</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 84 — The Questions of the Girl Vimalaśraddhā        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Dārikāvimalaśraddhāparipṛcchā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by The Karma Gyaltsen Ling Translation Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>The Questions of the Girl Vimalaśraddhā</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.95.a</span> Homage to all the buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Blessed One was residing in Śrāvastī, in Jetavana, Anātha­piṇḍada’s park, together with a large assembly of five hundred bhikṣus and eight thousand bodhisattva mahāsattvas who were well versed in all fields of knowledge, had obtained retention and unimpeded eloquence, were fully accomplished in patience, were completely victorious over the hordes of Māra, and had obtained the Dharmas attained by the thus-gone ones. There was the bodhisattva Lokadhara, the bodhisattva Mārgadhara, the bodhisattva Dharaṇīdhara, the bodhisattva Mahādharaṇīdhara, the bodhisattva Dhṛtimati, the bodhisattva Adhimuktika, the bodhisattva Surūpavyūha, the bodhisattva Ratnaketu, the bodhisattva Ratnadhvaja, the bodhisattva Ratnacinta, the bodhisattva Ratnākara, the bodhisattva Ratnamati, the bodhisattva Ratnaguṇa, and the bodhisattva Ratnaprabha, and there were also the bodhisattvas of this fortunate eon headed by Maitreya. There was also a group of sixty bodhisattvas with incomparable motivation, headed by Mañjuśrī, <span class="tei-ref">F.95.b</span> and a group of sixteen great men led by the bodhisattva Bhadrapāla. Also gathered there was an assembly of twenty thousand gods from the Tuṣita heaven.</p><p>Then the Blessed One, who was sitting there on the lion throne called Treasury of Great Arrangements, surrounded by an immeasurable assembly of hundreds of thousands, shone forth everywhere with rays of light like those of the sun and the moon. Like the kings of the gods, Śakra and Brahmā, his brilliance was outstanding. Like Mount Meru, the king of mountains,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-25" href="#tei-note-UT22084-044-004-25">[1]</a></sup> he was extremely tall and rose high above the common. Like a great torch, the light that he radiated was utterly resplendent. Like an elephant king, he beheld each one and everyone.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-26" href="#tei-note-UT22084-044-004-26">[2]</a></sup> Like a lion roaring, he taught the Dharma fearlessly. Like the king of the asuras, Rāhula, he eclipsed all those who surrounded him.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-27" href="#tei-note-UT22084-044-004-27">[3]</a></sup> His body was adorned with all the major and minor marks of a buddha. His splendor and power blazed forth.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-28" href="#tei-note-UT22084-044-004-28">[4]</a></sup> In order to establish all sentient beings in the supreme definitive meaning and make them understand it,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-29" href="#tei-note-UT22084-044-004-29">[5]</a></sup> he was teaching the Dharma in the midst of this large audience with a voice like Brahmā’s, which resounded in all the universes of the entire trichiliocosm.</p><p>Then King Prasenajit’s young daughter,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-31" href="#tei-note-UT22084-044-004-31">[6]</a></sup> Vimalaśraddhā—a pretty and beautiful<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-32" href="#tei-note-UT22084-044-004-32">[7]</a></sup> girl whom everyone liked to see, and who had produced roots of virtue in the past and practiced in the Mahāyāna—came to Jetavana from the town of Śrāvastī, accompanied by five hundred girls, each of whom wore golden jewelry. Having prostrated herself, bowing her head to the feet of the Blessed One,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-33" href="#tei-note-UT22084-044-004-33">[8]</a></sup> she circumambulated him three times. Then, after sitting down to one side before the Blessed One, she praised him with these verses: <span class="tei-ref">F.96.a</span></p><div class="tei-verse"><div class="tei-line">“For long you accumulated meritorious and pure deeds,</div><div class="tei-line">And completed an infinite ocean of qualities,</div><div class="tei-line">Causing many to rejoice with faith and devotion—</div><div class="tei-line">For this, I pay homage to you, supreme sage.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-35" href="#tei-note-UT22084-044-004-35">[9]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Displaying a wonderful, luminous resplendence,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-37" href="#tei-note-UT22084-044-004-37">[10]</a></sup></div><div class="tei-line">Like a mine of jewels, you reveal the doorways to the Dharma,</div><div class="tei-line">As a full fathom of light always radiates from your body—</div><div class="tei-line">For this, I pay homage to you, cool lake of great intelligence.</div></div><div class="tei-verse"><div class="tei-line">“Fruit tree of qualities, inconceivable in virtues,</div><div class="tei-line">The entire world praises you, supreme among humans;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-39" href="#tei-note-UT22084-044-004-39">[11]</a></sup></div><div class="tei-line">You have perfected discipline and accomplished great aspirations—</div><div class="tei-line">For this, I pay homage to you, foremost among those worthy of offerings.</div></div><div class="tei-verse"><div class="tei-line">“You abide in the supreme Dharma, always calm and unattached.</div><div class="tei-line">You regard every being in the universe with equanimity, as if they were your only child.</div><div class="tei-line">Since with your dual knowledge you know all actions,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-41" href="#tei-note-UT22084-044-004-41">[12]</a></sup></div><div class="tei-line">Like a skillful guide, you point out the smooth path.</div></div><div class="tei-verse"><div class="tei-line">“The conduct of bodhisattvas—</div><div class="tei-line">Those who, once they have acquired steadfast perseverance,</div><div class="tei-line">Act to benefit all sentient beings with love and compassion—</div><div class="tei-line">I request that the Thus-Gone One teach and explain.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-43" href="#tei-note-UT22084-044-004-43">[13]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“How, having obtained steadfast strength,</div><div class="tei-line">Do bodhisattvas defeat the hordes of Māra, yet remain within saṃsāra?</div><div class="tei-line">How, having obtained the Dharma of equanimity,</div><div class="tei-line">Do they bring sentient beings to maturity?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-45" href="#tei-note-UT22084-044-004-45">[14]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“How are they like the earth and the sky,</div><div class="tei-line">Like the wind, like water, and like fire?</div><div class="tei-line">How, having obtained trust in it, do they abide in the Dharma,</div><div class="tei-line">Becoming like Mount Meru or a lion king?</div></div><div class="tei-verse"><div class="tei-line">“How, having abandoned a mind of love and hate,</div><div class="tei-line">Do their minds become pure, honest, and nondeceptive?</div><div class="tei-line">How do they cultivate generosity, discipline, patience,</div><div class="tei-line">Perseverance, concentration, and liberation?</div></div><div class="tei-verse"><div class="tei-line">“How do they vanquish the darkness of the afflictions with their insight,</div><div class="tei-line">And how, constantly applying great means,</div><div class="tei-line">Do they abide in unimpeded retention and concentration,</div><div class="tei-line">The four immeasurables, and the five kinds of supernormal powers?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-49" href="#tei-note-UT22084-044-004-49">[15]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“How, having come into the presence of the buddhas,</div><div class="tei-line">Do they always take miraculous <span class="tei-ref">F.96.b</span> births, remembering their previous lives?</div><div class="tei-line">Practicing austerities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-51" href="#tei-note-UT22084-044-004-51">[16]</a></sup> they dwell in hermitages without strife,</div><div class="tei-line">Taming their minds and pacifying the afflictions.</div></div><div class="tei-verse"><div class="tei-line">“Following discipline, they cultivate the path of awakening.</div><div class="tei-line">And, having obtained the nectar of cessation, they defeat the armies of Māra,</div><div class="tei-line">And turn the Wheel of Dharma that confers bliss—</div><div class="tei-line">I beseech you to explain in words such a perfect path!”</div></div><p>Then the Blessed One replied to the girl Vimalaśraddhā, “Girl, if bodhisattvas are endowed with eight strengths, although dwelling within saṃsāra, they have steadfast courage and are completely indefatigable. And what are these eight strengths? The first is the strength of mental motivation, because they are without deceit. The second is the strength of determination, because they abandon all faults. The third is the strength of application, because they continually practice virtue. The fourth is the strength of real trust, because they have strong trust in the maturation of karma. The fifth is the strength of the mind set on awakening, because they do not seek out inferior vehicles. The sixth is the strength of great love, because they do not harm sentient beings. The seventh is the strength of great compassion, because they take all injury upon themselves. The eighth is the strength of a spiritual friend, because from time to time they need to be examined.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-54" href="#tei-note-UT22084-044-004-54">[17]</a></sup> Girl, these are called the eight kinds of strength. When bodhisattvas are endowed with these eight strengths,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-55" href="#tei-note-UT22084-044-004-55">[18]</a></sup> they have steadfast courage, and although they dwell within saṃsāra, they have no clinging or attachment.”</p><br /><p>Then the Blessed One spoke again in verse:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-57" href="#tei-note-UT22084-044-004-57">[19]</a></sup></p><div class="tei-verse"><div class="tei-line">“Heroic ones with motivated minds</div><div class="tei-line">Abandon any deceit,</div><div class="tei-line">And, always behaving in a straightforward manner,</div><div class="tei-line">Apply themselves diligently to genuine awakening.</div></div><div class="tei-verse"><div class="tei-line">“One who has the strength of determination</div><div class="tei-line">Abandons the various faults,</div><div class="tei-line">And, practicing virtue exclusively, <span class="tei-ref">F.97.a</span></div><div class="tei-line">Maintains genuine diligence.</div></div><div class="tei-verse"><div class="tei-line">“One who is endowed with application</div><div class="tei-line">Is always excellently stable,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-61" href="#tei-note-UT22084-044-004-61">[20]</a></sup></div><div class="tei-line">And, having steadfast perseverance,</div><div class="tei-line">Brings happiness to sentient beings.</div></div><div class="tei-verse"><div class="tei-line">“Through the power of real trust,</div><div class="tei-line">If one is aware of the full maturation of karma,</div><div class="tei-line">One has confidence in the Buddha’s wisdom</div><div class="tei-line">And brings the entire universe under one’s care.</div></div><div class="tei-verse"><div class="tei-line">“One who has the strength of the mind set on awakening</div><div class="tei-line">Abandons the inferior vehicles,</div><div class="tei-line">And, not interrupting the lineage of the buddhas,</div><div class="tei-line">Abides in the true nature of things.</div></div><div class="tei-verse"><div class="tei-line">“Through the power of great loving-kindness,</div><div class="tei-line">One looks with equality at all sentient beings</div><div class="tei-line">And, being beyond love and hate,</div><div class="tei-line">Does not give rise to anger or ill will.</div></div><div class="tei-verse"><div class="tei-line">“Through the strength of great compassion,</div><div class="tei-line">One takes responsibility for sentient beings</div><div class="tei-line">And, not clinging to saṃsāra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-66" href="#tei-note-UT22084-044-004-66">[21]</a></sup></div><div class="tei-line">Does not feel disenchanted or weary.</div></div><div class="tei-verse"><div class="tei-line">“Through the strength of the spiritual friend,</div><div class="tei-line">There is continuous examination of each other.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-68" href="#tei-note-UT22084-044-004-68">[22]</a></sup></div><div class="tei-line">One will not lose heart,</div><div class="tei-line">And so will abide in awakening.</div></div><div class="tei-verse"><div class="tei-line">“When those who are heroes</div><div class="tei-line">Have obtained these eight strengths,</div><div class="tei-line">They will reside in the heart of awakening</div><div class="tei-line">And defeat the many armies of Māra.</div></div><p>“Furthermore, girl, when bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-71" href="#tei-note-UT22084-044-004-71">[23]</a></sup> they abide in sameness. What are these eight qualities? The first is the sameness of all sentient beings, because they are intrinsically without a self. The second is the sameness of all phenomena, because they are utterly void. The third is the sameness of all buddhafields, because they all occur within the sphere of emptiness. The fourth is the sameness of all thus-gone ones, because they all teach in equanimity. The fifth is the sameness of all actions, because causes and conditions are without intrinsic nature. The sixth is the sameness of all vehicles, because they are all similar in being noncomposite. <span class="tei-ref">F.97.b</span> The seventh is the sameness of minds, because mind is similar to an illusion. The eighth is the sameness of all māras, because one cannot observe a beginning of the afflictions. This is what is called abiding in sameness through the eight qualities.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Because sentient beings are intrinsically without a self,</div><div class="tei-line">They cannot be observed even for a moment.</div><div class="tei-line">One who abides in sameness</div><div class="tei-line">Should see in this way.</div></div><div class="tei-verse"><div class="tei-line">“Because all phenomena are the same,</div><div class="tei-line">They are always intrinsically empty and void.</div><div class="tei-line">Differentiated only through words,</div><div class="tei-line">Phenomena are intrinsically without particularity.</div></div><div class="tei-verse"><div class="tei-line">“As one cannot observe any boundaries</div><div class="tei-line">Of all the buddhafields in the ten directions,</div><div class="tei-line">Their nature is similar to space—</div><div class="tei-line">All the buddhafields are always the same.</div></div><div class="tei-verse"><div class="tei-line">“As all thus-gone ones of the three times</div><div class="tei-line">Are the same in their abiding in the expanse of reality,</div><div class="tei-line">They are completely free through their unending wisdom—</div><div class="tei-line">All buddhas are such.</div></div><div class="tei-verse"><div class="tei-line">“The causes and conditions of sentient beings</div><div class="tei-line">In their nature are all the same.</div><div class="tei-line">By knowing their actions,</div><div class="tei-line">One understands them accordingly.</div></div><div class="tei-verse"><div class="tei-line">“All the different sentient beings</div><div class="tei-line">Are understood to be like an illusory display.</div><div class="tei-line">Not grasping at either the inner or the outer,</div><div class="tei-line">Their nature is always pure.</div></div><div class="tei-verse"><div class="tei-line">“Although various vehicles were taught,</div><div class="tei-line">They are the same in being noncomposite.</div><div class="tei-line">In full knowledge of means, the Guide</div><div class="tei-line">Made distinctions by teaching three vehicles.</div></div><div class="tei-verse"><div class="tei-line">“Even when the māra of afflictions is at hand,</div><div class="tei-line">The afflictions are not at all existing things.</div><div class="tei-line">Similarly, the domains of the māra of the gods,</div><div class="tei-line">The māra of the aggregates, and the māra of the Lord of Death are empty.</div></div><p>“Furthermore, girl, when bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-82" href="#tei-note-UT22084-044-004-82">[24]</a></sup> they abandon love and hate. What are these eight qualities?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-83" href="#tei-note-UT22084-044-004-83">[25]</a></sup> Being endowed with love; being endowed with compassion; always being willing to benefit others; not being attached to worldly things; <span class="tei-ref">F.98.a</span> not being attached to one’s body; always cultivating a concentrated mind; giving away one’s body and life; and discerning the afflictions. When bodhisattvas can accomplish these eight qualities, they will abandon love and hate.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Bearing the armor of a loving mind,</div><div class="tei-line">One has affectionate concern for everyone,</div><div class="tei-line">And, maintaining equality,</div><div class="tei-line">Love and hate do not arise.</div></div><div class="tei-verse"><div class="tei-line">“Because wise people always act to be of benefit,</div><div class="tei-line">They constantly give happiness to others;</div><div class="tei-line">Although they acquire something, they do not see it as their own,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-87" href="#tei-note-UT22084-044-004-87">[26]</a></sup></div><div class="tei-line">And they hold no resentment despite being blamed or disparaged.</div></div><div class="tei-verse"><div class="tei-line">“Since they are unshaken by the eight worldly concerns,</div><div class="tei-line">Love and hate do not arise.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-89" href="#tei-note-UT22084-044-004-89">[27]</a></sup></div><div class="tei-line">Whether it concerns themselves or others,</div><div class="tei-line">Conceptions of love and hate do not arise.</div></div><div class="tei-verse"><div class="tei-line">“Having abandoned all conceptions,</div><div class="tei-line">Such people do not cling to any objects of experience.</div><div class="tei-line">Always understanding the nature of the body,</div><div class="tei-line">They have no distress about their bodies or lives.</div></div><div class="tei-verse"><div class="tei-line">“Sagacious beings, like the sky,</div><div class="tei-line">Are unmoved by joys and sorrows,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-92" href="#tei-note-UT22084-044-004-92">[28]</a></sup></div><div class="tei-line">And, properly understanding the afflictions,</div><div class="tei-line">Avoid both <em>me</em> and <em>mine</em>.</div></div><div class="tei-verse"><div class="tei-line">“Being like the earth in always accepting all activity,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-94" href="#tei-note-UT22084-044-004-94">[29]</a></sup></div><div class="tei-line">Love and hate do not arise.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-95" href="#tei-note-UT22084-044-004-95">[30]</a></sup></div></div><p>“Furthermore, girl, when bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-97" href="#tei-note-UT22084-044-004-97">[31]</a></sup> they do not become exhausted by saṃsāra.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-98" href="#tei-note-UT22084-044-004-98">[32]</a></sup> What are these eight qualities?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-99" href="#tei-note-UT22084-044-004-99">[33]</a></sup> Bodhisattvas do not become exhausted by saṃsāra because their roots of virtue are immensely vast; because they discern sentient beings; because they always see and make offerings to the thus-gone ones; because they see innumerable buddhafields; because they always strive for the knowledge of a buddha; because they understand that saṃsāra is like a dream; because they are not intimidated by the excellent Dharma; and because they have distinct comprehension of the beginning, the end, and the real endpoint.” <span class="tei-ref">F.98.b</span></p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Meditators on the yogin’s path</div><div class="tei-line">Eradicate their faults and become unstained,</div><div class="tei-line">Like the pure moon in the sky;</div><div class="tei-line">They liberate sentient beings from their suffering.</div><div class="tei-line">Because they gather qualities,</div><div class="tei-line">They do not become exhausted by saṃsāra.</div></div><div class="tei-verse"><div class="tei-line">“They consider the nature of all sentient beings,</div><div class="tei-line">And they act with steadfast perseverance.</div><div class="tei-line">Devotedly making offerings</div><div class="tei-line">To buddhas in immeasurable buddhafields,</div><div class="tei-line">They thereby become endowed with the ten strengths,</div><div class="tei-line">And they do not become exhausted by saṃsāra.</div></div><div class="tei-verse"><div class="tei-line">“Teaching the inconceivable Dharma,</div><div class="tei-line">In innumerable, infinite worlds,</div><div class="tei-line">They maintain uninterrupted the lineage of the Three Jewels</div><div class="tei-line">And become fully awakened as Dharma Kings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-104" href="#tei-note-UT22084-044-004-104">[34]</a></sup></div><div class="tei-line">Those who preserve excellent discipline</div><div class="tei-line">Do not become exhausted by saṃsāra,</div></div><div class="tei-verse"><div class="tei-line">“And they recognize that the nature of saṃsāra</div><div class="tei-line">Is like a dream, a cloud, or a flash of lightning.</div><div class="tei-line">Those who find liberation through the Dharma</div><div class="tei-line">Do not become exhausted by saṃsāra.</div></div><div class="tei-verse"><div class="tei-line">“Remaining in an awakened state,</div><div class="tei-line">With their joyful minds,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-107" href="#tei-note-UT22084-044-004-107">[35]</a></sup> they are always happy.</div><div class="tei-line">Those who have become accomplished through skillful means<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-108" href="#tei-note-UT22084-044-004-108">[36]</a></sup></div><div class="tei-line">Do not become exhausted by saṃsāra.</div></div><div class="tei-verse"><div class="tei-line">“Constantly practicing the excellent Dharma,</div><div class="tei-line">Their realization increases, like the waxing moon in the sky.</div><div class="tei-line">Those who aspire to the Buddha’s qualities<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-110" href="#tei-note-UT22084-044-004-110">[37]</a></sup></div><div class="tei-line">Do not become exhausted by saṃsāra.</div></div><div class="tei-verse"><div class="tei-line">“And, although saṃsāra is endless,</div><div class="tei-line">They always dwell in the real endpoint.</div><div class="tei-line">Those who are attuned to insight, even for just a moment,</div><div class="tei-line">Do not become exhausted by saṃsāra.</div></div><p>“Furthermore, girl, when it is endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-113" href="#tei-note-UT22084-044-004-113">[38]</a></sup> the mind’s constitution will be balanced.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-361" href="#tei-note-UT22084-044-004-361">[39]</a></sup> What are these eight qualities? The mind will be of balanced constitution because the mind has become similar to earth;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-114" href="#tei-note-UT22084-044-004-114">[40]</a></sup> because the mind has become similar to water; because the mind has become similar to fire; because the mind has become similar to air; because the mind has become similar to space; because the mind has become similar to the expanse of reality; <span class="tei-ref">F.99.a</span> because the mind has become similar to liberation; and because the mind has become similar to nirvāṇa. These are called the eight kinds of balanced constitution of the mind.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Because the mind is similar to earth,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-117" href="#tei-note-UT22084-044-004-117">[41]</a></sup></div><div class="tei-line">It can carry any load,</div><div class="tei-line">And, whether there is virtue or nonvirtue,</div><div class="tei-line">It never increases or diminishes.</div></div><div class="tei-verse"><div class="tei-line">“Because the mind is similar to water,</div><div class="tei-line">It washes away all stains and impurities</div><div class="tei-line">And, nourishing all worlds,</div><div class="tei-line">Dispels the distress of the afflictions.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-119" href="#tei-note-UT22084-044-004-119">[42]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Because the mind is similar to fire,</div><div class="tei-line">It burns away all the afflictions,</div><div class="tei-line">And, like the light of a huge torch,</div><div class="tei-line">There is nothing it does not illuminate.</div></div><div class="tei-verse"><div class="tei-line">“Because the mind is similar to wind,</div><div class="tei-line">It neither dwells anywhere nor depends on anything,</div><div class="tei-line">And the fragrance of discipline and learning</div><div class="tei-line">Pervades everywhere throughout the three times.</div></div><div class="tei-verse"><div class="tei-line">“Because the mind is similar to space,</div><div class="tei-line">It is free from views and completely pure,</div><div class="tei-line">And, although it interacts with everything,</div><div class="tei-line">It does not follow after Māra.</div></div><div class="tei-verse"><div class="tei-line">“Because the mind is similar to the expanse of reality,</div><div class="tei-line">It is established in the very essence of bliss</div><div class="tei-line">And, without ever increasing or diminishing,</div><div class="tei-line">Always dwells in equanimity.</div></div><div class="tei-verse"><div class="tei-line">“Even when liberation is attained</div><div class="tei-line">By hearers and the solitary realizers,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-125" href="#tei-note-UT22084-044-004-125">[43]</a></sup></div><div class="tei-line">There is neither bondage,</div><div class="tei-line">Nor is there liberation.</div></div><div class="tei-verse"><div class="tei-line">“Saṃsāra and nirvāṇa</div><div class="tei-line">Are said to be beyond coming and going,</div><div class="tei-line">So, peacefully maintaining disengagement,</div><div class="tei-line">One acts everywhere throughout the three times.</div></div><p>“Furthermore, girl, when bodhisattvas are endowed with eight qualities, they become sources of awakening.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-128" href="#tei-note-UT22084-044-004-128">[44]</a></sup> What are these eight qualities? First,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-129" href="#tei-note-UT22084-044-004-129">[45]</a></sup> they have become sources of generosity, because they give away everything they own. Second, they have become sources of discipline, because they are free of transgressions. Third, <span class="tei-ref">F.99.b</span> they have become sources of patience, because they are free of aggression. Fourth, they have become sources of perseverance, because they are free of laziness and doubt. Fifth, they have become sources of concentration, because they are skillful in means. Sixth, they have become sources of insight, because they maintain discipline and have vast learning. Seventh, they have become sources of the abodes of Brahmā, because they are fully at peace through complete liberation.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-130" href="#tei-note-UT22084-044-004-130">[46]</a></sup> Eighth, they have become sources of supernormal powers, because they constantly maintain concentration.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Since those who constantly practice generosity</div><div class="tei-line">Abandon the agony of desire,</div><div class="tei-line">They do not seek the maturation of karmic fruit,</div><div class="tei-line">And dedicate all their merit to the awakening of a buddha.</div></div><div class="tei-verse"><div class="tei-line">“Because practitioners of the Great Vehicle have discipline,</div><div class="tei-line">They are without anger, even when cut and torn apart.</div><div class="tei-line">Striving one-pointedly for great bliss, and abandoning all habitual patterns,</div><div class="tei-line">They never meet any real obstacle.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-134" href="#tei-note-UT22084-044-004-134">[47]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Bodhisattvas endowed with perseverance,</div><div class="tei-line">For the sake of sentient beings and for many eons,</div><div class="tei-line">Bear suffering and wander through countless worlds,</div><div class="tei-line">Increasing the strength of their perseverance.</div></div><div class="tei-verse"><div class="tei-line">“Those who cultivate concentration</div><div class="tei-line">Abandon all kinds of elaboration,</div><div class="tei-line">And, although they have perfected concentration,</div><div class="tei-line">They do not get caught up in concentration.</div></div><div class="tei-verse"><div class="tei-line">“Through incomparable great insight,</div><div class="tei-line">They abandon extreme views</div><div class="tei-line">And, with knowledge that the world is empty,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-138" href="#tei-note-UT22084-044-004-138">[48]</a></sup></div><div class="tei-line">Dispel all the darkness of delusion.</div></div><div class="tei-verse"><div class="tei-line">“Those who cultivate the peaceful abodes of Brahmā</div><div class="tei-line">Abandon unfortunate destinies</div><div class="tei-line">And, always obtaining the states of Śakra and Brahmā,</div><div class="tei-line">Meditate assiduously on the ultimate benefit.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-140" href="#tei-note-UT22084-044-004-140">[49]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“With supernormal powers, bodhisattvas travel through all buddhafields,</div><div class="tei-line">Respectfully honoring the buddhas and listening to the Dharma</div><div class="tei-line">And, knowing well the natures of aspirations of all,</div><div class="tei-line">Teach the Dharma, repeating it to sentient beings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-142" href="#tei-note-UT22084-044-004-142">[50]</a></sup></div></div><p>“Furthermore, girl, because bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-144" href="#tei-note-UT22084-044-004-144">[51]</a></sup><span class="tei-ref">F.100.a</span> they obtain perfect retention and unimpeded eloquence. What are these eight qualities? They revere the Dharma.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-145" href="#tei-note-UT22084-044-004-145">[52]</a></sup> They show respect for their preceptors and masters. They are never disheartened with seeking the Dharma. They teach it correctly, in the same way that they were taught. They are not miserly with the Dharma. They do not make public the faults of others. They devotedly pay respect to those who are expounding the Dharma, as if they were their own preceptors. And, without being fixated on the faults of others, they exhort others to abandon their faults. Because bodhisattvas are endowed with these eight qualities, they obtain perfect retention and unimpeded eloquence.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Those who always one-pointedly seek the Dharma</div><div class="tei-line">Show respect for their preceptors and spiritual friends.</div><div class="tei-line">Since they abandon bad companions,</div><div class="tei-line">They obtain an inexhaustible treasure.</div></div><div class="tei-verse"><div class="tei-line">“Never being disheartened by learning,</div><div class="tei-line">They zealously seek the Dharma.</div><div class="tei-line">Because they teach it in the same way that they were taught,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-149" href="#tei-note-UT22084-044-004-149">[53]</a></sup></div><div class="tei-line">They do not look for any gain.</div></div><div class="tei-verse"><div class="tei-line">“Since those who obtain perfect eloquence</div><div class="tei-line">Gladden numerous assemblies,</div><div class="tei-line">They are fully dedicated to giving the Dharma,</div><div class="tei-line">And abandon miserliness and jealousy.</div></div><div class="tei-verse"><div class="tei-line">“They practice the Dharma without attachment,</div><div class="tei-line">And are ones who obtain retention.</div><div class="tei-line">Because they preserve discipline by watching their own physical behavior,</div><div class="tei-line">They never look for the faults of others.</div></div><div class="tei-verse"><div class="tei-line">“They sustain their love and compassion,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-153" href="#tei-note-UT22084-044-004-153">[54]</a></sup></div><div class="tei-line">And since they do not speak untimely words,</div><div class="tei-line">They obtain unimpeded eloquence,</div><div class="tei-line">And show mastery of inspirational speech.</div></div><div class="tei-verse"><div class="tei-line">“Those who honor capable Dharma teachers,</div><div class="tei-line">As if they were preceptors,</div><div class="tei-line">And exhort others to abandon their faults, while keeping them to themselves</div><div class="tei-line">Obtain an ocean of inexhaustible treasures.</div></div><p>“Furthermore, girl, because bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-156" href="#tei-note-UT22084-044-004-156">[55]</a></sup><span class="tei-ref">F.100.b</span> they take miraculous rebirths from lotus buds in the presence of the buddhas. What are these eight qualities? Not speaking of the faults of others, even at the risk of their own lives;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-157" href="#tei-note-UT22084-044-004-157">[56]</a></sup> exhorting sentient beings to take refuge in the Three Jewels; establishing everyone in the mind set on awakening; having immaculate sublime conduct; making statues of the Thus-Gone One and putting them on lotus seats; dispelling the suffering of sentient beings entangled in sorrow; always humbling themselves in front of the arrogant and proud; and never causing any harm whatsoever to others.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Those who, even if pain is inflicted,</div><div class="tei-line">Never speak of the defects of others,</div><div class="tei-line">And always praise the Three Jewels,</div><div class="tei-line">Will be miraculously born in the presence of the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who cultivate the mind set on awakening</div><div class="tei-line">And exhort others to strive for omniscience,</div><div class="tei-line">And who always maintain sublime conduct,</div><div class="tei-line">Will be miraculously born in the presence of the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who cover a buddha statue with gold</div><div class="tei-line">And place it on a precious lotus seat,</div><div class="tei-line">And who dispel the sorrow of beings,</div><div class="tei-line">Will be miraculously born in the presence of the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who, in front of the arrogant,</div><div class="tei-line">Humble themselves as if they were their disciples,</div><div class="tei-line">And who never harm others,</div><div class="tei-line">Will be miraculously born in the presence of the buddhas.</div></div><p>“Furthermore, girl, when bodhisattvas are endowed with eight qualities, they are consummate in ascetic virtue and always aspire to dwell in seclusion.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-164" href="#tei-note-UT22084-044-004-164">[57]</a></sup> What are these eight qualities? Having few wants;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-165" href="#tei-note-UT22084-044-004-165">[58]</a></sup> being content; being fully satisfied with the virtuous Dharma; nourishing themselves with virtue; always maintaining the tradition of the noble ones; always being disenchanted because of seeing the faults of saṃsāra; always contemplating impermanence, suffering, <span class="tei-ref">F.101.a</span> emptiness, and selflessness; and being steadfast in faith, and not following other teachings.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Since bodhisattvas have few wants and are content,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-168" href="#tei-note-UT22084-044-004-168">[59]</a></sup></div><div class="tei-line">They delight in the Dharma and nourish themselves with many virtues.</div><div class="tei-line">Always aspiring to follow the manners of the noble ones,</div><div class="tei-line">They see the defects of saṃsāra and dread it.</div></div><div class="tei-verse"><div class="tei-line">“Since they are always dedicated to ascetic virtue,</div><div class="tei-line">Like the solitary rhinoceros, they stay without companions.</div><div class="tei-line">Contemplating that all compounded things are suffering and without self,</div><div class="tei-line">They have minds of complete faith and full of energy.</div></div><div class="tei-verse"><div class="tei-line">“Having seen the Dharma and not following other teachings,</div><div class="tei-line">But always dwelling in solitude and praising the Buddha,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-171" href="#tei-note-UT22084-044-004-171">[60]</a></sup></div><div class="tei-line">With ascetic virtue, they keep a distance and suffer no anguish,</div><div class="tei-line">Being free from the many troubles of strife.</div></div><div class="tei-verse"><div class="tei-line">“Having abandoned relatives and friends and refused praise,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-173" href="#tei-note-UT22084-044-004-173">[61]</a></sup></div><div class="tei-line">They are fully committed to dwelling in seclusion.</div></div><p>“Furthermore, girl, because bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-175" href="#tei-note-UT22084-044-004-175">[62]</a></sup> they defeat the armies of Māra. What are these eight qualities? Penetrating emptiness as the very essence of things;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-176" href="#tei-note-UT22084-044-004-176">[63]</a></sup> having a real trust in signlessness; having a real trust in wishlessness; fully discerning the uncompounded; not being doubtful or skeptical about it; accepting<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-177" href="#tei-note-UT22084-044-004-177">[64]</a></sup> non-arising; understanding essencelessness; and, by being skillful in means, individually discriminating all phenomena, while knowing unending suchness.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Those who realize the three doors of complete liberation—</div><div class="tei-line">Emptiness, signlessness, and wishlessness—defeat the armies of Māra.</div><div class="tei-line">As there is no duality between the compounded and uncompounded,</div><div class="tei-line">They realize non-arising<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-180" href="#tei-note-UT22084-044-004-180">[65]</a></sup> and are completely liberated.</div></div><div class="tei-verse"><div class="tei-line">“They will defeat the armies of Māra</div><div class="tei-line">When they accept the non-arising of all phenomena thus:</div><div class="tei-line">‘These are without arising and without cessation;</div><div class="tei-line">The aggregates and the elements are without self and like illusions.’ <span class="tei-ref">F.101.b</span></div></div><div class="tei-verse"><div class="tei-line">“They recognize that phenomena have no essence,</div><div class="tei-line">While, by being skillful in means, they do not do away with suchness.</div><div class="tei-line">The discrimination of phenomena is known to be the work of Māra.</div><div class="tei-line">Having abandoned discrimination, Māra is defeated.</div></div><div class="tei-verse"><div class="tei-line">“Employing both insight and means,</div><div class="tei-line">And not being fixed on existence or emptiness,</div><div class="tei-line">Those who thus meditate on the supreme Dharma,</div><div class="tei-line">Being skillful in means, will obtain beautiful bodily forms.</div></div><p>“Furthermore, girl, when bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-186" href="#tei-note-UT22084-044-004-186">[66]</a></sup> they will never be separated from awakening. What are these eight qualities? With right view, they ripen sentient beings who have wrong views.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-187" href="#tei-note-UT22084-044-004-187">[67]</a></sup> With right mindfulness, they act compassionately toward sentient beings who have wrong intention. With right speech, they act compassionately toward those who speak wrongly. With right action, they draw in those engaged in wrongdoings. With right effort, they stop those engaged in wrong pursuits. With right livelihood, they do not abandon sentient beings engaged in wrong livelihoods. With right thought, they make them abandon wrong thinking. With right absorption, they wake those who are stuck in wrong absorption, and make them strive higher.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Those who are endowed with right view</div><div class="tei-line">Bring those with wrong views to maturity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-190" href="#tei-note-UT22084-044-004-190">[68]</a></sup></div><div class="tei-line">Constantly cultivating right mindfulness,</div><div class="tei-line">They act compassionately toward those with wrong intention.</div></div><div class="tei-verse"><div class="tei-line">“Those who have right speech<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-192" href="#tei-note-UT22084-044-004-192">[69]</a></sup></div><div class="tei-line">Act compassionately toward those who speak wrongly.</div><div class="tei-line">Being established in right action,</div><div class="tei-line">They draw in those who act wrongly.</div></div><div class="tei-verse"><div class="tei-line">“Continuously cultivating right effort,</div><div class="tei-line">They do not abandon those with wrong effort.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-194" href="#tei-note-UT22084-044-004-194">[70]</a></sup></div><div class="tei-line">Pursuing right livelihood,</div><div class="tei-line">They draw in those engaged in wrong livelihoods.</div></div><div class="tei-verse"><div class="tei-line">“The wise ones who have right thought <span class="tei-ref">F.102.a</span></div><div class="tei-line">Think compassionately toward those who think wrongly.</div><div class="tei-line">Always absorbed in right absorption,</div><div class="tei-line">They draw in those caught up in wrong absorption.</div></div><div class="tei-verse"><div class="tei-line">“With this unsurpassed perfect eightfold path,</div><div class="tei-line">They liberate those who are caught in the river of saṃsāra.</div><div class="tei-line">By rescuing those who are carried away by the stream,</div><div class="tei-line">They are on the great path to awakening.</div></div><div class="tei-verse"><div class="tei-line">“Hearers and solitary realizers</div><div class="tei-line">Transport only themselves, like on a raft made of grass.</div><div class="tei-line">A bodhisattva leads everyone across,</div><div class="tei-line">Like the captain of a great boat.</div></div><p>“Furthermore, girl, because bodhisattvas are endowed with eight qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-199" href="#tei-note-UT22084-044-004-199">[71]</a></sup> they have direct experience of the deathless path. What are these eight qualities? Abiding in the strifeless Dharma;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-200" href="#tei-note-UT22084-044-004-200">[72]</a></sup> guarding themselves well against thoughts of hostility; constantly contemplating the meaning of suchness; sustaining the mind set on awakening, and meditating on the six recollections; meditating on the transcendental perfections with meticulous perseverance; collecting roots of virtue, and ripening sentient beings; sustaining great compassion, and drawing beings to the perfect Dharma; and attaining the acceptance that phenomena do not arise, and remaining in the irreversible condition.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“Always achieving conduct that is without strife,</div><div class="tei-line">They abide in the Dharma of the Great Ascetic.</div><div class="tei-line">Abandoning the shortcoming of hatred,</div><div class="tei-line">They gather roots of virtue.</div></div><div class="tei-verse"><div class="tei-line">“By contemplating the right meaning,</div><div class="tei-line">They obtain inexhaustible eloquence;</div><div class="tei-line">And, sustaining in the mind set on awakening,</div><div class="tei-line">They always remember the six recollections.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-204" href="#tei-note-UT22084-044-004-204">[73]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Accomplishing all the perfections</div><div class="tei-line">With absolute perseverance, they become irreversible on the path,</div><div class="tei-line">And, since they obtain the powers of skill in means,</div><div class="tei-line">They liberate sentient beings.</div></div><div class="tei-verse"><div class="tei-line">“With riches as lords of Dharma,</div><div class="tei-line">They draw everyone in with their loving minds,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-207" href="#tei-note-UT22084-044-004-207">[74]</a></sup></div><div class="tei-line">Quickly attain acceptance of non-arising, <span class="tei-ref">F.102.b</span></div><div class="tei-line">And become irreversible from awakening.</div></div><div class="tei-verse"><div class="tei-line">“If they are able to act in this way,</div><div class="tei-line">It will not be difficult for them to obtain the Buddhadharma,</div><div class="tei-line">And before long, they will tame the māras</div><div class="tei-line">And attain supreme awakening.”</div></div><p>Then the girl Vimalaśraddhā, having thus heard the Dharma, greatly rejoiced, and she asked the Blessed One, “Blessed One, how many qualities must one possess to avert female existence?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-211" href="#tei-note-UT22084-044-004-211">[75]</a></sup></p><p>The Blessed One answered, “Girl, when a woman is endowed with eight qualities, she will avert female existence.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-213" href="#tei-note-UT22084-044-004-213">[76]</a></sup> What are these eight qualities? Not being jealous;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-214" href="#tei-note-UT22084-044-004-214">[77]</a></sup> not being miserly; not being sly; not being angry; speaking the truth; not uttering harsh words; abandoning lust; and abandoning wrong views. Girl, when one realizes these eight qualities, one will quickly avert female existence.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“One who is weary of having a female body,</div><div class="tei-line">Is not jealous of others,</div><div class="tei-line">Abandons miserliness, and</div><div class="tei-line">Is committed to the Dharma does not act deceitfully.</div></div><div class="tei-verse"><div class="tei-line">“Avoiding hatred, with a mind of loving-kindness,</div><div class="tei-line">One always speaks words of truth.</div><div class="tei-line">Dispelling lust and avoiding harsh words,</div><div class="tei-line">One should maintain right view.</div></div><div class="tei-verse"><div class="tei-line">“When, weary of having a female body,</div><div class="tei-line">One brings about such qualities,</div><div class="tei-line">One will quickly avert female existence,</div><div class="tei-line">And acquire the favorable body of a man.</div></div><p>“Furthermore, girl, when a woman is endowed with eight qualities, she will avert female existence.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-220" href="#tei-note-UT22084-044-004-220">[78]</a></sup> What are these eight qualities? Venerating the Buddha and being dedicated to the Dharma;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-221" href="#tei-note-UT22084-044-004-221">[79]</a></sup> respectfully honoring and venerating ascetics and brahmins endowed with discipline, patience, and great learning; not being attached or clinging to any man, woman, or household matters; <span class="tei-ref">F.103.a</span> not breaking the training precepts<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-222" href="#tei-note-UT22084-044-004-222">[80]</a></sup> to which one has committed; not bringing forth negative intentions toward any living being; with superior intent, being completely weary of female existence; with the mind set on awakening, being set on the qualities of a great man; and viewing worldly household affairs as illusions or dreams.”</p><br /><p>Then the Blessed One spoke again in verse:</p><div class="tei-verse"><div class="tei-line">“When one is devoted to the Buddha and dedicated to the Dharma,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-225" href="#tei-note-UT22084-044-004-225">[81]</a></sup></div><div class="tei-line">Venerates those with discipline and great learning,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-226" href="#tei-note-UT22084-044-004-226">[82]</a></sup></div><div class="tei-line">And does not bring forth thoughts of desire and craving,</div><div class="tei-line">One will quickly avert female existence.</div></div><div class="tei-verse"><div class="tei-line">“When one keeps discipline with modesty and bashfulness,</div><div class="tei-line">Does not think wrongly of others,</div><div class="tei-line">And maintains the mind set on awakening,</div><div class="tei-line">One is not inclined to other vehicles,</div></div><div class="tei-verse"><div class="tei-line">“Then very soon one will surely avert</div><div class="tei-line">Impure existence as a woman.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-229" href="#tei-note-UT22084-044-004-229">[83]</a></sup></div><div class="tei-line">When, with supreme intent, one develops weariness,</div><div class="tei-line">Seeing everything as an illusion,</div></div><div class="tei-verse"><div class="tei-line">“And when one persistently meditates on the true Dharma</div><div class="tei-line">That phenomena are intrinsically unmoving,</div><div class="tei-line">And that causes and conditions are intrinsically empty and void,</div><div class="tei-line">One will quickly obtain the body of a man.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-231" href="#tei-note-UT22084-044-004-231">[84]</a></sup></div></div><p>Then the girl Vimalaśraddhā tossed the golden necklaces she was wearing toward the Blessed One.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-233" href="#tei-note-UT22084-044-004-233">[85]</a></sup> Rising into the sky, these jewels became perfectly golden celestial palaces and multi-storied mansions,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-234" href="#tei-note-UT22084-044-004-234">[86]</a></sup> inside of which, seated on golden thrones, there appeared emanations of the Thus-Gone One. Then each one of the five hundred girls likewise untied the jewelry they were wearing and tossed them toward the Blessed One.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-235" href="#tei-note-UT22084-044-004-235">[87]</a></sup> The jewelry also rose into the sky and became golden celestial palaces with jeweled pavilions, jeweled parasols, and all kinds of arrays of jewels.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-236" href="#tei-note-UT22084-044-004-236">[88]</a></sup></p><p>Thereupon the five hundred girls, having seen this great miracle, <span class="tei-ref">F.103.b</span> uttered these verses in unison:</p><div class="tei-verse"><div class="tei-line">“The Blessed One, supreme and foremost among men,</div><div class="tei-line">Through his compassion acts as healer<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-239" href="#tei-note-UT22084-044-004-239">[89]</a></sup> for all sentient beings.</div><div class="tei-line">We too now give rise to the mind set on awakening,</div><div class="tei-line">And remain properly committed to this resolve.</div></div><div class="tei-verse"><div class="tei-line">“Blessed One, guide, bestower of happiness,</div><div class="tei-line">To you, supreme among men, we make offerings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-241" href="#tei-note-UT22084-044-004-241">[90]</a></sup></div><div class="tei-line">By force of hearing the Dharma, we have discarded all passions,</div><div class="tei-line">And we no longer have any doubts or hesitation.</div></div><div class="tei-verse"><div class="tei-line">“Thus leaving behind the many afflictions of women,</div><div class="tei-line">We will continually overcome the afflictions and defeat Māra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-243" href="#tei-note-UT22084-044-004-243">[91]</a></sup></div><div class="tei-line">And we will joyously make continuous offerings</div><div class="tei-line">To the countless buddhas in the ten directions.</div></div><div class="tei-verse"><div class="tei-line">“Maintaining generosity, discipline, and perseverance,</div><div class="tei-line">We will train our minds with patience and concentration.</div><div class="tei-line">And, gathering all sentient beings<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-245" href="#tei-note-UT22084-044-004-245">[92]</a></sup> through insight and skillful means,</div><div class="tei-line">We will realize all the aspects of the path of supreme awakening.</div></div><div class="tei-verse"><div class="tei-line">“Conferring remedies to countless assemblies of gods and men,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-247" href="#tei-note-UT22084-044-004-247">[93]</a></sup></div><div class="tei-line">We will exhort all to give rise to the spirit of the Great Vehicle;</div><div class="tei-line">We will roar the lion’s roar,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-248" href="#tei-note-UT22084-044-004-248">[94]</a></sup></div><div class="tei-line">And become the teachers of gods and men.”</div></div><p>At that moment the Blessed One smiled.</p><p>It is in the nature of the buddhas that when they smile, they emit light rays of various kinds of colors. There were blue, yellow, red, white, orange, violet, and crystalline rays that emanated from the Thus-Gone One’s mouth, which pervaded and illuminated countless and innumerable world systems up to their Brahmā’s realms, then returned and circled the Thus-Gone One three times, and finally dissolved into the Thus-Gone One’s crown protuberance.</p><p>Then the venerable Ānanda arose from his seat and asked the Blessed One, “Blessed One, what is the reason that you display such a smile?”</p><p>The Blessed One <span class="tei-ref">F.104.a</span> answered,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-253" href="#tei-note-UT22084-044-004-253">[95]</a></sup> “Ānanda, do you see this girl Vimalaśraddhā?” “Yes, I see her,” Ānanda replied.</p><p>The Blessed One continued,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-255" href="#tei-note-UT22084-044-004-255">[96]</a></sup> “Ānanda, when the present lives of this girl Vimalaśraddhā and the other five hundred girls are exhausted, they will abandon these female bodies and be reborn among the gods of Tuṣita.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-256" href="#tei-note-UT22084-044-004-256">[97]</a></sup> There they will respectfully honor, venerate, and make offerings to the Blessed One Maitreya and to all the other thus-gone ones of this fortunate eon. In this way, after eighty-four thousand trillion eons, this girl Vimalaśraddhā will obtain perfect and complete awakening<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-257" href="#tei-note-UT22084-044-004-257">[98]</a></sup> in a universe known as Vidyutprabha and will be known as the Thus-Gone One Raśmivyūha. The name of that eon will be Nityāvabhāsa. The life span of that thus-gone one will be the same as that of the gods of Tuṣita, that is, twelve thousand years. In that universe, he will be surrounded by limitless and immeasurable retinues exclusively<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-258" href="#tei-note-UT22084-044-004-258">[99]</a></sup> consisting of bodhisattva mahāsattvas. These five hundred girls will be at the head of those retinues, in the same way as now, during my lifetime, these sixty bodhisattvas—Mañjuśrī and so on<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-259" href="#tei-note-UT22084-044-004-259">[100]</a></sup>—are at the head.</p><p>Ānanda, if any woman who, having listened to this Dharma discourse, retains it, reads it, or recites it aloud after having had a female body, she will not take such a rebirth again in the future, and will quickly obtain supreme, perfect, and complete awakening.”</p><p>After the Blessed One spoke thus, the girl Vimalaśraddhā and the other five hundred girls, as well as the entire world with its gods, men, and asuras, rejoiced in the words of the Blessed One and praised them greatly. <span class="tei-ref">F.104.b</span></p>This concludes <cite>The Questions of the Girl Vimalaśraddhā</cite>, the fortieth of the one hundred thousand sections of the Dharma discourse known as The Noble Great Heap of Jewels.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-044-004-263" href="#tei-note-UT22084-044-004-263">[101]</a></sup></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-044-004-25"><p>Tib. <em>ri’i rgyal po</em> (“the king of mountains”). An equivalent term is here absent in the Chinese.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-25">back</a></li><li id="tei-note-UT22084-044-004-26"><p>The Chinese reads <em>顧視安詳如大象王</em> (“Like an elephant king, he cast his peaceful gaze”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-26">back</a></li><li id="tei-note-UT22084-044-004-27"><p>“Of the asuras” is absent in the Chinese, which reads <em>蓋諸大眾如羅睺羅王</em> (“he eclipsed all those who surrounded him, like King Rāhula”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-27">back</a></li><li id="tei-note-UT22084-044-004-28"><p>The Chinese makes no mention of the major and minor marks here, instead reading <em>相好莊嚴威光熾盛</em> (“His appearance was magnificent, and his splendor and power blazed forth”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-28">back</a></li><li id="tei-note-UT22084-044-004-29"><p>Here the Chinese diverges slightly from the Tibetan: <em>為欲覺悟一切眾生普令安住決定勝義</em> (“In order to establish all sentient beings who desire awakening in the supreme definitive meaning”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-29">back</a></li><li id="tei-note-UT22084-044-004-31"><p>The Chinese reads <em>波斯匿王所生愛女</em> (“beloved daughter born of King Prasenajit”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-31">back</a></li><li id="tei-note-UT22084-044-004-32"><p>The Chinese reads <em>年在幼稚顏貌端嚴</em> (“young and with a beautiful face”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-32">back</a></li><li id="tei-note-UT22084-044-004-33"><p>The Chinese version has <em>至如來所頂禮佛足</em> (“Reaching the Thus-Gone One, she prostrated at his feet…”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-33">back</a></li><li id="tei-note-UT22084-044-004-35"><p>Tib. <em>thub mchog</em>. The Chinese reads<em> 牟尼尊</em> (<em>mounizun</em>, “honored sage”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-35">back</a></li><li id="tei-note-UT22084-044-004-37"><p><em>顯現威光相奇特</em> (“Displaying a wonderful resplendence and extraordinary in appearance”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-37">back</a></li><li id="tei-note-UT22084-044-004-39"><p>Tib. <em>mi mchog</em>; Chn. <em>人中最尊</em> (<em>ren zhong zui zun</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-39">back</a></li><li id="tei-note-UT22084-044-004-41"><p>Tib. <em>mkhyen pa dag gis</em> is probably a dual form denoting the knowledge of things in their true nature, and of things in all their multiplicity. The Chinese here also references skillful means, which is not found in the Tibetan: <em>智慧善巧知諸行</em> (“You know all actions with your knowledge and skillful means”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-41">back</a></li><li id="tei-note-UT22084-044-004-43"><p>The subject of the first two lines is not entirely clear in the Tibetan, but this rendering is confirmed by the Chinese: <em>若有堅固勇進者，慈悲利益眾生類，如是菩薩正修行，唯願如來為宣說。</em>(“Those with steadfast perseverance, / Who compassionately benefit sentient beings— / I beseech you, Thus-Gone One, to explain / The correct conduct of such bodhisattvas”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-43">back</a></li><li id="tei-note-UT22084-044-004-45"><p>The Chinese divides this line into two different questions: <em>云何當得平等法？云何成熟諸眾生？ </em>(“How do they obtain the Dharma of equanimity? How do they bring sentient beings to maturity?”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-45">back</a></li><li id="tei-note-UT22084-044-004-49"><p>In the Chinese, this series of questions starting with “How do they cultivate generosity” seem to be grouped together as one question: <em>云何出生施戒忍，精進禪定及解脫，智慧破諸煩惱闇，而常安住大方便，三昧總持無礙辯，住四無量五神通?</em></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-49">back</a></li><li id="tei-note-UT22084-044-004-51"><p>Tib. <em>sbyangs pa</em>; Chn. <em>頭陀</em> (<em>toutuo</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-51">back</a></li><li id="tei-note-UT22084-044-004-54"><p>The Chinese reads <em>時時警覺故</em> (“because they are constantly vigilant”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-54">back</a></li><li id="tei-note-UT22084-044-004-55"><p>Here the Chinese reads <em>菩薩成就如是力故</em> (“because bodhisattvas accomplish these eight strengths”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-55">back</a></li><li id="tei-note-UT22084-044-004-57"><p>The Chinese clarifies that the sense here is that the Buddha is repeating in verse what he has just explained: <em>重說偈言</em> (“repeated in verse” or “spoke again in verse”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-57">back</a></li><li id="tei-note-UT22084-044-004-61"><p>Here the Chinese <em>恆善觀察</em> would be better translated as “Is always with proper observance.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-61">back</a></li><li id="tei-note-UT22084-044-004-66"><p>While the Chinese <em>不染生死 </em>could be read to mean “not clinging to saṃsāra,” it more likely <em>means</em> “not tainted by saṃsāra,” and was possibly read differently by the Tibetan translators.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-66">back</a></li><li id="tei-note-UT22084-044-004-68"><p>The Chinese has <em>常相警悟</em> (“continually vigilant of each other”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-68">back</a></li><li id="tei-note-UT22084-044-004-71"><p>The sense in the Chinese is “because” rather than “when”: <em>菩薩成就八種法故</em> (“because a bodhisattva accomplishes eight kinds of qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-71">back</a></li><li id="tei-note-UT22084-044-004-82"><p>As above, the sense of the Chinese is “because” rather than “when”: <em>菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-82">back</a></li><li id="tei-note-UT22084-044-004-83"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan here omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-83">back</a></li><li id="tei-note-UT22084-044-004-87"><p>The Chinese reads <em>得利不自高</em> (“When they acquire something, they do not become proud”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-87">back</a></li><li id="tei-note-UT22084-044-004-89"><p>The six lines of verse starting from “Because wise people always act to be of benefit” to “Love and hate do not arise” are taken together as one unit in the Chinese. Thus, the Tibetan version’s continued parsing into groups of four differs from the extant Chinese version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-89">back</a></li><li id="tei-note-UT22084-044-004-92"><p>The Chinese breaks up the verses differently, taking the four lines starting from “Always understanding the nature of the body” to “Are unmoved by joys and sorrows” as a unit of four.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-92">back</a></li><li id="tei-note-UT22084-044-004-94"><p>Instead of <em>spyod ’dzin rtag par sa ’dra bas</em>, the Lithang, Kangxi, and Choné Kangyurs read<em> spong ’dzin rtag par sa ’dra bas</em>: “Being like the earth in always accepting and giving up” (Comparative Edition, p. 285, note 3 of p. 269).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-94">back</a></li><li id="tei-note-UT22084-044-004-95"><p>As above, the Chinese breaks up the verses differently, taking the four lines starting from “And, properly understanding the afflictions” to “Love and hate do not arise” as a unit of four.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-95">back</a></li><li id="tei-note-UT22084-044-004-97"><p>Here again the sense in the Chinese is “because” rather than “when”: <em>菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-97">back</a></li><li id="tei-note-UT22084-044-004-98"><p>The Chinese reads a little differently here: <em>於生死中無有疲倦</em> (“though in saṃsāra, they are indefatigable”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-98">back</a></li><li id="tei-note-UT22084-044-004-99"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-99">back</a></li><li id="tei-note-UT22084-044-004-104"><p>Instead of <em>chos rgyal nyid du mngon ’tshang rgya</em>, the Yongle and Kangxi Kangyurs have <em>chos nyid du ni mngon ’tshang rgya</em>: “And become fully awakened to the <em>dharmatā</em>” (Comparative Edition, p. 285, notes 24 and 25 of p. 269).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-104">back</a></li><li id="tei-note-UT22084-044-004-107"><p>Instead of <em>dga’ ba’i sems kyis rtag tu bde</em>, the Lithang and Choné Kangyurs have <em>dga’ ba’i sems kyi rtag tu bde</em>: “And their joyful minds are always happy” (Comparative Edition, p. 285, note 1 of p. 270).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-107">back</a></li><li id="tei-note-UT22084-044-004-108"><p>Instead of <em>thabs kyis pha rol gang phyin pa</em>, the Yongle, Narthang, and Lhasa Kangyurs have <em>thabs kyi pha rol gang yin pa;</em> Peking reads <em>thabs kyi pha rol gang phyin pa</em>. Both could be translated as “Those who have become accomplished in skillful means” (Comparative Edition, p. 285, notes 2 and 3 of p. 270).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-108">back</a></li><li id="tei-note-UT22084-044-004-110"><p>The Chinese here differs slightly from the Tibetan: <em>愛樂佛功德</em> (“Adoring and delighting in the Buddha’s qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-110">back</a></li><li id="tei-note-UT22084-044-004-113"><p>The Chinese reads <em>成就八法</em> (“when the eight qualities are accomplished”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-113">back</a></li><li id="tei-note-UT22084-044-004-361"><p>Tib. <em>sems kyi khams mnyam par ’gyur</em>; the expression <em>khams mnyam pa</em> can simply mean “balanced” or “healthy”; or this may be a reference to <em>khams mnyam pa nyid</em> (Skt. <em>dhātusamatā</em>), forty-eighth of the 108 gateways to the light of Dharma listed in chapter 4 of the <cite>Lalitavistara</cite> (see <cite>The Play in Full</cite><a href="https://read.84000.co/translation/toh95.html#UT22084-046-001-167" target="_blank" rel="noopener noreferrer">4.20</a>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-361">back</a></li><li id="tei-note-UT22084-044-004-114"><p>The Chinese reads <em>一者心如地故</em> (“The first is because the mind is similar to earth”). Note that here again the Chinese includes explicit numbering for this and the remainder of the list of qualities.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-114">back</a></li><li id="tei-note-UT22084-044-004-117"><p>Here the Chinese reads <em>一者心如地故</em> (“The first is because the mind is similar to earth”). Note that here again the Chinese includes explicit numbering for this and the remainder of the list of qualities.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-117">back</a></li><li id="tei-note-UT22084-044-004-119"><p>The Chinese reads <em>除煩惱渴</em> (“It quenches the thirst of the afflictions”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-119">back</a></li><li id="tei-note-UT22084-044-004-125"><p>Although all the Tibetan editions consulted read <em>nyan thos dang ni rang rgyal gyi</em>, the genitive <em>gyi</em> is clearly better read as an ergative <em>gyis</em>. The Chinese has no grammatical particle to restrict the sense to a genitive.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-125">back</a></li><li id="tei-note-UT22084-044-004-128"><p>The Chinese reads <em>有八種法，菩薩成就出生菩提</em> (“There are eight qualities through which bodhisattvas accomplish the source of enlightenment”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-128">back</a></li><li id="tei-note-UT22084-044-004-129"><p>Instead of <em>ci bdog pa rnams yongs su gtong ba’i phyir ro</em>, Yongle has <em>ci bdog pa rnams yongs su gdung ba’i phyir ro</em>, “Because they are in great pain concerning everything they possess,” which would probably mean that they cannot bear to keep it only for themselves (Comparative Edition, p. 285, note 15 of p. 271).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-129">back</a></li><li id="tei-note-UT22084-044-004-130"><p>Instead of <em>rnam par grol bas nye bar zhi bar ’gyur ba’i phyir ro</em>, Yongle and Kangxi have <em>rnam par grol ba nye bar zhi bar ’gyur ba’i phyir ro</em>: “as they have reached the peace of complete liberation” (Comparative Edition, p. 285, note 21 of p. 271).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-130">back</a></li><li id="tei-note-UT22084-044-004-134"><p>The Chinese reads <em>志求大安樂，除習證真滅</em> (“Striving determinedly for the great bliss, / They remove habitual patterns and attain true extinction”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-134">back</a></li><li id="tei-note-UT22084-044-004-138"><p>The Chinese reads <em>了知世空寂</em> (“And, understanding that the world is empty”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-138">back</a></li><li id="tei-note-UT22084-044-004-140"><p>Instead of <em>don gyi phan pa nan tan sgom</em>, Lithang, Kangxi, and Choné have <em>don gyi phan pa yon tan sgom</em>: “Meditates on the qualities of the ultimate benefit” (Comparative Edition, p. 285, note 19 of p. 272).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-140">back</a></li><li id="tei-note-UT22084-044-004-142"><p><em>善知諸性欲，說法度眾生</em> (“Knowing well the natures and desires of all / They teach the Dharma to liberate sentient beings”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-142">back</a></li><li id="tei-note-UT22084-044-004-144"><p>Here the Chinese reads<em> 菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-144">back</a></li><li id="tei-note-UT22084-044-004-145"><p>Here again the Chinese includes explicit numbering for this and the remainder of the list.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-145">back</a></li><li id="tei-note-UT22084-044-004-149"><p>Instead of <em>ji skad thos bzhin ston byed pas</em>, Kangxi has <em>ji skad bos bzhin ston byed pas</em>: “And teach what has been asked for” (Comparative Edition, p. 285, note 8 of p. 273).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-149">back</a></li><li id="tei-note-UT22084-044-004-153"><p>The Chinese reads<em> 慈悲為依止</em> (“relying upon love and compassion”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-153">back</a></li><li id="tei-note-UT22084-044-004-156"><p>As above, the Chinese reads<em>菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-156">back</a></li><li id="tei-note-UT22084-044-004-157"><p>The Chinese continues to explicitly number each item in the list of eight whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-157">back</a></li><li id="tei-note-UT22084-044-004-164"><p>The Chinese reads <em>有八種法，菩薩成就頭陀功德，常樂住於阿蘭若處</em> (“There are eight qualities through which bodhisattvas accomplish ascetic virtue and always dwell joyfully in seclusion”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-164">back</a></li><li id="tei-note-UT22084-044-004-165"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-165">back</a></li><li id="tei-note-UT22084-044-004-168"><p>The Chinese adds an additional characterization: <em>少欲知足不放逸</em> (“Having few wants and being content and conscientious”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-168">back</a></li><li id="tei-note-UT22084-044-004-171"><p>The Chinese version reads <em>常住空閑佛所讚</em> (“They always dwell in solitude and are praised by the buddhas”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-171">back</a></li><li id="tei-note-UT22084-044-004-173"><p>The Degé reads <em>gnyen bshes yongs spangs bsngags pa rjod</em>, but here we follow the Chinese <em>遠離眷屬絕稱譽</em> (“They leave behind relatives and friends and refuse honor and praise”), which matches the Yongle’s<em> bsngags pa gcad</em> and the Narthang’s <em>bsngags gcod pa</em> (Comparative Edition, p. 286, note 8 of p. 275).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-173">back</a></li><li id="tei-note-UT22084-044-004-175"><p>The Chinese reads <em>菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-175">back</a></li><li id="tei-note-UT22084-044-004-176"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-176">back</a></li><li id="tei-note-UT22084-044-004-177"><p>Instead of <em>rab tu bzod pa</em>, “accepting,” Narthang and Lhasa have <em>rab tu brjod pa</em>, “asserting” (Comparative Edition, p. 286, note 12 of p. 275).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-177">back</a></li><li id="tei-note-UT22084-044-004-180"><p>Instead of <em>skye med</em>, “non-arising,” Narthang and Lhasa have <em>skyon med</em>, “flawlessness” (Comparative Edition, p. 286, note 1 of p. 276).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-180">back</a></li><li id="tei-note-UT22084-044-004-186"><p>The sense of the Chinese is “because” rather than “when”: <em>菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-186">back</a></li><li id="tei-note-UT22084-044-004-187"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-187">back</a></li><li id="tei-note-UT22084-044-004-190"><p>The Chinese simply reads <em>化彼諸邪見</em> (“Transform wrong views”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-190">back</a></li><li id="tei-note-UT22084-044-004-192"><p>The Degé and Comparative Edition have the mistaken <em>rnam dag yang dag dag gis ni</em>, and curiously, the Comparative Edition does not note any variants (Comparative Edition, p. 277). The Stok Palace has the correct <em>rnam dag yang dag ngag gis ni</em> (folio 177.a).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-192">back</a></li><li id="tei-note-UT22084-044-004-194"><p>While the Degé edition reads <em>log brtson dag ni spong bar byed</em> (“They abandon those with wrong effort”), the Chinese reads <em>不捨邪勤者</em> (“They do <em>not</em> abandon those with wrong effort”). This reading, which is preferable, is corroborated by the Yongle, Narthang, and Stok Palace versions (Comparative Edition, p. 286, note 6 of p. 277; Stok Palace, folio 177.b).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-194">back</a></li><li id="tei-note-UT22084-044-004-199"><p>The Chinese has <em>菩薩成就八種法故</em> (“because bodhisattvas accomplish eight qualities”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-199">back</a></li><li id="tei-note-UT22084-044-004-200"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-200">back</a></li><li id="tei-note-UT22084-044-004-204"><p>The Degé reads <em>rtag par dran byed rjes su dran</em> (“They always recall [the six] recollections”). The Stok Palace shares this reading (folio 178.a). The Chinese reads <em>常念於無念</em> (“They always recall nonrecollection”). Here <em>無念</em> (<em>wu nian</em>) carries the sense of nondeluded thoughts and correct recollection/mindfulness. Interestingly, the Yongle, Lithang, Kangxi, Narthang, Choné, and Lhasa versions match the Chinese, reading <em>rtag par dran med rjes su dran</em> (Comparative Edition, p. 286, note 7 of p. 278).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-204">back</a></li><li id="tei-note-UT22084-044-004-207"><p>Tib. <em>chos kyi mnga’ bdag nor gyis ni/ brtse sems thams cad kun sdud pas</em>. The Yongle and Narthang editions read <em>sbyin pas</em>, “give,” instead of <em>sdud pas</em>, “draw in,” which would translate as: “They give everything to everyone with their loving minds” (Comparative Edition, p. 286, note 10 of p. 278). This more closely matches the Chinese, which reads <em>悲心施一切</em> (“Doling out compassion to all”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-207">back</a></li><li id="tei-note-UT22084-044-004-211"><p>The Chinese has <em>世尊! 成熟幾法能轉女身?</em> (“Blessed One, which dharmas must one have ripened to be able to transform female existence?”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-211">back</a></li><li id="tei-note-UT22084-044-004-213"><p>The Chinese reads <em>成就八法當轉女身</em> (“when one accomplishes eight qualities, one will certainly transform female existence”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-213">back</a></li><li id="tei-note-UT22084-044-004-214"><p>The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-214">back</a></li><li id="tei-note-UT22084-044-004-220"><p>The Chinese reads <em>成就八法能轉女身</em> (“when one accomplishes the eight qualities, one is able to transform/avert the female existence”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-220">back</a></li><li id="tei-note-UT22084-044-004-221"><p>The Chinese has <em>一者尊重於佛深樂於法</em> (“First, respecting the Buddha and profoundly rejoicing in the Dharma”). The Chinese continues to explicitly number each item in the list of eight, whereas the Tibetan omits such numbering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-221">back</a></li><li id="tei-note-UT22084-044-004-222"><p>The Chinese reads <em>無所缺犯</em> (“Not falling short of or violating the training precepts”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-222">back</a></li><li id="tei-note-UT22084-044-004-225"><p>The Chinese has <em>敬佛深樂法</em> (“When one is devoted to the Buddha and profoundly rejoices in the Dharma”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-225">back</a></li><li id="tei-note-UT22084-044-004-226"><p>The Chinese reads <em>尊重戒多聞</em> (“Respecting those with discipline and great learning”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-226">back</a></li><li id="tei-note-UT22084-044-004-229"><p>The six lines of verse starting from “When one keeps discipline with modesty and bashfulness” to “Impure existence as a woman” are taken together as one unit in the Chinese.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-229">back</a></li><li id="tei-note-UT22084-044-004-231"><p>The six lines of verse starting from “When, with supreme intent, one develops weariness” to “One will quickly obtain the body of a man” are taken together as one unit in the Chinese.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-231">back</a></li><li id="tei-note-UT22084-044-004-233"><p>The Chinese version reads differently here: <em>爾時淨信童女以所持金鬘散於佛上</em> (“Then the girl Vimalaśraddhā laid upon the Buddha the golden necklaces she was wearing”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-233">back</a></li><li id="tei-note-UT22084-044-004-234"><p>The Degé omits the <em>dang</em> (“and”) between <em>gzhal med khang</em> and <em>khang pa brtsegs pa</em>, but <em>dang</em> is here included in the Yongle, Kangxi, Narthang, Lhasa, and Stok Palace versions (Comparative Edition, p. 287, note 5 of p. 280; Stok Palace, folio 179.a). The inclusion of <em>dang</em> more closely matches the Chinese, which reads <em>於虛空中變成真金宮殿樓閣</em> (“In the sky, they turned into palaces and pavilions of real gold”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-234">back</a></li><li id="tei-note-UT22084-044-004-235"><p>The Chinese has <em>散彼佛上</em> (“and laid them upon the Buddha”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-235">back</a></li><li id="tei-note-UT22084-044-004-236"><p>The Chinese reads <em>亦於空中變金樓閣，寶帳寶蓋種種莊嚴</em> (“They also turned into golden pavilions ornamented with all kinds of jeweled canopies and jeweled parasols”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-236">back</a></li><li id="tei-note-UT22084-044-004-239"><p>Instead of <em>thugs rjes sems can rnams la sman par mdzad</em>, “Through his compassion acts as healer for all sentient beings,” Yongle and Kangxi have <em>thugs rjes sems can rnams la smin par mdzad</em>, “Through his compassion, ripens all sentient beings” (Comparative Edition, p. 287, note 1 of p. 281). The Chinese reads <em>哀愍利益諸眾生</em> (“Compassionately benefits all sentient beings”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-239">back</a></li><li id="tei-note-UT22084-044-004-241"><p>The six lines of verse starting from “The Blessed One, supreme and foremost among men” to “To you, supreme among men, we make offerings” are taken together as one unit in the Chinese.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-241">back</a></li><li id="tei-note-UT22084-044-004-243"><p>The four lines of verse starting from “By force of hearing the Dharma, we have discarded all passions” to “We will continually overcome the afflictions and defeat Māra” are taken together as one unit in the Chinese.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-243">back</a></li><li id="tei-note-UT22084-044-004-245"><p>Instead of <em>thabs dang shes rab sems can yongs bsdus nas</em>, “And gathering all sentient beings through insight and skillful means,” Narthang and Lhasa have <em>thabs dang shes rab sems ni yongs bsdus nas</em>, which might be translated as “And gathering a mind of insight and skillful means” (Comparative Edition, p. 287, notes 14 and 15 of p. 280).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-245">back</a></li><li id="tei-note-UT22084-044-004-247"><p>The Chinese has <em>利益無量人天眾</em> (“Benefitting countless assemblies of gods and humans”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-247">back</a></li><li id="tei-note-UT22084-044-004-248"><p>The Chinese reads <em>我等當能師子吼</em> (“We will be able to roar the lion’s roar”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-248">back</a></li><li id="tei-note-UT22084-044-004-253"><p>The Chinese has <em>佛告阿難</em> (“The Buddha said to Ānanda”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-253">back</a></li><li id="tei-note-UT22084-044-004-255"><p>The Chinese reads <em>佛言</em> (“The Buddha said”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-255">back</a></li><li id="tei-note-UT22084-044-004-256"><p>The Chinese has simply <em>生兜率陀天</em> (“and be reborn in Tuṣita heaven”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-256">back</a></li><li id="tei-note-UT22084-044-004-257"><p>The Chinese reads simply <em>當得作佛</em> (“will become a buddha”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-257">back</a></li><li id="tei-note-UT22084-044-004-258"><p>“Exclusively” is absent in the Chinese: <em>以無量無邊大菩薩眾而為眷屬</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-258">back</a></li><li id="tei-note-UT22084-044-004-259"><p>“And so on” is absent in the Chinese: <em>猶如我今六十菩薩，文殊師利而為 上首</em> (“in the same way as now, during my lifetime, these sixty bodhisattvas have as their head Mañjuśrī”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-259">back</a></li><li id="tei-note-UT22084-044-004-263"><p>As noted above, the Narthang, Lhasa, and Stok Palace versions state in the colophon that this text was translated, edited, and finalized based on a Chinese text by the translator Gö Chödrup: <em>lo tstsha ba ’gos chos grub kyis rgya nag gi dpe las bsgyur cing zhus te/ gtan la phab pa/</em> (Comparative Edition, p. 288, note 1 of p. 283). Stok Palace, folio 181.a.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-044-004-263">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/044-003-toh83-questions-of-bhadrapala.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/044-005-toh85-question-of-maitreya.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

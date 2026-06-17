@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 115 — The Display of the Pure Land of Sukhāvatī — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 115 — The Display of the Pure Land of Sukhāvatī</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 115 — The Display of the Pure Land of Sukhāvatī        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Sukhāvatī­vyūha          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Sakya Pandita Translation Group (International Buddhist Academy Division) under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>The Display of the Pure Land of Sukhāvatī</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.195.b</span>Homage to all the buddhas and bodhisattvas.</p><br /><p>Thus did I hear at one time. The Bhagavān was dwelling in Śrāvastī, in Jeta’s Grove, Anāthapiṇḍada’s Park, along with a large monastic saṅgha of 1,250 bhikṣus,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-150" href="#tei-note-UT22084-051-003-150">[1]</a></sup> all of them great elders, śrāvakas, and arhats, such as the elder Śāriputra, Mahā­maudgalyāyana, Mahākāśyapa, Mahā­kātyāyana,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-151" href="#tei-note-UT22084-051-003-151">[2]</a></sup> Mahākapphiṇa, Mahākauṣṭhila, Revata, Śuddhipaṃthaka, Nanda, Ānanda, Rāhula, Gavāṃpati, Bharadvāja, Kālodāyin, Vakula, and Aniruddha. He dwelt with these and other great śrāvakas and with many bodhisattva mahāsattvas, such as the youthful Mañjuśrī, <span class="tei-ref">F.196.a</span> the bodhisattva mahāsattva Ajita, the bodhisattva mahāsattva Gandhahastin, the bodhisattva mahāsattva Nityodyukta, and the bodhisattva mahāsattva Anikṣiptadhura, along with many other bodhisattva mahāsattvas. He was also accompanied by Śakra, the lord of gods, and Brahmā, the ruler of the Sahā world, along with many myriads<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-152" href="#tei-note-UT22084-051-003-152">[3]</a></sup> of gods.</p><p>On that occasion, the Bhagavān said to the venerable Śāriputra, “Śāriputra, if you go from this buddha realm past one hundred thousand myriad buddha realms toward the western direction, there is a world known as Sukhāvatī. In that place the tathāgata, the arhat, the perfectly and fully enlightened buddha known as Amitāyus, dwells, lives, and abides, teaching the Dharma.</p><p>“Now what do you think, Śāriputra, why is that world called ‘Sukhāvatī’?</p><p>“Śāriputra, in the Sukhāvatī world, sentient beings experience neither physical pain nor mental suffering and the causes for their happiness are limitless. For this reason, this world is called Sukhāvatī. Furthermore, Śāriputra, the Sukhāvatī world is surrounded on all sides by seven layers of terraces, seven rows of palm trees, and filigrees of chimes. It is radiantly beautiful. Śāriputra, this buddha realm is beautifully adorned with displays of the excellences of buddha realms, such as the four kinds of jewels, namely, gold, silver, beryl, and crystal. Furthermore, Śāriputra, the Sukhāvatī world has ponds adorned with seven kinds of jewels. The ponds are full of water possessing the eight qualities. They are covered by jeweled lotuses, <span class="tei-ref">F.196.b</span> are filled to the top to enable crows to drink, and are lined with golden sand. All around, on the four sides of the ponds are four radiantly elegant staircases, each made of one of the four precious substances: gold, silver, beryl, and crystal. By the banks of the ponds grow jeweled trees of the seven radiantly beautiful jewels: gold, silver, beryl, crystal, rosy pearls, emerald, and coral. From all those ponds grow lotuses that bloom as large as chariot wheels.</p><p>“The golden lotuses have a golden hue, a golden sheen, and manifest as gold. The blue ones have a blue hue, a blue sheen, and manifest as blue. The yellow ones have a yellow hue, a yellow sheen, and manifest as yellow. The red ones have a red hue, a red sheen, and manifest as red. The white ones have a white hue, a white sheen, and manifest as white. The iridescent ones have an iridescent hue, an iridescent sheen, and manifest as iridescence. Śāriputra, this buddha realm is beautifully adorned by such displays of the excellences of buddha realms. Furthermore, Śāriputra, in the Sukhāvatī world, the sound of divine cymbals is always heard. The vast ground is magnificent, as if golden in color. Śāriputra, this buddha realm is beautifully adorned by such displays of the excellences of buddha realms.</p><p>“Furthermore, Śāriputra, in that buddha realm a shower of divine flowers, divine mandārava flowers, descends three times every day and three times every night. In a single morning, the sentient beings that are born there proceed from one buddha realm to the next, paying homage to hundreds of thousands of buddhas. They also toss hundreds of thousands of bouquets of flowers toward each tathāgata. After making offerings, they return to that same world for their daily rest. <span class="tei-ref">F.197.a</span> Śāriputra, this buddha realm is beautifully adorned by such displays of the excellences of buddha realms.</p><p>“Furthermore, Śāriputra, in the Sukhāvatī world there are swans, cranes, and peacocks that assemble three times during the day and three times at night and perform a concert, each singing its own melody. When they sing, the sounds of the powers, strengths, and branches of enlightenment emerge. Upon hearing those sounds, the sentient beings born there are moved to contemplate the Buddha, to contemplate the Dharma, and to contemplate the Saṅgha. Now what do you think about this, Śāriputra? Have those sentient beings taken birth as animals? You should not think so. Why is that? Śāriputra, in this buddha realm there are not even words for birth as a hell being, birth as an animal, or birth in the world of the Lord of Death. Those flocks of birds were manifested by the Tathāgata Amitāyus himself to voice the sound of Dharma. Śāriputra, this buddha realm is beautifully adorned by such displays of the excellences of buddha realms.</p><p>“Furthermore, Śāriputra, when the wind blows in that buddha realm it sways the rows of palm trees and the filigree net of chimes, creating sweet, enchanting, and delightful sounds, like the myriad subtleties of divine cymbals when played by a skilled musician. The people there, upon hearing those sounds, settle into the recollection of the Buddha, the recollection of the Dharma, and the recollection of the Saṅgha. Śāriputra, this buddha realm is beautifully adorned by such displays of the excellences of buddha realms.</p><p>“Now what do you think, Śāriputra, <span class="tei-ref">F.197.b</span> why is that tathāgata called ‘Amitāyus’ (Immeasurable Life)? Śāriputra, the lifespan of the Tathāgata Amitāyus is immeasurable. For this reason, he is called ‘Tathāgata Amitāyus.’ Furthermore, Śāriputra, why is that tathāgata called ‘Amitābha’ (Immeasurable Light)? Śāriputra, the light of the Tathāgata Amitābha shines unimpeded throughout all buddha realms. For this reason, he is called ‘Tathāgata Amitābha.’ The Bhagavān Tathāgata Amitābha fully awakened to unsurpassable, completely perfect enlightenment ten eons ago.</p><p>“Furthermore, Śāriputra, this bhagavān has an immeasurable saṅgha of śrāvakas, who are all pure arhats; their number cannot be easily expressed. Furthermore, Śāriputra, the sentient beings born in this buddha realm are all pure bodhisattvas who will not regress and are bound by only one more birth.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-153" href="#tei-note-UT22084-051-003-153">[4]</a></sup> Śāriputra, one cannot express the total number of bodhisattvas except to say that they are immeasurable or countless. Śāriputra, this buddha realm is beautifully adorned by such displays of the excellences of buddha realms.</p><p>“Therefore Śāriputra, sons and daughters of good family should completely dedicate all roots of virtue in a respectful manner to be born in that buddha realm. Why? Because by doing so, they will be able to meet holy beings similar to themselves. Śāriputra, one cannot take birth in the realm of the Bhagavān Tathāgata Amitāyus merely with minimal roots of virtue.</p><p>“Śāriputra, if those sons and daughters of good family hear the name of the Bhagavān Tathāgata Amitāyus and keep it in mind unwaveringly for one, two, three, four, five, <span class="tei-ref">F.198.a</span> six, or seven nights, when the hour of their death arrives, they will depart in an undeluded state. After they have passed away, the Tathāgata Amitābha will stand before them, entirely surrounded by a śrāvaka assembly and honored by a congregation of bodhisattvas. These sons and daughters of good family will be born in the Sukhāvatī world, the buddha realm of the Bhagavān Tathāgata Amitābha. Therefore, Śāriputra, having seen its real point, sons and daughters of good family, I declare, ought to respectfully make prayers to reach that buddha realm.</p><p>“O Śāriputra, I, the Tathāgata, at present praise [this Sukhāvatī].<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-154" href="#tei-note-UT22084-051-003-154">[5]</a></sup> So, likewise, Śāriputra, in the east, the Tathāgata Akṣobhya, the Tathāgata Merudhvaja, the Tathāgata Meru,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-155" href="#tei-note-UT22084-051-003-155">[6]</a></sup> the Tathāgata Mahāmeru, the Tathāgata Mahā­meru­prabhāsa,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-156" href="#tei-note-UT22084-051-003-156">[7]</a></sup> the Tathāgata Harmonious Speech, the Tathāgata Harmonious Voice,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-157" href="#tei-note-UT22084-051-003-157">[8]</a></sup> and the other bhagavān buddhas of the east, who are as numerous as the grains of sand of the river Ganges, pervade their own buddha realms with the power of their speech<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-158" href="#tei-note-UT22084-051-003-158">[9]</a></sup> and proclaim, ‘You should place your trust in this Dharma discourse called “Complete Embrace by all Buddhas,”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-159" href="#tei-note-UT22084-051-003-159">[10]</a></sup> which praises inconceivable qualities.’</p><p>“Likewise, in the south, the bhagavān buddhas of the south, such as the Tathāgata Candra­sūrya­pradīpa, the Tathāgata Renown,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-160" href="#tei-note-UT22084-051-003-160">[11]</a></sup> the Tathāgata Yaśaḥprabha, the Tathāgata Mahārciskandha, <span class="tei-ref">F.198.b</span> the Tathāgata Merupradīpa, the Tathāgata Anaṃtavīrya, and others, who are as numerous as the grains of sand of the river Ganges, pervade their own buddha realms with the power of their speech and proclaim, ‘You should place your trust in this Dharma discourse called “Complete Embrace by all Buddhas,” which praises inconceivable qualities.’</p><p>“Likewise, in the west, the bhagavān buddhas of the west, such as the Tathāgata Amitāyus, the Tathāgata Amitaskandha, the Tathāgata Amitadhvaja, the Tathāgata Mahāprabha, the Tathāgata Illuminating Light Rays,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-161" href="#tei-note-UT22084-051-003-161">[12]</a></sup> the Tathāgata Ratnaketu,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-162" href="#tei-note-UT22084-051-003-162">[13]</a></sup> the Tathāgata Śuddha­raśmi­prabha, and others, who are as numerous as the grains of sand of the river Ganges, pervade their own buddha realms with the power of their speech and proclaim, ‘You should place your trust in this Dharma discourse called “Complete Embrace by all Buddhas,” which praises inconceivable qualities.’</p><p>“Likewise, in the north, the bhagavān buddhas of the north, such as the Tathāgata Mahārciskandha, the Tathāgata Vaiśvānara­nirghoṣa, the Tathāgata Duṣpradharṣa, the Tathāgata Āditya­saṃbhava, the Tathāgata Jālinīprabha, the Tathāgata Prabhākara, and others,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-163" href="#tei-note-UT22084-051-003-163">[14]</a></sup> who are as numerous as the grains of sand of the river Ganges, pervade their own buddha realms with the power of their speech and proclaim, <span class="tei-ref">F.199.a</span> ‘You should place your trust in this Dharma discourse called “Complete Embrace by all Buddhas,” which praises inconceivable qualities.’</p><p>“Likewise, in the nadir, the bhagavān buddhas of the nadir, such as the Tathāgata Siṃha, the Tathāgata Yaśas, the Tathāgata Yaśaḥprabhāsa, the Tathāgata Dharma, the Tathāgata Dharmadhara, the Tathāgata Dharmadhvaja, and others, who are numerous as the grains of sand of the river Ganges, pervade their own buddha realms with the power of their speech and proclaim, ‘You should place your trust in this Dharma discourse called “Complete Embrace by all Buddhas,” which praises inconceivable qualities.’</p><p>“Likewise, in the zenith, the bhagavān buddhas of the zenith, such as the Tathāgata Brahmaghoṣa, the Tathāgata Nakṣatrarāja, the Tathāgata Gandhottama, the Tathāgata Gandhaprabhāsa, the Tathāgata Heap of Incense,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-164" href="#tei-note-UT22084-051-003-164">[15]</a></sup> the Tathāgata Ratna­kusuma­saṃpuṣpita­gotra, the Tathāgata Sālendrarāja, the Tathāgata Ratnotpalaśrī, the Tathāgata Sarvārthadarśa, the Tathāgata Sumerukalpa, and others<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-165" href="#tei-note-UT22084-051-003-165">[16]</a></sup> who are as numerous as the grains of sand of the river Ganges, pervade their own buddha realms with the power of their speech and proclaim, ‘You should place your trust <span class="tei-ref">F.199.b</span> in this Dharma discourse called “Complete Embrace by all Buddhas,” which praises Sukhāvatī’s inconceivable qualities.’</p><p>“What do you think about this, Śāriputra, why is this Dharma discourse called ‘Complete Embrace by All Buddhas’? Śāriputra, those sons and daughters of good family who have heard, now hear, or will hear this Dharma discourse and the names of those bhagavān buddhas will all be embraced completely by the bhagavān buddhas.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-166" href="#tei-note-UT22084-051-003-166">[17]</a></sup> Śāriputra, of all those sentient beings who aspire—who have made, are making, or will make aspirations—to the Sukhāvatī world, the buddha realm of the Bhagavān Tathāgata Amitābha, none has turned away, is turning away, or will ever turn away from the pursuit of unsurpassable, completely perfect enlightenment. Śāriputra, just as I now praise the inconceivable qualities of those bhagavān buddhas, likewise, Śāriputra, those bhagavān buddhas also praise my inconceivable qualities.”</p><p>Śāriputra declared,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-167" href="#tei-note-UT22084-051-003-167">[18]</a></sup> “Bhagavān Śākyamuni, king of the Śākyas, you have fully awakened to unsurpassable, completely perfect enlightenment in this Sahā world. You have taught the Dharma that the whole world was reluctant to accept at the time of the degeneration of the eon, the degeneration of afflictions, the degeneration of beings, the degeneration of views, and the degeneration of lifespan.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-051-003-168" href="#tei-note-UT22084-051-003-168">[19]</a></sup> How marvelous indeed!”</p><p>The Bhagavān replied, “Śāriputra, having fully awakened to unsurpassable, completely perfect enlightenment in this world, the Sahā world, at the time of the five degenerations, I have taught the Dharma that the whole world was reluctant to accept. This is the supreme feat I have accomplished.”</p><p>After the Bhagavān <span class="tei-ref">F.200.a</span> had thus spoken, the whole world, including the venerable Śāriputra, the great śrāvakas, bodhisattvas, gods, humans, demigods, and gandharvas, were delighted and praised highly the words spoken by the Bhagavān.</p><br /> This completes The Noble Mahāyāna Sūtra “<cite>The Display of Sukhāvatī</cite>.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>This sūtra was translated and finalized by the Indian preceptor Dānaśīla and the principal revisor-translator Bandé Yeshé Dé, along with others.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-051-003-150"><p>The Sanskrit has “<em>abhijñānābhijñātaiḥ</em>”, i.e., “bhikṣus, all of them proficient in the [five kinds of] superknowledge.” This is omitted in the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-150">back</a></li><li id="tei-note-UT22084-051-003-151"><p>In the Sanskrit version the order is Mahā­maudgalyāyana, Mahākāśyapa, Mahākapphiṇa, Mahā­kātyāyana.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-151">back</a></li><li id="tei-note-UT22084-051-003-152"><p>Literally, the text has “10 million (<em>bye ba</em>) x 10 billion (<em>khrag khrig</em>) x 100 thousand (<em>’bum phrag</em>).” In the Sanskrit it says, according to Max Müller, “a hundred thousand <em>nayutas</em>.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-152">back</a></li><li id="tei-note-UT22084-051-003-153"><p>These are bodhisattvas removed from enlightenment by only one more birth.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-153">back</a></li><li id="tei-note-UT22084-051-003-154"><p>The Skt. has <em>tāṃ pari­kīrtayāmi</em>, “I praise this”; the feminine <em>tāṃ</em> (missing, of course, in the Tibetan) shows that what is being praised is indeed Sukhāvatī.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-154">back</a></li><li id="tei-note-UT22084-051-003-155"><p>This name is not mentioned in the Sanskrit text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-155">back</a></li><li id="tei-note-UT22084-051-003-156"><p>In the Sanskrit version this name is rendered as simply Meruprabhāsa.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-156">back</a></li><li id="tei-note-UT22084-051-003-157"><p>The Tibetan version includes these last two names, <em>’jam sgra</em> (*<em>mañjuvacana</em>) and <em>’jam dbyangs</em> (*<em>mañjughoṣa</em>). There is no equivalent in the Sanskrit text, which instead has Mañjudhvaja (Beautiful Victory Banner).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-157">back</a></li><li id="tei-note-UT22084-051-003-158"><p>Literally, the text says: “The buddhas cover their land with the power of their tongue faculty.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-158">back</a></li><li id="tei-note-UT22084-051-003-159"><p>The Sanskrit text has <em>sarva­buddha­pari­grahaṃ nāma dharma­paryāyam</em>. This translates as, “You should place your trust in this Dharma discourse called ‘The Grace [lit. the complete embrace] of All Buddhas.’ ” The word <em>nāma</em> (“called”) is missing in the Tibetan version, but has been added to clarify the meaning of this passage.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-159">back</a></li><li id="tei-note-UT22084-051-003-160"><p>There is no equivalent in the Sanskrit version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-160">back</a></li><li id="tei-note-UT22084-051-003-161"><p><em>’od zer snang ba</em>. There is no equivalent in the Sanskrit version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-161">back</a></li><li id="tei-note-UT22084-051-003-162"><p>The Sanskrit version reads Mahāratnaketu.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-162">back</a></li><li id="tei-note-UT22084-051-003-163"><p>The Sanskrit mentions another tathāgata who does not figure in the Tibetan, Tathāgata Duṃdubhisvara­nirghoṣa (=Dundubhisvara­nirghoṣa).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-163">back</a></li><li id="tei-note-UT22084-051-003-164"><p><em>spos kyi phung po</em>. The Sanskrit here reads Mahārciskandha (Great Mass of Light).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-164">back</a></li><li id="tei-note-UT22084-051-003-165"><p>The Sanskrit also mentions the Tathāgata Indra­ketu­dhvaja­rāja, who is absent in the Tibetan text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-165">back</a></li><li id="tei-note-UT22084-051-003-166"><p>The Sanskrit and Tibetan differ significantly here and in what immediately follows. We have translated on the basis of the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-166">back</a></li><li id="tei-note-UT22084-051-003-167"><p>Here the Tibetan departs significantly from the Sanskrit, which has the other buddhas say these words.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-167">back</a></li><li id="tei-note-UT22084-051-003-168"><p>The five degenerations. See glossary.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-051-003-168">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/051-002-toh114-527-king-of-array-of-all-dharma-qualities.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/051-004-toh116-baskets-display.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

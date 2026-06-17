@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 592, Toh 986 — The Invincible Sitātapatrā (1) — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 592, Toh 986 — The Invincible Sitātapatrā (1)</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 592, Toh 986 — The Invincible Sitātapatrā (1)        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Sitātapatrāparājitā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by Samye Translations under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Dhāraṇī</h3><h3>The Invincible Sitātapatrā Born from the Uṣṇīṣa of the Tathāgata</h3><section class="tei-section tei-section--section"><div class="tei-verse"><div class="tei-line">“Homage to the Three Jewels!</div><div class="tei-line">Homage to all buddhas and bodhisattvas!</div></div><div class="tei-verse"><div class="tei-line">“Homage to the Buddha.</div><div class="tei-line">Homage to the Dharma.</div><div class="tei-line">Homage to the Saṅgha.</div><div class="tei-line">Homage to the seventy million completely perfect buddhas and the assembly of śrāvakas.</div></div><div class="tei-verse"><div class="tei-line">“Homage to the arhats of this world.</div><div class="tei-line">Homage to the stream enterers.</div><div class="tei-line">Homage to the once-returners.</div><div class="tei-line">Homage to the non-returners.</div><div class="tei-line">Homage to those who have gone rightly in this world.</div><div class="tei-line">Homage to those who have acted rightly.</div></div><div class="tei-verse"><div class="tei-line">“Homage to the divine ṛṣis who have the power to cast curses and the power to benefit.</div><div class="tei-line">Homage to the accomplished vidyādharas.</div></div><div class="tei-verse"><div class="tei-line">“Homage to Brahmā.</div><div class="tei-line">Homage to Indra.</div><div class="tei-line">Homage to the blessed<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-59" href="#tei-note-UT22084-090-036-59">[1]</a></sup> Rudra along with Umāpati.</div><div class="tei-line">Homage to the blessed Nārāyaṇa, worshiped by the five great mudrās.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-60" href="#tei-note-UT22084-090-036-60">[2]</a></sup><span class="tei-ref">F.134.a</span></div><div class="tei-line">Homage to the blessed Mahākāla, destroyer of Tripura, who prefers to reside in a charnel ground and is worshiped by hordes of mātṛs.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-61" href="#tei-note-UT22084-090-036-61">[3]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Homage to the Blessed One of the tathāgata family.</div><div class="tei-line">Homage to the lotus family.</div><div class="tei-line">Homage to the vajra family.</div><div class="tei-line">Homage to the jewel family.</div><div class="tei-line">Homage to the elephant family.</div><div class="tei-line">Homage to the youthful family.</div><div class="tei-line">Homage to the nāga family.</div></div><div class="tei-verse"><div class="tei-line">“Homage to the blessed, thus-gone, worthy, completely perfect Buddha Dṛḍha­śūraraṇasena­praharaṇa­rāja. <span class="tei-ref">F.220.a</span></div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Amitābha.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Akṣobhya.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Bhaiṣajya­guru­vaiḍūrya­prabha­rāja.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Supuṣpita­śālendrā­rāja. Homage to the blessed, thus-gone, worthy, completely perfect Buddha Śākyamuni.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Ratnaketurāja.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Samantabhadra.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Vairocana.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, completely perfect Buddha Vikasita­netrotpala­gandha­ketu­rāja.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-64" href="#tei-note-UT22084-090-036-64">[4]</a></sup><span class="tei-ref">F.134.b</span></div></div><p>“After paying homage to these blessed ones,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-66" href="#tei-note-UT22084-090-036-66">[5]</a></sup> this great spell for averting named <em>the invincible blessed Sitātapatrā born from the uṣṇīṣa of the Tathāgata</em> annihilates all bhūtas who are grahas; disrupts all opposing spells; averts untimely death; frees beings from all that binds them; averts all malice, nightmares, and bad omens; destroys the eighty-four thousand types of grahas; appeases the twenty-eight lunar mansions; destroys the eight great celestial bodies; <span class="tei-ref">F.220.b</span> averts all enemies; destroys all violence, malice, and nightmares; and frees beings from poison, weapons, fire, and water.</p><div class="tei-verse"><div class="tei-line">“She is invincible and greatly terrifying,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-68" href="#tei-note-UT22084-090-036-68">[6]</a></sup></div><div class="tei-line">Intensely fierce and greatly powerful.</div><div class="tei-line">She blazes brightly, is rich in splendor,</div><div class="tei-line">And is bright white and greatly powerful.</div><div class="tei-line">She is Pāṇḍaravāsinī, wreathed in flame.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-69" href="#tei-note-UT22084-090-036-69">[7]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“She is noble Tārā and Bhṛkuṭī.</div><div class="tei-line">Renowned as the victorious Vajramālā,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-71" href="#tei-note-UT22084-090-036-71">[8]</a></sup></div><div class="tei-line">She appears as a lotus and is marked with a vajra.</div><div class="tei-line">She is Aparājitā<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-72" href="#tei-note-UT22084-090-036-72">[9]</a></sup> and Mālā.</div></div><div class="tei-verse"><div class="tei-line">“She is the destroyer who bears a vajra staff,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-74" href="#tei-note-UT22084-090-036-74">[10]</a></sup></div><div class="tei-line">Worshiped by the peaceful gods,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-75" href="#tei-note-UT22084-090-036-75">[11]</a></sup></div><div class="tei-line">And of gentle appearance and rich in splendor.</div><div class="tei-line">She is noble Tārā, greatly powerful.</div></div><div class="tei-verse"><div class="tei-line">“She is Vajraśṛṅkhalā and Aparā</div><div class="tei-line">And Vajrakaumārī, scion of her family.</div><div class="tei-line">She is the vidyā<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-77" href="#tei-note-UT22084-090-036-77">[12]</a></sup> Kāñcanamālikā with vajra in hand,</div><div class="tei-line">Kusumbharatnā,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-78" href="#tei-note-UT22084-090-036-78">[13]</a></sup> and Vairocanā, and she is renowned as Vajroṣṇīṣā.</div></div><div class="tei-verse"><div class="tei-line">“She is Vijṛmbhamānikā and Vajrā</div><div class="tei-line">And Locanā, whose eyes shine like gold.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-80" href="#tei-note-UT22084-090-036-80">[14]</a></sup></div><div class="tei-line">She is Vajratuṇḍī and Śvetā,</div><div class="tei-line">Kamalākṣī, and Śaśiprabhā.</div></div><p>“May this entire host of mudrās<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-82" href="#tei-note-UT22084-090-036-82">[15]</a></sup> protect me, please protect me!</p><p>oṁ ṛṣigaṇapraśastāya sarvatathāgatoṣṇīṣasitātapatre hūṁ drūṁ | jambhanakarī hūṁ drūṁ | stambhanakarī hūṁ drūṁ | mahāvidyāsambhakṣanakarī hūṁ drūṁ | paravidyāsambhakṣanakarī hūṁ drūṁ | <span class="tei-ref">F.135.a</span> sarvaduṣṭān stambhanakarī hūṁ drūṁ | sarvayakṣarākṣasagrahāṇāṃ vidhvaṃsanakarī hūṁ drūṁ | caturaśitīnāṃ grahasahasrāṇāṃ vidhvaṃsanakarī hūṁ drūṁ | aṣṭāviṃśatīnāṃ nakṣatrāṇāṃ prasādanakarī hūṁ drūṁ | aṣṭānāṃ mahāgrahāṇāṃ vidhvaṃsanakarī hūṁ drūṁ | rakṣa rakṣa mām |<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-84" href="#tei-note-UT22084-090-036-84">[16]</a></sup></p><p>“Blessed Sitātapatrā, born from the uṣṇīṣa of the Tathāgata, Vajroṣṇīṣā, great averting goddess, great goddess with a thousand arms, great goddess with a thousand heads, great goddess with a trillion eyes and indestructible blazing features, great exalted vajra goddess who rules over the maṇḍala of the three realms of existence, protect me completely! Please protect me! <span class="tei-ref">F.221.a</span></p><p>“Oṁ, grant me auspiciousness in the face of dangers<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-87" href="#tei-note-UT22084-090-036-87">[17]</a></sup> from rulers, thieves, fire, water, poison, weapons, opposing armies, famines, enemies, thunderbolts, untimely death, earthquakes, falling meteors, royal punishment, devas, nāgas, lightning, suparṇas, and ferocious beasts.</p><p>“Grant me auspiciousness in the face of grahas who are devas,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-89" href="#tei-note-UT22084-090-036-89">[18]</a></sup> nāgas, asuras, maruts, garuḍas, gandharvas, kinnaras, mahoragas, yakṣas, rākṣasas, pretas, piśācas, bhūtas, kumbhāṇḍas, pūtanas, kaṭapūtanas, skandas, apasmāras, unmādas, chāyās, <span class="tei-ref">F.135.b</span> ostārakas, ḍākinīs, and revatīs! Grant me auspiciousness in the face of all these grahas!</p><p>“Grant me auspiciousness in the face of those who steal vitality and consume fetuses; who drink blood; who consume fat, flesh, grease, marrow, and newborns; who steal life; who consume vomit, filth, and urine; who drink sewage and consume leftovers; who drink saliva and consume snot, mucus, pus, oblations, garlands, <span class="tei-ref">F.221.b</span> fragrances, and incense; who capture people’s minds; and who consume flowers, fruits, grains, and burnt offerings!</p><div class="tei-verse"><div class="tei-line">“I cut and pin down the spells of all these and all grahas!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-92" href="#tei-note-UT22084-090-036-92">[19]</a></sup></div><div class="tei-line">I cut and pin down the spells of mendicants!</div><div class="tei-line">I cut and pin down the spells of ḍākas and ḍākinīs!</div><div class="tei-line">I cut and pin down the spells of Mahāpaśupati!</div><div class="tei-line">I cut and pin down the spells of Nārāyaṇa!</div><div class="tei-line">I cut and pin down the spells cast together with the true garuḍa!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-93" href="#tei-note-UT22084-090-036-93">[20]</a></sup></div><div class="tei-line">I cut and pin down the spells of Mahākāla and the hordes of mātṛs!</div><div class="tei-line">I cut and pin down the spells of kāpālikas!</div><div class="tei-line">I cut and pin down the spells of Jayakara, Madhukara, and Sarvārthasiddhi!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-94" href="#tei-note-UT22084-090-036-94">[21]</a></sup></div><div class="tei-line">I cut and pin down the spells of the Four Bhaginīs!</div><div class="tei-line">I cut and pin down the spells of Bhṛṅgiriṭi and Nandikeśvara along with Gaṇapati! <span class="tei-ref">F.136.a</span></div><div class="tei-line">I cut and pin down the spells of naked ascetics!</div><div class="tei-line">I cut and pin down the spells of arhats!</div><div class="tei-line">I cut and pin down the spells of those devoid of passion!</div><div class="tei-line">I cut and pin down the spells of Vajrapāṇi, lord of the guhyakas!</div></div><p>“Homage to you, blessed Sitātapatrā, born from the uṣṇīṣa of the Tathāgata! Protect me, please protect me!</p><p>oṁ asitānalārkaprabhāsphuṭavikasitasitātapatre<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-97" href="#tei-note-UT22084-090-036-97">[22]</a></sup> | <span class="tei-ref">F.222.a</span> jvala jvala | khāda khāda | dara dara | vidara vidara | chinda chinda | bhinda bhinda | hūṁ hūṁ phaṭ phaṭ svāhā | he he phaṭ | ho ho phaṭ | amoghe phaṭ | apratihatāya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-98" href="#tei-note-UT22084-090-036-98">[23]</a></sup> phaṭ | varapradāya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-99" href="#tei-note-UT22084-090-036-99">[24]</a></sup> phaṭ | pratyaṅgiritāya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-100" href="#tei-note-UT22084-090-036-100">[25]</a></sup> phaṭ | asuravidrāvakarāya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-101" href="#tei-note-UT22084-090-036-101">[26]</a></sup> phaṭ | sarvadevebhyaḥ phaṭ | sarvanāgebhyaḥ phaṭ | sarvāsurebhyaḥ phaṭ | sarvamarutebhyaḥ phaṭ | sarvagaruḍebhyaḥ phaṭ | sarvagandharvebhyaḥ phaṭ | sarvakinnarebhyaḥ phaṭ | sarvamahoragebhyaḥ phaṭ | sarvayakṣebhyaḥ phaṭ | sarvarākṣasebhyaḥ phaṭ | sarvapretebhyaḥ phaṭ | sarvapiśācebhyaḥ phaṭ | sarvabhūtebhyaḥ phaṭ | sarvakumbhāṇḍebhyaḥ phaṭ | sarvapūtanebhyaḥ phaṭ | sarvakaṭapūtanebhyaḥ phaṭ | sarvaskandebhyaḥ phaṭ | sarvonmādebhyaḥ phaṭ | sarvachāyebhyaḥ phaṭ | sarvāpasmārebhyaḥ phaṭ | sarvostārakebhyaḥ phaṭ | sarvadurlaṅghitebhyaḥ phaṭ | sarva duḥprekṣitebhyaḥ phaṭ | sarvajvarebhyaḥ phaṭ | sarvakṛtyakarmaṇakākhordebhyaḥ phaṭ | kiraṇavaitāḍebhyaḥ phaṭ | cichapreṣakaduścharditebhyaḥ phaṭ | durbhuktebhyaḥ phaṭ | sarvatīrthakebhyaḥ phaṭ | sarvaśramaṇebhyaḥ phaṭ | sarvavidyādharebhyaḥ phaṭ | jayakaramadhukarasarvārthasādhakebhyo vidyācārebhyaḥ phaṭ | caturbhyo bhaginībhyaḥ phaṭ | vajrakaumārīyebho phaṭ | vidyārajñīyebhyaḥ phaṭ | <span class="tei-ref">F.136.b</span> mahāpratyaṅgirebhyaḥ phaṭ | vajraśṛṅkhalāya pratyaṅgirarājāya phaṭ | mahākālāya mātṛgaṇanamaskṛtāya phaṭ | viṣṇāvīye phaṭ | brahmaṇīye phaṭ | agnīye phaṭ | mahākālīye phaṭ | kāladaṇḍīye phaṭ | indrīye phaṭ | raudrīye phaṭ | kaumārīye phaṭ | vārāhīye phaṭ | cāmuṇḍīye phaṭ | rātrīye phaṭ | kālarātrīye phaṭ | yamadaṇḍīye phaṭ | kapālīye phaṭ | adhimuktiśmaśānavāsinīye phaṭ |<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-102" href="#tei-note-UT22084-090-036-102">[27]</a></sup><span class="tei-ref">F.222.b</span></p><p>“Dispel all beings who harbor malicious and dangerous intentions toward me; who steal vitality; who consume fetuses; who drink blood; who consume fat, flesh, grease, marrow, and newborns; who steal life; who consume vomit, filth, and urine; who drink sewage and consume leftovers; who drink saliva; who consume snot, mucus, pus, oblations, garlands, fragrances, and incense; who capture people’s minds; who consume flowers, fruits, grains, and burnt offerings; and who harbor evil, malicious, or dangerous intentions.</p><p>“Dispel grahas who are yakṣas, rākṣasas, pretas, piśācas, bhūtas, <span class="tei-ref">F.137.a</span> kumbhāṇḍas, pūtanas, kaṭapūtanas, skandas, unmādas, chāyās, apasmāras, ostārakas, ḍākinīs, revatīs, yāmakas, śakunis, mātṛnandīs, samikās, <span class="tei-ref">F.223.a</span> and kaṇṭakamālinīs!</p><p>“Dispel all fevers that last one day, two days, three days, four days, or seven days; those that are chronic, irregular,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-106" href="#tei-note-UT22084-090-036-106">[28]</a></sup> or intermittent; and those that are caused by bhūtas or arise from disturbances in the wind, bile, phlegm, or their combination. Dispel all infectious diseases and all illnesses of the brain!</p><p>“Dispel splitting headaches;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-108" href="#tei-note-UT22084-090-036-108">[29]</a></sup> loss of appetite; illnesses of the eyes, nose, mouth, throat, and heart; laryngitis; and pain in the ears, teeth, heart, brain, neck, ribs, back, stomach, hips, pelvis, thighs, calves, hands, feet, and all the major and minor appendages!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-109" href="#tei-note-UT22084-090-036-109">[30]</a></sup></p><p>“May this great averting spell of the vajra uṣṇīṣa Sitātapatrā bind the spells<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-111" href="#tei-note-UT22084-090-036-111">[31]</a></sup> of everything within twelve yojanas, including all bhūtas, vetālas, ḍākinīs, fevers, skin disease, itching, pruritus, leprosy, boils, skin irritations,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-112" href="#tei-note-UT22084-090-036-112">[32]</a></sup><span class="tei-ref">F.137.b</span> erysipelas, scabies, blood boils, emaciation, anxiety, poisonous brews, poisonous compounds, kākhordas, fire, water, pestilence, enemies, harm, untimely death, tryambuka flies, tralāṭa flies, scorpions, snakes, mongooses, lions, tigers, bears, jackals, makaras, <span class="tei-ref">F.223.b</span> and other life-threatening creatures such as bees. May it bind their energy! May it bind all opposing spells!</p><p>tadyathā | oṁ anale anale | viṣade viṣade<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-114" href="#tei-note-UT22084-090-036-114">[33]</a></sup> | vaire vaire | vajradhari | bandha bandhani | vajrapāṇi phaṭ | hūṁ hūṁ phaṭ phaṭ svāhā | hūṁ drūṁ bandha phaṭ mama rakṣa rakṣa svāhā ||<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-115" href="#tei-note-UT22084-090-036-115">[34]</a></sup></p><p>“Whoever writes this great, invincible spell for averting, <em>Sitātapatrā born from the uṣṇīṣa of all tathāgatas</em>, on birch bark, cloth, or tree bark and wears it on their body or around their neck will not be harmed by poison, weapons, fire, water, poisonous brews, poisonous compounds, or kākhordas for as long as they live, nor will they meet an untimely death. They will become dear to all grahas, vighnas, and vināyakas. The eighty-four billion members<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-117" href="#tei-note-UT22084-090-036-117">[35]</a></sup> of the vajra family will guard, protect, and defend them, hold them dear, and delight in them. They will recall their rebirths of the past eighty-four thousand great eons. They will never become yakṣas, rākṣasas, pretas, pūtanas, or kaṭapūtanas, nor will they ever be poor. They will gain a quantity of merit equal to that of the blessed buddhas as innumerable and limitless as the grains of sand in the river Ganges.</p><p>“If one keeps this great, invincible spell for averting, <em>Sitātapatrā born from the uṣṇīṣa of the Tathāgata</em>, one will become chaste, even if one was not chaste. <span class="tei-ref">F.138.a</span> Those who did not observe silence will observe silence.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-119" href="#tei-note-UT22084-090-036-119">[36]</a></sup> The impure will become pure. Those who did not practice abstinence will practice abstinence. <span class="tei-ref">F.224.a</span> Those who did not fast will observe fasts.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-120" href="#tei-note-UT22084-090-036-120">[37]</a></sup> Even those who have committed the five acts with immediate retribution will see their evil purified. All the obscurations resulting from their past actions will be exhausted without exception.</p><p>“If a woman who wishes to have a child keeps this great, invincible spell, <em>Sitātapatrā born from the uṣṇīṣa of the Tathāgata</em>, she will gain a child.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-122" href="#tei-note-UT22084-090-036-122">[38]</a></sup> The child will have a long life and possess merit and strength. After they pass away they will take birth in the realm of Sukhāvatī.</p><p>“Those who are threatened by diseases<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-124" href="#tei-note-UT22084-090-036-124">[39]</a></sup> that affect humans, livestock, or cattle or by any calamities, violence, epidemics, harm, mental disturbances, and the approach of opposing armies should affix this great, invincible spell for averting, <em>Sitātapatrā born from the uṣṇīṣa of the Tathāgata</em>, to the top of a banner and worship it with great offerings. The banner should be planted at the gateway to any city or in a town, city,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-125" href="#tei-note-UT22084-090-036-125">[40]</a></sup> market town, country, or wilderness residence. As soon as this great, invincible spell for averting has been worshiped and planted, war will be pacified, as will calamities, violence, epidemics, harm, mental disturbances, and the approach of opposing armies.</p><p>tadyathā | oṁ ṣṭoṁ bandha bandha mama rāḳsa rāḳsa svāhā || oṁ hūṁ ṣṭoṁ bandha bandha vajra mama rāḳsa rāḳsa vajrapāṇi hūṁ hūṁ phaṭ svāhā || oṁ sarvatathāgatoṣṇīṣānavalokite mūrdhani tejorāśi || oṁ hūṁ jvala jvala | dhaka dhaka | dara dara | vidara vidara | chinda chinda | bhinda bhinda | hūṁ hūṁ phaṭ phaṭ svāhā <span class="tei-ref">F.138.b</span> || oṁ sarvatathāgatoṣṇīṣa hūṁ phaṭ svāhā || tadyathā | oṁ anale anale | khasame khasame | vaire vaire | saumye saumye | sarvabuddhādhiṣṭhānādhiṣṭhite <span class="tei-ref">F.224.b</span> sarvatathāgatoṣṇīṣasitātapatre hūṁ phaṭ | hūṁ mama hūṁ ni svāhā ||<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-127" href="#tei-note-UT22084-090-036-127">[41]</a></sup></p><p>“This should be done in connection with the Buddha.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-036-129" href="#tei-note-UT22084-090-036-129">[42]</a></sup> The nāga kings will send timely rain.”</p>Thus concludes the noble dhāraṇī “<cite>The Invincible Sitātapatrā Born from the Uṣṇīṣa of the Tathāgata</cite>.”</section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-090-036-59"><p>Reading <em>legs ldan</em> here and throughout as <em>bhagavat</em> following the Sanskrit.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-59">back</a></li><li id="tei-note-UT22084-090-036-60"><p>It is not clear who the “five great mudrās” (<em>mahāpañcamudrā</em>; <em>phyag rgya chen po lnga</em>) are in the context of Nārāyaṇa.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-60">back</a></li><li id="tei-note-UT22084-090-036-61"><p>In the corresponding passages in the Sanskrit sources, this final clause is treated as a separate object of homage: “Homage to the one accompanied by the horde of mātṛs” (<em>namo mātṛgaṇasahitāya</em> Dh<span>33</span>, CL<span>1326</span>, UT<span>M 441-01</span>; <em>oṁ namo mātṛgaṇavāndena sāhitāya</em> RAS<span>H 77</span>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-61">back</a></li><li id="tei-note-UT22084-090-036-64"><p>This Sanskrit rendering is tentative, as the Tibetan term used here differs slightly from the Sanskrit sources. All Sanskrit sources consulted have Vikasitakamalotpalagandhaketurāja, a term that aligns with the Tibetan translation of the name given in Toh 590, <em>pad+ma rgyas pa dang ut+pa la’i dri’i tog gi rgyal po</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-64">back</a></li><li id="tei-note-UT22084-090-036-66"><p>In the Sanskrit versions aligned with this text, as well as in Toh 590, the verbal statement “I will teach…” (<em>pravakṣyāmi</em>; <em>rab tu brjod par bya</em>) is given here, with the title of the spell as the object of the verb. Toh 592 lacks this verb and does not provide a finite verb until the end of the verse section that follows.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-66">back</a></li><li id="tei-note-UT22084-090-036-68"><p>In this series of verses it is difficult to determine what is a descriptive phrase and what is a proper name. Both the Tibetan and Sanskrit sources are ambiguous in places, and a number of the names/descriptive phrases are repeated. Thus, the parsing of this sequence of proper names, epithets, and adjectives that follows in these verses is tentative. The Sanskrit sources clarify that all the terms are in the feminine nominative singular, apart from the first few lines, about which see the following note.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-68">back</a></li><li id="tei-note-UT22084-090-036-69"><p>This translation follows the Tibetan translations in rendering the preceding lines in verse. It is in prose in all Sanskrit version consulted apart from KT<span>728</span>, in which the original structure is unclear from the published edition. According to the Sanskrit syntax, each of these descriptive phrases is in the accusative case (apart from KT<span>728</span>), marking them as adjectival phrases that construe with <em>pratyaṅgirāṃ</em> (the “averting [spell]”) as the object of the verb “teach,” which is absent in Toh 591, 592, and 593. Beginning with the next verse, the syntax changes to render the epithets in the nominative singular. From that point the text is rendered in verse in the Sanskrit as well as the Tibetan sources.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-69">back</a></li><li id="tei-note-UT22084-090-036-71"><p>Reading <em>rgyal ba’i rdo rje ’phreng</em> as <em>rgyal ba rdo rje phreng</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-71">back</a></li><li id="tei-note-UT22084-090-036-72"><p>The term <em>aparājitā</em> (<em>gzhan gyis mi thub</em>), “invincible,” is frequently used in this text as an adjective describing Sitātapatrā. Aparājitā is also the proper name of a protective deity, which is how the term seems to be used here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-72">back</a></li><li id="tei-note-UT22084-090-036-74"><p>Conjectural for <em>rdo rje mkhar bsnams joms pa mo</em>, a reading unique to Toh 592 and 593. The decision to render the ambiguous phrase <em>rdo rje mkhar bsnams</em> as “bears a vajra staff” interprets <em>mkhar</em> as “staff” following KT<span>728</span>, which reads <em>vajradaṇḍī</em> (em. <em>vajradhaṇḍī</em>). The other Sanskrit witnesses consulted read <em>vajratuṇḍi viśālī ca</em> (“the vast Vajratuṇḍī”), while Toh 590 and 591 read <em>rdo rje mchu can rnam sgeg ma</em> (“the alluring Vajratuṇḍī”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-74">back</a></li><li id="tei-note-UT22084-090-036-75"><p>Tib. <em>zhi ba’i lha rnams kyi mchod pa</em>. Most of the Sanskrit versions consulted read, “Peaceful, she is worshiped by vaidehas” (<em>śāntā vaidehapujitā</em> CL<span>1326</span>, Dh<span>33</span>, UT<span>M 441-01</span>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-75">back</a></li><li id="tei-note-UT22084-090-036-77"><p>Reading <em>rigs</em> as <em>rig</em> based on the attested Sanskrit <em>vajravidyā</em> (CL<span>1326</span>, Dh<span>33</span>, UT<span>M 441-01</span>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-77">back</a></li><li id="tei-note-UT22084-090-036-78"><p>The Tibetan reads <em>le brgan rtsi dang rin chen ma</em>, which could be interpreted as two names/epithets, but it is clear from the Sanskrit that this should be read as the single compound <em>kusumbharatnā</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-78">back</a></li><li id="tei-note-UT22084-090-036-80"><p>The interpretation of these two lines follows Dh<span>33</span>, which reads º<em>vijṛmbhamānikā || vajrā kanakaprabhā locanā</em>º. D reads <em>rnam par bsgyings ma’i rdo rje dang / gser ’od lta bu’i spyan mnga’ ba</em>. Other interpretations are possible based on variants attested in the Sanskrit and Tibetan sources.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-80">back</a></li><li id="tei-note-UT22084-090-036-82"><p>“Mudrās” (<em>phyag rgya</em>) refers to the forms of Sitātapatrā just listed.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-82">back</a></li><li id="tei-note-UT22084-090-036-84"><p>This can be tentatively translated as “<em>Oṁ</em>, Sitātapatrā born from the uṣṇīṣa of all tathāgatas, praised by the host of ṛṣis, <em>hūṁ drūṁ</em>! Crusher, <em>hūṁ drūṁ</em>! Paralyzer, <em>hūṁ drūṁ</em>! Devourer of great spells, <em>hūṁ drūṁ</em>! Devourer of opposing spells, <em>hūṁ drūṁ</em>! Paralyzer of all evil ones, <em>hūṁ drūṁ</em>! Destroyer of all yakṣas, rākṣasas, and grahas, <em>hūṁ drūṁ</em>! Destroyer of the eighty-four thousand types of grahas, <em>hūṁ drūṁ</em>! Appeaser of the twenty-eight lunar mansions, <em>hūṁ drūṁ</em>! Destroyer of the eight great celestial bodies, <em>hūṁ drūṁ</em>! Protect, protect me!”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-84">back</a></li><li id="tei-note-UT22084-090-036-87"><p>This translation follows the syntax of the Sanskrit sources, in which this and each of the subsequent phrases are declined in the ablative case.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-87">back</a></li><li id="tei-note-UT22084-090-036-89"><p>Here and in the next paragraph the initial supplication, “Grant auspiciousness...” has been inserted for the sake of clarity in the English translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-89">back</a></li><li id="tei-note-UT22084-090-036-92"><p>The Sanskrit versions confirm that the following sentences are in the first person singular present indicative voice. Additionally, the Tibetan phrase <em>phur bus gdab bo</em> suggests that the pinning is done by a <em>kīla</em> (“dagger”), but the Sanskrit texts suggest that the Tibetan phrase is a translation of <em>kīlayāmi</em> (√<em>kīl</em>), meaning “to pin down.” The Sanskrit versions consulted, as well as Toh 590, read <em>kilayāmi vajrena</em> (<em>rdo rje phur bus gdab bo</em>), “pin down with a vajra.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-92">back</a></li><li id="tei-note-UT22084-090-036-93"><p>Following Nārāyaṇa (Viṣṇu), the ambiguous phrase <em>nam mkha’ lding yang dag pa dang lhan cig pa</em> has been interpreted to be a specific reference to the garuḍa who serves as Viṣṇu’s mount. An equivalent to <em>yang dag pa dang lhan cig pa</em> does not appear in any of the Sanskrit sources consulted.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-93">back</a></li><li id="tei-note-UT22084-090-036-94"><p>The precise identity of these figures is uncertain, and this translation is conjectural. In his <cite>Nāmamantrārthāvalokinī</cite>, a commentary on the <cite>Mañjuśrīnāmasaṅgīti</cite>, Vilāsavajra refers to three brothers named Jayakara, Madhukara, and Sarvārthasiddhikara (Tribe 2016, p. 226: <em>jayakaramadhukarasarvārthasiddhikarās trayo bhrātaras</em>). In all available sources the first two names are consistently given as Jayakara and Madhukara, but the third name varies in the Sanskrit witnesses consulted. The oldest, KT<span>728</span>, reads º<em>sarvārtha(sā)dhana</em>º; CL<span>1326</span>, Dh<span>33</span>, and UT<span>M 441-01</span> have º<em>siddhikarasarvārthasādhana</em>º; and RAS<span>H 77</span> has º<em>sarvārthāsiddhisādhaka</em>º. It is possible to interpret the Sanskrit reported in these sources to read “[the spells] of Jayakara, Madhukara, and Siddhikara used to accomplish all aims (<em>sarvārthasādhana</em>).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-94">back</a></li><li id="tei-note-UT22084-090-036-97"><p>Emended based on the Sanskrit sources as well as Toh 590, wherein this Sanskrit line is translated into Tibetan. D and S read, in transliteration, <em>asitānalārkaprabhāspuṭavikāsitātapatre</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-97">back</a></li><li id="tei-note-UT22084-090-036-98"><p>Emended based on the Sanskrit sources. D and S read, in Tibetan transliteration, <em>apratihatā phaṭ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-98">back</a></li><li id="tei-note-UT22084-090-036-99"><p>Emended based on the Sanskrit sources and Toh 590 and 591. D and S read, in Tibetan transliteration, <em>varapdradā phaṭ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-99">back</a></li><li id="tei-note-UT22084-090-036-100"><p>Emended based on the Sanskrit sources and Toh 590 and 591. D reads, in Tibetan transliteration, <em>pratyaṅgiri phaṭ</em>. S reads <em>pratyaṅgiriti phaṭ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-100">back</a></li><li id="tei-note-UT22084-090-036-101"><p>Emended based on the Sanskrit sources and Toh 590 and 591. D and S read, in Tibetan transliteration, <em>asuravidrāvaka phaṭ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-101">back</a></li><li id="tei-note-UT22084-090-036-102"><p>This can be tentatively translated as “<em>Oṁ</em>, White Umbrella (<em>sitātapatrā</em>) opened broadly and shining with the white fire of the sun! Blaze, blaze! Devour, devour! Break, break! Destroy, destroy! Cut, cut! Cleave, cleave! <em>Hūṁ hūṁ phaṭ phaṭ svāhā</em>! <em>He he phaṭ</em>! <em>Ho ho phaṭ</em>! To the unfailing one, <em>phaṭ</em>! To the unobstructed one, <em>phaṭ</em>! To the boon granter, <em>phaṭ</em>! To the averter, <em>phaṭ</em>! To the disperser of the asuras, <em>phaṭ</em>! To all devas, <em>phaṭ</em>! To all nāgas, <em>phaṭ</em>! To all asuras, <em>phaṭ</em>! To all maruts, <em>phaṭ</em>! To all garuḍas, <em>phaṭ</em>! To all gandharvas, <em>phaṭ</em>! To all kinnaras, <em>phaṭ</em>! To all mahoragas, <em>phaṭ</em>! To all yakṣas, <em>phaṭ</em>! To all rākṣasas, <em>phaṭ</em>! To all pretas, <em>phaṭ</em>! To all piśācas, <em>phaṭ</em>! To all bhūtas, <em>phaṭ</em>! To all kumbhāṇḍas, <em>phaṭ</em>! To all pūtanas, <em>phaṭ</em>! To all kaṭapūtanas, <em>phaṭ</em>! To all skandas, <em>phaṭ</em>! To all unmādas, <em>phaṭ</em>! To all chāyās, <em>phaṭ</em>! To all apasmāras, <em>phaṭ</em>! To all ostārakas, <em>phaṭ</em>! To all those difficult to violate, <em>phaṭ</em>! To all unsightly spirits, <em>phaṭ</em>! To all fevers, <em>phaṭ</em>! To all kākhordas and kṛtyā rites, <em>phaṭ</em>! To all kiraṇas and vetālas (<em>vaitāḍa</em>), <em>phaṭ</em>! To all ciccas (<em>cicha</em>), preṣakas, and spirits of vomiting, <em>phaṭ</em>! To all indigestion spirits, <em>phaṭ</em>! To all non-Buddhists, <em>phaṭ</em>! To all ascetics, <em>phaṭ</em>! To all vidyādharas, <em>phaṭ</em>! To Jayakara, Madhukara, and Sarvārthasādhaka, <em>phaṭ</em>! To all masters of spells, <em>phaṭ</em>! To the four bhaginīs, <em>phaṭ</em>! To the vajrakaumārīs, <em>phaṭ</em>! To the queens of spells, <em>phaṭ</em>! To the great averters, <em>phaṭ</em>! To Varjaśṛṅkhala, king of averting, <em>phaṭ</em>! To Mahākāla, who is honored by the host of mātṛs, <em>phaṭ</em>! To Vaiṣṇavī, <em>phaṭ</em>! To Brahmaṇī, <em>phaṭ</em>! To Agni, <em>phaṭ</em>! To Mahākālī, <em>phaṭ</em>! To Kāladaṇḍī, <em>phaṭ</em>! To Indrā, <em>phaṭ</em>! To Raudrī, <em>phaṭ</em>! To Kaumāri, <em>phaṭ</em>! To Vārāhī, <em>phaṭ</em>! To Cāmuṇḍī, <em>phaṭ</em>! To Rātrī, <em>phaṭ</em>! To Kālarātrī, <em>phaṭ</em>! To Yamadaṇḍī, <em>phaṭ</em>! To Kapāli, <em>phaṭ</em>! To those who prefer to dwell in charnel grounds, <em>phaṭ</em>!”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-102">back</a></li><li id="tei-note-UT22084-090-036-106"><p>Tib. <em>mi bzad pa</em>; Skt. <em>viṣama</em>. While <em>viṣama</em> can be interpreted as “unbearable,” as the Tibetan translators did, in the context of the duration or recurrence of illness it means “irregular.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-106">back</a></li><li id="tei-note-UT22084-090-036-108"><p>This translation follows the attested Sanskrit term <em>ardhāvabhedaka</em>. The Tibetan term, <em>gzhogs phyed na ba</em>, could also be interpreted as a translation of <em>pakṣavadha</em>, referring to hemiplegia.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-108">back</a></li><li id="tei-note-UT22084-090-036-109"><p>The “major” appendages would include the head, arms, legs, etc. The “minor” appendages include the nose, ears, fingers, and toes.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-109">back</a></li><li id="tei-note-UT22084-090-036-111"><p>Toh 592 and 593 differ here from Toh 590, 591, and the Sanskrit sources consulted in omitting the verbal statement “please dispel” (<em>apanayantu</em>;<em> bsal du gsol</em>). Toh 592 and 593 instead treat “bind the spells of” as the main verb in this passage. In Toh 590, 591, and the Sanskrit sources this is a separate verbal statement that follows “please dispel.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-111">back</a></li><li id="tei-note-UT22084-090-036-112"><p>Tib. <em>bas bldags</em>. The Tibetan term, for which there is no Sanskrit equivalent in the sources consulted, means “cow licked” (Skt. <em>golīḍha</em>?) and refers to a type of skin irritation with a sensation similar to that of being licked by a cow.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-112">back</a></li><li id="tei-note-UT22084-090-036-114"><p><em>Viṣada</em> (“poisoner”) is attested in the majority of sources but should perhaps be emended to <em>viśada</em> (“brilliant”). The confusion of sibilants is a consistent feature of Sanskrit manuscripts, thus the reading <em>viśada</em> is perhaps preferable. However, none of the Sanskrit and Tibetan sources consulted attest to <em>viśada</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-114">back</a></li><li id="tei-note-UT22084-090-036-115"><p>This can be tentatively translated as “It is like this: <em>Oṁ</em>, O fire, fire! O poisoner, poisoner! O vengeful one, vengeful one! O vajra-holding goddess! Bind, O you who bind! Vajrapāṇi, <em>phaṭ</em>! <em>Hūṁ hūṁ phaṭ phaṭ svāhā</em>! <em>Hūṁ drūṁ</em>, bind, <em>phaṭ</em>, protect, protect me, <em>svāhā</em>!”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-115">back</a></li><li id="tei-note-UT22084-090-036-117"><p>The Tibetan text of Toh 592 does not specify who the number eighty-four billion quantifies. The Sanskrit sources as well as Toh 590 refer to “vidyā deities” (<em>vidyādevatā</em>; <em>rigs sngags kyi lha</em>) here, while Toh 591 provides “goddesses” (<em>lha mo rnams</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-117">back</a></li><li id="tei-note-UT22084-090-036-119"><p>Following the Sanskrit sources in reading <em>maunin</em> for the Tibetan <em>thub pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-119">back</a></li><li id="tei-note-UT22084-090-036-120"><p>Though the phrasing of these two lines in Tibetan is different, it would appear that this line and the previous line translate the same line of Sanskrit text. In all Sanskrit sources consulted there is only one line related to abstinence (<em>upavāsa</em>), which reads <em>anupavāsī upavāsī bhaviṣyati</em>. In Toh 590, that line is translated into Tibetan as <em>bsnyen gnas ma byas pa yang bsnyen gnas byas par ’gyur</em>. In Toh 591, the same Sanskrit line is translated with <em>smyung ba ma byas pa yang smyung ba byas par ’gyur</em>. Here in Toh 592, as in 593, both Tibetan lines appear in sequence, despite meaning the same thing. This, it would seem, is the result of revisions to the Tibetan translation without knowledge of the Sanskrit source material. Though the two lines are essentially synonymous, they have both been translated here with slightly different English terminology to preserve the unique reading of this text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-120">back</a></li><li id="tei-note-UT22084-090-036-122"><p>Following S and Toh 986 in reading <em>bu rnyed pa</em>. D reads <em>de rnyed pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-122">back</a></li><li id="tei-note-UT22084-090-036-124"><p>Tib. <em>nad</em>. The Sanskrit sources all read º<em>māra</em>, which could be understood as “obstacles,” or perhaps “fatalities.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-124">back</a></li><li id="tei-note-UT22084-090-036-125"><p>“City” (<em>nagara</em>; <em>grong khyer</em>) is repeated in all sources consulted. The difference appears to be that the banner can be planted either at the gateway to a city or generally in the city.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-125">back</a></li><li id="tei-note-UT22084-090-036-127"><p>This can be tentatively translated as “It is like this: <em>Oṁ ṣṭoṁ</em>, bind, bind! Protect me, protect, <em>svāhā</em>! <em>Oṁ ṣṭoṁ</em>, bind, bind, vajra! Protect me, protect, Vajrapāṇi, <em>hūṁ hūṁ phaṭ svāhā</em>! <em>Oṁ</em>, the uṣṇīṣa of all tathāgatas on the head that cannot be gazed upon is a mass of brilliance. <em>Oṁ</em>, blaze, blaze! Burn, burn! Break, break! Destroy, destroy! Cut, cut! Cleave, cleave! <em>Hūṁ hūṁ phaṭ phaṭ svāhā</em>! <em>Oṁ</em>, the uṣṇīṣa of all tathāgatas, <em>hūṁ phaṭ svāhā</em>! It is like this: <em>Oṁ</em>, O fire, fire! O one equal to space, equal to space! O vengeful one, vengeful one! O gentle one, gentle one! O you who are empowered by the blessings of all the buddhas, Sitātapatrā born from the uṣṇīṣa of all tathāgatas, <em>hūṁ phaṭ</em>! <em>Hūṁ mama hūṁ ni svāhā</em>!”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-127">back</a></li><li id="tei-note-UT22084-090-036-129"><p>Tib. <em>sangs rgyas rnal ’byor du bya</em>; Skt. <em>buddhayogena… kartavyā</em>. This enigmatic statement, which varies significantly across the Tibetan versions, perhaps indicates that one should recite this formula while meditating on or contemplating the Buddha, or perhaps in the presence of an image of a buddha.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-036-129">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/090-035-toh591-the-supreme-accomplishment-of-invincible-averting-sitatapatra-born-from-the-usnisa-of-the-tathagata.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/090-037-toh593-the-invincible-sitatapatra-2.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 151 — The Questions of Pratibhānamati — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 151 — The Questions of Pratibhānamati</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 151 — The Questions of Pratibhānamati        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Pratibhānamatiparipṛcchā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Dharmachakra Translation Committee under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Great Vehicle Sūtra</h3><h3>The Questions of Pratibhānamati</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.331.b</span> Homage to all buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Blessed One was residing in Śrāvastī, in Jeta’s Grove, Anāthapiṇḍada’s park. He was there together with a great saṅgha of 1,250 monks as well as 10,000 bodhisattvas. Surrounded and revered by an immense retinue, the Blessed One taught the Dharma.</p><p>At that time, the merchant Pratibhānamati left the city of Śrāvastī, surrounded and venerated <span class="tei-ref">F.332.a</span> by a group of five hundred merchant’s sons, each of whom was also accompanied by an entourage of five hundred servants. As they arrived in Jeta’s Grove, Anāthapiṇḍada’s park, where the Blessed One was residing, Pratibhānamati bowed his head at the Blessed One’s feet, circumambulated him three times, and sat down together with his entourage.</p><p>At this point, through the power of the Buddha, the merchant Pratibhānamati stood up, draped his shawl over one shoulder, and knelt on his right knee. With palms together he bowed toward the Blessed One and said, “Blessed One, you are the supreme teacher, the most eminent in the three realms, the exalted ground for the merit of awakening, the one who liberates all beings, and the one who brings about the attainment of unbounded skill in all-pervasive methods. Thus, Blessed One, in times to come, during the degenerate age when the five polluting degenerations manifest, the three poisons will burn and blaze forth. Then, among those beings who inflict misery on one another there will be people with evil intentions. At that time, there will be no leader, nor anyone of this kind, and kings and high ministers will be overcome by craving for objects, leading them to quarrel and wage war against each other. When they wage war against each other, their armies of soldiers as well as the remaining civilian population will be ravaged so that not even their names will remain.</p><p>“Through the power of the Buddha’s merit, many among the four types of the Buddha’s disciples will enter the teachings and take on the guise of monks. Yet even these people will only outwardly be cloaked in saffron robes, while inwardly they will be angry, disrespectful, disharmonious, and slanderous toward one another. They will advertise the faults of others and downplay their positive qualities. They will be overcome by pride, <span class="tei-ref">F.332.b</span> conceit, and haughtiness, and will cling to the belief in <em>me</em> and <em>mine</em>. When they pass on, they will be born into the lower realms, and they will not find even a moment of fortune. In their future lives they will again encounter many eons of the terrible experiences of suffering and of harshness, heat, and displeasure.</p><p>“On account of that, Blessed One, what are the teachings that will ripen them, turn them back from the paths leading to the lower realms, and enable them to attain the celestial palace due to their merit?”</p><p>The Blessed One answered Pratibhānamati, “Pratibhānamati, with this lion’s roar, you have asked the Thus-Gone One a question. This sort of request for the Dharma of the Thus-Gone One stirs delight in all beings. Excellent, excellent! Pratibhānamati, what attainment would make beings truly splendorous, cause them to abandon the dark side, make them join the good side, and accomplish all aims? You should ask about such a teaching. Having done so, you must then listen without doubt and I shall explain.”</p><p>Pratibhānamati then inquired of the Blessed One, “Blessed One, through what deeds is one reborn among the class of gods? Through what actions is one reborn among the class of humans? Through what actions is one reborn among hell beings? Through what actions is one reborn among the animals? Through what actions is one reborn among the hungry spirits? Through what actions is one reborn among the high castes? Through what actions is one reborn in servitude? Blessed One, through what actions does one become a fortunate being among humans—someone who has servants, pleasant breath, a nice complexion, <span class="tei-ref">F.333.a</span> who is a joy to behold, who faces no harm, who is contented in body and mind, and praised by many people? Having already attained the excellent human state among beings, through what actions does one meet with constant slander, face the enmity of many beings, have an ugly appearance and bad breath, face all sorts of adversity, have a joyless mind and an unhealthy body, and indulge in all kinds of negative actions?</p><p>“Blessed One, through what actions will those who have taken ordination in this well-spoken <em>Dharma-Vinaya</em>, as a mendicant or a noble son or daughter who values peace, never part from the Jewels of Buddha, Dharma, and Saṅgha throughout their lifetimes and wherever they may be? Through what actions will they behold the blessed buddhas, receive the Dharma from them, delight in it, and accomplish the aims they have set their minds on?</p><p>“Given these ten questions of mine, please, Blessed One, spiritual teacher who acts without being requested, who is endowed with great compassion and power, and who discerns all phenomena with unclouded eyes, answer them extensively as a remedy for the innumerable malignant forces.”</p><p>The Blessed One replied, “Pratibhānamati, I will extensively address and answer your questions, just as you have asked them. Listen well!”</p><p>The merchant Pratibhānamati responded, “Blessed One, I shall do that,” and he listened as the Blessed One had instructed.</p><p>The Blessed One said, “Pratibhānamati, beings who engage in the following five actions attain rebirth as gods. What are these five? (1) First, with loving minds they do no harm to beings but instead protect them and are patient. (2) They give generously since they are not stingy and do not steal the possessions of others. <span class="tei-ref">F.333.b</span> (3) They guard all the bases of training given that those who enjoy themselves with the wives of others are impure. (4) They naturally maintain diligence in the purification ceremony and speak the truth. (5) In order to give up their own limitless faults, they forsake intoxicating beverages. Beings who engage in these five actions attain divine bodies.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Turning away from killing living beings, no god, human, or asura</div><div class="tei-line">In the world can conquer them; their bodies are long-lived and healthy.</div><div class="tei-line">They have pure bodies haloed with light—bodies that are glorious, stainless, and perfect.</div><div class="tei-line">The myriad splendid sense pleasures of the highest gods are always at their disposal.</div></div><div class="tei-verse"><div class="tei-line">“As soon they discard this body, they will always become the lord of the gods among gods.</div><div class="tei-line">Dispersing, distributing, and renouncing inconceivable wealth, they will find gems and opulence.</div><div class="tei-line">They will always be happy and delighted, dwelling in splendid celestial mansions.</div><div class="tei-line">Their bodies will be like flowers sprinkled in the pleasant and fine realm of the wish-fulfilling tree.</div></div><div class="tei-verse"><div class="tei-line">“They are knowledgeable, without harmful desires, and have bodies with the finest fragrance.</div><div class="tei-line">Throughout all their lives, their bodies are tremendously beautiful like the finest gold.</div><div class="tei-line">Constantly among the gods, they acquire great fortune and light streams from their bodies.</div><div class="tei-line">They are surrounded by a host of sundry goddesses and frolic in the glories of passion.</div></div><div class="tei-verse"><div class="tei-line">“They have abandoned the four verbal faults and their mouths have a lovely fragrance in accordance with previous rites.</div><div class="tei-line">These gods utter supreme words that are clear, unimpeded, and fearless.</div><div class="tei-line">Their accurate responses are praised and eloquent and others find them most agreeable.</div><div class="tei-line">Their palaces resound with the melodious and thunderous sound of strings and percussion.</div></div><div class="tei-verse"><div class="tei-line">“With unimpaired minds, they abandoned confused and ignoble utterances and thus became gods.</div><div class="tei-line">Innumerable gods of virtue worship them and they now live in divine abodes.</div><div class="tei-line">Intelligent, with stalwart bodies, excellent minds, and possessing all forms of conscientiousness,</div><div class="tei-line">These beings who are always happy and powerful make beneficial speeches.</div></div><div class="tei-verse"><div class="tei-line">“When their life ends, should these gods plunge from the divine abodes to a lower state,</div><div class="tei-line">They will remain free from misdeeds, and after one hundred twenty years return to the divine abodes. <span class="tei-ref">F.334.a</span></div><div class="tei-line">Exhibiting the five merits, their sublime and splendid bodies shine.</div><div class="tei-line">They act as beacons of the gods and millions of gods resolutely worship them.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions are reborn among humans. What are these five? (1) First, they give with gratitude and provide for the poor, the destitute, and the miserable. (2) They follow the path of the ten virtues without fail. (3) They are patient, harboring no hostility toward anyone. (4) They diligently inspire lazy beings to the virtuous Dharma. (5) With a determined mind, they maintain harmony. Pratibhānamati, beings who engage in these five actions attain human lives and grow very wealthy, long lived, beautiful, and majestic, and become lords of the world.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Through generosity they will become great kings among humans,</div><div class="tei-line">And constantly increase their pleasure and affluence.</div><div class="tei-line">They engage in conduct and generosity equal to Kubera himself.</div><div class="tei-line">With such status and excellence, they will always be delighted.</div></div><div class="tei-verse"><div class="tei-line">“Their discipline unimpaired, they worship the Three Jewels.</div><div class="tei-line">Because they abandon all evil action, their resolve is firm.</div><div class="tei-line">They will attain the greatness of longevity and thus be free from death’s passing.</div><div class="tei-line">Because they will attain happiness, they become faultless and joyful.</div></div><div class="tei-verse"><div class="tei-line">“Being gentle people, they do not upset others’ minds.</div><div class="tei-line">Likewise, though nasty words are lobbed at them,</div></div><div class="tei-verse"><div class="tei-line">They do not criticize in return,</div><div class="tei-line">And so they will attain the way of supreme virtue and become beautiful.</div></div><div class="tei-verse"><div class="tei-line">“Because their intention toward excellent discipline is sublime, their minds are clean.</div><div class="tei-line">They are replete with great strength and splendor and possess virtues.</div><div class="tei-line">Because they attain the excellence of military leadership,</div><div class="tei-line">They shall have dominion over wealth and enjoyment and become like gods. <span class="tei-ref">F.334.b</span></div></div><div class="tei-verse"><div class="tei-line">“They do not covet and are intelligent, knowledgeable, and agreeable.</div><div class="tei-line">They are grateful and keen to work.</div><div class="tei-line">They are courageous in venerating the Jewels, their mothers, and so on,</div><div class="tei-line">And so they never have doubt in any situation.</div></div><div class="tei-verse"><div class="tei-line">“Whoever performs these extraordinary virtues</div><div class="tei-line">Will become the lords of the land.</div><div class="tei-line">They shall attain unfailing strength, health, wealth, and other qualities.</div><div class="tei-line">Renowned, they will be respected by important people.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions are reborn among hell beings, where they remain for millions of eons. What are these five? (1) They have no faith in the Jewels of the Buddha, Dharma, and Saṅgha. They disparage them through unflattering speech and belittle the path of noble beings. (2) They destroy the stūpas of the thus-gone ones. (3) In the intermediate times as well, they are extremely disrespectful and disharmonious with monks, nuns, laymen, and laywomen, but love having worldly conversations. (4) They steal donations made to the Three Jewels. (5) Through their disparaging words that enrage others, they are disrespectful and create discord between kings, leaders, ministers, fathers, and sons.</p><p>“In the future, those monks who enter into the teachings of the thus-gone ones, who follow the teacher—the thus-gone, worthy, perfect Buddha—and go forth from the home into homelessness, will pass themselves off as monks yet not maintain the genuine practice of the virtuous Dharma. They will not maintain harmony but will displease their preceptors and instructors and speak harshly. Even though they have been taught correctly, they will not practice those teachings. They will spurn the awakening of the buddhas, praise themselves, and slander <span class="tei-ref">F.335.a</span> others. For the most part, they will be proud, conceited, and haughty, and will denigrate spiritual teachers. They will yearn for praise and respect but disparage others.</p><p>“Pratibhānamati, beings who engage in those five actions will be reborn among the hell beings where they will remain until the trichiliocosm is destroyed. Even when it is destroyed, they will be propelled into other world-systems in which there are hells. When those world-systems are also destroyed, they will be further propelled into still other world-systems in which there are hells. And so, on and on, they will wander amidst all the countless world-systems of hells, and their experience of suffering will find no end.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Deluded beings are oblivious to the terrible suffering in the world since beginningless time.</div><div class="tei-line">And do not acknowledge the oceanic qualities of the Buddha.</div><div class="tei-line">Declaring, ‘He is neither omniscient nor the king of practitioners,’</div><div class="tei-line">They waste their own lives and deceive other beings.</div></div><div class="tei-verse"><div class="tei-line">“They say, ‘If you make a reliquary of the well-gone ones, supreme in its materials and beauty,</div><div class="tei-line">It will be of little virtue and bring down a rain of destruction.’</div><div class="tei-line">This non-virtue, on the face of it, may seem virtuous;</div><div class="tei-line">But actually it brings about all manner of evil.</div></div><div class="tei-verse"><div class="tei-line">“In this intermediate period of strife, the four types of beings are weakened by hunger.</div><div class="tei-line">Because of their mutual animosity they fight and belittle spiritual masters.</div><div class="tei-line">They destroy the enthusiasm of the community of moral discipline,</div><div class="tei-line">Thus leading them to the terrifying and unpleasant lower realms.</div></div><div class="tei-verse"><div class="tei-line">“Kings, fathers, daughters, relatives, and young women</div><div class="tei-line">Lose their caring minds and become envious of possessions.</div><div class="tei-line">They laugh at one another like immature children,</div><div class="tei-line">And hasten to the mire of the fathomless lower realms. <span class="tei-ref">F.335.b</span></div></div><div class="tei-verse"><div class="tei-line">“In future times those who are wantonly evil will not get along.</div><div class="tei-line">Faking the appearance of mendicants, they will have repugnant forms.</div><div class="tei-line">They will be of vile character and perform millions of evil deeds.</div><div class="tei-line">When they die and transmigrate, they will be dragged down by their intense evil deeds and quarreling.</div></div><div class="tei-verse"><div class="tei-line">“The five evil deeds perpetrated by people</div><div class="tei-line">Cannot be confessed for hundreds of eons.</div><div class="tei-line">Such people are burned in a terrible mountain of fire in the hell of ceaseless torment—</div><div class="tei-line">A place where even millions of buddhas can offer no protection.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions are reborn among animals. What are these five? (1) The first is corrupt discipline. The others are (2) robbery and theft, (3) taking loans from others and then conspiring against them, (4) murder, and (5) lacking faith, which makes one delight in studying something other than the sublime Dharma and relish perverted ways of life because of finding such studies enjoyable. Pratibhānamati, beings who engage in these five actions are reborn as animals.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“People who always delight in stealing from others</div><div class="tei-line">Take out loans and then murder the lender.</div><div class="tei-line">Beasts, lords of death who love killing,</div><div class="tei-line">Catch such beings in traps and then slaughter them.</div></div><div class="tei-verse"><div class="tei-line">“Their minds, weak in faith and the rest,</div><div class="tei-line">Cannot see the limitless evil deeds they do, thinking it all to be virtuous.</div><div class="tei-line">Deluded, they do not enjoy discussions on the sublime Jewel of the Dharma.</div><div class="tei-line">Instead they follow worldly teachings.</div></div><div class="tei-verse"><div class="tei-line">“Just as snow tumbles down from a mountain,</div><div class="tei-line">And water naturally seeps straight underground,</div><div class="tei-line">In the same way they amass many evil deeds in the realms of gods and humans,</div><div class="tei-line">And so these fools go swiftly to the animals.</div></div><div class="tei-verse"><div class="tei-line">“Born as horses, mules, camels, elephants, <span class="tei-ref">F.336.a</span></div><div class="tei-line">Oxen, cattle, lions, foxes, snakes, pigs, or dogs,</div><div class="tei-line">They eat grass, flesh, and foliage,</div><div class="tei-line">And constantly carry the burdens of others until exhaustion.</div></div><div class="tei-verse"><div class="tei-line">“Driven by hunger, they eagerly prey on one another.</div><div class="tei-line">Even after millions of eons, they will never be freed from this state.</div><div class="tei-line">Just as a one-eyed turtle living in the ocean</div><div class="tei-line">Could not stick its neck through a floating yoke,</div></div><div class="tei-verse"><div class="tei-line">“Because of their hundreds of downfalls</div><div class="tei-line">They will not easily obtain the states of gods, humans, or great lords.</div><div class="tei-line">They will be delivered by a sublime and limitless matrix of the Buddha’s light rays</div><div class="tei-line">And the light of the mighty bodhisattvas.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions are reborn as hungry spirits. What are these five? (1) The first is being stingy and craving. (2) Next, because they esteem extremely ignorant spiritual teachers and their ilk, they block their own happiness. (3) Because they are inclined to unwholesome ways, they are jealous. (4) Because they are excessively stingy, they are in no way generous towards brothers, sisters, children, wives, servants, laborers, wageworkers, friends, government officials, kinfolk, relatives, the venerable, mendicants, priests, and the poor. They cannot even give anything to their own mothers and fathers, nor do they care for those who are in need of care. (5) They are also not respectful, nor do they venerate spiritual teachers or regard them as precious. Pratibhānamati, beings who engage in these five actions are reborn as hungry spirits.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Defeated by the adversity of privation, they are unable to give away their wealth.</div><div class="tei-line">They only wish to take from others.</div><div class="tei-line">They are keepers of a treasury whose doors are tightly shut.</div><div class="tei-line">Thinking it ought to be guarded, they do not care for even their closest kin.</div></div><div class="tei-verse"><div class="tei-line">“These squanderers of others’ wealth always live in anxiety. <span class="tei-ref">F.336.b</span></div><div class="tei-line">Even to spiritual teachers they are rude and have no love.</div><div class="tei-line">To their own wives and servants they give nothing precious,</div><div class="tei-line">Nor do they understand how to show love and affection.</div></div><div class="tei-verse"><div class="tei-line">“They turn away from what is good, and when they pass on</div><div class="tei-line">They become suffering spirits whose bodies burn over and over.</div><div class="tei-line">Though they dream for hundreds of years,</div><div class="tei-line">They never even dream of clothing, food, and drink.</div></div><div class="tei-verse"><div class="tei-line">“Their throats are like needles and their stomachs like huge mountains.</div><div class="tei-line">Desperately they scramble from the eastern to the western ocean.</div><div class="tei-line">With mouths ablaze they run to Kauverī and to the south.</div><div class="tei-line">Seeing everything dried up they fall into a blazing fire.</div></div><div class="tei-verse"><div class="tei-line">“The henchmen of the Lord of Death grab them by the shoulders,</div><div class="tei-line">Pile them together, and crush them with boulders.</div><div class="tei-line">Then they are given molten copper to drink, which is incredibly difficult to bear.</div><div class="tei-line">Ignorant, they are made to drink disgusting substances as if they were water with eight qualities.</div></div><div class="tei-verse"><div class="tei-line">“After their entrails have been burned from their body cavities by the evacuating wind,</div><div class="tei-line">The powerful ones force these beings to drink again.</div><div class="tei-line">When these beings die and are reborn in the human world,</div><div class="tei-line">They will be inferior in their caste, wealth, health, and servants.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions are reborn among the higher castes. What are these five? They are (1) giving material goods and Dharma, (2) not having hostility towards anyone, (3) being respectful of the Three Jewels and one’s parents, (4) being naturally patient, gentle, and exalted, and (5) studying the diversity of the Buddha’s teachings and being diligent in their recitation. Pratibhānamati, beings who engage in those five actions are reborn among the higher castes.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Those who are inspired by the rituals for accumulating merit and fortune, <span class="tei-ref">F.337.a</span></div><div class="tei-line">And who ensure that many beings never grow ill,</div><div class="tei-line">Will enjoy long life, a fine complexion, great strength, and become foremost in the world.</div><div class="tei-line">Their beauty will be vast and special, like a jewel mine or the lord of mountains.</div></div><div class="tei-verse"><div class="tei-line">“They venerate the incomparable jewel of delighting in discipline and their parents.</div><div class="tei-line">Thus they are born into large and preeminent households and worshipped by innumerable beings.</div><div class="tei-line">They are highly capable, their minds free of agitation and their forms noblest of all.</div><div class="tei-line">They are appealing to the eyes of the entire world, have great fortune, and are of high caste.</div></div><div class="tei-verse"><div class="tei-line">“They are reliable and perfect people, their minds aligned with what is good and virtuous.</div><div class="tei-line">Such wise and supreme people are diligent in reciting the Buddha’s words.</div><div class="tei-line">Affluent and well born, they are the most beautiful beings.</div><div class="tei-line">Formed by virtue, their great bodies are beautified like the ocean.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions become male and female servants. What are these five? They are (1) being disrespectful toward one’s parents, (2) having an indecent mind, (3) being incorrigible and engaging in evil deeds as one pleases, (4) stealing the wealth of others, and (5) absconding with the loans one has taken and going into hiding. Pratibhānamati, beings who engage in these five actions become male and female servants.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“They take birth in a household whose vast merit and wealth shines like snow.</div><div class="tei-line">Yet these fools are full of themselves and conceited, and so they squabble and are disrespectful.</div><div class="tei-line">They do not conceive of their parents as being admirable objects of generosity.</div><div class="tei-line">Due to these negative actions, later they will have little worldly influence and be roguish.</div></div><div class="tei-verse"><div class="tei-line">“They do not venerate the peerless Three Jewels but are excessively vicious and rude.</div><div class="tei-line">They squander all the virtues of love and compassion.</div><div class="tei-line">They will be powerless and dominated for innumerable lives and know no shame <span class="tei-ref">F.337.b</span>.</div><div class="tei-line">Once free of servitude in the human realm, they will instantly descend.</div></div><div class="tei-verse"><div class="tei-line">“Bereft of beauty, authority, high caste, and intellect, they are fools inclined to negativity.</div><div class="tei-line">Not venerating the Three Jewels, they will be insecure, weak, and ugly.</div><div class="tei-line">Through deeds lacking dignity and contemplation, they turn evil.”</div><div class="tei-line">They will have no worldly joy, nothing to celebrate, and live troubled lives.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions become supremely fortunate, have servants and fragrant breath, are unthreatened, pliant in body and mind, beautiful to behold, and praised by many beings. What are these five? They are: (1) perceiving accurately, genuinely, and completely; (2) speaking without exaggeration; (3) not lacking patience towards the nature of the language used in the three vehicles of hearers, solitary buddhas, and bodhisattvas, nor denigrating nor abandoning it but instead retaining, teaching, reading, and reciting it, abandoning the limitless instances of the four faults of speech, and not belittling the path of noble beings; (4) loving and nurturing those beings who persist in counterproductive actions, turning them away from faults, and establishing them in virtue; and (5) not wishing to expose the faults one sees in others. Pratibhānamati, when beings who engage in these five actions are reborn among humans, they possess great fortune, acquire servants, fragrant breath, and mental vigor, are agreeable, and delight many beings. They are without anguish, and their minds are at ease. They are free of anger and do not encounter harm. They obtain a beautiful appearance and are honored.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“They are deeply respectful of the buddhas and venerate their parents. <span class="tei-ref">F.338.a</span></div><div class="tei-line">Thus, ever free from the faults of speech, they are indeed wondrous beings.</div><div class="tei-line">The qualities of their speech—pleasant, resonant, and beneficial throughout all lifetimes—</div><div class="tei-line">Resound sweetly from their mouths in all directions upon breath as fragrant as a blue lotus.</div></div><div class="tei-verse"><div class="tei-line">“Loving themselves and others equally, they motivate beings in all forms of virtue.</div><div class="tei-line">And by distancing themselves from what is evil, immoral, slanderous, and harmful,</div><div class="tei-line">Upon attaining the world they will have every joy throughout the fortunate eon.</div><div class="tei-line">They will possess extraordinary riches, live well, and turn away from evil deeds.</div></div><div class="tei-verse"><div class="tei-line">“Recollecting the sublime Dharma, they persevere in the teachings and cultivate gentle minds.</div><div class="tei-line">In this life, their love considers all beings to be like their own parents.</div><div class="tei-line">They think, ‘All beings were once my own family.’</div><div class="tei-line">With minds as bright as the moon they benefit them in the present.</div></div><div class="tei-verse"><div class="tei-line">“Forsaking evil deeds, such as competitiveness, haughtiness, and contempt,</div><div class="tei-line">And with pure minds, these virtuous, well-intentioned beings</div><div class="tei-line">Speak well of one another while being discrete about the shortcomings of others.</div><div class="tei-line">They swiftly become incomparable lords of the gods and go on to be virtuous buddhas.”</div></div><p>Then the Blessed One said, “Pratibhānamati, beings who engage in the following five actions attain sublime human lives, and yet they also receive constant denigration, are disliked by many beings, have bad breath and unhappy minds, are often threatened, and have very unfit bodies. What are these five? They are (1) lying, (2) being always bent on deceiving others through lying, (3) criticizing the discourses one hears when assembled to hear great Dharma talks, (4) abusing and denigrating those whose practice pure conduct, and (5) cultivating a base mind. Pratibhānamati, beings who are endowed <span class="tei-ref">F.338.b</span> with those five actions may attain the preeminence of a human life but they receive constant denigration, are disliked by many beings, are ugly, have bad breath and unhappy minds, are often threatened, and have bodies that are unhealthy.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Their minds viciously upset the minds of others and they commit evil deeds.</div><div class="tei-line">They delight in perverse speech and in harming others.</div><div class="tei-line">These inferior beings will experience intense and unrelenting suffering in mind and body.</div><div class="tei-line">The tongues of these poor beings will be pierced by sharp iron hooks.</div></div><div class="tei-verse"><div class="tei-line">“In the abode of the Lord of Death these people will be force-fed drinks of boiling molten copper.</div><div class="tei-line">In hell, these beings given to false speech will experience no joy.</div><div class="tei-line">Once there, they will hear no loving words and their breath will stink like a corpse.</div><div class="tei-line">All that normally appears pleasant will turn ugly.</div></div><div class="tei-verse"><div class="tei-line">“Infamous at the royal court, they have many flaws of being derogatory and quarrelsome.</div><div class="tei-line">Many millions of people gossip about them being consistent in these flaws.</div><div class="tei-line">Such beings have base minds and will have unhealthy bodies due to their lies.</div><div class="tei-line">Thus, as I said before, the result of this flawed trajectory will be manifold suffering.</div></div><div class="tei-verse"><div class="tei-line">“Forsaken by humanity, they are powerless and bereft of all happiness.</div><div class="tei-line">Such beings first go to the hells, and later, when they die and transmigrate,</div><div class="tei-line">They are born as animals among the five types of beings on the harsh wheel of cyclic existence.</div><div class="tei-line">The suffering of these wandering beings will be truly inexhaustible.”</div></div><p>Then the Blessed One said, “Pratibhānamati, mendicants and noble sons and daughters—beings who make peace their primary concern—possess five qualities that ensure that they will always encounter the Buddha, the Dharma, and the Saṅgha, regardless of where they are born. They will behold the blessed buddhas, hear the Dharma from them, and be delighted. <span class="tei-ref">F.339.a</span> They will attain awakening just as intended and gain abundance just as desired. What are these five qualities? (1) Having themselves gone for refuge in the Three Jewels, they establish others in the practice of going for refuge. (2) They skillfully create images of the thus-gone ones that are complete and detailed in all respects. (3) They recognize preceptors and teachers and are respectful towards them. (4) They easily follow instructions and practice them accordingly. (5) With pervasive and unimpeded light rays, they behold all beings as being like themselves or like their only child. These are beings who practice, read, recite, transmit, and explain the discourses exactly as they were set forth. Their contemplation is extensive. Being utterly free from obstacles, they are enthusiastic in their practice and gain accomplishment. Pratibhānamati, mendicants and noble sons and daughters—beings who make peace their primary concern—who possess those five qualities, do not encounter obstacles and are never disconnected from the Jewels of Buddha, Dharma, and Saṅgha, regardless of where they are born. They behold the blessed buddhas, hear their Dharma teachings, and are delighted. They attain awakening just as they intend and gain abundance just as they wish.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Those who are stable in the supreme Dharma—the quality of the Buddha—</div><div class="tei-line">Are able to tame all beings.</div><div class="tei-line">They make fine representations of the Buddha’s body.</div><div class="tei-line">These learned ones venerate the words of their masters.</div></div><div class="tei-verse"><div class="tei-line">“They consider everyone in every world, in all directions,</div><div class="tei-line">To be like themselves or their only child. <span class="tei-ref">F.339.b</span></div><div class="tei-line">They are unequivocally free from the suffering of cyclic existence.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-057-010-92" href="#tei-note-UT22084-057-010-92">[1]</a></sup></div><div class="tei-line">Their awakened minds are extremely pure and they behold the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“They who bring about the wealth of great jewel-like wisdom</div><div class="tei-line">Practice virtue day and night.</div><div class="tei-line">These beings who are endowed with miraculous light</div><div class="tei-line">Bring the brightest light to the deepest darkness of the world.</div></div><div class="tei-verse"><div class="tei-line">“Perceiving every single phenomenon,</div><div class="tei-line">They are certain that there is nothing higher than the path to buddhahood.</div><div class="tei-line">They understand that this is the cause for reaching</div><div class="tei-line">The ultimate limit of the world, including its gods.”</div></div><p>As he heard this Dharma teaching, the merchant Pratibhānamati was satisfied and content. He rejoiced and was truly delighted. Joyful and happy, he gained the acceptance that phenomena are unborn. The five hundred merchant children and each of their entourage of five hundred attained the unclouded and stainless Dharma eye that perceives all phenomena.</p><p>All the gods, nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, mahoragas, humans, and non-humans assembled in the retinue of the Blessed One developed a motivation for one of the vehicles in accord with their inclinations. They abundantly gained whatever they wished for and scattered incalculable masses of flowers, incense, garlands, clothing, and jewelry toward the Blessed One.</p><p>Then, the merchant Pratibhānamati stood up, draped his shawl over one shoulder, and knelt on his right knee. With palms together he bowed toward the Blessed One and said,</p><p>“Blessed One, the masters of the three realms teach these five qualities. Excellent. Excellent. Hearing about these five qualities, this retinue has understood the meaning, just as is intended. <span class="tei-ref">F.340.a</span> When beings in future times hear of this teaching, they will abandon non-virtue, do what is virtuous, and take up religious practice.</p><p>“Blessed One, please come together with your saṅgha of monks to my home. Please accept this invitation out of compassion for us.”</p><p>The Blessed One agreed out of compassion for the merchant Pratibhānamati. Knowing that the Blessed One had accepted his invitation, Pratibhānamati was satisfied and content. He rejoiced and was truly delighted. Happy and joyful, he bowed his head to the feet of the Blessed One, circumambulated him three times, and departed together with his retinue.</p><p>When he arrived home, he bowed to the feet of his parents and told them with joined palms, “Father, Mother, I have something to tell you. I have invited he who is rare and supreme in the world, the unsurpassed being, the king of Dharma, he who has transcended the three realms, the Blessed One himself, to come and take his midday meal here with his congregation of monks. Out of compassion for us, he has accepted!”</p><p>Pratibhānamati’s father and mother were delighted and praised him, “Son, that is excellent! You have done well!” They were excited to venerate the Thus-Gone One.</p><p>Pratibhānamati then instructed his wife Padma and her servants, “My dear, please prepare fine food and drink with many hundreds of flavors for the blessed, thus-gone, worthy, perfect Buddha and his retinue. Once the food has been prepared, scatter water, sweep the house, set up the canopies, hang the silken tassels, scatter flower petals, <span class="tei-ref">F.340.b</span> and perfume the environment with fragrant incense. Lay out seats befitting the Thus-Gone One and his congregation of monks. Once he has been received and the offerings laid before him at his feet, you should invite the sublime Blessed One to take his seat.”</p><p>Pratibhānamati came together with friends, dignitaries, kin, and elders, and they all did exactly as he said. The next morning the Blessed One left Jeta’s Grove, Anāthapiṇḍada’s park, and traveled together with the saṅgha of monks to Śrāvastī out of kindness for beings. They did so accompanied by miraculous displays manifested by the Thus-Gone One’s splendid magical powers. Gradually they made their way to Pratibhānamati’s home.</p><p>Pratibhānamati and his entourage greeted the Blessed One, received him as a guest, made offerings at his feet, and bowed their heads to his feet. He then entered the home along with his entourage. The Blessed One sat on an excellent cushion, which befitted him, and the congregation of monks took their appropriate seats. Pratibhānamati’s parents, close friends, friends, dignitaries, relatives, and elders were delighted and bowed down; they paid respect to the master and with great affection began to serve the Blessed One and the assembly of monks. Pratibhānamati, holding a bowl filled with flowers and scented water, sat in front of the Teacher.</p><p>At that time, two friends in anguish came to Pratibhānamati’s home. One of them sat among the saṅgha. However, as he did not ask all the monks whether he could partake of their food and drink <span class="tei-ref">F.341.a</span> and, moreover, the Blessed One had not offered the meal prayer, nobody gave him anything. He became enraged and left, thinking, “Ah, nobody has given anything at all to me, the victim. These are terrible mendicants. Their minds are not peaceful, they have no compassion, and neither do they have loving minds. Giving to them is fruitless. Only foolish sponsors would give to that sort. If I were king, I would slice off all their heads with an iron disc.”</p><p>The other fellow, however, inquired whether the monks had abundant food and drink, and he approached after the Buddha had offered the meal prayer. He then received a satisfying abundance of food and drink, and was deeply contented. He went outside and thought, “Ah! These great mendicants who have given me, a sufferer, a satisfying abundance of food and drink are compassionate. They have peaceful minds and loving characters. This will satisfy me for a full week. It is a wise and fine patron who gives to such excellent objects of generosity. Such generosity bears great fruit. Excellent! If I were king, I would honor the saṅgha of monks, including the Buddha, through all means of service for seven days. May it be so!”</p><p>Then the Blessed One was served the midday meal. He cleaned his bowl, washed his hands, and then spoke to Venerable Ānanda, “Ānanda, henceforth speak well of those who do not take food and drink.” Pratibhānamati and his entourage sat in front of the Blessed One, who gave them a delightful, <span class="tei-ref">F.341.b</span> praiseworthy, applicable, and lucid Dharma talk that produced roots of virtue in a multitude of beings. Then he rose from his seat and went back to Jeta’s Grove.</p><p>Then, those two anguished men wandered about and thus ended up taking rest in different parts of the land. As they laid down, a canopy of clouds filled with lightning and wind hovered in the sky above the meritorious one, thus shading him. At that time, the king of that country passed away. Since there was no one else in the region who had sufficient royal qualities to be entrusted with the country, the citizens, including the merchants, townspeople, village folk, high ministers, ministers, guards, and retainers diligently inquired among diviners, soothsayers, and those skilled in the movements of the stars and planets as to who should become their king. The reply was, “There is a poor man who is qualified. He should become king.”</p><p>So they set out from the royal capital bearing a marvelous throne of incredible value—extensively ornamented and suitable for a king—along with a golden footstool. They carried white parasols with jeweled handles, fans with golden handles and jeweled tails, and many vases filled with perfumed water, as well as baskets of flowers, garlands of jewels, raiment, crowns, headwear and other such ornamentation, and fragrant powders. Accompanied by cymbals, drums, and singing, they searched everywhere for that impoverished man.</p><p>The diviner saw a region shrouded by a bank of clouds and said to them, “Friends, do you see that pleasant and clear region <span class="tei-ref">F.342.a</span> covered by a dark circle of clouds?” They responded, “Friend, we see it!” The diviner said, “That is where the person with the royal attributes rests. His meritorious karma has caused those clouds to gather to shade him.” So they traveled to that spot, announcing themselves with cymbals and song. They bowed down and requested, “Accept the coronation and become our king!” The poor man objected, “How could it be that someone like me is fit to be king?” But they responded, “Because you are someone with merit. Do not say such things. It is undeniable that you must be king!” At that point he agreed.</p><p>They bade him sit down upon the marvelous seat and put his feet on the footrest. With all manner of auspiciousness, they raised him aloft and performed his coronation. They adorned him with a crown attired with a silk sash and other ornaments, hung a giant parasol over the front of the chariot, and cooled him with a golden-handled fan with a jeweled tail.</p><p>“Long live the king! May he be victorious!” Praises rang out from all sides as they led him to the royal capital. At the same time, the spinning wheel of the royal chariot cut off the head of the other beggar, who was lying there fast asleep. From then on, the meritorious man lived as the sovereign. His realm, moreover, was without epidemic or calamity. It abounded in wealth, development, well-being, and good harvests, and the land was filled with people and other beings. The king’s name became associated with being richly endowed with all positive qualities.</p><p>“This prosperity,” the king thought, “is due to someone’s grace. What is the source of my dominion’s great fortune?” Through the power of the Buddha, he remembered the entire confluence of his previous actions. Remembering accurately, he then sent a messenger to the Blessed One bearing the message, “Blessed One, out of compassion for myself and many other beings, please come here!” <span class="tei-ref">F.342.b</span> After sending the messenger, he swept and sprinkled water on the entire road from Jeta’s Grove to his palace on which the Blessed One would travel. He also scattered flowers about, lined the way with parasols, victory banners, flags, and porticos, and fumigated it with incense.</p><p>Out of compassion, the Blessed One came. He was greeted by the king, townspeople, village folk, high ministers, ministers, guards, and retainers. They offered countless baskets filled with flowers, incense, flower garlands, ointments, and aromatic powders before the Blessed One’s feet. They collectively prostrated to the feet of the Blessed One and the assembly of monks. The king and his retinue honored the Blessed One as a spiritual teacher and, with the greatest possible admiration, requested the Blessed One and the assembly of monks to come to the palace, which was adorned with all kinds of jewels in the midst of a great park. For seven days they were honored with all manner of pleasing objects. The king served the Blessed One the midday meal and knew to clean his plate and wash his hands. Then, for the purpose of hearing the Dharma, he sat down with his entourage in front of the Blessed One.</p><p>He inquired, “Blessed One, given that I was once lowly and poor, how is it that I have now gained this bountiful dominion?”</p><p>The Blessed One responded, “Great King, in the city of Śrāvastī, there is a sponsor known as Pratibhānamati. Previously, he invited the Buddha and the saṅgha of monks to his home for the midday meal.” The Blessed One proceeded to relate the story of how the two anguished people <span class="tei-ref">F.343.a</span> had arrived there and how the chariot’s wheel had sliced off the head of one of them, who then died and was reborn as a hell being. “In his life there,” the Blessed One said, “his head continuously reappears, only to be cut off again by a flaming iron wheel. Only after ten million eons will he be freed from that state.</p><p>“You, however, have attained the splendor of kingship because you made the aspiration, ‘If I were to become a king, I would offer the Buddha and the assembly of monks the midday meal for a full week!’ And thus your intention was fulfilled. Henceforth, in all your limitless lives, because of your great excellence you will become a distinguished being.”</p><p>Then the Blessed One expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Because it is the source of evil in the world,</div><div class="tei-line">The mind is the root of all poison.</div><div class="tei-line">Because it is the source of negative speech,</div><div class="tei-line">The mouth is the very gate of evil.</div></div><div class="tei-verse"><div class="tei-line">“The mind thinks all kinds of things,</div><div class="tei-line">And what follows is the utterance of words.</div><div class="tei-line">The evil that speech and mind create</div><div class="tei-line">Is born in the body, begetting suffering.</div></div><div class="tei-verse"><div class="tei-line">“Without reflecting on benefit or harm,</div><div class="tei-line">The unintelligent act negatively.</div><div class="tei-line">Thus they become vessels of suffering</div><div class="tei-line">And in this way become afflicted.</div></div><div class="tei-verse"><div class="tei-line">“A wheel cuts off the head</div><div class="tei-line">Of an ignorant man with poor intellect</div><div class="tei-line">Who in his mind desired to sever</div><div class="tei-line">The heads of those who are wise.</div></div><div class="tei-verse"><div class="tei-line">“It is by the illustrious mind alone</div><div class="tei-line">That the virtue created by the merit of beings</div><div class="tei-line">Who are supported by the nectar of the virtuous Dharma</div><div class="tei-line">Leads to the heavenly realms.</div></div><div class="tei-verse"><div class="tei-line">“They speak words thoughtful and from the heart,</div><div class="tei-line">And thus their speech is good.</div><div class="tei-line">It is therefore through their bodies</div><div class="tei-line">That the treasury of merit is obtained.</div></div><div class="tei-verse"><div class="tei-line">“People who act with forethought</div><div class="tei-line">Decide between virtue and non-virtue.</div><div class="tei-line">So, if they engage in great merit,</div><div class="tei-line">They perennially become the best of gods.</div></div><div class="tei-verse"><div class="tei-line">“When the mind consistently relinquishes</div><div class="tei-line">Non-virtuous actions, <span class="tei-ref">F.343.b</span></div><div class="tei-line">Then people engage in merit with great delight</div><div class="tei-line">And avoid committing evil.</div></div><div class="tei-verse"><div class="tei-line">“Through countless millions of lives as gods or humans</div><div class="tei-line">They reach the state of the universal monarch</div><div class="tei-line">And have all the glories of kingship.</div><div class="tei-line">In doing so they are like you.</div></div><div class="tei-verse"><div class="tei-line">“Lord of Humans, always bear in mind</div><div class="tei-line">That existence is without any essence,</div><div class="tei-line">And strive ceaselessly</div><div class="tei-line">In the teachings of the Buddha.”</div></div><p>When the king heard this most excellent Dharma teaching from the Buddha, he experienced a supreme state of mind and, together with his retinue, attained the result of a stream enterer. Other beings, thousands in number, beheld the Blessed One and heard the Dharma. In this way they attained the many pleasures of gods and humans and aroused roots of virtue that accord with freedom. When the Blessed One had benefited and nurtured everyone present, he departed for Jeta’s Grove. Once back in the monastery, he sat down on the seat arranged for the Buddha in the assembly of monks.</p><p>He then spoke to the venerable Ānanda, “Ānanda, bear this presentation of the Dharma in mind; memorize it, recite it, and teach it widely! Ānanda, those noble sons or daughters who uphold this Dharma teaching will receive a prophecy from the thus-gone, worthy, perfect Buddha Maitreya regarding the vehicle that accords with their aspirations.”</p><p>Venerable Ānanda then asked the Blessed One, “Blessed One, what is the name of this Dharma teaching? What should we call it?”</p><p>The Blessed One said to Ānanda, “Ānanda, <span class="tei-ref">F.344.a</span> you should know this Dharma teaching as <cite>The Teaching That Clarifies Karma</cite> and <cite>The Questions of the Merchant Pratibhānamati</cite>.”</p><p>Then the entire assembly including Venerable Ānanda, the monks, the bodhisattvas, Pratibhānamati and all his servants, along with the world of the gods, humans, asuras, and gandharvas, rejoiced and extolled what the Thus-Gone One had said.</p>This completes the noble Great Vehicle sūtra entitled <cite>The Questions of Pratibhānamati</cite>.</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>This sūtra was translated, edited, and finalized by the Indian preceptor Prajñāvarman, the editor-translator Bandé Yeshé Dé, and others.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-057-010-92"><p>Lithang, Narthang, Choné, and Lhasa read <em>sred pa</em>, meaning “craving,” or “thirst.” So, this line could also read, “They have gained certainty in freedom from the suffering of craving.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-057-010-92">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/057-009-toh150-inquiry-of-avalokiteshvara-on-seven-qualities.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/058-001-toh152-the-sutra-of-the-questions-of-sagaramati.html">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

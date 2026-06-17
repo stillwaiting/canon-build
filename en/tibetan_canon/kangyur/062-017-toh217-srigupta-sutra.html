@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 217 — The Śrīgupta Sūtra — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 217 — The Śrīgupta Sūtra</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 217 — The Śrīgupta Sūtra        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Śrīguptasūtra          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by Karen Liljenberg and Ulrich Pagel under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3></h3><h3>The Noble Śrīgupta Sūtra</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.269.a</span> Homage to all the buddhas and bodhisattvas.</p><br /><p>Thus did I hear at one time. The Blessed One was dwelling on Vulture Peak in Rājagṛha, together with a large assembly of twelve hundred and fifty monks. Those monks, as well as nuns, male and female lay devotees, kings, ministers, brahmins, householders, various non-Buddhist ascetics, brahmins,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-017-18" href="#tei-note-UT22084-062-017-18">[1]</a></sup> practitioners, and renunciants, as well as gods, nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, and mahoragas, worshiped, venerated, and honored the Blessed One. Through their offerings, the Blessed One obtained divine and human garments, food, bedding, medicines, and many excellent provisions. Nevertheless, just as water does not adhere to a lotus, desires do not sully the Blessed One.</p><p>Then, virtuous verses were heard that celebrated the Blessed One, declaring him a tathāgata, an arhat, a perfect buddha rich in knowledge and conduct, a sugata, one who knows the ways of the world, a supreme charioteer for people in need of taming, a teacher of gods and humans, a buddha, and a blessed one. Through his own intuition he gained direct and perfect insight into the world with its gods, with beings including Māra and Brahmā, renunciants and brahmins, and gods and humans. He also expounded the Dharma, and gave all beings instructions in proper spiritual conduct that were virtuous in the beginning, middle, and end; <span class="tei-ref">F.269.b</span> that were excellent in meaning and in expression; and that were uncontaminated and perfect, pure and unsullied.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-017-20" href="#tei-note-UT22084-062-017-20">[2]</a></sup></p><p>At that time, a householder named Śrīgupta lived in the city of Rājagṛha. He was a rich man—wealthy, prosperous, well-heeled, affluent, and comfortable. He owned money, grain, chattel, gems, pearls, lapis lazuli, conch shells, crystals, coral, silver, and much fine gold. He kept elephants, untamed stallions, many cows, male and female servants, workers, and laborers, and possessed many full treasuries. This householder, Śrīgupta—neither devout nor pious—had a low opinion of the Buddha, Dharma, and Sangha. He had become a Jain follower, and was loyal to a Jain master named Jñātiputra.</p><p>One day, Śrīgupta went to visit Jñātiputra. Upon arriving, he bowed at Jñātiputra’s feet and sat to one side. When Śrīgupta was seated to one side, Jñātiputra said to him, “Householder, a certain young mendicant named Gautama, a novice renunciant, boasts of omniscience. You should know that he has deceived the whole world with his boast of omniscience. Therefore, householder, go and take the life of Gautama the mendicant. When he has met his end and died, the news will spread that the householder Śrīgupta killed the mendicant Gautama, who was renowned for his vast miraculous powers, and for his might and strength. Such a tremendous act of virtue will become famous through expositions, statements, and verses about you.”</p><p>Śrīgupta said, “Noble sir, how can I take the life of Gautama the mendicant?”</p><p>Jñātiputra the Jain replied, “Householder, <span class="tei-ref">F.270.a</span> go and dig a deep pit at the main entrance to your house. When you have dug it, light a fire in the pit and put a thin cover over it. Inside the house, prepare poisoned food. Once this is done, go to the mendicant Gautama and invite him for a meal. If Gautama is truly omniscient and all-seeing, you will not succeed. If he is not omniscient and all-seeing, you will succeed. Once he has fallen into the fire pit by the main gate, he and his followers will meet their end. If he somehow escapes, he will still meet his end when he eats the poisoned food inside the house. Do as I say.”</p><p>Having listened to the Jain Jñātiputra’s instructions, Śrīgupta rose from his seat, bowed at the Jain Jñātiputra’s feet, circumambulated him three times, left his presence, and returned to his own house. Upon arriving, he summoned his laborers and said, “Laborers, today dig a deep pit near the main gate. After you have dug it out, make a flameless and smokeless fire, and put a thin cover over the pit. Inside the house, prepare poisoned food.”</p><p>After assembling his laborers, Śrīgupta left Rājagṛha and set out for Vulture Peak, where the Blessed One was. When he arrived, they exchanged many pleasantries and had a satisfying conversation. He then sat to one side.</p><p>While Śrīgupta was seated to one side, the Blessed One gave a Dharma discourse that was instructive, encouraging, uplifting, and joyous. After the Blessed One <span class="tei-ref">F.270.b</span> had given this Dharma discourse that was instructive, encouraging, uplifting, and joyous, Śrīgupta rose from his seat and asked him, “Gautama, would you please allow me to invite you for the midday meal tomorrow, together with your community of śrāvakas?”</p><p>The Blessed One thought, “Śrīgupta seeks to treat me like this because he has come under the influence of a wicked spiritual friend. But he will soon turn to the pure topics set out in the Dharma and Vinaya.”</p><p>Knowing this, the Blessed One accepted the invitation by not saying anything further to Śrīgupta. Śrīgupta understood that the Blessed One had assented by remaining silent. He then raised his arm, lifted his index finger, and thought, “So he does not even know what I am thinking, and is certainly not all-knowing! The mendicant Gautama has deceived the whole world with his boasts of omniscience.”</p><p>The householder Śrīgupta then circumambulated the Blessed One three times and departed from his presence to return to his own house. He had a deep pit dug by the main gate, filled it with a flameless and smokeless fire, and put a thin cover over it. Inside the house he had poisoned food prepared.</p><p>At that time, Śrīgupta was married to the daughter of Anāthapiṇḍada. When Śrīgupta’s wife saw him making such preparations, she said to him, “If someone were hostile toward the Lord Buddha, this is how they would try to kill him.”</p><p>Śrīgupta replied, “Lady, you should know that the mendicant Gautama, <span class="tei-ref">F.271.a</span> a novice renunciant, is boasting of omniscience. With his boast of omniscience, he has deceived the whole world. Hence, this is how I am trying to kill him.”</p><p>His wife said, “You will regret it when you fail to kill the blessed Lord. Why? Because he is a tathāgata, an arhat, a perfect buddha.”</p><p>Then Śrīgupta thought, “My wife is a servant of the Śākyas—she will spill the secret!”</p><p>He grabbed her by the hair, dragged her inside the house, and locked the door. With the door locked, he invited the Blessed One for lunch: “Gautama, it is time for the midday meal.”</p><p>The Blessed One said to Venerable Ānanda, “Go and get a fan. Then go from dwelling to dwelling and tell the senior monks that the Blessed One says, ‘No monk should enter the house of Śrīgupta ahead of me.’ Issue this instruction.”</p><p>“Very well, Blessed One.”</p><p>Ānanda then did as he was told. Carrying a fan, he approached the monks and told them, “Venerable sirs, the Blessed One issues the following instruction: ‘No monk should enter the house of Śrīgupta ahead of me.’ ”</p><br /><p>In the morning, the Blessed One put on his lower garment and outer robe, took his alms bowl, and in the company of a devout group of monks, descended from Vulture Peak.</p><p>Then Brahmā Sahāmpati, surrounded by a devout group of gods from the Realm of Brahmā, approached the Blessed One, <span class="tei-ref">F.271.b</span> bowed at his feet, and walked on his right side. The lord of the gods, Śakra, surrounded by a devout group of gods of the Heaven of the Thirty-Three, approached the Blessed One, bowed his head at his feet, and walked on his left side.</p><p>The four great kings—Dhṛtarāṣṭra, Virūḍhaka, Virūpākṣa, and Vaiśravaṇa—surrounded by many thousands of devout yakṣas, walked behind the Blessed One. The great king Vaiśravaṇa carried the Blessed One’s parasol. The twenty-eight great yakṣa generals approached the Blessed One, bowed at his feet, and walked behind him. Heavenly musicians walked in front of him, dancing, singing, and playing loud music.</p><p>At that time, rain fell in front of the Blessed One, while the sun shone from behind him and a cloud hovered overhead. Wherever the Blessed One set foot, the gods showered him with sandalwood powder, again and again. They showered him repeatedly with heavenly flowers, including blue and white water lilies, red and white lotuses, and mandārava blossoms.</p><p>The Blessed One then arrived in the great city of Rājagṛha. Now, it is in the nature of buddhas, blessed ones, to perform miracles whenever they enter a city; they never do so without performing a miracle. When the Blessed One <span class="tei-ref">F.272.a</span> first set his golden-colored right foot on the threshold of Rājagṛha, Rājagṛha shook in six ways. It shook, shifted, and shuddered; it trembled, quivered, and quaked. When the east rose, the west sank. When the west rose, the east sank. When the south rose, the north sank. When the north rose, the south sank. When the center rose, the periphery sank. When the periphery rose, the center sank.</p><p>As soon as the Blessed One had set his golden-colored right foot on the threshold of Rājagṛha, the gods showered him with heavenly sandalwood powder, again and again. They showered him repeatedly with heavenly flowers, including blue and white water lilies, red and white lotuses, and mandārava blossoms. The sound of divine music resonated in the sky, accompanied by the ringing of heavenly cymbals.</p><p>At the very instant the Blessed One set his golden-colored left foot on the threshold of the great city of Rājagṛha, the eyes of those who were blind could see forms. The ears of those who were deaf could hear. Those who lacked a sense of smell became perfectly able to smell, and those who were mute began to speak. People gripped by memory loss were freed from forgetfulness, and those who were insane came to their senses. People who had ingested poison were cured of its effects. Those held fast in captivity were released from their imprisonment. People who regarded each other as enemies became fond of each other.</p><p>Cymbals resounded without being struck, and drums resonated without being played. <span class="tei-ref">F.272.b</span> Mighty bulls bellowed, elephants trumpeted, and horses neighed. All the birds that lived near the gate to the city of Rājagṛha—geese, cranes, peacocks, parrots, mynas, cuckoos, pheasants, and partridges—called out with their own songs, and flocked to surround the gate to Rājagṛha.</p><p>Within Rājagṛha, men, women, boys, and girls watched from pavilions, town houses, ledges, vestibules, and windows, scattering flower petals upon the Blessed One. All the people of Rājagṛha were amazed and filled with wonder and joy. They shouted at the top of their voices, laughed loudly, and exclaimed their wonder and awe. They even tossed clothes to the Blessed One.</p><br /><p>The Blessed One then entered Rājagṛha and went to the house of Śrīgupta. A lay devotee who saw the Blessed One arriving from afar thought, “If Śrīgupta intends to carry out such an act against the Blessed One, will the Blessed One not be killed? Will the Eye of the World not be swiftly destroyed? Will a great darkness not swiftly descend upon the world? Will the Buddha, who trained for three immeasurable eons, not swiftly fade from the world? Will our current enjoyment of the Dharma not swiftly wane?”</p><p>The lay devotee then approached the Blessed One and bowed at his feet. He circumambulated him, knelt on his right knee, <span class="tei-ref">F.273.a</span> bowed to the Blessed One with his palms joined, and said, “Noble sir, Blessed One, please do not go to the house of Śrīgupta. Why not? Noble sir, Blessed One, Śrīgupta had a deep pit dug at his main gate in order to kill you and the monastic community. He then filled it with a flameless and smokeless fire and put a thin cover over it. I wonder, if he does all this, will he not cause some harm to the Blessed One and his followers?”</p><p>The Blessed One replied, “Lay brother, do not think that way. Lay brother, fire could not physically affect me even when I was born as an animal; how much less so now that I am a completely awakened buddha? I have extinguished the three fires of attachment, anger, and delusion, so there is no basis for fire to physically affect me.”</p><p>“Noble sir, Blessed One, how was it that fire did not physically affect you when you were born as an animal?”</p><p>The Blessed One replied, “Lay brother, in a former time there lived a certain king of Kaliṅga. This king lit a large fire in order to kill the wild animals on the island of Begburchepa. The blaze upset all the animals and birds that lived on Begburchepa—those that flew through the sky, walked on land, or swam in the water. Those that could fly escaped into the sky, those that could swim dove into the water, and those on land ran to and fro to get away.</p><p>“On the island of Begburchepa there lived a partridge chick <span class="tei-ref">F.273.b</span> whose wings had not yet matured. The mother partridge dipped her feathers into the water and sprinkled it around the chick. She then hurriedly repeated this, over and over again.</p><p>“The partridge chick watched his mother struggling in this way, and then asked her, ‘Mother, why are you struggling in this way?’</p><p>“She replied, ‘Child, you should know that the king of Kaliṅga has lit a large fire to kill all the animals on the island of Begburchepa. The blaze has disturbed all the animals and birds who live on the island of Begburchepa, whether they fly through the sky, walk on the land, or swim in the water. Those that can fly have escaped into the sky, those that can swim have dived into the water, and those on land have run to and fro to get away. I am struggling in this way for your sake, because I think that you will burn.’</p><p>“The chick replied, ‘Mother, stop it, stop it! You are foolish. Such efforts will never save me from the blaze. Mother, draw on all your power and strength, carefully carry me to a high spot among the trees on the island of Begburchepa, and put me down there. Please do this!’</p><p>“The mother partridge did as her child asked. She drew on all her own strength, carefully carried the partridge chick, and put it down in a high spot among the trees on the island of Begburchepa.</p><p>“When the partridge chick saw the great blaze, it was filled with compassion and spoke this verse:</p><div class="tei-verse"><div class="tei-line">“ ‘There are legless beings,</div><div class="tei-line">And also winged ones and those with legs.</div><div class="tei-line">May their parents place them in protection!</div><div class="tei-line">May the noxious fire not return!’</div></div><p>“Lay brother, <span class="tei-ref">F.274.a</span> as soon as the partridge chick uttered this verse, the fire died down, retreating to where it had been lit. That is why, from that day to this, fire has never broken out on the island of Begburchepa. Lay brother, if you suspect or have doubts that at that time on the island of Begburchepa the partridge chick with undeveloped wings was someone else, or are of two minds, reconsider. Lay brother, I was that partridge chick. Lay brother, fire could not physically affect me even then, when I was born as an animal; how much less so now that I am a completely awakened buddha? There is no basis for fire to physically affect me.”</p><p>The Blessed One then delivered a Dharma discourse to the lay devotee and the crowd of beings that was instructive, encouraging, uplifting, and joyous. After the Blessed One had delivered the Dharma discourse that was instructive, encouraging, uplifting, and joyous, he continued on his way.</p><br /><p>Another lay devotee saw him arriving from afar and thought, “If Śrīgupta intends to carry out such an act against the Blessed One, will the Blessed One not be killed? Will the Sugata not be killed? Will the Eye of the World not be swiftly destroyed? Will a great darkness not swiftly descend upon the world? Will the Buddha, who trained for three immeasurable eons, not swiftly fade from the world? Will our current enjoyment of the Dharma not swiftly wane?”</p><p>The lay devotee then approached the Blessed One and bowed at his feet. He circumambulated him three times, knelt on both knees, bowed to the Blessed One with his palms joined, and said to the Blessed One, <span class="tei-ref">F.274.b</span> “Noble sir, Blessed One, please do not go to the house of Śrīgupta. Why? Noble sir, Blessed One, Śrīgupta had a deep pit dug at his main gate in order to kill you and the monastic community. He then filled it with a flameless and smokeless fire and put a thin cover over it. I wonder, if he does all this, will he not cause some harm to the Blessed One and his followers?”</p><p>The Blessed One replied, “Lay brother, do not think that way. Lay brother, fire could not physically affect me even when I was born as an animal; how much less so now that I am a completely awakened buddha? I have extinguished the three fires of attachment, anger, and delusion, so there is no basis for fire to physically affect me.”</p><p>“Noble sir, Blessed One, how was it that fire did not physically affect you when you were born as an animal?”</p><p>The Blessed One replied, “Lay brother, in a former time here in Jambudvīpa there was a wondrous pleasure park, a dense, verdant forest, abundant in flowers and fruits. In this forest lived a sage who had befriended a hare who could speak the human language. At one point a great drought befell the dense forest, which caused all the trees with leaves, blossoms, and fruit to wither. The pleasure groves in the forest entirely dried up. The sage went to visit the hare and told him, ‘Hare, you should know that a great drought has befallen this dense forest. All the trees with leaves, blossoms, <span class="tei-ref">F.275.a</span> and fruit have withered. The pleasure groves in the forest have entirely dried up. Hare, I wish to leave this dense forest for another one.’</p><p>“The hare replied, ‘Sage, please remain in this dense forest for one more day and allow me to feed you.’</p><p>“The sage then returned to his dwelling, made a fire, and performed a <em>homa</em> while reciting mantras.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-017-70" href="#tei-note-UT22084-062-017-70">[3]</a></sup></p><p>“Meanwhile, the hare wandered all over the forest, but he could not find fruits or roots anywhere. He thought, ‘I invited the sage to a meal, but even though I have traversed the entire forest, I have not found fruits or roots anywhere. Therefore, I will satiate the sage with my own flesh.’</p><p>“The hare then went to the sage and said, ‘Sage, please understand; I invited you for a meal, but even though I traversed the entire forest, I did not find fruits or roots anywhere. Therefore, I will jump into this fire pit, and you will be able to eat my flesh. Please remain in the dense forest for one more day.’</p><p>“The sage replied, ‘Hare, don’t do it! Don’t say that. I do not wish to harm you, hare, let alone to eat your flesh.’</p><p>“The hare said, ‘Sage, please don’t say that. Please carry out my wishes.’</p><p>“Then the hare uttered the following words of truth:</p><p>“ ‘Great gods of this dense forest, please heed me! All nāgas and yakṣas, gandharvas and asuras, garuḍas, kinnaras, and mahoragas who dwell here, please heed me! I am about to perform an act of giving, the greatest act of giving, an extreme act of giving—I am about to give myself. The truth and words of truth with which I give myself away <span class="tei-ref">F.275.b</span> are these: “I do this not to be a king, nor for the sake of wealth or a higher rebirth. I do this not to attain the rank of Śakra, Māra, or Brahmā, nor to acquire the kingdom of a universal monarch. Rather, I do this in order to attain supreme and perfect awakening and reach perfect buddhahood, so that I may tame those beings who are not yet tamed, liberate those not yet liberated, reassure those who need reassurance, and place beyond suffering those who are still suffering.” By this truth, and by these words of truth, may my self-sacrifice not be fruitless!’</p><p>“With these words, he hurled himself into the large fire pit.</p><p>“Lay brother, as soon as the hare jumped into the fire pit, the fire within it died out and became a pool of lotuses. The hare was teaching the Dharma while seated on a thousand-petaled lotus that was buzzing with bees. He gave instructions in proper spiritual conduct that were virtuous in the beginning, middle, and end; that were excellent in meaning and in expression; and that were uncontaminated, perfect, pure, and unsullied.</p><p>“When the sage witnessed this, he was overjoyed and delighted, and so he rejoiced. Filled with joy and happiness, he joined the palms of his hands and bowed to the hare.</p><p>“Lay brother, if you suspect or have doubts that the sage who lived at that time in that dense forest was someone else, reconsider. Lay brother, at that time the monk Kāśyapa was the forest sage. Lay brother, if you suspect or have doubts that the forest hare at that time was someone else, reconsider. At that time, I was the hare. Lay brother, fire could not physically affect me even then, when I was born as an animal; how much less so now that I am a completely awakened buddha? There is no basis for fire to physically affect me.” <span class="tei-ref">F.276.a</span></p><p>The Blessed One then delivered a Dharma discourse to the lay devotee and the crowd of beings that was instructive, encouraging, uplifting, and joyous.</p><br /><p>After the Blessed One had delivered the Dharma discourse that was instructive, encouraging, uplifting, and joyous, he continued on to the house of Śrīgupta. The crowd of people from the city of Rājagṛha thought, “What will happen? There is a pit at the main gate to Śrīgupta’s house.”</p><p>The Blessed One then reached the deep fire pit, and set his golden-colored right foot upon it. As soon as the Blessed One had set his golden-colored right foot upon the fire pit, the fire in the pit died out, and it became a pool of lotuses, buzzing with bees. As soon as the Blessed One had set his golden-colored right foot upon the fire pit, the gods showered heavenly sandalwood powder over him, showering him repeatedly with it. They showered him with heavenly flowers, such as blue and white water lilies, red and white lotuses, and mandārava blossoms, showering him repeatedly with them. Divine music rang out, and heavenly cymbals played. Conches, large drums, and clay and metal drums resounded.</p><p>The people of the great city of Rājagṛha were amazed and full of wonder. They let out a great roar of acclaim and the loud sounds of jubilation, laughter, astonishment, and elation. They even tossed clothes to the Blessed One.</p><p>At that time Śrīgupta was standing on the roof of his house with Jñātiputra the Jain. Śrīgupta’s wife, who was inside the house, heard the roar and clamor erupting in Rājagṛha <span class="tei-ref">F.276.b</span> and thought, “Does such a loud and powerful noise here in the city of Rājagṛha mean that the Blessed One did not fall into the large fire pit and die? Has the Sugata not died?”</p><p>With this thought, Śrīgupta’s wife worked to force open the door. She then ran straight to the main gate and saw that the fire inside the pit had died away, the pit had become a lotus lake, and the Blessed One had set foot upon a lotus buzzing with bees as he proceeded towards Śrīgupta’s house. She was delighted and overjoyed at this sight; and, filled with delight and happiness, she went to Śrīgupta and said, “Lord, the fire in the pit has gone out, and it has become a lotus lake. The Blessed One set foot on a lotus buzzing with bees, and then proceeded toward the house. Look, look!”</p><p>Śrīgupta then looked, and was so startled and afraid that his hair bristled. Eagerly and swiftly he hastened down from the top of the house and went to the main gate where the Blessed One stood. When he arrived there, he bowed at the feet of the Blessed One and said, “Blessed One, I have made a mistake! Sugata, I have made a mistake, and I confess! Like a deluded, ignorant fool, I followed a nonvirtuous spiritual friend, and under his influence thought to treat the Blessed One in this manner. Blessed One, since I have erred, please accept me, guilty as I am! I commit to act differently from now on.”</p><p>The Blessed One replied, “So, householder, you must understand that you are guilty of wrongdoing for following a nonvirtuous spiritual friend, like a deluded, ignorant fool, and behaving this way under his influence. <span class="tei-ref">F.277.a</span> Householder, because you confessed and admitted it when you saw that you were guilty of wrongdoing, and commit not to do so from now on, I will accept you, culpable as you are. The reason, householder, is that you will improve under the Dharma and Vinaya. Now that you have seen that you are guilty of wrongdoing, and confessed and admitted it, you will follow your commitment. Stand up, householder. You have now honored me with this act of pious veneration.”</p><p>Śrīgupta bowed at the feet of the Blessed One and venerated him. The Blessed One then ascended to the upper story of the house. When he arrived, he sat down on the cushions arranged there, together with the monastic community.</p><br /><p>When the householder Śrīgupta knew that the Blessed One and his followers were seated, he approached the Blessed One, knelt on both knees, and bowed toward him with joined palms. He then said, “Noble sir, Blessed One, please accept a little something to eat. I will have some other, pure food prepared. The reason is, noble sir, Blessed One, under the influence of a nonvirtuous spiritual friend, I had deadly poison added to all the pure food that had been prepared. I realize that it will cause some harm to the Blessed One and his followers.”</p><p>The Blessed One replied, “Householder, do not think that way. Poison could not physically affect me even when I was born as an animal; how much less so now that I am a completely awakened buddha? There is no basis for poison to physically affect me.”</p><p>“Blessed One, when you were born as an animal, how was it that poison did not physically affect you?”</p><p>The Blessed One replied, <span class="tei-ref">F.277.b</span> “Householder, in the past there was a king of the city of Vārāṇasī named Brahmadatta. He was prosperous, wealthy, and affluent, with an overflowing treasury. Householder, King Brahmadatta had a queen named Anupamā, who had a fine figure, was beautiful and attractive, and had a clear and hearty complexion. To King Brahmadatta, Queen Anupamā was lovely, elegant, beloved, pleasing, desirable, and agreeable to behold. Householder, at that time, on the southern slope of the snowy king of mountains lived a peacock king named Suvarṇāvabhāsa, who had a retinue of five hundred birds. His limbs and body were brightly colored, and his beak was jeweled. Wherever he went, he ranked first among all peacocks.</p><p>“On one specific occasion, the peacock king Suvarṇāvabhāsa cried out over the city of Vārāṇasī in the middle of the night and was heard across the entire city. At that time, King Brahmadatta was in Queen Anupamā’s upper chamber. When Queen Anupamā heard this sound, she asked King Brahmadatta, ‘Lord, whose call is so enticing, desirable, elevating, addictive, captivating, delightful, pleasing, sweet, agreeable, and so worthy to be heard?’</p><p>“The king replied, ‘Lady, though I have not seen him, I have heard it said that the peacock king Suvarṇāvabhāsa lives on the southern slope of the snowy king of mountains. His limbs and body are brightly colored, he has a jeweled beak, and he possesses a retinue of five hundred birds. Wherever he goes, he ranks first among all peacocks. His call is said to sound just as enticing, desirable, elevating, <span class="tei-ref">F.278.a</span> addictive, captivating, delightful, pleasing, sweet, agreeable, and worthy to be heard as this.’</p><p>“Queen Anupamā said, ‘Lord, please have Suvarṇāvabhāsa quickly brought here.’</p><p>“King Brahmadatta replied, ‘But, lady, how could I possibly find such a creature that roams through the sky?’</p><p>“Queen Anupamā answered, ‘Lord, if I cannot see Suvarṇāvabhāsa I will die!’</p><p>“King Brahmadatta was enamored with Queen Anupamā, and out of affection said to her, ‘Lady, wait a little; I will dispatch hunters.’</p><p>“King Brahmadatta then summoned the hunters and said to them, ‘Gentlemen, it is said that on the southern slope of the snowy king of mountains dwells a peacock king named Suvarṇāvabhāsa, whose limbs and body are brightly colored, and who has a jeweled beak. Catch Suvarṇāvabhāsa with nets and traps, and return home with the peacock king. If you manage to bring him home, all will be well. If you fail to do this, you will all lose your lives.’</p><p>“Since they were all afraid of dying, the hunters feared for their lives. They took their nets and traps and went to the southern slope of the snowy king of mountains. Upon arriving, they spread out their nets and laid their traps in the area where the peacock king Suvarṇāvabhāsa lived, but the nets would tear and the traps would spring whenever Suvarṇāvabhāsa looked at them. Despite exhausting themselves for seven days in that area, they were not able to catch the peacock king Suvarṇāvabhāsa in their nets and traps. Then the peacock king was touched with compassion and said to the hunters, ‘Laborers, why are you here, exhausting yourselves?’</p><p>“They replied, ‘Peacock king, please understand that King Brahmadatta commanded us. Please understand that he said, “Gentlemen, you should know that on the southern slope of the snowy king of mountains <span class="tei-ref">F.278.b</span> dwells a peacock king named Suvarṇāvabhāsa, whose limbs and body are brightly colored, who has a jeweled beak, and who possesses a retinue of five hundred birds. Catch Suvarṇāvabhāsa with nets and traps and return home with the peacock king. If you manage to bring him home, all will be well. If you fail to do this, you will all lose your lives.” It is out of fear for our lives that we are struggling like this.’</p><p>“The peacock king replied, ‘Laborers, you cannot catch me with nets and traps. Laborers, if King Brahmadatta wishes to see me, let him sweep the city of Vārāṇasī clean, sprinkle scented water, scatter flower petals, hang parasols and pennants, raise banners, burn incense in censers, and prepare a chariot adorned with the seven jewels. King Brahmadatta should come here seven days from now in the company of the four divisions of his army, and I will go to Vārāṇasī myself. This is what should be done.’</p><p>“After the hunters had listened to the peacock king Suvarṇāvabhāsa, they made their way to the city of Vārāṇasī and into the presence of King Brahmadatta. They said, ‘Lord, may it please you to know that we took our nets and traps to the southern slope of the snowy king of mountains and set them out in the area where the peacock king Suvarṇāvabhāsa lives. But whenever Suvarṇāvabhāsa looked at them, the nets tore and the traps were sprung. Despite exhausting ourselves in that area for seven nights, we were not able to catch the peacock king with our nets and traps. The peacock king was touched with compassion and said to us, “Laborers, why are you here, exhausting yourselves?” We replied, “Peacock king, please understand that King Brahmadatta commanded us, ‘On the southern slope of the snowy king of mountains is said to dwell a peacock king named Suvarṇāvabhāsa, whose limbs and body are brightly colored,<span class="tei-ref">F.279.a</span> who has a jeweled beak, and who possesses a retinue of five hundred birds. Wherever he goes, he ranks first among all peacocks. Catch the peacock king Suvarṇāvabhāsa with your nets and traps and bring him home. If you manage to bring him home, all will be well. If you fail to do this, you will all lose your lives.’ Since we are afraid to die, it is out of fear for our lives that we are struggling like this.” Suvarṇāvabhāsa replied, “Laborers, you cannot catch me with nets and traps. Laborers, if King Brahmadatta wishes to see me, let him sweep the city of Vārāṇasī clean, sprinkle scented water, scatter flower petals, hang parasols and pennants, raise banners, burn incense in censers, and prepare a chariot adorned with the seven jewels. King Brahmadatta should come here seven days from now in the company of the four divisions of his army, and I will go myself. This is what should be done.” ’</p><p>“King Brahmadatta listened to what the hunters said, and he had the city of Vārāṇasī swept clean. He had scented water sprinkled, flower petals scattered, parasols and pennants hung, banners raised, incense burned in censers, and a chariot prepared that was adorned with the seven jewels. When seven days had passed, he gathered the four divisions of his army and had them don their armor. Leading the chariot adorned with the seven jewels, the king and the four divisions of his army went to the southern slope of the snowy king of mountains.</p><p>“The peacock king Suvarṇāvabhāsa mounted the seven-jeweled chariot and let out a cry that resounded through the four divisions of the army. King Brahmadatta was delighted and overjoyed. Pleased and happy, he had the peacock king Suvarṇāvabhāsa <span class="tei-ref">F.279.b</span> treated with honor and respect. He attended to him and offered him veneration. Then, accompanied by the peacock king Suvarṇāvabhāsa, he returned to Vārāṇasī. At the gate to the city, Suvarṇāvabhāsa let out a cry that resounded through the whole city, and all the men, women, boys, and girls who lived in Vārāṇasī rushed to the city gate.</p><p>“King Brahmadatta treated Suvarṇāvabhāsa with honor and respect, attending to him and offering veneration. They then went to his home, where Queen Anupamā was waiting. When they arrived, the king said to her, ‘My lady, the peacock king Suvarṇāvabhāsa approaches.’</p><p>“King Brahmadatta himself served Suvarṇāvabhāsa with flowers and fruits. But on one occasion when King Brahmadatta had other obligations, he thought, ‘Who can serve the peacock king Suvarṇāvabhāsa?’ Then the thought occurred to him, ‘Queen Anupamā is clever and very wise; I think she can do it.’ King Brahmadatta summoned Queen Anupamā and said to her, ‘My lady, please attend to the peacock king Suvarṇāvabhāsa, just as I have served him.’ Then Anupamā, the queen of King Brahmadatta, attended to Suvarṇāvabhāsa herself with flowers and fruit.</p><p>“At one point, Queen Anupamā developed an attraction to another man. She thought, ‘The peacock king Suvarṇāvabhāsa speaks the human language, so might he not tell this tale to King Brahmadatta? Might the king not arrest <span class="tei-ref">F.280.a</span> and execute me?’ The woman then gave the peacock king food and drink laced with poison. But no matter how much poisoned food and drink she gave to him, his body became that much finer, more beautiful, more attractive, and more radiant.</p><p>“Then Queen Anupamā thought, ‘No matter how much poisoned food and drink I give to the peacock king Suvarṇāvabhāsa, his body becomes that much finer, more beautiful, more attractive, and more radiant!’</p><p>“The peacock king Suvarṇāvabhāsa then said to Queen Anupamā, ‘Villain, villain, I know about you! You thought, “I’ve become attracted to another man, and this bird knows about it. Since he speaks the human language, might he not tell this tale to the king? Might the king not arrest and execute me?” So you gave me food and drink laced with poison, but you cannot kill me.’</p><p>“When she heard this, Queen Anupamā fell face down, vomited warm blood, and was seized by a serious illness that led to her death. After her death, she was born as a denizen of the Hell of Loud Screams.</p><p>“Householder, if you suspect or have doubts that Brahmadatta, the king of the great city of Vārāṇasī at that time, was someone else, reconsider. The monk Śāriputra was King Brahmadatta at that time. Householder, if you suspect or have doubts that the queen Anupamā at that time was someone else, reconsider. The deceitful brahmin maiden was Queen Anupamā at that time.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-017-113" href="#tei-note-UT22084-062-017-113">[4]</a></sup> Householder, if you suspect or have doubts that the peacock king Suvarṇāvabhāsa who lived on the southern slope of the snowy king of mountains was someone else, <span class="tei-ref">F.280.b</span> reconsider. I myself, at that time, was Suvarṇāvabhāsa, the peacock king who lived on the southern slope of the snowy king of mountains. Householder, if you suspect or have doubts that the five hundred peacocks were some other beings, reconsider. The five hundred excellent monks in my retinue here were the five hundred peacocks at that time.</p><p>“Householder, poison could not physically affect me even then, when I was born as an animal; how much less so now that I am a completely awakened buddha? There is no basis for poison to physically affect me. Therefore, householder, listen carefully and retain the following verses. I will teach them to you; remember them carefully and recite them three times over the food, and then distribute it to the assembly of monks.</p><div class="tei-verse"><div class="tei-line">“Attachment, anger, and delusion:</div><div class="tei-line">These are the three worldly poisons.</div><div class="tei-line">The blessed Buddha is without poison;</div><div class="tei-line">The Buddha’s truth conquers poison.</div></div><div class="tei-verse"><div class="tei-line">“Attachment, anger, and delusion:</div><div class="tei-line">These are the three worldly poisons.</div><div class="tei-line">The blessed Dharma is without poison;</div><div class="tei-line">The Dharma’s truth conquers poison.</div></div><div class="tei-verse"><div class="tei-line">“Attachment, anger, and delusion:</div><div class="tei-line">These are the three worldly poisons.</div><div class="tei-line">The blessed Saṅgha is without poison;</div><div class="tei-line">The Saṅgha’s truth conquers poison.</div></div><div class="tei-verse"><div class="tei-line">“By the truth of these words—</div><div class="tei-line">The truth that I am a buddha,</div><div class="tei-line">Unsurpassed in the world—</div><div class="tei-line">May poison not harm me!</div></div><div class="tei-verse"><div class="tei-line">“By the truth of these words—</div><div class="tei-line">The truth that my Dharma</div><div class="tei-line">Is unsurpassed in the world—</div><div class="tei-line">May poison not harm me!</div></div><div class="tei-verse"><div class="tei-line">“By the truth of these words—</div><div class="tei-line">The truth that my Saṅgha</div><div class="tei-line">Is unsurpassed in the world—</div><div class="tei-line">May poison not harm me!</div></div><div class="tei-verse"><div class="tei-line">“All the poisonous trees</div><div class="tei-line">And all the poisonous animals</div><div class="tei-line">Arise from the poison of desire;</div><div class="tei-line">Desire is the worst poison.</div></div><div class="tei-verse"><div class="tei-line">“All the poisonous trees</div><div class="tei-line">And all the poisonous animals <span class="tei-ref">F.281.a</span></div><div class="tei-line">Arise from the poison of anger;</div><div class="tei-line">Anger is the worst poison.</div></div><div class="tei-verse"><div class="tei-line">“All the poisonous trees</div><div class="tei-line">And all the poisonous animals</div><div class="tei-line">Arise from the poison of delusion;</div><div class="tei-line">Delusion is the worst poison.</div></div><div class="tei-verse"><div class="tei-line">“The buddhas have conquered the fiercest poisons;</div><div class="tei-line">They have protected and shielded us from them.</div><div class="tei-line">Because all buddhas have conquered poisons,</div><div class="tei-line">I take refuge in the perfectly awakened ones.</div></div><div class="tei-verse"><div class="tei-line">“Perform it in that manner.”</div></div><p>The householder Śrīgupta accepted these verses in the presence of the Blessed One and recited them three times over the food. He then served many pleasing dishes to the assembled monks with his own hands, so that they were satisfied.</p><p>When the householder Śrīgupta learned that the Blessed One and the assembled monks had finished their meals and had washed their hands and put their alms bowls away, he rose from his seat and sat to one side. With Śrīgupta seated to the side, the Blessed One spoke to him about the following subjects in sequence: generosity, moral discipline, higher rebirth, the faults of desire and the pollutions that flow from it, impurity, the benefits of renunciation, and purity.</p><p>The Blessed One then instructed the householder Śrīgupta in greater detail; he set forth, explained, classified, and clarified. When he realized that the householder Śrīgupta’s mind had become joyful, flexible, virtuous, and unpolluted, the Blessed One instructed, set forth, explained, classified, clarified, and explained in still greater detail the most sublime teachings taught by the blessed buddhas.</p><p>While still on his seat, the householder Śrīgupta developed the dustless and unobscured Dharma eye. <span class="tei-ref">F.281.b</span> Just as a piece of fabric that has carelessly become stained but is fit to be dyed will thoroughly absorb the color it is soaked in, so did the householder Śrīgupta, seated on his seat, develop the dustless and unobscured Dharma eye in connection with the teachings.</p><p>The householder Śrīgupta then perceived, attained, generated, and perfectly realized the Dharma. Without uncertainty, hesitation, or doubt, and without relying on anyone else, he completely understood the Teacher’s teachings. He became fearless, and said to the Blessed One, “Noble sir, Blessed One, I go for refuge in the Buddha, Dharma, and monastic community. Noble sir, Blessed One, please accept me as a lay devotee. From today, for as long as I live, you will be my refuge. I take refuge in you.”</p><br /><p>The monks were astonished and amazed at how the householder Śrīgupta—who had wished to burn the Blessed One in a pit of fire and was destined to fall into the great hells—had been turned away from the great hells by the Blessed One, and had developed the dustless and unobscured Dharma eye in connection with the teachings.</p><p>When he perceived their surprise and wonder, the Blessed One said, “Monks, this is not the only time the householder Śrīgupta wished to burn me in a pit of fire and was destined to fall into the great hells until I turned him away from the great hells so that he would develop the dustless and unobscured Dharma eye in connection with the teachings. Monks, in another life as well, the householder Śrīgupta wished to burn me in a pit of fire and was destined to fall into the great hells; then, too, I turned him away from the great hells.”</p><p>The monks asked, “Noble sir, Blessed One, how did it happen that, in another life, the householder Śrīgupta sought to burn the Blessed One in a pit of fire, and was thus destined to fall into the great Avīci hell, only to have the Blessed One <span class="tei-ref">F.282.a</span> save him from falling into that hell?”</p><p>The Blessed One replied, “Monks, in the past there lived a brahmin boy named Dharmakāma. He was morally disciplined and full of good qualities. Content, and with little desire, he lived a virtuous life in seclusion. The brahmin boy Dharmakāma had a fine figure and was handsome and attractive, with a clear and hearty complexion. Brahmins, warriors, and householders all held Dharmakāma in high regard and venerated him; from them he received abundant offerings of high-quality clothing, food, bedding, and medicines. The brahmin boy Dharmakāma would refine a single verse a hundred thousand times.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-017-165" href="#tei-note-UT22084-062-017-165">[5]</a></sup></p><p>“A certain brahmin was not able to bear Dharmakāma’s possessions, honor, and literary ability, so he approached him and said, ‘Dharmakāma, there is an eloquent expression I would like to share with you.’</p><p>“Dharmakāma replied, ‘Noble one, please share this eloquent expression with me.’</p><p>“The brahmin replied, ‘Dharmakāma, this is not the setting for me to share this eloquent expression with you.”</p><p>“Dharmakāma said, ‘Well then, noble sir, how would you share this eloquent expression with me?’</p><p>“The brahmin said, ‘Dharmakāma, have a deep pit dug, and then fill it with fire that is flameless and smokeless. Erect a tall sacrificial post in front of the pit, and then hurl yourself into the fire. If you do this, I will share the eloquent expression with you.’</p><p>“Dharmakāma replied, ‘Noble one, all my efforts in seeking eloquent expressions have been dedicated to the benefit of beings. So, master, how can I hurl myself into a fire pit without having shared an eloquent expression with beings?’ <span class="tei-ref">F.282.b</span></p><p>“The brahmin then recited this verse to Dharmakāma:</p><div class="tei-verse"><div class="tei-line">“ ‘Where one seeks mantras there is happiness;</div><div class="tei-line">Where there is happiness one seeks mantras.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-017-175" href="#tei-note-UT22084-062-017-175">[6]</a></sup></div><div class="tei-line">In order to find mantras, give up happiness.</div><div class="tei-line">Give up happiness in order to find mantras.’</div></div><p>“Dharmakāma answered the brahmin with the following verse:</p><div class="tei-verse"><div class="tei-line">“ ‘Where one seeks awakening there is happiness.</div><div class="tei-line">One seeks awakening where there is happiness.</div><div class="tei-line">In order to find awakening, give up happiness.</div><div class="tei-line">Give up happiness in order to find awakening.’</div></div><p>“Then Dharmakāma said to the brahmin, ‘Master, please share an eloquent expression with me. In any case, I will do as you instruct.’</p><p>“Once they learned that the brahmin boy Dharmakāma intended to sacrifice himself in pursuit of an eloquent expression, the brahmins and householders came to where Dharmakāma lived, all of them weeping, with tears streaming down their faces. Upon arriving, they said to the brahmin boy Dharmakāma, ‘Dharmakāma, do not sacrifice yourself. Dharmakāma, you can practice generosity and make merit while living as a householder.’</p><p>“The brahmin boy Dharmakāma replied to the brahmins and householders, ‘Gentlemen, do not say that. I will fulfill the wishes of my master.’</p><p>“Then the brahmin boy Dharmakāma had a tall sacrificial post erected, and had a deep pit dug in front of it. He had the pit filled with a flameless and smokeless fire, and said to the brahmin, ‘Master, please share an eloquent expression with me.’</p><p>“The brahmin then taught the brahmin boy Dharmakāma verses such as this one:</p><div class="tei-verse"><div class="tei-line">“ ‘Always take joy in generosity;</div><div class="tei-line">Always practice perfect moral conduct;</div><div class="tei-line">Always apply supreme diligence—</div><div class="tei-line">With wisdom, attain the supreme and holy Dharma.’</div></div><p>“When the brahmin boy Dharmakāma had memorized this verse from the brahmin, a large crowd of people gathered. <span class="tei-ref">F.283.a</span> He then climbed up onto the tall sacrificial post to share the verse with the crowd:</p><div class="tei-verse"><div class="tei-line">“ ‘Always take joy in generosity;</div><div class="tei-line">Always practice perfect moral conduct;</div><div class="tei-line">Always apply supreme diligence—</div><div class="tei-line">With wisdom, attain the supreme and holy Dharma.’</div></div><p>“Once he had shared the verse with the crowd, Dharmakāma spoke the following words of truth:</p><p>“ ‘Great gods who dwell in this land, please heed me! All nāgas and yakṣas, gandharvas and asuras, garuḍas, kinnaras, and mahoragas, please heed me! I am performing an act of giving, the greatest act of giving, an extreme act of giving—I am giving myself. The truth and the words of truth with which I give myself away are these: “I do this not to be a king, nor for the sake of wealth or a higher rebirth. I do this not to acquire the kingdom of a universal monarch. Rather, I do this in order to attain supreme and perfect awakening and reach perfect buddhahood, so that I may tame those beings who are not yet tamed, free those who have not yet gone beyond, liberate those not yet liberated, reassure those who need reassurance, and place beyond suffering those who are still suffering.” By this truth, and by these words of truth, may my self-sacrifice not be fruitless!’</p><p>“With these words, he hurled himself into the fire pit.</p><p>“Monks, as soon as the brahmin boy Dharmakāma jumped into the fire pit, the fire within it died out and became a pool of lotuses. Dharmakāma was teaching the Dharma while on a lotus seat buzzing with bees. He gave instructions to all beings in proper spiritual conduct that were virtuous in the beginning, middle, and end; that were excellent in meaning and in expression; and that were uncontaminated, perfect, pure, and unsullied.</p><p>“The brahmin’s entire body <span class="tei-ref">F.283.b</span> then burst into flames. He cried, ‘I am burning because of what I said!’ and fell into the great hells.</p><p>“The brahmin boy Dharmakāma said to him, ‘Master, do not be afraid! I will help you.’</p><p>“At that moment the brahmin boy Dharmakāma spoke the following words of truth:</p><p>“ ‘By the truth and the words of truth—the truth that I pursue awakening for the sake of beings—may the fire in the brahmin’s body be quelled, and may he return from the hell realms!’</p><p>“The very instant that the brahmin boy Dharmakāma spoke this truth and words of truth, the brahmin was saved from the hell realms.</p><p>“Monks, if you suspect or have doubts that the brahmin boy named Dharmakāma who lived at that time was someone else, reconsider. Monks, I was the brahmin boy named Dharmakāma at that time. Monks, if you suspect or have doubts that the brahmin who lived at that time was someone else, reconsider. The householder Śrīgupta was the brahmin at that time. Monks, at that time, I saved the householder Śrīgupta from falling into the great hells because of his wish to burn me in a fire pit and his being destined to fall into the great hells. I established him in the noble Dharma and Vinaya. This is how you should remember these things. Monks, I have also now saved Śrīgupta from falling into the great hells because of his wish to burn me in a fire pit and his being destined to fall into the great hells. I have also established him in the noble Dharma and Vinaya. This is how you should remember these things.</p><div class="tei-verse"><div class="tei-line">“Past deeds, virtuous or wicked, are not fruitless;</div><div class="tei-line">Relying on the wise is not fruitless;</div><div class="tei-line">The eloquent expressions of the community of noble ones are not fruitless;</div><div class="tei-line">Reflecting on past actions is never fruitless.</div></div><div class="tei-verse"><div class="tei-line">“What is done with good intent is a virtuous act;</div><div class="tei-line">What is done with evil intent is nonvirtuous.</div><div class="tei-line">Both bear their consequences;</div><div class="tei-line">Their fruits ripen unfailingly.”</div></div><p>When the Blessed One was finished speaking, his entire retinue, consisting of monks, <span class="tei-ref">F.284.a</span> nuns, and male and female lay devotees, as well as nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, and mahoragas, rejoiced and praised the words of the Blessed One.</p>This concludes <cite>The Noble Śrīgupta Sūtra</cite>.</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>Translated by the Indian preceptors Jinamitra and Dānaśīla, and the editor and translator, the monk Yeshé Dé. They translated and edited the sūtra, revised its terminology, and finalized it.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-062-017-18"><p>“Brahmins” is listed twice in all the Tibetan versions that were consulted.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-017-18">back</a></li><li id="tei-note-UT22084-062-017-20"><p>This paragraph preserves a stock passage found in many sūtras and which can thus be compared with extant Pali and Sanskrit sources. The precise syntax of the passage was lost in the Tibetan translation, and thus the English translation here is influenced by consultation with Pali sources, and it deviates slightly from the syntax preserved in the Tibetan text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-017-20">back</a></li><li id="tei-note-UT22084-062-017-70"><p>Based on the context, it is likely that the term <em>mantra</em> is meant to refer to Vedic hymns or formulas, not the mantras of esoteric Buddhism or other tantric traditions.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-017-70">back</a></li><li id="tei-note-UT22084-062-017-113"><p>It is not clear from this passage who precisely the “deceitful brahmin maiden” is. As with the rest of the correlations, this is meant to be a figure from other tales of the Buddha’s life, but she has not been definitively identified.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-017-113">back</a></li><li id="tei-note-UT22084-062-017-165"><p>The meaning of this line is unclear; thus the translation is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-017-165">back</a></li><li id="tei-note-UT22084-062-017-175"><p>As above, the term <em>mantra</em> most likely refers to Vedic verses or formulas, not the mantras of esoteric traditions.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-017-175">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/062-016-toh216-eliminating-ajatasatrus-remorse.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/062-018-toh218-purification-of-karmic-obscurations.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

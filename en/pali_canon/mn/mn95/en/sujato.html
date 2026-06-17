@@ -1,0 +1,2358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mn/mn95 — With Caṅkī — Bhikkhu Sujato — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          data-mobile-translation-toggle
+        >
+          <span
+            class="block w-full truncate"
+            title="English - Bhikkhu Sujato"
+            data-mobile-translation-current
+          >English - Bhikkhu Sujato</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div
+          class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-mobile-translation-menu
+          hidden
+        >
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/mn/mn95/ru/sv+edited+o.html"
+              title="Russian - SV theravada.ru (edited by Dhamma.Gift)"
+            >
+              <span class="block w-full truncate">
+                Russian - SV theravada.ru (edited by Dhamma.Gift)              </span>
+            </a>
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/mn/mn95/ru/sv.html"
+              title="Russian - SV theravada.ru"
+            >
+              <span class="block w-full truncate">
+                Russian - SV theravada.ru              </span>
+            </a>
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/mn/mn95/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+            >
+              <span class="block w-full truncate">
+                Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500              </span>
+            </a>
+                              </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <div class="flex items-start gap-3">
+                  <button
+            class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] md:hidden"
+            type="button"
+            aria-label="Main navigation"
+            data-mobile-trail-toggle
+          >
+            <svg class="h-5 w-5 pointer-events-none" viewBox="0 0 26 26" aria-hidden="true">
+              <use href="/assets/mobile-breadcrumbs-icon.svg?_=1781705533#icon"></use>
+            </svg>
+          </button>
+                <div class="min-w-0 flex-1">
+          <h1 class="sutta-title m-0 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+            With Caṅkī          </h1>
+                      <div
+              class="mt-1 truncate text-[12px] leading-[1.35] text-ink-muted md:text-[13px]"
+              title="Translator: Bhikkhu Sujato"
+            >
+              Translator: Bhikkhu Sujato            </div>
+                  </div>
+      </div>
+
+              <div class="flex gap-1 items-center">
+                      <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              mn            </div>
+                                <span class="hidden text-sm text-accent dark:text-[#c784ff] md:block" aria-hidden="true">·</span>
+                                <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              Middle Discourses 95 · With Caṅkī            </div>
+                  </div>
+      
+              <div
+          class="relative my-3 rounded-[10px] border border-line bg-surface p-4 [&:not([hidden])]:block md:[&:not([hidden])]:hidden dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)]"
+          data-mobile-trail-panel
+          hidden
+        >
+          <button
+            class="absolute right-2 top-2 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-ink"
+            type="button"
+            aria-label="Close dialog"
+            data-mobile-trail-close
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="flex flex-col gap-2 pr-8">
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                mn              </div>
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                Middle Discourses 95              </div>
+                          <div class="text-sm leading-[1.4] font-semibold text-ink">
+                With Caṅkī              </div>
+                      </div>
+        </div>
+            <div class="my-4 border-t border-line"></div>
+      <div class="sutta-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                                          <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-1-1"            >
+            So I have heard.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-1-2"            >
+            At one time the Buddha was wandering in the land of the Kosalans together with a large Saṅgha of mendicants when he arrived at a village of the Kosalan brahmins named Opāsāda.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-1">[1]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-1-3"            >
+            He stayed in the Godswood of sal trees to the north of Opāsāda.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-2">[2]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-2-1"            >
+            Now at that time the brahmin Caṅkī was living in Opāsāda. It was a crown property given by King Pasenadi of Kosala, teeming with living creatures, full of hay, wood, water, and grain, a royal park endowed to a brahmin.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-3">[3]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-1"            >
+            The brahmins and householders of Opāsāda heard:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-2"            >
+            “It seems the ascetic Gotama—a Sakyan, gone forth from a Sakyan family—has arrived at Opāsāda together with a large Saṅgha of mendicants. He is staying in the Godswood to the north.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-3"            >
+            He has this good reputation:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-4"            >
+            ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-5"            >
+            He has realized with his own insight this world—with its gods, Māras, and divinities, this population with its ascetics and brahmins, gods and humans—and he makes it known to others.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-6"            >
+            He proclaims a teaching that’s good in the beginning, good in the middle, and good in the end, meaningful and well-phrased. And he reveals a spiritual practice that’s entirely full and pure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-3-7"            >
+            It’s good to see such perfected ones.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-4-1"            >
+            Then, exiting Opāsāda, they formed into companies and headed north to the Godswood.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-5-1"            >
+            Now at that time the brahmin Caṅkī had retired to the upper floor of his stilt longhouse for his midday nap.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-4">[4]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-5-2"            >
+            He saw the brahmins and householders heading for the Godswood,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-5-3"            >
+            and addressed his butler,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-5">[5]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-5-4"            >
+            “My butler, why are the brahmins and householders heading north for the Godswood?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-1"            >
+            “The ascetic Gotama has arrived at Opāsāda together with a large Saṅgha of mendicants. He is staying in the Godswood to the north.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-2"            >
+            He has this good reputation:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-3"            >
+            ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-4"            >
+            They’re going to see that worthy Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-5"            >
+            “Well then, go to the brahmins and householders and say to them:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-6"            >
+            ‘Sirs, the brahmin Caṅkī asks            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-7"            >
+            you to wait, as he will also go to see the ascetic Gotama.’”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-6-8"            >
+            “Yes, sir,” replied the butler, and did as he was asked.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-7-1"            >
+            Now at that time around five hundred brahmins from abroad were residing in Opāsāda on some business.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-7-2"            >
+            They heard that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-7-3"            >
+            the brahmin Caṅkī was going to see the ascetic Gotama.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-7-4"            >
+            They approached Caṅkī and said to him,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-7-5"            >
+            “Is it really true that you are going to see the ascetic Gotama?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-7-6"            >
+            “Yes, gentlemen, it is true.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-1"            >
+            “Please don’t!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-2"            >
+            It’s not appropriate for you to go to see the ascetic Gotama;            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-6">[6]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-3"            >
+            it’s appropriate that he comes to see you.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-4"            >
+            You are well born on both your mother’s and father’s side, stemming from a clean vessel, with irrefutable and impeccable genealogy back to the seventh paternal generation.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-7">[7]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-5"            >
+            For this reason it’s not appropriate for you to go to see the ascetic Gotama;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-6"            >
+            it’s appropriate that he comes to see you.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-7"            >
+            You’re rich, affluent, and wealthy. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-8"            >
+            You recite and remember the hymns, and have mastered the three Vedas, together with their vocabularies and ritual performance, their phonology and word classification, and the testaments as fifth. You know them word-by-word, and their grammar. You are well versed in cosmology and the marks of a great man. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-9"            >
+            You are attractive, good-looking, lovely, of surpassing beauty. You have divine looks and lustre, remarkable to behold. …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-8">[8]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-10"            >
+            You are ethical, mature in ethical conduct. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-11"            >
+            You’re a good speaker who enunciates well, with a polished, clear, and articulate voice that expresses the meaning. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-12"            >
+            You teach the tutors of many, and teach three hundred young students to recite the hymns. …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-9">[9]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-13"            >
+            You’re honored, respected, revered, venerated, and esteemed by King Pasenadi of Kosala            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-14"            >
+            and the brahmin Pokkharasāti. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-15"            >
+            You live in Opāsāda, a crown property given by King Pasenadi of Kosala, teeming with living creatures, full of hay, wood, water, and grain, a royal park endowed to a brahmin.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-16"            >
+            For all these reasons it’s not appropriate for you to go to see the ascetic Gotama;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-8-17"            >
+            it’s appropriate that he comes to see you.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-1"            >
+            When they had spoken, Caṅkī said to those brahmins:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-2"            >
+            “Well then, gentlemen, listen to why it’s appropriate for me to go to see the ascetic Gotama,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-3"            >
+            and it’s not appropriate for him to come to see me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-4"            >
+            He is well born on both his mother’s and father’s side, stemming from a clean vessel, with irrefutable and impeccable genealogy back to the seventh paternal generation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-5"            >
+            For this reason it’s not appropriate for the ascetic Gotama to come to see me;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-6"            >
+            rather, it’s appropriate for me to go to see him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-7"            >
+            When he went forth he abandoned abundant gold, both coined and uncoined, stored above and below ground. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-8"            >
+            He went forth from the lay life to homelessness while still a youth, young, with pristine black hair, blessed with youth, in the prime of life. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-9"            >
+            Though his mother and father wished otherwise, weeping with tearful faces, he shaved off his hair and beard, dressed in ocher robes, and went forth from the lay life to homelessness. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-10"            >
+            He is attractive, good-looking, lovely, of surpassing beauty. He has divine looks and lustre, remarkable to behold. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-11"            >
+            He is ethical, possessing ethical conduct that is noble and skillful. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-12"            >
+            He’s a good speaker who enunciates well, with a polished, clear, and articulate voice that expresses the meaning. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-13"            >
+            He’s a tutor of tutors. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-14"            >
+            He has ended sensual desire, and is rid of caprice. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-15"            >
+            He teaches the efficacy of deeds and action. He doesn’t wish any harm upon the community of brahmins. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-16"            >
+            He went forth from an eminent family of unbroken aristocratic lineage. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-17"            >
+            He went forth from a rich, affluent, and wealthy family. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-18"            >
+            People come from distant lands and distant countries to question him. …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-10">[10]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-19"            >
+            Many thousands of deities have gone for refuge for life to him. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-20"            >
+            He has this good reputation:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-21"            >
+            ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’ …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-22"            >
+            He has the thirty-two marks of a great man. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-23"            >
+            King Seniya Bimbisāra of Magadha and his wives and children have gone for refuge for life to the ascetic Gotama. …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-11">[11]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-24"            >
+            King Pasenadi of Kosala and his wives and children have gone for refuge for life to the ascetic Gotama. …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-12">[12]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-25"            >
+            The brahmin Pokkharasāti and his wives and children have gone for refuge for life to the ascetic Gotama. …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-13">[13]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-26"            >
+            The ascetic Gotama has arrived to stay in the Godswood to the north of Opāsāda.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-27"            >
+            Any ascetic or brahmin who comes to stay in our village district is our guest,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-28"            >
+            and should be honored and respected as such.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-31"            >
+            For this reason, too, it’s not appropriate for the worthy Gotama to come to see me,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-32"            >
+            rather, it’s appropriate for me to go to see him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-33"            >
+            This is the extent of the worthy Gotama’s praise that I have memorized. But his praises are not confined to this,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-34"            >
+            for the praise of the worthy Gotama is limitless.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-35"            >
+            The possession of even a single one of these factors makes it inappropriate for the worthy Gotama to come to see me,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-36"            >
+            rather, it’s appropriate for me to go to see him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-9-37"            >
+            Well then, gentlemen, let’s all go to see the ascetic Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-10-1"            >
+            Then Caṅkī together with a large group of brahmins went to the Buddha and exchanged greetings with him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-10-2"            >
+            When the greetings and polite conversation were over, he sat down to one side.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-1"            >
+            Now at that time the Buddha was sitting engaged in some polite conversation together with some very senior brahmins.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-2"            >
+            And the student Kāpaṭika was sitting in that assembly. He was young, tonsured, and sixteen years old. He had mastered the three Vedas, together with their vocabularies and ritual performance, their phonology and word classification, and the testaments as fifth. He knew them word-by-word, and their grammar. He was well versed in cosmology and the marks of a great man.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-14">[14]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-3"            >
+            While the senior brahmins were conversing together with the Buddha, he interrupted.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-4"            >
+            Then the Buddha rebuked Kāpaṭika,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-5"            >
+            “Venerable Bhāradvāja, don’t interrupt the senior brahmins.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-15">[15]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-6"            >
+            Wait until they’ve finished speaking.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-7"            >
+            When he had spoken, Caṅkī said to the Buddha,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-8"            >
+            “Worthy Gotama, don’t rebuke the student Kāpaṭika.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-11-9"            >
+            He’s a gentleman, learned and astute, who enunciates well. He is capable of debating with the worthy Gotama about this.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-1"            >
+            Then it occurred to the Buddha,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-16">[16]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-2"            >
+            “Clearly the student Kāpaṭika will talk about the scriptural heritage of the three Vedas.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-3"            >
+            That’s why the brahmins put him at the front.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-4"            >
+            Then Kāpaṭika thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-5"            >
+            “When the ascetic Gotama looks at me, I’ll ask him a question.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-6"            >
+            Then the Buddha, knowing Kāpaṭika’s train of thought, looked at him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-7"            >
+            Then Kāpaṭika thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-8"            >
+            “The ascetic Gotama is engaging with me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-9"            >
+            Why don’t I ask him a question?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-10"            >
+            Then he said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-11"            >
+            “Worthy Gotama, regarding that which by the lineage of testament and by canonical authority is the ancient hymnal of the brahmins, the brahmins come to the categorical conclusion:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-17">[17]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-12"            >
+            ‘This is the only truth, anything else is futile.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-12-13"            >
+            What do you say about this?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-1"            >
+            “Well, Bhāradvāja, is there even a single one of the brahmins who says this:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-18">[18]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-2"            >
+            ‘I know this, I see this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-3"            >
+            this is the only truth, anything else is futile’?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-4"            >
+            “No, worthy Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-5"            >
+            “Well, is there even a single tutor of the brahmins, or a tutors’ tutor, or anyone back to the seventh generation of tutors, who says this:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-19">[19]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-6"            >
+            ‘I know this, I see this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-7"            >
+            this is the only truth, anything else is futile’?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-8"            >
+            “No, worthy Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-9"            >
+            “Well, what of the ancient seers of the brahmins, namely Aṭṭhaka, Vāmaka, Vāmadeva, Vessāmitta, Yamadaggi, Aṅgīrasa, Bhāradvāja, Vāseṭṭha, Kassapa, and Bhagu? They were the authors and propagators of the hymns. Their hymnal was sung and propagated and compiled in ancient times; and these days, brahmins continue to sing and chant it, chanting what was chanted and teaching what was taught.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-20">[20]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-10"            >
+            Did even they say:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-11"            >
+            ‘We know this, we see this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-12"            >
+            this is the only truth, anything else is futile’?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-13"            >
+            “No, worthy Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-14"            >
+            “So, Bhāradvāja, it seems that there is not a single one of the brahmins,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-17"            >
+            not even anyone back to the seventh generation of tutors,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-20"            >
+            nor even the ancient seers of the brahmins who say:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-21"            >
+            ‘We know this, we see this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-22"            >
+            this is the only truth, anything else is futile.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-23"            >
+            Suppose there was a queue of blind men, each holding the one in front: the first one does not see, the middle one does not see, and the last one does not see.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-21">[21]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-24"            >
+            In the same way, it seems to me that the brahmins’ statement turns out to be like a queue of blind men: the first one does not see, the middle one does not see, and the last one does not see.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-25"            >
+            What do you think, Bhāradvāja?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-13-26"            >
+            This being so, doesn’t the brahmins’ faith turn out to be baseless?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-1"            >
+            “The brahmins don’t just honor this because of faith, but also because of oral transmission.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-22">[22]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-2"            >
+            “First you relied on faith, now you speak of oral transmission.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-3"            >
+            These five things can be seen to turn out in two different ways.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-4"            >
+            What five?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-5"            >
+            Faith, endorsement, oral transmission, reasoned train of thought, and acceptance of a view after deliberation.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-23">[23]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-7"            >
+            Even though you have full faith in something, it may be vacuous, hollow, and false.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-8"            >
+            And even if you don’t have full faith in something, it may be true and real, not otherwise.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-9"            >
+            Even though you fully endorse something …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-24">[24]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-10"            >
+            something may be well transmitted …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-11"            >
+            something may be well thought out …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-12"            >
+            something may be well deliberated, it may be vacuous, hollow, and false.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-13"            >
+            And even if something is not well deliberated, it may be true and real, not otherwise.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-14"            >
+            For a sensible person who is preserving truth this is not sufficient to come to the categorical conclusion:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-25">[25]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-14-15"            >
+            ‘This is the only truth, anything else is futile.’”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-1"            >
+            “But worthy Gotama, how do you define the preservation of truth?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-3"            >
+            “If a person has faith,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-4"            >
+            they preserve truth by saying, ‘Such is my faith.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-5"            >
+            But they don’t yet come to the categorical conclusion:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-6"            >
+            ‘This is the only truth, anything else is futile.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-7"            >
+            If a person has a belief …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-8"            >
+            or has received an oral transmission …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-9"            >
+            or has a reasoned reflection about something …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-10"            >
+            or has accepted a view after contemplation,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-11"            >
+            they preserve truth by saying, ‘Such is the view I have accepted after contemplation.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-12"            >
+            But they don’t yet come to the categorical conclusion:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-13"            >
+            ‘This is the only truth, anything else is futile.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-14"            >
+            That’s how the preservation of truth is defined, Bhāradvāja. I describe the preservation of truth as defined in this way.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-26">[26]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-15-15"            >
+            But this is not yet the awakening to the truth.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-16-1"            >
+            “That’s how the preservation of truth is defined, worthy Gotama. We regard the preservation of truth as defined in this way.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-16-2"            >
+            But worthy Gotama, how do you define awakening to the truth?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-1"            >
+            “Bhāradvāja, take the case of a mendicant living supported by a town or village.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-2"            >
+            A householder or their child approaches and scrutinizes them for three kinds of things:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-3"            >
+            things that arouse greed, things that provoke hate, and things that promote delusion.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-27">[27]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-4"            >
+            ‘Does this venerable have any qualities that arouse greed? Such qualities that, were their mind to be overwhelmed by them, they might say            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-5"            >
+            that they know, even though they don’t know, or that they see, even though they don’t see;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-6"            >
+            or that they might encourage others to do what is for their lasting harm and suffering?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-7"            >
+            Scrutinizing them they find:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-8"            >
+            ‘This venerable has no such qualities that arouse greed.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-11"            >
+            Rather, that venerable has bodily and verbal behavior like that of someone without greed.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-12"            >
+            And the principle that they teach is deep, hard to see, hard to understand, peaceful, sublime, beyond the scope of logic, subtle, comprehensible to the astute.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-17-13"            >
+            It’s not easy for someone with greed to teach this.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-1"            >
+            Scrutinizing them in this way they see that they are purified of qualities that arouse greed. Next, they search them for qualities that provoke hate.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-2"            >
+            ‘Does this venerable have any qualities that provoke hate? Such qualities that, were their mind to be overwhelmed by them, they might say            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-3"            >
+            that they know, even though they don’t know, or that they see, even though they don’t see;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-4"            >
+            or that they might encourage others to do what is for their lasting harm and suffering?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-5"            >
+            Scrutinizing them they find:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-6"            >
+            ‘This venerable has no such qualities that provoke hate.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-9"            >
+            Rather, that venerable has bodily and verbal behavior like that of someone without hate.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-10"            >
+            And the principle that they teach is deep, hard to see, hard to understand, peaceful, sublime, beyond the scope of logic, subtle, comprehensible to the astute.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-18-11"            >
+            It’s not easy for someone with hate to teach this.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-1"            >
+            Scrutinizing them in this way they see that they are purified of qualities that provoke hate. Next, they scrutinize them for qualities that promote delusion.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-2"            >
+            ‘Does this venerable have any qualities that promote delusion? Such qualities that, were their mind to be overwhelmed by them, they might say            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-3"            >
+            that they know, even though they don’t know, or that they see, even though they don’t see;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-4"            >
+            or that they might encourage others to do what is for their lasting harm and suffering?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-5"            >
+            Scrutinizing them they find:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-6"            >
+            ‘This venerable has no such qualities that promote delusion.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-9"            >
+            Rather, that venerable has bodily and verbal behavior like that of someone without delusion.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-10"            >
+            And the principle that they teach is deep, hard to see, hard to understand, peaceful, sublime, beyond the scope of logic, subtle, comprehensible to the astute.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-19-11"            >
+            It’s not easy for someone with delusion to teach this.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-20-1"            >
+            Scrutinizing them in this way they see that they are purified of qualities that promote delusion.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-20-2"            >
+            Next, they place faith in them. When faith has arisen they approach the teacher. They pay homage, actively listen, hear the teachings, remember the teachings, examine their meaning, and accept them after deliberation. Then enthusiasm springs up; they apply zeal, weigh up, and strive. Striving, they directly realize the ultimate truth, and see it with penetrating wisdom.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-28">[28]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-20-3"            >
+            That’s how the awakening to truth is defined, Bhāradvāja. I describe the awakening to truth as defined in this way.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-20-4"            >
+            But this is not yet the attainment of truth.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-21-1"            >
+            “That’s how the awakening to truth is defined, worthy Gotama. I regard the awakening to truth as defined in this way.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-21-2"            >
+            But worthy Gotama, how do you define the attainment of truth?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-21-4"            >
+            “By the cultivation, development, and making much of these very same things there is the attainment of truth.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-29">[29]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-21-5"            >
+            That’s how the attainment of truth is defined, Bhāradvāja. I describe the attainment of truth as defined in this way.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-22-1"            >
+            “That’s how the attainment of truth is defined, worthy Gotama. I regard the attainment of truth as defined in this way.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-22-2"            >
+            But what quality is helpful for arriving at the truth?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-22-4"            >
+            “Striving is helpful for arriving at the truth.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-22-5"            >
+            If you don’t strive, you won’t arrive at the truth.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-22-6"            >
+            You arrive at the truth because you strive.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-22-7"            >
+            That’s why striving is helpful for arriving at the truth.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-23-1"            >
+            “But what quality is helpful for striving?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-23-3"            >
+            “Weighing up the teachings is helpful for striving …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-30">[30]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-24-3"            >
+            Zeal is helpful for weighing up the teachings …            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-31">[31]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-25-3"            >
+            Enthusiasm is helpful for zeal …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-26-3"            >
+            Acceptance of the teachings after deliberation is helpful for enthusiasm …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-27-3"            >
+            Examining the meaning of the teachings is helpful for accepting them after deliberation …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-28-3"            >
+            Remembering the teachings is helpful for examining their meaning …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-29-3"            >
+            Hearing the teachings is helpful for remembering the teachings …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-30-3"            >
+            Active listening is helpful for hearing the teachings …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-31-3"            >
+            Paying homage is helpful for active listening …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-32-3"            >
+            Approaching is helpful for paying homage …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-33-3"            >
+            Faith is helpful for approaching a teacher.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-33-4"            >
+            If you don’t give rise to faith, you won’t approach a teacher.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-33-5"            >
+            You approach a teacher because you have faith.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-33-6"            >
+            That’s why faith is helpful for approaching a teacher.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-1"            >
+            “I’ve asked the worthy Gotama about the preservation of truth, and he has answered me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-2"            >
+            I endorse and accept this, and am satisfied with it.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-3"            >
+            I’ve asked the worthy Gotama about awakening to the truth, and he has answered me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-4"            >
+            I endorse and accept this, and am satisfied with it.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-5"            >
+            I’ve asked the worthy Gotama about the attainment of truth, and he has answered me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-6"            >
+            I endorse and accept this, and am satisfied with it.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-7"            >
+            I’ve asked the worthy Gotama about the things that are helpful for the attainment of truth, and he has answered me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-8"            >
+            I endorse and accept this, and am satisfied with it.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-9"            >
+            Whatever I have asked the worthy Gotama about he has answered me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-10"            >
+            I endorse and accept this, and am satisfied with it.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-11"            >
+            Worthy Gotama, I used to think this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-12"            >
+            ‘Who are these shavelings, fake ascetics, primitives, black spawn from the feet of our kinsman next to those who understand the teaching?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-34-13"            >
+            The Buddha has inspired me to have fondness, confidence, and respect for ascetics!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-35-1"            >
+            Excellent, worthy Gotama! …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-mn95-35-2"            >
+            From this day forth, may the worthy Gotama remember me as a lay follower who has gone for refuge for life.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-32">[32]</a></sup></span></p>
+                        </div>
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/mn/mn94/en/sujato.html">
+            <span aria-hidden="true" class="text-xl">⇦</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] share-button w-[50px] hidden md:inline-flex"
+          type="button"
+          aria-label="Share"
+        >
+          <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+        </button>
+        <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px]  hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/mn/mn96/en/sujato.html">
+
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">⇨</span>
+          </a>
+              </div>
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+    class="mt-[10px] hidden w-[411px] flex-[0_0_411px] flex-col items-center gap-5 md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(420px,90%)] max-xl:flex-[0_0_auto]"
+    aria-label="Notes"
+  >
+    <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+                <div class="translation-picker relative w-full" data-translation-picker>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          title="English - Bhikkhu Sujato"
+          data-translation-picker-toggle
+        >
+          <span class="min-w-0 truncate">English - Bhikkhu Sujato</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div
+          class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-translation-picker-menu
+          hidden
+        >
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/mn/mn95/ru/sv+edited+o.html"
+              title="Russian - SV theravada.ru (edited by Dhamma.Gift)"
+                          >Russian - SV theravada.ru (edited by Dhamma.Gift)</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/mn/mn95/ru/sv.html"
+              title="Russian - SV theravada.ru"
+                          >Russian - SV theravada.ru</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/mn/mn95/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+                          >Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/mn/mn95/en/sujato.html"
+              title="English - Bhikkhu Sujato"
+              disabled            >English - Bhikkhu Sujato</button>
+                  </div>
+      </div>
+              <div class="w-full text-base leading-[1.5]">
+                            <div
+            id="sutta-note-1"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-1-2"
+            >[1]</a>
+                                                        <span>Opāsāda does not appear anywhere else. We later hear of Caṅkī’s longhouse (<i>pāsāda</i>), a luxurious residence to the north of the town on the way to the Godswood. Perhaps, then, Opāsāda means “below the mansion”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-2"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-1-3"
+            >[2]</a>
+                                                        <span>A grove in which offerings were made to the gods.</span>
+                                    </div>
+                            <div
+            id="sutta-note-3"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-2-1"
+            >[3]</a>
+                                                        <span>Caṅkī is regularly mentioned along with other senior brahmins Tārukkha, Pokkharasāti, Jānussoṇi, and Todeyya (<a href="https://suttacentral.net/dn13/en/sujato#2.2" target="_blank" rel="noopener noreferrer">DN 13:2.2</a>, <a href="https://suttacentral.net/mn98/en/sujato#2.2" target="_blank" rel="noopener noreferrer">MN 98:2.2</a>, <a href="https://suttacentral.net/mn99/en/sujato#13.5" target="_blank" rel="noopener noreferrer">MN 99:13.5</a>, <a href="https://suttacentral.net/snp3.9/en/sujato#1.4" target="_blank" rel="noopener noreferrer">Snp 3.9:1.4</a>). His name is obscure; spelled <i>caṅgī</i> in Sanskrit, it is perhaps related to the <i>gatāgate caṅgimā</i> of Mahā-subhāṣita-Saṁgraha 7235-1, where it refers to the sensual walk of a young woman; dictionaries record the sense “beautiful” for Kannada <i>caṁgi</i> and Sanskrit <i>caṅgiman</i>.</span>
+                                                                      <div class="mt-2 pl-7">“Royal park” is <i>rājadāya</i> (cp. <i>migadāya</i>, “deer park”).</div>
+                                                                      <div class="mt-2 pl-7">A <i>brahmadeyya</i> is a gift of land by a king to a brahmin, which was an outstanding feature of Indian feudalism. Similar grants are mentioned in the Dīgha Nikāya at <a href="https://suttacentral.net/dn3/en/sujato#1.2.1" target="_blank" rel="noopener noreferrer">DN 3:1.2.1</a>, <a href="https://suttacentral.net/dn5/en/sujato#1.4" target="_blank" rel="noopener noreferrer">DN 5:1.4</a>, <a href="https://suttacentral.net/dn12/en/sujato#1.3" target="_blank" rel="noopener noreferrer">DN 12:1.3</a>, and <a href="https://suttacentral.net/dn23/en/sujato#1.4" target="_blank" rel="noopener noreferrer">DN 23:1.4</a>.</div>
+                                    </div>
+                            <div
+            id="sutta-note-4"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-5-1"
+            >[4]</a>
+                                                        <span>Also a favored siesta location for Soṇadaṇḍa (<a href="https://suttacentral.net/dn5/en/sujato#3.1" target="_blank" rel="noopener noreferrer">DN 5:3.1</a>), Kūṭadanta (<a href="https://suttacentral.net/dn4/en/sujato#3.1" target="_blank" rel="noopener noreferrer">DN 4:3.1</a>), and Pāyāsi (<a href="https://suttacentral.net/dn23/en/sujato#3.1" target="_blank" rel="noopener noreferrer">DN 23:3.1</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-5"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-5-3"
+            >[5]</a>
+                                                        <span>The <i>khatta</i> (“butler”; Sanskrit <i>kṣattṛ</i>) was a senior member of the household staff, responsible for management of activities (Śatapatha Brāhmaṇa 5.3.1.7).</span>
+                                    </div>
+                            <div
+            id="sutta-note-6"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-8-2"
+            >[6]</a>
+                                                        <span>Compare <a href="https://suttacentral.net/dn4/en/sujato#5.2" target="_blank" rel="noopener noreferrer">DN 4:5.2</a> and <a href="https://suttacentral.net/dn5/en/sujato#6.2" target="_blank" rel="noopener noreferrer">DN 5:6.2</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-7"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-8-4"
+            >[7]</a>
+                                                        <span><i>Jātivāda</i> is sometimes translated as “doctrine of birth”, but the context here shows this cannot be the case. It refers to the genealogical records of the family lineage.</span>
+                                    </div>
+                            <div
+            id="sutta-note-8"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-8-9"
+            >[8]</a>
+                                                        <span><i>Brahmavarcasa</i> (“divine lustre”) commonly describes a spiritual or ethereal beauty due to ritual (Śatapatha Brāhmaṇa 13.1.9, 2.3.1, 4.1.1), or simply the healthy glow from time in the sun, which if overdone leads to sunburn (eg. Taittirīya Saṁhita 2.10.2). <i>Brahmavarṇa</i> (“divine looks”), on the other hand, seems unknown in the Vedic tradition.</span>
+                                                                      <div class="mt-2 pl-7">For Mahāsaṅgīti <i>vacchasī</i> read <i>vaccasī</i> (Sanskrit <i>varcasin</i>), “possessing lustre”.</div>
+                                    </div>
+                            <div
+            id="sutta-note-9"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-8-12"
+            >[9]</a>
+                                                        <span>Notice that the royal endowment was not just for a luxury residence, it was the site of a major international college. Kings invested in education.</span>
+                                    </div>
+                            <div
+            id="sutta-note-10"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-9-18"
+            >[10]</a>
+                                                        <span>“Distant land” (<i>tiroraṭṭha</i>) is defined at <a href="https://suttacentral.net/pli-tv-bi-vb-pc38/en/sujato#2.6" target="_blank" rel="noopener noreferrer">Bi Pc 38:2.6</a> as “any land other than where one is living”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-11"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-9-23"
+            >[11]</a>
+                                                        <span>Bimbisāra’s refuge is at <a href="https://suttacentral.net/pli-tv-kd1/en/sujato#22.11.4" target="_blank" rel="noopener noreferrer">Kd 1:22.11.4</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-12"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-9-24"
+            >[12]</a>
+                                                        <span>Pasenadi’s refuge is at <a href="https://suttacentral.net/sn3.1/en/sujato#14.5" target="_blank" rel="noopener noreferrer">SN 3.1:14.5</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-13"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-9-25"
+            >[13]</a>
+                                                        <span>Refuge of Pokkharasāti and family is at <a href="https://suttacentral.net/dn3/en/sujato#2.22.4" target="_blank" rel="noopener noreferrer">DN 3:2.22.4</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-14"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-11-2"
+            >[14]</a>
+                                                        <span>This student’s education is like that of Assalāyana (<a href="https://suttacentral.net/mn93/en/sujato#3.1" target="_blank" rel="noopener noreferrer">MN 93:3.1</a>), but his character could not be more different. His name has a variety of spellings in Pali and Sanskrit, but the correct form is <i>kāpaṭika</i> from <i>kapaṭa</i>, “fraud”. Kauṭilya explains that fraudulent students (<i>chātraḥ kāpaṭikaḥ</i>) were spies installed by kings to test the loyalty of subjects (Arthaśāstra 1.10.11, 1.11.1–2), for which they were paid handsomely (5.3.22). Note that the Buddha calls him Bhāradvāja; this follows the convention in Pali that brahmins of that name are distinguished by epithets, often unflattering: Bhāradvāja the Farmer (<a href="https://suttacentral.net/snp1.4/en/sujato#1.3" target="_blank" rel="noopener noreferrer">Snp 1.4:1.3</a>), Bhāradvāja the Fire-Worshiper (<a href="https://suttacentral.net/snp1.7/en/sujato#1.4" target="_blank" rel="noopener noreferrer">Snp 1.7:1.4</a>), Bhāradvāja the Alms-Gatherer (<a href="https://suttacentral.net/sn35.127/en/sujato#1.1" target="_blank" rel="noopener noreferrer">SN 35.127:1.1</a>), Bhāradvāja the Builder (<a href="https://suttacentral.net/sn7.17/en/sujato#1.2" target="_blank" rel="noopener noreferrer">SN 7.17:1.2</a>), Bhāradvāja the Rude (<a href="https://suttacentral.net/sn7.2/en/sujato#1.2" target="_blank" rel="noopener noreferrer">SN 7.2:1.2</a>), Bhāradvāja the Fiend (<a href="https://suttacentral.net/sn7.3/en/sujato#1.2" target="_blank" rel="noopener noreferrer">SN 7.3:1.2</a>), Bhāradvāja the Bitter (<a href="https://suttacentral.net/sn7.4/en/sujato#1.2" target="_blank" rel="noopener noreferrer">SN 7.4:1.2</a>), and so on. Thus Kāpaṭika would have been an epithet recognizing that he was the king’s spy, a practice to which Pasenadi openly admits (<a href="https://suttacentral.net/sn3.11/en/sujato#7.1" target="_blank" rel="noopener noreferrer">SN 3.11:7.1</a>, <a href="https://suttacentral.net/ud6.2/en/sujato#8.1" target="_blank" rel="noopener noreferrer">Ud 6.2:8.1</a>). This was the downside of building a religious institution on the king’s largess. Whether he was recognized as a spy at the time, or the epithet was applied later, is uncertain, but at some point it seems the meaning was forgotten and the epithet was taken to be his proper name.</span>
+                                    </div>
+                            <div
+            id="sutta-note-15"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-11-5"
+            >[15]</a>
+                                                        <span>It is rare for the Buddha to address a lay person as “venerable” (<i>āyasmā</i>). It seems the form is excessively polite to soften the rebuke.</span>
+                                    </div>
+                            <div
+            id="sutta-note-16"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-12-1"
+            >[16]</a>
+                                                        <span>This passage is unique to to this sutta.</span>
+                                    </div>
+                            <div
+            id="sutta-note-17"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-12-11"
+            >[17]</a>
+                                                        <span>The “lineage of testament” (<i>itihitihaparamparā</i>); “canonical authority” (<i>piṭakasampadā</i>); “ancient hymnal” (<i>porāṇaṁ mantapadaṁ</i>): these refer to the Vedas.</span>
+                                    </div>
+                            <div
+            id="sutta-note-18"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-13-1"
+            >[18]</a>
+                                                        <span>Compare <a href="https://suttacentral.net/mn99/en/sujato#9.8" target="_blank" rel="noopener noreferrer">MN 99:9.8</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-19"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-13-5"
+            >[19]</a>
+                                                        <span>Compare <a href="https://suttacentral.net/dn13/en/sujato#12.1" target="_blank" rel="noopener noreferrer">DN 13:12.1</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-20"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-13-9"
+            >[20]</a>
+                                                        <span>The ten names in Pali include the seven authors of the so-called “family books” of the Rig Veda (Maṇḍalas 2–8). As founders of poetic lineages, we often find works by their descendants, which are not always confined to their dedicated family book. Poems by the other three authors are mostly outside the family books. Thus the sages listed here cover most of the Rig Veda, although the Vedic tradition records many other authors as well.</span>
+                                                                      <div class="mt-2 pl-7">Atri Bhauma (Maṇḍala 5, rather than Aṣṭaka Vaiśvāmitra of 10.104); Vamra(ka) Vaikhānasa (10.99; see 9.66); Vāmadeva Gautama (Maṇḍala 4); Viśvāmitra Gāthina (Maṇḍala 3); Jamadagni Bhārgava was a descendant of Bhṛgu (several hymns mostly in Maṇḍalas 9 and 10); Aṅgirasa is identified with Agni as the founder of a lineage of poet-singers (Maṇḍala 8); Bharadvāja Bārhaspatya (Maṇḍala 6); Vasiṣṭha Maitrāvaruṇi (Maṇḍala 7); Kaśyapa Mārīca (several hymns mostly in Maṇḍalas 9 and 10); Bhṛgu was the bringer of fire from heaven whose adoptive descendant was Gṛtsamada Bhārgava Śaunaka (Maṇḍala 2).</div>
+                                    </div>
+                            <div
+            id="sutta-note-21"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-13-23"
+            >[21]</a>
+                                                        <span>The “blind following the blind” is also at <a href="https://suttacentral.net/mn95/en/sujato#13.24" target="_blank" rel="noopener noreferrer">MN 95:13.24</a> and <a href="https://suttacentral.net/mn99/en/sujato#9.25" target="_blank" rel="noopener noreferrer">MN 99:9.25</a>. Maitrī Upaniṣad 7.8–9 turns it around, saying that the blind teach false doctrines aimed at destroying the Vedas, “the doctrine of not-self” (<i>nairātmyavāda</i>), an obvious reference to Buddhists. We also find it at Kaṭha Upaniṣad 1.2.5, Muṇḍaka Upaniṣad 1.2.8, Mahābhārata 2.38.3, and the Jain Sūyagaḍa 1.1.2.19.</span>
+                                    </div>
+                            <div
+            id="sutta-note-22"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-14-1"
+            >[22]</a>
+                                                        <span>“Faith” is <i>saddhā</i> (see note on <a href="https://suttacentral.net/mn26/en/sujato#15.9" target="_blank" rel="noopener noreferrer">MN 26:15.9</a>)</span>
+                                                                      <div class="mt-2 pl-7">“Oral transmission” is <i>anussava</i>. While the idea of oral tradition was of course central to Vedism, we don’t seem to find the term until later (eg. Bhāgavata Purāṇa 5.8.29; Śrīdhara’s commentary on Bhagavad-Gītā 18.3).</div>
+                                                                      <div class="mt-2 pl-7">See too <a href="https://suttacentral.net/mn76/en/sujato#24.1" target="_blank" rel="noopener noreferrer">MN 76:24.1</a>.</div>
+                                    </div>
+                            <div
+            id="sutta-note-23"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-14-5"
+            >[23]</a>
+                                                        <span><i>Parivitakka</i> means “train of thought”, as when the Buddha reads Kāpaṭika’s thoughts above (<a href="https://suttacentral.net/mn95/en/sujato#12.6" target="_blank" rel="noopener noreferrer">MN 95:12.6</a>). <i>Ākāra</i> in this context means “reason”, as at <a href="https://suttacentral.net/mn47/en/sujato#10.2" target="_blank" rel="noopener noreferrer">MN 47:10.2</a>; the current sutta expands on the ideas there.</span>
+                                                                      <div class="mt-2 pl-7"><i>Khanti</i> is usually better rendered “acceptance” than the common “patience”.</div>
+                                    </div>
+                            <div
+            id="sutta-note-24"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-14-9"
+            >[24]</a>
+                                                        <span><i>Ruci</i> means “liking, preference”, and from there takes the sense of “endorsing” an idea or belief, in which case it can be translated as “opinion”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-25"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-14-14"
+            >[25]</a>
+                                                        <span>This sutta introduces the important epistemological distinction between the “preservation of truth” (<i>saccānurakkhaṇā</i>), the “awakening to the truth” (<i>saccānubodha</i>), and the “attainment of the truth” (<i>saccānuppatti</i>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-26"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-15-14"
+            >[26]</a>
+                                                        <span>This is essentially the standard used in references today: one should accurately represent one’s sources.</span>
+                                    </div>
+                            <div
+            id="sutta-note-27"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-17-3"
+            >[27]</a>
+                                                        <span>For these phrases, compare <a href="https://suttacentral.net/an4.117/en/sujato" target="_blank" rel="noopener noreferrer">AN 4.117</a> and <a href="https://suttacentral.net/an5.144/en/sujato" target="_blank" rel="noopener noreferrer">AN 5.144</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-28"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-20-2"
+            >[28]</a>
+                                                        <span>Here we see the meaning of the Buddhist “grounded faith” (<i>ākāravatī saddhā</i>, <a href="https://suttacentral.net/mn47/en/sujato#16.1" target="_blank" rel="noopener noreferrer">MN 47:16.1</a>, <a href="https://suttacentral.net/mn60/en/sujato#4.1" target="_blank" rel="noopener noreferrer">MN 60:4.1</a>) as opposed to “blind faith”. But faith is only the beginning of the long and demanding process described here.</span>
+                                    </div>
+                            <div
+            id="sutta-note-29"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-21-4"
+            >[29]</a>
+                                                        <span>Typically this distinction refers to the stream-enterer and the arahant.</span>
+                                    </div>
+                            <div
+            id="sutta-note-30"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-23-3"
+            >[30]</a>
+                                                        <span><i>Tulanā</i> is literally “weighing”, here in the applied sense of “evaluating”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-31"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-24-3"
+            >[31]</a>
+                                                        <span>Here, “zeal” (<i>ussāha</i>) is making an effort to understand the teachings, while “striving” (<i>padhāna</i>) is making an effort in meditation.</span>
+                                    </div>
+                            <div
+            id="sutta-note-32"
+            class="scroll-mt-24  py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-mn95-35-2"
+            >[32]</a>
+                                                        <span>That Kāpaṭika should sincerely go forth does not conflict with him being a spy; it is a conversion story. In authoritarian countries today, spies are regularly placed in monasteries for the same reason. There are stories of how, after being placed for many years and seeing not a hotbed of sedition but a place for wisdom and goodness, such spies feel shame and genuinely convert to Buddhism.</span>
+                                    </div>
+              </div>
+      </aside>
+</section>
+
+<div class="sutta-ref-popup" id="suttaRefPopup" aria-hidden="true">
+  <div class="sutta-ref-popup__backdrop" data-sutta-ref-close></div>
+  <div class="sutta-ref-popup__panel" role="dialog" aria-modal="true" aria-label="Notes">
+    <button class="sutta-ref-popup__close" type="button" data-sutta-ref-close aria-label="Close dialog">×</button>
+    <p class="sutta-ref-popup__index" data-sutta-ref-index></p>
+    <div class="sutta-ref-popup__content" data-sutta-ref-content></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    document.addEventListener("click", (event) => {
+      if (root.contains(event.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+
+  const translationPicker = document.querySelector("[data-translation-picker]");
+  const translationPickerToggle = translationPicker?.querySelector("[data-translation-picker-toggle]");
+  const translationPickerMenu = translationPicker?.querySelector("[data-translation-picker-menu]");
+  const translationPickerOptions = translationPicker?.querySelectorAll("[data-translation-picker-option]");
+
+  const setTranslationPickerOpen = (isOpen) => {
+    if (!translationPickerToggle || !translationPickerMenu) return;
+    translationPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    translationPickerMenu.hidden = !isOpen;
+    translationPicker.classList.toggle("is-open", isOpen);
+  };
+
+  translationPickerToggle?.addEventListener("click", () => {
+    const isOpen = translationPickerToggle.getAttribute("aria-expanded") === "true";
+    setTranslationPickerOpen(!isOpen);
+  });
+
+  translationPickerOptions?.forEach((option) => {
+    option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (translationPicker && !translationPicker.contains(event.target)) {
+      setTranslationPickerOpen(false);
+    }
+  });
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+      <script type="module" src="/assets/sutta-ref-popup.js?_=1781705533"></script>
+  
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

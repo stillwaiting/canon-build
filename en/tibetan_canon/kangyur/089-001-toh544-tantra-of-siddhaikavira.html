@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 544 — The Tantra of Siddhaikavīra — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 544 — The Tantra of Siddhaikavīra</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 544 — The Tantra of Siddhaikavīra        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Siddhaika­vīra­tantram          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Dharmachakra Translation Committee under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Great Sovereign Tantra of Siddhaikavīra</h3><section class="tei-section tei-section--chapter"><h4>Chapter 1</h4><p><span class="tei-ref">F.1.b</span><span class="tei-ref">S1</span><em>Oṁ</em>, homage to Mañjughoṣa!</p><div class="tei-verse"><div class="tei-line">The teacher of living beings, Mañjuvajra,</div><div class="tei-line">Taught this tantra for the sake of the world—</div><div class="tei-line">The tantra of Siddhaikavīra, the heroic lord,</div><div class="tei-line">The best and foremost among speakers.</div></div><div class="tei-verse"><div class="tei-line">This very deity, in the form of the mantra,</div><div class="tei-line">Bounteously grants every accomplishment.</div><div class="tei-line">On him indeed should the follower of Mantra meditate.</div><div class="tei-line">He in whom Siddhaikavīra is realized will gain accomplishment.</div></div><div class="tei-verse"><div class="tei-line">A follower of Mantra who has a pure body,</div><div class="tei-line">Once the small accomplishment has been obtained,</div><div class="tei-line">Will make his body a field</div><div class="tei-line">In which the great accomplishment will arise</div></div><div class="tei-verse"><div class="tei-line">And gradually to him will come</div><div class="tei-line">The attainment of bhūmis and so forth.</div><div class="tei-line">Like a wish-fulfilling gem, this follower of Mantra</div><div class="tei-line">Will always act for the benefit of beings.</div></div><div class="tei-verse"><div class="tei-line">With that in mind, overcome with compassion,</div><div class="tei-line">When asked by Vajradhara and others, <span class="tei-ref">F.2.a</span></div><div class="tei-line">Mañjuvajra gave, for the sake of the world,</div><div class="tei-line">A mantra collection of the accomplished ones.</div></div>First Mantra<p>oṁ kālumelu kālumelu stambhaya śilāvarṣaṃ tuṣāra­varṣaṃ ca lucca i lucca i svāhā |</p><p><em>Oṁ, kālumelu kālumelu</em>, stop the hailstorm and snowfall, stop, stop! <em>Svāhā</em>!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-325" href="#tei-note-UT22084-089-001-325">[1]</a></sup></p><p>This king of mantras, when correctly recited, will stop a hailstorm. Merely to remember it, using incanted ashes, can stop snow<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-326" href="#tei-note-UT22084-089-001-326">[2]</a></sup> falling, or make it fall wherever one wishes. In the same way, one can also stop lightning, hurricanes, thunderbolt strikes, etc. <span class="tei-ref">S2</span></p>Second Mantra<p>oṁ garuḍa haṃsa he he cala cala svāhā |</p><p><em>Oṁ</em>, garuḍa! Swan! Hey, hey! Move, move! <em>Svāhā</em>!</p><p>The mere thought of this king of mantras will stop a hailstorm. By inscribing it on a kettle drum with chalk and chanting over the drumstick, one can then use the sound of the drum to stop a hailstorm. The same can be done with the sound of a conch, etc.</p>Third Mantra<p>oṁ he he tiṣṭha tiṣṭha bandha bandha dhāraya dhāraya nirundhaya nirundhaya devadattam ūrṇāmaṇe svāhā |</p><p><em>Oṁ</em>, hey, hey! Remain, remain! Bind, bind! Hold, hold! Restrain such-and-such, restrain! O Ūrṇāmaṇi, <em>svāhā</em>!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-327" href="#tei-note-UT22084-089-001-327">[3]</a></sup></p><p>One should write the name of the enemy, in combination with this mantra, on a palm leaf, and place it in the burrow of a crab. That will bind the enemy’s mouth. It will also stop others’ evil designs, etc.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-328" href="#tei-note-UT22084-089-001-328">[4]</a></sup> This king of mantras, when recited 100,000 times according to the procedure of the preliminary practice, will bring success. By merely remembering this mantra one will be able to stop lightning, wind, thunderbolt strikes, hail, snow, and so forth. One will also stop torrential rain.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-330" href="#tei-note-UT22084-089-001-330">[5]</a></sup></p><p>By using incanted ashes and mustard seeds, one will bind the snouts of mice, the stylets of mosquitoes, etc. This will also stop attacks on a garden or field by birds, worms, locusts, and other pests. One should inscribe this mantra on a rag that has been discarded in a charnel ground, together with the name of a pregnant woman, enclose it in beeswax, place it in a charnel ground in a pot, seal it, and bury it. This will make the woman unable to give birth. Digging it up again, rinsing it with milk,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-331" href="#tei-note-UT22084-089-001-331">[6]</a></sup> and floating it on water will alleviate the problem. <span class="tei-ref">F.2.b</span></p><p>One should write this mantra on birchbark or cloth<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-332" href="#tei-note-UT22084-089-001-332">[7]</a></sup> with turmeric or yellow orpiment. One should make an effigy<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-333" href="#tei-note-UT22084-089-001-333">[8]</a></sup> using clay from an anthill, and place the mantra, enclosed in beeswax, in the effigy’s heart. One should fill its mouth with ash and bury it.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-334" href="#tei-note-UT22084-089-001-334">[9]</a></sup> In case of a dispute, one will be able to paralyze the mouth of one’s opponent. Also, in case of a lawsuit, one should incant the tongue of the effigy seven times and pierce it with seven thorns.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-335" href="#tei-note-UT22084-089-001-335">[10]</a></sup> That will bind the opponent’s mouth.</p><p>One should write this mantra on a clay pot with chalk, fill the pot with ashes, seal it, and bury it—that will paralyze the mouths of slanderers. With clay wiped off the hand of a potter, one should make an effigy of a ram, and place in its heart this mantra inscribed on birchbark with turmeric or yellow orpiment, tied up with a yellow string, and enclosed in beeswax.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-336" href="#tei-note-UT22084-089-001-336">[11]</a></sup> That will put an end to their anger and paralyze their mouths.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-337" href="#tei-note-UT22084-089-001-337">[12]</a></sup></p><p>When this mantra is written with saffron<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-338" href="#tei-note-UT22084-089-001-338">[13]</a></sup> and worn on one’s neck or arm, one will be able to stop the enemy’s weapons in battle. This king of mantras, placed at the feet of an effigy of Gaṇapati made of clay from an anthill and buried at a crossroads, <span class="tei-ref">S3</span> will stop all coming and going. It will interrupt all daily activities. When this king of mantras, written on birchbark or cloth and enclosed in beeswax, is put in the Gaṇapati’s abdomen and placed in a new jar filled with cool<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-339" href="#tei-note-UT22084-089-001-339">[14]</a></sup> water, it will stop all daily activities.</p><p>While traveling, one will stop thieves and the like by tying a knot on the border of one’s upper garment and recalling the mantra. In a forest, one will stop animals with horns,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-340" href="#tei-note-UT22084-089-001-340">[15]</a></sup> or those with fangs. By throwing a lump of clay, incanted with this mantra seven times, into water, one will bind the teeth of water animals.</p><p>One should write this mantra on a rag from a charnel ground, in combination with the names of the commanders of an opposing army, in the center of a double vajra. Outside the double vajra, one should write eight laṁ syllables, and around the outside of these, one should draw a double<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-341" href="#tei-note-UT22084-089-001-341">[16]</a></sup> maṇḍala of Indra. The mantra should then be placed in the abdomen of a Gaṇapati made of beeswax who is adorned with the double vajra.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-342" href="#tei-note-UT22084-089-001-342">[17]</a></sup> When it is buried next to an opposing army, it will stop that army. <span class="tei-ref">F.3.a</span></p><p>One should place this mantra, enclosed at both ends by a syllable oṁ flanked by two ṭha syllables, adorned by eight laṁ syllables, covered with a maṇḍala of Indra, and embellished with a double vajra, in the abdomen of the effigy of Gaṇapati made of clay from an anthill. One should then place it in a cremation urn and bury this urn in a cemetery.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-343" href="#tei-note-UT22084-089-001-343">[18]</a></sup> That will stop an opposing army.</p><p>If a city is on fire, one should offer a <em>chaff homa</em> and, facing the fire, throw on seven double handfuls of water, having first incanted it with the mantra. One will then be able to protect any house one wishes.</p><p>By tying ashes to one’s neck, one will put an end to vomiting. One should pronounce the mantra while firmly pressing the tip of one’s little finger; that will stop hiccups. With incanted ash one can cure blindness.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-344" href="#tei-note-UT22084-089-001-344">[19]</a></sup></p><p>When afflicted with blistering leprosy, one should draw a <em>cirikā</em><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-345" href="#tei-note-UT22084-089-001-345">[20]</a></sup> on a piece of cloth.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-346" href="#tei-note-UT22084-089-001-346">[21]</a></sup> Placed at any doorstep, it will prevent diseases such as blistering leprosy in that house.</p><p>Outside a village one should offer a great bali of fish, meat, alcohol, sour gruel, etc. In the center of the village, one should prepare a fire pit for the rite of pacifying, with five types of sacrificial wood and five types of grain smeared with ghee, and perform a <em>homa</em> offering. This will stop all death-causing demons and accidents. A village, etc., can be protected from being handed over to another owner by simply reciting the mantra.</p><p>By reciting the mantra continuously, one will become unassailable<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-347" href="#tei-note-UT22084-089-001-347">[22]</a></sup> by gods, demi-gods, humans, and nāgas.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-348" href="#tei-note-UT22084-089-001-348">[23]</a></sup></p><p>This king of mantras emerged from the <em>ūrṇā</em> hair between the eyebrows of the venerable lord Buddha at the time of his awakening in order to conquer the four māras. It is therefore called the <cite>jewel of the ūrṇā</cite>.</p><p>To drive away snakes one should scatter gravel that has been incanted, or write the mantra on the wall of a house with incanted chalk. <span class="tei-ref">F.3.b</span> Alternatively, one should engrave the mantra with a chisel on a stone tablet and bury it. That will bind the teeth of wild animals and poisonous snakes in a house, village, or town for <span class="tei-ref">S4</span> as long as one desires. One breaks the spell by digging it up. This mantra accomplishes all endeavors even when it has not been fully mastered.</p><div class="tei-verse"><div class="tei-line">To arrest the fangs of all creatures that bite,</div><div class="tei-line">One should incant gravel, etc., and scatter it.</div></div><p>All mantras should be written, together with the name of the intended person, in the center of the double vajra surrounded by a maṇḍala of Indra.</p><p>By hiding eight<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-349" href="#tei-note-UT22084-089-001-349">[24]</a></sup> splinters from a funeral pyre, incanted seven times, above an entrance door, one will interrupt the livelihood of all who live there. One can break the spell by taking the splinters out.</p>Fourth Mantra<p>oṁ nihi nicule abhayaṃkari elu velu śila pa ḍa i jahaṃ pelu āgāsapantharate ha attaṃdhari khili mo ḍi them bhi jakāre jā hi ṭhakāre hi ṭhaḥ ṭhaḥ ṭhaḥ svāhā |</p><p><em>Oṁ nihi</em>, O Niculā who grants fearlessness! <em>Elu velu śila pa ḍa i jahaṃ pelu āgāsapantharate ha attaṃdhari khili mo ḍi them bhi jakāre jā hi ṭhakāre hi ṭhaḥ ṭhaḥ ṭhaḥ svāhā</em>!</p><p>This king of mantras accomplishes all the previously mentioned acts even if it is not fully mastered. Moreover, it will accomplish all other tasks that may be desired by the <em>mantrin</em>.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-350" href="#tei-note-UT22084-089-001-350">[25]</a></sup> Making a <em>homa</em> offering of salt and black mustard, or a <em>chaff homa</em> will certainly put an opposing army to flight.</p>Fifth Mantra<p>oṁ ambāsimbāka pyāsu jom mo phe ḍa i du pyāsu |</p><p><em>Oṁ</em>, Ambāsimbāka, <em>pyāsu jom mo phe ḍa i du pyāsu</em>!</p><p>This king of mantras will remove all fear in all those who constantly recite it, even before it is fully mastered. By making a <em>tika</em> on one’s forehead<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-351" href="#tei-note-UT22084-089-001-351">[26]</a></sup> with vajra water incanted seven times, one will confuse all of one’s adversaries and appease their anger. If one is imprisoned, constant recitation of it will set one free. When one meets with misfortune, one will be without fear.</p>Sixth Mantra<p>eṣotthito hulu hulu jvālājihve hulu hulu yatraivotthito hulu hulu tatraiva pratigacchatu hulu hulu svāhā |</p><p>It has arisen; destroy it, destroy! Jvālājihvā, destroy it, destroy! Wherever it has arisen—destroy it, destroy—there you should go—destroy it, destroy! <em>Svāhā</em>!<span class="tei-ref">S5</span></p><p>This king of mantras brings peace to all those afflicted by the scourge of quarrels and disputes, even when recited just once.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-352" href="#tei-note-UT22084-089-001-352">[27]</a></sup><span class="tei-ref">F.4.a</span> Performing a <em>chaff homa</em> will pacify everything. By reciting this mantra over whatever flowers one may find and letting them float on water, one will surely pacify all and gain victory. If a city is on fire, one should stand facing the blaze, incant seven double-handfuls of water and throw them into the fire. Thus one will be able to protect any house one wishes by keeping it safe from the flames. By offering a <em>chaff homa</em> one will pacify epidemics among bipeds and quadrupeds.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-353" href="#tei-note-UT22084-089-001-353">[28]</a></sup></p>Seventh Mantra<p>oṁ padme padmākṣi padmasubhage phura phura phura |</p><p><em>Oṁ</em>, O lotus-eyed Padmā! You with the beauty of a lotus! Flicker, flicker, flicker!</p><p>Having<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-354" href="#tei-note-UT22084-089-001-354">[29]</a></sup> incanted some ash with this mantra, one should apply it to the eyes, making a dressing<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-355" href="#tei-note-UT22084-089-001-355">[30]</a></sup> with it; by wiping the eyes, one will remove blindness. By gazing at an angry person with an eye incanted seven times, one will appease him. To have everybody’s adoration, one should rinse one’s face with water incanted seven times. By writing this mantra, interspersed with the beneficiary’s name, on a wall with chalk, one will cure all eye diseases.</p><p>In a place where there are no people, one should one-pointedly incant one’s eyes seven times and stand with a one-pointedly focused mind. In the case of a man,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-356" href="#tei-note-UT22084-089-001-356">[31]</a></sup> if the left eye throbs, it foretells the successful accomplishment of a task according to his wishes. If the right eye throbs, it announces something bad.</p>Eighth Mantra<p>oṁ mocani mocaya mokṣaṇi mokṣaya jīvaṃvarade svāhā |</p><p><em>Oṁ</em>, Mocanī, release! O Mokṣaṇī, set free! O Jīvaṃvaradā, <em>svāhā</em>!</p><p>When a pregnant woman’s birth canal is anointed with incanted sesame oil, she will give birth with ease.</p><p>Facing a bound person, one should throw seven double-handfuls of incanted water toward him in the three periods of the day. The bound person will then become free from his bondage. One should write this mantra with saffron or bovine orpiment on birchbark, and tie it to the head of someone who is bound; it will release him from bondage.</p>Ninth Mantra<p>oṁ hari­markaṭa­nāma­sahasra­bāhur devadattaṃ bandhanād mocaya svāhā |</p><p><em>Oṁ</em>, O thousand-armed one called Grey Monkey, please release such-and-such from bondage! <em>Svāhā</em>!<span class="tei-ref">F.4.b</span></p><p>Having incanted a piece of chalk, one should repeatedly write this mantra on the ground and rub it out in the opposite direction. Then a bound person will be freed from bondage. Alternatively, one should write the mantra and the person’s name on a slip of birchbark<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-357" href="#tei-note-UT22084-089-001-357">[32]</a></sup> and wear it on one’s head. Then a bound person will be freed from bondage.</p>Tenth Mantra<p>oṁ tāraṇi tāraya mocani mocaya mokṣaṇi mokṣaya jīvaṃvarade svāhā |</p><p><em>Oṁ</em>, Tāraṇī, liberate! Mocanī, release! Mokṣaṇī, set free! Jivaṃvaradā, <em>svāhā</em>!<span class="tei-ref">S6</span></p><p>This king of mantras, correctly recited, will accomplish all actions.</p><p>One should anoint a pregnant woman’s birth canal with sesame oil incanted seven times. Then she will give birth with ease. A pregnant woman will also give birth easily after drinking a handful of water incanted seven times. By reciting the mantra continuously, one will free oneself and others from bondage. Wearing a leaf with the mantra on one’s neck or arm will release one from bondage.</p>Eleventh Mantra<p>oṁ tāre tu tāre ture mokṣaya jīvaṃvarade svāhā |</p><p><em>Oṁ</em>, Tārā, powerful Tārā, please liberate! O Jivaṃvaradā, <em>svāhā</em>!</p><p>This king of mantras accomplishes all previously mentioned actions. One should write this mantra, interwoven with the beneficiary’s name, with saffron on a piece of birchbark, surround it with beeswax, place it inside a new jar filled with scented water, and worship it in the three periods of the day with offerings of fragrant flowers and so forth. The person whose name has been interwoven with the mantra will be victorious in all quarrels and disputes.</p>Twelfth Mantra<div class="tei-verse"><div class="tei-line">eraṇḍasya vane kāko gaṅgātīram upasthitaḥ |</div><div class="tei-line">pibatu dūtaḥ pānīyaṃ viśalyā bhavatu gurviṇī ||</div></div><div class="tei-verse"><div class="tei-line">The crow in a thicket of palma christi</div><div class="tei-line">Roosting on the bank of Ganges—</div><div class="tei-line">The messenger—may he drink water!</div><div class="tei-line">May the pregnant woman be delivered of her child!</div></div><p>One should give the messenger who has arrived a drink of three handfuls of water incanted with this mantra seven times. Then the pregnant woman will give birth with ease.</p>Thirteenth Mantra<p>oṁ amaraṇi jīvantīye svāhā |</p><p><em>Oṁ</em>, Amaraṇī! <em>Svāhā</em> to Jīvantī!</p><p>This king of mantras, duly recited, can accomplish all endeavors. After water incanted with it has been drunk, blisters will not appear.</p><p>One should incant turmeric, yellow myrobalan, costus, etc., and rub it into a wound caused by a venomous spider, a monkey, or skin eruptions.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-358" href="#tei-note-UT22084-089-001-358">[33]</a></sup> Then one will become well. <span class="tei-ref">F.5.a</span> At the onset of any type of illness, one will become well by tying a mantra knot.</p><p>A person who is about to die will, by reciting the mantra continuously, live one hundred years. By offering a <em>homa</em> of [incanted] sesame and ghee, one will pacify all ailments. By drinking an herbal remedy incanted with this mantra, one will become free from all diseases.</p><p>One should besmear an ailing body part with [incanted] butter, clarified one hundred times. Then the part will become well. If one has a headache, one should incant sesame oil and rub it onto one’s head. One will become well.</p><p>One should make a dressing of [incanted] water over a festering wound and it will heal. In the case of enlargement of the spleen, one should split an eggplant with an [incanted] machete. This will make the enlargement disappear.</p><p>One should bring together a root of the five-leaved chaste tree, a root of the margosa tree, and a peacock’s feather, and incant them one hundred and eight times and add incense.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-359" href="#tei-note-UT22084-089-001-359">[34]</a></sup> This will cure fevers—a one-, two-, three-, or four-day fever, etc. It will also chase away ghosts, spirits of the deceased, ghouls, gods, and demons.</p><p>A woman whose child has died can bring that child back to life by bathing it from a jar incanted with the mantra one hundred and eight times. <span class="tei-ref">S7</span> A woman who carries this mantra, written on birchbark, on her waist or arm will have her fetus protected.</p><p>When one recalls this mantra in battle, one will meet with victory.</p><p>By using the mantra for cleansing<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-360" href="#tei-note-UT22084-089-001-360">[35]</a></sup> one will remove all diseases.</p>Fourteenth Mantra <p>oṁ pādacalane svāhā |</p><p><em>Oṁ</em>, Pādacalanā, <em>svāhā</em>!</p><p>This king of mantras, when fully mastered, will accomplish all endeavors after the prescribed preliminary practice. When one is in danger of developing the blisters of leprosy, one should drink water incanted with it and the leprosy will not appear. If this mantra is written on a leaf<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-361" href="#tei-note-UT22084-089-001-361">[36]</a></sup> and placed by the door, the leprosy will not come. In all dangers, a <em>homa</em> oblation of sesame mixed with ghee will afford great protection.</p><p>One should incant a crow’s wing, holding it in one’s hand. Throwing it onto the roof of any house will then drive out its owner. <span class="tei-ref">F.5.b</span></p>Fifteenth Mantra<p>oṁ piśācī parṇaśabari sarvopadrava­nāśani svāhā |</p><p><em>Oṁ</em>, demoness Parṇaśabarī! Remover of all misfortunes, <em>svāhā</em>!</p><p>This great mantra removes all misfortunes that afflict bipeds and quadrupeds and accomplishes all endeavors, even when it has not been fully mastered.</p><p>A <em>homa</em> offering, mantra recitation, meditation,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-362" href="#tei-note-UT22084-089-001-362">[37]</a></sup> a mantra knot, a drink of incanted water, or cleansing with incanted water will remove all diseases.</p><p>One should write the mantra with turmeric on birchbark and wear it on one’s arm or neck. Thus one will obtain success in business transactions.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-363" href="#tei-note-UT22084-089-001-363">[38]</a></sup> One will be cured even of the quartan fever and other recurring fevers. One will be rid of the danger of rākṣasas, etc. One will be victorious in quarrels and disputes. One will become invisible to tigers, alligators, mahoragas, thieves, etc. By reciting it non-stop, one will be adored by everyone.</p>Sixteenth Mantra<p>oṁ adya tṛtīyā amukasya cakṣuḥ stambhaya ṭhaḥ ṭhaḥ svāhā |</p><p><em>Oṁ</em>, now you are the third. Stabilize the vision of such-and-such a person! <em>Ṭhaḥ ṭhaḥ</em>! <em>Svāhā</em>!</p><p>On whichever lunar day one’s sight deteriorates, the name of that day should be written with chalk on a wall or a tablet. It should be enclosed three times with three ṭhaḥ syllables.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-364" href="#tei-note-UT22084-089-001-364">[39]</a></sup> The visual problem will be cured.</p>Seventeenth Mantra<p>oṁ caṇḍa­mahā­roṣaṇa hūṁ phaṭ |</p><p><em>Oṁ</em> Caṇḍa­mahā­roṣaṇa, <em>hūṁ phaṭ</em>!</p><p>This king of mantras, pronounced once, burns all evil. It affords protection in every way. One will remove the danger of<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-365" href="#tei-note-UT22084-089-001-365">[40]</a></sup> spirits, etc., by pelting them with beans, etc.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-366" href="#tei-note-UT22084-089-001-366">[41]</a></sup></p><p>Having written this mantra with chalk on a platter, one should hang it by the door. <span class="tei-ref">S8</span> This will protect newborn babies.</p><p>One should make a beeswax effigy, four fingers long, and insert this mantra, written along with the name of the person targeted, into its heart. If one pierces its mouth with a thorn the opponent’s mouth will be nailed. If one pierces its feet, one will stop him moving. If one pierces its heart, it will quell his anger. Whichever body parts one seizes and pierces with a splinter of human shinbone or an iron nail, his equivalent body parts will decay. If one buries the effigy under an enemy’s door, one will drive him out. <span class="tei-ref">F.6.a</span> One can also drive an enemy out by throwing incanted ashes from a charnel ground on the lintel of his door.</p><p>Incanting one’s sword will bring victory if one goes into battle.</p><p>To fulfil any need need, one should offer a bali, and that need will be fulfilled. Whatever the follower of Mantrayāna desires, whether wholesome or unwholesome, he will accomplish it all merely by reciting the mantra.</p>Eighteenth Mantra<p>oṁ kāśe syanda kuśe syanda syanda tvaṃ śūnyaveśmani mama tvaṃ tathā syanda yathā syandasi vajriṇaḥ svāhā |</p><p><em>Oṁ</em>, flow into the <em>kāśa</em> grass, flow into the <em>kuśa</em> grass, flow into an empty house! Flow for me as you flow for the possessor of the vajra! <em>Svāhā</em>!</p><p>For conjunctivitis, relief will come after wiping the eyes.</p>Nineteenth Mantra<p>oṁ jambhe mohe hṛdaya­hṛdayāvartani hūṁ phaṭ svāhā |</p><p><em>Oṁ</em>, Jambhā, Mohā! You who make one heart turn toward another heart! <em>Hūṁ phaṭ</em>! <em>Svāhā</em>!</p><p>By rinsing one’s face with water incanted seven times with this king of mantras early in the morning before crows start to caw, one will be adored by everyone.</p><p>When the moon is in the asterism of Puṣya, one should take some lampblack with a garland of white lotuses and cow’s ghee<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-367" href="#tei-note-UT22084-089-001-367">[42]</a></sup> and incant it 108 times. Anyone whose eyes have been anointed with this substance will steal the hearts of all wanton<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-368" href="#tei-note-UT22084-089-001-368">[43]</a></sup> women.</p><p>One should blend sandalwood with the root of <em>adhaḥpuṣpikā</em> and make a <em>tika</em> with this substance. When the mantra is incanted 108 times, a capable practitioner will be able to appease others’ anger, and will be victorious in disputes and quarrels. One who recites the mantra continuously according to the ritual will be able to make a city tremble.</p>Twentieth Mantra<p>oṁ stambhani stambhaya jambhani jambhaya mohani mohaya rakṣaṇi rakṣaya māṁ varade siddha­locane svāhā |</p><p><em>Oṁ</em>, Stambhanī, immobilize! Jambhanī, destroy! Mohanī, delude! Rakṣaṇī, protect me! Varadā, Siddhalocanā, <em>svāhā</em>!</p><p>This heart mantra of Locanā will remove all fear.</p>This was the first chapter in the “<cite>Great Sovereign Tantra of Siddhaikavīra</cite>.” <span class="tei-ref">S9</span></section><section class="tei-section tei-section--chapter"><h4>Chapter 2</h4><div class="tei-verse"><div class="tei-line">One should explain this king of tantras</div><div class="tei-line">To a disciple who is an awakened Buddhist,</div><div class="tei-line">Who has many good qualities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-369" href="#tei-note-UT22084-089-001-369">[44]</a></sup></div><div class="tei-line">Who is devoted to his teacher, and who is skilled.</div></div><div class="tei-verse"><div class="tei-line"><em>Oṁ</em>, homage to the god Vimalacandra!</div></div><div class="tei-verse"><div class="tei-line">The world is sustained by truth;</div><div class="tei-line">It is preserved by truth;</div><div class="tei-line">Through truth, it abides in Dharma;</div><div class="tei-line">Truth is eternal as Brahman.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-370" href="#tei-note-UT22084-089-001-370">[45]</a></sup></div></div><div class="tei-verse"><div class="tei-line">Truth is the Buddha, the Dharma, and the Saṃgha;</div><div class="tei-line">It is the ocean of qualities.</div><div class="tei-line">By these words of truth</div><div class="tei-line">May you swiftly enter the mirror.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-371" href="#tei-note-UT22084-089-001-371">[46]</a></sup><span class="tei-ref">F.6.b</span></div></div><p>As here follows:</p>Twenty-First Mantra<p>oṁ sara sara siri siri suru suru meru­mandara­pratīkāśa āviśa āviśa kailāsa­kūṭa­putrāya namaḥ svāhā |</p><p><em>Oṁ</em>, run, run! Move, move! Go, go! Become like Mount Meru, become! Homage to the Kailāsakūṭa­putra! <em>Svāhā</em>!</p><div class="tei-verse"><div class="tei-line">“Whatever task I can think of,</div><div class="tei-line">Please explain it to me in its entirety, according to the facts,</div><div class="tei-line">Regardless of whether it is for one’s own sake, or the sake of another,</div><div class="tei-line">Whether it is wholesome or unwholesome.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-372" href="#tei-note-UT22084-089-001-372">[47]</a></sup></div></div><p>Early in the morning, in a clean place, one should draw a maṇḍala, set up a jar, and make generous offerings to the god Vimalacandra.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-373" href="#tei-note-UT22084-089-001-373">[48]</a></sup> One should incant the mirror and show it to a boy or girl who is well washed,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-374" href="#tei-note-UT22084-089-001-374">[49]</a></sup> dressed in very clean clothes, anointed with white sandalwood paste and wearing a necklace of sweet-smelling flowers, and uncorrupted by “villagers’ dharma.” Then the mirror will reveal without error what should be done as regards the intended task.</p><p>In the evening, one should wipe the top surface of the maṇḍala disk and make generous offerings to the god, lord Vimalacandra.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-376" href="#tei-note-UT22084-089-001-376">[50]</a></sup> Having made an offering 108 times, one should go to sleep without speaking. The beneficial and harmful results of the task one has in mind will be revealed. To those who recite the mantra continuously, the events taking place in the three worlds will be revealed.</p>Twenty-Second Mantra<p>oṁ śravaṇa­piśācini muṇḍe svāhā |</p><p><em>Oṁ</em>, Śravaṇa­piśācī, Muṇḍā, <em>svāhā</em>!<span class="tei-ref">S10</span></p><p>If one stands under a belleric myrobalan tree or under a banyan tree and silently recites the mantra 100,000 times, one will attain success. Muṇḍā, whispering in one’s ear,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-377" href="#tei-note-UT22084-089-001-377">[51]</a></sup> will recount all that is happening in the three worlds. Alternatively, bathed and dressed in clean clothes, one should recite it 10,000 times in a secluded place. Then one will attain success.</p><p>At night, one should incant costus root 108 times. Then, having anointed one’s face and feet with it, one should go to sleep without speaking. It will then be revealed in one’s sleep what will be beneficial and what will not.</p>Twenty-Third Mantra<p>oṁ namaḥ saptānāṃ samyak­saṃbuddha­koṭīnām | tadyathā | oṁ cale cule cunde mahāvidye satyavādini varade kathaya kathaya svāhā |</p><p><em>Oṁ</em>, homage to the seven <em>koṭis</em> of perfectly awakened buddhas! Just as here follows, <em>Oṁ</em>, Calā, Culā, Cundā, Mahāvidyā, Satyavādinī, Varadā, speak, speak! <em>Svāhā</em>!</p><p>If one follows here the same procedure described for the previous mantra, Calā will reveal things in a mirror, a conch, a candle, or a dish of water. One who recites the mantra silently, after washing his face with water incanted 108 times, will perceive in his sleep what is beneficial and what is not.</p>Twenty-Fourth Mantra<p>oṁ mucili svāhā | mohani svāhā | dantili svāhā |</p><p><em>Oṁ</em>, Mucilī, <em>svāhā</em>! Mohanī, <em>svāhā</em>! Dantilī, <em>svāhā</em>!</p><p>This mantra<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-378" href="#tei-note-UT22084-089-001-378">[52]</a></sup> can be mastered by reciting it 10,000 times. <span class="tei-ref">F.7.a</span> One should make generous offerings to the blessed noble lord Avalokiteśvara, wash one’s face with water incanted 108 times, and recite the mantra, having set one’s mind on the task to be accomplished. If one goes to sleep without speaking, one will behold the lord as one’s own body and learn what will be beneficial and what will not.</p>Twenty-Fifth Mantra<p>oṁ prajvala hūṁ phaṭ |</p><p><em>Oṁ</em>, Prajvala! <em>Hūṁ, phaṭ</em>!</p><p>This mantra is the heart essence of Lord Lokanātha. One will attain success by reciting it one million times. If one follows here the same ritual described for the previous mantra, it will be revealed in one’s dreams what is beneficial and what is not.</p>Twenty-Sixth Mantra<p>oṁ namaḥ saptānāṃ buddhānām apratihata­śāsanānām | tadyathā | oṁ kumāra­rūpeṇa darśaya darśaya ātmano vibhūtiṃ samudbhāvaya svapnaṃ nivedaya yathābhūtaṃ hūṁ hūṁ phaṭ phaṭ svāhā |</p><p><em>Oṁ</em>, homage to the seven buddhas whose teachings are inviolable! As here follows: <em>Oṁ</em>, show yourself in the form of the Youthful One, show! Manifest your power! Send me a dream to reveal the way things are! <em>Hūṁ, hūṁ</em>! <em>Phaṭ, phaṭ</em>! <em>Svāhā</em>!<span class="tei-ref">S11</span></p><p>One should make offerings, according to one’s ability, in front of a painting or a statue of venerable Mañjuśrī,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-379" href="#tei-note-UT22084-089-001-379">[53]</a></sup> or by a memorial that contains his body relics. If one recites the mantra seven hundred times, one will oneself behold the lord in a dream and show him to others, too.</p>Twenty-Seventh Mantra<p>oṁ karṇapiśāci karṇe me kathaya hūṁ phaṭ |</p><p><em>Oṁ</em>, Karṇapiśācī, whisper into my ear! <em>Hūṁ phaṭ</em>!</p><p>Beneath a tree inhabited by piśācas, one should observe silence and sit absorbed in the samādhi of conquering the three worlds. Then, one should incant meat, fish,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-380" href="#tei-note-UT22084-089-001-380">[54]</a></sup> and black plum, and with them prepare a <em>bali</em>. One should recite the mantra in the three periods of the day. On the first day Karṇapiśācī will give a sign. Later, she will come, and one will attain success. From then on, whispering into one’s ear, she will recount all that is happening in the three worlds. After twenty-one days, one will succeed even in killing Brahmā.</p>Twenty-Eighth Mantra<p>oṁ caturbhuja ṣaṇmukha vikṛtānana karṇapiśācīm ākarṣaya hūṁ phaṭ |</p><p><em>Oṁ</em>, the four-armed and six-faced one! You with a contorted face! Please summon Karṇapiśācī! <em>Hūṁ phaṭ</em>!</p><p>One should recite [this mantra] in a charnel ground in front of a painting of Yamāntaka. After twenty-one days,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-381" href="#tei-note-UT22084-089-001-381">[55]</a></sup> Karṇapiśācī will be in one’s control.</p>Twenty-Ninth Mantra<p>oṁ buddha curu curu mārge svāhā |</p><p><em>Oṁ</em>, Buddha! Curu, curu on the path! <em>Svāhā</em>!</p><p>In a memorial containing his relics, or in front of the venerable Buddha, one should recite the mantra 10,000 times as preliminary practice. Later, one should make offerings according to one’s ability. <span class="tei-ref">F.7.b</span> At bedtime, one should recite the mantra eight hundred times. One should go to sleep with the following question in one’s mind: “What was my past existence, and what will my future existence be?” In one’s sleep, one will perceive one’s past and future births, there is no doubt.</p><p>If one is to die within six months, then in one’s dream one will not be able to see one’s own head or those of others. Similarly, a boy or a girl whom one sees in an incanted mirror with his or her head invisible will die within six months.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-382" href="#tei-note-UT22084-089-001-382">[56]</a></sup></p><p>One should make an unguent from malachite and the root of white <em>agastya</em> tree, incant it 108 times, and smear it on one’s eyes. One will distinctly see without heads all those who are going to die within six months, whether humans or animals.</p>Thirtieth Mantra<p>oṁ svapna­vilokini siddha­locane svapnaṃ me kathaya svāhā |</p><p><em>Oṁ</em>, Svapnavilokinī! Siddhalocanā! Interpret my dream for me! <em>Svāhā</em>!<span class="tei-ref">S12</span></p><p>This king of mantras works with all the methods previously described.</p>Thirty-First Mantra<p>oṁ aditi devadattāṃ me dehi dadāpaya svāhā |</p><p><em>Oṁ</em>, Aditi, give me such-and-such a girl! Please give! <em>Svāhā</em>!</p><p>If one recites this mantra surrounded by water, one will be given the girl one has in mind.</p><p>One should recite the mantra 100,000 times for each syllable. By offering a <em>homa</em> of <em>priyaṅgu</em> flowers or <em>palāśa</em> flowers one will obtain great splendor.</p><p>If one recites this mantra at night while performing a <em>homa</em> using the wood of a milk tree, one will obtain any village for which one performs the <em>homa</em> and recitation.</p><p>By performing 100,000 <em>homa</em> rituals with lotuses or bilva fruits, one born into a royal family will obtain the kingdom. Others will obtain great splendor.</p><p>When one offers 700,000 <em>homa</em> rituals with any type of flowers, one will obtain inexhaustible wealth.</p>Thirty-Second Mantra<p>oṁ jaye vijaye ajite aparājite svāhā |</p><p><em>Oṁ</em>, Jayā, Vijayā, Ajitā, Aparājitā, <em>svāhā</em>!</p><p>Reciting this king of the heart mantras of the four sisters 400,000 times, following the same procedures as described previously, will accomplish all the rituals described previously.</p>Thirty-Third Mantra<p>oṁ megholkāya svāhā |</p><p><em>Oṁ, svāhā</em> to Megholka!</p><p>By offering a <em>homa</em> with flowers of the <em>palāśa</em> tree 100,000 times, using, as an option, firewood from the same tree, one will obtain 100,000 pieces of gold. <span class="tei-ref">F.8.a</span> One who wishes for a girl will soon obtain the one he desires.</p>Thirty-Fourth Mantra<p>oṁ kamalavikāsini kamale mahālakṣmi rājyaṃ me dehi varade svāhā |</p><p><em>Oṁ</em>, Kamalavikāsinī, Kamalā, Mahālakṣmī, give me the kingdom! You who grant boons, <em>svāhā</em>!</p><p>This mantra is the essence of Mahālakṣmī. When recited continuously, it will bring enormous glory. By offering a <em>homa</em> of whatever flowers are available, one will obtain great splendor and any girl one desires. By offering 100,000 <em>homas</em> of bdellium pills the size of a kernel of a cotton tree, smeared with the three sweet substances, or 100,000 <em>homas</em> of lotuses, one will obtain a kingdom.</p>Thirty-Fifth Mantra<p>oṁ nandini varade kiṇi kiṇi khiṇi khiṇi śriyaṃ me dada vauṣaṭ |</p><p><em>Oṁ</em>, Nandinī! You who grant boons! <em>Kiṇi, kiṇi! Khiṇi, khiṇi</em>! Give me splendor! <em>Vauṣaṭ</em>!</p><p>This king of mantras is the heart essence of Nandinī. It accomplishes all the previously described activities.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-383" href="#tei-note-UT22084-089-001-383">[57]</a></sup><span class="tei-ref">S13</span></p>Thirty-Sixth Mantra<p>oṁ jambhe mohe svāhā |</p><p><em>Oṁ</em>, Jambhā! Mohā! <em>Svāhā</em>!</p><p>This king of mantras brings the fulfillment of wishes when one makes offerings of oleander flowers to the venerable Tārā and recites the mantra 100,000 times for each syllable.</p>Thirty-Seventh Mantra<p>oṁ vasudhāriṇi svāhā | oṁ śrīvasu svāhā | oṁ vasuśriye svāhā | oṁ vasumukhi svāhā | oṁ vasu­matiśriye svāhā |</p><p><em>Oṁ</em>, Vasudharā, <em>svāhā</em>! <em>Oṁ</em>, Śrīvasu, <em>svāhā</em>! <em>Oṁ</em>, Vasuśrī, <em>svāhā</em>! <em>Oṁ</em>, Vasumukhī, <em>svāhā</em>! <em>Oṁ</em>, Vasumatiśrī, <em>svāhā</em>!</p><p>One should imagine oneself in the form of Jambhala, and visualize in one’s heart, in the center of a moon disk, the goddess Vasudharā, who is of golden color, has two arms, and is adorned with all adornments. In the four directions, starting with the east, she is surrounded by four goddesses. Her right hand is in a boon-granting gesture, and in her left she is holding grain and a cluster of blossoms. Visualizing her like this will bring fulfillment of one’s wishes.</p><p>One should draw a four-sided maṇḍala with cow dung, two hands in diameter, and offer sweet-smelling<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-384" href="#tei-note-UT22084-089-001-384">[58]</a></sup> flowers in the three periods of the day. When one has done 4,000 recitations, one’s wishes will become fulfilled within six months.</p><p>By offering 400,000 <em>homas</em> of whatever flowers may be available, one will obtain great splendor. By reciting the mantra 100,000 times for each syllable, one will ensure great splendor. After offering 100,000 <em>homas</em> of bdellium pills, one’s wishes will come true. <span class="tei-ref">F.8.b</span></p>Thirty-Eighth Mantra<p>oṁ vasudhāriṇi amukīṃ kanyāṃ me dehi dadāpaya svāhā |</p><p><em>Oṁ</em>, Vasudharā, give such-and-such girl to me! Cause her to be given to me! <em>Svāhā</em>!</p><p>Observing one’s minor vows,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-385" href="#tei-note-UT22084-089-001-385">[59]</a></sup> one should bathe and, while in the water, recite this mantra 400,000 times. Then one will obtain the girl one desires.</p><p>At night, one should do a <em>homa</em> offering 100,000 times with the wood of a milk tree, including [in the mantra] the name of a village. Then one will obtain that village.</p>Thirty-Ninth Mantra<p>oṁ vasudhāriṇi svāhā | oṁ candrakāntyai svāhā | oṁ dattāyai svāhā | oṁ vasudattāyai svāhā | oṁ āryāyai svāhā | oṁ subhadrāyai svāhā | oṁ guptāyai svāhā | oṁ devyai svāhā | oṁ sarasvatyai svāhā |</p><p><em>Oṁ</em> Vasudharā, <em>svāhā</em>! <em>Oṁ</em>, <em>svāhā</em> to Candrakāntī! <em>Oṁ</em>, <em>svāhā</em> to Dattā! <em>Oṁ</em>, <em>svāhā</em> to Vasudattā! <em>Oṁ</em>, <em>svāhā</em> to Āryā! <em>Oṁ</em>, <em>svāhā</em> to Subhadrā! <em>Oṁ</em>, <em>svāhā</em> to Guptā! <em>Oṁ</em>, <em>svāhā</em> to Devī! <em>Oṁ</em>, <em>svāhā</em> to Sarasvatī!</p><p>One should draw Vasudharā on a gold, silver, or copper leaf in the center of an eight-petaled lotus. On its petals, starting from the east, one should draw the great yakṣiṇīs, Candrakāntī, and so forth. One should then enclose it in two leaves and place it in between ghee, honey, and sugar.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-386" href="#tei-note-UT22084-089-001-386">[60]</a></sup> By following the same procedures as previously described, one will accomplish the tasks previously described. <span class="tei-ref">S14</span></p>Fortieth Mantra<div class="tei-verse"><div class="tei-line">In the center:</div></div><p>oṁ jambhala­jalendrāya svāhā |</p><p><em>Oṁ, svāhā</em> to Jambhala, the lord of the waters!</p><div class="tei-verse"><div class="tei-line">In the cardinal directions:</div></div><p>oṁ maṇibhadrāya svāhā | oṁ pūrṇabhadrāya svāhā | oṁ dhanadāya svāhā | oṁ vaiśravaṇāya svāhā |</p><p><em>Oṁ, svāhā</em> to Maṇibhadra! <em>Oṁ, svāhā</em> to Pūrṇabhadra! <em>Oṁ, svāhā</em> to Dhanada! <em>Oṁ, svāhā</em> to Vaiśravaṇa!</p><div class="tei-verse"><div class="tei-line">In the intermediate directions:</div></div><p>oṁ kelimāline svāhā | oṁ vicitrakuṇḍaline svāhā | oṁ sukhendrāya svāhā | oṁ carendrāya svāhā |</p><p><em>Oṁ, svāhā</em> to Kelimālin! <em>Oṁ, svāhā</em> to Vicitra­kuṇḍalin! <em>Oṁ, svāhā</em> to Sukhendra! <em>Oṁ, svāhā</em> to Carendra!</p><p>The lord is surrounded by the eight great kings<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-387" href="#tei-note-UT22084-089-001-387">[61]</a></sup> of the yakṣas, and accompanied by the goddess Vasudharā. He is of golden color, holding a mongoose and a citron, with a protruding belly, and adorned with all the jewel ornaments. The yakṣa lords, for their part, are accompanied by the yakṣiṇīs mentioned. The lord can even grant the rulership of the three worlds to those who meditate, make offerings during the three periods of the day, and recite the mantras, or to those who offer eight hundred handfuls of water.</p><p>One who recites this early in the morning, before crows start to caw, while standing in water, will have an inexhaustible accumulation of wealth.</p><p>Alternatively, on a golden plate one should engrave Vasudharā surrounded by the yakṣiṇīs, and on a second plate Lord Jambhala surrounded by the yakṣas. <span class="tei-ref">F.9.a</span> One should join them together and wear<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-388" href="#tei-note-UT22084-089-001-388">[62]</a></sup> them. Then the lord will grant the eight great siddhis, not to mention other siddhis.</p>This was the second chapter in the “<cite>Great Sovereign Tantra of Siddhaikavīra</cite>.” <span class="tei-ref">S15</span></section><section class="tei-section tei-section--chapter"><h4>Chapter 3</h4>Forty-First Mantra<div class="tei-verse"><div class="tei-line">oṁ vajratīkṣṇa duḥkhaccheda prajñā­jñāna­mūrtaye |</div><div class="tei-line">jñānakāya vāgīśvara arapacanāya te namaḥ ||</div></div><div class="tei-verse"><div class="tei-line"><em>Oṁ</em>, Vajratīkṣṇa! You who cut through suffering!</div><div class="tei-line">The embodiment of wisdom and knowledge!</div><div class="tei-line">The body of knowledge, Vāgīśvara—</div><div class="tei-line">Homage to Arapacana!</div></div><p>One should visualize oneself in the form of Lord Mañjuvajra Siddhaikavīra, white like the light of the autumn moon. In his left hand he is holding a blue lotus and his right hand is in the boon-granting gesture. He is the pure sphere of phenomena, shining forth from his primordially unborn nature.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-389" href="#tei-note-UT22084-089-001-389">[63]</a></sup> After twenty-one days one will obtain the speech of Sarasvatī.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-390" href="#tei-note-UT22084-089-001-390">[64]</a></sup> Within six months, one will accomplish Vāgīśvara. One will see Vāgīśvara right in front of oneself and remember everything one has heard.</p><p>If, early in the morning, over the period of one month, one drinks half a <em>tola</em> of sweet flag, incanted 108 times, with milk, oil, or ghee, one will cure dullness,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-391" href="#tei-note-UT22084-089-001-391">[65]</a></sup> stammering, or dumbness; one’s voice will become like that of a love-intoxicated cuckoo; and one’s speech will be distinct and sweet. After six months of practice, the treatises one has not heard will become clearly known, and those that have been learned will not be forgotten. One will be able to retain whatever one has learned.</p>Forty-Second Mantra<p>oṁ vākyedaṃ namaḥ |</p><p><em>Oṁ</em>, Vākya! Homage to you!</p><p>This is the heart mantra of the venerable Vāgīśvara. One who is practicing this mantra while absorbed in the samādhi described earlier can accomplish all the tasks that were previously mentioned. One should gather 100,000 jasmine flower buds and descend into the waters of a great river flowing toward the ocean to where the water reaches up to one’s neck. Reciting this mantra, one should throw the buds, one by one, into the stream. Should any bud float against the stream, one should swallow it without touching it with one’s teeth. Then one will be granted the ability to remember everything that has been learned.</p><p>Similarly, by offering 400,000 <em>homas</em> of any type of flower, one will become identical to Vāgīśvara. <span class="tei-ref">F.9.b</span></p><p>Early in the morning, one should prepare a maṇḍala disk using one cat’s paw<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-392" href="#tei-note-UT22084-089-001-392">[66]</a></sup> of powdered pennywort and incant it 108 times. One should then make as many offerings to Lord Vāgīśvara<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-393" href="#tei-note-UT22084-089-001-393">[67]</a></sup> as one can, and drink the powder with ghee or fermented rice water. Within six months one will be able to remember whatever one has learned; one will be eloquent and have a sweet voice. This king of mantras will be mastered if one recites it 100,000 times for each syllable according to the procedure of the preliminary practice. Later, during a lunar eclipse or a solar eclipse, one should hold a sword wrought from fine iron in one’s hand, and recite the mantra while the moon is invisible, until it reappears. One will then become a <em>vidyādhara</em> of the sword. In the same way one may use the mantra to empower a wheel, a scepter, a trident, an arrow, a hammer, a noose, and so forth. After that, one should refine and empower the elixirs of long life. One should prepare the substances for an eye ointment, a <em>tika</em> ointment, an ointment for the feet, a salve of enthrallment, etc., and empower them.</p><p>One should fill up a dish with either milk or yogurt mixed with rice, together with ghee and sugar. One should recite the mantra while covering it with one’s hand <span class="tei-ref">S16</span> and then eat it. Then one will live for five hundred years.</p><p>One should put some beans in one’s mouth and recite the mantra. If sprouts come forth,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-394" href="#tei-note-UT22084-089-001-394">[68]</a></sup> one will become eloquent, learned, skilled in writing, and able to remember all that one has learned.</p><p>If one offers 100,000 <em>homas</em> of lotuses, the lord will clearly appear before one. With 100,000 <em>homas</em> of bilva fruits, one will obtain the kingship of the triple universe. If one offers 400,000<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-395" href="#tei-note-UT22084-089-001-395">[69]</a></sup><em>homas</em> of whatever kind of flowers may be available, one will obtain mastery of speech.</p><p>With 400,000 <em>homa</em> offerings of five types of grain smeared with ghee, one will be able to summon a yakṣiṇī or a girl from the <em>pātāla</em>. In the same way, one should offer five types of wood.</p><p>Practiced continuously, the mantra will even lead to the state of awakening in this very lifetime.</p>Forty-Third Mantra<p>oṁ hrīḥ hūṁ |</p><p>Oṁ hrīḥ hūṁ.</p><p>This king of mantras will grant the same result.</p>Forty-Fourth Mantra<p>oṁ hrīḥ mahāmāyāṅge mahā­sarasvatyai namaḥ |</p><p><em>Oṁ, hrīḥ</em>, Mahāmāyāṅgā! Homage to Mahāsarasvatī!<span class="tei-ref">F.10.a</span></p><p>This heart mantra of the venerable, noble Tārā accomplishes all actions. Reciting the mantra “<em>Oṁ</em>, all phenomena are pure by nature. I am pure by nature on both the outside and inside,”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-396" href="#tei-note-UT22084-089-001-396">[70]</a></sup> one should meditate that everything animate and inanimate, as well as oneself, is pure by nature. One should visualize a white lotus seven hands in diameter, on top of it a moon disk, and in the center of the moon disk the goddess in all her splendor, one hand holding a lotus and the other displaying the boon-granting gesture. The nature of the Blessed Lady’s body is great compassion. She is there solely to benefit others. She delights in granting practitioners the siddhis they desire. She is white like the rays of the autumn moon, anointed with cream of white sandalwood, and beautifully adorned with flowers.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-397" href="#tei-note-UT22084-089-001-397">[71]</a></sup> She is dressed in white garments; pearl necklaces, white and so forth,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-398" href="#tei-note-UT22084-089-001-398">[72]</a></sup> gleam on her chest, and many jewels adorn her body. She illuminates the endless and limitless world sphere with thousands of flashing light rays. She has the form of a twelve-year-old girl, her body in all the fresh beauty of budding youth. One should visualize oneself thus in the form of Mahāsarasvatī, with Prajñā in front, Medhā to the right, Mati behind, and Smṛti to the left—each goddess beautiful, with the same characteristics as just described.</p><p>Then, in the area of one’s navel, in the center of a moon disk, one should visualize a white syllable <em>oṁ</em>. Now one should recite the mantra, visualizing its complete garland as the nature of speech emerging from the syllable oṁ in an unbroken stream.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-399" href="#tei-note-UT22084-089-001-399">[73]</a></sup> The follower of Mantra, with his mind wholly focused on this practice and his body disciplined, sitting silently in the center of a sun disk the color of red lotus,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-400" href="#tei-note-UT22084-089-001-400">[74]</a></sup> will obtain the speech of Sarasvatī within one month. Within three months he will succeed even in the slaying of Brahmā. Within six months, he will become equal to Sarasvatī. <span class="tei-ref">S17</span></p><br /><div class="tei-verse"><div class="tei-line">One should drink well-prepared Sarasvatī’s<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-401" href="#tei-note-UT22084-089-001-401">[75]</a></sup> ghee</div><div class="tei-line">Incanted seven times</div><div class="tei-line">Together with goat’s milk, yellow myrobalan, the three hot substances,</div><div class="tei-line"><em>Pāṭhā, ugrā</em>, drum-stick plant, and salt. <span class="tei-ref">F.10.b</span></div></div><div class="tei-verse"><div class="tei-line">A wise person should cook one prastha of ghee</div><div class="tei-line">With four times the amount of milk<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-402" href="#tei-note-UT22084-089-001-402">[76]</a></sup></div><div class="tei-line">And one <em>pala</em> of each of the ingredients mentioned previously,</div><div class="tei-line">Slowly, on a low fire.</div></div><div class="tei-verse"><div class="tei-line">If one consumes it for just one month</div><div class="tei-line">One will obtain an unsurpassable gift of language.</div><div class="tei-line">After a preliminary practice of six months,</div><div class="tei-line">One will attain the state of Vāgīśvara.</div></div><div class="tei-verse"><div class="tei-line">One will master language by licking</div><div class="tei-line">Sweet flag, licorice, spiked ginger lily, <em>siṃhī</em>,</div><div class="tei-line"><em>Pathyā, nāgara,</em> and <em>dīpaka,</em></div><div class="tei-line">Together with costus, <em>kaṇa</em>, and cumin.</div></div><div class="tei-verse"><div class="tei-line">Early in the morning, one should make offerings to the goddess</div><div class="tei-line">With fragrant flowers and so forth.</div><div class="tei-line">By eating the above ingredients, incanted seven times,</div><div class="tei-line">One will become able, within six months, to remember what one hears.</div></div><div class="tei-verse"><div class="tei-line">Within three months one will become a master of speech,</div><div class="tei-line">And within one month one becomes an intelligent person.</div><div class="tei-line">One will have a sweet voice</div><div class="tei-line">Like a cuckoo intoxicated with love.</div></div><div class="tei-verse"><div class="tei-line">Early in the morning one should incant seven times</div><div class="tei-line">Himalayan yellow myrobalan</div><div class="tei-line">And Himalayan sweet flag.</div><div class="tei-line">One should leave them standing for one month and then eat them.</div></div><div class="tei-verse"><div class="tei-line">Within a month one will become an intelligent person,</div><div class="tei-line">A master of language with a beautiful voice, and full of knowledge.</div><div class="tei-line">Within six months one will be able to remember</div><div class="tei-line">Everything that one has learned.</div></div>Forty-Fifth Mantra<p>oṁ vāgvādini vācaṃ me niyaccha sarasvati mahāśvete svāhā |</p><p><em>Oṁ</em>, Vāgvādinī, grant me the gift of speech! Sarasvatī! Mahāśvetā! <em>Svāhā</em>!</p><p>This heart mantra of the Great White Goddess born from a lotus<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-403" href="#tei-note-UT22084-089-001-403">[77]</a></sup> accomplishes all the tasks described previously.</p>Forty-Sixth Mantra<p>oṁ arkamālini kiṇi kiṇi khiṇi khiṇi svāhā |</p><p><em>Oṁ</em>, Arkamālinī! <em>Kiṇi kiṇi</em>! <em>Khiṇi khiṇi</em>! <em>Svāhā</em>!</p><p>One should visualize oneself as the youthful lord Mañjuvajra Siddhaikavīra. He is free from the afflictions, holds a book that embodies all statements,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-404" href="#tei-note-UT22084-089-001-404">[78]</a></sup> and brandishes the sword of wisdom in his right hand. In front of him, one should visualize the sunlight-garlanded Mahāsarasvatī; behind him, Mahāśrī; to his right, Keśinī; and to his left, Upakeśinī. One should visualize them as white like the autumn moon and adorned with every ornament.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-405" href="#tei-note-UT22084-089-001-405">[79]</a></sup> While resting in this visualization one should first make offerings to the best of one’s ability <span class="tei-ref">S18</span> and then recite this mantra 400,000 times following the procedures of the preliminary practice as already described. <span class="tei-ref">F.11.a</span> Then, one should incant one <em>pala</em> of Sarasvatī’s ghee or pennywort ghee. Next, one should visualize that Sarasvatī offers this substance to oneself with her hand. Absorbed in samādhi, one should drink it. Here is the recipe for this ghee mixed with pennywort.</p><br /><div class="tei-verse"><div class="tei-line">One should cook one <em>prastha</em> of ghee</div><div class="tei-line">With the juice of pennywort and milk.</div><div class="tei-line">One should add to it</div><div class="tei-line">The following herbs and powders<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-406" href="#tei-note-UT22084-089-001-406">[80]</a></sup></div></div><div class="tei-verse"><div class="tei-line">Turmeric, jasmine, and turpeth,</div><div class="tei-line">Together with yellow myrobalan.</div><div class="tei-line">One should use one <em>pala</em> of each of these;</div><div class="tei-line">The remaining ingredients are, traditionally, one <em>karṣa</em>.</div></div><div class="tei-verse"><div class="tei-line">Also, pepper and the fruits of <em>viḍaṅga</em>,</div><div class="tei-line">Together with salt and sugar—</div><div class="tei-line">One should blend all this together</div><div class="tei-line">And cook it slowly on a low fire.</div></div><div class="tei-verse"><div class="tei-line">Then, by merely eating it</div><div class="tei-line">One will attain an unequalled purity of speech.</div><div class="tei-line">By doing this for seven days,</div><div class="tei-line">One’s voice will equal the kinnaras.</div></div><div class="tei-verse"><div class="tei-line">By doing this over a period of one month,</div><div class="tei-line">One will become full of knowledge.</div><div class="tei-line">By doing this for three months,</div><div class="tei-line">One will excel in being able to remember whatever one hears.</div></div><div class="tei-verse"><div class="tei-line">Within six months one will become, in reality,</div><div class="tei-line">Equal to Vāgīśvara.</div><div class="tei-line">One will conquer the eighteen types of leprosy</div><div class="tei-line">And the seven types of tuberculosis.</div></div>Forty-Seventh Mantra<p>oṁ ananta­jñāna­śriye mañjuśriye namaḥ |</p><p><em>Oṁ</em>, homage to Mañjuśrī who has the infinite splendor of knowledge!</p><p>One should visualize oneself in the form of Vāgīśvara, surrounded by the four goddesses as described before, and recite the mantra according to the procedure previously set out. Then one will be able to perform all the rites already mentioned.</p>Forty-Eighth Mantra<p>oṁ arapacana dhīḥ svāhā |</p><p><em>Oṁ</em>, Arapacana, <em>dhīḥ</em>! <em>Svāhā</em>!</p><p>In an isolated place, one should draw a maṇḍala and make offerings to the blessed Vāgīśvara and to one’s precious guru. Then, one should sit on a comfortable seat and arouse the mind set upon awakening. Afterward, one should recite three times the mantra “<em>Oṁ</em>, all phenomena are pure by nature; I am pure by nature,”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-407" href="#tei-note-UT22084-089-001-407">[81]</a></sup> and, considering oneself and everything else to be naturally pure, bring emptiness directly to mind. <span class="tei-ref">S19</span> One should then visualize oneself, instantaneously arisen, upon a white lotus and a moon disk; one is white in color, holding a book and a sword. <span class="tei-ref">F.11.b</span> On the right side of oneself as Vāgīśvara is Keśinī, and on one’s left, Upakeśinī. Each of them is white and holds a red lotus. In front is Jālinīprabha,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-408" href="#tei-note-UT22084-089-001-408">[82]</a></sup> of white color, astride<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-409" href="#tei-note-UT22084-089-001-409">[83]</a></sup> a sun disk and holding a blue lotus. Behind, one should visualize Candraprabha, astride<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-410" href="#tei-note-UT22084-089-001-410">[84]</a></sup> a moon disk and holding a blue lotus. Then, in one’s heart, one should visualize the syllable <em>a</em>, radiating blazing streams of light, which is then transformed into an eight-spoked wheel, extremely ornate as it is the nature of the complete range of speech. One should vizualize the wheel clearly and consider that it is rapidly revolving. Practicing in this way, one will come to know all the treatises clearly within six months as regards both their meaning and composition, even if one has never heard them before. After one year, one will become equal to Vāgīśvara. This was the method of <em>the wheel of Arapacana</em>.</p>Forty-Ninth Mantra<p>oṁ vāgīśvara muḥ |</p><p><em>Oṁ</em>, Vāgīśvara, <em>muḥ</em></p><p>All the results mentioned previously will come to the person who recites this mantra. One should visualize, in the center of a circle, the syllable muḥ surrounded by a garland of flames. This is called the <em>circle of wisdom procedure</em>.</p>Fiftieth Mantra<p>oṁ dharma­dhātu­vāgīśvara muḥ svāhā |</p><p><em>Oṁ</em>, Vāgīśvara of the sphere of phenomena, <em>muḥ</em>! <em>Svāhā</em>!</p><p>In the same order as just described, one should imagine oneself as having the nature of the five deities. Then, one should visualize a sixteen-spoked wheel with the syllable <em>muḥ</em> in its center. To those who visualize this or an eight-spoked wheel<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-411" href="#tei-note-UT22084-089-001-411">[85]</a></sup> will come the results previously mentioned.</p>Fifty-First Mantra<p>oṁ vajratīkṣṇa varada muḥ svāhā |</p><p><em>Oṁ</em>, Vajratīkṣṇa, the boon giver, <em>muḥ</em>! <em>Svāhā</em>!</p><p>One should visualize oneself as the syllable <em>muḥ</em>. Then, as it transforms, one instantaneously becomes Vāgīśvara, the sole hero, who, like a blazing fire, illuminates the entire environment. In one’s heart one should visualize the syllable <em>oṁ</em>, which is then transformed into a sun disk that illuminates all worlds, shining with a hundred thousand rays. By meditating thus, within six months the practitioner will become equal to Vāgīśvara and will obtain all the results previously described. <span class="tei-ref">F.12.a</span></p>This was the third chapter in the “<cite>Great Sovereign Tantra of Siddhaikavīra</cite>.” <span class="tei-ref">S20</span></section><section class="tei-section tei-section--chapter"><h4>Chapter 4</h4>Fifty-Second Mantra<p>oṁ lavaṇāmbho ’si tīkṣṇo ’si udagro ’si bhayṃkara | amukasya daha gātrāṇi daha māṃsāni daha tvacam nakhāny api daha asthīni asthibhyo majjakaṃ daha | lavaṇaṃ chindati lavaṇaṃ bhindati lavaṇaṃ pacati | kṣoṇita­lavaṇe hriyamāṇe kuto nidrā kuto ratiḥ | yadi vasati yojanaśate nadīnāṃ ca śatāntare | nagare lohaprākāre kṛṣṇa­sarpa­kṛtākule | tatraiva vaśam ānīhi lavaṇa­bandha­puraskṛta | oṁ ciṭi ciṭi vikloli amukaṃ sadhana­parivāram eva samānaya svāhā |</p><p><em>Oṁ</em>, Lavaṇāmbha! You are fierce! You are vast! O terrifying one! Burn the limbs of such-and-such! Burn his flesh! Burn his skin! Burn even his nails! Burn his bones and the marrow in his bones! He cuts the salt, breaks the salt, and cooks the salt. When the salt of the earth is being seized, how could one sleep, how could one find pleasure? If such-and-such dwells a hundred leagues away, behind a hundred rivers, in a city surrounded by iron walls and protected by cobras—at that very place, enthrall that person, having first bound the salt. <em>Oṁ, ciṭi, ciṭi</em>! <em>Vikloli</em>! Please bring here such-and-such a person! <em>Svāhā</em>!</p><p>As a preliminary practice, one should perform 10,000 recitations before commencing the sādhana practice. Here, one should visualize oneself as the noble lord Avalokiteśvara, standing beneath a blossoming aśoka tree. He is red in color and wears red garlands,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-412" href="#tei-note-UT22084-089-001-412">[86]</a></sup> red clothes, jewelry, and unguents. He has a distinctively erotic appearance and in his four arms he holds a noose, a goad, a bow, and an arrow. He is accompanied by two goddesses, Tārā and Bhṛkuṭī, who stand to his right and left respectively.</p><p>Visualizing oneself like this, one should offer, in the three periods of the day, 108 <em>homa</em> offerings<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-413" href="#tei-note-UT22084-089-001-413">[87]</a></sup> of salt. After seven days, one will succeed in enthralling a man or a woman. After twenty-one days, one will be able to enthrall an eminent person.</p><p>One should make an effigy from beeswax mixed with salt in the shape of the target person, four fingers in size. Then one should heat up that effigy at the three junctions of the day above the smokeless embers of cutch tree wood while saying the mantra aloud. Whoever’s name is included in the mantra, that person will become enthralled. One should give the target salt mixed with vajra water after incanting it 108 times. Then the target will become enthralled simply by drinking it.</p>Fifty-Third Mantra<p>oṁ lavaṇāmbho ’si tikṣṇo ’si udagro ’si hṛdayaṃgama amukasya hṛdayaṃ pītaṃ nāsti loke cikitsakaḥ oṁ ciṭi ciṭi vikloli vikloli mahāvikloli mahāvikloli amukaṃ me vaśam ānaya svāhā |</p><p><em>Oṁ</em>, Lavaṇāmbha! You are fierce! You are vast! You touch the heart! The heart of such-and-such a person is drunk. There is no physician in the world for this. <em>Oṁ, ciṭi, ciṭi</em>! <em>Vikloli, vikloli</em>! <em>Mahāvikloli, mahāvikloli</em>! Please enthrall such-and-such a person for me! <em>Svāhā</em>!</p><p>Having completed the procedure of the preliminary practice as before, one should drink three handfuls of incanted water with salt in the three periods of the day. Whoever’s name one includes, that person will become enthralled.</p><p>One should mix equal amounts of salt and black mustard seed and offer them in a <em>homa</em> offering. Whoever’s name is used in the offering, that person will become enthralled. <span class="tei-ref">F.12.b</span></p>Fifty-Fourth Mantra<p>oṁ kurukulle svāhā |</p><p><em>Oṁ, svāhā</em> to Kurukullā!<span class="tei-ref">S21</span></p><p>This is the heart mantra of the venerable noble Tārā. Its invincible power in the activity of enthralling the three worlds is known far and wide.</p><p>One should, while absorbed in the absorption mentioned previously, recite the mantra 100,000 times for each syllable. Later, the person to whom one gives flowers, incense, unguents, fragrant powders, or betel will become enthralled.</p><p>By censing oneself with a pleasant-smelling incense, one will be adored by everyone. If one offers a <em>homa</em> of red flowers, the person whose name one uses in the <em>homa</em> will become enthralled. If one incants food and drink, whoever it is given to will become enthralled. To enthrall an important person, one should offer white mustard seeds in the fire. Later, on an auspicious lunar day, during an auspicious asterism, etc., one should make offerings to her, the Blessed One. Then one should draw a circle with sixteen divisions in the form of a lotus with petals. One should draw it on birchbark or cloth using saffron, bovine orpiment, resin, etc. In the center of the circle, one should write both the name of the target and that of the practitioner.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-414" href="#tei-note-UT22084-089-001-414">[88]</a></sup> On the petals, one should write the four syllables <em>ku ru ku llā</em> in combination with the target’s name only.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-415" href="#tei-note-UT22084-089-001-415">[89]</a></sup> On the outside, one should surround this with a threefold circle of <em>oṁ</em> syllables using a red cord and insert the drawing into the heart of an effigy made of beeswax. Then, while heating up the effigy over the embers of cutch tree wood at the three junctions of the day, one should draw the effigy’s feet toward oneself. Whether one is enthralling a man or a woman, one should pierce the feet with a copper needle and heat them. The target will become enthralled.</p><p>One should visualize the wind maṇḍala arisen from the syllable <em>yaṁ</em>. Above it, one should visualize the target with disheveled hair, naked, and with a noose tied around his neck. One should pull him by the chest with a hook and draw him by means of the mantra which has the force of the wind. As he is visualized prostrate at the practitioner’s feet, all that one wants from him can be accomplished. With dedicated practice, one will be able to draw even material objects<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-416" href="#tei-note-UT22084-089-001-416">[90]</a></sup> into one’s presence by mere concentration. <span class="tei-ref">F.13.a</span></p><p>One should place the mantra in the center of a bowl of ghee, honey, and sugar-candy and, in the three periods of the day, offer flowers and other things to it while reciting the mantra. Then one will enthrall whomever one wishes.</p><p>One should make a lamp wick with fibers of white lotus and put lampblack into a dish of unbaked clay along with clarified butter from a brown cow. By applying this lampblack, incanted 108 times, to one’s eyes, one will be adored by everyone.</p><p>In the ancestors’ grove,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-417" href="#tei-note-UT22084-089-001-417">[91]</a></sup> one should collect lampblack from a wick made of white lotus fibers burning inside a human skull with human fat. This should be done at night on the eighth or the fourteenth day of the waning moon. By anointing one’s eyes with this lampblack, one will be adored by everyone.</p>Fifty-Fifth Mantra<p>amale vimale kuṅkume samayena baddho ’si | bindūn bindūn icchayā devo varṣati vidyotayati garjati garjati | vismaya­mahā­rāja samāyita vardhayita hūṁ | devebhyo manuṣyebhyo gandarvebhyo śikhi­graha­deva ānandasya grahaṇāyāgama­nāyākramaṇāya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-418" href="#tei-note-UT22084-089-001-418">[92]</a></sup> juhomīha svāhā |</p><p>In the pure and stainless saffron, you are bound by your pledge. The god rains raindrops, raindrops, as he pleases. He sends lightning and thunder. O amazing great king! May he bring prosperity and growth! <em>Hūṁ</em>! <span class="tei-ref">S22</span> O god of comets and planets, I now offer an oblation to gods, humans, and gandharvas, for the seizing, the coming, and the traversing of happiness,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-419" href="#tei-note-UT22084-089-001-419">[93]</a></sup><em>svāhā</em>!</p><p>With this king of mantras one should perform the preliminary ritual. Then, in the center of a house yard, one should smear cow dung and delineate the altar space.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-420" href="#tei-note-UT22084-089-001-420">[94]</a></sup> One should spread <em>darbha</em> grass there and set it alight. Next, one should take 108 flowers of the giant milkweed shrub and, repeating the mantra, offer the flowers one by one in the fire. Then one summons the woman or man one desires.</p><p>An intelligent person, knowing what is described here, should treat it with respect.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-089-001-421" href="#tei-note-UT22084-089-001-421">[95]</a></sup></p>This was the fourth chapter in the “<cite>Great Sovereign Tantra of Siddhaikavīra</cite>.”<br />Here ends the “<cite>Great Sovereign Tantra of Siddhaikavīra</cite>.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>Translated by the great Indian preceptor Dīpaṃkara Śrījñāna and the translator monk Géwai Lodrö, and finalized by the monk Tsultrim Gyalwa.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-089-001-325"><p>Tib.: oṁ kālumelu kālume stambhaya śilāvarṣaṃ tuṣāranya ca lucca i lucca i svāhā |</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-325">back</a></li><li id="tei-note-UT22084-089-001-326"><p>Tib.: “a hailstorm or a snowfall.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-326">back</a></li><li id="tei-note-UT22084-089-001-327"><p>In the Tibetan the mantra ends: <em>nirundha nirundha chegemo* ūrṇāmaṇe svāhā</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-327">back</a></li><li id="tei-note-UT22084-089-001-328"><p>Tib. omits the three sentences starting with “One should write…” and ending with “evil designs, etc.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-328">back</a></li><li id="tei-note-UT22084-089-001-330"><p>In the Tibetan, the sentence “One will also stop torrential rain” appears in the next paragraph.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-330">back</a></li><li id="tei-note-UT22084-089-001-331"><p>Tib.: “with water and milk.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-331">back</a></li><li id="tei-note-UT22084-089-001-332"><p>Tib.: “on birchbark, cloth, or leaves.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-332">back</a></li><li id="tei-note-UT22084-089-001-333"><p>Tib.: “an effigy in the form of Bhairava.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-333">back</a></li><li id="tei-note-UT22084-089-001-334"><p>Skt.: “bury it right there.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-334">back</a></li><li id="tei-note-UT22084-089-001-335"><p>Tib.: “one should incant seven thorns and stick them in the tongue of the effigy.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-335">back</a></li><li id="tei-note-UT22084-089-001-336"><p>Except for the beeswax, the Tibetan omits the details of how the mantra should be written and wrapped.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-336">back</a></li><li id="tei-note-UT22084-089-001-337"><p>Tib.: “That will paralyze the mouths of any aggressors.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-337">back</a></li><li id="tei-note-UT22084-089-001-338"><p>Tib. omits “written with saffron.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-338">back</a></li><li id="tei-note-UT22084-089-001-339"><p>Tib. omits “cool.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-339">back</a></li><li id="tei-note-UT22084-089-001-340"><p>Tib.: “animals with horns, such as the gaur.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-340">back</a></li><li id="tei-note-UT22084-089-001-341"><p>Tib. omits “double.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-341">back</a></li><li id="tei-note-UT22084-089-001-342"><p>Translation based on the Tibetan. The Sanskrit reads, “The mantra should then be adorned with the double vajra and placed in the abdomen of a Gaṇapati made of beeswax.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-342">back</a></li><li id="tei-note-UT22084-089-001-343"><p>Tib. adds “or burn it in a <em>homa of chaff</em>.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-343">back</a></li><li id="tei-note-UT22084-089-001-344"><p>Translation based on the Tibetan. The Sanskrit reads, “one will arrest vision,” possibly meaning, “one will stabilize vision.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-344">back</a></li><li id="tei-note-UT22084-089-001-345"><p>A kind of weapon (Monier-Williams).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-345">back</a></li><li id="tei-note-UT22084-089-001-346"><p>Skt. omits “on a piece of cloth.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-346">back</a></li><li id="tei-note-UT22084-089-001-347"><p>Tib. reflects the reading <em>adṛśyo</em> (“invisible”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-347">back</a></li><li id="tei-note-UT22084-089-001-348"><p>Tib. omits “humans” and “nāgas,” but adds “mahoragas.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-348">back</a></li><li id="tei-note-UT22084-089-001-349"><p>Tib. omits “eight.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-349">back</a></li><li id="tei-note-UT22084-089-001-350"><p>Tib. omits “by the mantrin.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-350">back</a></li><li id="tei-note-UT22084-089-001-351"><p>Tib. omits “by making a <em>tika</em> on one’s forehead.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-351">back</a></li><li id="tei-note-UT22084-089-001-352"><p>Tib. omits “just once.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-352">back</a></li><li id="tei-note-UT22084-089-001-353"><p>Tib. has instead, “one will pacify the teeth of bipeds and quadrupeds,” which makes little sense, as the teeth of bipeds seldom constitute a cause of fear.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-353">back</a></li><li id="tei-note-UT22084-089-001-354"><p>The Sanskrit sentence begins with “this king of mantras,” which does not fit the context.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-354">back</a></li><li id="tei-note-UT22084-089-001-355"><p>Tib. omits “making a dressing.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-355">back</a></li><li id="tei-note-UT22084-089-001-356"><p>Tib. omits “in the case of a man.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-356">back</a></li><li id="tei-note-UT22084-089-001-357"><p>Skt. omits “and the name”; Tib. omits “birchbark.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-357">back</a></li><li id="tei-note-UT22084-089-001-358"><p>Tib. omits “spider” but adds “snake.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-358">back</a></li><li id="tei-note-UT22084-089-001-359"><p>According to the Tibetan, it is the incense that should be incanted 108 times.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-359">back</a></li><li id="tei-note-UT22084-089-001-360"><p>Based on the Tibetan (the Sanskrit is unclear).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-360">back</a></li><li id="tei-note-UT22084-089-001-361"><p>Tib.: “on a leaf or parchment.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-361">back</a></li><li id="tei-note-UT22084-089-001-362"><p>Tib. omits “meditation.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-362">back</a></li><li id="tei-note-UT22084-089-001-363"><p>Tib.: “disputes.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-363">back</a></li><li id="tei-note-UT22084-089-001-364"><p>The Devanāgarī letter <em>ṭha</em> has the shape of a circle, and it can therefore be drawn around objects or shapes.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-364">back</a></li><li id="tei-note-UT22084-089-001-365"><p>Tib.: “possession by.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-365">back</a></li><li id="tei-note-UT22084-089-001-366"><p>Tib.: “mustard seeds.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-366">back</a></li><li id="tei-note-UT22084-089-001-367"><p>This clause is unclear both in the Sanskrit and the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-367">back</a></li><li id="tei-note-UT22084-089-001-368"><p>Tib. omits “wanton.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-368">back</a></li><li id="tei-note-UT22084-089-001-369"><p>Tib.: “who has the potential for good qualities.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-369">back</a></li><li id="tei-note-UT22084-089-001-370"><p>In the Tibetan, this verse and the next are transcribed in Sanskrit, like a mantra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-370">back</a></li><li id="tei-note-UT22084-089-001-371"><p>We have a play on words here, as <em>darpaṇa</em> can mean “mirror” as well as be the name of the mountain of Kubera. Both of these meanings are required for the context that follows.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-371">back</a></li><li id="tei-note-UT22084-089-001-372"><p>In the Tibetan, this verse is transcribed, like a mantra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-372">back</a></li><li id="tei-note-UT22084-089-001-373"><p>Skt. omits “to the god Vimalacandra.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-373">back</a></li><li id="tei-note-UT22084-089-001-374"><p>According to Jamyang Khyentse Wangpo’s commentary, “well washed” means “washed with water from the jar.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-374">back</a></li><li id="tei-note-UT22084-089-001-376"><p>Tib.: “to the Blessed One and the god Vimalacandra.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-376">back</a></li><li id="tei-note-UT22084-089-001-377"><p>Tib. omits “Muṇḍā, whispering in one’s ear.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-377">back</a></li><li id="tei-note-UT22084-089-001-378"><p>Tib.: “secret mantra.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-378">back</a></li><li id="tei-note-UT22084-089-001-379"><p>Tib.: “venerable youthful Mañjuśrī.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-379">back</a></li><li id="tei-note-UT22084-089-001-380"><p>The Tib. adds “human flesh.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-380">back</a></li><li id="tei-note-UT22084-089-001-381"><p>Tib.: “one week.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-381">back</a></li><li id="tei-note-UT22084-089-001-382"><p>The translation is based on the Tibetan. The Sanskrit suggests that, rather than the head, one will not see the neck.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-382">back</a></li><li id="tei-note-UT22084-089-001-383"><p>Tib.: “This king of Nandinī mantras accomplishes all…”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-383">back</a></li><li id="tei-note-UT22084-089-001-384"><p>Skt. omits “sweet-smelling.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-384">back</a></li><li id="tei-note-UT22084-089-001-385"><p>Tib. omits “observing one’s minor vows.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-385">back</a></li><li id="tei-note-UT22084-089-001-386"><p>According to the Tibetan, the ghee, honey, and sugar are inside the two leaves. The Sanskrit, however, seems to reflect the standard way of placing the yantra between the three sweet things.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-386">back</a></li><li id="tei-note-UT22084-089-001-387"><p>Skt. omits “kings.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-387">back</a></li><li id="tei-note-UT22084-089-001-388"><p>Tib.: “serve.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-388">back</a></li><li id="tei-note-UT22084-089-001-389"><p>In the Tibetan the last sentence is transcribed as a Sanskrit mantra. In the Sanskrit, however, it is impossible to take it as such.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-389">back</a></li><li id="tei-note-UT22084-089-001-390"><p>The translation “the speech of Sarasvatī” is based on emended Sanskrit reading (<em>sarasvatīṃ vāṇīm to sarasvatī­vāṇīm</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-390">back</a></li><li id="tei-note-UT22084-089-001-391"><p>Tib. omits “dullness.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-391">back</a></li><li id="tei-note-UT22084-089-001-392"><p>“Cat’s paw” is a particular measure of weight. The Tibetan suggests “four karṣas.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-392">back</a></li><li id="tei-note-UT22084-089-001-393"><p>Skt. omits “Vāgīśvara.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-393">back</a></li><li id="tei-note-UT22084-089-001-394"><p>Tib.: “if they are swallowed.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-394">back</a></li><li id="tei-note-UT22084-089-001-395"><p>Tib. omits “400,000.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-395">back</a></li><li id="tei-note-UT22084-089-001-396"><p>Skt.: <em>oṁ prakṛti­pari­śuddhāḥ sarva­dharmāḥ prakṛti­pari­śuddho ’haṃ sabāhyābhyantaram</em> |</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-396">back</a></li><li id="tei-note-UT22084-089-001-397"><p>Skt. omits “anointed with cream of white sandalwood, and beautifully adorned with flowers.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-397">back</a></li><li id="tei-note-UT22084-089-001-398"><p>Tib. omits “white, and so forth.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-398">back</a></li><li id="tei-note-UT22084-089-001-399"><p>Tib. omits “in an unbroken stream.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-399">back</a></li><li id="tei-note-UT22084-089-001-400"><p>Instead of “in the center of a sun disk of the color of red lotus,” the Tibetan has “in the navel of the goddess.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-400">back</a></li><li id="tei-note-UT22084-089-001-401"><p>Instead of “well prepared Sarasvatī’s…” the Tibetan seems to be saying, “in order to accomplish Sarasvatī.” The epithet sārasvata is again used to qualify ghee in the section of the forty-sixth mantra below.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-401">back</a></li><li id="tei-note-UT22084-089-001-402"><p>Tib.: “goat’s milk.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-402">back</a></li><li id="tei-note-UT22084-089-001-403"><p>The translation “born from a lotus” is based on the Tibetan and on the emended Sanskrit reading (<em>°āmbujāyāḥ to °āmbujajāyāḥ</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-403">back</a></li><li id="tei-note-UT22084-089-001-404"><p>Skt. omits “that embodies all statements.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-404">back</a></li><li id="tei-note-UT22084-089-001-405"><p>Tib. omits “adorned with every ornament.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-405">back</a></li><li id="tei-note-UT22084-089-001-406"><p>Tib. omits the sentence “One should add… powders:</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-406">back</a></li><li id="tei-note-UT22084-089-001-407"><p>Skt.: <em>oṁ svabhāva­śuddhāḥ sarvadharmāḥ svabhāva­śuddho ’ham</em> |</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-407">back</a></li><li id="tei-note-UT22084-089-001-408"><p>The Tibetan reflects the reading “Sūryaprabha,” which is another name for Jālinīprabha.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-408">back</a></li><li id="tei-note-UT22084-089-001-409"><p>Tib. omits “astride.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-409">back</a></li><li id="tei-note-UT22084-089-001-410"><p>Tib. omits “astride.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-410">back</a></li><li id="tei-note-UT22084-089-001-411"><p>Tib. omits “or an eight-spoked wheel.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-411">back</a></li><li id="tei-note-UT22084-089-001-412"><p>Tib. omits “red garlands.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-412">back</a></li><li id="tei-note-UT22084-089-001-413"><p>Translation based on the Tibetan. The Sanskrit suggests “figurines made of salt.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-413">back</a></li><li id="tei-note-UT22084-089-001-414"><p>Tib. only mentions the name of the target.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-414">back</a></li><li id="tei-note-UT22084-089-001-415"><p>Skt. omits “only.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-415">back</a></li><li id="tei-note-UT22084-089-001-416"><p>The Sanskrit word is <em>piṇḍa</em>, which means a lump of any solid material. Tib. says “the sky.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-416">back</a></li><li id="tei-note-UT22084-089-001-417"><p>Tib.: “in a cemetery.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-417">back</a></li><li id="tei-note-UT22084-089-001-418"><p><em>Grahaṇāyāgama­nāyākramaṇāya</em> is a conjectured reading. In the manuscripts we have <em>grahaṇīyāgama­nāyākramaṇīya</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-418">back</a></li><li id="tei-note-UT22084-089-001-419"><p>Perhaps a metaphor is intended here: it is the function of the god of comets and planets to control the seizing (i.e., eclipsing), coming, and traversing of heavenly bodies, but here he is meant to apply this function to the “movements” of happiness. The grammar, however, is not very clear.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-419">back</a></li><li id="tei-note-UT22084-089-001-420"><p>Instead of “delineate an altar,” Tib. has “shape it into a square.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-420">back</a></li><li id="tei-note-UT22084-089-001-421"><p>Based on the Tibetan, which is glossed by Jamyang Khyentse Wangpo: “An intelligent person who takes pleasure in benefitting others, knowing merely from reading [this text] the mantras that are to be found in it, should practice them with respect.” The Sanskrit could be interpreted as, “When they see things accomplished, skillful ones should feel respect.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-089-001-421">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/088-038-toh543-the-root-tantra-of-manjusri.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/089-002-toh545-892-spoken-by-manjusri-himself.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SĀ 3.26 — Susīma — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/chinese_canon/sa.html">Saṃyukta Āgama</a>
+        <div class="sutta-breadcrumbs hidden">Saṃyukta Āgama · SĀ 3.26 — Susīma</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          SĀ 3.26 — Susīma        </h1>
+      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <h1><a href='../index.html'>The Related Discourses</a></h1>
+<h2><a href='index.html'>3. Dependent Origination</a></h2>
+
+<table class="trans">
+  <th class='ch'>（三四七） 須深</th>
+  <th class='en'>26 (347). Susīma</th>
+  <tr>
+    <td class='ch' title='t99.2.96b25'>如是我聞： 一時，佛住王舍城、迦蘭陀竹園。 若王、大臣、婆羅門、長者、居士及餘世人所共恭敬、尊重、供養。 佛及諸聲聞眾大得利養，衣被、飲食、臥具、湯藥，都不恭敬、尊重、供養眾邪異道衣被、飲食、臥具、湯藥。</td>
+    <td id='p1'>1. Thus I have heard:<sup id="ref1"><a href="#n1">1</a></sup> The Buddha was staying at the Squirrels’ Bamboo Grove of Rājagṛha. People gave them respect, honors, and offerings,whether they were the king, great ministers, priests, prominent men, householders, or other worldly people. The Buddha and his assembly of disciples obtained great offerings of clothing, meals, bedding, and medicines, but no one gave respect, honors, or offerings of clothing, meals, bedding, or medicines to the other various religious assemblies.</td>
+  </tr>
+<tr>
+  <td class='ch' title='t99.2.96b29'></td>
+  <td class='subheading'>The Heretics’ Plan</td>
+</tr>
+  <tr>
+    <td class='ch' title='t99.2.96b29'>爾時，眾多異道聚會未曾講堂。 作如是論： 「我等昔來常為國王、大臣、長者、居士及餘一切之所奉事、恭敬、供養衣被、飲食、臥具、湯藥，今悉斷絕。 但恭敬供養沙門瞿曇、聲聞大眾衣被、飲食、臥具、湯藥。 今此眾中，誰有智慧、大力，堪能密往詣彼沙門瞿曇眾中出家？ 聞彼法已，來還廣說。 我等當復用彼聞法化諸國王、大臣、長者、居士。 令其信樂，可得還復供養如前。」</td>
+    <td id='p2'>2. A group of people from another religion gathered in a meeting hall where they hadn’t before.<sup id="ref2"><a href="#n2">2</a></sup> This is what they discussed: “In the past, we’ve always been served, respected, and given offerings of clothing, meals, bedding, and medicines by the king, great ministers, prominent men, householders, and everyone else, but now that has stopped. They give their respect and offerings of clothing, meals, bedding, and medicines only to the ascetic Gautama and the disciples in his assembly. Now, is there a wise and great man<sup id="ref3"><a href="#n3">3</a></sup> in this group who could secretly ordain with that ascetic Gautama’s assembly? After listening to his Dharma, he could come back and teach it to us in full. We could then use that Dharma that he learned to convert the king, ministers, prominent men, and householders. They’ll have confidence in it, and they would return to giving us offerings as they had before.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.96c9'>時，有人言： 「有一年少名曰須深，聰明黠慧。 堪能密往沙門瞿曇眾中出家。 聽彼法已，來還宣說。」</td>
+    <td>Then, someone said, “There is a youth named Susīma<sup id="ref4"><a href="#n4">4</a></sup> who’s astute and intelligent. He could secretly ordain with the ascetic Gautama’s assembly. Having listened closely to their Dharma, he could come back and teach it to us.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.96c11'>時，諸外道詣須深所，而作是言： 「我今日大眾聚集未曾講堂。 作如是論： 『我等先來為諸國王、大臣、長者、居士及諸世人之所恭敬、奉事、供養衣被、飲食、臥具、湯藥，今悉斷絕。 國王、大臣、長者、居士及諸世間悉共奉事⋯沙門瞿曇、聲聞大眾。 我此眾中，誰有聰明、黠慧堪能密往沙門瞿曇眾中出家、學道？ 聞彼法已，來還宣說，化諸國王、大臣、長者、居士。 令我此眾還得恭敬、尊重、供養。』</td>
+    <td id='p3'>3. Those adherents of another religion went to Susīma and said to him, “Today, a large group of us gathered in a meeting hall where we hadn’t before. This is what we discussed: ‘Up until now, we’ve always been served, respected, and given offerings of clothing, meals, bedding, and medicines by the king, great ministers, prominent men, householders, and worldly people, but now that has stopped. The king, great ministers, prominent men, householders, and worldly people all give their service … to the ascetic Gautama and his great assembly of disciples. Is there a man in this assembly who is astute and intelligent enough to secretly ordain with that ascetic Gautama’s assembly and train on the path? After listening to their Dharma, he could come back and teach it to us, and we’ll convert the king, great ministers, prominent men, and householders. Then, our assembly would get their respect, honors, and offerings again.’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.96c20'>「其中有言： 『唯有須深聰明黠慧，堪能密往瞿曇法中出家學道。 聞彼說法，悉能受持，來還宣說。』 是故，我等故來相請，仁者，當行。」</td>
+    <td>“Someone among us said, ‘There’s only Susīma who’s astute and intelligent enough to secretly ordain with the ascetic Gautama’s assembly and train on the path. Having listened to their Dharma, he could retain all of it and then come back to teach it to us.’ Therefore, we’ve come to ask you, sir, if you would do that.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.96c23'>時，彼須深默然受請，詣王舍城迦蘭陀竹園。 時，眾多比丘出房舍外露地經行。 爾時，須深詣眾多比丘，而作是言： 「諸尊，我今可得於正法中出家，受具足，修梵行不？」</td>
+    <td id='p4'>4. That Susīma silently agreed and went to the Squirrels’ Bamboo Grove of Rājagṛha. There was a group of monks who had left their residence to go for a walk out in the open at the time. Susīma went to that group of monks and said, “Venerables, could I leave home and receive ordination<sup id="ref5"><a href="#n5">5</a></sup> in the correct Dharma and cultivate the religious practice?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.96c27'>時，眾多比丘將彼須深詣世尊所，稽首禮足，退住一面。 白佛言： 「世尊，今此外道須深欲求於正法中出家，受具足，修梵行。」</td>
+    <td id='p5'>5. That group of monks led Susīma to the Bhagavān, bowed their heads at the Buddha’s feet, and withdrew to sit to one side. They then said to the Buddha, “Bhagavān, this Susīma is from another religion and seeks to leave home, receive ordination in the correct Dharma, and cultivate the religious practice.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a1'>爾時，世尊知外道須深心之所念。 告諸比丘： 「汝等當度彼外道須深，令得出家。」 時，諸比丘願度須深。</td>
+    <td id='p6'>6. The Bhagavān then knew the thoughts that were in Susīma’s mind. He told the monks, “All of you should liberate that Susīma who’s from another religion and allow him to leave home.” The monks then promised to liberate Susīma.</td>
+  </tr>
+<tr>
+  <td class='ch' title='t99.2.97a3'></td>
+  <td class='subheading'>The Monk Liberated by Wisdom</td>
+</tr>
+  <tr>
+    <td class='ch' title='t99.2.97a3'>出家已經半月，有一比丘語須深言： 「須深，當知我等生死已盡，梵行已立，所作已作。 自知不受後有。」</td>
+    <td id='p7'>7. Half a month after he had left home, there was a monk who said to Susīma, “Susīma, you should know that we have ended birth and death, established the religious practice, and accomplished the task. We ourselves know we won’t be subject to a later existence.”<sup id="ref6"><a href="#n6">6</a></sup></td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a5'>時，彼須深語比丘言： 「尊者，云何？ 學離欲、惡不善法。 有覺、有觀，離生喜、樂，具足初禪。 不起諸漏，心善解脫耶？」</td>
+    <td id='p8'>8. Susīma then asked the monk, “How is it, Venerable? One trains while secluded from desires and bad and unskillful things. While they notice and examine things, this seclusion produces joy and happiness in them, and they perfect the first meditation. Was that what stopped the contaminants and well liberated your mind?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a8'>比丘答言： 「不也，須深。」</td>
+    <td>The monk answered, “No, Susīma.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a8'>復問： 「云何？ 離有覺、有觀，內淨一心。 無覺、無觀，定生喜、樂，具足第二禪。 不起諸漏，心善解脫耶？」</td>
+    <td id='p9'>9. Susīma again asked, “How is it, Venerable? Secluded from noticing and examining things, one has an inner purity and unified mind. Without noticing or examining things, this <em>samādhi</em> produces joy and happiness, and one perfects the second meditation. Was that what stopped the contaminants and well liberated your mind?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a11'>比丘答言： 「不也，須深。」</td>
+    <td>The monk answered, “No, Susīma.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a11'>復問： 「云何，尊者？ 離喜，捨心住正念、正智。 身心受樂，聖說及捨，具足第三禪。 不起諸漏，心善解脫耶？」</td>
+    <td id='p10'>10. Susīma again asked, “How is it, Venerable? Parting with that joy, one lives in equinimity with right mindfulness and knowledge. In body and mind, they feel the happiness that nobles teach as well as detachment, which perfects the third meditation. Was that what stopped the contaminants and  well liberated your mind?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a13'>答言： 「不也，須深。」</td>
+    <td>The monk answered, “No, Susīma.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a14'>復問： 「云何，尊者？ 離苦息樂，憂、喜先斷，不苦不樂。 捨、淨、念、一心，具足第四禪。 不起諸漏，心善解脫耶？」</td>
+    <td id='p11'>11. Susīma again asked, “How is it, Venerable? Parting with pain, stopping pleasure, and sorrow and joy having ended previously, one feels neither pain nor pleasure. With equanimity, purification, mindfulness, and unified mind, one perfects the fourth meditation. Was that what stopped the contaminants and well liberated your mind?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a16'>答言：「不也，須深。」</td>
+    <td>The monk answered, “No, Susīma.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a16'>復問： 「若復寂靜解脫起色、無色，身作證、具足住。 不起諸漏，心善解脫耶？」</td>
+    <td id='p12'>12. Susīma again asked, “Suppose one personally realizes and fully abides in the peaceful liberation that produces form and formless [heavenly rebirth]. Was that what stopped the contaminants and well liberated your mind?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a18'>答言： 「不也，須深。」</td>
+    <td>The monk answered, “No, Susīma.”<sup id="ref7"><a href="#n7">7</a></sup></td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a19'>須深復問： 「云何，尊者？ 所說不同；前後相違。 云何不得禪定而復記說？」</td>
+    <td id='p13'>13. Susīma again asked, “How is it, Venerable? You’re statements are not the same; the first and last ones contradict each other. How can one not have attained meditative <em>samādhi</em> and also declare that [they are free of rebirth]?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a20'>比丘答言： 「我是慧解脫也。」</td>
+    <td>The monk answered, “I was liberated by wisdom.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a21'>作是說已，眾多比丘各從座起而去。</td>
+    <td>After that was said, each of that group of monks got up from their seat and departed.</td>
+  </tr>
+<tr>
+  <td class='ch' title='t99.2.97a22'></td>
+  <td class='subheading'>Susīma Questions the Buddha</td>
+</tr>
+  <tr>
+    <td class='ch' title='t99.2.97a22'>爾時，須深知眾多比丘去已，作是思惟： 「此諸尊者所說不同；前後相違。 言不得正受，而復記說自知作證。」 作是思惟已，往詣佛所，稽首禮足，退住一面。 白佛言： 「世尊，彼眾多比丘於我面前記說： 『我生已盡，梵行已立，所作已作。 自知不受後有。』</td>
+    <td id='p14'>14. Once he knew that group of monks was gone, Susīma considered this: “The statements of these venerables were not the same; the first and last ones contradicted each other. They said they hadn’t gained these attainments, but they also declared that they knew realization for themselves.” After considering this, he went to the Buddha, bowed his head at his feet, and withdrew to stand at one side. He said to the Buddha, “Bhagavān, a group of monks declared right in front of me: ‘Our births have been ended, the religious practice has been established, and the task has been accomplished. We ourselves know we won’t be subject to a later existence.’<sup id="ref8"><a href="#n8">8</a></sup></td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97a28'>「我即問彼尊者： 『得離欲、惡不善法⋯乃至⋯身作證。 不起諸漏，心善解脫耶？』 彼答我言： 『不也，須深！』</td>
+    <td id='p15'>15. “I then asked those venerables, ‘Being secluded from desires and bad and unskillful things … <em>up to</em> … personally realized. Was that what stopped the contaminants and well liberated your mind?’ They replied, ‘No, Susīma.’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b1'>「我即問言： 『所說不同；前後相違。 言不入正受，而復記說自知作證。』 彼答我言： 『得慧解脫。』 作此說已，各從座起而去。</td>
+    <td id='p16'>16. “I then asked, ‘Your statements are not the same; the first and last ones contradict each other. You say you’ve not reached these attainments, but you also declare that you know realization for yourselves.’ They replied, ‘We’ve been liberated by wisdom.’ After saying that, they each got up from their seats and departed.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b4'>「我今問世尊： 云何彼所說不同，前後相違？ 不得正受，而復說言自知作證。」</td>
+    <td id='p17'>17. “Now, I ask the Bhagavān: How can their statements not be the same, with the first and last ones contradicting each other? They haven’t reached these attainments but also declare that they know realization for themselves.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b5'>佛告須深： 「彼先知法住，後知涅槃。 彼諸善男子獨一靜處，專精思惟，不放逸法。 離於我見，不起諸漏，心善解脫。」</td>
+    <td id='p18'>18. The Buddha told Susīma, “First, they knew the Dharma life, and later they knew <em>nirvāṇa</em>. Those good sons went alone to a quiet place, focused on contemplation, and were careful. They parted with views of self, the contaminants stopped, and their minds were well liberated.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b8'>須深白佛： 「我今不知先知法住，後知涅槃。 彼諸善男子獨一靜處，專精思惟，不放逸法。 離於我見，不起諸漏，心善解脫。」</td>
+    <td>Susīma said to the Buddha, “Now, I didn’t know that they first knew the Dharma life and then later knew <em>nirvāṇa</em>. Those good sons went alone to a quiet place, focused on contemplation, and were careful. They parted with views of self, the contaminants stopped, and their minds were well liberated.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b11'>佛告須深： 「不問汝知、不知且自先知法住，後知涅槃。 彼諸善男子獨一靜處，專精思惟，不放逸住。 離於我見，心善解脫。」</td>
+    <td>The Buddha told Susīma, “I didn’t ask if you knew or didn’t know that they first knew the Dharma life and afterward knew <em>nirvāṇa</em>. Those good sons went to alone to a quiet place, focused on contemplation, and were careful. They parted with views of self, the contaminants stopped, and their minds were well liberated.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b14'>須深白佛： 「唯願，世尊，為我說法，令我得知法住智，得見法住智。」</td>
+    <td id='p19'>19. Susīma said to the Buddha, “Please, Bhagavān, teach the Dharma for me so that I can know the knowledge of the Dharma life and can see the knowledge of the Dharma life.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b15'>佛告須深： 「我今問汝；隨意答我。 須深，於意云何？ 有生故有老死？ 不離生有老死耶？」</td>
+    <td id='p20'>20. The Buddha told Susīma, “Now, I will question you. Answer me with what you think. Susīma, what do you think? Are there old age and death because there’s birth? Are there old age and death when birth isn’t gone?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b17'>須深答曰：「如是，世尊。」</td>
+    <td>Susīma answered, “Yes, Bhagavān.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b18'>「有生故有老死。 不離生有老死。 如是生、有、取、愛、受、觸、六入處、名色、識、行、無明。 有無明故有行？ 不離無明而有行耶？」</td>
+    <td id='p21'>21. “There are old age and death because there’s birth. There aren’t old age and death without birth. <em>So it is with birth, existence, clinging, craving, feeling, contact, the six sense fields, name and form, awareness, action, and ignorance.</em> Is there action because there’s ignorance? Is there action when ignorance isn’t gone?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b21'>須深白佛：「如是，世尊。 有無明故有行。 不離無明而有行。」</td>
+    <td>Susīma answered, “Yes, Bhagavān. There’s action because there’s ignorance. There isn’t action without ignorance.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b22'>佛告須深： 「無生故無老死？ 不離生滅而老死滅耶？」</td>
+    <td id='p22'>22. The Buddha told Susīma, “Are there no old age and death when there’s no birth? Do old age and death cease without the cessation of birth?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b23'>須深白佛言：「如是，世尊。 無生故無老死。 不離生滅而老死滅。」</td>
+    <td>Susīma answered, “Yes, Bhagavān. There are no old age and death when there’s no birth. Old age and death don’t cease without the cessation of birth.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b25'>「如是⋯乃至⋯無無明故無行？ 不離無明滅而行滅耶？」</td>
+    <td id='p23'>23. “So it is … <em>up to</em> … Is there no action when there’s no ignorance? Does action cease without the cessation of ignorance?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b26'>須深白佛：「如是，世尊。 無無明故無行。 不離無明滅而行滅。」</td>
+    <td>Susīma answered, “Yes, Bhagavān. There’s no action when there’s no ignorance. Action doesn’t cease without the cessation of ignorance.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b28'>佛告須深： 「作如是知、如是見者為有離欲、惡不善法⋯乃至⋯身作證具足住不？」</td>
+    <td id='p24'>24. The Buddha asked Susīma, “Has someone who knows and sees in this way been secluded from desires and bad and unskillful things … <em>up to</em> … personally realized and fully abided [in the meditative attainments]?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97b29'>須深白佛：「不也，世尊。」</td>
+    <td>Susīma answered, “No, Bhagavān.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c1'>佛告須深： 「是名先知法住，後知涅槃。 彼諸善男子獨一靜處，專精思惟，不放逸住。 離於我見，不起諸漏，心善解脫。」</td>
+    <td id='p25'>25. The Buddha told Susīma, “This is called first knowing the Dharma life and afterward knowing <em>nirvāṇa</em>. Those good sons went alone to a quiet place, focused on contemplation, and were careful. They had parted with views of self, the contaminants stopped, and their minds were well liberated.”</td>
+  </tr>
+<tr>
+  <td class='ch' title='t99.2.97c4'></td>
+  <td class='subheading'>Susīma Converts to the Buddha’s Teaching</td>
+</tr>
+  <tr>
+    <td class='ch' title='t99.2.97c4'>佛說此經已，尊者須深遠塵離垢，得法眼淨。 爾時，須深見法，得法，覺法度疑。 不由他信，不由他度。 於正法中心得無畏。 稽首佛足，白佛言： 「世尊，我今悔過。 我於正法中盜密出家，是故悔過。」</td>
+    <td id='p26'>26. After the Buddha taught this <em>sūtra</em>, Venerable Susīma was removed from dust, free of defilement, and his Dharma vision became clear. Susīma then saw the Dharma, got the Dharma, and realized the Dharma beyond doubt. He didn’t get it by believing someone else or by another’s liberation. He gained confidence in the correct Dharma. He bowed his head at the Buddha’s feet and said to the Buddha, “I must apologize now, Bhagavān. I secretly left home to steal the correct Dharma, so I must apologize.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c8'>佛告須深： 「云何於正法中盜密出家？」</td>
+    <td id='p27'>27. The Buddha asked Susīma, “In what way did you secretly leave home to steal the correct Dharma?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c9'>須深白佛言： 「世尊，有眾多外道來詣我所，語我言： 『須深當知，我等先為國王、大臣、長者、居士及餘世人恭敬供養，而今斷絕。 悉共供養沙門瞿曇、聲聞大眾。 汝今密往沙門瞿曇、聲聞眾中出家受法。 得彼法已，還來宣說我等。 當以彼聞法教化世間，令彼恭敬供養如初。』 是故，世尊，我於正法、律中盜密出家。 今日悔過。 唯願，世尊，聽我悔過，以哀愍故。」</td>
+    <td id='p28'>28. Susīma told the Buddha, “Bhagavān, there was a group of adherents of another religion who came to me and said, ‘Susīma, you should know, we were respected before and received offerings from kings, great ministers, prominent men, householders, and the other worldly people, but now that has stopped. They all give their offerings to the ascetic Gautama and his great assembly of disciples. Now, you could secretly go to that ascetic Gautama and ordain with his assembly of disciples to get his Dharma. Once you’ve gotten his Dharma, come back and explain it to us. We will use that Dharma we learn to convert worldly people so that they will give their respect and offerings as they did before.’ Therefore, Bhagavān, I secretly left home to steal the correct Dharma and Vinaya. Today, I apologize for that. Please, Bhagavān, accept my apology out of pity for me!”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c17'>佛告須深： 「受汝悔過。 汝當具說： 『我昔愚癡、不善、無智。 於正法、律盜密出家，今日悔過，自見罪、自知罪。 於當來世律儀成就，功德增長，終不退減。』 所以者何？ 凡人有罪，自見、自知而悔過者，於當來世律儀成就，功德增長，終不退減。」</td>
+    <td id='p29'>29. The Buddha told Susīma, “I accept your apology. You should state it in full: ‘I was a fool, unskillful, and ignorant. I secretly left home to steal the correct Dharma and Vinaya, but today I apologize for that, having seen and known my misdeed. In the future, I will achieve the deportment of the Vinaya and develop virtue that will never be reduced.’ Why is that? Often when someone does something wrong, sees and knows it themselves, and apologizes for it, they achieve the deportment of the Vinaya and develop virtue that will never be reduced in the future.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c23'>佛告須深： 「今，當說譬。 其智慧者以譬得解。 譬如國王有防邏者捉捕盜賊，縛，送王所。 白言： 『大王，此人劫盜。 願，王，處罪。』</td>
+    <td id='p30'>30. The Buddha told Susīma, “Now, I will tell you a story. Those who are wise can understand things with stories. Suppose a king had a warden who caught a thief, bound him, and escorted him to the king. He said, ‘Great King, this man is a thief. Please, King, decide his punishment.’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c26'>「王言： 『將罪人去，反縛兩手，惡聲宣令周遍國中。 然後將出城外刑罪人處，遍身四體劖以百矛。』</td>
+    <td id='p31'>31. “The King said, ‘Take this criminal away, bind both of his hands, and announce his bad reputation everywhere in the kingdom. Afterward, take him outside of the city to the place where criminals are punished, and stab his whole body and four limbs with a hundred lances.’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.97c28'>「彼典刑者受王教令。 送彼罪人，反縛兩手，惡聲宣唱，周遍城邑。 將出城外刑罪人處，遍身四體，劖以百矛。</td>
+    <td>“The executioner accepted the King’s instructions. He escorted that criminal with both his hands bound and announced his bad reputation everywhere in the city. He then led the criminal out of the city to the place where criminals were punished, and his whole body and four limbs were stabbed with a hundred lances.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a1'>「日中，王問： 『罪人活耶？』</td>
+    <td id='p32'>32. “In the middle of the day, the King asked, ‘Is that criminal still alive?’”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a2'>「臣白言：『活。』</td>
+    <td>“An official replied, ‘He lives.’”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a2'>「王復勅臣： 『復劖百矛。』 至日晡時，復劖百矛，彼猶不死。」</td>
+    <td id='p33'>33. The king then ordered the official, ‘Stab him with another hundred lances.’ Late in the afternoon, he was again stabbed with a hundred lances, but he still didn’t die.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a3'>佛告須深： 「彼王治罪劖以三百矛。 彼罪人身寧有完處如手掌不？」</td>
+    <td id='p34'>34. The Buddha told Susīma, “That king decreed his punishment was to be stabbed with three hundred lances. Could there be an intact spot left on that criminal’s body [as big as] the palm of his hand?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a5'>須深白佛：「無也，世尊。」</td>
+    <td>Susīma answered, “There wouldn’t be, Bhagavān.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a5'>復問須深： 「時，彼罪人劖以三百矛。 因緣，受苦、極苦、劇不？」</td>
+    <td id='p35'>35. He again asked Susīma, “Then, that criminal was stabbed with another hundred lances. Wouldn’t that be a cause for feeling pain, extreme pain, and suffering?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a7'>須深白佛： 「極苦，世尊。 若劖以一矛，苦痛難堪。 況三百矛當可堪忍？」</td>
+    <td>Susīma said to the Buddha, “Extreme pain, Bhagavān. The pain would be difficult to endure if he were stabbed with a single lance. How could three hundred lances be endured?”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a8'>佛告須深： 「此尚可耳。 若於正法、律盜密出家，盜受持法，為人宣說，當受苦痛倍過於彼。」</td>
+    <td id='p36'>36. The Buddha told Susīma, “That’s all we can expect. If someone secretly leaves home to steal away the correct Dharma and Vinaya and teach it to others, such a person would experience pain that’s double that.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t99.2.98a10'>佛說是法時，外道須深漏盡意解。 佛說此經已，尊者須深聞佛所說歡喜，奉行。</td>
+    <td id='p37'>37. When the Buddha taught this Dharma, Susīma from another religion ended his contaminants and his mind was freed. After the Buddha taught this <em>sūtra</em>, Venerable Susīma rejoiced and approved of it upon hearing what the Buddha taught.</td>
+  </tr>
+</table>
+
+<hr/>
+
+<h3 id="notes">Notes</h3>
+
+<ol class="notes-list">
+<li id="n1"><p>This is <em>sūtra</em> no. 347 in the <cite>Taisho</cite> edition and no. 489 in Yinshun (<a href="https://cbetaonline.dila.edu.tw/zh/T02n0099_p0096b25" target="_blank">T99.2.96b25-8a12</a>, <a href="https://cbetaonline.dila.edu.tw/zh/Y31n0030_p0060a06" target="_blank">Y30.60a6-4a12</a>). It’s parallel with <a href="https://suttacentral.net/sn12.70" target="_blank">SN 12.70</a>.</p>
+<p>Aside from the usual observations comparing parallels found in the notes that follow, I’d like to draw the reader’s attention to the literary devices employed in this <em>sūtra</em>, which seem to form a simple type of chiamus.</p>
+<p>The <em>sūtra</em> opens with a scene in which heretics plot to steal the Buddha’s teaching and use it to regain the honors and donations they were used to receiving. This would be a pleasant result for them in their imagination. The <em>sūtra</em> concludes with a story about a king sentencing a common thief to execution by repeated stabbing with lances. He indicates to Susīma that stealing the Dharma would have a worse result. The moral to this tale, which is rhetorically and stylistically forceful, is not in keeping with the Buddhist observation that wisdom is wisdom regardless of who teaches it.</p>
+<p>The middle of the story also contains an inverse parallelism between Susīma’s questioning of the liberated monk(s) and the Buddha’s questioning of Susīma. In the first case, a mistaken questioner asks a series of questions, all of which presuppose the wrong cause for liberation (namely, meditative attainments rather than wisdom). As a result, all the questions are answered, “No.” In the second case, a correct questioner asks a series of questions that assert the correct cause for suffering to arise. Each question is answered, “Yes.”</p>
+<p>The contrast between the two parallel conversations makes the story’s point more memorable to the listener, and it also is readily memorized since the bulk of it is a recitation of well-known rubrics. The moral to this part of the story is that miraculous or meditative attainments, while they may bring fame and power to a practitioner, are not the way to liberation. Nor are they the proper goal to pursue in the end.</p>
+<p>I personally view these arguments as indicative of a text composed (perhaps written) during a later era when Buddhism came into sharp competition with other religious traditions like Brahminism and Jainism. It falls into the same category as many of the stories we find in DN and MN as rhetorical arguments against other non-Buddhist traditions that were in India at the time. [<a href="#ref1">back</a>]</p></li>
+<li id="n2"><p>This introduction is more involved that the one found in SN 12.70. There, Susīma is introduced as the leader of an assembly that beseeches him to go learn the Buddha’s teaching so they could impress the laity with it. This involves less back and forth than we find here, but this version is perhaps more plausible. As we shall see, the actual teaching by the Buddha in SN 12.70 is not abbreviated like it is here, meaning that it takes up more space in the story, while here the narrative surrounding that teaching is larger. This is a general pattern of the Theravāda <em>sutta</em>s: They feature more doctrine and less story overall compared to other Buddhist traditions.</p>
+<p>One detail shared both here and reported in the Pali commentary is that the Buddha knew Susīma’s secret motive, but here he specifically tells the monks to make sure he attains liberation, and they agree. More than likely, these story elements were added to explain how an omniscient Buddha could appear to be misled by someone from another sect. The Pali <em>sutta</em> may be closer to the original story in this regard. [<a href="#ref2">back</a>]</p></li>
+<li id="n3"><p><em>wise and great man.</em> C. <span class="ch">有智慧大力</span>. There is an older reading here that changes 大力 (“great power”) to <span class="ch">大士</span> (“great man”). We should note that when this part of the narrative is recounted in the next couple paragraphs, the expression becomes <span class="ch">聰明黠慧</span> (“astute and intelligent”). This may be the correct reading, which has been corrupted here. [<a href="#ref3">back</a>]</p></li>
+<li id="n4"><p><em>Susīma.</em> C. <span class="ch">須深</span> (EMC. siu-ʃɪəm = Pr. <em>suśim[a]</em>), G. ?, P. <em>susīma</em>, S. <em>susīma</em>. This name is attested in S. sources the same as we find it in the P. parallel of this <em>sūtra</em>. The C. transliteration would sound out <em>suśim[a]</em>. I have not found an attestation in G. sources. [<a href="#ref4">back</a>]</p></li>
+<li id="n5"><p><em>receive ordination.</em> C. <span class="ch">受具足</span>, P. <em>alattha upasampada</em>. C. <span class="ch">具足</span> typically means to be replete with or to perfect something. The Buddhist term for entering the order of renunciates is <em>upasampadā</em>, which lit. means to acquire or attain (the precepts). Thus, I’ve read <span class="ch">受具足</span> here as a lit. translation (“fully receive [the precepts]”), which was intended to mean “ordination” as a monk or nun. [<a href="#ref5">back</a>]</p></li>
+<li id="n6"><p>This portion of the story varies considerably from the Pali parallel. In that version, Susīma only overhears some monks declaring themselves liberated to the Buddha. Then, Susīma asks a monk if he has attained the penetrating knowledges, namely the miraculous abilities, heavenly ear, knowing the thoughts of others, recollection of past lives, and the heavenly eye. Here, he asks if the monk had attained each of the four meditations.</p>
+<p>At this point, however, both versions agree that he finishes with a question about the formless attainments, though here he seems to refer to both the four meditations and formless <em>samādhi</em>s.</p>
+<p>The conclusion differs as well. In SN 35.70, Susīma says he doesn’t understand, but the monks dismiss his concerns. Here, Susīma accuses the monk of contradicting himself and making no sense. In both versions, he then goes to the Buddha to resolve the matter. [<a href="#ref6">back</a>]</p></li>
+<li id="n7"><p>This questioning by Susīma implies that the practice of the four meditations and formless <em>samādhi</em>s was common knowledge to other religions besides the Buddhists. And it creates a subtext that these practices are not what made the Buddhists special, rather it was liberation through wisdom.</p>
+<p>This doesn’t occur in SN 35.70 because there Susīma questions the monk about attainment of miraculous powers. This changes the subtext to that of the Buddhist deprecation of miracle-working. [<a href="#ref7">back</a>]</p></li>
+<li id="n8"><p>Again, this section of the story is lengthier outside of the doctrinal teaching given by the Buddha, and the teaching is much more involved in SN 35.70 than here.</p>
+<p>In SN 35.70, the expression <em>dhammaṭṭhitiñāṇa</em> (<em>dhamma</em> + <em>ṭhiti</em> + <em>ñāṇa</em> = “knowledge of Dhamma living” or “<em>dhamma</em> persistence”) below is interpreted to mean the knowledge of the impermanence, painfulness, and selflessness of the five aggregates. Here, it has a much more holistic meaning of going into seclusion and contemplating carefully (or earnestly).</p>
+<p>We get further confirmation of these two interpretations in their extant exegesis. The Pali commentary claims that the term refers to the intrinsic nature of things in general (i.e., that they are impermanent, etc.). This interprets <em>dhamma</em> as things like the five aggregates.</p>
+<p>In the <cite>Yogācārabhūmi</cite>, we find the explanation of <span class="ch">法住智</span> (“knowledge of Dharma living”) as meaning someone who receives a teaching about dependent origination and then goes into retreat to contemplate it. When they penentrate it, they become a believer, and they gain knowledge of how things are established through cause and effect.</p>
+<p>It would seem that this was a case of meaning being filled in at some later time by different commentators in each tradition. Neither explanation is wrong or incoherent, since both realizations are said to lead to liberation in other <em>sūtra</em>s. The takeaway may be that it need not be so specific. The knowledge gained through Dharma living, or the religious practice, leads to <em>nirvāṇa</em>, not the specific attainments that Susīma expects must be involved.</p>
+<p>Beyond this initial point, the two versions of the Buddha’s teaching proceed as we would expect. He then asks Susīma about the twelve-step chain of dependent origination: Does it necessarily involve the attainments that he had challenged the monks with in each version? Susīma concedes the point. [<a href="#ref8">back</a>]</p></li>
+</ol>
+<hr/>
+
+<p class="translator">Translator: Charles Patton</p>
+<p class='revised'>Last Revised: 17 April 2026</p>
+
+<hr/>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/chinese_canon/sa/sa3-14.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/chinese_canon/sa/sa3-71.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

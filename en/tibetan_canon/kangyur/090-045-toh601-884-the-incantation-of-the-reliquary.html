@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 601, Toh 884 — The Dhāraṇī for a Caitya — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 601, Toh 884 — The Dhāraṇī for a Caitya</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 601, Toh 884 — The Dhāraṇī for a Caitya        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Caityadhāraṇī          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by Julian Schott under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Dhāraṇī for a Caitya</h3><section class="tei-section tei-section--section"><div class="tei-verse"><div class="tei-line"><span class="tei-ref">F.260.a</span><span class="tei-ref">F.129.a</span>Homage to the Three Jewels.</div><div class="tei-line">Homage to the Blessed One, Vajradhara.</div><div class="tei-line">Homage to the blessed, thus-gone, worthy, perfect Buddha, the king with majestic power over the mode, discipline, and miraculous display of all things.</div></div><div class="tei-verse"><div class="tei-line">Homage to the buddhas of the three times!</div><div class="tei-line">Homage to the virtuous Three Jewels!</div><div class="tei-line">I pay homage to Akṣobhya,</div><div class="tei-line">Amitābha, and Avalokiteśvara!</div><div class="tei-line">Homage to the three families!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-36" href="#tei-note-UT22084-090-045-36">[1]</a></sup></div></div><br /><p>Thus did I hear at one time. The Blessed One, the great Vajradhara, was dwelling in a great caitya with a central palace made of various precious substances surrounded by four immeasurable caityas. It sat atop a foundation that had the nature of a caitya and was made from the five kinds of materials from the great Mount Meru.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-39" href="#tei-note-UT22084-090-045-39">[2]</a></sup> The nature of this great caitya was such that even the space above its summit had the quality of a caitya. He was dwelling there together with Vajrapāṇi, Mañjuśrī, Avalokiteśvara, Maitreya, and other bodhisattvas of the tenth level, <span class="tei-ref">F.260.b</span> as well as the protectors of the pure abodes, including Brahmā, Śakra, and the Four Great Kings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-40" href="#tei-note-UT22084-090-045-40">[3]</a></sup></p><p>Then, a total of sixty quintillion<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-42" href="#tei-note-UT22084-090-045-42">[4]</a></sup> light rays of various colors were emitted from the Blessed One’s uṣṇīṣa, <span class="tei-ref">F.129.b</span> the śrīvatsa at his heart, and other places. The great brilliance of these light rays pervaded all the incalculable, inconceivable, and inexpressible realms of the trichiliocosm, filling them like a heap of mustard seeds. All those among the infinite number of beings who were blind could now see forms, those who were deaf could hear sounds, those who stuttered could speak clearly, those with a limp or who had trouble walking could walk, those who were paralyzed and those who were sick were freed from their illness, hell beings had their lifespans reduced and were gradually freed from their torment, and all beings gradually became contemplative. The entire sky filled with dharmakāya mind-caityas, which grew in size. The rays of light then reentered the Blessed One’s uṣṇīṣa, turning into a representation of the dharmakāya.</p><p>Vajrapāṇi and the rest of the entourage were astonished, and they worshiped the Blessed One with offerings of canopies, banners, flags, parasols, fly whisks, bells, silk scarves, incense, flowers, garlands, unguents, lamps, food, music, and the like. They asked the Blessed One, “Please, Blessed One, protector of beings who possesses great compassion, teach the <em>vimaloṣṇīṣa</em> dhāraṇī,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-44" href="#tei-note-UT22084-090-045-44">[5]</a></sup> the great spell used in the rite for blessing a caitya.”</p><p>The Blessed One replied, “Here is the <em>vimaloṣṇīṣa</em> dhāraṇī, the great spell used in the rite for blessing a caitya. <span class="tei-ref">F.261.a</span> Any son or daughter of noble family who understands, upholds, writes, reads, or makes its title known will entirely purify the five acts with immediate retribution, the ten unwholesome deeds, and any other negative actions they have performed. <span class="tei-ref">F.130.a</span> This is the <em>vimaloṣṇīṣa</em>, the great spell used in the rites for blessing a caitya:</p><p>oṁ traiyadhve sarva­tathāgata­hṛdayagarbhe jvala dharmadhātu­garbhe saṃhāraṇa āyuḥ saṃśodhaya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-48" href="#tei-note-UT22084-090-045-48">[6]</a></sup> pāpaṃ sarva­tathāgata­samantoṣṇīṣavimale viśuddhe svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-49" href="#tei-note-UT22084-090-045-49">[7]</a></sup></p><p>Immediately after he spoke this great spell, all the realms of the world took on the nature of a caitya. If this great spell is written on birch bark, cloth, or other tree bark and affixed to the top of a banner, the banner will become worthy of worship, one that is honored and venerated by all gods, humans, and the like. If this great spell is affixed to someone’s body or neck, gods, humans, asuras, and the like will see that person as a buddha. If one recites this great spell when traversing rugged mountains, forests, isolated places, or other landscapes, all those mountains and landscapes will be like a caitya.</p><p>If one recites oṁ traiyadhve sarvatathāgatahṛdayagarbhe jvala dharmadhātu­garbhe saṃhāraṇa<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-52" href="#tei-note-UT22084-090-045-52">[8]</a></sup> āyuḥ saṃśodhaya pāpaṃ sarva­tathāgata­samantoṣṇīṣavimale viśuddhe mahāvirajera gambhīrasi dharmadhātugarbhe vivisāra a a laṁ svāhā,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-53" href="#tei-note-UT22084-090-045-53">[9]</a></sup> the entire ground will take on the nature of a caitya.</p><p>If one utters this great mantra spell when crossing any body of water—such as a river, lake, or ocean—all that water will take on the nature of a caitya. After reciting oṁ traiyadhve sarva­tathāgata­hṛdayagarbhe jvala dharmadhātu­garbhe saṃhāraṇa āyuḥ saṃśodhaya pāpaṃ sarva­tathāgata­samantoṣṇīṣavimale viśuddhe mahā­virajera gambhīrasi dharmadhātu­garbhe vivisāra a māmaki svāhā,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-55" href="#tei-note-UT22084-090-045-55">[10]</a></sup><span class="tei-ref">F.261.b</span> all water will take on the nature of a caitya.</p><p>Additionally, when one casts this great spell in a way that pervades the whole of space, all of space will also take on the nature of a caitya. <span class="tei-ref">F.130.b</span> When reciting oṁ traiyadhve sarva­tathāgata­hṛdayagarbhe jvala dharmadhātu­garbhe saṃhāraṇa āyuḥ saṃśodhaya pāpaṃ sarva­tathāgata­samantoṣṇīṣavimale viśuddhe mahā­virajera gambhīrasi dharmadhātu vivisāra a a e khaṃ ya svāh<em>ā</em>,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-57" href="#tei-note-UT22084-090-045-57">[11]</a></sup> all of space will take on the nature of a caitya and become worthy of veneration, circumambulation, and worship.</p><p>If one recites the <em>vimaloṣṇīṣa</em> dhāraṇī when making caityas from any of the five great elements, it purifies all afflictions and obscurations. Moreover, when a caitya is made with materials such as earth, wood, rock, mud, or clay onto which this mantra spell has been cast, those materials will produce a caitya made of various precious substances. When oṁ ratnacaitye pañcaye vivisāra svāhā<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-59" href="#tei-note-UT22084-090-045-59">[12]</a></sup> is recited, cow dung and similar materials can be applied to result in a caitya made of various precious substances. If this great spell is not cast, even if one intends to fashion a caitya from gold, silver, lapis lazuli, and the rest of the seven precious substances, it will be no different than one made of stone, wood, or clay. Why? Because the blessing of the mantra and essence mantra will not have entered the nature of these materials. When <em>blessed</em> with the great spell, however, even a caitya made from any of the five great elements will purify the stains of the obscurations from incalculable eons so that one will be born into a householder family as great as a sal tree and go on to obtain the stage of nonregression. If one makes a caitya from stone, wood planks, and the like after blessing them with this great spell, there is no doubt that one will be born into a brahmin family as great as a sal tree,<span class="tei-ref">F.262.a</span> gradually traverse the ten stages, and obtain the eleventh stage, Universal Light.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-60" href="#tei-note-UT22084-090-045-60">[13]</a></sup> If one makes a caitya from gold, silver, lapis lazuli, and the like after blessing them with this great spell, there is no doubt that one will be born into a kṣatriya family as great as a sal tree and go on to obtain the stage of Vajradhara.</p><p><span class="tei-ref">F.131.a</span> Furthermore, if this great mantra spell is cast when making a single caitya, it will be as if ten million were made. If this great spell is not cast, even if ten million caityas are made it will be as if they are just one. Why would this be the case? The answer is the same as before.</p><p>The mantra for the great spell is tadyathā sūkṣme sūkṣme śānte śānte nirākule yaśo tejo sarvabuddhe adhiṣṭhāna adhiṣṭhite anumide svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-62" href="#tei-note-UT22084-090-045-62">[14]</a></sup> Its procedure is as follows: if one makes a single caitya from a lump of clay after reciting the spell over it twenty-one times, it will be as if ten million are made. The corresponding amount and benefit of making a hundred cannot be expressed, even by the arhats among noble śrāvakas. The corresponding amount and benefit of making a thousand cannot be expressed, even by bodhisattvas. The corresponding amount and benefit of making ten thousand cannot be expressed, even by the tathāgatas. The corresponding amount and benefit of making a hundred thousand cannot be expressed, even by the tathāgatas of the three times and ten directions.</p><p>For these reasons, one should perform the ritual offering, including the five supports for offering.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-64" href="#tei-note-UT22084-090-045-64">[15]</a></sup> First, the local deities should be appeased at the site where the caityas will be made, where the clay for the caityas will be stored, and where the clay for the caityas will be excavated. Next, a boundary should be created to thwart any ill-intentioned obstructing spirits who live there and would disrupt the caitya and its virtue. To infuse a thread with the mantra of this great spell, recite oṁ vajrasūtra hūṁ phaṭ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-66" href="#tei-note-UT22084-090-045-66">[16]</a></sup> while visualizing a thread to be a vajra thread. <span class="tei-ref">F.262.b</span> The area that encompasses the site for the caitya and the area that encompasses the site where the clay is located should be demarcated with the thread. When the ground is demarcated in this way, the specific patch of ground will take on the qualities of the various precious substances that are used for a caitya. <span class="tei-ref">F.131.b</span></p><p>In the same space, one should next cast the great spell oṁ vajrakīli kīli kīlaya sarvaduṣṭam hūṁ phaṭ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-68" href="#tei-note-UT22084-090-045-68">[17]</a></sup> on a rosewood stake that is eight fingers long. After reciting it seven times, one should visualize it as a vajra stake and plant one in the center and at the four corners of the demarcated area. If done in that way, one will be protected from all humans and nonhumans, unless their actions are the result of the ripening of previous karma. The rosewood stake should remain in the ground where the clay for the caitya is located and should not be removed for any reason until the clay is taken.</p><p>After that, cast the spell oṁ amṛte hana hana hūṁ phaṭ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-70" href="#tei-note-UT22084-090-045-70">[18]</a></sup> on sesame seeds and white mustard seeds. It should be recited seven times, and the seeds should be scattered over the site. By doing so, this specific area will become the immeasurable seat of the tathāgatas.</p><p>Once the area has been <em>blessed</em> as the seat of the tathāgatas, the boundary against ill-intentioned obstructing spirits should be set by offering incense, flowers, oblations, and the like to the devas, nāgas, and asuras who reside in the area and then dedicating the merit. The area will be auspicious and <em>blessed</em> after the <em>vimaloṣṇīṣa</em> dhāraṇī has been recited.</p><p>Next, when digging up the clay for the caitya, one should dig while reciting oṁ vajra khana khana hūṁ phaṭ.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-73" href="#tei-note-UT22084-090-045-73">[19]</a></sup> Digging while reciting this and visualizing the area as composed of the five precious substances will transform it into the pure body of the Tathāgata.</p><p>The clean earth that has been excavated should then be placed in a purified area, and the rite of pounding the earth should be performed. One should form the gesture of Amṛtakuṇḍalin over a mallet, press it with a three-pronged vajra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-75" href="#tei-note-UT22084-090-045-75">[20]</a></sup> and cast the great spell vajramudgara ākoṭaya ākoṭaya hūṁ phaṭ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-76" href="#tei-note-UT22084-090-045-76">[21]</a></sup> while pounding the earth. <span class="tei-ref">F.263.a</span> After pounding the earth while reciting this seven times and visualizing the mallet as a vajra mallet, all afflictions and habitual tendencies will be purified and defeated.</p><p>Next comes the kneading of the clay. After touching scented water with the gesture of Amṛtakuṇḍalin, <span class="tei-ref">F.132.a</span> one should imagine the nature of reality as a white syllable a within the scented water. A bright moon disk appears from the syllable, shining with intense rays of light that pervade the scented water. Imagining that the scented water has taken on the nature of nectar, recite the great spell oṁ amṛte hūṁ phaṭ. After blessing it with seven recitations, the scented water will be like a stream of great nectar.</p><p>One should then recite the following great spell for kneading the clay: oṁ vajra pramardanaya hūṁ phaṭ.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-79" href="#tei-note-UT22084-090-045-79">[22]</a></sup> After reciting it seven times, the clay will become the body of the Tathāgata. Now that the clay has been <em>blessed</em> as the inconceivable body of the Tathāgata, one should form the gesture of Amṛtakuṇḍalin over it while reciting the following great spell: namo ratna­trayāya tadyathā sūkṣme sūkṣme śānte śānte dānte dānte nirākule yaśo yaśovati tejo śuddhe viśuddhe sarva­tathāgata adhiṣṭhāna adhiṣṭhite ā namaḥ te hite svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-80" href="#tei-note-UT22084-090-045-80">[23]</a></sup> Once one has recited this great spell in three sets of seven, totaling twenty-one times, and <em>blessed</em> the clay with the great mantra spell, five kinds of wisdom-light rays will radiate from the clay into the ten directions and tame all beings as needed. The rays of light then return, causing the clay to take on the nature of the five precious substances and endowing it with the causes and conditions for the inconceivable body of the Tathāgata. This is what one should imagine. <span class="tei-ref">F.263.b</span></p><p>The following great spell should then be recited seven times while preparing balls of clay: oṁ vajra āyuṣe svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-82" href="#tei-note-UT22084-090-045-82">[24]</a></sup> Once <em>blessed</em> in this way, clouds of wisdom-light rays will radiate from the clay balls, pervade the limitless realms of the ten directions, <span class="tei-ref">F.132.b</span> and fulfill the aims of many beings. The clouds of light rays will then gather back into the clay balls, purifying them so that they are like crystals with the nature of precious wisdom. This is what one should imagine.</p><p>Next, the seal of the <em>vimaloṣnīṣa</em> essence mantra is pressed into the clay balls, or the mantra is written on birch bark, cloth, paper, or any bark and inserted into them. The essence mantras of each of the five families—oṁ hūṁ trāṁ hrī āḥ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-84" href="#tei-note-UT22084-090-045-84">[25]</a></sup>—should be incorporated into the <em>vimaloṣṇīṣa</em> mantra so that they are joined as a pair, and then either affixed as a seal or inserted as a written mantra as appropriate. The ball of clay will then possess the wisdom mind of the Tathāgata. When inserting the spell, one should recite the mantra oṁ vajragarbhe svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-85" href="#tei-note-UT22084-090-045-85">[26]</a></sup> Once recited, the wisdom mind of all the tathāgatas will be gathered within it and fixed. This is what one should imagine.</p><p>After that, one should recite the great spell for anointing the interior of the caitya mold with the oil of white mustard seed or sesame oil: oṁ araje viraje svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-87" href="#tei-note-UT22084-090-045-87">[27]</a></sup> Once this has been recited three times and the blessing conferred, the caitya will become a dharmadhātu caitya through the union of means and wisdom. This is what one should imagine.</p><p>Then, when pressing the caitya, one should recite the great spell oṁ vajra­mudgara ākoṭaya ākoṭaya hūṁ phaṭ.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-89" href="#tei-note-UT22084-090-045-89">[28]</a></sup> Once it has been recited and the caitya pressed, it will become a dharmakāya caitya through the union of space and nondual wisdom. Because the caitya is made using the <em>vimaloṣṇīṣa</em> essence mantra in whichever form,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-90" href="#tei-note-UT22084-090-045-90">[29]</a></sup> it will become an infinite dharmakāya caitya through the union of space and nondual wisdom. <span class="tei-ref">F.264.a</span></p><p>One should next extract the caitya while reciting the great spell for removing it from the mold: oṁ dharmadhātuye svāhā dharmadhātugarbhe svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-92" href="#tei-note-UT22084-090-045-92">[30]</a></sup> The caitya is extracted after reciting this seven times, at which point it emerges as an infinite dharmakāya caitya through the union of space and nondual wisdom. It will fulfill, in an extraordinary manner, <span class="tei-ref">F.133.a</span> the aims of all beings in this world until saṃsāra is empty. This is what one should imagine.</p><p>Once the caitya has been removed from its container, one should recite the great spell for the ring.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-94" href="#tei-note-UT22084-090-045-94">[31]</a></sup> After reciting oṁ pramāṇaye svāhā<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-95" href="#tei-note-UT22084-090-045-95">[32]</a></sup> and setting the ring, it should be adorned with a precious parasol, precious pinnacle, precious banner, silk streamers, and other ornaments. Ornamented with the various qualities of nirvāṇa, it will benefit beings according to their wishes. This is what one should imagine.</p><p>Then, when the caitya is covered with a cloth, one should recite the great spell oṁ dharmadhātu­svabhāva viśuddhe dharma te svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-97" href="#tei-note-UT22084-090-045-97">[33]</a></sup> If one repeats this spell many times, the caitya will signify the pure dharmadhātu.</p><p>If the maṇḍala of prepared caityas consists of five caityas, one should draw a maṇḍala with a central space and spaces in the four directions, totaling five. When making any number of caityas—be it a hundred or a thousand—construct a stone base with a number of maṇḍala squares corresponding to the number of caityas.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-99" href="#tei-note-UT22084-090-045-99">[34]</a></sup> It should be a square maṇḍala made of earth, stone, wood, and so forth. The throne beneath it can be a lion throne, a jewel throne, or a lotus throne. Once this base has been made, it should be sprinkled with cow dung mixed with scented water.</p><p>Water infused with saffron and sandalwood should be smeared in a circle to encompass the entire area where the central caitya and caityas in the four directions will be placed. <span class="tei-ref">F.264.b</span> Use thread to demarcate and then draw the maṇḍala.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-101" href="#tei-note-UT22084-090-045-101">[35]</a></sup> When drawing a maṇḍala for five caityas, draw a maṇḍala with five spaces—a central space and spaces in the four directions. In the same way, the lines of the vajra grid should be used to demarcate the space into maṇḍala squares corresponding to the number of caityas, be they one hundred or one thousand. <span class="tei-ref">F.133.b</span> An eight-petaled lotus should be drawn in each of the spaces where a caitya is to be placed.</p><p>Then, once the caitya maṇḍala has been set up, the request to remain is made using the mantra spell oṁ supratiṣṭha stūpe svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-103" href="#tei-note-UT22084-090-045-103">[36]</a></sup> After reciting this three times and setting out the caitya, it will function extraordinarily to serve the aims of oneself and others. The sequence for arranging the caityas is as follows: the first is placed in the center, then one proceeds sequentially to set one in the east, south, west, and north. The great spell to be recited while placing them is oṁ vajra­padmasamaye svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-104" href="#tei-note-UT22084-090-045-104">[37]</a></sup> After reciting it three times, say, “please be seated on the vajra and lotus seat” while imagining that everything—the ground, the expanse of the sky, and the depths of the sea—is filled with caityas. Alternatively, one offers incense, flowers, and the rest of the fivefold offering and makes the request to remain after each caitya is made and placed in the maṇḍala.</p><p>The color of the caityas and other features are painted observing the following correspondences: white for pacification, yellow for increasing, red for magnetizing, and green for protection.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-106" href="#tei-note-UT22084-090-045-106">[38]</a></sup> The cloth should follow the same scheme. This is what one should imagine.</p><p>Next, the maṇḍala of caityas should be <em>blessed</em>. One should recite the mantra of the great spell hūṁ raṃ svāhā, which has emerged from the red syllable raṃ located above the maṇḍala. <span class="tei-ref">F.265.a</span> After reciting it three times, a great flame of the wisdom of suchness will burn fiercely, purifying the concepts in those places<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-108" href="#tei-note-UT22084-090-045-108">[39]</a></sup> so that the very foundation of the maṇḍala will be made of the five precious substances. This is what one should imagine. <span class="tei-ref">F.134.a</span></p><p>One should next recite the great spell oṁ a candra­maṇḍala hūṁ phaṭ,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-110" href="#tei-note-UT22084-090-045-110">[40]</a></sup> which emerges from the place where a white syllable a stands in the center of the fivefold, hundredfold, or thousandfold maṇḍala grid. After reciting it an equivalent number of times,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-111" href="#tei-note-UT22084-090-045-111">[41]</a></sup> each cell becomes a moon-disk seat for a caitya. This is what one should imagine.</p><p>After that, when performing the maṇḍala rite one should face either east or west, whichever is easier, and use one’s samādhi to transform oneself into the great seal, the form of Vajradhara.</p><p>Above a moon disk at the heart, one should create a five-pronged vajra that emits an effulgence of wisdom light. These rays of wisdom light radiate from every pore on one’s body, spreading infinitely like cloud banks of buddhas and their maṇḍalas. They bless all the realms of beings, fulfill their aims, and then dissolve back into one’s body. This is what one should imagine.</p><p>Next is the generation of the caitya palace. One should form the <em>vajradhātu</em><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-115" href="#tei-note-UT22084-090-045-115">[42]</a></sup> gesture over the caitya placed in the maṇḍala, touch the top of the caitya, and then recite the mantra for the great spell: oṁ vajra­dhātu adhitiṣṭha hūṁ.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-116" href="#tei-note-UT22084-090-045-116">[43]</a></sup> Through this blessing, the caitya will be established in the center of a moon seat upon a dharmadhātu maṇḍala and a ground made of precious substances, all within a palace composed of various precious materials.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-117" href="#tei-note-UT22084-090-045-117">[44]</a></sup> This is what one should imagine.</p><p>Once each caitya has been prepared in this way, set out, and presented with different kinds of offerings, one should recite the spell for purifying different kinds of offerings, including lion banners, cooked rice, <span class="tei-ref">F.265.b</span> arrangements of fine foods and the like, canopies, streamers, parasols, garlands, fragrances, lamps, and incense:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-119" href="#tei-note-UT22084-090-045-119">[45]</a></sup>oṁ sarvapūja puṣpe svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-120" href="#tei-note-UT22084-090-045-120">[46]</a></sup> After it has been recited, its blessings will cause the offerings to amass as marvelous Samantabhadra offering clouds <span class="tei-ref">F.134.b</span> and fall like rain. This is what one should imagine.</p><p>The five kinds of offerings to a caitya should be presented one by one, and they should be offered as individual gifts to the extent one is able, even if the cloth is small, the canopies are frayed and so forth, and the parasols are small. While the rite is being performed, one should clarify one’s samādhi, one’s continuity of experience. To do this one should recognize and imagine that the five caityas—those in the center and four directions—share the extraordinary colors, ornaments, attributes, and retinues of the buddhas of the five families. One visualizes that those caityas, which are made of the five wisdoms, are pure and clear by nature, and that each letter of the <em>vimaloṣṇīṣa</em> dhāraṇī and the essence mantra of each of the five families in the center of those caitya vessels<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-122" href="#tei-note-UT22084-090-045-122">[47]</a></sup> is brilliant and uniquely dazzling, like refined gold. The five families, in the form of infinite and multicolored rays of wisdom light, spread throughout the ten directions, adorning the infinite sky and the entirety of the dharmadhātu with clouds of tathāgata bodies. Having accomplished that, they bless all the realms of the world, serve the aims of all beings there, and fulfill their hopes. The rays of wisdom light return, strike the top of one’s head and heart, and purify anything that obscures awakened activity and so forth. One should imagine that one now has the nature of vajra body, speech, and mind.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-123" href="#tei-note-UT22084-090-045-123">[48]</a></sup></p><p>Next perform the reception using offering water consisting of scented water mixed with various fragrances.<span class="tei-ref">F.266.a</span> Form the gesture of the offering water, place the conch shell on it, and imagine that a white syllable a in the scented water transforms into a moon disk from which shine rays of light that grant the scented water the nature of wisdom nectar. One should then recite the great spell for making offerings: <span class="tei-ref">F.135.a</span>oṁ amṛte arghaṃ pratīccha svāhā.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-125" href="#tei-note-UT22084-090-045-125">[49]</a></sup> After reciting it, one should scent the pinnacles of the caityas three times by pouring the water.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-126" href="#tei-note-UT22084-090-045-126">[50]</a></sup> The noble ones will be pleased with this offering. This should be expressed with the words “May all noble ones be pleased.” Then, using the oceanic cloud gesture,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-127" href="#tei-note-UT22084-090-045-127">[51]</a></sup> the water should be sprinkled over the pinnacles, after which one imagines that it gathers in the wisdom body and all the marvelous initiations are conferred.</p><p>After this, the <em>vimaloṣṇīṣa</em> dhāraṇī should be read aloud an appropriate number of times,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-128" href="#tei-note-UT22084-090-045-128">[52]</a></sup> the merit should be dedicated, and extensive aspirations should be made.</p><p>If one finds it difficult to complete this rite as prescribed, one should transform one’s body using the samādhi of one’s personal deity and not let that intention weaken. One should recognize that the caityas and articles of worship are the nature of the dharmadhātu in their pure aspect. If one makes caityas in this way, it is the same as the extensive rite. There is no contradiction. If even this is not possible, one can make a caitya by reciting the <em>vimaloṣṇīṣa</em> dhāraṇī, keeping it in mind, writing it down, and carrying it with one. If one does this, it is in fact the extensive rite. Those caityas will be transformed into the body of the Tathāgata and will serve to benefit oneself and others in an extraordinary way. If one does not recite the <em>vimaloṣṇīṣa</em> dhāraṇī, even when offerings are made and power invested, no power will be conferred. This is also said in scripture:</p><div class="tei-verse"><div class="tei-line">“When the nature of a mantra is not clear</div><div class="tei-line">For any spell or mantra,</div><div class="tei-line">And when the samādhi of realization is not clear,</div><div class="tei-line">All forms, including caityas and the like,</div><div class="tei-line">Will not be complete even when constructed.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-131" href="#tei-note-UT22084-090-045-131">[53]</a></sup><span class="tei-ref">F.266.b</span></div></div><p>The qualities of a caitya and other images made by one who possesses secret mantra and realization are described as follows:</p><div class="tei-verse"><div class="tei-line">In this sublime caitya rite,</div><div class="tei-line">Casting a single caitya incanted with this dhāraṇī,</div><div class="tei-line">Which is distinct for its generation of merit,</div><div class="tei-line">Is the same as making ten million.</div></div><div class="tei-verse"><div class="tei-line">The five acts with immediate retribution and the mass of evil</div><div class="tei-line">Of those long in saṃsāra <span class="tei-ref">F.135.b</span></div><div class="tei-line">Will all be cleansed,</div><div class="tei-line">So that they will have a miraculously long life.</div></div><div class="tei-verse"><div class="tei-line">In all their lives to come,</div><div class="tei-line">They will be born into sublime and exalted families,</div><div class="tei-line">Possess supreme enjoyments,</div><div class="tei-line">And be born as universal monarchs.</div></div><div class="tei-verse"><div class="tei-line">They will know all their past and future lives,</div><div class="tei-line">And in all worlds throughout the three times</div></div><div class="tei-verse"><div class="tei-line">Will never be separated from the Three Jewels.</div><div class="tei-line">Unshaken by obstacles and harms,</div><div class="tei-line">They will succeed in their intentions</div><div class="tei-line">And in the end reach perfect awakening.</div></div>This completes “<cite>The Vimaloṣṇīṣa Dhāraṇī</cite>.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-045-243" href="#tei-note-UT22084-090-045-243">[54]</a></sup></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-090-045-36"><p>In the context of Kriyātantra literature, the “three families” likely refers to the vajra, lotus, and tathāgata families.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-36">back</a></li><li id="tei-note-UT22084-090-045-39"><p>Tib. <cite>ri rab chen po sna lnga las grub pa</cite>. This translation is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-39">back</a></li><li id="tei-note-UT22084-090-045-40"><p>The term “pure abodes” (Skt. <em>śuddhāvāsa</em>; Tib. <em>gtsang ris</em>) typically refers to the five highest heavens in the form realm (Skt. <cite>rūpadhātu</cite>; Tib. <em>gzugs khams</em>). Here, however, the term appears to refer to a different set of heavens: the Sahā world, which is our own world, located at the base of Mount Meru and presided over by Brahmā; the Heaven of the Four Great Kings (Skt. <em>Cātur­mahā­rājakāyika</em>; Tib. <em>rgyal chen rigs bzhi pa</em>), located on the slopes of Mount Meru and presided over by Dhṛtarāṣṭra, Virūḍhaka, Virūpākṣa, and Vaiśravaṇa; and the Heaven of Thirty-Three (Skt. <em>Trāyastriṃśa</em>; Tib. <em>sum cu rtsa gsum pa</em>), located on the summit of Mount Meru and presided over by Śakra/Indra. The phrase “including” (Tib. <em>la sogs pa</em>) may indicate that gods from heavens higher than these are present as well.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-40">back</a></li><li id="tei-note-UT22084-090-045-42"><p>The exact number, taking <em>brgya stong</em> as a hundred thousand, <em>khrag khrig</em> as <em>niyuta</em>, i.e., a million, and <em>bye ba</em> as <em>koṭi</em>, i.e., ten million, would amount to 6 x 1018.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-42">back</a></li><li id="tei-note-UT22084-090-045-44"><p>The title of this dhāraṇī is left untranslated in the Tibetan text, a convention that is followed here. The name of the dhāraṇī would be translated as “the stainless uṣṇīṣa.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-44">back</a></li><li id="tei-note-UT22084-090-045-48"><p>Emending the dative <em>saṃśodhāya</em> to the verbal imperative <em>saṃśodhaya</em>. This emendation is made in the subsequent formulas without further notation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-48">back</a></li><li id="tei-note-UT22084-090-045-49"><p>This can be tentatively translated as “<em>Oṁ</em>, O you who have the innermost heart of all the tathāgatas of the three times, blaze! O you who have the essence of the dharmadhātu, gather vitality and purify negativity! You are pure, the stainless universal uṣṇīṣa of all tathāgatas, <em>svāhā</em>.” In the three repetitions of the spell that follow, an additional line is added, related respectively to the elements of earth, water, and space. With regard to the spell itself, see also Schopen 2005, pp. 334–38, von Hinüber 2018, p. 230, and Griffiths 2014, p. 182.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-49">back</a></li><li id="tei-note-UT22084-090-045-52"><p>In some of the extant Skt. witnesses of this dhāraṇī, the term here is <em>saṃvara</em> (“bind”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-52">back</a></li><li id="tei-note-UT22084-090-045-53"><p>The lines appended here to the <em>vimaloṣṇīṣa</em> dhāraṇī can be tentatively rendered as “O great dustless one, enter into the deep essence of the dharmadhātu. Spread and expand. A a laṁ svāhā.” The remaining dhāraṇīs replicate this added line, changing only the final syllables to align with the respective element. This dhāraṇī uses a a laṁ for the earth element.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-53">back</a></li><li id="tei-note-UT22084-090-045-55"><p>The translation of this dhāraṇī is the same as above, with the addition of <em>a māmaki</em> to correspond with the water element.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-55">back</a></li><li id="tei-note-UT22084-090-045-57"><p>The translation of this dhāraṇī is the same as above, with the addition of <em>a a e khaṃ ya</em> to correspond with the space element.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-57">back</a></li><li id="tei-note-UT22084-090-045-59"><p>This spell can be tentatively translated as “Oṁ, suffuse the five used for a precious caitya, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-59">back</a></li><li id="tei-note-UT22084-090-045-60"><p>The eleventh stage (<em>bhūmi</em>) here refers to awakening, the stage of buddhahood. As is clear from the next line, this is not the final stage articulated in this text, as the “stage of Vajradhara” is considered distinct from the attainment of buddhahood.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-60">back</a></li><li id="tei-note-UT22084-090-045-62"><p>This can tentatively be translated as “It is so: Subtle, subtle, peaceful, peaceful, composed. Famous and bright. All buddhas. Bestow the blessing and rejoice, svāhā.” The precise meaning of <em>anumide</em>, which is attested in all versions, is not clear, and it is taken here as a corrupted form of <em>anumode</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-62">back</a></li><li id="tei-note-UT22084-090-045-64"><p>This translation is tentative. It is unclear what the “five supports for offering” (<em>mchod pa’i rten lnga</em>) are. This may refer to a fivefold offering sequence for which Vajradhara assumes prior knowledge, or it may refer to the steps that follow immediately below. Both the narrative preamble to this text and the body of the main rite refer to a set of five caityas, thus the phrase <em>mchod pa’i rten lnga</em> could be read as “the five caityas.” However, the Tibetan translators were consistent in using <em>mchod rten</em> to render <em>caitya</em>, so the inclusion of the genitive particle in <em>mchod pa’i rten</em> suggests that they did not read the term <em>caitya</em> here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-64">back</a></li><li id="tei-note-UT22084-090-045-66"><p>This can be translated as “Oṁ, vajra thread, hūṁ phaṭ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-66">back</a></li><li id="tei-note-UT22084-090-045-68"><p>This can be translated as “Oṁ, vajra stake! Drive in the stake! Bind all obstructing beings, hūṁ phaṭ!”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-68">back</a></li><li id="tei-note-UT22084-090-045-70"><p>This can be translated as “Oṁ, deathless one. Strike, strike, hūṁ phaṭ!”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-70">back</a></li><li id="tei-note-UT22084-090-045-73"><p>This can be translated as “Oṁ, vajra dig, dig, hūṁ phaṭ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-73">back</a></li><li id="tei-note-UT22084-090-045-75"><p>This translation is tentative and could also be read as “Press the seal (<em>mudrā</em>; <em>phyag rgya</em>) of Amṛtakuṇḍalin into a mallet using a three-pronged vajra.” This interpretation seems less likely, however, as the mudrā of Amṛtakuṇḍalin is more likely a physical gesture rather than an image or string of syllables to be inscribed on the mallet.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-75">back</a></li><li id="tei-note-UT22084-090-045-76"><p>This can be translated as “Oṁ, vajra mallet, flatten, flatten, hūṁ phaṭ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-76">back</a></li><li id="tei-note-UT22084-090-045-79"><p>This can be translated as “Oṁ, vajra knead, hūṁ phaṭ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-79">back</a></li><li id="tei-note-UT22084-090-045-80"><p>This can be tentatively translated as “Homage to the Three Jewels. It is thus: Subtle, subtle. Peaceful, peaceful. Calm, calm and composed. Fame, famous. Bright and pure, pure. All tathāgatas. Bestow the blessing. Ā, homage to you. May there be benefit.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-80">back</a></li><li id="tei-note-UT22084-090-045-82"><p>This can be translated as “Oṁ, vajra life, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-82">back</a></li><li id="tei-note-UT22084-090-045-84"><p>These are the seed syllables of, respectively, the tathāgata, vajra, jewel, lotus, and karma families.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-84">back</a></li><li id="tei-note-UT22084-090-045-85"><p>This can be translated as “<em>Oṁ</em>, vajra essence, <em>svāhā</em>.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-85">back</a></li><li id="tei-note-UT22084-090-045-87"><p>This can be translated as “<em>Oṁ</em>, dustless. Free of dust, <em>svāhā</em>.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-87">back</a></li><li id="tei-note-UT22084-090-045-89"><p>This can be translated as “<em>Oṁ</em>, vajra mallet, flatten, flatten, hūṁ phaṭ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-89">back</a></li><li id="tei-note-UT22084-090-045-90"><p>This seems to refer to the different options of placing the mantra as stated above.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-90">back</a></li><li id="tei-note-UT22084-090-045-92"><p>This can be translated as “Oṁ, svāhā to the dharmadhātu, svāhā to the essence of the dharmadhātu.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-92">back</a></li><li id="tei-note-UT22084-090-045-94"><p>It is not clear what <em>’khor lo gzugs pa</em> refers to exactly. It has been interpreted here as a ring set above the caitya as a decorative frame on which other adornments are affixed.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-94">back</a></li><li id="tei-note-UT22084-090-045-95"><p>This can be translated as “Oṁ, measure, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-95">back</a></li><li id="tei-note-UT22084-090-045-97"><p>This can be translated as “Oṁ, pure nature of dharmadhātu, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-97">back</a></li><li id="tei-note-UT22084-090-045-99"><p>This describes a base marked with a grid that has squares equal in number to the caityas made. There is some confusion in the text here, as it first says that one should construct a stone base or platform (<em>rdo’i stegs bu</em>), before listing the different materials it can be made of.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-99">back</a></li><li id="tei-note-UT22084-090-045-101"><p>The idea here seems to be to first lay out the maṇḍala grid with thread, and then use the thread as a guide for drawing the grid lines.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-101">back</a></li><li id="tei-note-UT22084-090-045-103"><p>This can be translated as “Oṁ, remain firm, O stūpa, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-103">back</a></li><li id="tei-note-UT22084-090-045-104"><p>This can be translated as “Oṁ, arranged on vajra and lotus, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-104">back</a></li><li id="tei-note-UT22084-090-045-106"><p>This list refers to different types of ritual activities for which the caitya maṇḍala may be used.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-106">back</a></li><li id="tei-note-UT22084-090-045-108"><p>“Those places” (<em>gnas de dag</em>) seems to refer to places where the individual caityas are placed in the maṇḍala.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-108">back</a></li><li id="tei-note-UT22084-090-045-110"><p>This can be translated as “Oṁ, a, a moon disk, hūṁ phaṭ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-110">back</a></li><li id="tei-note-UT22084-090-045-111"><p>Equivalent, presumably, to the number of cells in the maṇḍala.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-111">back</a></li><li id="tei-note-UT22084-090-045-115"><p>The Tib. has the feminine term <em>rdo rje dbyings ma</em>, which is understood here to be feminine because it construes syntactically with the feminine term <em>mudrā</em> (“gesture”). This reading appears to be confirmed by the use of <em>vajradhātu</em> in the following mantra. Less likely, though not implausible, is that the Tib. term is equivalent to <em>rdo rje dbying phyug ma</em>, Vajradhātvīśvarī, a female Buddhist deity.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-115">back</a></li><li id="tei-note-UT22084-090-045-116"><p>This can be translated as “Oṁ, empowered as vajradhātu, hūṁ.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-116">back</a></li><li id="tei-note-UT22084-090-045-117"><p>See Rospatt 1999, pp. 132–40 for other uses of the vajradhātu maṇḍala and dharmadhātu maṇḍala in caitya consecration rites.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-117">back</a></li><li id="tei-note-UT22084-090-045-119"><p>The syntax of this passage is challenging; thus its translation is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-119">back</a></li><li id="tei-note-UT22084-090-045-120"><p>This can be translated as “Oṁ, may there be complete worship with flowers, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-120">back</a></li><li id="tei-note-UT22084-090-045-122"><p>Oṁ hūṁ traṁ hrī āḥ, which was combined with the <em>vimaloṣṇīṣa</em> dhāraṇī and inserted into the clay, as described above.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-122">back</a></li><li id="tei-note-UT22084-090-045-123"><p>The main referent of this line is ambiguous. The line could plausibly read, “The rays of wisdom light return, strike the pinnacle and the heart of those caityas, and purify anything that obscures awakened activity and so forth. One should imagine that one now has the nature of vajra body, speech, and mind.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-123">back</a></li><li id="tei-note-UT22084-090-045-125"><p>This can be translated as “Oṁ, deathless one, please accept this offering water, svāhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-125">back</a></li><li id="tei-note-UT22084-090-045-126"><p>The Tibetan terminology and syntax in this line is challenging, thus the translation is tentative. The subject is not explicit but is taken here to be the pinnacles of the caityas because the rite is intended to consecrate them. It is entirely possible, however, that it is the ritual officiant who is the target of the ritual action, as the phrase <em>dbu’i spyi bo</em>, here translated as “pinnacles,” could naturally be read as “crown of the head.” There is also some ambiguity about the ritual action being described. The idea seems to be that one scents (<em>bdugs</em>) the pinnacles by pouring/sprinkling (<em>sbrengs</em>) the scented water over them three times.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-126">back</a></li><li id="tei-note-UT22084-090-045-127"><p>This reference is uncertain, thus the translation is tentative. More literally, the Tibetan phrase <em>phyag rgya’i rgya mtsho’i sprin</em> would read “the oceanic cloud of gestures (<em>mudrā</em>; <em>phyag rgya</em>).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-127">back</a></li><li id="tei-note-UT22084-090-045-128"><p>Tib. <em>ci mang du brjod pa</em>. It is not clear what the number of recitations would correspond to. Perhaps it is the number of caityas in the maṇḍala.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-128">back</a></li><li id="tei-note-UT22084-090-045-131"><p>The source of this citation could not be identified.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-131">back</a></li><li id="tei-note-UT22084-090-045-243"><p>Please see the <span class="tei-ref">#UT22084-090-045-13</span> about the use of this title.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-045-243">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/090-042-toh598-the-practice-of-the-incantation-of-usnisavijaya.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/091-002-toh605-956-the-dharani-of-vajrabhairava.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

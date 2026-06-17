@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 562 — Great Cool Grove — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 562 — Great Cool Grove</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 562 — Great Cool Grove        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Mahāśītavanī­sūtra          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Dharmachakra Translation Committee under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Sūtra of</h3><h3>Great Cool Grove</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.138.b</span> Homage to the Three Jewels.</p><br /><div class="tei-verse"><div class="tei-line">Homage to the glorious Buddha,</div><div class="tei-line">The perfectly awakened one, wise about the world,</div><div class="tei-line">Who first taught the vidyā-mantras</div><div class="tei-line">On the Jambu continent.</div></div><div class="tei-verse"><div class="tei-line">I also pay homage to all buddhas,</div><div class="tei-line">Those present, past,</div><div class="tei-line">And yet to come—</div><div class="tei-line">I go to them all for refuge.</div></div><div class="tei-verse"><div class="tei-line">Homage to Dīpaṅkara,</div><div class="tei-line">Unexcelled turner of the wheel. <span class="tei-ref">F.139.a</span></div></div><div class="tei-verse"><div class="tei-line">Homage to Sarvābhibhū,</div><div class="tei-line">Illuminating king of Dharma.</div></div><div class="tei-verse"><div class="tei-line">Homage to Padmottara,</div><div class="tei-line">The renowned omniscient one.</div></div><div class="tei-verse"><div class="tei-line">Homage to Atyuccagāmin,</div><div class="tei-line">The visionary protector.</div></div><div class="tei-verse"><div class="tei-line">Homage to Yaśottara,</div><div class="tei-line">The unexcelled guide.</div></div><div class="tei-verse"><div class="tei-line">Homage to Kṣemaṅkara,</div><div class="tei-line">Who shines like the sun and moon.</div></div><div class="tei-verse"><div class="tei-line">Homage to Arthadarśin,</div><div class="tei-line">Who displays the mirror of Dharma.</div></div><div class="tei-verse"><div class="tei-line">Homage to the one called Puṣya,</div><div class="tei-line">Fearless in the discipline that tames.</div></div><div class="tei-verse"><div class="tei-line">Homage to Tiṣya,</div><div class="tei-line">Replete with the thirty-two supreme marks.</div></div><div class="tei-verse"><div class="tei-line">Homage to Vipaśyin,</div><div class="tei-line">Replete with the glory of perfect awakening.</div></div><div class="tei-verse"><div class="tei-line">Homage to Śikhin,</div><div class="tei-line">Replete with light and radiance.</div></div><div class="tei-verse"><div class="tei-line">Homage to Viśvabhū,</div><div class="tei-line">Revered and renowned.</div></div><div class="tei-verse"><div class="tei-line">Homage to Krakucchanda,</div><div class="tei-line">Destroyer of the hordes of Māra.</div></div><div class="tei-verse"><div class="tei-line">Homage to Kanakamuni,</div><div class="tei-line">The glorious brahmin.</div></div><div class="tei-verse"><div class="tei-line">Homage to Kāśyapa,</div><div class="tei-line">Who loves all beings.</div></div><div class="tei-verse"><div class="tei-line">Homage to the golden one,</div><div class="tei-line">Luminous lion of the Śākyas.</div></div><div class="tei-verse"><div class="tei-line">And homage to Maitreya,</div><div class="tei-line">The compassionate one free of avarice.</div></div><div class="tei-verse"><div class="tei-line">Having paid homage to all buddhas,</div><div class="tei-line">I go to them for refuge.</div></div><div class="tei-verse"><div class="tei-line">Homage to all buddhas,</div><div class="tei-line">Teachers of the Dharma.</div></div><div class="tei-verse"><div class="tei-line">I pay homage to the Dharma,</div><div class="tei-line">Revered by buddhas.</div></div><div class="tei-verse"><div class="tei-line">Homage to the Saṅgha,</div><div class="tei-line">To whom it is greatly beneficial to make offerings.</div></div><div class="tei-verse"><div class="tei-line">Homage to Śāriputra,</div><div class="tei-line">Most insightful among śrāvakas.</div></div><div class="tei-verse"><div class="tei-line">Homage to Maudgalyāyana,</div><div class="tei-line">Supreme among those with miraculous powers.</div></div><div class="tei-verse"><div class="tei-line">Homage to Kātyāyana,</div><div class="tei-line">Fearless in Dharma discourse.</div></div><div class="tei-verse"><div class="tei-line">Homage to <em>Kāśyapa</em>,</div><div class="tei-line">The most ascetic<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-58" href="#tei-note-UT22084-090-006-58">[1]</a></sup> among śrāvakas.</div></div><div class="tei-verse"><div class="tei-line">Homage to Kauṇḍinya, <span class="tei-ref">F.139.b</span></div><div class="tei-line">Lord among protectors.</div></div><div class="tei-verse"><div class="tei-line">Homage to Ānanda,</div><div class="tei-line">Learned holder of vidyā-mantras.</div></div><div class="tei-verse"><div class="tei-line">Homage to Kubera, Dhṛtarāṣṭra,</div><div class="tei-line">Virūpākṣa, and Virūḍhaka,</div><div class="tei-line">The Great Kings</div><div class="tei-line">Throughout the four directions.</div></div><div class="tei-verse"><div class="tei-line">Homage to the twenty-eight</div><div class="tei-line">Supreme yakṣa generals.</div></div><div class="tei-verse"><div class="tei-line">Homage to my parents, preceptor, and teacher,</div><div class="tei-line">As well as to the gods.</div></div><div class="tei-verse"><div class="tei-line">After paying homage to them,</div><div class="tei-line">May this vidyā-mantra succeed.</div></div><div class="tei-verse"><div class="tei-line">May I succeed in the purpose</div><div class="tei-line">For which it is enacted.</div></div><div class="tei-verse"><div class="tei-line">Hostile and harmful nonhumans,</div><div class="tei-line">Go elsewhere.</div></div><div class="tei-verse"><div class="tei-line">Those who wish harm and seek weakness,</div><div class="tei-line">Listen to the Teacher’s teaching.</div></div><div class="tei-verse"><div class="tei-line">All nonhumans,</div><div class="tei-line">Benevolent and altruistic,</div><div class="tei-line">Gather and be in harmony.</div><div class="tei-line">Joyfully listen to me—</div><div class="tei-line">The words of the guardians of the world</div><div class="tei-line">Were rejoiced in by the Teacher.</div></div><p>This <cite>Great Sūtra of Cool Grove</cite>, the great protection of the Four Great Kings, covers all four communities.</p><p>All you yakṣas, rākṣasas, gandharvas, nāgas, garuḍas, guhyakas, bhūtas, kumbhāṇḍas, pretas, pūtanas, piśācas, asuras, marutas, skandas, mischief makers,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-71" href="#tei-note-UT22084-090-006-71">[2]</a></sup> unmādas, kinnaras, upward movers, wandering beings, covetous ones, evildoers, stealers of vitality, and apasmāras; all intense fevers, one-day fevers, two-day fevers, three-day fevers, and four-day fevers; all humans and nonhumans who are hostile, search for weakness, have malicious intent, and perpetrate violence; all who do not like the teaching of the blessed Buddha, wish to harm it, do not want to benefit it, do not wish it well, and do not want it to succeed or be secure; all who do not like the four communities, <span class="tei-ref">F.140.a</span> wish to harm them, do not want to benefit them, do not wish them well, and do not want them to succeed or be secure; all who do not like the person with such-and-such a name,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-72" href="#tei-note-UT22084-090-006-72">[3]</a></sup> want to harm them, do not want to benefit them, and do not want them to be well, succeed, or be secure—having heard this <cite>Great Sūtra of Cool Grove</cite>, depart. May you be scared. May you be frightened. May you be terrified. Do not remain here. May the heads of the evil and malicious split into seven pieces.</p><p>All you yakṣas, rākṣasas, gandharvas, nāgas, garuḍas, guhyakas, bhūtas, kumbhāṇḍas, pretas, pūtanas, piśācas, asuras, marutas, skandas, mischief makers, unmādas, kinnaras, upward movers, wandering beings, covetous ones, evildoers, stealers of vitality, and apasmāras; all intense fevers, one-day fevers, two-day fevers, three-day fevers, and four-day fevers; all humans and nonhumans who are not hostile, do not search for weakness, do not have malicious intent, and do not perpetrate violence; all who like the teaching of the blessed Buddha, want to benefit and assist it, wish it well, and want it to be successful and secure; all who like the person with such-and-such a name, want to benefit and assist them, wish them well, and want them to be successful and secure—having heard this <cite>Great Sūtra of Cool Grove</cite>, remain here. Do not be scared. Do not be frightened. Do not be terrified. Be nothing but fearless. For the benefit, assistance, happiness, and security of the person with such-and-such a name, I will teach and explain this <cite>Great Sūtra of Cool Grove</cite>. <span class="tei-ref">F.140.b</span><cite>The Great Sūtra of Cool Grove</cite> that protects oneself is as follows:</p><p>Syād yathedam</p><p>khaṭe khaṭe khattyasi palakavaṭe rogabhadrigaṇe hili hili dumate gṛttati ajaṭi kathari masārakalpe samantena caturdiśi yojanaśata ātmarakṣa anatikramaṇi sarva­viheṭhakebhyaḥ namo bhagavate buddhasya siddhyantu mantrapadā daraduvidyā brahmaṇo manadu svāhā</p><p>Thus did I hear at one time. The Blessed One was dwelling in Rājagṛha at the horrific and hair-raising great charnel ground Cool Grove, together with a large monastic assembly of 1,250 monks. The Four Great Kings—Kubera, Dhṛtarāṣṭra, Virūpākṣa, and Virūḍhaka—with their sons, ministers, entourages, retainers, messengers, and servants, appeared at midnight in their majestic glory, arriving in the great charnel ground of Cool Grove with a single intent. Through their natural radiance and power they flooded the place with bright light. They then approached the Blessed One, bowed their heads to his feet, and circumambulated him three times. Then, with palms joined they prostrated only to him and stood to one side. Thus standing to one side, the Four Great Kings praised the Blessed One in verse:</p><div class="tei-verse"><div class="tei-line">“Homage to you, great hero,</div><div class="tei-line">Perfectly awakened one, wise about the world.</div><div class="tei-line">The gods have not grasped</div><div class="tei-line">What you, Gautama, know.”</div></div><p>The Four Great Kings then praised the Blessed One with this verse a second and third time:</p><div class="tei-verse"><div class="tei-line">“Homage to you, great hero,</div><div class="tei-line">Perfectly awakened one, wise about the world.</div><div class="tei-line">The gods have not grasped</div><div class="tei-line">What you, Gautama, know.”</div></div><p>The Four Great Kings then said to the Blessed One, <span class="tei-ref">F.141.a</span> “Venerable Blessed One, does this place agree with you? Do you have sustenance? Venerable Blessed One, are you healthy? Are you free of illness? Are you without discomfort? Does nothing harm the Blessed One’s body?</p><p>“Are there no yakṣas, rākṣasas, gandharvas, nāgas, garuḍas, guhyakas, bhūtas, kumbhāṇḍas, pretas, pūtanas, piśācas, asuras, marutas, skandas, mischief makers, unmādas, kinnaras, upward movers, wandering beings, covetous ones, evildoers, stealers of vitality, or apasmāras, intense fevers, one-day fevers, two-day fevers, three-day fevers, or four-day fevers, or humans or nonhumans who hate the Blessed One, search for weakness, have malicious intent, are harmful toward him, or even have the intention of being harmful?”</p><p>The Blessed One responded to the Four Great Kings, “I have everything, Great Kings. The place agrees with me, I have sustenance, my health is good, I am free of illness, and I am without discomfort. Great Kings, there is no one harming my body.</p><p>“Great Kings, I have not seen anyone at all in the world, including gods, māras, and Brahmā; anyone among humans, including mendicants and brahmins; or anyone else among gods and humans who intends to harm the thus-gone, worthy, completely perfect Buddha. Great Kings, it is rather your communities that intend to harm my community.”</p><p>The Four Great Kings said to the Blessed One, <span class="tei-ref">F.141.b</span> “Venerable Blessed One, we have been informed of this, thus we have come before the Blessed One to honor you, pay homage, pay respect, and petition the Blessed One in person. Why? Venerable Blessed One, at remote wilderness retreats there are extremely malicious yakṣas, rākṣasas, gandharvas, nāgas, garuḍas, guhyakas, bhūtas, kumbhāṇḍas, pretas, pūtanas, piśācas, asuras, marutas, skandas, mischief makers, unmādas, kinnaras, upward movers, wandering beings, covetous ones, evildoers, stealers of vitality, and apasmāras, intense fevers, one-day fevers, two-day fevers, three-day fevers, and four-day fevers, and humans and nonhumans who are hateful, search for weakness, have malicious intent, and perpetrate violence. The śrāvakas of the venerable Blessed One also dwell at those places, exerting themselves in practice without resting at dawn or dusk. Venerable Blessed One, from the yakṣas and rākṣasas up to those perpetrating violence, there are very few with trust in the Blessed One’s teaching, and there are a great many who lack trust in the Blessed One’s teaching and intend to harm the śrāvakas of the Blessed One who stay in these places, exerting themselves in practice without resting at dawn or dusk. In order to stop them, so that the pernicious yakṣas without trust can gain trust, so that those with trust can increase their trust, and so that the four communities can have well-being, <span class="tei-ref">F.142.a</span> dwell at ease, and meditate well without exception, was ask you to expound <cite>The Great Sūtra of Cool Grove</cite>.</p><div class="tei-verse"><div class="tei-line">“We will repel</div><div class="tei-line">Hostile nonhumans</div><div class="tei-line">Who lack devotion to the Victor’s teaching.</div><div class="tei-line">Listen to us, the Four Great Kings.</div></div><div class="tei-verse"><div class="tei-line">“Once you have heard this great sūtra,</div><div class="tei-line">Do not harm humans.</div></div><div class="tei-verse"><div class="tei-line">“Yakṣas, rākṣasas, nāgas,</div><div class="tei-line">Garuḍas, and guhyakas,</div><div class="tei-line">Whoever does not wish to be helpful—</div><div class="tei-line">We repel them all.</div></div><div class="tei-verse"><div class="tei-line">“The exquisite mansions</div><div class="tei-line">Filled with assemblies of gods,</div><div class="tei-line">Asuras, marutas, and goddesses</div><div class="tei-line">Radiate light like fire.</div></div><div class="tei-verse"><div class="tei-line">“Made of jewels, they shine brightly,</div><div class="tei-line">Just like the sun and moon.</div><div class="tei-line">Filled with merit makers,</div><div class="tei-line">They shine, devoid of grahas.</div></div><div class="tei-verse"><div class="tei-line">“Bhūtas, kumbhāṇḍas, rākṣasas,</div><div class="tei-line">Pretas, and pūtanas</div><div class="tei-line">Who harm humans</div><div class="tei-line">Do not see their splendor.</div><div class="tei-line">They do not travel to the city</div><div class="tei-line">Of the majestic gods.</div></div><div class="tei-verse"><div class="tei-line">“They will be unable to gather</div><div class="tei-line">Where great bhūtas gather.</div><div class="tei-line">They have no control, wherever they are,</div><div class="tei-line">Over food and drink, not even water.</div></div><div class="tei-verse"><div class="tei-line">“They will never travel</div><div class="tei-line">To the palace of Kubera.</div></div><div class="tei-verse"><div class="tei-line">“Any bhūtas who do not listen</div><div class="tei-line">To the words of the Great Kings</div><div class="tei-line">Will have warm blood</div><div class="tei-line">Gush swiftly from their mouths.</div></div><div class="tei-verse"><div class="tei-line">“Boils will appear</div><div class="tei-line">On the right sides of their thighs.</div><div class="tei-line">They will be killed by disease,</div><div class="tei-line">And their yakṣa forms will be revealed.</div></div><div class="tei-verse"><div class="tei-line">“Whoever transgresses the sūtra</div><div class="tei-line">Spoken by the guardians of the world</div><div class="tei-line">Will experience every fear,</div><div class="tei-line">And their head will split into seven pieces.</div></div><div class="tei-verse"><div class="tei-line">“Yakṣas who do not listen</div><div class="tei-line">To the words of the Great Kings,</div><div class="tei-line">And all the bhūtas and rākṣasas there are,</div><div class="tei-line">Making up a garland of great evil,</div><div class="tei-line">Will be destroyed by a disk of iron,</div><div class="tei-line">A weapon with razor-like teeth. <span class="tei-ref">F.142.b</span></div></div><div class="tei-verse"><div class="tei-line">“The glorious Great Kings,</div><div class="tei-line">With hard armor and sharp weapons,</div><div class="tei-line">Are seated on thrones:</div><div class="tei-line">In the east is Dhṛtarāṣṭra,</div><div class="tei-line">In the south is Virūḍhaka,</div><div class="tei-line">In the west is Virūpākṣa,</div><div class="tei-line">And in the north is Kubera.</div></div><div class="tei-verse"><div class="tei-line">“All around them stand</div><div class="tei-line">A host of yakṣas,</div><div class="tei-line">Roaming and darting about,</div><div class="tei-line">Taking the hideous forms</div><div class="tei-line">Of lions and tigers.</div></div><div class="tei-verse"><div class="tei-line">“Some have elephant forms, some horse forms;</div><div class="tei-line">Others have buffalo forms</div><div class="tei-line">Or the forms of bears or foxes,</div><div class="tei-line">Sheep, wolves, and boars.</div><div class="tei-line">Some have drooping ears, others’ are large;</div><div class="tei-line">Some have one ear, others many.</div></div><div class="tei-verse"><div class="tei-line">“They make loud noises, cause fear,</div><div class="tei-line">And make the ground tremble.</div><div class="tei-line">They are arrayed in the various forms</div><div class="tei-line">Of mules, camels, dogs, and others.</div></div><div class="tei-verse"><div class="tei-line">“The Great King<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-102" href="#tei-note-UT22084-090-006-102">[4]</a></sup> of tremendous might</div><div class="tei-line">Was transported through the sky</div><div class="tei-line">On a divine chariot</div><div class="tei-line">To where these yakṣas gathered together.</div></div><div class="tei-verse"><div class="tei-line">“The lord of yakṣas</div><div class="tei-line">Ensures people’s well-being.”</div></div><p>Syād yathedam</p><p>vakahumule haśiṇa śaśiṇa vanamuhale samuhāle uduhāle samahāle praśamamī rākṣasa amanuṣyā vāremi yakṣaṇi vārāmi pretamabhithai dumanuṣyā masapata hadhamuranan sutiṣyati</p><div class="tei-verse"><div class="tei-line">When this was spoken by the great king Vaiśravaṇa,</div><div class="tei-line">Borne on a man<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-107" href="#tei-note-UT22084-090-006-107">[5]</a></sup> and accompanied by his army,</div><div class="tei-line">A great storm arose,</div><div class="tei-line">And the mountains shook.</div></div><div class="tei-verse"><div class="tei-line">“When the great king Vaiśravaṇa</div><div class="tei-line">Stands in his jewel chariot,</div><div class="tei-line">The voices of gods and humans resound.</div><div class="tei-line">When the Great King arrives,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-109" href="#tei-note-UT22084-090-006-109">[6]</a></sup></div><div class="tei-line">Everything catches ablaze.</div></div><div class="tei-verse"><div class="tei-line">“Rākṣasas, who shapeshift as they please,</div><div class="tei-line">Are made to run before him,</div><div class="tei-line">Their inhuman forms</div><div class="tei-line">Provoking fear and dread.</div></div><div class="tei-verse"><div class="tei-line">“Huge and unbearably fierce,</div><div class="tei-line">They are aggressive and hideous to behold.</div><div class="tei-line">They have long body hair and long nails,</div><div class="tei-line">And they hold swords and hammers in their hands.</div></div><div class="tei-verse"><div class="tei-line">“Their copper-colored teeth provoke fear.</div><div class="tei-line">They have large snouts, like a camel or tiger. <span class="tei-ref">F.143.a</span></div><div class="tei-line">Aggressive, their hands are red with blood.</div><div class="tei-line">Their limbs are incomplete and their bodies half formed.</div></div><div class="tei-verse"><div class="tei-line">“Their eyes are yellow and their bodies bright yellow.</div><div class="tei-line">They are filthy and have wizened bodies,</div><div class="tei-line">Lips of iron, and hair that flows upward.</div><div class="tei-line">They strike with dangerous weapons.</div></div><div class="tei-verse"><div class="tei-line">“They have ears like bows and bloated stomachs,</div><div class="tei-line">And they take forms like those of snakes or calves.</div><div class="tei-line">They have the bodies of large-bellied pigs,</div><div class="tei-line">Big heads, long arms,</div><div class="tei-line">And ears and breasts that dangle.</div></div><div class="tei-verse"><div class="tei-line">“I am surrounded by a host</div><div class="tei-line">Of many such yakṣas—</div><div class="tei-line">A trillion yakṣas,</div><div class="tei-line">Each ungrateful to their mother.</div><div class="tei-line">I have come to pay homage</div><div class="tei-line">Together with this host.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“Ferocious in their aggression and wildness,</div><div class="tei-line">With large heads and long hair,</div><div class="tei-line">They rob humans, beasts,</div><div class="tei-line">And birds of their vitality.</div></div><div class="tei-verse"><div class="tei-line">“They eat blazing fire and so much more.</div><div class="tei-line">Some have one eye, others yellow eyes,</div><div class="tei-line">And some have severed noses and ears.</div><div class="tei-line">Wounded with many lacerations,</div><div class="tei-line">They have no heads, or they have severed heads.</div><div class="tei-line">They have hunched bodies, wrinkled faces,</div><div class="tei-line">Fire blazing in their eyes, and no feet.</div><div class="tei-line">Frightening to humans,</div><div class="tei-line">Broad and completely wild,</div><div class="tei-line">They roam and dart about accordingly.</div></div><div class="tei-verse"><div class="tei-line">“I am surrounded by a host</div><div class="tei-line">Of many such yakṣas—</div><div class="tei-line">A trillion yakṣas,</div><div class="tei-line">Each with a thief for a mother.</div><div class="tei-line">I have come to pay homage</div><div class="tei-line">Together with this host.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“A rākṣasī named <em>Chariot</em></div><div class="tei-line">Lives within our realms.</div><div class="tei-line">She has ten thousand mighty sons</div><div class="tei-line">Who are my servants</div><div class="tei-line">And have come to pay homage.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“A rākṣasī named Long Neck <span class="tei-ref">F.143.b</span></div><div class="tei-line">Lives within our realms,</div><div class="tei-line">As do one named Exceedingly Dark,</div><div class="tei-line">One named Black Lady,</div><div class="tei-line">And one named Pitch Dark.</div><div class="tei-line">They pay respect to Gautama.</div></div><div class="tei-verse"><div class="tei-line">“Those great beings, yakṣas of the earth,</div><div class="tei-line">Dwell on the surface of the earth.</div><div class="tei-line">Surrounded by this host,</div><div class="tei-line">I have come here.</div><div class="tei-line">I have come to pay homage,</div><div class="tei-line">Together with this host.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“The pretas, yakṣas, and rākṣasas</div><div class="tei-line">Who run before me</div><div class="tei-line">Have huge bodies, strong and fierce.</div><div class="tei-line">Their teeth are large, their stomachs bloated.</div><div class="tei-line">Śūrpakas hang<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-123" href="#tei-note-UT22084-090-006-123">[7]</a></sup></div><div class="tei-line">On their horrific, pendulous ears.</div></div><div class="tei-verse"><div class="tei-line">“They have a six limbs and hard teeth</div><div class="tei-line">That are like saffron-colored hammers.</div><div class="tei-line">Their teeth are also jagged and sharp,</div><div class="tei-line">Spear-like and terrifying.</div></div><div class="tei-verse"><div class="tei-line">“They have elephant heads, gourd-like snouts,</div><div class="tei-line">Heads like tigers and lions,</div><div class="tei-line">Iron teeth, and iron hair.</div><div class="tei-line">They instill fear in grahas</div></div><div class="tei-verse"><div class="tei-line">“They carry iron cudgels</div><div class="tei-line">And iron hammers in their hands.</div><div class="tei-line">With sharp teeth and long arms,</div><div class="tei-line">They take terrifying forms.</div><div class="tei-line">They have lips of iron, large heads, and disheveled hair.</div><div class="tei-line">They are black with yellow eyes and crooked noses.</div><div class="tei-line">They have gourd-like necks and red eyes,</div><div class="tei-line">Or one eye, and bloated bellies.</div><div class="tei-line">Their lips dangle, and some have only one hand,</div><div class="tei-line">Some one foot, and some two feet.</div><div class="tei-line">Some have no mouth, or two mouths.</div><div class="tei-line">They are ferocious</div><div class="tei-line">And terrifying to humans.</div></div><div class="tei-verse"><div class="tei-line">“They frighten and terrify</div><div class="tei-line">With clubs, sticks, and tridents in hand.</div><div class="tei-line">Frightening and terrifying,</div><div class="tei-line">They strike fear in the grahas,</div><div class="tei-line">Causing them to cry out in fear.</div><div class="tei-line">They disorient their minds,</div><div class="tei-line">Cause madness and stupefaction,</div><div class="tei-line">And then steal their vitality.</div></div><div class="tei-verse"><div class="tei-line">“It is difficult for those who terrify the world</div><div class="tei-line">To rely on the Great Powerful One.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-129" href="#tei-note-UT22084-090-006-129">[8]</a></sup></div><div class="tei-line">Sixty-four thousand of them</div><div class="tei-line">Run before the Great King. <span class="tei-ref">F.144.a</span></div></div><div class="tei-verse"><div class="tei-line">“A trillion yakṣas</div><div class="tei-line">Surrounded by a host</div><div class="tei-line">Of many such yakṣas</div><div class="tei-line">Have come to pay homage.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“There are Viśākha, Pāñcika, Candra,</div><div class="tei-line">Lion Army, Oppressor,</div><div class="tei-line">Mother’s Gift, Fierce Diligence,</div><div class="tei-line">Pūrṇa, Wealth Bearer,</div><div class="tei-line">Candana, Supreme Desire,</div><div class="tei-line">Motley Army, Taker of Oblations,</div><div class="tei-line">Wish-Fulfilling Fortune, Attractive,</div><div class="tei-line">Reed Holder, Exceedingly Victorious,</div><div class="tei-line">Rich with All Wishes,</div><div class="tei-line">Lord Conqueror, Pack Leader,</div><div class="tei-line">Son of Fine Gem, Sublimely Perfect,</div><div class="tei-line">Supreme Reed of the Earth, Delightful Reed,</div><div class="tei-line">Sūciloman, Sublimely Long,</div><div class="tei-line">Supreme Hand, Prajāpati,</div><div class="tei-line">Reed Thread, Long Spear,</div><div class="tei-line">Powerful Knowledge, Gem,</div><div class="tei-line">Takṣaka, Mahākāla,</div><div class="tei-line">Kambala, <em>Mule</em>,</div><div class="tei-line">And Airāvaṇa, the king of nāgas.</div></div><div class="tei-verse"><div class="tei-line">“The powerful garuḍas,</div><div class="tei-line">With massive wings and miraculous powers,</div><div class="tei-line">Are supreme among all winged beings.</div><div class="tei-line">Traveling in the form of birds,</div><div class="tei-line">They cause all the oceans to roil.</div></div><div class="tei-verse"><div class="tei-line">“Gods, asuras, and gandharvas,</div><div class="tei-line">Whether frightening or virtuous,</div><div class="tei-line">With or without trust,</div><div class="tei-line">Have all come here.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“The yakṣiṇī named Hārītī,</div><div class="tei-line">Terrifying and powerful,</div><div class="tei-line">And her five hundred sons,</div><div class="tei-line">Terrifying and mighty yakṣas,</div><div class="tei-line">Are all my servants.</div><div class="tei-line">They have come to pay homage.</div><div class="tei-line">Heroic Gautama, we have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“<em>All Seeing</em> in Magadha,</div><div class="tei-line">Lotus Bearer in Kāśi,</div><div class="tei-line">Supreme Victor, who dwells in Vaiśālī,</div><div class="tei-line">Yaśodharā who dwells in Malla,</div><div class="tei-line">Kumbhīrā<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-136" href="#tei-note-UT22084-090-006-136">[9]</a></sup> in Rājagṛha,</div><div class="tei-line"><em>Fierce</em> in Kapilavastu,</div><div class="tei-line"><em>Wealth</em>, who dwells in Tamala,</div><div class="tei-line">And Always Victorious in Mithilā—</div><div class="tei-line">These eight great mātṛkās<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-137" href="#tei-note-UT22084-090-006-137">[10]</a></sup></div><div class="tei-line">Are the highest generals of the yakṣas; <span class="tei-ref">F.144.b</span></div><div class="tei-line">They possess great miraculous power, fortune, and strength.</div><div class="tei-line">They have all come with virtuous and devout intentions</div><div class="tei-line">To take refuge in the perfect Buddha.”</div></div><div class="tei-verse"><div class="tei-line">Gathered together with them,</div><div class="tei-line">The powerful Great King,</div><div class="tei-line">In service to the perfect Buddha’s teaching,</div><div class="tei-line">And out of love for humans,</div><div class="tei-line">Properly enacted this protection,</div><div class="tei-line">Which turns away all yakṣas, bhūtas, pretas,</div><div class="tei-line">Hostile grahas, and nonhumans.</div></div><div class="tei-verse"><div class="tei-line">The king Vaiśravaṇa</div><div class="tei-line">Then joined his palms and said:</div></div><div class="tei-verse"><div class="tei-line">“You have transcended all resentment and fear,</div><div class="tei-line">And you are fully liberated and free of defilements.</div><div class="tei-line">Heroic Gautama, I have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“All gods, siddhas,</div><div class="tei-line">And brahmins pay homage to you.</div><div class="tei-line">Six hundred and forty million yakṣas have also come;</div><div class="tei-line">Circling from all sides,</div><div class="tei-line">They amass with their palms joined.</div></div><div class="tei-verse"><div class="tei-line">“I am King Vaiśravaṇa,</div><div class="tei-line">The guardian of the north.</div><div class="tei-line">I will repel all yakṣas, nakṣatras, unmādas,</div><div class="tei-line">Apasmāras, kinnaras, skandas,</div><div class="tei-line">And intense fevers up through<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-143" href="#tei-note-UT22084-090-006-143">[11]</a></sup> four-day fevers</div><div class="tei-line">In the vicinity of the world protector.”</div></div><p>Syād yathedam</p><p>uhaham uhahaṃ mahāham uhamahāhaṃ salamuji ilīmili ilīmili kilīmili ciriṭi ubhi utubhi pitiliye maṭamali manandaye svāhā</p><p>May the great king Vaiśravaṇa, Kubera, lord of Aḍakavatī, guard this direction.</p><p>May he repel yakṣas, nakṣatras, unmādas, apasmāras, kinnaras, upward movers, wandering beings, covetous ones, evildoers, and those who steal vitality.</p><p>Vāsava, the king of all gods, has come. I pay homage to him. He, too, pays homage to the Blessed One:</p><div class="tei-verse"><div class="tei-line">“Heroic perfect Buddha,</div><div class="tei-line">All seeing and all knowing—I bow to you. <span class="tei-ref">F.145.a</span></div><div class="tei-line">I bow to you, perfect hero.</div><div class="tei-line">I have come, paying devout respect.”</div></div><div class="tei-verse"><div class="tei-line">Then the king Dhṛtarāṣṭra,</div><div class="tei-line">Joined his palms and said:</div></div><div class="tei-verse"><div class="tei-line">“I pay homage to the glorious Buddha,</div><div class="tei-line">The illuminating king of Dharma.</div><div class="tei-line">Heroic Gautama, I have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“That which you know, Gautama,</div><div class="tei-line">The gods have not grasped.</div></div><div class="tei-verse"><div class="tei-line">“Sixty-four thousand rākṣasas,</div><div class="tei-line">Terrifying to behold,</div><div class="tei-line">Circle from all sides,</div><div class="tei-line">Amassing with their palms joined.</div></div><div class="tei-verse"><div class="tei-line">“I am King Dhṛtarāṣṭra,</div><div class="tei-line">The guardian of the east.</div><div class="tei-line">I will repel all rākṣasas, piśācas,</div><div class="tei-line">Gandharvas, and marutas</div><div class="tei-line">In the vicinity of the world protector.”</div></div><p>Syād yathedam</p><p>atimiṭī khuraṭe phuraṭe mati vimaṭi umaņi akke makke nakke aṭumi vaṭumi mabhe eriṭi piriti svāhā</p><p>May the great king Dhṛtarāṣṭra guard this direction. May he repel all rākṣasas, pretas, gandharvas, marutas, kinnaras, and those who steal vitality.</p><p>Vāsava, the king of all gods, has come. I pay homage to him. He, too, pays homage to the Blessed One:</p><div class="tei-verse"><div class="tei-line">“Heroic perfect Buddha,</div><div class="tei-line">All seeing and all knowing—I bow to you.</div><div class="tei-line">I bow to you, perfect hero.</div><div class="tei-line">I have come, paying devout respect.”</div></div><div class="tei-verse"><div class="tei-line">Then the king Virūḍhaka</div><div class="tei-line">Joined his palms and said:</div></div><div class="tei-verse"><div class="tei-line">“Protector and refuge of the world,</div><div class="tei-line">Benefactor of all worlds,</div><div class="tei-line">Heroic Gautama, I have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“Sixty-four thousand</div><div class="tei-line">Kumbhāṇḍas, pretas, and pūtanas</div><div class="tei-line">Circle from all sides,</div><div class="tei-line">Amassing with their palms joined.</div></div><div class="tei-verse"><div class="tei-line">“I am King Virūḍhaka,</div><div class="tei-line">The guardian of the south. <span class="tei-ref">F.145.b</span></div><div class="tei-line">I will repel all bhūtas, wandering beings,</div><div class="tei-line">Stealers of vitality, kumbhāṇḍas, pretas, and pūtanas</div><div class="tei-line">In the vicinity of the world protector.”</div></div><p>Syād yathedam</p><p>ale ilele kile kilele kupa kupasa sile silele sililili lilililili hihisile mati samuti susumati susususu susumati hiliṣa hiliṣa svāhā</p><p>May the great king Virūḍhaka guard this direction.</p><p>May he repel all kumbhāṇḍas, pretas, pūtanas, bhūtas, wandering beings, and stealers of vitality.</p><p>Vāsava, the king of all gods, has come. I pay homage to him. He, too, pays homage to the Blessed One:</p><div class="tei-verse"><div class="tei-line">“Heroic perfect Buddha,</div><div class="tei-line">All seeing and all knowing—I bow to you.</div><div class="tei-line">I bow to you, perfect hero.</div><div class="tei-line">I have come, paying devout respect.”</div></div><div class="tei-verse"><div class="tei-line">Then the king Virūpākṣa</div><div class="tei-line">Joined his palms and said:</div></div><div class="tei-verse"><div class="tei-line">“In this world of darkness,</div><div class="tei-line">You show the paths of the blessed ones.</div><div class="tei-line">Heroic Gautama, I have come,</div><div class="tei-line">Paying devout respect to you.</div></div><div class="tei-verse"><div class="tei-line">“You are like the sun and moon in all worlds,</div><div class="tei-line">Powerful like the heart of a jewel.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-173" href="#tei-note-UT22084-090-006-173">[12]</a></sup></div><div class="tei-line">Sixty-four thousand nāgas, garuḍas, and guhyakas</div><div class="tei-line">Circle from all sides,</div><div class="tei-line">Amassing with their palms joined.</div></div><div class="tei-verse"><div class="tei-line">“I am King Virūpākṣa,</div><div class="tei-line">The guardian of the west.</div><div class="tei-line">I will repel all nāgas, garuḍas, guhyakas,</div><div class="tei-line">And the powerful asura lords</div><div class="tei-line">In the vicinity of the world protector.”</div></div><p>Syād yathedam</p><p>dage dage suvatiye paṭe aṭa kamaṭṭe vima vidama vidadama bhidadamani abhiname gaccha bhūte dala phiye varasura rātra cicile cilililililili svāhā</p><p>May the great king Virūpākṣa guard this direction. May he repel all nāgas, garuḍas, guhyakas, <span class="tei-ref">F.146.a</span> asuras, and stealers of vitality.</p><p>Vāsava, the king of all gods, has come. I pay homage to him. He, too, pays homage to the Blessed One:</p><div class="tei-verse"><div class="tei-line">“Heroic perfect Buddha,</div><div class="tei-line">All seeing and all knowing—I bow to you.</div><div class="tei-line">I bow to you, perfect hero.</div><div class="tei-line">I have come, paying devout respect.”</div></div><p>The Four Great Kings then draped their upper robes over one shoulder and knelt on their right knee. Bowing solely to the Blessed One with palms joined, they said the following, unified in sense, phrasing, and tone: “Venerable Blessed One, this <cite>Great Sūtra of Cool Grove</cite>, the protection of the Four Great Kings, covers all four communities. It repels everything from yakṣas and rākṣasas all the way up to harm doers. It protects, guards, and shields the four communities, ensuring their happiness and well-being so they can dwell at ease.”</p><p>The Blessed One replied to the Four Great Kings, “Great Kings, you have upheld the great king of vidyā-mantras. I have accepted <cite>The Great Sūtra of Cool Grove</cite>. Great Kings, to rejoice in <cite>The Great Sūtra of Cool Grove</cite>, I will, moreover, utter the great king of vidyā-mantras.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-182" href="#tei-note-UT22084-090-006-182">[13]</a></sup> Listen carefully and retain it. I will disclose it now.”</p><p>“May the Blessed One please do so,” replied the Four Great Kings, and they listened to what the Blessed One said.</p><p>The Blessed One then opened his robe with his precious right hand and said to the assemblies of bhūtas, “I will reveal it. I will disclose it to the great king Vaiśravaṇa. I will make it comprehensible to everyone.”</p><p>The blessed, completely perfect Buddha then <span class="tei-ref">F.146.b</span> spoke the following vidyā-mantra:</p><p>Syād yathedam</p><p>hilī hilī bhisini vakke aharaye tamati tamati tila vakke valītake daritina dadhinada phuṭyi phuphuṭyi guṭyi guguṭyi hijakānti nāmā kāntī svāhā</p><p>The whole earth shook when the Blessed One uttered this great king of vidyā-mantras.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-189" href="#tei-note-UT22084-090-006-189">[14]</a></sup> All the bhūtas trembled and let out loud gasps of “Alas! Oh no! What misery!”</p><p>The rākṣasas also said:</p><div class="tei-verse"><div class="tei-line">“Thus does the completely perfect Buddha,</div><div class="tei-line">Moved by compassion for all beings,</div><div class="tei-line">Use such a vidyā-mantra</div><div class="tei-line">To protect against the peril of all bhūtas.”</div></div><div class="tei-verse"><div class="tei-line">Then, the all-knowing Teacher,</div><div class="tei-line">Who has compassion for all sentient beings,</div><div class="tei-line">Saw the yakṣas, rākṣasas, gandharvas,</div><div class="tei-line">Nāgas, garuḍas, guhyakas,</div><div class="tei-line">Bhūtas, wanderers, stealers of vitality,</div><div class="tei-line">Kumbhāṇḍas, pretas, pūtanas,</div><div class="tei-line">Asuras, kṛtyas, vetālas,</div><div class="tei-line">Apasmāras, kinnaras,</div><div class="tei-line">Skandas, intense fevers,</div><div class="tei-line">Brahmins, rākṣasas,</div><div class="tei-line">Unmādas, three-day fevers,</div><div class="tei-line">And four-day fevers</div><div class="tei-line">Grow afraid, tremble,</div><div class="tei-line">And scurry into the ten directions.</div><div class="tei-line">Feeling compassion for them,</div><div class="tei-line">He uttered this vidyā-mantra:</div></div><p>Syād yathedam</p><p>hirimakha tirikhakha kaṭamaṭā siddhamahāhatari uṭatani daṭa daṭa datili damatte damatte dhūdhūri dadari daramira kirikīye katavareṇi susumāle svāhā</p><p>Do not transgress this great mantra, this great vidyā-mantra. Understand perfectly and precisely the Dharma spoken by the Blessed One, or all your bodies will collapse. After you die you will all be born among hell beings who have fallen into lower realms, and you will continue to roam there.</p><p>When the Four Great Kings heard the Blessed One’s great king of vidyā-mantras,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-197" href="#tei-note-UT22084-090-006-197">[15]</a></sup><span class="tei-ref">F.147.a</span> which had never before been heard, they were frightened and anxious. Bristling with uneasiness, they joined their palms and paid homage to the Blessed One. Unified in sense, phrasing, and tone, they said:</p><div class="tei-verse"><div class="tei-line">“Well spoken was the vidyā-mantra</div><div class="tei-line">That vanquishes hostile bhūtas.</div><div class="tei-line">We must convey a vidyā-mantra</div><div class="tei-line">That ensures the well-being of the world of humans.</div><div class="tei-line">The following is that vidyā-mantra,</div><div class="tei-line">So please pay heed to us, world protector.</div></div><p>Syād yathedam</p><p>uhuhala kulijiva abhuya masuravela addyā vaddyā addyā vate nadda vaddye marudya marudya vade maruddya phala svāhā</p><p>“Blessed One, please accept the following, which repels all bhūtas:</p><p>Syād yathedam</p><p>ili ili mili mili kili kili vanara nilapaya bhubhubhura thirū phuphuphura gaśalī raukhadayamala khuli khulivaya svāhā</p><p>“This king of vidyā-mantras<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-205" href="#tei-note-UT22084-090-006-205">[16]</a></sup> establishes a boundary, repels all bhūtas, and accomplishes all aims for one year.”</p><p>When all the beings from yakṣas, rākṣasas, and gandharvas all the way up to harm doers heard the Blessed One’s great king of vidyā-mantras,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-207" href="#tei-note-UT22084-090-006-207">[17]</a></sup> which had never before been heard, and when they heard the Four Kings’ protection, which had never before been heard, they were frightened and anxious. Bristling with uneasiness, they burrowed deep into the earth. They were compelled to burrow deep. The Blessed One then transformed the ground into vajra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-208" href="#tei-note-UT22084-090-006-208">[18]</a></sup> so they scurried in the four directions. The Four Great Kings then manifested massive heaps of flames in the four directions, so the beings fled into the sky. Next, the Blessed One transformed the sky into gold. The great king Vaiśravaṇa, guardian of the world, surrounded and attended to by gods and gandharvas, rose up into the sky. To vanquish everyone from yakṣas and rākṣasas up to harm doers, to care for all sentient beings, <span class="tei-ref">F.147.b</span> to repel all bhūtas, and to guard, protect, and shield the four communities and ensure their happiness and well-being so that they could dwell at ease, he uttered the following vidyā-mantra:</p><p>Syād yathedam</p><p>gimi gimi gimi gimi gini gini gini gini nakhi minakhi niṣa niṣa niṣa uva u diśva diśva vidiśa sarvadiśva adhivati gira visa jani bhumipati ililī ililī kililī kili kililī kili kililī kili kililī kili kililī kili kilili kilili lililili kilili lililililili addhyi naddyi kunaddhyi mahākunaddyi kuladdyi khuladdyi khukhuladdyi mahākhuladdyi hulu hulu lu hulululu hululululu hululululu lu hulululululululululu lu hala hala hili hili laha halu hule iha hule hule uladdyi hile uhahile hila hile hulu hi hulu hulu hulu hulu hule hahahahahaha svāhā</p><p>May the great king Vaiśravaṇa guard this direction.</p><p>Vāsava, the king of all gods, has come. I pay homage to him. He, too, pays homage to the Blessed One:</p><div class="tei-verse"><div class="tei-line">“Heroic perfect Buddha,</div><div class="tei-line">All seeing and all knowing—I bow to you.</div><div class="tei-line">Perfect Buddha, supreme among bipeds,</div><div class="tei-line">Endowed with great wisdom—I bow to you.</div></div><div class="tei-verse"><div class="tei-line">“What you know, Gautama,</div><div class="tei-line">The gods have not grasped.</div><div class="tei-line">I bow to you, perfect hero.</div><div class="tei-line">I have come, paying devout respect.”</div></div><p>May everyone from yakṣas, rākṣasas, and gandharvas all the way up to harm doers depart from the body of so-and-so,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-216" href="#tei-note-UT22084-090-006-216">[19]</a></sup> which they have inhabited. If they do not quickly depart from so-and-so’s body, they will soon be in grave peril and afflicted with severe illness, which will cause their heads and hearts to split into a hundred pieces, immediately bringing them <span class="tei-ref">F.148.a</span> many kinds of misery and total ruin.</p><p>May the grahas of pox, grahas of the dawn, and grahas of shadow quickly depart so-and-so’s body upon hearing this <cite>Great Sūtra of Cool Grove</cite>. If they do not quickly depart, they will soon be in grave peril and afflicted with severe illness, which will cause their heads and hearts to split into a hundred pieces, immediately bringing them many kinds of misery and total ruin.</p><div class="tei-verse"><div class="tei-line">All those who flit about day and night,</div><div class="tei-line">Devouring vitality and blood,</div><div class="tei-line">Are forced to cease upon hearing</div><div class="tei-line">This well-spoken sūtra propounded.</div></div><div class="tei-verse"><div class="tei-line">All piśācas, skandas, bodiless beings,</div><div class="tei-line">Bhūtas, frightful ones, and pūtanas</div><div class="tei-line">Must cease upon hearing</div><div class="tei-line">This well-spoken sūtra propounded.</div></div><div class="tei-verse"><div class="tei-line">All gods, asuras, marutas,</div><div class="tei-line">Gandharvas, most eminent grahas,</div><div class="tei-line">Bhūtas, piśācas,</div><div class="tei-line">Yakṣas, and rākṣasas</div><div class="tei-line">Will tremble in confusion</div><div class="tei-line">And shiver with fear.</div></div><div class="tei-verse"><div class="tei-line">All spiteful and harmful grahas</div><div class="tei-line">Will fall and be defeated.</div><div class="tei-line">The ground will quake,</div><div class="tei-line">And loud noises will ring out.</div></div><div class="tei-verse"><div class="tei-line">When pretas and kumbhāṇḍas</div><div class="tei-line">Hear this sūtra,</div><div class="tei-line">Which repels spiteful grahas,</div><div class="tei-line">They will be struck with grave fear.</div></div><div class="tei-verse"><div class="tei-line">Those yakṣas who have trust</div><div class="tei-line">In the Buddha, Dharma, and Saṅgha</div><div class="tei-line">Will be delighted and pleased</div><div class="tei-line">And will thoroughly rejoice.</div></div><p>The Four Great Kings then descended from the sky and approached the Blessed One. They bowed their heads to the Blessed One‘s feet, joined their palms, and spoke with unified sentiment and phrasing: “Venerable <span class="tei-ref">F.148.b</span> Blessed One, this <cite>Great Sūtra of Cool Grove</cite> that is revered by the Four Great Kings guards and protects the four communities and vanquishes all beings from yakṣas and rākṣasas all the way up to harm doers. Venerable Blessed One, since it protects any monk, nun, layman, or laywoman, everyone should receive this <cite>Great Sūtra of Cool Grove</cite>. They should hold on to it, recite it, and master it. Venerable Blessed One, if no being, from yakṣas and rākṣasas all the way up to harm doers, will so much as dwell near monks, nuns, laymen, or laywomen who receive, hold, recite, and master this <cite>Great Sūtra of Cool Grove</cite> in order to protect and shield themselves or others, then what harm could they possibly do? If no being, from yakṣas and rākṣasas all the way up to harm doers, can dwell for so much as a night in their vicinity, what need is there to mention remaining there permanently? Venerable Blessed One, when this <cite>Great Sūtra of Cool Grove</cite> is recited in front of someone harmed by a nonhuman, the person quickly gains happiness and well-being and is free of pain, comfortable, and released from their affliction. The nonhuman cannot return but will immediately depart. Venerable Blessed One, such is the great benefit of this <cite>Great Sūtra of Cool Grove</cite>.</p><p>“Venerable Blessed One, devout yakṣa laymen will travel to the abodes of the Four Great Kings and speak the name of any monk, nun, layman, or laywoman who receives, holds, recites, masters, and uses this <cite>Great Sūtra of Cool Grove</cite>. <span class="tei-ref">F.149.a</span> They will announce, ‘Four Great Kings, the monk, nun, layman, or laywoman so-and-so is receiving, holding, reciting, mastering, and using this <cite>Great Sūtra of Cool Grove</cite> in order to protect and shield themself and others.’</p><p>“Venerable Blessed One, devout yakṣa laymen will travel to the royal palace in Aḍakavatī, where they will also announce this amid all the yakṣas and bhūtas assembled and gathered before the great king Vaiśravaṇa. It will bring joy to those present. Venerable Blessed One, such is the great benefit of this <cite>Great Sūtra of Cool Grove</cite>.</p><p>“Venerable Blessed One, any monk, nun, layman, or laywoman who receives, holds, recites, masters, and uses this <cite>Great Sūtra of Cool Grove</cite> to protect and shield themself and others will practice abstinence. They will not drink alcohol but will observe mindfulness and introspection. They will give up five kinds of food—molasses, honey, sesame, meat, and fish. Why? It is only under those circumstances,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-228" href="#tei-note-UT22084-090-006-228">[20]</a></sup> Venerable Blessed One, that beings from yakṣas and rākṣasas all the way up to harm doers can destroy or ceaselessly affect one who receives, holds, recites, masters, and uses this <cite>Great Sūtra of Cool Grove</cite>. In order to destroy them, this vow must be observed.</p><p>“Venerable Blessed One, devout yakṣa laymen will please with clothing, food, bedding, cushions, healing medicines, and necessities any monk, nun, layman, or laywoman who receives, holds, recites, masters, and uses this <cite>Great Sūtra of Cool Grove</cite>. <span class="tei-ref">F.149.b</span> Venerable Blessed One, such is the great benefit of this <cite>Great Sūtra of Cool Grove</cite>.</p><p>“Venerable Blessed One, a non-Buddhist who lacks devotion to the Blessed One’s doctrine and who dislikes it, wants to impair it, does not want to help it, and does not want it to be successful or thrive cannot prevent the success of one who receives, holds, recites, masters, and uses this <cite>Great Sūtra of Cool Grove</cite>. Rather, nonhuman beings will kill them, cause them various kinds of misery, destroy them, and affect them endlessly. Why? Because they want to harm, do not want to help, and do not want success or well-being for the practitioner. Whoever has such erroneous views is destroyed.</p><p>“Venerable Blessed One, among all of the protections in the world by which the Four Great Kings protect sentient beings in order to guard, protect, and shield them, this sūtra is supreme, primary, and exalted.”</p><p>The Four Great Kings then spoke these verses to the Blessed One:</p><div class="tei-verse"><div class="tei-line">“Supreme human,</div><div class="tei-line">Even rākṣasas cannot harm</div><div class="tei-line">One who is protected</div><div class="tei-line">And granted well-being by this sūtra.</div></div><div class="tei-verse"><div class="tei-line">“Anyone who upholds these sūtras</div><div class="tei-line">Perfectly, continuously,</div><div class="tei-line">And in their entirety,</div><div class="tei-line">Just as taught by the supreme human,</div></div><div class="tei-verse"><div class="tei-line">“Cannot be harmed</div><div class="tei-line">By yakṣas, pretas, bhūtas,</div><div class="tei-line">Kumbhāṇḍas, rākṣasas, unmādas,</div><div class="tei-line">Wanderers, nāgas, and the like. <span class="tei-ref">F.150.a</span></div></div><div class="tei-verse"><div class="tei-line">“Nonhumans and grahas</div><div class="tei-line">Will quickly leave them.</div><div class="tei-line">Nothing can affect them,</div><div class="tei-line">Nor be able to harm them.”</div></div><div class="tei-verse"><div class="tei-line">The Four Great Kings said,</div><div class="tei-line">“Homage to the Blessed One,”</div><div class="tei-line">Then prostrated to his feet</div><div class="tei-line">And instantly disappeared.</div></div><p>When the night had passed, the Blessed One rose at dawn, took his seat at the front of the monastic assembly, and said to them, “Monks, late last night the Four Great Kings, together with their sons, ministers, entourages, retainers, messengers, and servants, appeared at dusk<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-090-006-239" href="#tei-note-UT22084-090-006-239">[21]</a></sup> in their majestic glory, arriving at the great charnel ground of Cool Grove with a single intent. Flooding it with their luminosity, Kubera, Dhṛtarāṣṭra, Virūpākṣa, and Virūḍhaka approached me, bowed their heads to my feet, and stood to one side. Standing there, the Four Great Kings spoke <cite>The Great Sūtra of Cool Grove</cite> to me and then departed. You should listen well and keep it in mind. I will explain it.”</p><p>“Venerable one, please do so,” the monks replied, and they listened as the Blessed One spoke. The Blessed One then explained this <cite>Great Sūtra of Cool Grove</cite> in detail to the monks, nuns, laymen, and laywomen.</p><p>Once the Blessed One finished speaking on this, the monks, nuns, laymen, and laywomen rejoiced, and they praised what he had said.</p><p>The ritual procedure for this is as follows: A person who eats the three white foods, has bathed well, fasts, observes discipline, and holds vast intention should draw images of the Four Great Kings using realgar or red ocher. <span class="tei-ref">F.150.b</span> They should make a four-cornered maṇḍala that is replete with all incenses and recite the sūtra before the Buddha throughout the three periods of the day.</p>This concludes “<cite>The Great Sūtra of Cool Grove</cite>.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>This was translated and edited by the Indian preceptors Śīlendrabodhi, Jñānasiddhi, and Śākyaprabha and the translator-editor Bandé Yeshé Dé. It was then finalized after revising it based on the new lexicon. Later, Gö Shönu Pal revised it based on a Sanskrit manuscript belonging to Chak Lotsāwa.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-090-006-58"><p>Tib. <em>spyangs pa</em>. This is understood as a translation of <em>dhuta</em>, and therefore as a contraction of <em>dhutaguṇa</em> (Tib. <em>spyangs pa’i yon tan</em>), the set of ascetic Buddhist practices for which <em>Kāśyapa</em> was specifically renowned.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-58">back</a></li><li id="tei-note-UT22084-090-006-71"><p>Tentative for <em>’tshe rgyu</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-71">back</a></li><li id="tei-note-UT22084-090-006-72"><p>Tib. <em>ming ’di zhes bya ba</em>. This term indicates that the officiant of the rite described below should here insert the name of the client on whose behalf the rite is being performed.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-72">back</a></li><li id="tei-note-UT22084-090-006-102"><p>As indicated below, this refers to Vaiśravaṇa.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-102">back</a></li><li id="tei-note-UT22084-090-006-107"><p>Like many Indic deities, Kubera/Vaiśravaṇa has a specific mount on which he rides. In his case, it is a human man.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-107">back</a></li><li id="tei-note-UT22084-090-006-109"><p>This translation follows C, H, J, N, and S in reading <em>mchi</em> (“arrive”). Degé reads <em>’chi</em> (“die”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-109">back</a></li><li id="tei-note-UT22084-090-006-123"><p>Tib. <em>slo ma rna la rab tu ’phyang</em>. It is unclear what <em>śūrpa</em> or <em>śūrpaka</em> (<em>slo ma</em>) refers to. It can refer to type of basket used to winnow grain or to a type of nonhuman being. It is possible that the Tibetan locative particle is incorrect and that the Sanskrit equivalent of <em>slo ma rna</em> should have been interpreted as <em>śūrpakarṇa</em> (“basket-like ears”). This term is used to refer to the shape of ears and is often used as an epithet of the elephant-headed god Gaṇeśa.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-123">back</a></li><li id="tei-note-UT22084-090-006-129"><p>Referring, most likely, to Vaiśravaṇa/Kubera.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-129">back</a></li><li id="tei-note-UT22084-090-006-136"><p>Here we follow IOL Tib J 397 in reading <em>kum bhī ra</em>. This name is further suggested by the readings <em>ku bhi ra</em> attested in K, Y, N, and S. Degé reads <em>ku be ra</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-136">back</a></li><li id="tei-note-UT22084-090-006-137"><p>This list of eight mātṛkās appears to be unique to this text. In absence of a Sanskrit witness it is difficult to identify this set of deities with certainty.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-137">back</a></li><li id="tei-note-UT22084-090-006-143"><p>Tib. <em>de bzhin</em>. The Tibetan term is understood here to indicate the full range of fevers—from intense to four-day—listed previously in this text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-143">back</a></li><li id="tei-note-UT22084-090-006-173"><p>Tib. <em>rin chen snying po</em>. This plausibly translates the Skt. term <em>ratnagarbha</em>, which often refers to the sea, which was believed to contain innumerable jewels. Thus, this line could be interpreted to say, “You are powerful like the sea.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-173">back</a></li><li id="tei-note-UT22084-090-006-182"><p>This translation follows IOL Tib J 397, K, Y, N, and S in reading <em>rigs sngags kyi rgyal po chen po</em>. Degé reads <em>rigs sngags kyi rgyal mo chen mo</em> (“the great queen of vidyā-mantras”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-182">back</a></li><li id="tei-note-UT22084-090-006-189"><p>This translation follows IOL Tib J 397, N, and S in reading <em>rigs sngags kyi rgyal po chen po</em>. Degé reads <em>rigs sngags kyi rgyal mo chen mo</em> (“the great queen of vidyā-mantras”). IOL Tib J 397 omits <em>chen po</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-189">back</a></li><li id="tei-note-UT22084-090-006-197"><p>This translation follows C, J, K, Y, N, and S in reading <em>rigs sngags kyi rgyal po chen po</em>. Degé reads <em>rigs sngags kyi rgyal mo chen mo</em> (“the great queen of vidyā-mantras”). The corresponding folio from IOL Tib J 397 has been lost.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-197">back</a></li><li id="tei-note-UT22084-090-006-205"><p>This translation follows IOL Tib J 397 in reading <em>rigs sngags kyi rgyal po</em>. Degé reads <em>rigs sngags kyi rgyal mo</em> (“the queen of vidyā-mantras”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-205">back</a></li><li id="tei-note-UT22084-090-006-207"><p>This translation follows IOL Tib J 397 in reading <em>rigs sngags kyi rgyal po chen po</em>. Degé reads <em>rigs sngags kyi rgyal mo chen mo</em> (“the great queen of vidyā-mantras”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-207">back</a></li><li id="tei-note-UT22084-090-006-208"><p>Meaning that he made the ground impenetrable.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-208">back</a></li><li id="tei-note-UT22084-090-006-216"><p>As above, the Tibetan phrase <em>ming ’di zhes bya ba</em> indicates that the ritual officiant should insert the name of their client here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-216">back</a></li><li id="tei-note-UT22084-090-006-228"><p>Meaning only when the prescriptions above are not followed.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-228">back</a></li><li id="tei-note-UT22084-090-006-239"><p>There is a slight difference in phrasing between this passage and the parallel passage at the beginning of the sūtra. There, the Four Great Kings are said to arrive “at midnight” (<em>nam phyed na</em>). Here they are said to arrive at dusk (<em>nam sros na</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-090-006-239">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/090-005-toh561-the-great-amulet.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/090-007-toh563-upholding-the-great-secret-mantra.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

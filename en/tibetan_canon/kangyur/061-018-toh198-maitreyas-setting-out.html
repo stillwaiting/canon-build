@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 198 — Maitreya’s Setting Out — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 198 — Maitreya’s Setting Out</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 198 — Maitreya’s Setting Out        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Maitreya­prasthāna          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by Dharmachakra Translation Committee under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Great Vehicle Sūtra</h3><h3>Maitreya’s Setting Out</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.274.b</span> Homage to all buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Blessed One was residing in Śrāvastī, in Jeta’s Grove, Anāthapiṇḍada’s Park, together with a great saṅgha of five thousand monks and a great saṅgha of ten thousand bodhisattvas. <span class="tei-ref">F.275.a</span> All of them had developed the superknowledges, and all the bodhisattva great beings had reached the stage of irreversibility.</p><p>At that time, Mañjuśrī­kumāra­bhūta was present in the assembly. The bodhisattva Pratibhānakūṭa, the bodhisattva Playfulness, the bodhisattva Avalokiteśvara, the bodhisattva Mahāsthāma­prāpta, the bodhisattva Candra­prabha­kumāra­bhūta, and the bodhisattva great being Maitreya had also come together and were sitting in the retinue. At one point, the bodhisattva great being Maitreya stood up, draped his shawl over one shoulder, and knelt on his right knee. With his palms joined together, he bowed down toward the Blessed One and said, “Blessed One, should I be granted the opportunity, I would like to ask a few questions to the blessed, thus-gone, worthy, perfect Buddha, so that the Blessed One may settle the matter of my inquiries.” After the bodhisattva Maitreya made his request, the Blessed One remained silent.</p><p>Mañjuśrī­kumāra­bhūta then said to the bodhisattva great being Maitreya, “Maitreya, if you proceed in the following way, the Thus-Gone One will grant you the opportunity so that the matter of your inquiries may be settled: If you do not ask him questions about the vehicle of the buddhas, the vehicle of the solitary buddhas, or the vehicle of the hearers, if you do not ask him questions about how to gain understanding about the aggregates, the elements, and the sense fields <span class="tei-ref">F.275.b</span> or to bring an end to desire, anger, and ignorance, and if you do not ask him questions about the perfections and the way to master them, the Thus-Gone One will grant you the opportunity so that the matter of your inquiries may be settled. If you do not ask him questions with the aim of transcending the karmic formations, achieving nirvāṇa, or comprehending the truths, if you do not ask him questions about the path and the way to meditate on the path, if you do not ask him questions with the aim of attaining the fruition, actualizing it, and reaching the state of nonabiding, and if you present your inquiries without using words, the Thus-Gone One will then give you the opportunity so that the matter of your inquiries may be settled. The reason for this, Maitreya, is that the more one imputes, the more attached one will be, and the Dharma teaching of the Buddha, the Blessed One, is nonattachment.”</p><p>At that moment the venerable Śāriputra said to Mañjuśrī­kumāra­bhūta, “Mañjuśrī, you speak of ‘imputing.’ But Mañjuśrī, how does one impute?”</p><p>“Venerable Śāriputra,” answered Mañjuśrī, “all phenomena are the same in terms of the sameness of emptiness. They are the same in terms of the sameness of signlessness. They are the same in terms of the sameness of wishlessness. They are the same in terms of the sameness of how things really are. They are the same in terms of the sameness of suchness. They are the same in terms of the sameness of the sphere of reality. They are the same in terms of the sameness of the limit of reality. They are the same in terms of their sameness in being nonarising, unceasing, and nonabiding. They are the same in terms of their sameness in being unborn and unoccuring. All phenomena are the same in terms of the sameness of space. <span class="tei-ref">F.276.a</span></p><p>“Venerable Śāriputra, if, while all phenomena are the same, one thinks of them as not being the same, then one is imputing something that does not exist. Thus one might think, ‘This is the Buddha,’ ‘This is the Dharma,’ ‘This is the Saṅgha,’ ‘This is the self,’ ‘This is a sentient being,’ ‘This is a person,’ ‘This is a child of a man,’ ‘This is a human being,’ ‘This is a doer,’ ‘This is an experiencer,’ ‘This is interrupted,’ ‘This is permanent,’ ‘This is an ordinary being,’ ‘This is a hearer,’ ‘This is a solitary buddha,’ ‘This is a bodhisattva,’ ‘This is a wrongdoer,’ ‘This is someone free from wrongdoing,’ ‘This is defiled,’ ‘This is undefiled,’ ‘This is conditioned,’ ‘This is unconditioned,’ ‘This is thorough affliction,’ ‘This is complete purification,’ ‘This is virtue,’ ‘This is nonvirtue,’ ‘This is mundane,’ ‘This is supramundane,’ ‘This is saṃsāra,’ ‘This is nirvāṇa,’ ‘This is an entity,’ ‘This is a nonentity,’ ‘This is existent,’ ‘This is nonexistent,’ ‘This is attainment,’ ‘This is manifest realization,’ ‘This is actualization,’ ‘This is the path,’ or ‘This is the fruition of the path.’ All these are imputations. Why is it so? Because, Venerable Śāriputra, sameness is beyond thought. Those who think in terms of such concepts make imputations upon sameness. They do not make imputations upon a lack of sameness. Those who see sameness without seeing anything are seeing sameness, but those who create imputations perceive things as not sameness. Those who do not reify sameness perceive sameness, but those who impute do not.”</p><p>When this teaching was uttered, <span class="tei-ref">F.276.b</span> the minds of two hundred monks were liberated from their defilements with no further grasping. The Blessed One remained silent in order to train those monks.</p><p>The bodhisattva great being Maitreya then said to Mañjuśrī­kumāra­bhūta, “Mañjuśrī, I do not ask the Thus-Gone One any of these questions, from questions about the vehicle of the hearers, the vehicle of the solitary buddhas, and the vehicle of the perfect awakened ones to questions about the state of nonabiding. Mañjuśrī, I always present my inquiries to the Thus-Gone One in a way that does not contradict suchness. Mañjuśrī, I present my inquiries to the Thus-Gone One in a way that does not contradict suchness. Thus, I take into account the nonobservation of any phenomenon due to disengagement from all phenomena. I acknowledge freedom from the stains of desire, anger, and ignorance due to the immutability of the sphere of reality. I ask in the recognition that there is no transcending saṃsāra—because it cannot be observed—and no attaining nirvāṇa—because there is neither coming from nor going to anywhere at all. Mañjuśrī, I never use any words or verbal expressions. There is nothing to discern with insight, nor is there anything to understand. Here there is nothing at all that is liberated either. This is how I present my inquiries to the Thus-Gone One, since words are empty, and everything is unborn.”</p><p>At that point, the bodhisattvas who had gathered in the retinue thought, “Ah! The bodhisattva great being Maitreya only teaches in that way, using indirect and oblique statements, <span class="tei-ref">F.277.a</span> and yet everything he says is in harmony with reality. His wisdom is indeed profound!”</p><p>The bodhisattva great being Playfulness then said, “Blessed One, the bodhisattva great being Maitreya’s certainty about the acceptance of the profound and his skills in teaching it with wisdom and eloquence are amazing! Blessed One, Thus-Gone One, in order to provide assistance and happiness to numerous beings, and to bring benefit and healing to gods and humans, please tell us how much time has passed since the bodhisattva great being Maitreya first gave rise to the mind set on unsurpassed and perfect awakening. If you do so, the noble sons and daughters of the bodhisattva vehicle will, having heard about such events and this setting out, renew their exertion in order to reach unsurpassed and perfect awakening.”</p><p>“Noble son,” replied the Blessed One, “the bodhisattva great being Maitreya has observed pure conduct for a long time. Noble son, the bodhisattva great being Maitreya has served the victorious ones of the past and accumulated roots of virtue. He has reached the acceptance of the profound. Noble son, I gave rise to the mind set on unsurpassed and perfect awakening for the first time eighty-four thousand eons after the bodhisattva great being Maitreya had genuinely set out on the path.”</p><p>“Blessed One,” said the bodhisattva great being Playfulness, <span class="tei-ref">F.277.b</span> “what is the name of the thus-gone, worthy, perfect Buddha in the presence of whom the bodhisattva great being Maitreya gave rise to the mind set on unsurpassed and perfect awakening? Thus-gone, worthy and perfect Buddha, please tell us about this!”</p><p>“Noble son,” replied the Blessed One, “listen carefully and keep in your heart what I will explain to you.” Receiving the full attention of the bodhisattva great being Playfulness and the entire retinue, the Blessed One began his account, “Playfulness, in the past, countless eons ago, so long ago that the amount of time cannot be measured, conceived, or fathomed, a thus-gone, worthy, perfect buddha appeared in the world. He was endowed with perfect knowledge and conduct. He was a bliss-gone one, a knower of the world, an unsurpassed guide who tames beings, a teacher of both gods and humans. This buddha, this blessed one was named Pure Golden Light. Noble son, many trillions of light rays shone from each pore of his hair. The light rays of that thus-gone one were pure like golden light, and each of them illuminated a great trichiliocosm. Each light ray filled the eastern, southern, western, northern, and intermediate directions, as well as above and below, with many trillions of lotuses. In each of these directions, many trillions of buddha fields were filled with thus-gone ones, <span class="tei-ref">F.278.a</span> each one of them cultivating many trillions of beings to the Buddha and the Dharma and establishing them in the state of irreversibility. Noble son, the light rays of the thus-gone, worthy, perfect Buddha Pure Golden Light illuminated the world at all times. In his buddha field, the words <em>sun</em> and <em>moon</em> did not exist. Even the words <em>heavenly bodies</em>, <em>planets</em>, <em>stars</em>, and <em>fire light</em> were unknown.”</p><p>“Venerable One, Blessed One,” asked the bodhisattva great being Playfulness, “if this is so, how were the days and nights distinguished in that buddha field?”</p><p>“Noble son,” replied the Blessed One, “in the buddha field of the thus-gone, worthy, perfect Buddha Pure Golden Light, the ground was made of the seven precious substances. It was smooth like the palm of the hand. Lotuses made of the seven precious substances and about the size of a chariot wheel grew out of that ground. They were beautiful, pleasant to look at, sweet smelling, fragrant, and delightful. The sweet and fragrant smell of each of these lotuses permeated a great trichiliocosm. Those who experienced these fragrances were certain to reach unsurpassed and perfect awakening. Those lotuses blossomed in the morning and withered in the afternoon, enabling beings to know the time of day. Noble son, there was therefore a visible distinction between day and night in the buddha field of the Blessed One, the thus-gone, worthy, perfect Buddha Pure Golden Light. <span class="tei-ref">F.278.b</span> Noble son, in that buddha field, even the names of the eight unfree states did not exist, and even the words <em>suffering</em>, <em>hearers</em>, and <em>solitary buddhas</em> were unknown. That buddha field was exclusively filled with bodhisattvas who were celibate and free from foul odors. Each assembly consisted of one thousand two hundred billion bodhisattvas. On top of these, the number of bodhisattvas who had gathered around that blessed one was uncountable.</p><p>“The thus-gone, worthy, perfect Buddha Pure Golden Light did not teach anything other than <cite>The Irreversible Wheel of the Bodhisattva Collection</cite>. What is this Dharma teaching? No phenomena whatsoever can be divorced from suchness. No phenomena whatsoever can be divorced from the sphere of reality. No phenomena whatsoever can be divorced from the limit of reality. Desire cannot be divorced from the essential nature of desire. Anger cannot be divorced from the essential nature of anger. Ignorance cannot be divorced from the essential nature of ignorance. Form cannot be divorced from the essential nature of form. Feeling, perception, karmic formations, and consciousness cannot be divorced from their essential nature. The eye cannot be divorced from the essential nature of the eye. The ear, nose, tongue, body, and mental faculties cannot be divorced from their essential nature. The essential nature is the absence of entity, and this absence of entity cannot be divorced from anything, nor can it engage in anything. Noble son, in that buddha field, <span class="tei-ref">F.279.a</span> the thus-gone, worthy, perfect Buddha Pure Golden Light thus genuinely taught to the bodhisattvas the Dharma teaching called <cite>The Irreversible Wheel of the Bodhisattva Collection</cite>.</p><p>“At that time appeared a righteous Dharma king, a ruler of the four continents, a universal monarch named Golden Color. Noble son, for eight hundred forty million years that king Golden Color revered the blessed, thus-gone, worthy, perfect Buddha Pure Golden Light and his great saṅgha of bodhisattvas, through all possible forms of offerings and respectful services. He honored, venerated, and worshiped them. Noble son, when the Four Great Kings, as well as Śakra, lord of the gods, and Brahmā, lord of the Sahā world, together with their retinues, saw the attitude of the king Golden Color, they joined him and enthusiastically revered the blessed Thus-Gone One Pure Golden Light.</p><p>“Noble son, the king Golden Color created a courtyard with the length of eighty-four leagues. He draped it with silken fringes and covered it with flowers up to the knees. He adorned the space above with garlands of red pearls and fumigated it with the finest essential fragrances. Within the courtyard, he arranged for the Thus-Gone One a throne supported by legs decorated with precious substances. On that throne, he spread many trillions of cotton fabrics of inestimable value.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-42" href="#tei-note-UT22084-061-018-42">[1]</a></sup> He also prepared seats of tremendous value<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-43" href="#tei-note-UT22084-061-018-43">[2]</a></sup> for each of the bodhisattvas. At that time, the Thus-Gone One was residing two thousand leagues away. Noble son, the king Golden Color ornamented majestically the path along these two thousand leagues to be traversed. On each side of the path, he built platforms adorned with various precious substances. He covered the path with so many flowers that they reached to the knees, and he hung canopies consisting of garlands of precious gems in the space above it. <span class="tei-ref">F.279.b</span> On the platforms, he planted precious trees about the distance of a bowshot apart and hung strings of precious gems between each of them. Between each pair of precious trees, he built ponds surrounded by platforms made of precious gems and plastered with gold dust. The steps to these ponds were made of beryl, and the ponds themselves were filled with blue lotus flowers, pink lotus flowers, water lilies, and white lotus flowers, and with singing wild geese. Such ponds were created between each of the precious trees.</p><p>“In front of each tree, he placed five hundred people carrying flower petals, five hundred people carrying vases filled with precious incense, five hundred people carrying various types of musical instruments such as great drums, clay drums, wooden kettledrums, kimpalas, lutes, and cymbals, and five hundred people carrying parasols, victory banners, and flags. Having placed in that way hundreds of people in front of each precious tree, he ordered them, ‘When the blessed Thus-Gone One Pure Golden Light walks along this path, strew these flower petals and these sandalwood powders, make fumigations with these incense burners, play these cymbals, and raise up these parasols, victory banners, and flags!’ He also placed five hundred people carrying vases filled with precious flowers in front of every precious tree. Everyone remaining was also given the same role. He ordered them, ‘When the Thus-Gone One walks along this path, strew these precious flowers!’</p><p>“Noble son, the blessed <span class="tei-ref">F.280.a</span> Thus-Gone One Pure Golden Light, then came out of his temple and began to walk toward that courtyard. As soon as he appeared from the temple, light began to shine from there, illuminating the bodhisattvas. Noble son, the two thousand leagues along the path were filled with bodhisattva great beings standing about one fathom away from one another. Noble son, when the Thus-Gone One walked along that path, through the power of the buddhas, white silver parasols with golden handles, covered with garlands of red pearls and surrounded by nets of small golden bells, followed the bodhisattvas in the space right above their heads, without anyone holding them. Each bodhisattva was followed by such a parasol. Shaken by the wind, the webs of small bells covering the precious parasols emitted beautiful and pleasing melodies, more delightful than the sounds of the cymbals that can produce a hundred thousand different tunes.</p><p>“Through the power of that buddha, the melodies of different types of Dharma gateways were heard from the precious parasols, the small bells, the leaves of the precious trees, the strings of precious gems, the precious platforms, the cymbals, and the songs. Beings inclined toward generosity heard the melodies of generosity. Those inclined toward discipline heard the melodies of discipline. Those inclined toward patience, diligence, concentration, and insight heard the melodies of patience, diligence, concentration, and insight. Similarly, the melodies of emptiness, signlessness, wishlessness, nonarising, and noncessation, as well as the melodies of the <em>faculties</em>, the powers, the branches of awakening, <span class="tei-ref">F.280.b</span> the paths, the superknowledges, the powers, the fearlessnesses, the genuine discriminations, and the unique attributes of a buddha were heard. Those melodies manifested and were perceived in accordance with the different inclinations of sentient beings. When they heard these Dharma tunes, an uncountable number of sentient beings became certain to achieve unsurpassed and perfect awakening.</p><p>“Noble son, when the thus-gone, worthy, perfect Buddha Pure Golden Light walked along that path, a divine precious parasol adorned with hundred thousands of precious gems rose up in the space right above his head and accompanied him along the way, without anyone holding it. Shaken by the wind, the precious parasol and its tiny bells emitted beautiful and pleasing melodies. These were the melodies of the Dharma teaching called <cite>The Seal of the Thus-Gone Ones</cite>.”</p><p>“Blessed One,” asked the bodhisattva great being Playfulness, “what is the Dharma teaching called <cite>The Seal of the Thus-Gone Ones</cite> that was heard from the precious parasol of the Thus-Gone One Pure Golden Light? Blessed One, Thus-Gone One, please tell us about this!”</p><p>“Noble son,” replied the Blessed One, “listen carefully and keep these words in your heart. I shall but commence for you the explanation of <cite>The Seal of the Thus-Gone Ones</cite>. Noble son, all phenomena are marked by the seal of emptiness, the seal of signlessness, the seal of wishlessness, the seal of nonarising, noncessation, and nonabiding, the seal of the absence of entity, the seal of the sphere of reality, the seal of suchness, the seal of the limit of reality, <span class="tei-ref">F.281.a</span> the seal of how things are, the seal of nonattachment, the seal of voidness, the seal of complete liberation, the seal of the absence of characteristics, the seal of the absence of doing and going, the seal of nonapprehension, and the seal of baselessness. Noble son, all phenomena are marked by the seal of space. Noble son, for example, carving a seal out of space is not easy—there is nothing there that is a seal, and no imprint can be made. Why is it so? Because there is no basis, there are no causes and no conditions, nothing is produced, and there is no support. Noble son, similarly, a bodhisattva great being truly knows that all phenomena are similar to space, that they have the attributes of space and the essential nature of space, and that they display space. Phenomena cannot be affixed to space; they are mere imputations. As phenomena of space cannot be affixed and are mere imputations, a bodhisattva truly understands that all phenomena cannot be observed and are mere imputations. Someone who understands that all phenomena are mere imputations does not contradict suchness. Someone who does not contradict suchness understands <cite>The Seal of the Thus-Gone Ones</cite>. This is <cite>The Seal of the Thus-Gone Ones</cite>. With such an understanding, one will not be deluded about suchness.”</p><p>When they heard this teaching, five hundred bodhisattvas reached the acceptance of the unborn nature of phenomena.</p><p>The Blessed One then said to the bodhisattva great being Playfulness, “Noble son, when the thus-gone, worthy, perfect Buddha Pure Golden Light, arrived in the courtyard with his saṅgha of bodhisattvas, hundreds of thousands of gods worshiped them enthusiastically by strewing <span class="tei-ref">F.281.b</span> blue lotus flowers, pink lotus flowers, water lilies, and white lotus flowers, scattering a rain of divine mandārava flowers, and playing a trillion cymbals. Noble son, when the Thus-Gone One Pure Golden Light was staying in that courtyard, the Four Great Kings, as well as Śakra, lord of the gods, and Brahmā, lord of the Sahā world, stayed in attendance to worship him, revere him, and honor him. What kinds of offerings were made to please the Thus-Gone One and his saṅgha of bodhisattvas? Each bodhisattva was attended by a white elephant decorated with all the ornaments. Staying behind them, these royal elephants held splendid and majestic precious parasols in their trunks, protecting the bodhisattvas from the wind and the sun. Necklaces of shining blue pearls dangled from their trunks. Cool drinking water resembling blue beryl and endowed with the <em>eight qualities</em> flowed from these pearl necklaces. Thus, the water performed its full function. As soon as the bodhisattvas took their seats, the gods caused alms bowls of precious gems to materialize in their right hands, and the gods would then hold the bodhisattvas’ alms bowls. Brahmā himself sat behind the Thus-Gone One Pure Golden Light, carrying for him a precious parasol draped with pearl necklaces. Cool drinking water resembling blue beryl and endowed with the <em>eight qualities</em> flowed from these pearl necklaces, performing the full function of water for the Thus-Gone One. Śakra, the lord of the gods, carried the alms bowl of the Blessed One.</p><p>“Noble son, when the Thus-Gone One and his retinue of bodhisattvas sat down, <span class="tei-ref">F.282.a</span> a goddess stood in front of each of them and ground various types of divine fragrant substances into powder. During that process, a small breeze started to blow to and fro, covering the bodies of the bodhisattvas with these fragrant substances. Those holy beings were free from unpleasant odors, and since they did not even operate with the idea of goddesses or entertain the notion of perfumes, how could they become attached to any of that? That would be impossible.</p><p>“Noble son, when the king Golden Color saw that the Thus-Gone One Pure Golden Light had taken his seat, he was joined by one thousand boys, eighty-four thousand women, eighty-four thousand kings, eighty-four thousand householders, eighty-four thousand merchants, eighty-four thousand ministers, eighty-four thousand girls, and many other groups of people, as he personally applied himself to feeding the Thus-Gone One and the bodhisattvas to their full satisfaction, offering them plenty of the finest and most delicious foods and drinks. After they finished eating and were satiated, their plates were removed, and they concealed their hands. When the king saw this, he offered cotton fabrics of inestimable value<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-56" href="#tei-note-UT22084-061-018-56">[3]</a></sup> to the Thus-Gone One and cotton fabrics of tremendous value<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-57" href="#tei-note-UT22084-061-018-57">[4]</a></sup> to each of the bodhisattvas. Having made those offerings, the king, those great groups of beings, and all the prominent citizens joined their palms together and sat down respectfully in front of the Thus-Gone One to listen to the Dharma.</p><p>“Noble son, understanding that the great assembly of devoted people and the gathering of bodhisattvas wished for the Dharma, the Thus-Gone One Pure Golden Light taught them the Dharma teaching called <cite>The Individual Gateways</cite>.”</p><p>“Blessed One,” asked the bodhisattva great being Playfulness, <span class="tei-ref">F.282.b</span> “what is this Dharma teaching taught by the Thus-Gone One Pure Golden Light and called <cite>The Individual Gateways of the Bodhisattvas</cite>? Blessed One, Thus-Gone One, please tell us about this! If you do so, the noble sons and daughters of the bodhisattva vehicle will also train in this Dharma teaching of <cite>The Individual Gateways</cite>.”</p><p>“Noble son,” replied the Blessed One, “listen carefully and keep these words in your heart. I shall but commence for you the explanation of the Dharma teaching of <cite>The Individual Gateways</cite>. Noble son, the individual gateways of the bodhisattvas are nothing other than the six perfections: the perfection of generosity, the perfection of discipline, the perfection of patience, the perfection of diligence, the perfection of concentration, and the perfection of insight. Noble son, these are the six individual gateways of the bodhisattvas. Why is it so? Because the thus-gone ones of the past have awakened to unsurpassed and perfect buddhahood by training in these six perfections. They have then turned the Dharma wheel, brought beings to maturity, and finally passed into nirvāṇa. The future thus-gone ones will also awaken to unsurpassed and perfect buddhahood by training in these individual gateways. Right now, thus-gone, worthy, perfect buddhas residing and remaining present in an uncountable number of worlds <span class="tei-ref">F.283.a</span> are also turning the Dharma wheel after having awakened to unsurpassed and perfect buddhahood by training in this Dharma teaching of <cite>The Individual Gateways</cite>.</p><p>“Noble son, the true teaching of the individual gateways of the bodhisattvas is the true teaching of the six perfections. What are the particularities of these individual gateways? What are the faults associated with those? What is the subjugation of these faults? What is the definitive emancipation?</p><p>“Miserliness is a fault for bodhisattvas. Strong clinging is a fault for bodhisattvas. Intense grasping is a fault for bodhisattvas. Guarding one’s wealth without sharing it is a fault for bodhisattvas. When bodhisattvas have subjugated and defeated their miserliness, and when they have given rise to a generous mindset, then these faults have been subjugated. Bodhisattvas who practice generosity must share their possessions, whether they are few or many, with mendicants, priests, and beggars. With an enthusiastic and joyful attitude, and without any sense of clinging or hope for reward, they must develop the charitable attitude of giving away beneficial things out of compassion for all sentient beings. Such bodhisattvas are training in the individual gateways. This is the definitive emancipation of the bodhisattvas.</p><p>“Noble son, corrupted discipline is a fault for a bodhisattva, as are damaged discipline, adulterated discipline, broken discipline, torn discipline, and polluted discipline. What is meant by ‘corrupted discipline,’ ‘damaged discipline,’ ‘adulterated discipline,’ ‘broken discipline,’ ‘torn discipline,’ and ‘polluted discipline’? A bodhisattva who develops the attitude of the hearers and the solitary buddhas <span class="tei-ref">F.283.b</span> or a frame of mind that adheres to concepts, who wishes for the vehicles of the hearers, the solitary buddhas, or conceptual views, and who enjoys the discourses of the hearers, the solitary buddhas, or other conceptual discourses, is said to have ‘corrupted discipline,’ ‘damaged discipline,’ ‘adulterated discipline,’ ‘broken discipline,’ ‘torn discipline,’ and ‘polluted discipline.’ Not applying or training in the individual gateways of the bodhisattvas is the worst form of corrupted discipline.”</p><p>“Blessed One,” asked the bodhisattva great being Playfulness, “why is it that the discipline of a bodhisattva great being who transgresses the other trainings of the thus-gone ones is not considered corrupted, but a bodhisattva who develops the attitude of the hearers and the solitary buddhas, or a frame of mind that involves concepts, is said to observe the worst form of corrupted discipline?”</p><p>“Noble son,” replied the Blessed One, “even if bodhisattvas have transgressed the other trainings of the thus-gone ones, have engaged in the four types of transgression causing downfall that I have taught, have completely taken up the path of the ten nonvirtues, or have committed the five acts of immediate retribution, if those bodhisattvas do not give up the mind set on awakening but maintain it continuously, and if they do not develop a frame of mind that involves concepts, then they are observing genuine discipline. You should understand that these bodhisattvas maintain undamaged, unadulterated, <span class="tei-ref">F.284.a</span> unbroken, intact, and unpolluted discipline. They apply and train in in the individual gateways of the bodhisattvas. Why is it so? Because these do not create obstacles to the bodhisattvas’ awakening. Even if such bodhisattvas have engaged in negative actions and thus generated new rebirths in cyclic existence, all such rebirths in existence will bring accomplishment of the practices of the six perfections. On the other hand, even if they train in accordance with the thus-gone ones’ trainings but adopt the attitude of the hearers and the solitary buddhas or involve concepts, the discipline of a bodhisattva will still become corrupted. Noble son, for these reasons bodhisattvas who do not give up the mind set on awakening and do not develop a frame of mind that involves concepts apply and train in the individual gateways of the bodhisattvas.</p><p>“Noble son, furthermore, the harmful and negative attitude of ill will is a fault for a bodhisattva. The lack of equanimity toward sentient beings is a fault for a bodhisattva. Perceiving sentient beings and phenomena as being distinct is a fault for a bodhisattva. Biased, conceptually based loving kindness toward sentient beings is a fault for a bodhisattva. Nonacceptance of emptiness is a fault for a bodhisattva. Thinking ‘I will be generous to this person but not to that one’ is a fault for a bodhisattva. Thinking ‘I will make offerings to this person but not to that one’ is a fault for a bodhisattva. <span class="tei-ref">F.284.b</span> Thinking ‘I will explain the Dharma to this person but not to that one’ is a fault for a bodhisattva. Thinking ‘I will revere this person but not that one’ is a fault for a bodhisattva. Judging and looking down on others’ discipline, thinking ‘This person’s discipline is pure but that one’s is corrupted’ is a fault for a bodhisattva. Why is it so? Because bodhisattvas must maintain an attitude of equanimity toward all sentient beings and all phenomena. Bodhisattvas must be impartial in the manner of the sun and the moon, or like earth, water, fire, wind, and space. They must also have acceptance of emptiness. Bodhisattvas do not abandon any sentient being. With a baseless mind that does not set up definite limits, they must be dedicated to the benefit of all sentient beings out of compassion and loving kindness. Bodhisattvas who observe such all-embracing practice, and who can also bear to think that all phenomena are empty, apply and train in the individual gateways of the bodhisattvas.</p><p>“Furthermore, conceiving of definite limits to saṃsāra is a fault for a bodhisattva. Thinking ‘I shall circle in saṃsāra for such and such a number of eons’ or ‘For such and such an amount of eons I shall not circle in saṃsāra’ is a fault for a bodhisattva. Thinking, ‘I will liberate so and so many sentient beings’ or ‘So and so many sentient beings I will not liberate’ is a fault for a bodhisattva. Thinking ‘This is diligence, I am diligent, I shall awaken to unsurpassed and perfect buddhahood’ is a fault for a bodhisattva. How does a bodhisattva subjugate those faults? Noble son, a bodhisattva must put on the armor of diligence, thinking, ‘I have continuously circled in saṃsāra since beginningless time. <span class="tei-ref">F.285.a</span> Even if, for the benefit of every single sentient being, I must continue to circle in saṃsāra for the same number of eons, I will do that happily. Likewise, for the sake of all sentient beings, I will happily continue to circle in saṃsāra until the end of time if necessary. I will give up clinging to diligence, pride, and awakening, and I will joyfully wear the armor of diligence beyond reference point.’ A bodhisattva who puts on the armor of diligence in that way applies and trains in the individual gateways of the bodhisattvas.</p><p>“Noble son, furthermore, if bodhisattvas go to villages, cities, towns, countries, and royal palaces and, in those places, have the ability to benefit beings and are capable of handling that task, then going to those places is appropriate. On the other hand, if, while staying in solitude, they enjoy this isolation, become attached to the experience of concentration, and remain absorbed in that bliss, this is a fault for bodhisattvas. If bodhisattvas do not get tired of practicing generosity, do not rely on conceptual references, develop their qualities while resting inwardly, and are not attached to the experience of concentration but cultivate baseless concentration, they apply and train in the individual gateways of the bodhisattvas.</p><p>“Noble son, furthermore, take the case of bodhisattvas who practice the perfection of insight and understand all phenomena to be empty of intrinsic nature, thinking, ‘Here there is no self, no sentient being, no life force, and no person at all.’ Those bodhisattvas may put effort into taming themselves and into the practice of tranquility, yet if the bodhisattvas do not speak of, point out, or use symbols to communicate this mode of emptiness and selflessness to other sentient beings caught by the mistaken habit of clinging to reference points, then understand that such bodhisattvas have no skill in means. <span class="tei-ref">F.285.b</span> This is, however, not considered to be a fault. Take now the case of bodhisattvas who practice the perfection of insight and understand all phenomena to be devoid of and empty of essential nature, thinking, ‘Here there is no self, no sentient being, no life force, and no person at all.’ When those bodhisattvas have a physical experience of all these phenomena that are empty of essential nature, their minds do not fixate on any of them. On the other hand, so that sentient beings who are possessed of errors and adhere to concepts may be freed from their errors and focal points, those bodhisattvas teach them the Dharma—explaining that all phenomena are devoid of essential nature and leading them to the realization that all phenomena are empty of intrinsic nature. You should understand that bodhisattvas are skilled in means and that they apply and train in the individual gateways of the bodhisattvas.</p><p>“Noble son, in that way, when the thus-gone, worthy, perfect Buddha Pure Golden Light had eaten his meal, he explained in detail this Dharma teaching called <cite>The Individual Gateways of the Bodhisattvas</cite> within the courtyard. When that blessed one uttered this Dharma teaching, countless sentient beings became certain to reach unsurpassed and perfect awakening. Noble son, if I were to teach the Dharma of <cite>The Individual Gateways of the Bodhisattvas</cite> for an eon, or even longer than that, my inspiration and these Dharma gateways would never be exhausted. Nevertheless, here I have at least commenced this Dharma teaching.</p><p>“Noble son, in that way, for eight hundred forty million years, the king Golden Color served, honored, venerated, and worshiped the Thus-Gone One and his immeasurable saṅgha of bodhisattvas, offering them such arrangements and such reverence and respectful service.” <span class="tei-ref">F.286.a</span><span class="tei-ref">B2</span></p><p>Then the bodhisattva great being Playfulness asked, “Venerable, Blessed One, did the king Golden Color not build a temple for the Thus-Gone One and the bodhisattvas? Where did the thus-gone one and the bodhisattvas reside?”</p><p>“Noble son,” replied the Blessed One, “the Thus-Gone One and the bodhisattvas resided in pavilions that they had emanated themselves. Noble son, after these eight hundred forty million years had passed, on the very last day, the king Golden Color offered food and presents to the Thus-Gone One. Afterward, when he saw that the Thus-Gone One was about to depart, he wondered, ‘Should I dedicate my roots of virtue to become Śakra, to become Brahmā, or to reach the level of a universal monarch?’ The blessed Thus-Gone One Pure Golden Light knew the thought that had arisen in the mind of the king. Hence, in front of the king and those many groups of beings, the Thus-Gone One emanated in the sky an exact replica of his body, perfect in all aspects. From the sky, he uttered these verses to the king Golden Color:</p><div class="tei-verse"><div class="tei-line">“ ‘Like a childish man</div><div class="tei-line">Who, guided by corrupted insight,</div><div class="tei-line">Pleases a king through reverent services</div><div class="tei-line">But requests an insignificant reward for his acts, <span class="tei-ref">F.286.b</span></div></div><div class="tei-verse"><div class="tei-line">“ ‘Some persons worship the buddhas</div><div class="tei-line">In ways that cannot be conceived,</div><div class="tei-line">Then long for the kingdom of Śakra</div><div class="tei-line">And other inferior abodes.</div></div><div class="tei-verse"><div class="tei-line">“ ‘These life experiences as a king,</div><div class="tei-line">As Śakra or Brahmā,</div><div class="tei-line">Are impermanent—they do not last forever.</div><div class="tei-line">They cannot be relied upon—they are perishable.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Give rise to the mind set on awakening</div><div class="tei-line">For the benefit of all beings!</div><div class="tei-line">Such an attitude is extolled</div><div class="tei-line">By the buddhas and the wise ones in the world.</div></div><div class="tei-verse"><div class="tei-line">“ ‘King, you and your subjects</div><div class="tei-line">Have made extensive offerings.</div><div class="tei-line">Now give rise to the mind set on awakening,</div><div class="tei-line">The unsurpassed and vast attitude.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Do not give rise to inferior aspirations—</div><div class="tei-line">That is what childish beings do.</div><div class="tei-line">Become an adept in genuine insight,</div><div class="tei-line">And enter the path of supreme awakening.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Compared to someone who, longing for nirvāṇa,</div><div class="tei-line">Makes offerings to the buddhas, the thus-gone ones,</div><div class="tei-line">By filling an entire trichiliocosm</div><div class="tei-line">With precious substances,</div></div><div class="tei-verse"><div class="tei-line">“ ‘Someone who joins their palms together</div><div class="tei-line">And dedicates this act mentally to the attainment of awakening</div><div class="tei-line">Creates much more merit,</div><div class="tei-line">Even without pronouncing a single word.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Even if someone were to reverently serve all sentient beings</div><div class="tei-line">For an uncountable number of eons,</div><div class="tei-line">This could not match</div><div class="tei-line">Even a sixteenth of that merit.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Longing for merit, someone may have joined their palms together</div><div class="tei-line">And for ten million eons in saṃsāra made offerings</div><div class="tei-line">To the great leaders, the buddhas of the ten directions,</div><div class="tei-line">Who have given rise to the mind of awakening and who benefit the worlds,</div></div><div class="tei-verse"><div class="tei-line">“ ‘Yet an intelligent and wise person</div><div class="tei-line">Who trusts the teachings of the bliss-gone ones,</div><div class="tei-line">Firmly gives rise to the mind set on awakening,</div><div class="tei-line">And offers a flower to the stūpa of a bliss-gone one,</div></div><div class="tei-verse"><div class="tei-line">“ ‘Will create a much greater amount of merit.</div><div class="tei-line">The merit created in the former example cannot be compared</div><div class="tei-line">To the merit created by offering a flower with the mind set on awakening,</div><div class="tei-line">Just as a drop of water cannot be compared to an ocean.</div></div><div class="tei-verse"><div class="tei-line">“ ‘In this buddha field, all sentient beings, as many as they are, <span class="tei-ref">F.287.a</span></div><div class="tei-line">Will become buddhas, eon after eon.</div><div class="tei-line">Even if someone were to try to describe this merit for many eons</div><div class="tei-line">Without doing anything else, this task could never be completed.</div></div><div class="tei-verse"><div class="tei-line">“ ‘These verses illustrate the karmic maturation of the mind set on awakening,</div><div class="tei-line">Yet even if this were to be explained for countless eons,</div><div class="tei-line">Not even a bit could be described—</div><div class="tei-line">It would be like trying to count all the particles of the earth.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Therefore, king, supreme being,</div><div class="tei-line">Having heard the benefits of the mind set on awakening,</div><div class="tei-line">Quickly discard all inferior thinking,</div><div class="tei-line">And give rise to this vast mind set on awakening!</div></div><div class="tei-verse"><div class="tei-line">“ ‘The leaders of the world,</div><div class="tei-line">The lights of golden shrines endowed with inconceivable qualities,</div><div class="tei-line">Have taught in that way</div><div class="tei-line">The benefits and karmic maturation of the mind set on awakening.</div></div><div class="tei-verse"><div class="tei-line">“ ‘If the merit of teaching the karmic maturation</div><div class="tei-line">Of the mind set on awakening had a form,</div><div class="tei-line">It could fill universes as numerous as the grains of sand in the Ganges</div><div class="tei-line">And still not even be partially depleted.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-91" href="#tei-note-UT22084-061-018-91">[5]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Having heard such a teaching,</div><div class="tei-line">The chief among kings was delighted.</div><div class="tei-line">Joining his palms together, he said,</div><div class="tei-line">‘I pay homage to the Buddha,</div></div><div class="tei-verse"><div class="tei-line">“ ‘I give rise to the mind set on awakening.</div><div class="tei-line">May I reach the level of the Dharma Lord, the Buddha.</div><div class="tei-line">After reaching stainless and unconditioned awakening,</div><div class="tei-line">I shall liberate sentient beings as numerous as the grains of sand in the Ganges.’</div></div><div class="tei-verse"><div class="tei-line">“When the emanated body of the buddha had spoken those verses,</div><div class="tei-line">The chief among kings was delighted and understood.</div><div class="tei-line">At that point the entire trichiliocosm began to shake,</div><div class="tei-line">And the buddha descended from the sky like the king of swans.</div></div><div class="tei-verse"><div class="tei-line">“With a mind filled with faith, the king Golden Color</div><div class="tei-line">Called on the boys, girls, wives,</div><div class="tei-line">Kings, merchants, and householders</div><div class="tei-line">To go and prostrate to the Buddha.</div></div><div class="tei-verse"><div class="tei-line">“Surrounded by sixty billion beings,</div><div class="tei-line">They came one after the other to the place where the buddha was residing,</div><div class="tei-line">Carrying with them flowers, garlands, and incense,</div><div class="tei-line">And having prostrated at the feet of the Buddha, they took their place in the gathering.</div></div><div class="tei-verse"><div class="tei-line">“Similarly, other boys, girls, wives, ministers, merchants, <span class="tei-ref">F.287.b</span> and householders,</div><div class="tei-line">As well as other kings and their retinues,</div><div class="tei-line">Prostrated to the Buddha and sat respectfully to his side.</div><div class="tei-line">Gods similarly filled the entire sky,</div></div><div class="tei-verse"><div class="tei-line">“Playing cymbals and scattering a rain of flowers.</div><div class="tei-line">Golden Color, surrounded by the people of that land,</div><div class="tei-line">Joined his palms together and asked the Buddha,</div><div class="tei-line">‘Possessor of the ten powers, boundless god of gods,</div></div><div class="tei-verse"><div class="tei-line">“ ‘Tamer of men, great guide,</div><div class="tei-line">How much merit is created by someone</div><div class="tei-line">Who firmly gives rise to the mind set on awakening?</div><div class="tei-line">Blessed One, what is the conduct to adopt</div></div><div class="tei-verse"><div class="tei-line">“ ‘To become truly happy, at ease,</div><div class="tei-line">And contented for many eons without experiencing any suffering,</div><div class="tei-line">And so realize the ambrosia of awakening that is free from misery?</div></div><div class="tei-verse"><div class="tei-line">“ ‘Without having to sacrifice my limbs,</div><div class="tei-line">My head, or my flesh,</div><div class="tei-line">How may I always remain happy and at ease?</div><div class="tei-line">Lord, please tell us the method.</div></div><div class="tei-verse"><div class="tei-line">“ ‘May I always be free from physical pain.</div><div class="tei-line">Observing loving kindness, patience, discipline, and keeping my vows,</div><div class="tei-line">May I reach supreme awakening.</div><div class="tei-line">Without becoming lazy, I shall train in the precepts</div></div><div class="tei-verse"><div class="tei-line">“ ‘And never break them—</div><div class="tei-line">Guide, I make this firm commitment.</div><div class="tei-line">I shall never pay mere lip service to these teachings.</div><div class="tei-line">Please teach about the self-arisen fruition of merit.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Thus-Gone One, please teach about the blissful vehicle.</div><div class="tei-line">Please tell us how to train in the conduct.</div><div class="tei-line">After hearing these teachings, we shall practice accordingly.’</div><div class="tei-line">‘Hey, hey!’ exclaimed Pure Golden Light,</div></div><div class="tei-verse"><div class="tei-line">“ ‘Listen, ruler of the world!</div><div class="tei-line">I will explain to you the merit that is the cause of happiness</div><div class="tei-line">And how to train in it, so listen to me!</div><div class="tei-line">Compared to someone who makes offerings</div></div><div class="tei-verse"><div class="tei-line">“ ‘To those who have gained the ten powers</div><div class="tei-line">By filling a trichiliocosm with precious substances,</div><div class="tei-line">Someone who aspires to reach awakening</div><div class="tei-line">Will create much more merit. <span class="tei-ref">F.288.a</span></div></div><div class="tei-verse"><div class="tei-line">“ ‘Compared to someone who makes donations by filling universes</div><div class="tei-line">As numerous as the grains of sand in the Ganges river with precious substances,</div><div class="tei-line">Someone who aspires to reach awakening</div><div class="tei-line">Will create much more merit.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Compared to someone who makes offerings</div><div class="tei-line">To all sentient beings for myriads of eons,</div><div class="tei-line">Someone who aspires to reach awakening</div><div class="tei-line">Will create much more merit.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Imagine that all beings have become worthy ones</div><div class="tei-line">And gained mastery of wisdom,</div><div class="tei-line">And that someone, wishing for merit,</div><div class="tei-line">Makes offerings to them for a hundred million eons.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Compared to that, the merit created by someone</div><div class="tei-line">Who walks seven steps</div><div class="tei-line">After having developed compassion</div><div class="tei-line">And given rise to the supreme mindset,</div></div><div class="tei-verse"><div class="tei-line">“ ‘The vast attitude set on awakening,</div><div class="tei-line">Will be far superior.</div><div class="tei-line">Imagine now that all sentient beings have become buddhas</div><div class="tei-line">Endowed with boundless eloquence</div></div><div class="tei-verse"><div class="tei-line">“ ‘And that a single being makes offerings to all of them</div><div class="tei-line">For as many eons as those that have already passed in saṃsāra.</div><div class="tei-line">Compared to that, the merit created by a wise person</div><div class="tei-line">Who offers a single flower</div></div><div class="tei-verse"><div class="tei-line">“ ‘After having given rise to the mind set on supreme awakening</div><div class="tei-line">Will be far superior.</div><div class="tei-line">Even if someone were to explain</div><div class="tei-line">The character of such merit for myriads of eons,</div></div><div class="tei-verse"><div class="tei-line">“ ‘The account of the fruition of that merit</div><div class="tei-line">Would never be completed.’</div></div><p>“Noble son, the blessed Thus-Gone One Pure Golden Light then said to the king Golden Color, ‘Great king, if bodhisattva great beings possess a single quality, they will, through the blissful vehicle, swiftly awaken to unsurpassed and perfect buddhahood, and never experience any kind of suffering or discomfort. What is this single quality? It is conscientiousness.<span class="tei-ref">F.288.b</span> Great king, a conscientious bodhisattva will swiftly awaken to unsurpassed and perfect buddhahood. What is conscientiousness? It is never giving up the training, not transgressing one’s commitments, observing loving kindness toward all sentient beings, never giving up on any sentient being, keeping the firm aspiration to reach awakening, not giving up diligence, relying on spiritual friends and serving them reverently, respecting the Dharma, never being satisfied with studies, sharing the Dharma with others, teaching the Dharma without concern for material things, not giving up the practices of austerity and a modest lifestyle, having few desires, being content, conquering one’s pride, listening to the Dharma with attention, respecting the master, observing patience, completely abandoning the harmful and negative attitude of ill will, being inspired by the Dharma teachings on profound emptiness, completely abandoning all adherence to concepts, having the strong aspiration to inner composure, not neglecting to bring beings to maturity, stopping opinions, abandoning any form of gossip, physical and mental disengagement, remaining in solitude, having a flexible mind, not holding discipline as supreme, not praising oneself or criticizing others, gaining definitive emancipation from all forms of regrets, always being delighted by the approach of renunciants and mendicants, speaking honestly, abstaining from frowning, understanding that all phenomena are nonarising and nonceasing, and realizing that they are similar to space.</p><p>This set of qualities is known as <em>the bodhisattva’s conscientiousness</em>.<span class="tei-ref">F.289.a</span> Great king, the conscientiousness of a bodhisattva also involves refraining, even in dreams, from adopting the attitude of the hearers, the solitary buddhas, or a frame of mind that adheres to focal points. Great king, this is the bodhisattva’s conscientiousness.</p><p>“ ‘Great king, bodhisattvas who possess the following four qualities will swiftly awaken to unsurpassed and perfect buddhahood. Those bodhisattvas will give away all their possessions without needing to give away their heads, legs and arms, eyes, limbs, flesh, blood, bones, marrow, fat, complexions, skin, or entire bodies. Through the blissful vehicle, they will awaken to unsurpassed and perfect buddhahood. What are these four qualities? Great king, the first is a bodhisattva’s firm commitment to pursue virtuous qualities. That bodhisattva firmly engages in the activity of generating roots of virtue, never feels disheartened, and is strongly rooted in the path of the Great Vehicle. Great king, the second quality is the complete purity of a bodhisattva’s discipline. Such a bodhisattva is praised by the noble and the wise ones, is embraced by unsurpassed and perfect awakening, and experiences the joy of Dharma through the awareness of observing pure discipline. Great king, the third quality concerns a bodhisattva who observes loving kindness, who focuses on concentration but remains absorbed in baseless concentration. Great king, there is no other form of bliss that compares to the bliss experienced by a bodhisattva who does not fixate on anything while remaining in absorption and who has developed an attitude of equanimity toward all sentient beings. Great king, the fourth quality is a bodhisattva’s genuine understanding of the Dharma. That bodhisattva understands phenomena as they really are, thinking,<span class="tei-ref">F.289.b</span> “All these karmic formations are empty. They are devoid of a self, a sentient being, a life force, someone giving, the act of giving, and someone taking, someone being patient, the situation toward which one is patient, and the object of that patience, someone practicing diligence and the aim of that diligence, someone training in concentration and the object of that training, and someone meditating and the object of that meditation.”</p><p>When bodhisattvas understand phenomena genuinely in that way, they see that all conditioned phenomena are empty of intrinsic nature. Then, without holding on to any reference points, they remain within the experience of bliss. Great king, a bodhisattva great being who possesses those four Dharma qualities will experience all forms of bliss and swiftly awaken to unsurpassed and perfect buddhahood.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-117" href="#tei-note-UT22084-061-018-117">[6]</a></sup></p><p>“Noble son, after donating cloth of inestimable value<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-119" href="#tei-note-UT22084-061-018-119">[7]</a></sup> to the Thus-Gone One, the king Golden Color said to the blessed, thus-gone, worthy, perfect Buddha Pure Golden Light, ‘Blessed One, I give rise to the mind set on unsurpassed and perfect awakening so that I may change the minds of all sentient beings!’</p><p>“At that moment, he uttered these verses:</p><div class="tei-verse"><div class="tei-line">“ ‘With a dauntless mind,</div><div class="tei-line">I will utter these words in your presence, supreme among men.</div><div class="tei-line">Great leader, having given rise to compassion for all sentient beings,</div><div class="tei-line">I will diligently pursue awakening.</div></div><div class="tei-verse"><div class="tei-line">“ ‘My mind is completely free from deceit.</div><div class="tei-line">Possessor of the ten powers, you know my intentions.</div><div class="tei-line">The famed qualities of gods and humans</div><div class="tei-line">Are not for me.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-061-018-123" href="#tei-note-UT22084-061-018-123">[8]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“ ‘I will be a refuge, a protector, and a close friend for those who suffer,</div><div class="tei-line">And I will liberate them from their misery. <span class="tei-ref">F.290.a</span></div><div class="tei-line">Foremost of men, while I remain in bliss,</div><div class="tei-line">I shall establish other beings in bliss.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Great leader, I will follow the training</div><div class="tei-line">Of the Dharma teachings taught by the well-gone ones.</div><div class="tei-line">Great leader, may I become a support for humans’ worship,</div><div class="tei-line">Just as you are worshiped by gods and humans.</div></div><div class="tei-verse"><div class="tei-line">“ ‘I will pursue the supreme form of awakening</div><div class="tei-line">And practice generosity for many eons.</div><div class="tei-line">I will donate many types of food, drinks, clothes,</div><div class="tei-line">Chariots, vehicles, gold, silver, and precious gems.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Great leader, I will practice the precepts respectfully,</div><div class="tei-line">And I will genuinely guard them.</div><div class="tei-line">I will not transgress them and will not abide anywhere.</div><div class="tei-line">Great leader, I will keep my discipline pure.</div></div><div class="tei-verse"><div class="tei-line">“ ‘I will love all beings,</div><div class="tei-line">With an attitude of equanimity toward everyone.</div><div class="tei-line">I will not regard as superior and inferior</div><div class="tei-line">Those who respect me and those who do not.</div></div><div class="tei-verse"><div class="tei-line">“ ‘For as long as the countless millions of eons</div><div class="tei-line">I have been circling in saṃsāra,</div><div class="tei-line">I will, relying upon you, great hero,</div><div class="tei-line">Joyfully pursue the benefit of even just a single being.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Leader of gods and humans, I will remain within the bliss</div><div class="tei-line">Of the concentration taught by the well-gone ones.</div><div class="tei-line">“ ‘Great leader, I will stay in contact with the bliss of concentration</div><div class="tei-line">And always stay in isolated places.</div></div><div class="tei-verse"><div class="tei-line">“ ‘I will resolve the meaning of emptiness,</div><div class="tei-line">Without relying on any kind of view.</div><div class="tei-line">I will completely abandon inferior types of conduct</div><div class="tei-line">And adopt the stainless, supreme form of conduct.’</div></div><p>“Noble son, as soon as the king Golden Color gave rise to the mind set on unsurpassed and perfect awakening, this great trichiliocosm started to shake in six different ways. The eighty-four thousand kings also gave rise to the mind set on unsurpassed and perfect awakening. The eighty-four thousand householders, <span class="tei-ref">F.290.b</span> the eighty-four thousand merchants, the boys, the girls, the wives, those great groups of beings, and eighty-four thousand sons of gods also followed the example of the king Golden Color, and all of them gave rise to the mind set on unsurpassed and perfect awakening. Noble son, the king Golden Color then enthroned his eldest son as king, and surrounded by ten million beings, he and the boys, girls, wives, merchants, householders, ministers, and vassal kings all faithfully renounced their households to become monastics. For ten thousand years, they all observed pure conduct. The king Golden Color developed the superknowledges, mastered extensive studies, and practiced the absorption on loving kindness. Through those roots of virtue and his superior intent, he was reborn as a universal monarch and pleased twenty thousand buddhas. He revered and honored all those buddhas, those blessed ones, by offering clothes, food, bedding, cushions, medicines, and useful appliances. Then, in front of all of them, he faithfully renounced his household to become a monastic.</p><p>“Noble son, at that time, this bodhisattva great being Maitreya was born as the king Golden Color. Noble son, do not be skeptical; do not have any hesitation or doubts about that fact, thinking that this was someone else. Noble son, at that time, you, Playfulness, were born as Brahmā, and you enthusiastically worshiped the blessed, thus-gone, worthy, perfect Buddha Pure Golden light. Noble son, do not be skeptical; do not have any hesitation or doubts about that fact, thinking that this was someone else. Noble son, at that time, I myself was born as Śakra, the lord of the gods, and I enthusiastically revered and venerated the Blessed One Pure Golden light. <span class="tei-ref">F.291.a</span> Noble son, do not be skeptical; do not have any hesitation or doubts about that fact, thinking that this was someone else. I revered the Thus-Gone One without having given rise to the mind set on awakening and with a baseless mind. Noble son, among all the beings who, at that time, gave rise to the mind set on unsurpassed and perfect awakening together with the king Golden Color, I have not seen a single one of them who has turned away from that unsurpassed and perfect awakening. All of them without exception possessed great insight and great diligence. They practiced the factors of awakening genuinely, and after mastering the six perfections, all of them became thus-gone ones under different names, in different buddha fields. They all appeared in the world, turned the Dharma wheel, and then passed into nirvāṇa. I, you, the bodhisattva Maitreya, and all these bodhisattva great beings who have gathered in this retinue have seen, worshiped, and revered all those thus-gone, worthy, perfect buddhas. We have all upheld their sacred Dharma teachings.” <span class="tei-ref">F.291.b</span></p><p>“Blessed One,” exclaimed the bodhisattva great being Playfulness, “it is amazing that it takes such a long time to reach unsurpassed and perfect awakening, and that it is so hard to give rise to the mind set on unsurpassed and perfect awakening! What do I mean by this? At that time such myriads of beings gave rise to the mind set on unsurpassed and perfect awakening under the teachings of the blessed, thus-gone, worthy, perfect Buddha Pure Golden Light, but the Blessed One did not do so.”</p><p>“Thus it is, noble son,” replied the Blessed One. “As you said, it takes a long time to reach unsurpassed and perfect awakening, and it is also hard to give rise to the mind set on unsurpassed and perfect awakening. Noble son, I remember that before and after the time of the blessed, thus-gone, worthy, perfect Buddha Pure Golden Light, I venerated, worshiped, served, and honored myriads of buddhas. However, during all that time I never gave rise to the mind set on unsurpassed and perfect awakening. Thinking, ‘It is amazing how these buddhas, these blessed ones, are beautiful, pleasant to look at, and attractive,’ I merely developed attraction, delight, and respect toward them, but I did not give rise to the mind set on unsurpassed and perfect awakening. Therefore, noble son, you should understand this point along these lines: although bodhisattvas may worship countless myriads of buddhas, solitary buddhas, <span class="tei-ref">F.292.a</span> and hearers, they may not necessarily give rise to the mind set on unsurpassed and perfect awakening. They will then only later, after having gathered sufficient roots of virtue, give rise to the mind set on unsurpassed and perfect awakening.”</p><p>At that moment, the Blessed One uttered these verses:</p><div class="tei-verse"><div class="tei-line">“First, I respectfully worshiped countless myriads</div><div class="tei-line">Of beings who realized the ultimate,</div><div class="tei-line">Famed bodhisattvas who had reached the shore of insight,</div><div class="tei-line">And buddhas, supreme among men.</div></div><div class="tei-verse"><div class="tei-line">“Although I worshiped these sources of all excellent qualities,</div><div class="tei-line">During all that time, I never gave rise to the thought,</div><div class="tei-line">‘May I become a supreme, omniscient sage,</div><div class="tei-line">A support for the world’s worship, a buddha.’</div></div><div class="tei-verse"><div class="tei-line">“Although beings may respectfully worship</div><div class="tei-line">Many millions of solitary buddhas,</div><div class="tei-line">During all that time, they might never give rise to the thought,</div><div class="tei-line">‘May I become a tamer of humans, a guide, a perfect buddha.’</div></div><div class="tei-verse"><div class="tei-line">“Although they may worship with intense and sincere respect</div><div class="tei-line">Many millions of beings who have gained mastery,</div><div class="tei-line">They might, throughout that time, never give rise to the mind set on awakening</div><div class="tei-line">In the way that the wisdom oceans, the supreme among men, have done.</div></div><div class="tei-verse"><div class="tei-line">“At the sight of beings who have realized the ultimate,</div><div class="tei-line">The intensity of the joy they feel is inconceivable,</div><div class="tei-line">But during all that time, they might still never give rise to the thought,</div><div class="tei-line">‘May I become a sage, a tamer of humans, a perfect buddha.’</div></div><div class="tei-verse"><div class="tei-line">“At some point, when they have accumulated vast amounts of merit</div><div class="tei-line">And cultivated the truth with body and mind,</div><div class="tei-line">They will give rise to the mind set on awakening, thinking,</div><div class="tei-line">‘May I become a great leader, the supreme among men.’</div></div><div class="tei-verse"><div class="tei-line">“Having practiced the accumulation of merit</div><div class="tei-line">Throughout many millions of eons of reverent service,</div><div class="tei-line">They will then, within their virtuous, gentle, and flexible minds,</div><div class="tei-line">Give rise to the mind set on awakening <span class="tei-ref">F.292.b</span></div></div><div class="tei-verse"><div class="tei-line">“And make these aspirations:</div><div class="tei-line">‘Through the roots of virtue I have accumulated,</div><div class="tei-line">May I also reach the level of omniscience.</div><div class="tei-line">May my aspiration prayers never weaken.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Through the roots of virtue I have accumulated,</div><div class="tei-line">May all beings reach the other shore of cyclic existence.</div><div class="tei-line">May I free myself from the unbearable results</div><div class="tei-line">Of all the nonvirtuous actions I have committed in the past.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Having developed stable strength and diligence,</div><div class="tei-line">May I give rise to the mind set on awakening</div><div class="tei-line">And never become disheartened.</div><div class="tei-line">May I reach the level of infinite joy.’</div></div><div class="tei-verse"><div class="tei-line">“A wise one does not rely on conceptual references.</div><div class="tei-line">Since awakening is beyond reference points, I do not fixate on anything.</div><div class="tei-line">Those who know that all phenomena are empty</div><div class="tei-line">Will not forget the mind set on awakening.”</div></div><p>When the Blessed One had uttered these verses, the bodhisattva great being Playfulness asked, “Blessed One, why is the bodhisattva great being Maitreya named ‘Maitreya’? How did he receive this name?”</p><p>“Noble son,” replied the Blessed One, “in the past, countless eons ago, so long ago that the amount of time cannot be measured, a thus-gone, worthy, and perfect buddha appeared in the world. He was endowed with perfect knowledge and conduct. He was a well-gone one, a knower of the world, an unsurpassed guide who tames beings, a teacher of both gods and humans. That buddha, that blessed one, was named Ratnacchatra. Noble son, when the Thus-Gone One Ratnacchatra walked seven steps just after being born, <span class="tei-ref">F.293.a</span> the gods of the pure abodes held a parasol made of the seven precious substances in the sky above him. That precious parasol illuminated the entire great trichiliocosm. The Thus-Gone One Ratnacchatra received his name from these gods who proclaimed, ‘Oh! This child will be known as the Thus-Gone One Ratnacchatra!’</p><p>“At that time, there was a monk named Dṛḍhamati who had renounced life as a member of his merchant caste to become a monastic under the teachings of the thus-gone, worthy, perfect Buddha Ratnacchatra. Noble son, at the time of the Thus-Gone One Ratnacchatra’s doctrine, when the monk Dṛḍhamati went begging for alms, there were in this world eighty-four thousand villages, eighty-four thousand cities, eighty-four thousand towns, eighty-four thousand countries, and eighty-four thousand marketplaces. The monk Dṛḍhamati wandered around in all those villages, cities, towns, countries, and marketplaces to beg for alms. During his wanderings, he promised himself, ‘I will not eat any food until I establish a total of one hundred beings in the five fundamental precepts.’ Noble son, with such a commitment, the monk Dṛḍhamati wandered around in those villages, cities, towns, countries, and marketplaces to beg for alms, and he never ate any food before he had established a total of one hundred beings in the five fundamental precepts. Noble son, on some occasions it took him one day to establish one hundred beings in the five fundamental precepts. On other occasions it took him two days.<span class="tei-ref">F.293.b</span> In the latter case, he would fast until the third day, when he would then eat again. Sometimes it took him three days to establish one hundred beings in the five fundamental precepts. Noble son, sometimes it took him four, five, six, or seven days. Even if he had to fast for seven full days, he never lost courage due to his compassion for sentient beings. He would simply eat food on the eighth day. Noble son, for eighty-four thousand years the monk Dṛḍhamati followed this principle and wandered in those big towns, villages, cities, towns, countries, and marketplaces, establishing sentient beings in the five fundamental precepts without ever loosing courage.</p><p>Noble son, when those eighty-four thousand years had passed, the monk Dṛḍhamati had established thirty-six quintillion men, women, boys, and girls in the five fundamental precepts.</p><p>“Noble son, the monk Dṛḍhamati then thought, ‘I have established all those beings in the five fundamental precepts. Now, I must definitely lead them to the level of unsurpassed and perfect awakening.’ For forty-two thousand years, he proclaimed in front of them the praises of the Buddha, the Dharma, the Saṅgha, and the Great Vehicle. Among those sentient beings who had been established in the five fundamental precepts, there were three hundred million who had generated roots of virtue with the buddhas of the past and were inspired by the vast approach. Over another eighty-four thousand years he led those three hundred million <span class="tei-ref">F.294.a</span> into unsurpassed and perfect awakening. The rest of them were inspired by the inferior approach, and by the power of such conditions they gave rise to the mind set on the solitary buddhas’ awakening and the vehicle of the hearers.</p><p>“Noble son, the monk Dṛḍhamati then thought, ‘I have inspired those sentient beings to engage with the three vehicles. Now I will teach them how to enter into absorption so that they can observe conscientiousness.’ Noble son, for twenty-one thousand years, the monk Dṛḍhamati conferred transmissions on how to remain in absorption to all thirty-six quintillion beings. Noble son, the monk Dṛḍhamati gave them oral instructions to make sure they would all practice the absorption on loving kindness. Noble son, when the monk Dṛḍhamati went to a town, he would enter absorption on loving kindness. Within that absorption, he would go for alms in the villages, cities, towns, countries, and marketplaces. The very moment he stepped onto a threshold, those beings observing loving kindness would enter absorption on loving kindness. Noble son, this was due to the special qualities of an extraordinary resolve, trust in the roots of virtue, and interest in emptiness. Therefore, whenever the monk Dṛḍhamati placed his feet on the steps of an entrance, those sentient beings entered the absorption on loving kindness, just as he had shown them. <span class="tei-ref">F.294.b</span></p><p>“Then, seeing the miraculous displays of the monk Dṛḍhamati’s absorption on loving kindness, the gods residing above the earth proclaimed aloud, ‘How wonderful! This bodhisattva great being is Maitreya, because sentient beings enter the absorption on loving kindness when he passes through their villages, cities, towns, countries, and marketplaces!’</p><p>“The celestial gods heard the proclamation of the gods residing above the earth, and they repeated the message. Thus, the gods of the Heaven of the Four Great Kings, the Heaven of the Thirty-Three, the Heaven Free from Strife, the Heaven of Joy, the Heaven of Delighting in Emanations, and the Heaven of Making Use of Others’ Emanations, up to the gods of the pure realms, successively passed the message that they had heard from one to the other: ‘How wonderful! This bodhisattva great being is Maitreya, because sentient beings enter the absorption on loving kindness when he passes through their villages, cities, towns, countries, and marketplaces!’</p><p>“When he heard that name, the blessed one, the thus-gone, worthy, perfect Buddha Ratnacchatra, rejoiced and made this prophecy: ‘Throughout the entire succession of his deaths, transmigrations, and rebirths in cyclic existence, this bodhisattva, this monk Dṛḍhamati, will be known everywhere as the bodhisattva great being Maitreya, and he will keep the same name when he reaches awakening. In the world, within the gathering of an immeasurable saṅgha of hearers and of sentient beings endowed with all the bliss of the buddha field of the Buddha Ratnavyūha, he will become the thus-gone, worthy, perfect Buddha Maitreya.’</p><p>“Noble son, <span class="tei-ref">F.295.a</span> you might be skeptical and have hesitations or doubts about this, thinking that the monk named Dṛḍhamati at that point and time was someone else. Yet from now on and throughout all his lifetimes, he will be known exclusively by the name Maitreya. When he reaches awakening, he will also be known precisely as the thus-gone, worthy, perfect Buddha Maitreya. Noble son, these are the causes and conditions due to which the bodhisattva great being Maitreya received his name.”</p><p>As soon as the Blessed One had told the story of the bodhisattva great being Maitreya, this great trichiliocosm started to shake in six different ways. Divine songs were heard, and a rain of flowers fell from the sky. At that moment, the Four Great Kings, Śakra, lord of the gods, Brahmā, lord of the Sahā world, and many hundreds of thousands of sons of gods strewed the divine mandārava flowers they were carrying in the direction of the bodhisattva great being Maitreya. They said, “Oh! The bodhisattva great being Maitreya has engaged himself for the benefit of many beings. He brings them happiness and has love for the world. He has donned the great armor of diligence to provide tremendous benefit, assistance, and happiness to gods and humans. Even without having reached the level of omniscience, he has accomplished the objectives of myriads of sentient beings. If those who merely hear the name of the bodhisattva great being Maitreya obtain such supreme gains, there is no need to mention the joy of those who see him directly with their own eyes. Venerable One, Blessed One, <span class="tei-ref">F.295.b</span> we pay homage to the bodhisattva great being Maitreya!”</p><p>As soon as the divine sons of gods had said those words, the great assembly of beings and the world with its gods, humans, and asuras exclaimed in unison, “We pay homage to the bodhisattva great being Maitreya! We pay homage to the bodhisattva great being Maitreya! We pay homage!”</p><p>When this Dharma teaching was uttered, twelve thousand beings’ Dharma eyes with respect to phenomena were purified, becoming immaculate and stainless. The minds of five thousand monks were liberated from their defilements with no further grasping. The Blessed One also made this prophecy: “The roots of virtue of many thousands of beings have been brought to maturity, and they will actualize the level of worthy ones within the second retinue of the thus-gone, worthy, perfect Buddha Maitreya.”</p><p>At that point, the venerable Ānanda stood up, draped his shawl over one shoulder, and knelt on his right knee. With his palms joined together, he bowed down toward the Blessed One and asked, “Blessed One, what is the name of this Dharma teaching? How should we remember it?”</p><p>“Ānanda,” replied the Blessed One, “remember this Dharma teaching as <cite>The First Time Maitreya Gave Rise to the Mind Set on Awakening</cite>, <cite>The Questions of the Bodhisattva Playfulness</cite>, <cite>The Prophecy of the Bodhisattva</cite>, <cite>The Teaching on the Seal of the Thus-Gone Ones</cite>, and <cite>The Individual Gateways of the Bodhisattvas</cite>. Ānanda, <span class="tei-ref">F.296.a</span> I entrust this Dharma teaching to you so that you may uphold it and teach it to others on a vast scale.</p><p>“Ānanda, take the example of a noble son or daughter who makes offerings to the thus-gone ones by filling this great trichiliocosm with the seven precious substances. Compared to that, others will create much more merit if, after hearing this teaching on the first time the bodhisattva great being Maitreya gave rise to the mind set on awakening, they diligently set their minds on awakening, and with such an aspiration dedicate themselves to this teaching, keep it in mind, hold it, master it, meditate on it, and teach it to others on a vast scale.”</p><p>At that moment, the Blessed One uttered these verses:</p><div class="tei-verse"><div class="tei-line">“It is difficult to obtain a precious human body.</div><div class="tei-line">It is rare for a buddha to appear.</div><div class="tei-line">It is difficult to have faith in the Buddha.</div><div class="tei-line">It is difficult to give rise to the mind set on awakening.</div></div><div class="tei-verse"><div class="tei-line">“Even in many millions of eons,</div><div class="tei-line">These four circumstances are difficult to find.</div><div class="tei-line">Now that you have found them, do not give them up—</div><div class="tei-line">Do not waste such a powerful potential!</div></div><div class="tei-verse"><div class="tei-line">“If you have obtained a precious human body,</div><div class="tei-line">If a buddha has appeared,</div><div class="tei-line">If you have faith in the Buddha,</div><div class="tei-line">And if you have given rise to the mind set on awakening,</div></div><div class="tei-verse"><div class="tei-line">“Develop your diligence</div><div class="tei-line">And always be conscientious!</div><div class="tei-line">All the great sages</div><div class="tei-line">Have reached awakening through conscientiousness.</div></div><div class="tei-verse"><div class="tei-line">“Of all the Buddha’s Dharma teachings,</div><div class="tei-line">The main gateways and approaches</div><div class="tei-line">Are conscientiousness and diligence.</div><div class="tei-line">These are also the training of the wise ones.”</div></div><p>When the Blessed One had said those words, the bodhisattva Playfulness, the bodhisattva Maitreya, and their entire retinues, as well as the world with all its gods, humans, asuras, and gandharvas, rejoiced and praised the words of the Blessed One.</p>This concludes the noble Great Vehicle sūtra “Maitreya’s Setting Out.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>This was translated, edited, and finalized by the Indian preceptors Prajñāvarman, Jinamitra, and Surendrabodhi, and the translator-editor Bandé Yeshé Dé and others.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-061-018-42"><p>Lit. “cotton fabrics worth ninety-nine trillion.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-42">back</a></li><li id="tei-note-UT22084-061-018-43"><p>Lit. “worth a trillion.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-43">back</a></li><li id="tei-note-UT22084-061-018-56"><p>Lit. “cotton fabrics worth ninety-nine trillion.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-56">back</a></li><li id="tei-note-UT22084-061-018-57"><p>Lit. “worth a trillion.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-57">back</a></li><li id="tei-note-UT22084-061-018-91"><p>At this point in the text, the king Golden Color answers by giving rise to the mind set on awakening, and we are then back to listening to the narration of the Buddha. Although the Buddha Pure Golden Light has concluded his verses, the text continues in a verse format.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-91">back</a></li><li id="tei-note-UT22084-061-018-117"><p>Comparable lists of bodhisattva qualities are found in <cite>The Question of Maitreya</cite> and <cite><a href="https://read.84000.co/translation/toh86.html" target="_blank" rel="noopener noreferrer">The Question of Maitreya on the Eight Qualities</a></cite>. There, Maitreya himself asks the Buddha to teach on these qualities. See Liljenberg 2016a and 2016b.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-117">back</a></li><li id="tei-note-UT22084-061-018-119"><p>Lit. “cloths worth ninety-nine trillion.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-119">back</a></li><li id="tei-note-UT22084-061-018-123"><p>This is a tentative translation based on the general context of the verse. We have not been able to make sense of the Tibetan, which reads <em>yon tan mnga’ ba grags chen ’dra ba ni / lha mi gzhan la bdag gis dbang ma mchis</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-061-018-123">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/061-017-toh197-the-nectar-of-speech.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/061-019-toh199-the-sutra-on-the-bodhisattva-maitreya-taking-birth-in-tusita.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DĀ 3 — Govinda — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/chinese_canon/da.html">Dīrgha Āgama</a>
+        <div class="sutta-breadcrumbs hidden">Dīrgha Āgama · DĀ 3 — Govinda</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          DĀ 3 — Govinda        </h1>
+      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <h1><a href="index.html">The Long Discourses</a></h1>
+<h2>Part I</h2>
+<h3>3. Govinda</h3>
+<p id="p1">1. Thus I have heard:<a id="ref1" href="#n1">[1]</a> One time, the Buddha was staying on Mount Gṛdhrakūṭa near Rājagṛha. He was accompanied by a great assembly of 1,250 monks.</p>
+<h4>Pañcaśikha Visits the Buddha</h4>
+<p id="p2">2. During the quiet of the night when there are no people, the gandharva Pañcaśikha came to the Buddha, illuminating Mount Gṛdhrakūṭa with his radiance.<a id="ref2" href="#n2">[2]</a> After bowing his head at the Buddha’s feet, he stood to one side. Pañcaśikha then said to the Buddha, “Yesterday, the king of the Brahma Heaven went to the Trāyastriṃśa Heaven and had a conversation with Lord Śakra. I personally overheard them. Shall I tell the Bhagavān what they said?”</p>
+<p>The Buddha said, “You may tell me if you like.”</p>
+<p id="p3">3. Pañcaśikha said, “One time, the Trāyastriṃśa gods gathered in the Dharma Meeting Hall and held a meeting. The four god kings were each sitting in their places. God king Dhṛtarāṣṭra sat to the east and faced west with Lord Śakra in front of him. God king Virūḍhaka sat to the south and faced north with Lord Śakra in front of him. God king Virūpākṣa sat to the west and faced east with Lord Śakra in front of him. God king Vaiśravaṇa sat to the north and faced south with Lord Śakra in front of him. The four god kings were seated first, and then I was seated after them.</p>
+<p id="p4">4. “There were other great gods present who had purely cultivated the religious life with the Buddha. They had been born in the Trāyastriṃśa Heaven when their lives ended, which caused the five virtues of those gods to increase. These were 1. the lifespan of gods, 2. the form of gods, 3. the fame of gods, 4. the pleasure of gods, and 5. the majesty of gods.</p>
+<p id="p5">5. “The Trāyastriṃśa gods danced and rejoiced, saying, ‘The host of gods increases, and the host of asuras decreases!’ Śakra the Lord of Gods noticed the Trāyastriṃśa gods were rejoicing, so he composed these verses:</p>
+<ul class="verse"><li>“‘The gods of the Trāyastriṃśa<br />
+And Lord Śakra are celebrating!<br />
+Homage to the Tathāgata,<br />
+The king of the highest teaching!</li></ul>
+<ul class="verse"><li>The gods get their shape and fortunes<br />
+Of life, form, name, pleasure, and majesty.<br />
+They trained in the Buddha’s religious life,<br />
+So they’ve been reborn in this place.</li></ul>
+<ul class="verse"><li>Again, there are all these gods<br />
+With radiant forms so glorious.<br />
+The Buddha’s wise disciples<br />
+Born here are the most excellent.</li></ul>
+<ul class="verse"><li>The Trāyastriṃśa gods and their lord<br />
+Consider their own happiness here.<br />
+Homage to the Tathāgata,<br />
+The king of the highest teaching!’</li></ul>
+<h4>The Buddha’s Eight Unequalled Qualities</h4>
+<p id="p6">6. “After the Trāyastriṃśa gods heard these verses, their rejoicing was redoubled. They couldn’t control themselves. ‘The host of gods is increasing, and the host of asuras is decreasing!’ Śakra the Lord of Gods saw the Trāyastriṃśa gods rejoicing and being merry, so he addressed them, ‘Gentlemen, would you like to hear about the Tathāgata’s eight unequalled qualities?’</p>
+<p>“The Trāyastriṃśa gods said, ‘We would like to hear it!’</p>
+<p id="p7">7. “Lord Śakra replied, “Listen closely, listen closely! Consider it well.</p>
+<p id="p8">8. “‘Gentlemen, the Tathāgata, Arhat, and Completely Awakened One has perfected the ten epithets. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present perfect the ten epithets like the Buddha has.</p>
+<p id="p9">9. “‘The Buddha’s Dharma is sublime and a good exposition of the wise person’s training. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present with a sublime teaching like that of the Buddha.</p>
+<p id="p10">10. “‘The Buddha awakened himself as a result of this teaching. Without any obstacle to his understanding, he enjoys himself. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present awaken themselves with this teaching and have no obstacle to their understanding like the Buddha has.</p>
+<p id="p11">11. “‘Gentlemen, after awakening himself with this teaching, the Buddha reveals the way to <em>nirvāṇa</em> and the gradual approach and entry into extinguishment. It’s like the Gaṅgā River and the Yamunā River. Those two rivers flow into each other and then enter the ocean. The Buddha is likewise. He reveals the way to <em>nirvāṇa</em> and the gradual approach and entry into extinguishment. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present reveal the way to <em>nirvāṇa</em> like the Buddha does.</p>
+<p id="p12">12. “‘Gentlemen, the Tathāgata has achieved a following of warriors, priests, householders, and ascetics. Wise is the following achieved by the Tathāgata. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present achieve a following like the Buddha has.</p>
+<p id="p13">13. “‘Gentlemen, the Tathāgata has achieved a great assembly known as monks, nuns, laymen, and laywomen. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present accomplish a great assembly like the Buddha has.</p>
+<p id="p14">14. “‘Gentlemen, the Tathāgata’s words and actions correspond. He does what he says, and he says what he does. Thus, he has achieved one teaching and the next. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present whose words and actions correspond and achieve one teaching and the next like the Buddha.</p>
+<p id="p15">15. “‘Gentlemen, the Tathāgata has benefited many and made many happy. He bestows these blessings to gods and humans out of compassion. I’ve not seen a Tathāgata, Arhat, and Completely Awakened One in the past, future, or present benefit many and made many happy like the Buddha has.</p>
+<p id="p16">16. “‘Gentlemen, these are the Tathāgata’s eight unequalled qualities.’</p>
+<p id="p17">17. “The Trāyastriṃśa gods then said, ‘Whenever there are eight Buddhas who arise in the world, the host of gods would increase greatly, and the host of asuras would diminish!’</p>
+<p id="p18">18. “The Trāyastriṃśa gods also said, ‘Setting aside eight Buddhas, even if seven, six … two Buddhas were to arise in the world, the host of gods would increase greatly, and the host of asuras would diminish. How would it be if there were eight Buddhas?’</p>
+<p id="p19">19. “Śakra the Lord of Gods told the Trāyastriṃśa gods, ‘I’ve heard it from the Buddha, personally received it from him, that it’s impossible for two Buddhas to arise in the world at the same time. If the Tathāgata simply remained in the world for a long time, he would have compassion for many and benefit many. Gods and humans would win their peace. The host of gods would increase greatly, and the host of asuras would diminish.’”</p>
+<h4>Great Brahmā Kumāra Arrives</h4>
+<p id="p20">20. Pañcaśikha said to the Buddha, “Bhagavān, having gathered up in the Dharma Meeting Hall, the Trāyastriṃśa gods conversed, considered, weighed, and investigated what instructions to issue. Afterward, the four god kings were given their orders. When each accepted their instructions, four god kings took their seats. Not long after they sat down, there was a very unusual light that shined in the four directions.</p>
+<p id="p21">21. “The Trāyastriṃśa gods saw this light and were bewildered by it. ‘Now, this is an unusual light! Isn’t this strange?’</p>
+<p id="p22">22. “Those great spirits and gods who possessed majesty were also surprised. ‘Now, this is an unusual light! Isn’t this strange?’</p>
+<p id="p23">23. “King Great Brahmā then appeared in the form of a child. His head had a five-pointed topknot, and he stood in the air above the assembly of gods. His handsomeness was far beyond that of the assembly. His body was purple gold in color, and his radiance outshined that of the gods.</p>
+<p id="p24">24. “The Trāyastriṃśa gods didn’t get up to greet him, nor did they pay their respects. They didn’t invite him to sit, either. When Brahmā Kumāra went and took a seat, [the god at that] seat was delighted like a warrior of a water-anointed lineage celebrating and rejoicing when he ascends to the throne. Soon after sitting, Brahmā again transformed himself into the shape of a child whose head was crowned with a five-pointed topknot, and he sat in the sky above the great assembly. He was like a hero sitting securely on his throne, lofty and unmoving.</p>
+<p id="p25">25. “Then he spoke in verse:</p>
+<ul class="verse"><li>“‘The gods of the Trāyastriṃśa<br />
+And Lord Śakra are celebrating!<br />
+Homage to the Tathāgata,<br />
+The king of the highest teaching!</li></ul>
+<ul class="verse"><li>The gods get their shape and fortunes<br />
+Of life, form, name, pleasure, and majesty.<br />
+They trained in the Buddha’s religious life,<br />
+So they’ve been reborn in this place.</li></ul>
+<ul class="verse"><li>Again, there are all these gods<br />
+With radiant forms so glorious.<br />
+The Buddha’s wise disciples<br />
+Born here are still more excellent.</li></ul>
+<ul class="verse"><li>The Trāyastriṃśa gods and their lord<br />
+Consider their own happiness here.<br />
+Homage to the Tathāgata,<br />
+The king of the highest teaching!’</li></ul>
+<p id="p26">26. “The Trāyastriṃśa gods said to [Great Brahmā] Kumāra, ‘When we heard Lord Śakra declare the eight unequalled qualities of the Tathāgata, we rejoiced and danced. We couldn’t control ourselves!’</p>
+<p id="p27">27. “Brahmā Kumāra said to the Trāyastriṃśa gods, ‘What are the eight unequalled qualities of the Tathāgata? I’d also like to hear it!’</p>
+<p id="p28">28. “The gods and Lord Śakra then explained the eight unequalled qualities of the Tathāgata for Kumāra. After the Trāyastriṃśa gods and Kumāra had listened to that teaching, their rejoicing was redoubled. They couldn’t control themselves. ‘The host of gods increases, and the host of asuras decreases!’</p>
+<h4>The Legend of Great Govinda</h4>
+<p id="p29">29. “Kumāra then saw the gods’ rejoicing and merry-making increase. He then told the Trāyastriṃśa gods, ‘Would you like to hear about one unequalled quality [of the Tathāgata]?’</p>
+<p>“The gods said, ‘Excellent! We’d like to hear it.’</p>
+<p id="p30">30. “Kumāra told them, ‘Those of you who’d like to hear it: Listen closely, Listen closely! I’ll tell it to you.’</p>
+<p id="p31">31. “He told the gods, ‘In the past when he was a bodhisattva, the Tathāgata was born intelligent and quite knowledgeable. Gentlemen, you should know that long ago in the distant past, there was a king in the world named Diśāmpati, and his first prince was named Reṇu.<a id="ref3" href="#n3">[3]</a> The king also had a minister named Govinda, and that minister had a son named Jyotipāla. Prince Reṇu was his friend, and they were accompanied by six warrior ministers who were also friends.</p>
+<p id="p32">32. “‘When King Diśāmpati wanted to retreat to his palace and have fun and frolic there, he entrusted the affairs of state to his minister Govinda. He would then go into the palace and enjoy the festivities and partake of the five desires.</p>
+<p id="p33">33. “‘Wanting to put the affairs of state in order, the minister Govinda would first consult his son about it, and afterward he’d make his decision. He would also consult his son when there was a disciplinary matter.</p>
+<p id="p34">34. “‘Later, Govinda’s life suddenly ended. When King Diśāmpati heard that his life had ended, he felt sorry and saddened. Upset, he said, “Oh! How could I lose such a skilled administrator?”</p>
+<p id="p35">35. “‘The prince Reṇu thought to himself, “The loss of Govinda has made the king miserable. Now’s a good time for me to go and console the king. I can’t let the funeral make him more depressed. Why is that? Govinda had a son named Jyotipāla who’s intelligence and learning go beyond his father’s. He can take over managing the affairs of state now.”</p>
+<p id="p36">36. “‘Prince Reṇu visited the king and presented the above idea to his father. After listening to what the prince had to say, he entrusted [the affairs of state] to Jyotipāla. “Now, I place you in your father’s stead and transfer his office to you.” After that office was transferred to Jyotipāla, the king retired to the palace, again entrusting the affairs of state [to his minister].</p>
+<p id="p37">37. “‘The indications of Jyotipāla’s governance were bright. He knew what his father had known before, and he also knew things his father hadn’t known. His renown spread until it was heard across the ocean. Everyone under heaven called him “The Great Govinda.”</p>
+<p id="p38">38. “‘Great Govinda thought afterward, “Now, King Diśāmpati is getting on in years. There isn’t much left of his life. If the prince succeeded the king, there wouldn’t be difficulties. I’d better first go tell the six warrior ministers, ‘Now, King Diśāmpati is getting on in years. There isn’t much left of his life. If the prince were to succeed the king, there wouldn’t be difficulties. The king’s land would also be divided between you gentlemen. Don’t forget each other on the day of his ascension.’”</p>
+<p id="p39">39. “‘Great Govinda then went to the six warrior ministers and told them, “Gentlemen, you should know that King Diśāmpati is getting on in years. There isn’t much left of his life. If the prince succeeded the king, there wouldn’t be difficulties. You noble men may go and tell the prince this plan. ‘We’ve known Your Majesty since he was small. When Your Majesty suffers, we suffer, and when he’s happy, we’re happy. Now, the king is declining with old age. There isn’t much left of his life. If the prince were to succeed the king, there wouldn’t be difficulties. Should Your Majesty ascend the throne, we’ll also be given his lands.’”</p>
+<p id="p40">40. “‘After they heard what he said, the six warrior ministers visited the prince and told him the above. The prince replied, “If I were to ascend the throne, how will the kingdom’s lands be distributed?”</p>
+<p id="p41">41. “‘Not long after that, the king suddenly passed away, and the ministers sought the prince to install a king on the throne.</p>
+<p id="p42">42. “‘Once he was enthroned, the king quietly considered this: “Now, it would be fitting to rule the way the previous king did.” He also thought, “Who is capable of this promotion? Great Govinda is the right person for it.” King Reṇu then told Great Govinda, “Now, I assign you to manage the affairs of state in my place. I place my trust in you. Be diligent and serious about it.”</p>
+<p id="p43">43. “‘After he heard the king’s instructions, Great Govinda accepted his trust, and the king retired to the palace. Great Govinda was then entrusted with managing future affairs of state.</p>
+<p id="p44">44. “‘Great Govinda again thought to himself, “Would it be fitting to visit those six warriors now and ask them what they remember of what we discussed before?”</p>
+<p id="p45">45. “‘He immediately visited the warriors and said to them, “Now, do you remember about what we discussed before? The prince has ascended the throne and hid himself deep in the palace to enjoy the five desires. You could go and ask: ‘The king dwells on the heavenly throne and enjoys the five desires. Do you recall what we discussed before?’”</p>
+<p id="p46">46. “‘Hearing this said, the six warriors then visited the king. They said to the great king, “The king dwells on the heavenly throne and enjoys the five desires. Do you recall what we discussed before? How shall the land and cities be divided, and who shall rule where?”</p>
+<p id="p47">47. “‘The king said, “I haven’t forgotten what we discussed before. I’ll divide the lands and the cities. If it were not you, then who [would it be to receive them]?”</p>
+<p id="p48">48. “‘The king also thought to himself, “The lands of Jambudvīpa are wide internally and narrow externally. Who could divide it into seven parts?” Then he thought, “Only Great Govinda can divide it up.”</p>
+<p id="p49">49. “‘The king then told Great Govinda, “You may divide the lands of Jambudvīpa. Divide them into seven parts.”</p>
+<p id="p50">50. “‘Great Govinda then quickly divided the continent. The king ruled from a province containing the capital city, and the remainder was divided into provinces and given to the six warriors.</p>
+<p id="p51">51. “‘The king was delighted and said, “It’s exactly as I wanted!”</p>
+<p id="p52">52. “‘The six warriors were also delighted. “It’s exactly as we wanted, achieved by the ability of Great Govinda!”</p>
+<p id="p53">53. “‘The six warriors and the king also each thought to themselves, “Now that my kingdom is established, I need a prime minister, but who would be qualified? Someone like Great Govinda! I will employ him to manage the kingdom’s affairs.”</p>
+<p id="p54">54. “‘The six warrior kings then summoned Govinda and told him, “My kingdom needs a prime minister. You shall manage its affairs for me.” The six kingdoms then each were given the prime minister’s seal.</p>
+<p id="p55">55. “‘After Great Govinda received the prime minister’s seals, the six kings went to their palaces to enjoy their leisure time, and the affairs of their kingdoms were entrusted to him. He managed the affairs of the seven kingdoms, and there was nothing he couldn’t handle.</p>
+<p id="p56">56. “‘There were at the time seven great householders in the kingdom to whom Govinda delegated his duties. He also instructed 700 priests who chanted the scriptures. The seven kings regarded Prime Minister Great Govinda with respect, just as they would a god. The seven householders in each kingdom regarded him like a great king, and the 700 priests regarded him like Brahmā.</p>
+<p id="p57">57. “‘The seven kings, seven great householders, and 700 priests all thought to themselves, “Prime Minister Great Govinda often meets with Brahmā, talking, sitting, and getting up with him as friends.”</p>
+<p id="p58">58. “‘Great Govinda was silently aware, “The seven kings, seven householders, and [700] priests think that I often meet with Brahmā, talking, sitting, and getting up with him as friends, but I don’t really see Brahmā, nor do I speak with him. I shouldn’t feed this with silence; it would be dishonest to accept this praise. Also, I’ve heard from past generations that when someone dwells in a secluded place during the four months of summer and cultivates the four immeasurables, Brahmā will come down and meet with him.”</p>
+<p id="p59">59. “‘Govinda then went to each of the seven kings and said, “Great king, please attend to the kingdom’s affairs. I’m going to cultivate the four immeasurables during the four months of summer.”</p>
+<p>“‘The seven kings told him, “Do what you think is fitting.”</p>
+<p id="p60">60. “‘Great Govinda in turn told the seven householders, “You will each need to work on your own. I’m going to cultivate the four immeasurables during the four months of summer.”</p>
+<p>“‘The householders said, “Yes, do what you think is fitting.”</p>
+<p id="p61">61. “‘He also told the 700 priests, “All of you must endeavor in your recitations and instruct one another. I’m going to cultivate the four immeasurables during the four months of summer.”</p>
+<p>“‘The priests said, “Yes, great teacher, do what you think is fitting today.”</p>
+<p id="p62">62. “‘Great Govinda then had a secluded abode built near his city and retired there to cultivate the four immeasurables during the four months of summer. Afterward, Brahmā didn’t come down to him. Govinda thought to himself, “I’ve heard ancient sayings from previous generations that when someone cultivates the four immeasurables during the four months of summer, Brahmā comes down and appears. It’s tranquil now, but there’s not even a momentary blur of him to be seen.”</p>
+<p id="p63">63. “‘Great Govinda emerged from his quiet abode on the 15th-day full moon to sit on open ground. Only a moment after sitting, a bright light appeared. Govinda thought to himself, “Now, this is a strange light! Perhaps this is a sign that Brahmā is going to come down?”</p>
+<p id="p64">64. “‘King Brahmā then appeared as a child with a five-pointed topknot, sitting in the air above Govinda. Seeing him, Govinda then spoke in verse:</p>
+<ul class="verse"><li>“‘“What form of god is this,<br />
+Sitting in the air and<br />
+Illuminating the four directions<br />
+Like a blazing wood fire?”</li></ul>
+<p id="p65">65. “‘Brahmā Kumāra then replied with a verse:</p>
+<ul class="verse"><li>“‘“Only the gods of the Brahma world<br />
+Know me as Brahmā Kumāra.<br />
+Everyone else call me ‘Self’<br />
+And make sacrifices to the great spirit.”</li></ul>
+<p id="p66">66. “‘Great Govinda replied with a verse:</p>
+<ul class="verse"><li>“‘“Now, I have a request to make;<br />
+Please accept my salute and instruct me!<br />
+I offer a variety of delicacies;<br />
+Please, god, know my thought.”</li></ul>
+<p id="p67">67. “‘Brahmā Kumāra replied with a verse:</p>
+<ul class="verse"><li>“‘“What did you intend to get from<br />
+What you’ve been cultivating, Govinda?<br />
+You provide these offerings now;<br />
+I will accept them from you.”</li></ul>
+<p id="p68">68. “‘He also told Great Govinda, “If you have a question, feel free to ask it. I will explain it for you.”</p>
+<p id="p69">69. “‘Great Govinda thought to himself, “Now, shall I ask about present matters, or do I ask about future matters?” Then he thought, “What use would there be to ask about matters of the present life? I will ask about mysterious matters yet to come.”</p>
+<p id="p70">70. “‘He then asked Brahmā Kumāra with a verse:</p>
+<ul class="verse"><li>“‘“Now, I ask Brahmā Kumāra<br />
+To resolve my doubts, so I will have none.<br />
+What abode and what teaching<br />
+Attains birth in the Brahma Heaven?”</li></ul>
+<p id="p71">71. “‘Brahmā Kumāra replied with a verse:</p>
+<ul class="verse"><li>“‘“Discard concepts of self and person,<br />
+Dwell alone and cultivate kindness,<br />
+Remove desires, and be unpolluted,<br />
+Then you’ll be born in the Brahma Heaven.”</li></ul>
+<p id="p72">72. “‘After hearing this verse, Great Govinda then thought to himself, “Brahmā Kumāra said in verse that it’s fitting to remove pollutants, but I don’t understand it. Now, it would be best to ask another question.”</p>
+<p id="p73">73. “‘Great Govinda then asked in verse:</p>
+<ul class="verse"><li>“‘“Brahmā’s verse mentions pollution.<br />
+Please explain this for me now:<br />
+Who opens the worldly door,<br />
+Falls to evil, and isn’t born in heaven?”</li></ul>
+<p id="p74">74. “‘Brahmā Kumāra then replied with a verse:</p>
+<ul class="verse"><li>“‘“Deceitful and harboring jealousy,<br />
+Habitually proud and arrogant,<br />
+Greedy, angry, and deluded,<br />
+They freely hide their thoughts.</li></ul>
+<ul class="verse"><li>This world is polluted,<br />
+I’ve now explained it for you.<br />
+This is what opens the worldly door,<br />
+Falls to evil, and isn’t born in heaven.”</li></ul>
+<p id="p75">75. “‘After hearing this verse, Great Govinda again thought to himself, “The meaning of pollution that Brahmā Kumāra has explained for me can’t be removed by someone living at home. Now, I’d better renounce the world, leave home, cut off my hair and beard, put on the Dharma clothes, and cultivate the path!”</p>
+<p id="p76">76. “‘Brahmā Kumāra then knew his intent and told him in verse:</p>
+<ul class="verse"><li>“‘“You are someone with courage,<br />
+For this intent is supreme.<br />
+Wise people who do that<br />
+Are surely born in the Brahma Heaven.”</li></ul>
+<p id="p77">77. “‘At that moment, Brahmā Kumāra instantly disappeared.</p>
+<p id="p78">78. “‘Great Govinda returned to the seven kings and told each of them, “Great king, please do me the favor of well managing the kingdom’s affairs. Now, I plan to leave home, renounce the world, put on Dharma clothes, and cultivate the path. Why is that? I met with Brahmā Kumāra and listened to his explanation of pollution. My heart dislikes it very much. If I remain at home, there’ll be no way to be rid of it.”</p>
+<p id="p79">79. “‘Those seven kings then each thought to themselves, “All the priests are greedy for treasure. I’d better open wide the treasury and let him take what he needs so he won’t leave home like this.” The seven kings then summoned Govinda and told him, “Supposing we had what you need, we would give whatever would be sufficient for you not to leave home.”</p>
+<p>“‘Great Govinda immediately replied, “Now, whatever the king might award to me, I have great wealth of my own. Today, I would leave behind the great king’s offer above. Please permit me to leave home and pursue my aspiration.”</p>
+<p id="p80">80. “‘The seven kings again thought, “All the priests are greedy for beautiful forms. Now, I’d better bring attractive women from the palace that will do his bidding. That will keep him from leaving home.” The kings then summoned Govinda and told him, “If you need an attractive woman, I will give you all my women if that would be enough for you not to leave home.”</p>
+<p>“‘Govinda replied, “The king might grant that to me, but I have a harem of many attractive women of my own. I will be divorcing all of them to pursue seclusion from passion, leaving home, and cultivating the path. Why is that? I met Brahmā Kumāra and heard his explanation of pollution. My heart dislikes it very much. If I remain at home, there’ll be no way to be rid of it.”</p>
+<p id="p81">81. “‘Great Govinda then went to King Reṇu and spoke this verse:</p>
+<ul class="verse"><li>“‘“The king must listen to what I say:<br />
+The king is the most honored of people,<br />
+Who bestows wealth and beautiful women,<br />
+But these valuables aren’t what makes happiness.”</li></ul>
+<p id="p82">82. “‘King Reṇu replied in verse:</p>
+<ul class="verse"><li>“‘“The cities Dantapura and Kaliṅga,<br />
+Aśmaka, Potana,<br />
+Avanti, Māhiṣmatī,<br />
+Aṅga, Campā,<br />
+Sauvira, Śālva,<br />
+Daradas, Roruka,<br />
+Bārāṇasī, and Kāśi<br />
+Were all built by you, Govinda.</li></ul>
+<ul class="verse"><li>What little of the five desires I have,<br />
+I will grant all of them to you.<br />
+Stay and manage the kingdom’s affairs,<br />
+Or leave home and go if it’s not enough.”</li></ul>
+<p id="p83">83. “‘Great Govinda replied with verse:</p>
+<ul class="verse"><li>“‘“The five desires are not little to me,<br />
+I’m just not happy with the world.<br />
+I’ve heard what that god said<br />
+And think no more of remaining at home.”</li></ul>
+<p id="p84">84. “‘King Reṇu replied with verse:</p>
+<ul class="verse"><li>“‘“So Great Govinda has said,<br />
+But what did he hear from that god<br />
+That he renounces the five desires.<br />
+Now, I ask for you to answer me.”</li></ul>
+<p id="p85">85. “‘Govinda the great answered in verse:</p>
+<ul class="verse"><li>“‘“Before, I was in a quiet place<br />
+And sat alone in contemplation.<br />
+It was then that King Brahmā came;<br />
+He shined with a great radiance.<br />
+After hearing what he said,<br />
+I’m not happy with the worldly life.”</li></ul>
+<p id="p86">86. “‘King Reṇu then told him in verse:</p>
+<ul class="verse"><li>“‘“Wait a while, Great Govinda,<br />
+Share your good teaching with me.<br />
+Afterward, we’ll both leave home,<br />
+And you’ll be my teacher.</li></ul>
+<ul class="verse"><li>Just as the sky<br />
+Is full of pure lapis lazuli,<br />
+Now am I of pure faith,<br />
+Full of the Buddha’s teaching.”</li></ul>
+<p id="p87">87. “‘Great Govinda composed another verse:</p>
+<ul class="verse"><li>“‘“The gods and worldly people<br />
+Should all renounce the five desires.<br />
+Removing the pollutants,<br />
+They purely cultivate the religious life.”</li></ul>
+<p id="p88">88. “‘The seven kings said to Great Govinda, “You could stay for a period of seven years. Enjoy the best of the world’s five desires, and share in their enjoyment. Afterward, we’ll renounce the kingdom. We’ll each be your disciple, and we’ll leave home together. Wouldn’t that also be good? You would get what you want, and we’ll also get something equal.”</p>
+<p>“‘Great Govinda replied to the seven kings, “The world is impermanent, and people’s lives end quickly. Even the span of a cough or a sigh is hard to safeguard. Wouldn’t seven years be far away?”</p>
+<p id="p89">89. “‘The seven kings also said, “Seven years is far away. Wait in the quiet of the palace for six years … five years … one year. Enjoy the best of the world’s five desires, and share in their enjoyment. Afterward, we’ll renounce the kingdom. We’ll each be your disciple, and we’ll leave home together. Wouldn’t that also be good? You would get what you want, and we’ll also get  something equal.”</p>
+<p>“‘Great Govinda again replied to the kings, “The world is impermanent, and people’s lives end quickly. Even the span of a cough or a sigh is hard to safeguard. Wouldn’t seven years be far away. Thus, seven months … one month would still not be possible.”</p>
+<p id="p90">90. “‘The kings said, “You could wait hidden in the palace for up to seven days. Enjoy the best of the world’s five desires, and share in their enjoyment. Afterward, renounce the world. We’ll each become your disciple, and we’ll leave home together. Wouldn’t that also be good? …”</p>
+<p>“‘Great Govinda answered, “Seven days isn’t far away. One could wait that long. Please, great king, don’t break your promise. After seven days, if the king doesn’t leave, I will leave home by myself.”</p>
+<p id="p91">91. “‘Great Govinda then went to the seven householders and said, “Each of you must manage your own work. I’m going to leave home to cultivate the unconditioned path. Why is that? I met Brahmā and heard his explanation of pollution. My heart dislikes it very much. If I remain at home, there’ll be no way to be rid of it.”</p>
+<p>“‘The seven householders replied to Govinda, “This intent is good! Do so when you think is right. We were also going to leave home together. Whatever you obtain will be fitting for us, too.”</p>
+<p id="p92">92. “‘Great Govinda then went to the 700 priests and told them, “Be diligent in your recitations, inquire into the meaning of the path, and pass on the teachings. I’m going to leave home to cultivate the unconditioned path. Why is that? I met Brahmā and heard his explanation of pollution. My heart dislikes it very much. If I remain at home, there’ll be no way to be rid of it.”</p>
+<p>“‘The 700 priests said to Govinda, “Great teacher, don’t leave home! A man who lives at home can be happy and enjoy the five desires. With many people serving him, his mind has no sorrow or suffering. People who leave home live alone in the wilderness without anything that they desire and no way to get when they love.”</p>
+<p id="p93">93. “‘Govinda replied, “If I would be happy staying at home and would suffer upon leaving home, then I would never leave home. But staying at home is suffering, and leaving home is happiness, so I will be leaving home.”</p>
+<p>“‘The priests answered, “If the great teacher leaves home, we will leave home, too. Whatever the great teacher does, we’ll all do that.”</p>
+<p id="p94">94. “‘Great Govinda went to his wives and told them, “Do what you think is fitting. If it’s to stay here, then stay. If it’s to take refuge, then take refuge. I’m going to leave home to pursue the unconditioned path. Having discussed higher matters, the idea of leaving home became clear to me.”</p>
+<p>“‘His wives answered, “Great Govinda, stay here. In one way, you are like our husband, and in other way you are like our father. If you leave home now, we’ll follow you. Whatever Govinda does, we’ll do it, too.”</p>
+<p id="p95">95. “‘After seven days had passed, Great Govinda cut off his hair and beard, put on the three Dharma robes, renounced his home, and departed. The seven kings, seven great householders, 700 priests, and his forty wives did the same in their turn. 84,000 people left home at the same time and followed Great Govinda.</p>
+<p id="p96">96. “‘Great Govinda toured the kingdoms with these great assemblies and widely educated people about the path, benefiting many.’</p>
+<p id="p97">97. “King Brahmā then addressed the host of gods, ‘Was this Prime Minister Govinda a different person? Don’t make this observation. Today, the Buddha Śākyamuni is his body. After seven days, the Bhagavān left home to cultivate the path, leading a great assembly to tour the kingdoms and broadly educate people about the path, benefiting many. If you have any other doubts for me, the Bhagavān is presently staying on Mount Gṛdhrakūṭa. You may go and ask him. Remember well what words the Buddha says.’”</p>
+<h4>Teaching the Ultimate Path</h4>
+<p id="p98">98. Pañcaśikha said, “It was for this reason that I came here. Indeed, Bhagavān! Was that Great Govinda the Bhagavān? Did the Bhagavān leave home to cultivate the path after seven days accompanied by seven kings … 84,000 people who left home at the same time, and they toured the kingdoms broadly educating people about the path, benefiting many?”</p>
+<p id="p99">99. The Buddha asked Pañcaśikha, “Was Great Govinda a different person at that time? Don’t make this observation. It was me then. At the time that I lifted up a kingdom, men and women walked towards me. Whenever they were injured, they immediately raised their voices, saying, ‘Hail, Great Govinda, the prime minister of the seven kings! Hail, Great Govinda, the prime minister of the seven kings!’ They would say this three times.</p>
+<p id="p100">100. “Pañcaśikha, Great Govinda possessed the power of great virtue, but he couldn’t teach the ultimate path for his disciples, couldn’t make them attain the ultimate religious life, and couldn’t make them reach the abode of peace. He taught the Dharma, and his disciples accepted and practiced it until their bodies broke up and their lives ended. They were born in the Brahma Heaven. Next, those whose practice was shallow were born in the Paranirmitavaśavartin Heaven. Next were those born in the Nirmāṇarati Heaven … Tuṣita Heaven … Yama Heaven … Trāyastriṃśa Heaven … with the Four God Kings … into great families of warriors … priests … householders who could enjoy their desires freely.</p>
+<p id="p101">101. “Pañcaśikha, that Great Govinda’s disciples left home without doubts, and their rewards and teachings were still not the ultimate path. He couldn’t make them attain the ultimate religious life or reach the abode of peace. The best of them were born as high as the Brahma Heaven.</p>
+<p id="p102">102. “In the present, I teach the Dharma for my disciples, and I’m able to make them attain the ultimate path, ultimate religious life, and ultimate peace. They end up in <em>nirvāṇa</em>. Of those disciples to whom I teach the Dharma and who accept its practice, those who discard the contaminants and become uncontaminated are liberated at heart and liberated in wisdom. In the present life, they themselves realize: ‘Birth and death have been ended, the religious life has been established, and the task has been accomplished. I’m not subject to another existence.’</p>
+<p id="p103">103. “Next are those whose practice is shallow and end the five lower bonds. They <em>parinirvāṇa</em> in the heavens and don’t return here again. Next are those who end the three bonds and weaken lust, hate, and delusion. They’re reborn in the world once and <em>parinirvāṇa</em>. Next are those who end the three bonds and attain stream entry. They don’t fall to bad destinies and are reborn not more than seven times. They are sure to attain <em>nirvāṇa</em>.</p>
+<p id="p1">104. “Pañcaśikha, my disciples leave home without doubts, and they possess the rewards and teachings of the ultimate path, ultimate religious life, and ultimate peace. They end up at <em>nirvāṇa</em>.”</p>
+<p id="p105">105. When Pañcaśikha heard what the Buddha taught, he rejoiced and approved.</p>
+<hr />
+<h3>Notes</h3>
+<p id="n1">1. This is <em>sūtra</em> no. 3 of the <cite>Dīrgha Āgama</cite> (<a href="https://cbetaonline.dila.edu.tw/zh/T01n0001_p0030b10" target="_blank">T1.1.30b10-4b3</a>). The direct parallel for this <em>sūtra</em> is <a href="https://suttacentral.net/dn19" target="_blank">DN 19</a>. There’s also an alternate version found in the <cite>Mahāvastu</cite> and a later Chinese translation (<a href="https://cbetaonline.dila.edu.tw/zh/T0008_001" target="_blank">T8</a>). <a href="#ref1">[back]</a></p>
+<p id="n2">2. <em>gandharva</em>. C. 執樂天. The Chinese translates S. gandharva as “musician god” (執樂天). <a href="#ref2">[back]</a></p>
+<p id="n3">3. <em>Reṇu</em>. C. 慈悲. Both the Sanskrit <em>Mahāvastu</em> and separate Chinese translation agree with Reṇu; however, the present text translates the name as “Compassion” (presumably translating something like S. karuṇa). <a href="#ref3">[back]</a></p>
+<hr />
+<p class="translator">Translator: Charles Patton</p>
+<p class="revised">Last Revised: 19 June 2022</p>
+<hr />              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/chinese_canon/da/da2.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/chinese_canon/da/da4.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

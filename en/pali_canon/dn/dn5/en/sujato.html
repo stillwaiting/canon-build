@@ -1,0 +1,2881 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dn/dn5 — With Kūṭadanta — Bhikkhu Sujato — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          data-mobile-translation-toggle
+        >
+          <span
+            class="block w-full truncate"
+            title="English - Bhikkhu Sujato"
+            data-mobile-translation-current
+          >English - Bhikkhu Sujato</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div
+          class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-mobile-translation-menu
+          hidden
+        >
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/dn/dn5/ru/syrkin+edited+o.html"
+              title="Russian - A. Y. Syrkin (edited by Dhamma.Gift)"
+            >
+              <span class="block w-full truncate">
+                Russian - A. Y. Syrkin (edited by Dhamma.Gift)              </span>
+            </a>
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/dn/dn5/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+            >
+              <span class="block w-full truncate">
+                Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500              </span>
+            </a>
+                              </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <div class="flex items-start gap-3">
+                  <button
+            class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] md:hidden"
+            type="button"
+            aria-label="Main navigation"
+            data-mobile-trail-toggle
+          >
+            <svg class="h-5 w-5 pointer-events-none" viewBox="0 0 26 26" aria-hidden="true">
+              <use href="/assets/mobile-breadcrumbs-icon.svg?_=1781705533#icon"></use>
+            </svg>
+          </button>
+                <div class="min-w-0 flex-1">
+          <h1 class="sutta-title m-0 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+            With Kūṭadanta          </h1>
+                      <div
+              class="mt-1 truncate text-[12px] leading-[1.35] text-ink-muted md:text-[13px]"
+              title="Translator: Bhikkhu Sujato"
+            >
+              Translator: Bhikkhu Sujato            </div>
+                  </div>
+      </div>
+
+              <div class="flex gap-1 items-center">
+                      <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              dn            </div>
+                                <span class="hidden text-sm text-accent dark:text-[#c784ff] md:block" aria-hidden="true">·</span>
+                                <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              Long Discourses 5 · With Kūṭadanta            </div>
+                  </div>
+      
+              <div
+          class="relative my-3 rounded-[10px] border border-line bg-surface p-4 [&:not([hidden])]:block md:[&:not([hidden])]:hidden dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)]"
+          data-mobile-trail-panel
+          hidden
+        >
+          <button
+            class="absolute right-2 top-2 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-ink"
+            type="button"
+            aria-label="Close dialog"
+            data-mobile-trail-close
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="flex flex-col gap-2 pr-8">
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                dn              </div>
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                Long Discourses 5              </div>
+                          <div class="text-sm leading-[1.4] font-semibold text-ink">
+                With Kūṭadanta              </div>
+                      </div>
+        </div>
+            <div class="my-4 border-t border-line"></div>
+      <div class="sutta-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                                          <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-0"            >
+            1. The Brahmins and Householders of Khāṇumata            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-1"            >
+            So I have heard.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-1">[1]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-2"            >
+            At one time the Buddha was wandering in the land of the Magadhans together with a large Saṅgha of five hundred mendicants when he arrived at a village of the Magadhan brahmins named Khāṇumata.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-2">[2]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-3"            >
+            There he stayed nearby at Ambalaṭṭhikā.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-3">[3]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-4"            >
+            Now at that time the brahmin Kūṭadanta was living in Khāṇumata. It was a crown property given by King Seniya Bimbisāra of Magadha, teeming with living creatures, full of hay, wood, water, and grain, a royal park endowed to a brahmin.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-4">[4]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-5"            >
+            Now at that time Kūṭadanta had prepared a great sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-1-6"            >
+            Bulls, bullocks, heifers, goats and rams—seven hundred of each—had been led to the post for the sacrifice.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-5">[5]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-1"            >
+            The brahmins and householders of Khāṇumata heard:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-2"            >
+            “It seems the ascetic Gotama—a Sakyan, gone forth from a Sakyan family—has arrived at Khāṇumata and is staying at Ambalaṭṭhikā.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-3"            >
+            He has this good reputation:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-4"            >
+            ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-5"            >
+            He has realized with his own insight this world—with its gods, Māras, and divinities, this population with its ascetics and brahmins, gods and humans—and he makes it known to others.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-6"            >
+            He proclaims a teaching that’s good in the beginning, good in the middle, and good in the end, meaningful and well-phrased. And he reveals a spiritual practice that’s entirely full and pure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-7"            >
+            It’s good to see such perfected ones.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-2-8"            >
+            Then, exiting Khāṇumata, they formed into companies and headed to Ambalaṭṭhikā.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-1"            >
+            Now at that time the brahmin Kūṭadanta had retired to the upper floor of his stilt longhouse for his midday nap.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-2"            >
+            He saw the brahmins and householders heading for Ambalaṭṭhikā,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-3"            >
+            and addressed his butler,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-4"            >
+            “My butler, why are the brahmins and householders headed for Ambalaṭṭhikā?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-5"            >
+            “The ascetic Gotama has arrived at Khāṇumata and is staying at Ambalaṭṭhikā.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-6"            >
+            He has this good reputation:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-7"            >
+            ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-3-8"            >
+            They’re going to see that worthy Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-1"            >
+            Then Kūṭadanta thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-2"            >
+            “I’ve heard that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-3"            >
+            the ascetic Gotama knows how to accomplish the sacrifice with three modes and sixteen accessories.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-6">[6]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-4"            >
+            I don’t know about that,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-5"            >
+            but I wish to perform a great sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-6"            >
+            Why don’t I ask him how to accomplish the sacrifice with three modes and sixteen accessories?”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-7">[7]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-7"            >
+            Then Kūṭadanta addressed his butler,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-8"            >
+            “Well then, go to the brahmins and householders and say to them:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-9"            >
+            ‘Sirs, the brahmin Kūṭadanta asks            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-10"            >
+            you to wait, as he will also go to see the ascetic Gotama.’”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-4-11"            >
+            “Yes, worthy sir,” replied the butler, and did as he was asked.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-0"            >
+            2. The Qualities of Kūṭadanta            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-1"            >
+            Now at that time several hundred brahmins were residing in Khāṇumata            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-2"            >
+            thinking to participate in Kūṭadanta’s sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-3"            >
+            They heard that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-4"            >
+            Kūṭadanta was going to see the ascetic Gotama.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-5"            >
+            They approached Kūṭadanta and said to him:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-6"            >
+            “Is it really true that you are going to see the ascetic Gotama?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-5-7"            >
+            “Yes, gentlemen, it is true.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-1"            >
+            “Please don’t!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-2"            >
+            It’s not appropriate for you to go to see the ascetic Gotama.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-3"            >
+            For if you do so, your reputation will diminish and his will increase.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-4"            >
+            For this reason it’s not appropriate for you to go to see the ascetic Gotama;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-5"            >
+            it’s appropriate that he comes to see you.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-6"            >
+            You are well born on both your mother’s and father’s side, stemming from a clean vessel, with irrefutable and impeccable genealogy back to the seventh paternal generation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-7"            >
+            For this reason it’s not appropriate for you to go to see the ascetic Gotama;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-8"            >
+            it’s appropriate that he comes to see you.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-9"            >
+            You’re rich, affluent, and wealthy, with lots of property and assets, and lots of money and grain …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-10"            >
+            You recite and remember the hymns, and have mastered the three Vedas, together with their vocabularies and ritual performance, their phonology and word classification, and the testaments as fifth. You know them word-by-word, and their grammar. You are well versed in cosmology and the marks of a great man. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-11"            >
+            You are attractive, good-looking, lovely, of surpassing beauty. You have divine looks and lustre, remarkable to behold. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-12"            >
+            You are ethical, mature in ethical conduct. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-13"            >
+            You’re a good speaker who enunciates well, with a polished, clear, and articulate voice that expresses the meaning. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-14"            >
+            You teach the tutors of many, and teach three hundred young students to recite the hymns. Many students come from various districts and countries for the sake of the hymns, wishing to learn the hymns. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-15"            >
+            You’re old, elderly and senior, advanced in years, and have reached the final stage of life.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-16"            >
+            The ascetic Gotama is young, and has newly gone forth. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-17"            >
+            You’re honored, respected, revered, venerated, and esteemed by King Bimbisāra of Magadha …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-18"            >
+            and the brahmin Pokkharasāti. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-19"            >
+            You live in Khāṇumata, a crown property given by King Seniya Bimbisāra of Magadha, teeming with living creatures, full of hay, wood, water, and grain, a royal park endowed to a brahmin.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-20"            >
+            For this reason it’s not appropriate for you to go to see the ascetic Gotama;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-6-21"            >
+            it’s appropriate that he comes to see you.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-0"            >
+            3. The Qualities of the Buddha            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-1"            >
+            When they had spoken, Kūṭadanta said to those brahmins:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-2"            >
+            “Well then, gentlemen, listen to why it’s appropriate for me to go to see the ascetic Gotama,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-3"            >
+            and it’s not appropriate for him to come to see me.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-4"            >
+            He is well born on both his mother’s and father’s side, stemming from a clean vessel, with irrefutable and impeccable genealogy back to the seventh paternal generation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-5"            >
+            For this reason it’s not appropriate for the ascetic Gotama to come to see me;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-6"            >
+            rather, it’s appropriate for me to go to see him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-7"            >
+            When he went forth he abandoned a large family circle. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-8"            >
+            When he went forth he abandoned abundant gold, both coined and uncoined, stored above and below ground. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-9"            >
+            He went forth from the lay life to homelessness while still a youth, young, with pristine black hair, blessed with youth, in the prime of life. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-10"            >
+            Though his mother and father wished otherwise, weeping with tearful faces, he shaved off his hair and beard, dressed in ocher robes, and went forth from the lay life to homelessness. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-11"            >
+            He is attractive, good-looking, lovely, of surpassing beauty. He has divine looks and lustre, remarkable to behold. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-12"            >
+            He is ethical, possessing ethical conduct that is noble and skillful. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-13"            >
+            He’s a good speaker who enunciates well, with a polished, clear, and articulate voice that expresses the meaning. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-14"            >
+            He’s a tutor of tutors. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-15"            >
+            He has ended sensual desire, and is rid of caprice. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-16"            >
+            He teaches the efficacy of deeds and action. He doesn’t wish any harm upon the community of brahmins. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-17"            >
+            He went forth from an eminent family of unbroken aristocratic lineage. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-18"            >
+            He went forth from a rich, affluent, and wealthy family. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-19"            >
+            People come from distant lands and distant countries to question him. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-20"            >
+            Many thousands of deities have gone for refuge for life to him. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-21"            >
+            He has this good reputation:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-22"            >
+            ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’ …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-23"            >
+            He has the thirty-two marks of a great man. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-24"            >
+            He is welcoming, congenial, polite, smiling, open, the first to speak. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-25"            >
+            He’s honored, respected, revered, venerated, and esteemed by the four assemblies. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-26"            >
+            Many gods and humans are devoted to him. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-27"            >
+            While he is residing in a village or town, non-human entities do not harass them. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-28"            >
+            He leads an order and a community, and tutors a community, and is said to be the best of the various religious founders. He didn’t come by his fame in the same ways as those other ascetics and brahmins.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-29"            >
+            Rather, he came by his fame due to his supreme knowledge and conduct. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-30"            >
+            King Seniya Bimbisāra of Magadha and his wives and children have gone for refuge for life to the ascetic Gotama. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-31"            >
+            King Pasenadi of Kosala and his wives and children have gone for refuge for life to the ascetic Gotama. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-32"            >
+            The brahmin Pokkharasāti and his wives and children have gone for refuge for life to the ascetic Gotama. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-33"            >
+            He’s honored, respected, revered, venerated, and esteemed by King Bimbisāra of Magadha …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-34"            >
+            King Pasenadi of Kosala …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-35"            >
+            and the brahmin Pokkharasāti.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-36"            >
+            The ascetic Gotama has arrived at Khāṇumata and is staying at Ambalaṭṭhikā.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-37"            >
+            Any ascetic or brahmin who comes to stay in our village district is our guest,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-38"            >
+            and should be honored and respected as such.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-41"            >
+            For this reason, too, it’s not appropriate for the worthy Gotama to come to see me,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-42"            >
+            rather, it’s appropriate for me to go to see him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-43"            >
+            This is the extent of the worthy Gotama’s praise that I have memorized. But his praises are not confined to this,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-44"            >
+            for the praise of the worthy Gotama is limitless.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-45"            >
+            When he had spoken, those brahmins said to him,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-46"            >
+            “According to Kūṭadanta’s praises, if the worthy Gotama were staying within a hundred leagues, it’d be worthwhile for a faithful gentleman to go to see him, even if he had to carry his own provisions in a knapsack.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-7-47"            >
+            “Well then, gentlemen, let’s all go to see the ascetic Gotama.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-8-0"            >
+            4. The Story of King Mahāvijita’s Sacrifice            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-8-1"            >
+            Then Kūṭadanta together with a large group of brahmins went to see the Buddha and exchanged greetings with him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-8-2"            >
+            When the greetings and polite conversation were over, he sat down to one side.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-8-3"            >
+            Before sitting down to one side, some of the brahmins and householders of Khāṇumata bowed, some exchanged greetings and polite conversation, some held up their cupped palms toward the Buddha, some announced their name and clan, while some kept silent.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-1"            >
+            Kūṭadanta said to the Buddha,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-2"            >
+            “Worthy Gotama, I’ve heard that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-3"            >
+            you know how to accomplish the sacrifice with three modes and sixteen accessories.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-4"            >
+            I don’t know about that,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-5"            >
+            but I wish to perform a great sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-6"            >
+            Please teach me how to accomplish the sacrifice with three modes and sixteen accessories.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-7"            >
+            “Well then, brahmin, listen and apply your mind well, I will speak.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-8">[8]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-8"            >
+            “Yes, worthy sir,” Kūṭadanta replied.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-9-9"            >
+            The Buddha said this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-1"            >
+            “Once upon a time, brahmin, there was a king named Mahāvijita. He was rich, affluent, and wealthy, with lots of gold and silver, lots of property and assets, lots of money and grain, and a full treasury and storehouses.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-9">[9]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-2"            >
+            Then as King Mahāvijita was in private retreat this thought came to his mind:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-10">[10]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-3"            >
+            ‘I have achieved human wealth, and reign after conquering this vast territory. Why don’t I hold a large sacrifice? That will be for my lasting welfare and happiness.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-11">[11]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-4"            >
+            Then he summoned the brahmin high priest and said to him:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-12">[12]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-5"            >
+            ‘Just now, brahmin, as I was in private retreat this thought came to mind,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-6"            >
+            “I have achieved human wealth, and reign after conquering this vast territory. Why don’t I perform a great sacrifice? That will be for my lasting welfare and happiness.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-7"            >
+            Brahmin, I wish to perform a great sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-10-8"            >
+            Please instruct me. It will be for my lasting welfare and happiness.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-1"            >
+            When he had spoken, the brahmin high priest said to him:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-2"            >
+            ‘Sir, the king’s realm is harried and oppressed. Raiding of villages, towns, and cities has been seen, and infesting of highways.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-13">[13]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-3"            >
+            But if the king were to extract more taxes while his realm is thus harried and oppressed, he would not be doing his duty.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-14">[14]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-4"            >
+            Now the king might think,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-5"            >
+            “I’ll eradicate this plague of savages by execution or imprisonment or confiscation or condemnation or banishment!” But that’s not the right way to eradicate this plague of savages.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-15">[15]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-6"            >
+            Those who remain after the killing will return to harass the king’s realm.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-16">[16]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-7"            >
+            Rather, here is a plan, relying on which the plague of savages will be properly uprooted.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-17">[17]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-8"            >
+            So let the king provide seed and fodder for those in the realm who work in growing crops and raising cattle.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-18">[18]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-9"            >
+            Let the king provide funding for those who work in trade.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-10"            >
+            Let the king guarantee food and wages for those in government service.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-11"            >
+            Then the people, occupied with their own work, will not harass the realm.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-19">[19]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-12"            >
+            The king’s revenues will be great.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-20">[20]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-13"            >
+            When the country is secured as a sanctuary, free of being harried and oppressed, the happy people, with joy in their hearts, dancing with children at their breast, will dwell as if their houses were wide open.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-21">[21]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-14"            >
+            The king agreed with the high priest’s advice and followed his recommendation.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-22">[22]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-19"            >
+            Then the king summoned the brahmin high priest and said to him:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-20"            >
+            ‘I have eradicated the plague of savages. And relying on your plan my revenue is now great.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-21"            >
+            Since the country is secured as a sanctuary, free of being harried and oppressed, the happy people, with joy in their hearts, dancing with children at their breast, dwell as if their houses were wide open.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-22"            >
+            Brahmin, I wish to perform a great sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-11-23"            >
+            Please instruct me. It will be for my lasting welfare and happiness.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-0"            >
+            4.1. The Four Accessories            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-1"            >
+            ‘In that case, let the king announce this throughout the realm to the aristocrat vassals of both town and country; the ministers and councillors of both town and country; the well-to-do brahmins of both town and country; and the well-off householders of both town and country.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-23">[23]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-2"            >
+            “I wish to perform a great sacrifice. Please grant your approval, good fellows; it will be for my lasting welfare and happiness.”’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-3"            >
+            The king agreed with the high priest’s advice and followed his recommendation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-4"            >
+            And all of the people who were thus informed responded by saying:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-5"            >
+            ‘May the king perform a sacrifice! It is time for a sacrifice, great king.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-12-9"            >
+            And so these four consenting factions became accessories to the sacrifice.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-24">[24]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-0"            >
+            4.2. The Eight Accessories            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-1"            >
+            King Mahāvijita possessed eight factors.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-25">[25]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-2"            >
+            He was well born on both his mother’s and father’s side, stemming from a clean vessel, with irrefutable and impeccable genealogy back to the seventh paternal generation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-3"            >
+            He was attractive, good-looking, lovely, of surpassing beauty. He had divine looks and lustre, remarkable to behold.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-4"            >
+            He was rich, affluent, and wealthy, with lots of gold and silver, lots of property and assets, lots of money and grain, and a full treasury and storehouses.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-5"            >
+            He was powerful, having an army of four divisions that was obedient and carried out instructions. He’d probably prevail over his enemies just with his reputation.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-26">[26]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-6"            >
+            He was faithful, generous, a donor, his door always open. He was a well-spring of support, making merit with ascetics and brahmins, for paupers, vagrants, supplicants, and beggars.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-7"            >
+            He was very learned in diverse fields of learning. He understood the meaning of diverse statements, saying:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-27">[27]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-8"            >
+            ‘This is what that statement means; that is what this statement means.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-9"            >
+            He was astute, competent, and intelligent, able to think issues through as they bear upon the past, future, and present.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-28">[28]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-10"            >
+            These are the eight factors that King Mahāvijita possessed.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-13-11"            >
+            And so these eight factors also became accessories to the sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-0"            >
+            4.3. Four More Accessories            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-1"            >
+            And the brahmin high priest had four factors.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-29">[29]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-2"            >
+            He was well born on both his mother’s and father’s side, stemming from a clean vessel, with irrefutable and impeccable genealogy back to the seventh paternal generation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-3"            >
+            He recited and remembered the hymns, and had mastered the three Vedas, together with their vocabularies and ritual performance, their phonology and word classification, and the testaments as fifth. He knew them word-by-word, and their grammar. He was well versed in cosmology and the marks of a great man.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-4"            >
+            He was ethical, mature in ethical conduct.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-5"            >
+            He was astute and clever, being the first or second to hold the sacrificial ladle.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-6"            >
+            These are the four factors that the brahmin high priest possessed.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-14-7"            >
+            And so these four factors also became accessories to the sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-0"            >
+            4.4. The Three Modes            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-1"            >
+            Next, before the sacrifice, the brahmin high priest taught the three modes to the king.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-2"            >
+            ‘Now, though the king wants to perform a great sacrifice, he might have certain regrets, thinking:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-3"            >
+            “I shall lose a great fortune,” or            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-30">[30]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-5"            >
+            “I am losing a great fortune,” or            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-7"            >
+            “I have lost a great fortune.” But the king should not harbor such regrets.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-15-8"            >
+            These are the three modes that the brahmin high priest taught to the king before the sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-0"            >
+            4.5. The Ten Respects            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-1"            >
+            Next, before the sacrifice, the brahmin high priest dispelled the king’s regret regarding the recipients in ten respects:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-31">[31]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-2"            >
+            ‘There will come to the sacrifice those who kill living creatures and those who refrain from killing living creatures.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-3"            >
+            As to those who kill living creatures, the outcome of that is theirs alone.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-4"            >
+            But as to those who refrain from killing living creatures, it is for their sakes that the king should sacrifice, relinquish, rejoice, and gain confidence in his heart.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-32">[32]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-5"            >
+            There will come to the sacrifice those who steal …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-6"            >
+            commit sexual misconduct …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-7"            >
+            lie …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-8"            >
+            use backbiting …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-9"            >
+            use harsh speech …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-10"            >
+            talk nonsense …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-11"            >
+            are covetous …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-12"            >
+            have ill will …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-13"            >
+            have wrong view and those who have right view.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-14"            >
+            As to those who have wrong view, the outcome of that is theirs alone.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-15"            >
+            But as to those who have right view, it is for their sakes that the king should sacrifice, relinquish, rejoice, and gain confidence in his heart.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-16-16"            >
+            These are the ten respects in which the high priest dispelled the king’s regret regarding the recipients before the sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-0"            >
+            4.6. The Sixteen Respects            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-1"            >
+            Next, while the king was performing the great sacrifice, the brahmin high priest educated, encouraged, fired up, and inspired the king’s mind in sixteen respects:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-2"            >
+            ‘Now, while the king is performing the great sacrifice, someone might say,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-3"            >
+            “King Mahāvijita performs a great sacrifice, but he did not announce it to the aristocrat vassals of town and country.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-33">[33]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-4"            >
+            That’s the kind of great sacrifice that this king performs.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-5"            >
+            Those who speak against the king in this way have no legitimacy.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-6"            >
+            For the king did indeed announce it to the aristocrat vassals of town and country.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-7"            >
+            Let the king know this as a reason to sacrifice, relinquish, rejoice, and gain confidence in his heart.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-8"            >
+            While the king is performing the great sacrifice, someone might say,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-9"            >
+            “King Mahāvijita performs a great sacrifice, but he did not announce it to the aristocrat vassals; the ministers and councillors; the well-to-do brahmins; and the well-off householders. That’s the kind of great sacrifice that this king performs.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-10"            >
+            Those who speak against the king in this way have no legitimacy.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-11"            >
+            For the king did indeed announce it to all these people.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-34">[34]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-12"            >
+            Let the king know this too as a reason to sacrifice, relinquish, rejoice, and gain confidence in his heart.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-13"            >
+            While the king is performing the great sacrifice, someone might say            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-14"            >
+            that he does not possess the eight factors.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-27"            >
+            Those who speak against the king in this way have no legitimacy.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-28"            >
+            For the king does indeed possess the eight factors.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-29"            >
+            Let the king know this too as a reason to sacrifice, relinquish, rejoice, and gain confidence in his heart.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-30"            >
+            While the king is performing the great sacrifice, someone might say            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-31"            >
+            that the high priest does not possess the four factors.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-42"            >
+            Those who speak against the king in this way have no legitimacy.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-43"            >
+            For the high priest does indeed possess the four factors.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-44"            >
+            Let the king know this too as a reason to sacrifice, relinquish, rejoice, and gain confidence in his heart.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-17-45"            >
+            These are the sixteen respects in which the high priest educated, encouraged, fired up, and inspired the king’s mind while he was performing the sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-18-1"            >
+            And brahmin, in that sacrifice no cattle were killed, no goats or sheep were killed, and no chickens or pigs were killed. There was no slaughter of various kinds of creatures. No trees were felled for the sacrificial post. No grass was reaped to strew over the place of sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-18-2"            >
+            No bondservants, servants, or workers did their jobs under threat of punishment and danger, weeping with tearful faces.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-18-3"            >
+            Those who wished to work did so, while those who did not wish to did not.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-35">[35]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-18-4"            >
+            They did the work they wanted to, and did not do what they didn’t want to.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-18-5"            >
+            The sacrifice was completed with just ghee, oil, butter, curds, honey, and molasses.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-36">[36]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-19-1"            >
+            Then the aristocrat vassals, ministers and councillors, well-to-do brahmins, and well-off householders came to the king bringing abundant wealth and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-19-2"            >
+            ‘Sire, this abundant wealth is specially for you alone; may Your Highness accept it!’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-37">[37]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-19-3"            >
+            ‘There’s enough raised for me through regular taxes. Let this be for you; and here, take even more!’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-19-5"            >
+            When the king turned them down, they withdrew to one side to think up a plan,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-19-6"            >
+            ‘It wouldn’t be proper for us to take this abundant wealth back to our own homes.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-19-7"            >
+            King Mahāvijita is performing a great sacrifice. Let us make an offering as an auxiliary sacrifice.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-1"            >
+            Then the aristocrat vassals of town and country set up gifts to the east of the sacrificial enclosure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-2"            >
+            The ministers and councillors of town and country set up gifts to the south of the sacrificial enclosure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-3"            >
+            The well-to-do brahmins of town and country set up gifts to the west of the sacrificial enclosure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-4"            >
+            The well-off householders of town and country set up gifts to the north of the sacrificial enclosure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-5"            >
+            And brahmin, in that sacrifice too no cattle were killed, no goats were killed, and no chickens or pigs were killed. There was no slaughter of various kinds of creatures. No trees were felled for the sacrificial post. No grass was reaped to strew over the place of sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-6"            >
+            No bondservants, servants, or workers did their jobs under threat of punishment and danger, weeping with tearful faces.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-7"            >
+            Those who wished to work did so, while those who did not wish to did not.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-8"            >
+            They did the work they wanted to, and did not do what they didn’t want to.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-9"            >
+            The sacrifice was completed with just ghee, oil, butter, curds, honey, and molasses.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-10"            >
+            And so there were four consenting factions, eight factors possessed by King Mahāvijita, four factors possessed by the high priest,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-11"            >
+            and three modes.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-20-12"            >
+            Brahmin, this is called the sacrifice accomplished with three modes and sixteen accessories.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-1"            >
+            When he said this, those brahmins made an uproar,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-38">[38]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-2"            >
+            “Hooray for such sacrifice! Hooray for the accomplishment of such sacrifice!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-3"            >
+            But the brahmin Kūṭadanta sat in silence.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-39">[39]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-4"            >
+            So those brahmins said to him,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-5"            >
+            “How can you not applaud the ascetic Gotama’s fine words?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-6"            >
+            “It’s not that I don’t applaud what he said.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-7"            >
+            If anyone didn’t applaud such fine words, their head would explode!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-8"            >
+            But, gentlemen, it occurs to me that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-9"            >
+            the ascetic Gotama does not say:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-10"            >
+            ‘So I have heard’ or ‘It ought to be like this.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-40">[40]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-11"            >
+            Rather, he just says:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-12"            >
+            ‘So it was then, this is how it was then.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-13"            >
+            It occurs to me that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-14"            >
+            the ascetic Gotama at that time must have been King Mahāvijita, the owner of the sacrifice, or else the brahmin high priest who facilitated the sacrifice for him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-15"            >
+            Does the worthy Gotama recall having performed such a sacrifice, or having facilitated it, and then, when his body broke up, after death, being reborn in a good place, a heavenly realm?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-21-16"            >
+            “I do recall that, brahmin. For I myself was the brahmin high priest at that time who facilitated the sacrifice.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-41">[41]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-22-0"            >
+            5. A Regular Gift as an Propitious Sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-22-1"            >
+            “But Mister Gotama, apart from that sacrifice accomplished with three modes and sixteen accessories, is there any other sacrifice that has fewer obligations and undertakings, yet is more fruitful and beneficial?”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-42">[42]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-22-2"            >
+            “There is, brahmin.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-22-3"            >
+            “But what is it?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-22-4"            >
+            “The regular gifts as propitious sacrifice given specially to ethical renunciates;            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-43">[43]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-22-5"            >
+            this sacrifice, brahmin, has fewer obligations and undertakings, yet is more fruitful and beneficial.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-1"            >
+            “What is the cause, Mister Gotama, what is the reason why those regular gifts as propitious sacrifice have fewer obligations and undertakings, yet are more fruitful and beneficial, compared with the sacrifice accomplished with three modes and sixteen accessories?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-2"            >
+            “Because neither perfected ones nor those who are on the path to perfection will attend such a sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-3"            >
+            Why is that?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-4"            >
+            Because beatings and throttlings are seen there.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-44">[44]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-5"            >
+            But the regular gifts as propitious sacrifice given specially to ethical renunciates;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-6"            >
+            perfected ones and those who are on the path to perfection will attend such a sacrifice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-7"            >
+            Why is that?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-8"            >
+            Because no beatings and throttlings are seen there.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-23-9"            >
+            This is the cause, brahmin, this is the reason why those regular gifts as propitious sacrifice have fewer obligations and undertakings, yet are more fruitful and beneficial, compared with the sacrifice accomplished with three modes and sixteen accessories.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-24-1"            >
+            “But Mister Gotama, apart from that sacrifice accomplished with three modes and sixteen accessories and those regular gifts as propitious sacrifice, is there any other sacrifice that has fewer obligations and undertakings, yet is more fruitful and beneficial?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-24-2"            >
+            “There is, brahmin.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-24-3"            >
+            “But what is it?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-24-4"            >
+            “When someone gives a dwelling specially for the Saṅgha of the four quarters.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-45">[45]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-25-1"            >
+            “But is there any other sacrifice that has fewer obligations and undertakings, yet is more fruitful and beneficial?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-25-4"            >
+            “When someone with confident heart goes for refuge to the Buddha, the teaching, and the Saṅgha.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-26-1"            >
+            “But is there any other sacrifice that has fewer obligations and undertakings, yet is more fruitful and beneficial?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-26-4"            >
+            “When someone with a confident heart undertakes the training rules            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-26-5"            >
+            to refrain from killing living creatures, stealing, sexual misconduct, lying, and intoxicants of beer, wine, and liquor.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-46">[46]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-1"            >
+            “But is there any other sacrifice that has fewer obligations and undertakings, yet is more fruitful and beneficial?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-2"            >
+            “There is, brahmin.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-4"            >
+            It’s when a Realized One arises in the world, perfected, a fully awakened Buddha …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-5"            >
+            That’s how a mendicant is accomplished in ethics. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-6"            >
+            They enter and remain in the first absorption …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-7"            >
+            This sacrifice has fewer obligations and undertakings than the former, yet is more fruitful and beneficial. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-8"            >
+            They enter and remain in the second absorption …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-9"            >
+            third absorption …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-10"            >
+            fourth absorption.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-11"            >
+            This sacrifice has fewer obligations and undertakings than the former, yet is more fruitful and beneficial. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-12"            >
+            They project and extend the mind toward knowledge and vision …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-13"            >
+            This sacrifice has fewer obligations and undertakings than the former, yet is more fruitful and beneficial.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-14"            >
+            They understand: ‘… there is nothing further for this place.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-15"            >
+            This sacrifice has fewer obligations and undertakings than the former, yet is more fruitful and beneficial.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-27-16"            >
+            And, brahmin, there is no other accomplishment of sacrifice which is better and finer than this.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-47">[47]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-0"            >
+            6. Kūṭadanta Declares Himself a Lay Follower            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-1"            >
+            When he had spoken, Kūṭadanta said to the Buddha,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-2"            >
+            “Excellent, worthy Gotama! Excellent!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-3"            >
+            As if he were righting the overturned, or revealing the hidden, or pointing out the path to the lost, or lighting a lamp in the dark so people with clear eyes can see what’s there, worthy Gotama has made the Teaching clear in many ways.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-4"            >
+            I go for refuge to the worthy Gotama, to the teaching, and to the mendicant Saṅgha.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-5"            >
+            From this day forth, may the worthy Gotama remember me as a lay follower who has gone for refuge for life.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-28-6"            >
+            And these bulls, bullocks, heifers, goats, and rams—seven hundred of each—I release them, I grant them life! Let them eat green grass and drink cool water, and may a cool breeze blow upon them!”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-48">[48]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-0"            >
+            7. The Realization of the Fruit of Stream-Entry            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-1"            >
+            Then the Buddha taught Kūṭadanta step by step, with            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-2"            >
+            a talk on giving, ethical conduct, and heaven. He explained the drawbacks of sensual pleasures, so sordid and corrupt, and the benefit of renunciation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-3"            >
+            And when he knew that Kūṭadanta’s mind was ready, pliable, rid of hindrances, elated, and confident he explained the special teaching of the Buddhas:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-4"            >
+            suffering, its origin, its cessation, and the path.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-5"            >
+            Just as a clean cloth rid of stains would properly absorb dye,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-6"            >
+            in that very seat the stainless, immaculate vision of the Dhamma arose in the brahmin Kūṭadanta:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-29-7"            >
+            “Everything that is liable to arise is liable to cease.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-1"            >
+            Then Kūṭadanta saw, attained, understood, and fathomed the Dhamma. He went beyond doubt, got rid of indecision, and became self-assured and independent of others regarding the Teacher’s instructions. He said to the Buddha,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-2"            >
+            “Would the worthy Gotama together with the mendicant Saṅgha please accept tomorrow’s meal from me?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-3"            >
+            The Buddha consented with silence.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-4"            >
+            Then, knowing that the Buddha had consented, Kūṭadanta rose from his seat, bowed, and respectfully circled the Buddha, keeping him on his right, before leaving.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-5"            >
+            And when the night had passed Kūṭadanta had delicious fresh and cooked foods prepared in his own sacrificial enclosure. Then he had the Buddha informed of the time, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-6"            >
+            “It’s time, worthy Gotama, the meal is ready.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-7"            >
+            Then the Buddha robed up in the morning and, taking his bowl and robe, went to the sacrificial enclosure of Kūṭadanta together with the mendicant Saṅgha, where he sat on the seat spread out.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-8"            >
+            Then Kūṭadanta served and satisfied the mendicant Saṅgha headed by the Buddha with his own hands with delicious fresh and cooked foods.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-9"            >
+            When the Buddha had eaten and washed his hand and bowl, Kūṭadanta took a low seat and sat to one side.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn5-30-10"            >
+            Then the Buddha educated, encouraged, fired up, and inspired him with a Dhamma talk, after which he rose from his seat and left.            </p>
+                        </div>
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/dn/dn4/en/sujato.html">
+            <span aria-hidden="true" class="text-xl">⇦</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] share-button w-[50px] hidden md:inline-flex"
+          type="button"
+          aria-label="Share"
+        >
+          <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+        </button>
+        <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px]  hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/dn/dn6/en/sujato.html">
+
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">⇨</span>
+          </a>
+              </div>
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+    class="mt-[10px] hidden w-[411px] flex-[0_0_411px] flex-col items-center gap-5 md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(420px,90%)] max-xl:flex-[0_0_auto]"
+    aria-label="Notes"
+  >
+    <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+                <div class="translation-picker relative w-full" data-translation-picker>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          title="English - Bhikkhu Sujato"
+          data-translation-picker-toggle
+        >
+          <span class="min-w-0 truncate">English - Bhikkhu Sujato</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div
+          class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-translation-picker-menu
+          hidden
+        >
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn5/ru/syrkin+edited+o.html"
+              title="Russian - A. Y. Syrkin (edited by Dhamma.Gift)"
+                          >Russian - A. Y. Syrkin (edited by Dhamma.Gift)</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn5/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+                          >Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn5/en/sujato.html"
+              title="English - Bhikkhu Sujato"
+              disabled            >English - Bhikkhu Sujato</button>
+                  </div>
+      </div>
+              <div class="w-full text-base leading-[1.5]">
+                            <div
+            id="sutta-note-1"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-1-1"
+            >[1]</a>
+                                                        <span>When asked about sacrifice, the Buddha tells a story of how a king was persuaded to forgo cruelty and institute a constructive social policy of welfare instead.</span>
+                                    </div>
+                            <div
+            id="sutta-note-2"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-1-2"
+            >[2]</a>
+                                                        <span>Khāṇumata is only mentioned here. It means “stumpy”, perhaps indicating that it was, or had recently been, a rough out-of-the-way place.</span>
+                                    </div>
+                            <div
+            id="sutta-note-3"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-1-3"
+            >[3]</a>
+                                                        <span>The commentary says this was similar to the Ambalaṭṭhikā of <a href="https://suttacentral.net/dn1/en/sujato#1.2.1" target="_blank" rel="noopener noreferrer">DN 1:1.2.1</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-4"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-1-4"
+            >[4]</a>
+                                                        <span>Like the town Khāṇumata, the brahmin Kūṭadanta appears only here. His name means “pointy teeth”, but there is no evidence that he was a vampire.</span>
+                                    </div>
+                            <div
+            id="sutta-note-5"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-1-6"
+            >[5]</a>
+                                                        <span>At <a href="https://suttacentral.net/snp2.7/en/sujato#26.1" target="_blank" rel="noopener noreferrer">Snp 2.7:26.1</a>, the sacrifice of cows in particular was said to be the nadir of decline for brahmins. When similar sacrifices are described elsewhere in the canon, the number is five hundred rather than seven hundred (<a href="https://suttacentral.net/sn3.9/en/sujato#1.2" target="_blank" rel="noopener noreferrer">SN 3.9:1.2</a>, <a href="https://suttacentral.net/an7.47/en/sujato#1.2" target="_blank" rel="noopener noreferrer">AN 7.47:1.2</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-6"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-4-3"
+            >[6]</a>
+                                                        <span>News of the Buddha had spread in Brahmanical circles. In <a href="https://suttacentral.net/dn3/en/sujato" target="_blank" rel="noopener noreferrer">DN 3</a> we saw the Buddha use his rhetorical technique of adapting his teaching to reframe Brahmanical doctrines in order to establish a common ground. Here we see the downside to such techniques, as the details of the reframing have been lost.</span>
+                                    </div>
+                            <div
+            id="sutta-note-7"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-4-6"
+            >[7]</a>
+                                                        <span>No such sacrifice has been identified in Brahmanical texts.</span>
+                                    </div>
+                            <div
+            id="sutta-note-8"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-9-7"
+            >[8]</a>
+                                                        <span>Kūṭadanta’s proposal that the Buddha advise him on the sacrifice of 700 animals is outrageous. Nonetheless, the Buddha responds politely since Kūṭadanta is being polite. While it is tempting to see the sacrifice of animals by supposedly virtuous priests as sheer hypocrisy, the fact of sacrifice remains one of the most widespread and mysterious of human religious practices. In an empathetic work that addresses this squarely, Roberto Calasso’s <em>Ardor</em> sees the vast complex of Vedic ritual and theory as making plain the fact of killing so that the guilt may be contained, in contrast with our modern culture of killing on an industrial scale while hiding it out of sight.</span>
+                                    </div>
+                            <div
+            id="sutta-note-9"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-10-1"
+            >[9]</a>
+                                                        <span>Mahāvijita means “Great Dominion”. He seems to be only known from this story. The idiom <i>bhūtapubbaṁ</i> (literally “so it was in the past”) introduces legendary narratives of usually dubious historicity, like the English idiom “once upon a time”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-10"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-10-2"
+            >[10]</a>
+                                                        <span>In the Pali, meaningful thoughts often occur to people when withdrawn in seclusion. This doesn’t necessary mean they were in formal meditation.</span>
+                                    </div>
+                            <div
+            id="sutta-note-11"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-10-3"
+            >[11]</a>
+                                                        <span>The great sacrifices, especially the horse sacrifice, ensured royal authority. Their very scale and wastefulness showed off the wealth of the king.</span>
+                                    </div>
+                            <div
+            id="sutta-note-12"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-10-4"
+            >[12]</a>
+                                                        <span>“High priest” is <i>purohita</i>. He was a family chaplain advising and consecrating the royal family. The closeness of the relationship is shown by the fact that the royal family would take the lineage name of the <i>purohita</i>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-13"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-2"
+            >[13]</a>
+                                                        <span>Then, as today, government policy was driven by the perception of rising crime rate. This whole passage is one of the Buddha’s most important statements on public policy. It is expressed through storytelling, giving a good example of how myths were invoked—and subverted—as rationales for current policy.</span>
+                                    </div>
+                            <div
+            id="sutta-note-14"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-3"
+            >[14]</a>
+                                                        <span>“Taxes” is <i>bali</i>. He would have had to press his people for the extra funds to hold the sacrifice.</span>
+                                    </div>
+                            <div
+            id="sutta-note-15"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-5"
+            >[15]</a>
+                                                        <span>“Plague of savages” (<i>dassukhīla</i>) is the only occurrence of Sanskrit <i>dasyu</i> in early Pali. The <i>dasyu</i> were inveterate foes of the Aryans in the Vedic period. Bereft of civilizing rites, scriptures, and observances, they were no children of Manu (Rig Veda 10.22.8). Their wiles (<i>māyā</i>) made them a potent threat (Rig Veda 4.16.9, 8.14.14, 10.73.5). Indra was invoked to ensure their destruction (Rig Veda <em>passim</em>; Atharva Veda 2.14.5, 4.32.3, 20.21.4, 20.37.5, 20.42.2). Legend has it that Agni and Soma first supported the <i>dasyu</i> before being won over by Indra (Śatapatha Brāhmaṇa 1.6.3.13; see also 6.4.2.4). By the time of the Buddha the <i>dasyu</i> have vanished except as a legendary foe of the past. Where the Brahmanical texts advocate the pitiless destruction of the <i>dasyu</i>, the brahmin high priest in the Buddhist text advocates an inclusive policy of social welfare.</span>
+                                    </div>
+                            <div
+            id="sutta-note-16"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-6"
+            >[16]</a>
+                                                        <span>The priest knows that the king will respond better to a pragmatic argument than a moral one.</span>
+                                    </div>
+                            <div
+            id="sutta-note-17"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-7"
+            >[17]</a>
+                                                        <span>Effective social policy requires a forward-thinking plan, not just reacting to grievances.</span>
+                                    </div>
+                            <div
+            id="sutta-note-18"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-8"
+            >[18]</a>
+                                                        <span>The king should spend his own resources to support his citizens in the various occupations.</span>
+                                    </div>
+                            <div
+            id="sutta-note-19"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-11"
+            >[19]</a>
+                                                        <span>Here the priest identifies a fundamental cause of social unrest and disorder.</span>
+                                    </div>
+                            <div
+            id="sutta-note-20"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-12"
+            >[20]</a>
+                                                        <span>The king spends out of pocket, but the economy flourishes, so tax revenues increase even though he has not raised taxes. This is the essence of Keynesian economic theory.</span>
+                                    </div>
+                            <div
+            id="sutta-note-21"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-13"
+            >[21]</a>
+                                                        <span><i>Khema</i> means a place of safety and sanctuary, where both humans and animals have no fear.</span>
+                                    </div>
+                            <div
+            id="sutta-note-22"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-11-14"
+            >[22]</a>
+                                                        <span>A good leader listens to advice.</span>
+                                    </div>
+                            <div
+            id="sutta-note-23"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-12-1"
+            >[23]</a>
+                                                        <span>Here the phrase “of both town and country” qualifies each group. At <a href="https://suttacentral.net/an4.70/en/sujato#1.3" target="_blank" rel="noopener noreferrer">AN 4.70:1.3</a>, however, “brahmins and householders” and “people of town and country” are separate groups of people. Elsewhere the context does not always decide between these two possibilities. Generally the idiom aims at inclusivity, as opposed to here where the king is consulting the rich and powerful, so I treat them as two separate groups, thus including the common folk.</span>
+                                    </div>
+                            <div
+            id="sutta-note-24"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-12-9"
+            >[24]</a>
+                                                        <span>“Consenting factions” is <i>anumatipakkhā</i>. The king governs with the consent of his people, although only the landowning classes are considered.</span>
+                                    </div>
+                            <div
+            id="sutta-note-25"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-13-1"
+            >[25]</a>
+                                                        <span>Royal authority is not based just on birth, conquest, ritual, or power, but on quality of character.</span>
+                                    </div>
+                            <div
+            id="sutta-note-26"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-13-5"
+            >[26]</a>
+                                                        <span>Read <i>sahati</i> (“prevails”) over the several variants.</span>
+                                    </div>
+                            <div
+            id="sutta-note-27"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-13-7"
+            >[27]</a>
+                                                        <span>Showing the importance of comprehension over blind adherence to tradition.</span>
+                                    </div>
+                            <div
+            id="sutta-note-28"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-13-9"
+            >[28]</a>
+                                                        <span>Meditators focus on the present, but that does not mean they cannot think about the past or future; it just means they are not trapped in useless thoughts.</span>
+                                    </div>
+                            <div
+            id="sutta-note-29"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-14-1"
+            >[29]</a>
+                                                        <span>These are four of the five qualities that Soṇadaṇḍa identifies as the qualities of a brahmin at <a href="https://suttacentral.net/dn4/en/sujato#13.2" target="_blank" rel="noopener noreferrer">DN 4:13.2</a>. Missing is appearance, which is the first factor that Soṇadaṇḍa admits is unnecessary.</span>
+                                    </div>
+                            <div
+            id="sutta-note-30"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-15-3"
+            >[30]</a>
+                                                        <span>Compare the three factors of a donor’s mind-state at <a href="https://suttacentral.net/an6.37/en/sujato#2.4" target="_blank" rel="noopener noreferrer">AN 6.37:2.4</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-31"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-16-1"
+            >[31]</a>
+                                                        <span>What a recipient does with a gift is beyond the donor’s control.</span>
+                                    </div>
+                            <div
+            id="sutta-note-32"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-16-4"
+            >[32]</a>
+                                                        <span>PTS edition acknowledges <i>sajjata</i> only as a variant reading, but it is in the commentary, so should be accepted in the text. It is from √<i>sajj</i> (relinquish).</span>
+                                    </div>
+                            <div
+            id="sutta-note-33"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-17-3"
+            >[33]</a>
+                                                        <span>Another lesson in leadership: the importance of communication.</span>
+                                    </div>
+                            <div
+            id="sutta-note-34"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-17-11"
+            >[34]</a>
+                                                        <span>Due to abbreviation, the text only mentions householders here, but clearly all are intended.</span>
+                                    </div>
+                            <div
+            id="sutta-note-35"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-18-3"
+            >[35]</a>
+                                                        <span>A leader gets results through inspiration, not fear.</span>
+                                    </div>
+                            <div
+            id="sutta-note-36"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-18-5"
+            >[36]</a>
+                                                        <span>These were regarded as valuable yet harmless products.</span>
+                                    </div>
+                            <div
+            id="sutta-note-37"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-19-2"
+            >[37]</a>
+                                                        <span>The king’s generosity and sincerity brings out the best in the others.</span>
+                                    </div>
+                            <div
+            id="sutta-note-38"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-21-1"
+            >[38]</a>
+                                                        <span>Here ends the Buddha’s legendary account of the past.</span>
+                                    </div>
+                            <div
+            id="sutta-note-39"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-21-3"
+            >[39]</a>
+                                                        <span>The other brahmins are satisfied, but Kūṭadanta senses there is more to it.</span>
+                                    </div>
+                            <div
+            id="sutta-note-40"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-21-10"
+            >[40]</a>
+                                                        <span>“So I have heard” (<i>evaṁ me sutaṁ</i>) is the standard opening for Buddhist suttas. This tag was used to indicate that the speaker was not present at the events, but “heard” about them. This is in contrast with the phrase “I heard and learned this in the presence” (<i>sammukhā sutaṁ, sammukhā paṭiggahitaṁ</i>), which is used when reporting a teaching heard directly from the Buddha, eg. <a href="https://suttacentral.net/sn55.52/en/sujato#5.1" target="_blank" rel="noopener noreferrer">SN 55.52:5.1</a>, <a href="https://suttacentral.net/sn22.90/en/sujato#9.1" target="_blank" rel="noopener noreferrer">SN 22.90:9.1</a>, <a href="https://suttacentral.net/mn47/en/sujato#10.7" target="_blank" rel="noopener noreferrer">MN 47:10.7</a>, etc.</span>
+                                    </div>
+                            <div
+            id="sutta-note-41"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-21-16"
+            >[41]</a>
+                                                        <span>This qualifies the story of Mahāvijita as an early canonical Jātaka. There are a small number of such stories in the early suttas, only some of which overlap with the later Jātaka collections, the story of Mahāvijita not being among them.</span>
+                                    </div>
+                            <div
+            id="sutta-note-42"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-22-1"
+            >[42]</a>
+                                                        <span>Kūṭadanta is hoping for a better return on his investment. Throughout the suttas, we find a strain of what might be called “spiritual economics”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-43"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-22-4"
+            >[43]</a>
+                                                        <span>The <i>anukula</i> (“propitious”) sacrifice is mentioned several times (eg. <a href="https://suttacentral.net/dn5/en/sujato#22.4" target="_blank" rel="noopener noreferrer">DN 5:22.4</a>, <a href="https://suttacentral.net/an4.40/en/sujato#2.2" target="_blank" rel="noopener noreferrer">AN 4.40:2.2</a>). The Pali commentaries interpret it as “in line with (<i>anu-</i>) family (<i>kula</i>)”. But nothing in the contexts connects it with family customs, nor is such a term known in Sanskrit. It seems rather to be a misunderstanding of Sanskrit <i>anukūla</i>, literally “along the riverbank”, and in applied use, “in conformity with”, “favorable to”, as in the favor of the gods. This is the standard reading in Buddhist Sanskrit. Such a sacrifice is characterized, not by family custom, but by harmlessness. Thus <i>anukula</i> means “propitious, favored (by the gods and the Dhamma)”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-44"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-23-4"
+            >[44]</a>
+                                                        <span>This contradicts the description given above.</span>
+                                    </div>
+                            <div
+            id="sutta-note-45"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-24-4"
+            >[45]</a>
+                                                        <span>This means that the dwelling could be used by any Saṅgha member, as opposed to being given to a particular monastic or group. The gift of a dwelling is regarded as the best kind of offering to the Saṅgha.</span>
+                                    </div>
+                            <div
+            id="sutta-note-46"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-26-5"
+            >[46]</a>
+                                                        <span>Thus far the Buddha has described the regular practice of a Buddhist lay person.</span>
+                                    </div>
+                            <div
+            id="sutta-note-47"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-27-16"
+            >[47]</a>
+                                                        <span>The entire path may be described as a “sacrifice”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-48"
+            class="scroll-mt-24  py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn5-28-6"
+            >[48]</a>
+                                                        <span>Releasing animals remains a Buddhist practice today.</span>
+                                    </div>
+              </div>
+      </aside>
+</section>
+
+<div class="sutta-ref-popup" id="suttaRefPopup" aria-hidden="true">
+  <div class="sutta-ref-popup__backdrop" data-sutta-ref-close></div>
+  <div class="sutta-ref-popup__panel" role="dialog" aria-modal="true" aria-label="Notes">
+    <button class="sutta-ref-popup__close" type="button" data-sutta-ref-close aria-label="Close dialog">×</button>
+    <p class="sutta-ref-popup__index" data-sutta-ref-index></p>
+    <div class="sutta-ref-popup__content" data-sutta-ref-content></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    document.addEventListener("click", (event) => {
+      if (root.contains(event.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+
+  const translationPicker = document.querySelector("[data-translation-picker]");
+  const translationPickerToggle = translationPicker?.querySelector("[data-translation-picker-toggle]");
+  const translationPickerMenu = translationPicker?.querySelector("[data-translation-picker-menu]");
+  const translationPickerOptions = translationPicker?.querySelectorAll("[data-translation-picker-option]");
+
+  const setTranslationPickerOpen = (isOpen) => {
+    if (!translationPickerToggle || !translationPickerMenu) return;
+    translationPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    translationPickerMenu.hidden = !isOpen;
+    translationPicker.classList.toggle("is-open", isOpen);
+  };
+
+  translationPickerToggle?.addEventListener("click", () => {
+    const isOpen = translationPickerToggle.getAttribute("aria-expanded") === "true";
+    setTranslationPickerOpen(!isOpen);
+  });
+
+  translationPickerOptions?.forEach((option) => {
+    option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (translationPicker && !translationPicker.contains(event.target)) {
+      setTranslationPickerOpen(false);
+    }
+  });
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+      <script type="module" src="/assets/sutta-ref-popup.js?_=1781705533"></script>
+  
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

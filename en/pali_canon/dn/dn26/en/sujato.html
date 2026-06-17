@@ -1,0 +1,2947 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dn/dn26 — The Wheel-Turning Monarch — Bhikkhu Sujato — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          data-mobile-translation-toggle
+        >
+          <span
+            class="block w-full truncate"
+            title="English - Bhikkhu Sujato"
+            data-mobile-translation-current
+          >English - Bhikkhu Sujato</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div
+          class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-mobile-translation-menu
+          hidden
+        >
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/dn/dn26/ru/syrkin+edited+o.html"
+              title="Russian - A. Y. Syrkin (edited by Dhamma.Gift)"
+            >
+              <span class="block w-full truncate">
+                Russian - A. Y. Syrkin (edited by Dhamma.Gift)              </span>
+            </a>
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/dn/dn26/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+            >
+              <span class="block w-full truncate">
+                Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500              </span>
+            </a>
+                              </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <div class="flex items-start gap-3">
+                  <button
+            class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] md:hidden"
+            type="button"
+            aria-label="Main navigation"
+            data-mobile-trail-toggle
+          >
+            <svg class="h-5 w-5 pointer-events-none" viewBox="0 0 26 26" aria-hidden="true">
+              <use href="/assets/mobile-breadcrumbs-icon.svg?_=1781705533#icon"></use>
+            </svg>
+          </button>
+                <div class="min-w-0 flex-1">
+          <h1 class="sutta-title m-0 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+            The Wheel-Turning Monarch          </h1>
+                      <div
+              class="mt-1 truncate text-[12px] leading-[1.35] text-ink-muted md:text-[13px]"
+              title="Translator: Bhikkhu Sujato"
+            >
+              Translator: Bhikkhu Sujato            </div>
+                  </div>
+      </div>
+
+              <div class="flex gap-1 items-center">
+                      <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              dn            </div>
+                                <span class="hidden text-sm text-accent dark:text-[#c784ff] md:block" aria-hidden="true">·</span>
+                                <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              Long Discourses 26 · The Wheel-Turning Monarch            </div>
+                  </div>
+      
+              <div
+          class="relative my-3 rounded-[10px] border border-line bg-surface p-4 [&:not([hidden])]:block md:[&:not([hidden])]:hidden dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)]"
+          data-mobile-trail-panel
+          hidden
+        >
+          <button
+            class="absolute right-2 top-2 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-ink"
+            type="button"
+            aria-label="Close dialog"
+            data-mobile-trail-close
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="flex flex-col gap-2 pr-8">
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                dn              </div>
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                Long Discourses 26              </div>
+                          <div class="text-sm leading-[1.4] font-semibold text-ink">
+                The Wheel-Turning Monarch              </div>
+                      </div>
+        </div>
+            <div class="my-4 border-t border-line"></div>
+      <div class="sutta-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                                          <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-0"            >
+            1. Taking Refuge in Oneself            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-1"            >
+            So I have heard.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-2"            >
+            At one time the Buddha was staying in the land of the Magadhans at Mātulā.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-1">[1]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-3"            >
+            There the Buddha addressed the mendicants,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-4"            >
+            “Mendicants!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-5"            >
+            “Venerable sir,” they replied.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-6"            >
+            The Buddha said this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-7"            >
+            “Mendicants, live as your own island, your own refuge, with no other refuge. Let the teaching be your island and your refuge, with no other refuge.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-2">[2]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-8"            >
+            And how does a mendicant do this?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-9"            >
+            They meditate observing an aspect of the body—keen, aware, and mindful, rid of covetousness and displeasure for the world.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-10"            >
+            They meditate observing an aspect of feelings …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-11"            >
+            mind …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-12"            >
+            principles—keen, aware, and mindful, rid of covetousness and displeasure for the world.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-13"            >
+            That’s how a mendicant lives as their own island, their own refuge, with no other refuge. That’s how they let the teaching be their island and their refuge, with no other refuge.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-14"            >
+            You should roam inside your own territory, the domain of your fathers.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-3">[3]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-15"            >
+            If you roam inside your own territory, the domain of your fathers, Māra won’t find a vulnerability or get an opportunity.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-1-16"            >
+            It is due to undertaking skillful qualities that merit grows.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-4">[4]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-2-0"            >
+            2. King Daḷhanemi            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-2-1"            >
+            Once upon a time, mendicants, there was a king named Daḷhanemi who was a wheel-turning monarch, a just and principled king. His dominion extended to all four sides, he achieved stability in the country, and he possessed the seven treasures.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-5">[5]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-2-2"            >
+            He had the following seven treasures:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-2-3"            >
+            the wheel, the elephant, the horse, the jewel, the woman, the householder, and the commander as the seventh treasure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-2-4"            >
+            He had over a thousand sons who were valiant and heroic, crushing the armies of his enemies.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-2-5"            >
+            After conquering this land girt by sea, he reigned by principle, without rod or sword.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-1"            >
+            Then, after many years, many hundred years, many thousand years had passed, King Daḷhanemi addressed one of his men,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-2"            >
+            ‘My man, when you see that the heavenly wheel-treasure has receded back from its place, please tell me.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-6">[6]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-3"            >
+            ‘Yes, Your Majesty,’ replied that man.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-4"            >
+            After many thousand years had passed, that man saw that the heavenly wheel-treasure had receded back from its place. So he went to King Daḷhanemi and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-5"            >
+            ‘Please sire, you should know that your heavenly wheel-treasure has receded back from its place.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-6"            >
+            So the king summoned the crown prince and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-7"            >
+            ‘Dear prince, my heavenly wheel-treasure has receded back from its place.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-8"            >
+            I’ve heard that            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-9"            >
+            when this happens to a wheel-turning monarch, he does not have long to live.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-10"            >
+            I have enjoyed human pleasures. Now it is time for me to seek heavenly pleasures.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-7">[7]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-11"            >
+            Come, dear prince, rule this land surrounded by ocean!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-12"            >
+            I shall shave off my hair and beard, dress in ocher robes, and go forth from the lay life to homelessness.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-13"            >
+            And so, after carefully instructing the crown prince in kingship, King Daḷhanemi shaved off his hair and beard, dressed in ocher robes, and went forth from the lay life to homelessness.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-8">[8]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-3-14"            >
+            Seven days later the heavenly wheel-treasure vanished.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-1"            >
+            Then a certain man approached the newly anointed aristocrat king and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-2"            >
+            ‘Please sire, you should know that the heavenly wheel-treasure has vanished.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-3"            >
+            At that the king was unhappy and experienced unhappiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-4"            >
+            He went to the royal seer and said,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-9">[9]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-5"            >
+            ‘Please sire, you should know that the heavenly wheel-treasure has vanished.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-6"            >
+            When he said this, the royal seer said to him,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-7"            >
+            ‘Don’t be unhappy at the vanishing of the wheel-treasure. My dear, the wheel-treasure is not inherited from your father.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-10">[10]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-8"            >
+            Come now, my dear, proceed in the noble duty of a wheel-turning monarch.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-11">[11]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-4-9"            >
+            If you do so, it’s possible that—on a fifteenth day sabbath, having bathed your head and gone upstairs in the royal longhouse to observe the sabbath—the heavenly wheel-treasure will appear to you, with a thousand spokes, with rim and hub, complete in every detail.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-0"            >
+            2.1. The Noble Duty of a Wheel-Turning Monarch            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-1"            >
+            ‘But sire, what is the noble duty of a wheel-turning monarch?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-2"            >
+            ‘Well then, my dear, relying only on principle—honoring, respecting, and venerating principle, having principle as your flag, banner, and authority—provide just protection and security for your court, troops, aristocrats, vassals, brahmins and householders, people of town and country, ascetics and brahmins, beasts and birds.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-12">[12]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-3"            >
+            Do not let injustice prevail in the realm.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-13">[13]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-4"            >
+            Provide money to the penniless in the realm.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-14">[14]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-5"            >
+            And there are ascetics and brahmins in the realm who refrain from intoxication and negligence, are settled in patience and gentleness, and who tame, calm, and extinguish themselves. From time to time you should go up to them and ask and learn:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-15">[15]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-6"            >
+            “Sirs, what is skillful? What is unskillful? What is blameworthy? What is blameless? What should be cultivated? What should not be cultivated? Doing what leads to my lasting harm and suffering? Doing what leads to my lasting welfare and happiness?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-7"            >
+            Having heard them, you should shun what is unskillful and undertake and follow what is skillful.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-8"            >
+            This is the noble duty of a wheel-turning monarch.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-9-0"            >
+            2.2. The Wheel-Treasure Appears            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-10"            >
+            ‘Yes, Your Majesty,’ replied the new king to the royal seer. And he proceeded in the noble duty of a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-11"            >
+            While he was proceeding in that duty, on a fifteenth day sabbath, he had bathed his head and gone upstairs in the royal longhouse to observe the sabbath.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-12"            >
+            And the heavenly wheel-treasure appeared to him, with a thousand spokes, with rim and hub, complete in every detail.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-13"            >
+            Seeing this, the king thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-14"            >
+            ‘I have heard that when the heavenly wheel-treasure appears to a king in this way, he becomes a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-5-15"            >
+            Am I then a wheel-turning monarch?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-1"            >
+            Then the anointed king, rising from his seat and arranging his robe over one shoulder, took a ceremonial vase in his left hand and besprinkled the wheel-treasure with his right hand, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-2"            >
+            ‘Roll forth, O wheel-treasure! Triumph, O wheel-treasure!’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-3"            >
+            Then the wheel-treasure rolled towards the east. And the king followed it together with his army of four divisions. In whatever place the wheel-treasure stood still, there the king came to stay together with his army.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-4"            >
+            And any opposing rulers of the eastern quarter came to the wheel-turning monarch and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-5"            >
+            ‘Come, great king! Welcome, great king! We are yours, great king, instruct us.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-6"            >
+            The wheel-turning monarch said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-7"            >
+            ‘Do not kill living creatures. Do not steal. Do not commit sexual misconduct. Do not lie. Do not drink liquor. Maintain the current level of taxation.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-6-8"            >
+            And so the opposing rulers of the eastern quarter became his vassals.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-1"            >
+            Then the wheel-treasure, having plunged into the eastern ocean and emerged again, rolled towards the south. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-2"            >
+            Having plunged into the southern ocean and emerged again, it rolled towards the west. …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-9"            >
+            Having plunged into the western ocean and emerged again, it rolled towards the north, followed by the king together with his army of four divisions.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-10"            >
+            In whatever place the wheel-treasure stood still, there the king came to stay together with his army.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-11"            >
+            And any opposing rulers of the northern quarter came to the wheel-turning monarch and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-12"            >
+            ‘Come, great king! Welcome, great king! We are yours, great king, instruct us.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-13"            >
+            The wheel-turning monarch said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-14"            >
+            ‘Do not kill living creatures. Do not steal. Do not commit sexual misconduct. Do not lie. Do not drink liquor. Maintain the current level of taxation.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-15"            >
+            And so the rulers of the northern quarter became his vassals.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-7-16"            >
+            And then the wheel-treasure, having triumphed over this land surrounded by ocean, returned to the royal capital. There it stood still by the gate to the royal compound at the High Court as if fixed to an axle, illuminating the royal compound.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-0"            >
+            3. On Subsequent Wheel-Turning Monarchs            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-1"            >
+            And for a second time,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-2"            >
+            and a third,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-3"            >
+            a fourth,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-4"            >
+            a fifth,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-5"            >
+            a sixth,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-6"            >
+            and a seventh time, a wheel-turning monarch was established in exactly the same way. And after many years the seventh wheel-turning monarch went forth, handing the realm over to the crown prince.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-8-18"            >
+            Seven days later the heavenly wheel-treasure vanished.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-1"            >
+            Then a certain man approached the newly anointed aristocrat king and said,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-2"            >
+            ‘Please sire, you should know that the heavenly wheel-treasure has vanished.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-3"            >
+            At that the king was unhappy and experienced unhappiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-4"            >
+            But he didn’t go to the royal seer and ask about the noble duty of a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-5"            >
+            He just governed the country according to his own ideas.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-16">[16]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-6"            >
+            So governed, the country’s people did not prosper like before, as they had when former kings proceeded in the noble duty of a wheel-turning monarch.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-17">[17]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-7"            >
+            Then the ministers and councillors, the finance ministers, military officers, guardsmen, and professional advisers gathered and said to the king,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-18">[18]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-8"            >
+            ‘Sire, when governed according to your own ideas, the country’s people do not prosper like before, as they did when former kings proceeded in the noble duty of a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-9"            >
+            In your realm are found ministers and councillors, finance ministers, military officers, guardsmen, and professional advisers—both ourselves and others—who remember the noble duty of a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-10"            >
+            Please, Your Majesty, ask us about the noble duty of a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-9-11"            >
+            We will answer you.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-0"            >
+            4. On the Period of Decline            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-1"            >
+            So the anointed king asked the assembled ministers and councillors, finance ministers, military officers, guardsmen, and professional advisers about the noble duty of a wheel-turning monarch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-2"            >
+            And they answered him.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-3"            >
+            After listening to them, he provided just protection and security. But he did not provide money to the penniless in the realm.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-19">[19]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-4"            >
+            And so poverty grew widespread.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-5"            >
+            When poverty was widespread, a certain person stole from others, with the intention to commit theft.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-20">[20]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-6"            >
+            They arrested him            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-7"            >
+            and presented him to the king, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-8"            >
+            ‘Your Majesty, this person stole from others with the intention to commit theft.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-9"            >
+            The king said to that person,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-10"            >
+            ‘Is it really true, my man, that you stole from others with the intention to commit theft?’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-21">[21]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-11"            >
+            ‘It’s true, sire.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-12"            >
+            ‘What was the reason?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-13"            >
+            ‘Sire, I can’t survive.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-14"            >
+            So the king provided some money to that person, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-15"            >
+            ‘With this money, my man, keep yourself alive, and provide for your mother and father, partners and children. Work for a living, and establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-22">[22]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-10-16"            >
+            ‘Yes, Your Majesty,’ replied that man.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-1"            >
+            But then another man stole something from others.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-2"            >
+            They arrested him            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-3"            >
+            and presented him to the king, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-4"            >
+            ‘Your Majesty, this person stole from others.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-5"            >
+            The king said to that person,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-6"            >
+            ‘Is it really true, my man, that you stole from others?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-7"            >
+            ‘It’s true, sire.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-8"            >
+            ‘What was the reason?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-9"            >
+            ‘Sire, I can’t survive.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-10"            >
+            So the king provided some money to that person, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-11"            >
+            ‘With this money, my man, keep yourself alive, and provide for your mother and father, partners and children. Work for a living, and establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-11-12"            >
+            ‘Yes, Your Majesty,’ replied that man.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-1"            >
+            People heard about this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-2"            >
+            ‘It seems the king is providing money to anyone who steals from others!’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-23">[23]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-3"            >
+            It occurred to them,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-4"            >
+            ‘Why don’t we steal from others?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-5"            >
+            So then another man stole something from others.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-6"            >
+            They arrested him            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-7"            >
+            and presented him to the king, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-8"            >
+            ‘Your Majesty, this person stole from others.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-9"            >
+            The king said to that person,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-10"            >
+            ‘Is it really true, my man, that you stole from others?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-11"            >
+            ‘It’s true, sire.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-12"            >
+            ‘What was the reason?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-13"            >
+            ‘Sire, I can’t survive.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-14"            >
+            Then the king thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-15"            >
+            ‘If I provide money to anyone who steals from others, it will only increase the stealing.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-16"            >
+            I’d better make an end of this person, finish him off, and chop off his head.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-24">[24]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-17"            >
+            Then he ordered his men,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-18"            >
+            ‘Well then, lads, tie this man’s arms tightly behind his back with a strong rope. Shave his head and march him from street to street and square to square to the beating of a harsh drum. Then take him out the south gate and make an end of him, finish him off, and chop off his head.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-12-19"            >
+            ‘Yes, Your Majesty,’ they replied, and did as he commanded.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-13-1"            >
+            People heard about this:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-13-2"            >
+            ‘It seems the king is chopping the head off anyone who steals from others!’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-13-3"            >
+            It occurred to them,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-13-4"            >
+            ‘We’d better have sharp swords made. Then when we steal from others, we’ll make an end of them, finish them off, and chop off their heads.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-25">[25]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-13-5"            >
+            They had sharp swords made. Then they started to make raids on villages, towns, and cities, and to infest the highways.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-13-6"            >
+            And they chopped the heads off anyone they stole from.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-1"            >
+            And so, mendicants, from not providing money to the penniless, poverty became widespread. When poverty was widespread, theft became widespread. When theft was widespread, swords became widespread. When swords were widespread, killing living creatures became widespread. And for the sentient beings among whom killing was widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-2"            >
+            Those people lived for 80,000 years, but their children lived for 40,000 years.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-26">[26]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-3"            >
+            Among the humans who lived for 40,000 years, a certain person stole something from others.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-4"            >
+            They arrested him            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-5"            >
+            and presented him to the king, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-6"            >
+            ‘Your Majesty, this person stole from others.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-7"            >
+            The king said to that person,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-8"            >
+            ‘Is it really true, my man, that you stole from others?’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-14-9"            >
+            ‘No, sire,’ he said, deliberately lying.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-15-1"            >
+            And so, mendicants, from not providing money to the penniless, poverty, theft, swords, and killing became widespread. When killing was widespread, lying became widespread. And for the sentient beings among whom lying was widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-15-2"            >
+            Those people who lived for 40,000 years had children who lived for 20,000 years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-15-3"            >
+            Among the humans who lived for 20,000 years, a certain person stole something from others.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-15-4"            >
+            Someone else reported this to the king,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-15-5"            >
+            ‘Your Majesty, such-and-such person stole from others,’ he said, going behind his back.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-16-1"            >
+            And so, mendicants, from not providing money to the penniless, poverty, theft, swords, killing, and lying became widespread. When lying was widespread, backbiting became widespread. And for the sentient beings among whom backbiting was widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-16-2"            >
+            Those people who lived for 20,000 years had children who lived for 10,000 years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-1"            >
+            Among the humans who lived for 10,000 years, some were beautiful, some were ugly.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-2"            >
+            And the ugly beings, coveting the beautiful ones, committed adultery with the wives of others.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-27">[27]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-3"            >
+            And so, mendicants, from not providing money to the penniless, poverty, theft, swords, killing, lying, and backbiting became widespread. When backbiting was widespread, sexual misconduct became widespread. And for the sentient beings among whom sexual misconduct was widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-4"            >
+            Those people who lived for 10,000 years had children who lived for 5,000 years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-5"            >
+            Among the humans who lived for 5,000 years, two things became widespread:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-6"            >
+            harsh speech and talking nonsense.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-28">[28]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-7"            >
+            For the sentient beings among whom these two things were widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-8"            >
+            Those people who lived for 5,000 years had some children who lived for 2,500 years, while others lived for 2,000 years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-9"            >
+            Among the humans who lived for 2,500 years, desire and ill will became widespread.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-10"            >
+            For the sentient beings among whom desire and ill will were widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-11"            >
+            Those people who lived for 2,500 years had children who lived for 1,000 years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-12"            >
+            Among the humans who lived for 1,000 years, wrong view became widespread.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-29">[29]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-13"            >
+            For the sentient beings among whom wrong view was widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-14"            >
+            Those people who lived for 1,000 years had children who lived for five hundred years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-15"            >
+            Among the humans who lived for five hundred years, three things became widespread:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-16"            >
+            illicit desire, immoral greed, and wrong custom.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-30">[30]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-17"            >
+            For the sentient beings among whom these three things were widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-18"            >
+            Those people who lived for five hundred years had some children who lived for two hundred and fifty years, while others lived for two hundred years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-19"            >
+            Among the humans who lived for two hundred and fifty years, these things became widespread:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-17-20"            >
+            lack of due respect for mother and father, ascetics and brahmins, and failure to honor the elders in the family.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-1"            >
+            And so, mendicants, from not providing money to the penniless, all these things became widespread—poverty,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-2"            >
+            theft,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-3"            >
+            swords,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-4"            >
+            killing,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-5"            >
+            lying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-6"            >
+            backbiting,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-7"            >
+            sexual misconduct,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-8"            >
+            harsh speech and talking nonsense,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-9"            >
+            desire and ill will,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-10"            >
+            wrong view,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-11"            >
+            illicit desire, immoral greed, and wrong custom,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-12"            >
+            and lack of due respect for mother and father, ascetics and brahmins, and failure to honor the elders in the family.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-13"            >
+            For the sentient beings among whom these things were widespread, their lifespan and beauty declined.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-18-14"            >
+            Those people who lived for two hundred and fifty years had children who lived for a hundred years.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-31">[31]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-0"            >
+            5. When People Live for Ten Years            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-1"            >
+            There will come a time, mendicants, when these people will have children who live for ten years.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-32">[32]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-2"            >
+            Among the humans who live for ten years, girls will be marriageable at five.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-33">[33]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-3"            >
+            The following flavors will disappear:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-4"            >
+            ghee, butter, oil, honey, molasses, and salt.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-5"            >
+            The best kind of food will be finger millet,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-34">[34]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-6"            >
+            just as fine rice with meat is the best kind of food today.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-35">[35]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-8"            >
+            The ten ways of doing skillful deeds will totally disappear, and the ten ways of doing unskillful deeds will explode in popularity.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-36">[36]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-9"            >
+            Those humans will not even have the word ‘skillful’, still less anyone who does what is skillful.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-37">[37]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-10"            >
+            And anyone who disrespects mother and father, ascetics and brahmins, and fails to honor the elders in the family will be venerated and praised,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-19-11"            >
+            just as the opposite is venerated and praised today.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-1"            >
+            There’ll be no recognition of the status of mother, aunts, or wives and partners of tutors and respected people.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-38">[38]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-2"            >
+            The world will become dissolute, like goats and sheep, chickens and pigs, and hounds and jackals.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-39">[39]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-3"            >
+            They’ll be full of hostility towards each other, with acute ill will, malevolence, and thoughts of murder.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-4"            >
+            Even a mother will feel like this for her child, and the child for its mother,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-5"            >
+            father for child, child for father,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-6"            >
+            brother for sister, and sister for brother.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-20-7"            >
+            They’ll be just like a deer hunter when he sees a deer—full of hostility, ill will, malevolence, and thoughts of killing.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-1"            >
+            Among the humans who live for ten years, there will be an interregnum of swords lasting seven days.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-40">[40]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-2"            >
+            During that time they will see each other as beasts.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-41">[41]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-3"            >
+            Sharp swords will appear in their hands,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-4"            >
+            with which they’ll take each other’s life, crying, ‘It’s a beast! It’s a beast!’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-5"            >
+            But then some of those beings will think,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-6"            >
+            ‘Let us neither kill nor be killed! Why don’t we hide in thick grass, thick jungle, thick trees, inaccessible riverlands, or rugged mountains and survive on forest roots and fruits?’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-42">[42]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-7"            >
+            So that’s what they do.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-8"            >
+            When those seven days have passed, having emerged from their hiding places and embraced each other, they will come together and cry in one voice,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-43">[43]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-9"            >
+            ‘Fantastic, dear foe, you live! Fantastic, dear foe, you live!’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-44">[44]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-10-0"            >
+            6. The Period of Growth            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-11"            >
+            Then those beings will think,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-12"            >
+            ‘It’s because we undertook unskillful things that we suffered such an extensive loss of our relatives.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-13"            >
+            We’d better do what’s skillful.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-14"            >
+            What skillful thing should we do?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-15"            >
+            Why don’t we refrain from killing living creatures? Having undertaken this skillful thing we’ll live by it.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-45">[45]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-16"            >
+            So that’s what they do.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-17"            >
+            Because of undertaking this skillful thing, their lifespan and beauty will grow.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-21-18"            >
+            Those people who live for ten years will have children who live for twenty years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-1"            >
+            Then those beings will think,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-2"            >
+            ‘Because of undertaking this skillful thing, our lifespan and beauty are growing.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-3"            >
+            Why don’t we do even more skillful things?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-4"            >
+            What skillful thing should we do?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-5"            >
+            Why don’t we refrain from stealing …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-6"            >
+            sexual misconduct …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-7"            >
+            lying …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-8"            >
+            backbiting …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-9"            >
+            harsh speech …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-10"            >
+            and talking nonsense.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-11"            >
+            Why don’t we give up covetousness …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-12"            >
+            ill will …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-13"            >
+            wrong view …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-14"            >
+            three things:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-15"            >
+            illicit desire, immoral greed, and wrong custom.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-16"            >
+            Why don’t we pay due respect to mother and father, ascetics and brahmins, honoring the elders in our families? Having undertaken this skillful thing we’ll live by it.’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-17"            >
+            So that’s what they do.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-18"            >
+            Because of undertaking this skillful thing, their lifespan and beauty will grow.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-19"            >
+            Those people who live for twenty years will have children who live for forty years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-20"            >
+            Those people who live for forty years will have children who live for eighty years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-21"            >
+            then a hundred and sixty years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-22"            >
+            three hundred and twenty years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-23"            >
+            six hundred and forty years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-24"            >
+            2,000 years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-25"            >
+            4,000 years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-26"            >
+            8,000 years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-22-27"            >
+            20,000 years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-1"            >
+            40,000 years,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-2"            >
+            and finally 80,000 years.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-3"            >
+            Among the humans who live for 80,000 years, girls will be marriageable at five hundred.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-4-0"            >
+            7. The Time of King Saṅkha            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-5"            >
+            Among the humans who live for 80,000 years, there will be just three afflictions: greed, starvation, and old age.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-46">[46]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-6"            >
+            The Black Plum Tree Land will be successful and prosperous. The villages, towns, and capital cities will be no more than a chicken’s flight apart.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-7"            >
+            And the land will be so full of humans you’d think they were squashed together, like a thicket of rushes or reeds.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-8"            >
+            The royal capital will be Varanasi, renamed Ketumatī. And it will be successful, prosperous, populous, full of humans, with plenty of food.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-47">[47]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-23-9"            >
+            There will be 84,000 cities in the Black Plum Tree Land, with the royal capital of Ketumatī foremost.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-24-1"            >
+            And in the royal capital of Ketumatī a king named Saṅkha will arise, a wheel-turning monarch, a just and principled king. His dominion will extend to all four sides, he will achieve stability in the country, and possess the seven treasures.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-48">[48]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-24-2"            >
+            He will have the following seven treasures:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-24-3"            >
+            the wheel, the elephant, the horse, the jewel, the woman, the householder, and the commander as the seventh treasure.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-24-4"            >
+            He will have over a thousand sons who are valiant and heroic, crushing the armies of his enemies.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-24-5"            >
+            After conquering this land girt by sea, he will reign by principle, without rod or sword.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-0"            >
+            8. The Arising of the Buddha Metteyya            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-1"            >
+            And the Blessed One named Metteyya will arise in the world—perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed—            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-49">[49]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-2"            >
+            just as I have arisen today.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-50">[50]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-3"            >
+            He will realize with his own insight this world—with its gods, Māras, and divinities, this population with its ascetics and brahmins, gods and humans—and make it known to others, just as I do today.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-4"            >
+            He will teach the Dhamma that’s good in the beginning, good in the middle, and good in the end, meaningful and well-phrased. And he will reveal a spiritual practice that’s entirely full and pure,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-5"            >
+            just as I do today.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-25-6"            >
+            He will lead a Saṅgha of many thousand mendicants, just as I lead a Saṅgha of many hundreds today.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-51">[51]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-26-1"            >
+            Then King Saṅkha will have the sacrificial post once built by King Mahāpanāda raised up.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-52">[52]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-26-2"            >
+            Having reigned, he will abdicate, offering charity to ascetics and brahmins, paupers, vagrants, supplicants, and beggars. Then, having shaved off his hair and beard and dressed in ocher robes, he will go forth from the lay life to homelessness in the Buddha Metteyya’s presence.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-53">[53]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-26-3"            >
+            Soon after going forth, living withdrawn, diligent, keen, and resolute, he will realize the supreme end of the spiritual path in this very life. He will live having achieved with his own insight the goal for which gentlemen rightly go forth from the lay life to homelessness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-1"            >
+            Mendicants, live as your own island, your own refuge, with no other refuge. Let the teaching be your island and your refuge, with no other refuge.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-2"            >
+            And how does a mendicant do this?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-3"            >
+            It’s when a mendicant meditates by observing an aspect of the body—keen, aware, and mindful, rid of covetousness and displeasure for the world.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-4"            >
+            They meditate observing an aspect of feelings …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-5"            >
+            mind …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-6"            >
+            principles—keen, aware, and mindful, rid of covetousness and displeasure for the world.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-27-7"            >
+            That’s how a mendicant lives as their own island, their own refuge, with no other refuge. That’s how they let the teaching be their island and their refuge, with no other refuge.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-0"            >
+            9. On Long Life and Beauty for Mendicants            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-1"            >
+            Mendicants, you should roam inside your own territory, the domain of your fathers.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-2"            >
+            Doing so, you will grow in lifespan, beauty, happiness, wealth, and power.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-3"            >
+            And what is long life for a mendicant?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-4"            >
+            It’s when a mendicant develops the basis of psychic power that has immersion due to enthusiasm, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-5"            >
+            They develop the basis of psychic power that has immersion due to energy, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-6"            >
+            They develop the basis of psychic power that has immersion due to mental development, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-7"            >
+            They develop the basis of psychic power that has immersion due to inquiry, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-8"            >
+            Having developed and cultivated these four bases of psychic power they may, if they wish, live for the proper lifespan or what’s left of it.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-9"            >
+            This is long life for a mendicant.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-10"            >
+            And what is beauty for a mendicant?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-11"            >
+            It’s when a mendicant is ethical, restrained in the monastic code, conducting themselves well and resorting for alms in suitable places. Seeing danger in the slightest fault, they keep the rules they’ve undertaken.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-12"            >
+            This is beauty for a mendicant.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-13"            >
+            And what is happiness for a mendicant?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-14"            >
+            It’s when a mendicant, quite secluded from sensual pleasures, secluded from unskillful qualities, enters and remains in the first absorption, which has the rapture and bliss born of seclusion, while placing the mind and keeping it connected.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-15"            >
+            As the placing of the mind and keeping it connected are stilled, they enter and remain in the second absorption …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-16"            >
+            third absorption …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-17"            >
+            fourth absorption.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-18"            >
+            This is happiness for a mendicant.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-19"            >
+            And what is wealth for a mendicant?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-20"            >
+            It’s when a monk meditates spreading a heart full of love to one direction, and to the second, and to the third, and to the fourth. In the same way above, below, across, everywhere, all around, they spread a heart full of love to the whole world—abundant, expansive, limitless, free of enmity and ill will.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-21"            >
+            They meditate spreading a heart full of compassion …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-22"            >
+            rejoicing …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-23"            >
+            equanimity to one direction, and to the second, and to the third, and to the fourth. In the same way above, below, across, everywhere, all around, they spread a heart full of equanimity to the whole world—abundant, expansive, limitless, free of enmity and ill will.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-24"            >
+            This is wealth for a mendicant.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-25"            >
+            And what is power for a mendicant?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-26"            >
+            It’s when a mendicant realizes the undefiled freedom of heart and freedom by wisdom in this very life. And they live having realized it with their own insight due to the ending of defilements.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-27"            >
+            This is power for a mendicant.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-28"            >
+            Mendicants, I do not see a single power so hard to defeat as the power of Māra.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-29"            >
+            It is due to undertaking skillful qualities that merit grows.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-30"            >
+            That is what the Buddha said.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn26-28-31"            >
+            Satisfied, the mendicants approved what the Buddha said.            </p>
+                        </div>
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/dn/dn25/en/sujato.html">
+            <span aria-hidden="true" class="text-xl">⇦</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] share-button w-[50px] hidden md:inline-flex"
+          type="button"
+          aria-label="Share"
+        >
+          <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+        </button>
+        <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px]  hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/dn/dn27/en/sujato.html">
+
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">⇨</span>
+          </a>
+              </div>
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+    class="mt-[10px] hidden w-[411px] flex-[0_0_411px] flex-col items-center gap-5 md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(420px,90%)] max-xl:flex-[0_0_auto]"
+    aria-label="Notes"
+  >
+    <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+                <div class="translation-picker relative w-full" data-translation-picker>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          title="English - Bhikkhu Sujato"
+          data-translation-picker-toggle
+        >
+          <span class="min-w-0 truncate">English - Bhikkhu Sujato</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div
+          class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-translation-picker-menu
+          hidden
+        >
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn26/ru/syrkin+edited+o.html"
+              title="Russian - A. Y. Syrkin (edited by Dhamma.Gift)"
+                          >Russian - A. Y. Syrkin (edited by Dhamma.Gift)</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn26/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+                          >Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn26/en/sujato.html"
+              title="English - Bhikkhu Sujato"
+              disabled            >English - Bhikkhu Sujato</button>
+                  </div>
+      </div>
+              <div class="w-full text-base leading-[1.5]">
+                            <div
+            id="sutta-note-1"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-1-2"
+            >[1]</a>
+                                                        <span><i>Mātulā</i> means “maternal uncle”. This Magadhan village is mentioned only here and <a href="https://suttacentral.net/cp9/en/sujato#39.2" target="_blank" rel="noopener noreferrer">Cp 9:39.2</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-2"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-1-7"
+            >[2]</a>
+                                                        <span>As at <a href="https://suttacentral.net/dn16/en/sujato#2.26.1" target="_blank" rel="noopener noreferrer">DN 16:2.26.1</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-3"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-1-14"
+            >[3]</a>
+                                                        <span>Two parables on mindfulness expand this idea (<a href="https://suttacentral.net/sn47.6/en/sujato" target="_blank" rel="noopener noreferrer">SN 47.6</a>, <a href="https://suttacentral.net/sn46.7/en/sujato" target="_blank" rel="noopener noreferrer">SN 46.7</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-4"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-1-16"
+            >[4]</a>
+                                                        <span><i>Evamidaṁ</i> indicates entailment, as at <a href="https://suttacentral.net/sn56.21/en/sujato#1.3" target="_blank" rel="noopener noreferrer">SN 56.21:1.3</a>, <a href="https://suttacentral.net/mn73/en/sujato#13.2" target="_blank" rel="noopener noreferrer">MN 73:13.2</a>, <a href="https://suttacentral.net/dn16/en/sujato#4.2.4" target="_blank" rel="noopener noreferrer">DN 16:4.2.4</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-5"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-2-1"
+            >[5]</a>
+                                                        <span>We have heard the story of the wheel-turning monarch Mahāsudassana in <a href="https://suttacentral.net/dn17/en/sujato" target="_blank" rel="noopener noreferrer">DN 17</a>. Daḷhanemi appears only here. His name means “Strong-rim”, such being one of the characteristics of the Wheel. His story of renunciation shares much in common with that of Maghadeva (<a href="https://suttacentral.net/mn83/en/sujato" target="_blank" rel="noopener noreferrer">MN 83</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-6"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-3-2"
+            >[6]</a>
+                                                        <span>“Receded back” (<i>osakkitaṁ</i>): like a woman shrinking away from a man’s unwanted advances (<a href="https://suttacentral.net/dn12/en/sujato#16.12" target="_blank" rel="noopener noreferrer">DN 12:16.12</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-7"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-3-10"
+            >[7]</a>
+                                                        <span>The same point of view is expressed at <a href="https://suttacentral.net/pli-tv-bi-vb-pc21/en/sujato#1.4" target="_blank" rel="noopener noreferrer">Bi Pc 21:1.4</a>, where sex workers teased nuns, suggesting they enjoy themselves while young and ordain when old. The Buddhist position is that Dhamma can be practiced at any age.</span>
+                                    </div>
+                            <div
+            id="sutta-note-8"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-3-13"
+            >[8]</a>
+                                                        <span>The signs of the renunciate predate Buddhism.</span>
+                                    </div>
+                            <div
+            id="sutta-note-9"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-4-4"
+            >[9]</a>
+                                                        <span>The “royal seer” (<i>rājisi</i>, Sanskrit <i>rājarṣi</i>) is described by Kauṭilya (Arthaśāstra 1.7.1). Such a king should pursue pleasures in moderation, rely on good advice, and work energetically for the welfare and prosperity of his people.</span>
+                                    </div>
+                            <div
+            id="sutta-note-10"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-4-7"
+            >[10]</a>
+                                                        <span>“Inherited from your father” (<i>pettikaṁ dāyajjaṁ</i>) calls back to the four <i>satipaṭṭhānas</i> that for a mendicant are “the domain of your fathers” (<i>pettike visaye</i>). In both cases they are to be earned, not conferred by lineage.</span>
+                                    </div>
+                            <div
+            id="sutta-note-11"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-4-8"
+            >[11]</a>
+                                                        <span>“The noble duty of a wheel-turning monarch” (<i>ariye cakkavattivatte</i>; this is locative singular). <i>Ariya</i> (“noble”) qualifies “duty” (<i>vatta</i>), as it does in the title below, <i>cakkavattiariyavatta</i>, rather than “monarch”. Normally <i>ariya</i> is reserved for those who have attained the Buddhist path, but here we might have a rare use of <i>ariya</i> in reference to Indo-Aryan (Vedic) culture. Compare the use of <i>ariyaka</i> for Indo-Aryan language (<a href="https://suttacentral.net/pli-tv-bu-vb-pj1/en/sujato#8.4.10" target="_blank" rel="noopener noreferrer">Bu Pj 1:8.4.10</a>), and <i>ariyaṁ āyatanaṁ</i> for the “civilized region” (<a href="https://suttacentral.net/dn16/en/sujato#1.28.7" target="_blank" rel="noopener noreferrer">DN 16:1.28.7</a>, <a href="https://suttacentral.net/an6.96/en/sujato#1.3" target="_blank" rel="noopener noreferrer">AN 6.96:1.3</a>, <a href="https://suttacentral.net/ud8.6/en/sujato#17.9" target="_blank" rel="noopener noreferrer">Ud 8.6:17.9</a>). However, the commentary says it simply means “flawless” (<i>niddoso</i>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-12"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-5-2"
+            >[12]</a>
+                                                        <span><i>Saṁvidahassu</i> is second middle imperative.</span>
+                                    </div>
+                            <div
+            id="sutta-note-13"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-5-3"
+            >[13]</a>
+                                                        <span><i>Pavattittha</i> is aorist middle. <i>(A)dhammakāra</i> (“(in)justice”) doesn’t seem to occur elsewhere in early Pali. It is found in Ja 513 and Ja 498, both times in the context of just rule.</span>
+                                    </div>
+                            <div
+            id="sutta-note-14"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-5-4"
+            >[14]</a>
+                                                        <span>“Provide” (<i>anuppadeti</i>) is used elsewhere in the sense of paying back a loan (<a href="https://suttacentral.net/an3.20/en/sujato#3.5" target="_blank" rel="noopener noreferrer">AN 3.20:3.5</a>), serving honored guests (<a href="https://suttacentral.net/sn7.2/en/sujato#2.6" target="_blank" rel="noopener noreferrer">SN 7.2:2.6</a>), paying wages (<a href="https://suttacentral.net/dn31/en/sujato#32.2" target="_blank" rel="noopener noreferrer">DN 31:32.2</a>), or a king supplying provisions for essential workers to do their job (<a href="https://suttacentral.net/dn5/en/sujato#11.8" target="_blank" rel="noopener noreferrer">DN 5:11.8</a>). It is thus more about fulfilling a moral obligation of fairness than offering charity.</span>
+                                    </div>
+                            <div
+            id="sutta-note-15"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-5-5"
+            >[15]</a>
+                                                        <span>Where the phrase “from time to time go to them” (<i>te kālena kālaṁ upasaṅkamitvā</i>) occurs elsewhere in the suttas, it is always followed by “ask and question” (<i>paripucchati paripañhati</i>). Here, however, the second verb is “you should learn” (<i>pariggaṇheyyāsi</i>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-16"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-9-5"
+            >[16]</a>
+                                                        <span>“Own ideas” is <i>sa-mata</i>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-17"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-9-6"
+            >[17]</a>
+                                                        <span><i>Pabbanti</i> is unusual and probably unique in early Pali. It is related to Sanskrit <i>parvati</i> (“fill”) and is explained by the commentary as <i>vaḍḍhanti</i> (“grow, prosper”).</span>
+                                                                      <div class="mt-2 pl-7">I assume <i>janapadā</i> (“countries”) is a misspelling of <i>jānapadā</i> (“people of the country”), as <i>janapada</i> is otherwise in singular.</div>
+                                    </div>
+                            <div
+            id="sutta-note-18"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-9-7"
+            >[18]</a>
+                                                        <span>“Military officers” (<i>anīkaṭṭhā</i>) would have been standing officers in the army. According to both the commentary here and Monier-Williams’ Sanskrit Dictionary (<i>anīkastha</i>), it includes elephant officers, who would have stood at the head of the army.</span>
+                                                                      <div class="mt-2 pl-7">“Professional advisers” (<i>mantassājīvino</i>) is explained by the commentary as those who make a living from giving wise advice.</div>
+                                    </div>
+                            <div
+            id="sutta-note-19"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-10-3"
+            >[19]</a>
+                                                        <span>Ensuring citizens have enough to live on is not merely a matter of kindness and common decency, but is crucial to ensure stability and national unity.</span>
+                                    </div>
+                            <div
+            id="sutta-note-20"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-10-5"
+            >[20]</a>
+                                                        <span>The origins of theft are told at <a href="https://suttacentral.net/dn27/en/sujato#19.1" target="_blank" rel="noopener noreferrer">DN 27:19.1</a>. The myth recounted here overlaps, with points of both similarity and difference.</span>
+                                    </div>
+                            <div
+            id="sutta-note-21"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-10-10"
+            >[21]</a>
+                                                        <span>The king uses the same procedure as the Buddha. When presented with an alleged wrongdoer, the first thing is to ask them whether they did it.</span>
+                                    </div>
+                            <div
+            id="sutta-note-22"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-10-15"
+            >[22]</a>
+                                                        <span>Simply providing money is not enough, nor is simply expecting that people can just work for what they want. They need something to get started, together with the support and opportunity to build a life for themselves.</span>
+                                    </div>
+                            <div
+            id="sutta-note-23"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-12-2"
+            >[23]</a>
+                                                        <span>Sadly, bad faith actors take advantage of kindness.</span>
+                                    </div>
+                            <div
+            id="sutta-note-24"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-12-16"
+            >[24]</a>
+                                                        <span>While the king’s concern is legitimate, his overreaction escalates the problems.</span>
+                                    </div>
+                            <div
+            id="sutta-note-25"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-13-4"
+            >[25]</a>
+                                                        <span>The violence of the state leads to an armed and violent citizenry.</span>
+                                    </div>
+                            <div
+            id="sutta-note-26"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-14-2"
+            >[26]</a>
+                                                        <span>Today we can see that, even among developed nations, a degraded and violent culture leads to declining lifespans.</span>
+                                    </div>
+                            <div
+            id="sutta-note-27"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-17-2"
+            >[27]</a>
+                                                        <span><i>Paresaṁ dāresu</i>: both “others” and “wives” are in plural, so polygyny is assumed. Compare <i>parassa dāresu</i> (“the wives of another”) at <a href="https://suttacentral.net/sn55.7/en/sujato#6.3" target="_blank" rel="noopener noreferrer">SN 55.7:6.3</a>. Note the significance granted to beauty in influencing human society.</span>
+                                    </div>
+                            <div
+            id="sutta-note-28"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-17-6"
+            >[28]</a>
+                                                        <span>At this point, the three factors of wrong action—killing, stealing, and sexual misconduct—are present, as are the four factors of wrong speech—lying, backbiting, harsh speech, and nonsensical speech.</span>
+                                    </div>
+                            <div
+            id="sutta-note-29"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-17-12"
+            >[29]</a>
+                                                        <span>This completes the three factors of unskillful thought: desire, ill will, and wrong views (which are a strong form of delusion). Here wrong view probably means moral nihilism.</span>
+                                    </div>
+                            <div
+            id="sutta-note-30"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-17-16"
+            >[30]</a>
+                                                        <span>These three terms recur in a similar context at <a href="https://suttacentral.net/an3.56/en/sujato#2.1" target="_blank" rel="noopener noreferrer">AN 3.56:2.1</a>. The commentaries to the two passages give quite different explanations.</span>
+                                                                      <div class="mt-2 pl-7">“Illicit desire” (<i>adhammarāgo</i>) probably refers to any form of desire that is illegal or transgressive, such as incest, rape, or pedophilia.</div>
+                                                                      <div class="mt-2 pl-7">“Immoral greed” (<i>visamalobho</i>) implies excess and imbalance. Both are, however, explained in the commentary to <a href="https://suttacentral.net/an3.56/en/sujato#2.1" target="_blank" rel="noopener noreferrer">AN 3.56:2.1</a> as desire for the belongings of others.</div>
+                                                                      <div class="mt-2 pl-7"><i>Micchādhammo</i> is hard to pin down. Its opposite, <i>sammā dhammo</i> always means “right teaching”. The commentary here explains it as “men with men and women with women”, but this must be rejected as there is no hint anywhere in early Pali (or elsewhere in early Indian culture) that homosexual relations were considered immoral. The commentary to <a href="https://suttacentral.net/an3.56/en/sujato#2.1" target="_blank" rel="noopener noreferrer">AN 3.56:2.1</a> explains it as “indulgence in what is reckoned an inappropriate basis” (<i>avatthupaṭisevanasaṅkhātena</i>). This implies intercourse with one of the women mentioned at <a href="https://suttacentral.net/mn41/en/sujato#8.4" target="_blank" rel="noopener noreferrer">MN 41:8.4</a>, which includes those who are “protected by principle” (<i>dhammarakkhitā</i>). This sense of <i>dhamma</i> is explained at <a href="https://suttacentral.net/pli-tv-bu-vb-ss5/en/sujato#4.2.16" target="_blank" rel="noopener noreferrer">Bu Ss 5:4.2.16</a> as “religion”. Here I think the sense is similar: customs or beliefs that legitimize immorality.</div>
+                                    </div>
+                            <div
+            id="sutta-note-31"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-18-14"
+            >[31]</a>
+                                                        <span>This brings us to the Buddha’s present.</span>
+                                    </div>
+                            <div
+            id="sutta-note-32"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-19-1"
+            >[32]</a>
+                                                        <span>Here the Buddha paints a devastating picture of societal collapse. Life expectancy as low as thirty years has been recorded in some countries in the 20th century.</span>
+                                    </div>
+                            <div
+            id="sutta-note-33"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-19-2"
+            >[33]</a>
+                                                        <span>The age of onset of puberty has been dropping globally over the past century, with isolated cases as young as five.</span>
+                                    </div>
+                            <div
+            id="sutta-note-34"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-19-5"
+            >[34]</a>
+                                                        <span>“Finger millet” (<i>kudrūsaka</i>; Pahari <i>kodra</i>, Garhwal <i>koda</i>) is a robust secondary grain in Asia and Africa, growing in places rice cannot. Due to its resilience in the face of global heating, 2023 was declared the International Year of Millets by the UN.</span>
+                                    </div>
+                            <div
+            id="sutta-note-35"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-19-6"
+            >[35]</a>
+                                                        <span>The Buddha’s father gave this luxury food to servants and staff (<a href="https://suttacentral.net/an3.39/en/sujato#2.3" target="_blank" rel="noopener noreferrer">AN 3.39:2.3</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-36"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-19-8"
+            >[36]</a>
+                                                        <span>The narrative above traced the gradual disappearance of these ten factors.</span>
+                                                                      <div class="mt-2 pl-7"><i>Atibyādippissanti</i> is a unique term. At <a href="https://suttacentral.net/an7.66/en/sujato#9.2" target="_blank" rel="noopener noreferrer">AN 7.66:9.2</a> a sign of the end of days is the “erupting” (<i>ādippanti</i>) of volcanoes, suggesting “explode” for the intensive form here.</div>
+                                    </div>
+                            <div
+            id="sutta-note-37"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-19-9"
+            >[37]</a>
+                                                        <span>“Skillful” is <i>kusala</i>, otherwise translated as “good” or “wholesome”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-38"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-20-1"
+            >[38]</a>
+                                                        <span>At <a href="https://suttacentral.net/an2.9/en/sujato" target="_blank" rel="noopener noreferrer">AN 2.9</a> = <a href="https://suttacentral.net/iti42/en/sujato" target="_blank" rel="noopener noreferrer">Iti 42</a> the world is protected from this by conscience and prudence.</span>
+                                    </div>
+                            <div
+            id="sutta-note-39"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-20-2"
+            >[39]</a>
+                                                        <span>For <i>sambheda</i> in the sense of “dissolving, leaking”, see <a href="https://suttacentral.net/dn3/en/sujato#1.15.11" target="_blank" rel="noopener noreferrer">DN 3:1.15.11</a>, <a href="https://suttacentral.net/an5.103/en/sujato#6.4" target="_blank" rel="noopener noreferrer">AN 5.103:6.4</a>, <a href="https://suttacentral.net/an10.45/en/sujato#4.1" target="_blank" rel="noopener noreferrer">AN 10.45:4.1</a>. The commentary here says “mixedness, breaking of boundaries”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-40"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-21-1"
+            >[40]</a>
+                                                        <span>“Interregnum of swords” is <i>satthantarakappo</i>. Seven days seems optimistic.</span>
+                                    </div>
+                            <div
+            id="sutta-note-41"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-21-2"
+            >[41]</a>
+                                                        <span>Dehumanization of the other is an essential precursor to genocide.</span>
+                                    </div>
+                            <div
+            id="sutta-note-42"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-21-6"
+            >[42]</a>
+                                                        <span>“Let us neither kill nor be killed” (<i>mā ca mayaṁ kañci, mā ca amhe koci</i>) is an idiomatic phrase, the Golden Rule framed as a negative: “Let us not do unto others nor let others do unto us.” It is explained by the commentary as, “Let us not take even a single person’s life or let them take ours”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-43"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-21-8"
+            >[43]</a>
+                                                        <span><i>Sabhāgāyissanti</i> = <i>sabhāga</i> + <i>āyissanti</i> = “will come together”.</span>
+                                                                      <div class="mt-2 pl-7"><i>Samassāsissanti</i> = <i>sama</i> + <i>sāsati</i> = “cry in one voice”. The latter term is absent from some manuscripts.</div>
+                                    </div>
+                            <div
+            id="sutta-note-44"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-21-9"
+            >[44]</a>
+                                                        <span><i>Diṭṭhā</i> is Sanskrit <i>diṣṭyā</i>, “fantastic, how fortunate”, per <a href="https://suttacentral.net/dn16/en/sujato#2.24.5" target="_blank" rel="noopener noreferrer">DN 16:2.24.5</a> and <a href="https://suttacentral.net/ja81/en/sujato#1.4" target="_blank" rel="noopener noreferrer">Ja 81:1.4</a>.</span>
+                                                                      <div class="mt-2 pl-7"><i>Sattā</i> is nominative singular for <i>sattar</i> (“enemy”), not plural of <i>satta</i> (“being”), which disagrees with both verb and vocative in number.</div>
+                                    </div>
+                            <div
+            id="sutta-note-45"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-21-15"
+            >[45]</a>
+                                                        <span>The first precept, and the first of the ten ways of skillful action. The Buddhist ethical principles are not just a part of Buddhist teaching, they are essential for the healthy functioning of human society.</span>
+                                    </div>
+                            <div
+            id="sutta-note-46"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-23-5"
+            >[46]</a>
+                                                        <span>In the legendary past, too, only these three afflictions prevailed (<a href="https://suttacentral.net/snp2.7/en/sujato#29.1" target="_blank" rel="noopener noreferrer">Snp 2.7:29.1</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-47"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-23-8"
+            >[47]</a>
+                                                        <span>Ketumatī means “adorned with flags”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-48"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-24-1"
+            >[48]</a>
+                                                        <span>Saṅkha is “conch shell”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-49"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-25-1"
+            >[49]</a>
+                                                        <span>This is the only sutta appearance of the future Buddha Metteyya (Sanskrit Maitreya, meaning “one full of love”). He became a prominent figure in later Buddhism.</span>
+                                    </div>
+                            <div
+            id="sutta-note-50"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-25-2"
+            >[50]</a>
+                                                        <span>Throughout, the Buddha is concerned to emphasize that the future Buddha will offer no more or less than his own teaching and practice. He wanted people to practice now, not to establish a cult of a future savior.</span>
+                                    </div>
+                            <div
+            id="sutta-note-51"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-25-6"
+            >[51]</a>
+                                                        <span>The maximum number of monastics cited in the suttas is 1250 at a single gathering.</span>
+                                    </div>
+                            <div
+            id="sutta-note-52"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-26-1"
+            >[52]</a>
+                                                        <span>This event is found in Bhaddaji’s verses at <a href="https://suttacentral.net/thag2.22/en/sujato" target="_blank" rel="noopener noreferrer">Thag 2.22</a>, expanded to a full story at Ja 264. The commentary explains <i>yūpa</i> as “palace”, but Bhaddaji’s verses clearly depict a sacrificial post, to which the animal would be tied for slaughter. Such posts are connected with the horse sacrifice, which establishes imperial power. This is but one aspect of the wheel-turning monarch to draw on imagery from the horse sacrifice. Here, of course, no horses are killed.</span>
+                                    </div>
+                            <div
+            id="sutta-note-53"
+            class="scroll-mt-24  py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn26-26-2"
+            >[53]</a>
+                                                        <span><i>Ajjhāvasati</i> in this sutta means “reign” not “dwell” (<a href="https://suttacentral.net/dn26/en/sujato#2.5" target="_blank" rel="noopener noreferrer">DN 26:2.5</a>).</span>
+                                    </div>
+              </div>
+      </aside>
+</section>
+
+<div class="sutta-ref-popup" id="suttaRefPopup" aria-hidden="true">
+  <div class="sutta-ref-popup__backdrop" data-sutta-ref-close></div>
+  <div class="sutta-ref-popup__panel" role="dialog" aria-modal="true" aria-label="Notes">
+    <button class="sutta-ref-popup__close" type="button" data-sutta-ref-close aria-label="Close dialog">×</button>
+    <p class="sutta-ref-popup__index" data-sutta-ref-index></p>
+    <div class="sutta-ref-popup__content" data-sutta-ref-content></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    document.addEventListener("click", (event) => {
+      if (root.contains(event.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+
+  const translationPicker = document.querySelector("[data-translation-picker]");
+  const translationPickerToggle = translationPicker?.querySelector("[data-translation-picker-toggle]");
+  const translationPickerMenu = translationPicker?.querySelector("[data-translation-picker-menu]");
+  const translationPickerOptions = translationPicker?.querySelectorAll("[data-translation-picker-option]");
+
+  const setTranslationPickerOpen = (isOpen) => {
+    if (!translationPickerToggle || !translationPickerMenu) return;
+    translationPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    translationPickerMenu.hidden = !isOpen;
+    translationPicker.classList.toggle("is-open", isOpen);
+  };
+
+  translationPickerToggle?.addEventListener("click", () => {
+    const isOpen = translationPickerToggle.getAttribute("aria-expanded") === "true";
+    setTranslationPickerOpen(!isOpen);
+  });
+
+  translationPickerOptions?.forEach((option) => {
+    option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (translationPicker && !translationPicker.contains(event.target)) {
+      setTranslationPickerOpen(false);
+    }
+  });
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+      <script type="module" src="/assets/sutta-ref-popup.js?_=1781705533"></script>
+  
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

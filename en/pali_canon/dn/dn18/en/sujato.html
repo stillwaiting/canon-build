@@ -1,0 +1,2599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dn/dn18 — With Janavasabha — Bhikkhu Sujato — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          data-mobile-translation-toggle
+        >
+          <span
+            class="block w-full truncate"
+            title="English - Bhikkhu Sujato"
+            data-mobile-translation-current
+          >English - Bhikkhu Sujato</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div
+          class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-mobile-translation-menu
+          hidden
+        >
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/dn/dn18/ru/syrkin+edited+o.html"
+              title="Russian - A. Y. Syrkin (edited by Dhamma.Gift)"
+            >
+              <span class="block w-full truncate">
+                Russian - A. Y. Syrkin (edited by Dhamma.Gift)              </span>
+            </a>
+                                  <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/pali_canon/dn/dn18/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+            >
+              <span class="block w-full truncate">
+                Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500              </span>
+            </a>
+                              </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <div class="flex items-start gap-3">
+                  <button
+            class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] md:hidden"
+            type="button"
+            aria-label="Main navigation"
+            data-mobile-trail-toggle
+          >
+            <svg class="h-5 w-5 pointer-events-none" viewBox="0 0 26 26" aria-hidden="true">
+              <use href="/assets/mobile-breadcrumbs-icon.svg?_=1781705533#icon"></use>
+            </svg>
+          </button>
+                <div class="min-w-0 flex-1">
+          <h1 class="sutta-title m-0 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+            With Janavasabha          </h1>
+                      <div
+              class="mt-1 truncate text-[12px] leading-[1.35] text-ink-muted md:text-[13px]"
+              title="Translator: Bhikkhu Sujato"
+            >
+              Translator: Bhikkhu Sujato            </div>
+                  </div>
+      </div>
+
+              <div class="flex gap-1 items-center">
+                      <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              dn            </div>
+                                <span class="hidden text-sm text-accent dark:text-[#c784ff] md:block" aria-hidden="true">·</span>
+                                <div class="sutta-breadcrumbs hidden text-sm leading-[1.6] text-accent dark:text-[#c784ff] md:block">
+              Long Discourses 18 · With Janavasabha            </div>
+                  </div>
+      
+              <div
+          class="relative my-3 rounded-[10px] border border-line bg-surface p-4 [&:not([hidden])]:block md:[&:not([hidden])]:hidden dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)]"
+          data-mobile-trail-panel
+          hidden
+        >
+          <button
+            class="absolute right-2 top-2 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-ink"
+            type="button"
+            aria-label="Close dialog"
+            data-mobile-trail-close
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="flex flex-col gap-2 pr-8">
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                dn              </div>
+                          <div class="text-sm leading-[1.4] text-ink-muted">
+                Long Discourses 18              </div>
+                          <div class="text-sm leading-[1.4] font-semibold text-ink">
+                With Janavasabha              </div>
+                      </div>
+        </div>
+            <div class="my-4 border-t border-line"></div>
+      <div class="sutta-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                                          <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-0"            >
+            1. Declaring the Rebirths of People From Ñātika and Elsewhere            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-1"            >
+            So I have heard.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-2"            >
+            At one time the Buddha was staying at Ñātika in the brick house.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-1">[1]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-3"            >
+            Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-2">[2]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-4"            >
+            “This one was reborn here, while that one was reborn there.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-5"            >
+            Over fifty devotees in Ñātika have passed away having ended the five lower fetters. They’ve been reborn spontaneously, and will be extinguished there, not liable to return from that world.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-3">[3]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-6"            >
+            More than ninety devotees in Ñātika have passed away having ended three fetters, and weakened greed, hate, and delusion. They’re once-returners, who will come back to this world once only, then make an end of suffering.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-1-7"            >
+            More than five hundred devotees in Ñātika have passed away having ended three fetters. They’re stream-enterers, not liable to be reborn in the underworld, assured, destined for awakening.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-2-1"            >
+            When the devotees of Ñātika heard about the Buddha’s            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-2-7"            >
+            answers to those questions, they became uplifted and overjoyed, full of rapture and happiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-3-1"            >
+            Venerable Ānanda heard of the Buddha’s statements and the Ñātikans’ happiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-0"            >
+            2. Ānanda’s Suggestion            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-1"            >
+            Then Venerable Ānanda thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-2"            >
+            “But there were also Magadhan devotees—many, and of long standing too—who have passed away.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-4">[4]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-3"            >
+            You’d think that Aṅga and Magadha were empty of devotees who have passed away!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-4"            >
+            But they too had confidence in the Buddha, the teaching, and the Saṅgha, and had fulfilled their ethics.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-5"            >
+            The Buddha hasn’t declared their passing.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-6"            >
+            It would be good to do so, for many people would gain confidence, and so be reborn in a good place.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-7"            >
+            That King Seniya Bimbisāra of Magadha was a just and principled king who benefited the brahmins and householders, and people of town and country.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-5">[5]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-8"            >
+            People still sing his praises:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-9"            >
+            ‘That just and principled king, who made us so happy, has passed away. Life was good under his dominion.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-6">[6]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-10"            >
+            He too had confidence in the Buddha, the teaching, and the Saṅgha, and had fulfilled his ethics.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-11"            >
+            People say:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-12"            >
+            ‘Until his dying day, King Bimbisāra sang the Buddha’s praises!’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-7">[7]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-13"            >
+            The Buddha hasn’t declared his passing.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-14"            >
+            It would be good to do so, for many people would gain confidence, and so be reborn in a good place.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-15"            >
+            Besides, the Buddha was awakened in Magadha;            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-8">[8]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-16"            >
+            so why hasn’t he declared the rebirth of the Magadhan devotees?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-4-17"            >
+            If he fails to do so, they will be disheartened.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-5-1"            >
+            After pondering the fate of the Magadhan devotees alone in private, Ānanda rose at the crack of dawn and went to see the Buddha. He bowed, sat down to one side, and told the Buddha of his concerns, finishing by saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-6-9"            >
+            “Why hasn’t the Buddha declared the rebirth of the Magadhan devotees? If he fails to do so, they will be disheartened.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-6-10"            >
+            Then Ānanda, after making this suggestion regarding the Magadhan devotees, rose from his seat, bowed, and respectfully circled the Buddha, keeping him on his right, before leaving.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-9">[9]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-7-1"            >
+            Soon after Ānanda had left, the Buddha robed up in the morning and, taking his bowl and robe, entered Ñātika for alms.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-7-2"            >
+            He wandered for alms in Ñātika. After the meal, on his return from almsround, he washed his feet and entered the brick house. He paid attention, applied the mind, and concentrated wholeheartedly on the fate of Magadhan devotees, and sat on the seat spread out, thinking,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-10">[10]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-7-3"            >
+            “I shall know their destiny, where they are reborn in the next life.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-7-4"            >
+            And he saw where they had been reborn.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-7-6"            >
+            Then in the late afternoon, the Buddha came out of retreat. Emerging from the brick house, he sat on the seat spread out in the shade of the porch.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-8-1"            >
+            Then Venerable Ānanda went up to the Buddha, bowed, sat down to one side, and said to him,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-8-2"            >
+            “Sir, you look so serene; your face seems to shine owing to the clarity of your faculties.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-8-3"            >
+            Have you been abiding in a peaceful meditation today, sir?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-1"            >
+            The Buddha then recounted what had happened since speaking to Ānanda, revealing that he had seen the destiny of the Magadhan devotees. He continued:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-4-0"            >
+            3. Janavasabha the Spirit            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-5"            >
+            “Then, Ānanda, an invisible spirit called out:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-6"            >
+            ‘I am Janavasabha, Blessed One!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-7"            >
+            I am Janavasabha, Holy One!’            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-8"            >
+            Ānanda, do you recall having previously heard such a name as Janavasabha?”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-11">[11]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-9"            >
+            “No, worthy sir. But when I heard the word, I got goosebumps!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-10"            >
+            I thought,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-9-11"            >
+            ‘This must be no ordinary spirit to bear such an exalted name as Janavasabha.’”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-12">[12]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-1"            >
+            “After making himself heard while vanished, Ānanda, a very beautiful spirit appeared in front of me.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-13">[13]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-2"            >
+            And for a second time he called out:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-3"            >
+            ‘I am Bimbisāra, Blessed One!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-4"            >
+            I am Bimbisāra, Holy One!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-5"            >
+            This is the seventh time I am reborn in the company of the Great King Vessavaṇa. When I pass away from here, I can become a king of men.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-14">[14]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-6"            >
+            Seven from here, seven from there—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-7"            >
+            fourteen transmigrations in all.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-15">[15]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-8"            >
+            I remember these lives            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-9"            >
+            where I lived before.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-10"            >
+            For a long time I’ve known that I won’t be reborn in the underworld, but that I still hope to become a once-returner.’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-16">[16]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-11"            >
+            ‘It’s incredible and amazing that you, the venerable spirit Janavasabha, should say:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-10-12"            >
+            “For a long time I’ve been aware that I won’t be reborn in the underworld” and also “But I still hope to become a once-returner.” But from what source do you know that you’ve achieved such a high distinction?’            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-17">[17]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-1"            >
+            ‘None other than the Blessed One’s instruction! None other than the Holy One’s instruction!            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-18">[18]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-2"            >
+            From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld, but that I still hope to become a once-returner.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-3"            >
+            Just now, sir, I had been sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business, and on the way I saw the Buddha giving his attention to the fate of the Magadhan devotees.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-5"            >
+            But it comes as no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-7"            >
+            It occurred to me,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-8"            >
+            “I shall see the Buddha and inform him of this.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-11-9"            >
+            These are the two reasons I’ve come to see the Buddha.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-0"            >
+            4. The Council of the Gods            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-1"            >
+            Sir, it was more than a few days ago—on the fifteenth day sabbath on the full moon day at the entry to the rainy season—when all the gods of the thirty-three were sitting together in the Hall of Clear Right.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-19">[19]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-2"            >
+            A large assembly of gods was sitting all around, and the four great kings were seated at the four quarters.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-20">[20]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-3"            >
+            The Great King Dhataraṭṭha was seated to the east, facing west, in front of his gods.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-4"            >
+            The Great King Virūḷhaka was seated to the south, facing north, in front of his gods.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-5"            >
+            The Great King Virūpakkha was seated to the west, facing east, in front of his gods.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-6"            >
+            The Great King Vessavaṇa was seated to the north, facing south, in front of his gods.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-7"            >
+            When the gods of the thirty-three have a gathering like this, that is how they are seated.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-8"            >
+            After that come our seats.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-9"            >
+            Sir, those gods who had been recently reborn in the company of the thirty-three after leading the spiritual life under the Buddha outshone the other gods in beauty and glory.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-10"            >
+            The gods of the thirty-three became uplifted and overjoyed at that, full of rapture and happiness, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-12-11"            >
+            “The heavenly hosts swell, while the titan hosts dwindle!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-1"            >
+            Seeing the joy of those gods, Sakka, lord of gods, celebrated with these verses:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-2"            >
+            “The gods rejoice—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-3"            >
+            the thirty-three with their Lord—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-4"            >
+            revering the Realized One,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-5"            >
+            and the clear rightness of the teaching;            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-21">[21]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-6"            >
+            and seeing the new gods,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-7"            >
+            so beautiful and glorious,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-8"            >
+            who have come here after leading            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-9"            >
+            the spiritual life under the Buddha!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-10"            >
+            They outshine the others            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-11"            >
+            in beauty, glory, and lifespan.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-12"            >
+            Here are the distinguished disciples            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-13"            >
+            of he whose wisdom is vast.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-14"            >
+            Seeing this, they delight—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-15"            >
+            the thirty-three with their Lord—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-16"            >
+            revering the Realized One,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-17"            >
+            and the clear rightness of the teaching.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-18"            >
+            The gods of the thirty-three became even more uplifted and overjoyed at that, saying:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-13-19"            >
+            “The heavenly hosts swell, while the titan hosts dwindle!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-14-1"            >
+            Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-14-2"            >
+            Each one, having been advised, stood at his own seat without leaving.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-22">[22]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-14-3"            >
+            The Kings were instructed,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-14-4"            >
+            and heeded good advice.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-14-5"            >
+            With clear and peaceful minds,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-14-6"            >
+            they stood by their own seats.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-1"            >
+            Then in the northern quarter a magnificent light arose and radiance appeared, surpassing the glory of the gods.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-23">[23]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-2"            >
+            Then Sakka, lord of gods, addressed the gods of the thirty-three,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-3"            >
+            “As indicated by the signs—light arising and radiance appearing—The Divinity will appear. For this is the harbinger for the appearance of the Divinity, namely light arising and radiance appearing.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-4"            >
+            As indicated by the signs,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-5"            >
+            The Divinity will appear.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-6"            >
+            For this is the sign of the Divinity:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-15-7"            >
+            a light vast and great.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-16-0"            >
+            5. On Sanaṅkumāra            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-16-1"            >
+            Then the gods of the thirty-three sat in their own seats, saying,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-16-2"            >
+            “We shall find out what has caused that light, and only when we have realized it shall we go to it.”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-24">[24]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-16-3"            >
+            And the four great kings did likewise.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-16-5"            >
+            Hearing that, the gods of the thirty-three agreed in unison,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-16-6"            >
+            “We shall find out what has caused that light, and only when we have realized it shall we go to it.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-1"            >
+            When the divinity Sanaṅkumāra appears to the gods of the thirty-three, he does so after manifesting a solid incarnation.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-25">[25]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-2"            >
+            For a Divinity’s normal appearance is imperceptible in the visual range of the gods of the thirty-three.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-26">[26]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-3"            >
+            When the divinity Sanaṅkumāra appears to the gods of the thirty-three, he outshines the other gods in beauty and glory,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-4"            >
+            as a golden statue outshines the human form.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-27">[27]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-6"            >
+            When the divinity Sanaṅkumāra appears to the gods of the thirty-three, not a single god in that assembly greets him by bowing down or rising up or inviting him to a seat.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-7"            >
+            They all sit silently on their couches with their cupped palms raised, thinking,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-8"            >
+            “Now the divinity Sanaṅkumāra will sit on the couch of whatever god he chooses.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-17-9"            >
+            And the god on whose couch the Divinity sits is overjoyed and brimming with happiness,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-1"            >
+            like a king on the day of his coronation.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-3"            >
+            Then the divinity Sanaṅkumāra manifested a solid incarnation, taking on the appearance of the youth Pañcasikha, and appeared to the gods of the thirty-three.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-28">[28]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-4"            >
+            Rising into the air, he sat cross-legged in the sky,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-5"            >
+            like a strong man might sit cross-legged on a well-appointed couch or on level ground.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-6"            >
+            Seeing the joy of those gods, the divinity Sanaṅkumāra celebrated with these verses:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-7"            >
+            “The gods rejoice—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-8"            >
+            the thirty-three with their Lord—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-9"            >
+            revering the Realized One,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-10"            >
+            and the clear rightness of the teaching;            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-11"            >
+            and seeing the new gods,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-12"            >
+            so beautiful and glorious,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-13"            >
+            who have come here after leading            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-14"            >
+            the spiritual life under the Buddha!            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-15"            >
+            They outshine the others            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-16"            >
+            in beauty, glory, and lifespan.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-17"            >
+            Here are the distinguished disciples            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-18"            >
+            of he whose wisdom is vast.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-19"            >
+            Seeing this, they delight—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-20"            >
+            the thirty-three with their Lord—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-21"            >
+            revering the Realized One,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-18-22"            >
+            and the clear rightness of the teaching!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-19-1"            >
+            That is the topic on which the divinity Sanaṅkumāra spoke.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-29">[29]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-19-2"            >
+            And while he was speaking on that topic, his voice had eight qualities: it was clear, comprehensible, charming, audible, lucid, undistorted, deep, and resonant.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-30">[30]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-19-3"            >
+            He makes sure his voice is intelligible as far as the assembly goes, but the sound doesn’t extend outside the assembly.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-19-4"            >
+            When someone has a voice like this, they’re said to have the voice of the Divinity.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-20-1"            >
+            Then the divinity Sanaṅkumāra, having manifested thirty-three life-forms, sat down on the couches of each of the gods of the thirty-three and addressed them,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-20-2"            >
+            “What do the good gods of the thirty-three think? How the Buddha has acted for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-31">[31]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-20-3"            >
+            For consider those who have gone for refuge to the Buddha, the teaching, and the Saṅgha, and have fulfilled their ethics. When their bodies break up, after death, some are reborn in the company of the gods who control what is created by others, some with the gods who love to create, some with the joyful gods, some with the gods of Yama, some with the gods of the thirty-three, and some with the gods of the four great kings.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-32">[32]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-20-4"            >
+            And at the very least they swell the hosts of the centaurs.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-1"            >
+            That is the topic on which the divinity Sanaṅkumāra spoke.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-2"            >
+            And hearing the sound of the Divinity speaking on that topic, the gods fancied,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-3"            >
+            “The one sitting on my couch is the only one speaking.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-4"            >
+            When one is speaking,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-5"            >
+            all the forms speak.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-6"            >
+            When one sits in silence,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-7"            >
+            they all remain silent.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-8"            >
+            But those gods imagine—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-9"            >
+            the thirty-three with their Lord—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-10"            >
+            that the one on their seat            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-21-11"            >
+            is the only one to speak.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-1"            >
+            Next the divinity Sanaṅkumāra merged into one corporeal form. Then he sat on the couch of Sakka, lord of gods, and addressed the gods of the thirty-three:            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-33">[33]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-2-0"            >
+            6. Developing the Bases of Psychic Power            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-3"            >
+            “What do the good gods of the thirty-three think? How well described by the Blessed One—who knows and sees, the perfected one, the fully awakened Buddha—are the four bases of psychic power! They are taught for the amplification, burgeoning, and transformation of psychic power.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-34">[34]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-4"            >
+            What four?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-5"            >
+            It’s when a mendicant develops the basis of psychic power that has immersion due to enthusiasm, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-6"            >
+            They develop the basis of psychic power that has immersion due to energy, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-7"            >
+            They develop the basis of psychic power that has immersion due to mental development, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-8"            >
+            They develop the basis of psychic power that has immersion due to inquiry, and active effort.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-9"            >
+            These are the four bases of psychic power taught by the Buddha for the amplification, burgeoning, and transformation of psychic power.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-10"            >
+            All the ascetics and brahmins in the past,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-11"            >
+            future,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-12"            >
+            or present who wield the many kinds of psychic power do so by developing and cultivating these four bases of psychic power.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-13"            >
+            Gentlemen, do you see such psychic might and power in me?”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-14"            >
+            “Yes, Great Divinity.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-22-15"            >
+            “I too became so mighty and powerful by developing and cultivating these four bases of psychic power.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-1"            >
+            That is the topic on which the divinity Sanaṅkumāra spoke.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-2"            >
+            And having spoken about that, he addressed the gods of the thirty-three:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-3-0"            >
+            7. The Three Openings            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-4"            >
+            “What do the good gods of the thirty-three think? How well understood by the Buddha are the three opportunities for achieving happiness!            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-35">[35]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-5"            >
+            What three?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-6"            >
+            First, take someone who lives mixed up with sensual pleasures and unskillful qualities.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-36">[36]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-7"            >
+            After some time they hear the teaching of the noble ones, rationally apply the mind to how it applies to them, and practice in line with the teaching.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-8"            >
+            They live aloof from sensual pleasures and unskillful qualities.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-37">[37]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-9"            >
+            That gives rise to pleasure, and more than pleasure, happiness,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-38">[38]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-10"            >
+            like the joy that’s born from gladness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-23-12"            >
+            This is the first opportunity for achieving happiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-24-1"            >
+            Next, take someone whose coarse physical, verbal, and mental processes have not died down.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-39">[39]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-24-2"            >
+            After some time they hear the teaching of the noble ones, rationally apply the mind to how it applies to them, and practice in line with the teaching.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-24-3"            >
+            Their coarse physical, verbal, and mental processes die down.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-24-4"            >
+            That gives rise to pleasure, and more than pleasure, happiness,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-24-5"            >
+            like the joy that’s born from gladness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-24-7"            >
+            This is the second opportunity for achieving happiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-1"            >
+            Next, take someone who doesn’t truly understand what is skillful and what is unskillful,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-40">[40]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-2"            >
+            what is blameworthy and what is blameless, what should be cultivated and what should not be cultivated, what is inferior and what is superior, and what has a portion of dark or bright.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-3"            >
+            After some time they hear the teaching of the noble ones, rationally apply the mind to how it applies to them, and practice in line with the teaching.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-4"            >
+            They truly understand what is skillful and what is unskillful, and so on.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-6"            >
+            Knowing and seeing like this, ignorance is given up and knowledge arises.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-7"            >
+            That gives rise to pleasure, and more than pleasure, happiness,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-8"            >
+            like the joy that’s born from gladness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-10"            >
+            This is the third opportunity for achieving happiness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-25-11"            >
+            These are the three opportunities for achieving happiness that have been understood by the Buddha.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-1"            >
+            That is the topic on which the divinity Sanaṅkumāra spoke.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-2"            >
+            And having spoken about that, he addressed the gods of the thirty-three:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-3-0"            >
+            8. Mindfulness Meditation            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-4"            >
+            “What do the good gods of the thirty-three think? How well described by the Buddha are the four kinds of mindfulness meditation! They are taught for achieving what is skillful.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-41">[41]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-5"            >
+            What four?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-6"            >
+            It’s when a mendicant meditates by observing an aspect of the body internally—keen, aware, and mindful, rid of covetousness and displeasure for the world.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-7"            >
+            As they meditate in this way, they become rightly immersed in that, and rightly serene.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-8"            >
+            Then they give rise to knowledge and vision of other people’s bodies externally.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-42">[42]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-9"            >
+            They meditate observing an aspect of feelings internally …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-10"            >
+            Then they give rise to knowledge and vision of other people’s feelings externally.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-11"            >
+            They meditate observing an aspect of the mind internally …            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-12"            >
+            Then they give rise to knowledge and vision of other people’s minds externally.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-13"            >
+            They meditate observing an aspect of principles internally—keen, aware, and mindful, rid of covetousness and displeasure for the world.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-14"            >
+            As they meditate in this way, they become rightly immersed in that, and rightly serene.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-15"            >
+            Then they give rise to knowledge and vision of other people’s principles externally.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-26-16"            >
+            These are the four kinds of mindfulness meditation taught by the Buddha for achieving what is skillful.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-1"            >
+            That is the topic on which the divinity Sanaṅkumāra spoke.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-2"            >
+            And having spoken about that, he addressed the gods of the thirty-three:            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-3-0"            >
+            9. Seven Prerequisites of Immersion            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-4"            >
+            “What do the good gods of the thirty-three think? How well described by the Buddha are the seven prerequisites of immersion for the development and fulfillment of right immersion!            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-43">[43]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-5"            >
+            What seven?            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-6"            >
+            Right view, right purpose, right speech, right action, right livelihood, right effort, and right mindfulness.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-7"            >
+            Unification of mind with these seven factors as prerequisites is called noble right immersion ‘with its vital conditions’ and also ‘with its prerequisites’.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-8"            >
+            Right view produces right purpose. Right purpose produces right speech. Right speech produces right action. Right action produces right livelihood. Right livelihood produces right effort. Right effort produces right mindfulness. Right mindfulness produces right immersion. Right immersion produces right knowledge. Right knowledge produces right freedom.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-44">[44]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-9"            >
+            If anything should be rightly described as            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-10"            >
+            ‘a teaching that’s well explained by the Buddha, apparent in the present life, immediately effective, inviting inspection, relevant, so that sensible people can know it for themselves; and the doors to freedom from death are flung open,’ it’s this.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-45">[45]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-11"            >
+            For the teaching is well explained by the Buddha—apparent in the present life, immediately effective, inviting inspection, relevant, so that sensible people can know it for themselves—and the doors to freedom from death are flung open.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-12"            >
+            Whoever has experiential confidence in the Buddha, the teaching, and the Saṅgha, and has the ethical conduct loved by the noble ones; and whoever is spontaneously reborn, and is trained in the teaching; more than 2,400,000 such Magadhan devotees have passed away having ended three fetters. They’re stream-enterers, not liable to be reborn in the underworld, assured, destined for awakening.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-46">[46]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-13"            >
+            And there are once-returners here, too.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-14"            >
+            And as for the rest of folk,            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-47">[47]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-15"            >
+            who I think have shared in merit—            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-16"            >
+            I couldn’t even number them,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-27-17"            >
+            for fear of speaking falsely.”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-28-1"            >
+            That is the topic on which the divinity Sanaṅkumāra spoke. And while he was speaking on that topic, this thought came to the great king Vessavaṇa,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-28-2"            >
+            “Oh lord, how incredible, how amazing! That there should be such a magnificent Teacher, and such a magnificent exposition of the teaching! And that such achievements of high distinction should be made known!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-28-3"            >
+            And then the divinity Sanaṅkumāra, knowing the great king Vessavaṇa’s train of thought, said to him,            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-28-4"            >
+            “What does Great King Vessavaṇa think? In the past, too, there was such a magnificent Teacher, and such a magnificent exposition of the teaching! And such achievements of high distinction were made known!            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-48">[48]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-28-5"            >
+            In the future, too, there will be such a magnificent Teacher, and such a magnificent exposition of the teaching! And such achievements of high distinction will be made known!”            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-29-1"            >
+            That, sir, is the topic on which the divinity Sanaṅkumāra spoke to the gods of the thirty-three. And the great king Vessavaṇa, having heard and learned it in the presence of the Divinity as he was speaking on that topic, informed his own assembly.’”            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-49">[49]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-29-2"            >
+            And the spirit Janavasabha, having heard and learned it in the presence of the great king Vessavaṇa as he was speaking on that topic to his own assembly, informed the Buddha.            </p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-29-3"            >
+            And the Buddha, having heard and learned it in the presence of the spirit Janavasabha, and also from his own direct knowledge, informed Venerable Ānanda. And Venerable Ānanda, having heard and learned it in the presence of the Buddha, informed the monks, nuns, laymen, and laywomen.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-50">[50]</a></sup></span></p>
+                                  <p
+              class="mb-4 scroll-mt-24 last:mb-0    "
+              id="segment-dn18-29-4"            >
+            And that’s how this spiritual life has become successful and prosperous, extensive, popular, widespread, and well proclaimed wherever there are gods and humans.            <span class="ml-1 whitespace-nowrap"><sup><a class="sutta-ref text-accent no-underline hover:underline dark:text-[#c784ff]" href="#sutta-note-51">[51]</a></sup></span></p>
+                        </div>
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/dn/dn17/en/sujato.html">
+            <span aria-hidden="true" class="text-xl">⇦</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] share-button w-[50px] hidden md:inline-flex"
+          type="button"
+          aria-label="Share"
+        >
+          <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+        </button>
+        <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px]  hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/pali_canon/dn/dn19/en/sujato.html">
+
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">⇨</span>
+          </a>
+              </div>
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+    class="mt-[10px] hidden w-[411px] flex-[0_0_411px] flex-col items-center gap-5 md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(420px,90%)] max-xl:flex-[0_0_auto]"
+    aria-label="Notes"
+  >
+    <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+                <div class="translation-picker relative w-full" data-translation-picker>
+        <p class="mb-2 text-md text-ink text-center">Choose translation / language</p>
+        <button
+          type="button"
+          class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select translation"
+          title="English - Bhikkhu Sujato"
+          data-translation-picker-toggle
+        >
+          <span class="min-w-0 truncate">English - Bhikkhu Sujato</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div
+          class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none"
+          data-translation-picker-menu
+          hidden
+        >
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn18/ru/syrkin+edited+o.html"
+              title="Russian - A. Y. Syrkin (edited by Dhamma.Gift)"
+                          >Russian - A. Y. Syrkin (edited by Dhamma.Gift)</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn18/pli/ms.html"
+              title="Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500"
+                          >Pali - Mahāsaṅgīti Tipiṭaka Buddhavasse 2500</button>
+                      <button
+              class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+              type="button"
+              data-translation-picker-option="/en/pali_canon/dn/dn18/en/sujato.html"
+              title="English - Bhikkhu Sujato"
+              disabled            >English - Bhikkhu Sujato</button>
+                  </div>
+      </div>
+              <div class="w-full text-base leading-[1.5]">
+                            <div
+            id="sutta-note-1"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-1-2"
+            >[1]</a>
+                                                        <span>This picks up from the events of <a href="https://suttacentral.net/dn16/en/sujato#2.5.1" target="_blank" rel="noopener noreferrer">DN 16:2.5.1</a>, which however discusses only the Ñātikans (who are reckoned among the Vajjis). Like <a href="https://suttacentral.net/dn17/en/sujato" target="_blank" rel="noopener noreferrer">DN 17</a>, it bears many signs of a late sutta. The overall theme is the presence of a cosmic order where the liberating teaching of the Buddha is reconciled with the requirements of worldly power.</span>
+                                    </div>
+                            <div
+            id="sutta-note-2"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-1-3"
+            >[2]</a>
+                                                        <span>This list of ten nations is unique. The omission of the Aṅgas and Magadhans is noted below. The more famous list of “sixteen nations” adds Avanti and Assaka in the south, and Gandhāra and Kamboja in the north-west (eg. <a href="https://suttacentral.net/an3.70/en/sujato#28.3" target="_blank" rel="noopener noreferrer">AN 3.70:28.3</a>). The Buddha did not visit these lands, which explains why they are omitted.</span>
+                                    </div>
+                            <div
+            id="sutta-note-3"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-1-5"
+            >[3]</a>
+                                                        <span>“Devotees” is <i>paricāraka</i>, which normally means “servant”. It is not in the relevant passages of DN 16. This sense is found  in only a couple of other places, both late (<a href="https://suttacentral.net/snp5.18/en/sujato#1.2" target="_blank" rel="noopener noreferrer">Snp 5.18:1.2</a>, <a href="https://suttacentral.net/pli-tv-kd1/en/sujato#22.14.8" target="_blank" rel="noopener noreferrer">Kd 1:22.14.8</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-4"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-4-2"
+            >[4]</a>
+                                                        <span>Bearing in mind that none of the nations were actually mentioned in the relevant Mahāparinibbānasutta passage, this whole introduction is framed to emphasize the importance of Magadha to Buddhism, especially given the problematic character of Ajātasattu. In the decades following the Buddha’s death, the Buddhist community adapted to a new political landscape which for a time saw the entirety of Buddhism contained within the sprawling Magadhan empire.</span>
+                                    </div>
+                            <div
+            id="sutta-note-5"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-4-7"
+            >[5]</a>
+                                                        <span>As we known from <a href="https://suttacentral.net/dn2/en/sujato" target="_blank" rel="noopener noreferrer">DN 2</a>, Bimbisāra had recently been murdered by Ajātasattu.</span>
+                                    </div>
+                            <div
+            id="sutta-note-6"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-4-9"
+            >[6]</a>
+                                                        <span>A not-so-subtle hint of the changes under Ajātasattu. The passing of Bimbisāra signifies the crumbling of the social order that prevailed in the Buddha’s lifetime, bringing with it the immediate threat of war and chaos. This sutta establishes a timeless order that persists while worldly conditions fluctuate.</span>
+                                    </div>
+                            <div
+            id="sutta-note-7"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-4-12"
+            >[7]</a>
+                                                        <span>Elsewhere the suttas say that Bimbisāra went for refuge (<a href="https://suttacentral.net/dn4/en/sujato#6.33" target="_blank" rel="noopener noreferrer">DN 4:6.33</a>), while the Vinaya says he was in fact a stream-enterer (<a href="https://suttacentral.net/pli-tv-kd1/en/sujato#22.9.1" target="_blank" rel="noopener noreferrer">Kd 1:22.9.1</a>), which is confirmed below. The Jains, however, claim him as one of their own but say he went to hell for committing suicide. Like his son Ajātasattu, it is likely that he frequented several teachers in his realm.</span>
+                                    </div>
+                            <div
+            id="sutta-note-8"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-4-15"
+            >[8]</a>
+                                                        <span>Near the town of  Uruvelā on the bank of the Nerañjarā River at the place known today as Bodhgaya.</span>
+                                    </div>
+                            <div
+            id="sutta-note-9"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-6-10"
+            >[9]</a>
+                                                        <span>“Suggestion” is <i>parikathaṁ</i>, which elsewhere occurs in the Vinaya (<a href="https://suttacentral.net/pli-tv-kd7/en/sujato#1.5.16" target="_blank" rel="noopener noreferrer">Kd 7:1.5.16</a>) and the Abhidhamma Vibhaṅga (<a href="https://suttacentral.net/vb17/en/sujato#43.2" target="_blank" rel="noopener noreferrer">Vb 17:43.2</a>) in the sense of “hint”.</span>
+                                    </div>
+                            <div
+            id="sutta-note-10"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-7-2"
+            >[10]</a>
+                                                        <span>Normally <i>aṭṭhiṁ katvā manasikatvā sabbaṁ cetasā samannāharitvā</i> describes listening to Dhamma. This whole process seems unusually laborious.</span>
+                                    </div>
+                            <div
+            id="sutta-note-11"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-9-8"
+            >[11]</a>
+                                                        <span><i>Nāmadheyyaṁ</i> means “name (borne by someone or something)”, not “one who bears the name” (<a href="https://suttacentral.net/mn50/en/sujato#22.1" target="_blank" rel="noopener noreferrer">MN 50:22.1</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-12"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-9-11"
+            >[12]</a>
+                                                        <span><i>Janavasabha</i> is “chief of men”, spelled <i>janesabha</i> at <a href="https://suttacentral.net/dn20/en/sujato#10.10" target="_blank" rel="noopener noreferrer">DN 20:10.10</a> and <a href="https://suttacentral.net/dn32/en/sujato#10.9" target="_blank" rel="noopener noreferrer">DN 32:10.9</a>. The synonym <i>narāsabha</i> is an occasional poetic epithet of the Buddha (<a href="https://suttacentral.net/snp3.11/en/sujato#6.2" target="_blank" rel="noopener noreferrer">Snp 3.11:6.2</a>, <a href="https://suttacentral.net/snp5.1/en/sujato#21.3" target="_blank" rel="noopener noreferrer">Snp 5.1:21.3</a>, <a href="https://suttacentral.net/sn11.3/en/sujato#14.2" target="_blank" rel="noopener noreferrer">SN 11.3:14.2</a>). In Sanskrit we find <i>puruṣaṛṣabha</i> in the same sense.</span>
+                                    </div>
+                            <div
+            id="sutta-note-13"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-10-1"
+            >[13]</a>
+                                                        <span><i>Uḷāravaṇṇa</i> describes beautiful people at <a href="https://suttacentral.net/mn96/en/sujato#7.8" target="_blank" rel="noopener noreferrer">MN 96:7.8</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-14"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-10-5"
+            >[14]</a>
+                                                        <span>Read <i>ito</i>. I think this implies what is stated more explicitly in Anuruddha’s partly parallel verses at <a href="https://suttacentral.net/thag16.9/en/sujato#23.1" target="_blank" rel="noopener noreferrer">Thag 16.9:23.1</a>: after each of seven rebirths under Vessavaṇa he can become a king of men. This explains the name Janavasabha.</span>
+                                    </div>
+                            <div
+            id="sutta-note-15"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-10-7"
+            >[15]</a>
+                                                        <span>It is rare to see <i>saṁsāra</i> used as a countable noun, but see <a href="https://suttacentral.net/thag2.48/en/sujato#2.2" target="_blank" rel="noopener noreferrer">Thag 2.48:2.2</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-16"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-10-10"
+            >[16]</a>
+                                                        <span>As a stream-enterer he is freed from any lower rebirths, yet he still aspires to a higher realization.</span>
+                                    </div>
+                            <div
+            id="sutta-note-17"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-10-12"
+            >[17]</a>
+                                                        <span>In this idiom, the verb for “aware” varies between <i>sañjānāti</i>, <i>jānāti</i>, <i>pajānāti</i>, and <i>sampajānāti</i>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-18"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-11-1"
+            >[18]</a>
+                                                        <span>Compare <a href="https://suttacentral.net/sn1.50/en/sujato#5.1" target="_blank" rel="noopener noreferrer">SN 1.50:5.1</a> and <a href="https://suttacentral.net/sn2.24/en/sujato#6.1" target="_blank" rel="noopener noreferrer">SN 2.24:6.1</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-19"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-12-1"
+            >[19]</a>
+                                                        <span>It is not just the Vajjis and the Buddhist Saṅgha who meet frequently in a hall to discuss business, but the gods as well. Here we get a rare glimpse into how the heavens work, or more to the point, how depictions of heavenly proceedings act as a template for how things should be on earth.</span>
+                                    </div>
+                            <div
+            id="sutta-note-20"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-12-2"
+            >[20]</a>
+                                                        <span>The thirty-three and the Four Great Kings are both present; the heavenly realms are not shut off from one another.</span>
+                                    </div>
+                            <div
+            id="sutta-note-21"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-13-5"
+            >[21]</a>
+                                                        <span>In the Suttas, <i>sudhamma</i> (“clear right”) is used in two main contexts: as the name of the hall of the gods, and in this expression (it is also a personal name). Both are found in this Sutta, suggesting they have the same meaning. <i>Dhammassa ca sudhammataṁ</i> echoes Śatapatha Brāhmaṇa 14.2.2.29, <i>dharmāsi sudharmeti</i> (“You are a well-supporting support”). This is a ritual invocation of the Sun as that which supports everything here in this world. In Pali, it is something we are frequently urged to “behold” (eg. <a href="https://suttacentral.net/thag4.2/en/sujato#4.2" target="_blank" rel="noopener noreferrer">Thag 4.2:4.2</a>), suggesting the metaphorical link with the Sun’s brilliance is not entirely lost. And as the hall of the gods, the sense of the “Sun” is also fitting. The idea is that the Sun is regular and lawful, and by shedding its light on all of us, it is a clear visible manifestation of what is right and just.</span>
+                                    </div>
+                            <div
+            id="sutta-note-22"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-14-2"
+            >[22]</a>
+                                                        <span>For <i>vipakkamati</i> compare <a href="https://suttacentral.net/mn127/en/sujato#11.1" target="_blank" rel="noopener noreferrer">MN 127:11.1</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-23"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-15-1"
+            >[23]</a>
+                                                        <span>Compare <a href="https://suttacentral.net/dn11/en/sujato#80.12" target="_blank" rel="noopener noreferrer">DN 11:80.12</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-24"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-16-2"
+            >[24]</a>
+                                                        <span>For <i>vipāko bhavissati</i> in discerning the results of signs, compare <a href="https://suttacentral.net/dn1/en/sujato#1.24.2" target="_blank" rel="noopener noreferrer">DN 1:1.24.2</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-25"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-17-1"
+            >[25]</a>
+                                                        <span>See <a href="https://suttacentral.net/an3.127/en/sujato#2.3" target="_blank" rel="noopener noreferrer">AN 3.127:2.3</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-26"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-17-2"
+            >[26]</a>
+                                                        <span>This phrase is also at <a href="https://suttacentral.net/dn19/en/sujato#16.8" target="_blank" rel="noopener noreferrer">DN 19:16.8</a>, but apart from that the words <i>pakativaṇṇa</i> (“normal appearance”), <i>anabhisambhavanīya</i> (“imperceptible”), and <i>cakkhupatha</i> (“visual range”) are all unique in the early texts.</span>
+                                    </div>
+                            <div
+            id="sutta-note-27"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-17-4"
+            >[27]</a>
+                                                        <span>For the unique term “human form” (<i>mānusaṁ viggahaṁ</i>) compare the Vinaya phrase <i>manussaviggahaṁ</i> (<a href="https://suttacentral.net/pli-tv-bu-vb-pj3/en/sujato#2.49.1" target="_blank" rel="noopener noreferrer">Bu Pj 3:2.49.1</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-28"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-18-3"
+            >[28]</a>
+                                                        <span>Also appearing in <a href="https://suttacentral.net/dn21/en/sujato#1.8.3" target="_blank" rel="noopener noreferrer">DN 21:1.8.3</a>, <a href="https://suttacentral.net/dn20/en/sujato#10.11" target="_blank" rel="noopener noreferrer">DN 20:10.11</a>, and <a href="https://suttacentral.net/sn35.119/en/sujato" target="_blank" rel="noopener noreferrer">SN 35.119</a>, Pañcasikha (“Five-Crest”) was a handsome and virile deity of the <i>gandhabbas</i>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-29"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-19-1"
+            >[29]</a>
+                                                        <span><i>Bhāsittha</i> is 3rd singular aorist middle voice.</span>
+                                    </div>
+                            <div
+            id="sutta-note-30"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-19-2"
+            >[30]</a>
+                                                        <span>Compare <a href="https://suttacentral.net/mn91/en/sujato#21.4" target="_blank" rel="noopener noreferrer">MN 91:21.4</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-31"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-20-2"
+            >[31]</a>
+                                                        <span>Everything Sanaṅkumāra says is just a bit off. Here he adopts an idiom commonly used by the Buddha, but in third person rather than the Buddha’s second person; and he asks only rhetorically, where the Buddha engages with his audience. If it were only this one example it would mean nothing, but similar changes happen throughout. I believe this is a subtle literary device that tells two narratives to two audiences. To potential converts it sounds like Sanaṅkumāra is giving a ringing and learned endorsement of Buddhism, while to knowledgeable Buddhists he appears as less than well versed in the teachings. I note these eccentric wordings as we proceed.</span>
+                                    </div>
+                            <div
+            id="sutta-note-32"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-20-3"
+            >[32]</a>
+                                                        <span>The sutta began by recounting those who have achieved various stages of awakening. But escape from rebirth threatens the gods; this potentially fraught relationship is played out in <a href="https://suttacentral.net/mn49/en/sujato" target="_blank" rel="noopener noreferrer">MN 49</a>. Sanaṅkumāra is preempting such arguments by pointing out that many of the Buddha’s followers are reborn among the gods and do not escape transmigration, at least not for now. This is no trivial metaphysical argument. In order for Buddhism to prevail, it must show that its radical soteriology is compatible with worldly prosperity, lest it face opposition from kings and other temporal powers. The gods act as proxies to demonstrate the appropriate behavior for terrestrial kings. This is why the leading character is Bimbisāra/Janavasabha, who straddles the two realms.</span>
+                                    </div>
+                            <div
+            id="sutta-note-33"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-22-1"
+            >[33]</a>
+                                                        <span>Sanaṅkumāra begins sharing the Buddha’s teaching with the gods, starting with the bases of psychic power that featured prominently in DN 16. Here, however, he focuses on the worldly dimensions of psychic powers, ignoring the liberating dimension that was central to the Buddha. This sets the pattern for the teachings to follow, except for the very last.</span>
+                                    </div>
+                            <div
+            id="sutta-note-34"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-22-3"
+            >[34]</a>
+                                                        <span><i>Yāva supaññattā</i>, which is also at <a href="https://suttacentral.net/mn51/en/sujato#4.3" target="_blank" rel="noopener noreferrer">MN 51:4.3</a>, is a variation of the common exclamation <i>yāva subhāsita</i>. The phrase <i>iddhipahutāya iddhivisavitāya iddhivikubbanatāya</i> is unique. The Paṭisambhidāmagga draws on this passage to explain <i>vikubbana</i> both as a general term for development of psychic powers (<a href="https://suttacentral.net/ps3.2/en/sujato#4.3" target="_blank" rel="noopener noreferrer">Ps 3.2:4.3</a>) and as specific kind of psychic power, namely the transformation of one’s apparent form as demonstrated by Sanaṅkumāra (<a href="https://suttacentral.net/ps3.2/en/sujato#15.1" target="_blank" rel="noopener noreferrer">Ps 3.2:15.1</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-35"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-23-4"
+            >[35]</a>
+                                                        <span>These “three opportunities” are not found elsewhere.</span>
+                                    </div>
+                            <div
+            id="sutta-note-36"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-23-6"
+            >[36]</a>
+                                                        <span>This unique term is the reverse of the phrase that begins the first <i>jhāna</i>. The passage, however, speaks only of lifestyle rather than deep meditation.</span>
+                                    </div>
+                            <div
+            id="sutta-note-37"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-23-8"
+            >[37]</a>
+                                                        <span>“Aloof” (<i>asaṁsaṭṭha</i>) is a synonym of “secluded” (<i>vivicca</i>). The <i>jhāna</i> formulas are extremely stable and it is rare to find them played with like this.</span>
+                                    </div>
+                            <div
+            id="sutta-note-38"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-23-9"
+            >[38]</a>
+                                                        <span>Since <i>jhāna</i> arises from pleasure, it cannot be meant here.</span>
+                                    </div>
+                            <div
+            id="sutta-note-39"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-24-1"
+            >[39]</a>
+                                                        <span>“Coarse physical, verbal, and mental processes” (<i>oḷārikā kāyasaṅkhārā …vacīsaṅkhārā … cittasaṅkhārā</i>) is another unique term. They are probably to be identified with the three “processes” of <a href="https://suttacentral.net/mn44/en/sujato#14.2" target="_blank" rel="noopener noreferrer">MN 44:14.2</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-40"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-25-1"
+            >[40]</a>
+                                                        <span>This builds off <a href="https://suttacentral.net/dn1/en/sujato#2.24.1" target="_blank" rel="noopener noreferrer">DN 1:2.24.1</a>, but the full phrase is only here and <a href="https://suttacentral.net/dn19/en/sujato#7.2" target="_blank" rel="noopener noreferrer">DN 19:7.2</a>.</span>
+                                    </div>
+                            <div
+            id="sutta-note-41"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-26-4"
+            >[41]</a>
+                                                        <span>Normally <i>satipaṭṭhāna</i> is taught “in order to purify sentient beings, to get past sorrow and crying, to make an end of pain and sadness, to end the cycle of suffering, and to realize extinguishment” (eg. <a href="https://suttacentral.net/dn22/en/sujato#1.7" target="_blank" rel="noopener noreferrer">DN 22:1.7</a>). Here, in yet another unique phrasing, a more humble goal is sought.</span>
+                                    </div>
+                            <div
+            id="sutta-note-42"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-26-8"
+            >[42]</a>
+                                                        <span>Again the liberating dimension is ignored in favor of worldly psychic abilities. This is another unique formulation.</span>
+                                    </div>
+                            <div
+            id="sutta-note-43"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-27-4"
+            >[43]</a>
+                                                        <span>Also found at <a href="https://suttacentral.net/an7.45/en/sujato#1.1" target="_blank" rel="noopener noreferrer">AN 7.45:1.1</a>. At <a href="https://suttacentral.net/mn44/en/sujato#12.4" target="_blank" rel="noopener noreferrer">MN 44:12.4</a> the four right efforts are said to be the “prerequisites of immersion”. Here at last Sanaṅkumāra introduces the liberating dimension of the path as a whole.</span>
+                                    </div>
+                            <div
+            id="sutta-note-44"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-27-8"
+            >[44]</a>
+                                                        <span>Also at <a href="https://suttacentral.net/sn45.1/en/sujato" target="_blank" rel="noopener noreferrer">SN 45.1</a>, etc.</span>
+                                    </div>
+                            <div
+            id="sutta-note-45"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-27-10"
+            >[45]</a>
+                                                        <span>To the standard passage on the qualities of the Dhamma, Sanaṅkumāra clumsily tacks on the line spoken by the Buddha when he was persuaded by Brahmā to teach (<a href="https://suttacentral.net/sn6.1/en/sujato#10.1" target="_blank" rel="noopener noreferrer">SN 6.1:10.1</a>, <a href="https://suttacentral.net/dn14/en/sujato#3.7.13" target="_blank" rel="noopener noreferrer">DN 14:3.7.13</a>, <a href="https://suttacentral.net/mn26/en/sujato#21.6" target="_blank" rel="noopener noreferrer">MN 26:21.6</a>, <a href="https://suttacentral.net/mn85/en/sujato#45.6" target="_blank" rel="noopener noreferrer">MN 85:45.6</a>).</span>
+                                    </div>
+                            <div
+            id="sutta-note-46"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-27-12"
+            >[46]</a>
+                                                        <span>Finally the question is answered, although the number of deaths is obviously exaggerated. We cannot estimate the population size at the time with any confidence. But we know that Pāṭaliputta under Ashoka covered about 25 km², which suggests a population somewhere around 250,000. Probably there were a few million people in the whole of Magadha.</span>
+                                    </div>
+                            <div
+            id="sutta-note-47"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-27-14"
+            >[47]</a>
+                                                        <span>The commentary identifies these as non-returners, but this is unlikely as <i>puññābhāga</i> (“share of merit”) indicates those who do good for the sake of a good rebirth rather than liberation (<a href="https://suttacentral.net/an6.63/en/sujato#30.2" target="_blank" rel="noopener noreferrer">AN 6.63:30.2</a>). There would have been countless more of such good folk than stream-enterers, whereas the number of non-returners, as indicated by the count of the Ñātikans, would have been small, not “countless”. This verse is also at <a href="https://suttacentral.net/sn6.13/en/sujato#7.1" target="_blank" rel="noopener noreferrer">SN 6.13:7.1</a>, where the commentary says nothing of non-returners.</span>
+                                    </div>
+                            <div
+            id="sutta-note-48"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-28-4"
+            >[48]</a>
+                                                        <span>Sanaṅkumāra lives longer than the lesser gods so he has a broader perspective. He emphasizes the long-term stability of cosmic order, which prevails through the crises that afflict the short-lived kingdoms of men.</span>
+                                    </div>
+                            <div
+            id="sutta-note-49"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-29-1"
+            >[49]</a>
+                                                        <span>Astonishingly, this sutta traces its textual lineage directly to Brahmā, exactly like the Brahmanical texts (eg. Bṛhadāraṇyaka Upaniṣad 6.5.4). Of course, Brahmā gets his teaching from the Buddha, but this is clearly copying the Brahmanical model.</span>
+                                    </div>
+                            <div
+            id="sutta-note-50"
+            class="scroll-mt-24 border-b border-line py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-29-3"
+            >[50]</a>
+                                                        <span>Here Ānanda plays a key role as the linchpin of the oral tradition. It is likely that not just the Mahāparinibbānasutta itself, but all these suttas of this cycle were composed by Ānanda or his students.</span>
+                                    </div>
+                            <div
+            id="sutta-note-51"
+            class="scroll-mt-24  py-4 text-ink-muted"
+          >
+            <a
+              class="mr-1 text-accent no-underline hover:underline dark:text-[#c784ff]"
+              href="#segment-dn18-29-4"
+            >[51]</a>
+                                                        <span>With this unique ending, there is no claim that this sutta was heard by the mendicants in the usual way. Rather it makes its purpose explicit, to act as a means to widely propagate the Dhamma. The Mahāparinibbānasutta also speaks of the spread of the Dhamma, and the Janavasabhasutta indicates some of the means by which that was achieved in the decades following the Buddha’s death; in particular, by allying itself with the ascendant power of Magadha.</span>
+                                    </div>
+              </div>
+      </aside>
+</section>
+
+<div class="sutta-ref-popup" id="suttaRefPopup" aria-hidden="true">
+  <div class="sutta-ref-popup__backdrop" data-sutta-ref-close></div>
+  <div class="sutta-ref-popup__panel" role="dialog" aria-modal="true" aria-label="Notes">
+    <button class="sutta-ref-popup__close" type="button" data-sutta-ref-close aria-label="Close dialog">×</button>
+    <p class="sutta-ref-popup__index" data-sutta-ref-index></p>
+    <div class="sutta-ref-popup__content" data-sutta-ref-content></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    document.addEventListener("click", (event) => {
+      if (root.contains(event.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+
+  const translationPicker = document.querySelector("[data-translation-picker]");
+  const translationPickerToggle = translationPicker?.querySelector("[data-translation-picker-toggle]");
+  const translationPickerMenu = translationPicker?.querySelector("[data-translation-picker-menu]");
+  const translationPickerOptions = translationPicker?.querySelectorAll("[data-translation-picker-option]");
+
+  const setTranslationPickerOpen = (isOpen) => {
+    if (!translationPickerToggle || !translationPickerMenu) return;
+    translationPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    translationPickerMenu.hidden = !isOpen;
+    translationPicker.classList.toggle("is-open", isOpen);
+  };
+
+  translationPickerToggle?.addEventListener("click", () => {
+    const isOpen = translationPickerToggle.getAttribute("aria-expanded") === "true";
+    setTranslationPickerOpen(!isOpen);
+  });
+
+  translationPickerOptions?.forEach((option) => {
+    option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (translationPicker && !translationPicker.contains(event.target)) {
+      setTranslationPickerOpen(false);
+    }
+  });
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+      <script type="module" src="/assets/sutta-ref-popup.js?_=1781705533"></script>
+  
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

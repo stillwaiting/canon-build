@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 210 — The Rice Seedling — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 210 — The Rice Seedling</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 210 — The Rice Seedling        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Śālistamba          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Dharmasāgara Translation Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>The Rice Seedling</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.116.a</span> Homage to all buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Bhagavān was residing on Vulture Peak mountain in Rājagṛha with a large saṅgha of 1,250 bhikṣus and with a great many bodhisattva mahāsattvas. At that time, venerable Śāriputra went to the place frequented by the bodhisattva mahāsattva Maitreya and, after they had exchanged courtesies upon meeting each other, they both sat down on a flat rock.</p><p>Venerable Śāriputra then said to the bodhisattva mahāsattva Maitreya, “Maitreya, here today, the Bhagavān, gazing at a rice seedling, spoke this aphorism<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-13" href="#tei-note-UT22084-062-010-13">[1]</a></sup> to the bhikṣus: ‘Bhikṣus, whoever sees dependent arising sees the Dharma.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-14" href="#tei-note-UT22084-062-010-14">[2]</a></sup> Whoever sees the Dharma sees the Buddha.’ Having said this, the Bhagavān fell silent. Maitreya, what is the meaning of this aphorism spoken by the Sugata?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-15" href="#tei-note-UT22084-062-010-15">[3]</a></sup> What is dependent arising? What is the Dharma? What is the Buddha? How does one see the Dharma by seeing dependent arising? How does one see the Buddha by seeing the Dharma?”</p><p>The bodhisattva mahāsattva Maitreya then replied to the venerable Śāradvatīputra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-17" href="#tei-note-UT22084-062-010-17">[4]</a></sup> “Venerable Śāriputra, you want to know what dependent arising is in the statement made by the Bhagavān, the Lord of Dharma, the Omniscient One: ‘Bhikṣus, whoever sees dependent arising sees the Dharma. Whoever sees the Dharma sees the Buddha’? Well, the phrase <em>dependent arising</em> means that something arises because something else already exists; something is born because something else was already born.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-18" href="#tei-note-UT22084-062-010-18">[5]</a></sup> That is to say, ignorance causes formations. Formations <span class="tei-ref">F.116.b</span> cause consciousness. Consciousness causes name and form. Name and form cause the six sense sources. The six sense sources cause contact. Contact causes sensation. Sensation causes craving. Craving causes appropriation. Appropriation causes becoming. Becoming causes birth. And birth causes aging and death, sorrow, lamentation, suffering, despair, and anxiety. Thus does this entire great heap of suffering arise.</p><p>“When ignorance ceases, formations cease. When formations cease, consciousness ceases. When consciousness ceases, name and form cease. When name and form cease, the six sense sources cease. When the six sense sources cease, contact ceases. When contact ceases, sensation ceases. When sensation ceases, craving ceases. When craving ceases, appropriation ceases. When appropriation ceases, becoming ceases. When becoming ceases, birth ceases. And when birth ceases, aging and death, sorrow, lamentation, suffering, despair, and anxiety cease. Thus does this entire great heap of suffering cease. This is what the Bhagavān has called dependent arising.</p><p>“What is the Dharma? The Dharma is the eightfold path of the noble ones: right view, right intention, right speech, right action, right livelihood, right effort, right mindfulness, and right concentration. This eightfold path of the noble ones, combined with the attainment of its results and nirvāṇa, is what the Bhagavān has called the Dharma.</p><p>“Who is the Bhagavān Buddha? A <em>buddha</em>, so-called because of comprehending all dharmas,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-22" href="#tei-note-UT22084-062-010-22">[6]</a></sup> is endowed with the wisdom eye of the noble ones and the body <span class="tei-ref">F.117.a</span> of Dharma,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-23" href="#tei-note-UT22084-062-010-23">[7]</a></sup> and thus perceives the dharmas<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-24" href="#tei-note-UT22084-062-010-24">[8]</a></sup> of those still in training and those beyond training.</p><p>“How does one see dependent arising? On this point the Bhagavān said, ‘One who sees dependent arising as constant,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-26" href="#tei-note-UT22084-062-010-26">[9]</a></sup> without life force, devoid of life force, true, unmistaken, unborn, not arisen, uncreated, uncompounded, unobstructed, imperceptible, tranquil,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-27" href="#tei-note-UT22084-062-010-27">[10]</a></sup> fearless, incontrovertible, inexhaustible, and by nature never stilled,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-28" href="#tei-note-UT22084-062-010-28">[11]</a></sup> and who likewise sees the Dharma to also be constant, without life force, devoid of life force, true, unmistaken, unborn, not arisen, uncreated, uncompounded, unobstructed, imperceptible, tranquil, fearless, incontrovertible, inexhaustible, and never stilled, clearly understands the Dharma of the nobles ones, and by thus acquiring such right knowledge, sees the Buddha, the body of the unsurpassable Dharma.’</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-29" href="#tei-note-UT22084-062-010-29">[12]</a></sup></p><p>“Why is it called <em>dependent arising</em>? It is called dependent arising because it is causal and conditional, not non-causal and non-conditional. In this connection, the Bhagavān concisely taught the characteristics of dependent arising as follows: ‘Results come from their own specific conditions. Whether tathāgatas appear or not, this true nature of things<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-31" href="#tei-note-UT22084-062-010-31">[13]</a></sup> will remain. It is the true nature; the constancy of Dharma;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-32" href="#tei-note-UT22084-062-010-32">[14]</a></sup> the immutability of Dharma,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-33" href="#tei-note-UT22084-062-010-33">[15]</a></sup> consistent with dependent arising, suchness, unmistaken suchness, unchanging suchness, actuality, and truth; unmistaken; and unerring.’</p><p>“Moreover, dependent arising emerges from two principles. <span class="tei-ref">F.117.b</span> From what two principles? From a causal relation and a conditional relation. Furthermore, it should be understood as twofold: outer and inner.</p><br /><p>“What is the causal relation in outer dependent arising? It is as follows. From a seed comes a sprout, from a sprout a leaf, from a leaf a stem, from a stem a pedicel, from a pedicel a pistil, from a pistil a flower, and from a flower comes a fruit. If there is no seed, the sprout cannot arise and so on, until finally, without the flower, the fruit cannot arise. If there is a seed, the sprout will form and so on, until finally, if there is a flower, then the fruit will form.</p><p>“In that process, the seed does not think, ‘I form the sprout.’ Nor does the sprout think, ‘I am formed by the seed.’ Likewise, the flower does not think, ‘I form the fruit.’ Nor does the fruit think, ‘I am formed by the flower.’ Yet, if there is a seed, the sprout will take form and arise, and so on, until finally, likewise, if there is a flower, the fruit will take form and arise. Thus is the causal relation in outer dependent arising to be seen.</p><br /><p>“So how is the conditional relation in outer dependent arising to be seen? As due to the coming together of six elements. As due to the coming together of what six elements? Namely, conditional dependent arising is to be seen as due to the coming together of the elements of earth, water, fire, wind, space, and season.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-38" href="#tei-note-UT22084-062-010-38">[16]</a></sup> The earth element functions as the support for the seed. The water element moistens the seed. The fire element ripens the seed. The wind element opens the seed. The space element performs the function of not obstructing the seed. And season transforms the seed. Without these conditions a sprout cannot form from a seed. <span class="tei-ref">F.118.a</span> But when the outer element of earth is not deficient, and likewise water, fire, wind, space, and season are not deficient, then from the coming together of all these factors, a sprout forms as the seed is ceasing.</p><p>“The earth element does not think, ‘I support the seed.’ Nor does the water element think, ‘I moisten the seed.’ Nor does the fire element think, ‘I ripen the seed.’ Nor does the wind element think, ‘I open the seed.’ Nor does the space element think, ‘I make sure the seed is not obstructed.’ Nor does the season think, ‘I transform the seed.’ Nor does the seed think, ‘I form the sprout.’ Nor does the sprout think, ‘I am formed by these conditions.’ Yet when these conditions are present and the seed is ceasing, the sprout forms. Likewise, when finally there is a flower, the fruit forms.</p><p>“The sprout is not created by itself, not created by another, not created by both, not created by Īśvara, not transformed by time,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-41" href="#tei-note-UT22084-062-010-41">[17]</a></sup> not derived from <em>prakṛti</em>, and not born without any cause. Nevertheless, through the coming together of the elements of earth, water, fire, wind, space, and season, the sprout forms as the seed is ceasing.</p><p>“Thus is the conditional relation in outer dependent arising to be seen.</p><br /><p>“Here, outer dependent arising is to be seen in terms of five aspects. What five aspects? As not permanent, as not discontinuous, as not involving transmigration, as the production of a large result from a small cause, and as a continuity of similar type.</p><p>“How is it not permanent? It is not permanent because the sprout and the seed are different. The sprout is not the seed. <span class="tei-ref">F.118.b</span> The sprout does not come from the seed after it has ceased, nor does it come from the seed while it has not yet ceased.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-44" href="#tei-note-UT22084-062-010-44">[18]</a></sup> Rather, the sprout is born precisely as the seed ceases.</p><p>“How is it not discontinuous? It is not discontinuous because a sprout is not born from a seed that has already ceased, nor from a seed that has not yet ceased. Rather, like the beam of a scale tilting from up to down, a sprout is born precisely when the seed has ceased.</p><p>“How does it not involve transmigration? It does not involve transmigration because the sprout and the seed are different; that which is the sprout is not the seed.</p><p>“How does it entail the producing of a large result from a small cause? A large fruit is produced from the planting of a small seed. Therefore, it entails the producing of a large result from a small cause.</p><p>“Lastly, fruit is produced precisely according to the type of seed planted. Therefore, it involves a continuity of similar type.</p><p>“Thus is outer dependent arising to be seen in terms of five aspects.</p><br /><p>“Similarly, inner dependent arising also arises from two principles. From what two principles? From a causal relation and a conditional relation.</p><p>“What, then, is the causal relation in inner dependent arising? It starts with ignorance causing formations and so on, until finally, birth causes aging and death. If ignorance does not arise, then formations do not manifest and so on, until finally, if birth does not arise, then aging and death do not manifest. Likewise, from the existence of ignorance, formations occur and so on, until finally, from the existence of birth, comes aging and death.</p><p>“Ignorance does not think, ‘I produce formations.’ Nor do formations think, ‘We are produced by ignorance,’ and so on. Finally, birth does not think, ‘I produce aging and death.’ Nor do aging and death think, ‘I am produced by birth.’ Nevertheless, <span class="tei-ref">F.119.a</span> formations take form and arise through the existence of ignorance and so on, until finally aging and death take form and arise through the existence of birth.</p><p>“Thus is the causal relation in inner dependent arising to be seen.</p><br /><p>“How is the conditional relation in inner dependent arising to be seen? As due to the coming together of six elements. As due to the coming together of what six elements? Namely, the conditional relation in inner dependent arising is to be seen as due to the coming together of the elements of earth, water, fire, wind, space, and consciousness.</p><p>“Here, what is the earth element in inner dependent arising? That which assembles to form the solidity of the body is called the earth element. That which provides cohesion in the body is called the water element. That which digests whatever the body eats, drinks, chews, and tastes is called the fire element. That which performs the function of the body’s inhalation and exhalation is called the wind element. That which allows the body to have hollow spaces inside is called the space element. That which produces the sprouts<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-54" href="#tei-note-UT22084-062-010-54">[19]</a></sup> of name and form like reeds in a sheaf—the combination of the five collections of consciousness, together with the defiled mental consciousness—is called the consciousness element. Without these conditions the body cannot be born. But when the inner earth element is not deficient, and likewise the elements of water, fire, wind, space, and consciousness are not deficient, then from the coming together of all these factors, the body forms.</p><p>“In this process, the earth element does not think, ‘I provide the solidity of the body by assembling.’ Nor does the water element think, ‘I provide cohesion for the body.’ Nor does the fire element think, ‘I digest whatever the body eats, drinks, chews, or tastes.’ <span class="tei-ref">F.119.b</span> Nor does the wind element think, ‘I perform the function of the body’s inhalation and exhalation.’ Nor does the space element think, ‘I create hollow spaces inside the body.’ Nor does the element of consciousness think, ‘I produce the name and form of the body.’ Nor does the body think, ‘I am produced by these conditions.’ Yet, when these conditions are present, the body is born.</p><p>“The earth element is not a self, not a being, not a life force, not a creature, not a human, not a person, not female, not male, not neuter, not me, not mine, and not anybody else’s.</p><p>“Similarly, the water element, the fire element, the wind element, the space element, and the consciousness element are also not a self, not a being, not a life force, not a creature, not a human, not a person, not female, not male, not neuter, not me, not mine, and not anybody else’s.</p><br /><p>“Here, what is <em>ignorance</em>? That which perceives these same six elements to be unitary, whole, permanent, constant, eternal, pleasurable, a self, a being, a life force, a creature, a soul,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-58" href="#tei-note-UT22084-062-010-58">[20]</a></sup> a man, an individual, a human, a person, me, and mine, along with the many other such variations of misapprehension, is called <em>ignorance</em>. The presence of such ignorance brings desire, aversion, and delusion toward objects. Such desire, aversion, and delusion toward objects are the <em>formations</em> caused by ignorance.<span class="tei-ref">F.120.a</span> That which distinguishes between individual objects is <em>consciousness</em>. The four aggregates for appropriation that emerge in conjunction with consciousness, [along with the aggregate of material form], are <em>name and form</em>.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-59" href="#tei-note-UT22084-062-010-59">[21]</a></sup> The faculties based on name and form are the <em>six sense sources</em>.</p><p>The conjunction of the three factors<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-60" href="#tei-note-UT22084-062-010-60">[22]</a></sup> is <em>contact</em>. The experience of contact is <em>sensation</em>. Attachment to sensation is <em>craving</em>. The intensification of craving is <em>appropriation</em>. Action that comes from appropriation and causes rebirth is <em>becoming</em>. The emergence of the aggregates from such a cause is <em>birth</em>. The maturation of the aggregates after birth is <em>aging</em>. The perishing of the decrepit aggregates is <em>death</em>. The inner torment of the deluded, attached, dying person is <em>sorrow</em>. The utterance that comes from sorrow is <em>lamentation</em>. The experience of discomfort associated with the collection of the five consciousnesses is <em>suffering</em>. The mental suffering accompanied by attention<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-61" href="#tei-note-UT22084-062-010-61">[23]</a></sup> is <em>despair</em>. Moreover, any other subtle defilements of this kind are called <em>anxiety</em>.</p><p>“They are called <em>ignorance</em> in the sense of obscuring, <em>formations</em> in the sense of forming, <em>consciousness</em> in the sense of knowing, <em>name and form</em> in the sense of mutual support,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-63" href="#tei-note-UT22084-062-010-63">[24]</a></sup> the six sense sources in the sense of entryways,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-64" href="#tei-note-UT22084-062-010-64">[25]</a></sup><em>contact</em> in the sense of contact, <em>sensation</em> in the sense of experience, <em>craving</em> in the sense of thirst, <em>appropriation</em> in the sense of appropriating, <em>becoming</em> in the sense of giving birth to repeated becoming, <em>birth</em> in the sense of the emergence of the aggregates, <em>aging</em> in the sense of the maturation of the aggregates, <em>death</em> in the sense of perishing, <em>sorrow</em> in the sense of grieving, <em>lamentation</em> in the sense of wailing, <em>suffering</em> in the sense of bodily torment, <em>despair</em> in the sense of mental torment, and <em>anxiety</em> in the sense of subtle defilement.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-65" href="#tei-note-UT22084-062-010-65">[26]</a></sup></p><p>“Furthermore, not knowing reality, in the sense of not apprehending it and misapprehending it, is ignorance.</p><p>“If such an ignorance is present, three types of formations develop: those that lead to meritorious states, those that lead to unmeritorious states, and those that lead to immovable states. This is what is meant by ‘ignorance is the condition for formations.’ <span class="tei-ref">F.120.b</span></p><p>“From formations that lead to meritorious states comes consciousness that leads to meritorious states. From formations that lead to unmeritorious states comes consciousness that leads to unmeritorious states. And from formations that lead to immovable states comes consciousness that leads to immovable states. This is what is meant by ‘formations are the conditions for consciousness.’</p><p>“The four immaterial aggregates—consciousness and those that arise together with it—as well as any form, is what is meant by ‘consciousness is the condition for name and form.’</p><p>“Due to the development of name and form, the performance of actions through the entryways of the six sense sources occurs. This is what is meant by ‘name and form are the conditions for the six sense sources.’</p><p>“From the six sense sources arise the six collections of contact. This is what is meant by ‘the six sense sources are the condition for contact.’</p><p>“Sensations occur precisely according to the type of contact that occurs. This is what is meant by ‘contact is the condition for sensation.’</p><p>“Relishing those different kinds of sensations, taking delight in them, clinging to them, and having that clinging remain is what is meant by ‘sensation is the condition for craving.’</p><p>“From relishing, taking delight, clinging, and having that clinging remain comes an unwillingness to let go, with the repeated wish: ‘May I never part from these dear and delightful forms!’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-74" href="#tei-note-UT22084-062-010-74">[27]</a></sup> This is what is meant by ‘craving is the condition for appropriation.’</p><p>“Such wishing gives rise to rebirth-producing actions by means of body, speech, and mind. This is what is meant by ‘appropriation is the condition for becoming.’</p><p>“The formation of the five<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-77" href="#tei-note-UT22084-062-010-77">[28]</a></sup> aggregates born from such actions is what is meant by ‘becoming is the condition for birth.’</p><p>“The maturation of the development of the aggregates formed from birth, and their disintegration, is what is meant by ‘birth is the condition for aging and death.’</p><br /><p>“Thus, this twelvefold dependent arising<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-80" href="#tei-note-UT22084-062-010-80">[29]</a></sup>—which comes from several different causes and from several different conditions, is neither permanent nor impermanent, <span class="tei-ref">F.121.a</span> is neither compounded nor uncompounded, is not without any cause or condition, is not an experiencer,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-81" href="#tei-note-UT22084-062-010-81">[30]</a></sup> and is not something<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-82" href="#tei-note-UT22084-062-010-82">[31]</a></sup> exhaustible, something destructible, or something that ceases—has proceeded from time immemorial, without interruption, like the flow of a river.</p><p>“This twelvefold dependent arising—which comes from several different causes and from several different conditions, is neither permanent nor impermanent, is neither compounded nor uncompounded, is not without any cause or condition, is not an experiencer, and is not something<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-84" href="#tei-note-UT22084-062-010-84">[32]</a></sup> exhaustible, something destructible, or something that ceases—has indeed proceeded from time immemorial, without interruption, like the flow of a river. Nevertheless, there are four links that serve as the cause for assembling this twelvefold dependent arising. What four links? Namely, ignorance, craving, karma, and consciousness.</p><p>“Consciousness functions as a cause by having the nature of a seed. Karma functions as a cause by having the nature of a field. Ignorance and craving function as causes by having the nature of afflictions.</p><p>“Karma and afflictions cause the seed of consciousness to grow. Here, karma functions as the field for the seed of consciousness. Craving moistens the seed of consciousness. Ignorance sows the seed of consciousness. Without these conditions, the seed of consciousness does not develop.</p><p>“In this process, karma does not think, ‘I function as the field for the seed of consciousness.’ Nor does craving think, ‘I moisten the seed of consciousness.’ Nor does ignorance think, ‘I sow the seed of consciousness.’ Nor does the seed of consciousness think, ‘I am produced by these conditions.’ Yet when the seed of consciousness grows, planted in the field of karma, moistened by the water of craving, and strewn with the manure of ignorance, <span class="tei-ref">F.121.b</span> the sprout of name and form manifests within whichever mother’s womb one will take rebirth through.</p><p>“And this sprout of name and form is not created by itself, not created by another, not created by both, not created by Īśvara, not transformed by time, not derived from <em>prakṛti</em>, not dependent on a single factor, and not born without any cause. Nonetheless, from the combination of the union of the parents, the period of ovulation, and other conditions, the seed of consciousness, filled with appetite,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-89" href="#tei-note-UT22084-062-010-89">[33]</a></sup> produces the sprout of name and form within whichever mother’s womb one will take rebirth through. For although things<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-90" href="#tei-note-UT22084-062-010-90">[34]</a></sup> are devoid of owner, devoid of ownership, ungraspable, space-like, and their nature is the mark of illusion, there is no deficiency of requisite causes and conditions.</p><p>“For instance, the eye consciousness arises by way of five principles. What five principles? Namely, the eye consciousness arises based on the eye on which it depends, form, light, space, and the appropriate attention. Here, the eye functions as the basis for the eye consciousness. Form functions as the object of perception for the eye consciousness. Light functions as visibility. Space functions by not obstructing. Appropriate attention functions as mental reflection. Without these conditions, the eye consciousness cannot arise. But when the inner <em>sense source</em>, the eye, is not deficient, and likewise, when form, light, space, and appropriate attention are not deficient, then from the coming together of all these factors, the eye consciousness arises.</p><p>“The eye does not think, ‘I serve as the basis for the eye consciousness.’ Nor does form think, ‘I serve as the object of perception for the eye consciousness.’ Nor does light think, ‘I function as the visibility for the eye consciousness.’ Nor does space think, ‘I do not obstruct the eye consciousness.’ Nor does appropriate attention think, <span class="tei-ref">F.122.a</span> ‘I provide mental reflection for the eye consciousness.’ Nor does the eye consciousness think, ‘I am produced by these conditions.’ Yet, the eye consciousness is born from the presence of these conditions. Similarly, a corresponding analysis should be applied to the rest of the faculties.</p><br /><p>“Here, there is nothing<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-94" href="#tei-note-UT22084-062-010-94">[35]</a></sup> whatsoever that transmigrates from this existence to the next. And yet, because there is no deficiency of requisite causes and conditions, the result of karma nonetheless manifests. It is like the appearance of the reflection of a face on the surface of a well-polished mirror. The face has not shifted onto the surface of the mirror, but because there is no deficiency of requisite causes and conditions, the face nonetheless appears there.</p><p>“Similarly, there is nobody at all who transmigrates from here after death and is born elsewhere. And yet, because there is no deficiency of requisite causes and conditions, the result of karma nonetheless manifests. It is like how the orb of the moon travels at a distance of forty-two thousand yojanas above earth, and yet its reflection nonetheless appears in small vessels filled with water. It is not that the moon moves from its position and enters the small vessels filled with water. Yet, because there is no deficiency of requisite causes and conditions, the orb of the moon nonetheless appears there.</p><p>“Likewise, that there is nobody at all who transmigrates from here after death and is born elsewhere, and yet, because there is no deficiency of requisite causes and conditions, the result of karma nonetheless manifests, is like how a fire ignites from the assemblage of its requisite causes and conditions, and not when deficient of its requisite causes and conditions.</p><p>“In the same way, although things<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-98" href="#tei-note-UT22084-062-010-98">[36]</a></sup> are devoid of owner, devoid of ownership, ungraspable, space-like, and their nature is the mark of illusion, because there is no deficiency of requisite causes and conditions, the seed of consciousness born of karma and afflictions will nonetheless produce the sprout of name and form within whichever mother’s womb one will take rebirth through.</p><p>“Thus is the conditional relation in inner dependent arising to be seen.</p><br /><p>“Here, inner dependent arising is to be seen in terms of five aspects. What five aspects? <span class="tei-ref">F.122.b</span> As not permanent, as not discontinuous, as not involving transmigration, as the production of a large result from a small cause, and as a continuity of similar type.</p><p>“How is it not permanent? It is not permanent because the final aggregates at death are one thing and those at birth are another; that is, the final aggregates at death are not the ones at birth. And yet, only when the final aggregates at death cease do the aggregates at birth arise.</p><p>“How is it not discontinuous? It is not discontinuous because the aggregates at birth do not arise from the final aggregates at death either when they have already ceased, or when they have not yet ceased. Like the beam of a scale tilting from up to down, the aggregates at birth arise precisely when the final aggregates at death have ceased.</p><p>“How does it not involve transmigration? It does not involve transmigration because beings from different classes of existence bring about their rebirth in a common form of birth.</p><p>“How does it entail the production of a large result from a small cause? The ripening of a large result is experienced from having performed a minor action. Thus, it entails the production of a large result from a small cause.</p><p>“It involves a continuity of similar type because the ripening of an action is experienced precisely according to the action performed.</p><br /><p>“Venerable Śāriputra, whoever sees with perfect wisdom this dependent arising, perfectly taught by the Bhagavān, as it actually is—as always and forever<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-105" href="#tei-note-UT22084-062-010-105">[37]</a></sup> without life force, devoid of life force, true, unmistaken, unborn, not arisen, uncreated, uncompounded, unobstructed, imperceptible, tranquil, fearless, incontrovertible, inexhaustible, and by nature never stilled—whoever fully and truly sees it as unreal, vain, hollow, unsubstantial, as a sickness, <span class="tei-ref">F.123.a</span> a boil, a thorn, as miserable, impermanent, painful, empty, and self-less, such a person does not reflect on the past thinking, ‘Did I exist in the past, or not? What was I in the past? How was I in the past?’ Nor does such a person reflect on the future thinking, ‘Will I exist in the future, or not? What will I be in the future? How will I be in the future?’ Nor does such a person reflect on the present thinking, ‘What is this? How is this? <em>Being</em> what, what will we become? Where does this being<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-106" href="#tei-note-UT22084-062-010-106">[38]</a></sup> come from? Where will it go when transmigrating from here at death?’</p><p>“Whichever dogmas mendicants and brahmins hold throughout the world, whether they involve belief in a self, belief in a being, belief in a life force, belief in a person, or belief in ceremonies and festivities,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-108" href="#tei-note-UT22084-062-010-108">[39]</a></sup> such dogmas, prone to agitation and dullness,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-109" href="#tei-note-UT22084-062-010-109">[40]</a></sup> are all abandoned at that time. Fully understood as false, these dogmas are severed at the root and wither like the head of a palm tree,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-062-010-110" href="#tei-note-UT22084-062-010-110">[41]</a></sup> never to arise or cease in the future.</p><p>“Venerable Śāriputra, whoever is endowed with such acceptance of the Dharma and thus perfectly understands dependent arising is prophesied for unexcelled, perfect, and complete awakening by the Tathāgata, the Arhat, the perfectly and completely awakened one, the one with perfect knowledge and conduct, the Sugata, the knower of the world, the incomparable charioteer of those who need taming, the teacher of gods and humans, the Bhagavān, the Buddha, in this way: ‘Such a person will become a perfect and complete buddha!’ ”</p><br /><p>After the bodhisattva mahāsattva Maitreya had thus spoken, venerable Śāriputra, together with the world of gods, humans, asuras, and gandharvas, <span class="tei-ref">F.123.b</span> rejoiced and praised what the bodhisattva mahāsattva Maitreya had taught.</p><br />This concludes the noble Mahāyāna sūtra, “<cite>The Rice Seedling</cite>.”</section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-062-010-13"><p>The term translated here is <em>sūtra</em> (Tibetan <em>mdo</em>). In Indian literature a <em>sūtra</em> generally refers to the statement of a short rule or universal truth, e.g. an axiom, dictum, formula, or thread. A <em>collection</em> of such statements can also be called a sūtra. While, generally speaking, Buddhist sūtras present a complete speech of the Buddha including introductory and concluding statements, here we have a complete teaching of the Buddha in very few words but still resembling the general usage of the term.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-13">back</a></li><li id="tei-note-UT22084-062-010-14"><p>Owing to the multivalence of the term <em>dharma</em> / <em>chos</em> and the play between these different senses witnessed in this text, we have chosen to leave it untranslated as <em>dharma</em> / <em>Dharma</em> in certain passages. Where we do render it into English, explanatory notes are provided.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-14">back</a></li><li id="tei-note-UT22084-062-010-15"><p>The Sanskrit reads <em>bhagavatā</em> (Reat 1993, p. 27).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-15">back</a></li><li id="tei-note-UT22084-062-010-17"><p>A common name variant of Śāriputra. However, the Sanskrit (Reat, p. 28) and the Stok Palace version of the Tibetan (F.282b.6) both read Śāriputra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-17">back</a></li><li id="tei-note-UT22084-062-010-18"><p>This entire sentence is missing from the available Sanskrit materials and the Chinese translation (Reat, pp. 28–29).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-18">back</a></li><li id="tei-note-UT22084-062-010-22"><p>“All dharmas” here has the sense of “all phenomena.” We leave the term untranslated here and throughout this passage to help convey the chain of associations communicated in the Sanskrit and Tibetan source texts through these uses of the multivalent term <em>dharma</em> / <em>chos</em>. See the following note, and note 12 for more on this multivalence.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-22">back</a></li><li id="tei-note-UT22084-062-010-23"><p>“Body of Dharma” here renders <em>chos kyi sku</em>. This section of the sūtra is not attested in the available Sanskrit material, so the available Sanskrit editions have actually been reconstructed from the Tibetan translation. Louis de La Vallée Poussin (1913, p. 72) and Sastri (1950, p. 3) reconstruct <em>chos kyi sku</em> here with <em>dharmakāya</em>, but we prefer—with Reat (p. 30)—the term <em>dharmaśarīra</em> because it is attested as a possible underlying Sanskrit term for the Tibetan <em>chos kyi sku</em> in the next paragraph (cf. Reat, p. 32 n5). Kamalaśīla interprets the term as the pristine wisdom, or suchness, that serves as a basis for the dharmas (i.e., awakened qualities) of a buddha. He states: “ ‘body of Dharma’ demonstrates the cause: that which serves as the cause of the dharmas (i.e., awakened qualities) of a buddha is pristine wisdom or pristine suchness—the body which is the body of Dharma” (Schoening, vol. 2, p. 473). Reat (ibid.) translates this term as “Dharma-body,” whereas Schoening (vol. 1, p. 237) renders it as “the body consisting of dharma(s).” As indicated by these different interpretations, the semantic range of the term <em>dharmaśarīra</em> (<em>chos kyi sku</em>) can include the interlinked notions of the “corpus” of the Buddha’s “teachings” or “doctrine” (Dharma), the “<em>collection</em>” of undefiled “qualities” (dharmas) that make a buddha a buddha, the physical body of the Buddha as an “embodiment” of “ultimate reality” (Dharma) and attendant “awakened qualities,” and, by extension, as Kamalaśīla’s interpretation suggests, the ethereal “body” of pristine wisdom that characterizes the Buddha’s awakening experience. The mutual implications of dharma as “doctrine,” “qualities,” and “reality” (and “phenomena” in general) is an important facet of the term’s multivalence in Buddhist literary sources. For more on the shifting semantic range of the terms <em>dharma</em>, <em>dharmaśarīra</em>, and <em>dharmakāya</em>, see Paul Harrison (1992). We have partially followed Reat in rendering this term with the slightly ambiguous “body of Dharma,” with the hope of not overly constraining the broad semantic range of the term and its possible commentarial interpretations.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-23">back</a></li><li id="tei-note-UT22084-062-010-24"><p>Dharmas (<em>chos rnams</em>) here seems to have the dual sense of “trainings” on the path and their associated “attainments” or “qualities” of attainment. Reat (p. 31) interprets dharmas here to mean only “rules, practices,” but this would not apply to “those beyond training.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-24">back</a></li><li id="tei-note-UT22084-062-010-26"><p>We opted to interpret this passage according to Kamalaśīla’s commentary: “It is constant because it has been taught as a dharma that is thus unborn in all times. This shows that since the three times too are ultimately of one taste, it is unchanging (<cite>Śālistamba</cite>[<cite>ka</cite>]<cite>ṭīkā</cite>, p. 395: <em>dus thams cad du ’di ltar skye ba med pa’i chos gsungs pa dang ldan pas na rtag pa’o/ /’dis ni dus gsum yang don dam par ro gcig pas ’gyur ba med par bstan to/</em>).” However, the Sanskrit versions also allow another interpretation by which “permanent / always / constant” (<em>satatasamitam</em>) qualifies “without life force” (<em>ajīvam</em> / <em>nirjīvam</em>), thus meaning, “always without life force.” This is also supported by the <cite>Śālistambaṭīkā</cite> ascribed to Nāgarjuna (p. 805). Reat (pp. 32–33) translates this passage with “always and ever devoid of soul,” and he translates from the Chinese (Taishō 709) with “eternal, continuously arising without soul.” Note also the very similar passage at 1.59.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-26">back</a></li><li id="tei-note-UT22084-062-010-27"><p>The Sanskrit (Reat, p. 32) has <em>śiva</em>, “glorious,” “auspicious,” “propitious,” suggesting that the Tibetan <em>zhi ba</em> might have been a transliteration of the Sanskrit. However, Kamalaśīla (Schoening, vol. 2, pp. 479–480) interprets it to mean “tranquil,” “peaceful.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-27">back</a></li><li id="tei-note-UT22084-062-010-28"><p>In Tibetan “by nature” could also refer to all aspects listed above; however, in Sanskrit, and according to Kamalaśīla (Schoening, vol. 2, pp. 481–482), it only modifies “never stilled” (<em>avyupaśama­svabhāva</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-28">back</a></li><li id="tei-note-UT22084-062-010-29"><p>The available Sanskrit (Reat, p. 32) for this passage reads: <em>anuttara­dharma­śarīraṃ buddhaṃ paśyati| ārya­dharmābhisamaye samyag-jñānād upanayenaiva|</em>. The corresponding section in the Tibetan Degé and other versions recorded in the Pedurma comparative edition read: <em>’phags pa’i chos mngon par rtogs te/ yang dag pa’i ye shes dang ldan pas bla na med pa’i chos kyi skur sangs rgyas mthong ngo gsungs so/</em>. The Stok Palace version of the Tibetan differs from the Degé and all other versions recorded in the Pedurma comparative edition; it also more closely reflects the Sanskrit. The Stok Palace (F.284a.4-5) reads: <em>yang dag pa’i ye shes thob pas/ ’phags pa’i chos mngon par rtogs pas bla na med pa’i chos kyi skur sangs rgyas mthong ngo gsungs so/</em> (“By attaining right knowledge and thereby realizing the Dharma of the noble ones, he sees the Buddha, the body of the unsurpassable Dharma”). The Tibetan <em>thob pa</em>, “to attain,” is a conceivable rendering of the Sanskrit <em>upanaya</em>, which Reat renders as “exertion.” Kamalaśīla (Schoening, vol. 2, pp. 483–484) interprets this phrase to mean, “Whoever sees dependent arising in this manner sees the Dharma of accomplishment and the Dharma of fruition, because ultimately everything is the same taste, and because the Buddha Bhagavān too is the nature of the body of the ultimate Dharma which was thus taught. Therefore, it is taught that whoever sees the Dharma thus taught sees the Buddha… Whoever comprehends dependent arising thus taught realizes the Dharma of the noble ones; this means ‘comprehending the Dharma of the ultimate meaning.’ Whoever comprehends the Dharma of the ultimate meaning is endowed with perfect wisdom. Whoever is endowed with perfect wisdom abides in the wisdom of equanimity and thus does not perceive any difference between dependent arising, the Dharma, and the Buddha.” The <cite>Śālistamba</cite>[<cite>ka</cite>]-<cite>ṭīkā</cite> attributed to Nāgārjuna (Schoening, vol. 2, p. 393) interprets the phrase as: “ ‘Unsurpassable’ means that that there is no special dharma whatsoever that is superior to this, hence it is ‘unsurpassable.’ ‘Body of Dharma’ means the Dharma-body itself. … ‘Buddha’ is so-called because of comprehending dharma(s). Thus, one who sees dependent arising sees the nature of one who awakens to the unexcelled Dharma, beyond further training.” Akin to the reconstruction presented above in note 7, this phrase on its own carries the semantic range of the Buddha as an embodiment of the unsurpassable nature of “reality” (Dharma), the unsurpassable “doctrine” (Dharma) that teaches it, and the unsurpassable “qualities” of awakening (dharmas) incumbent upon becoming an awakened one (Buddha). Reat (p. 32) translates the phrase as “he sees the unsurpassable Dharma-body, the Buddha, by exertion based on right knowledge in clear understanding of the noble Dharma.” Schoening (vol. 1, p. 241) translates the final section as, “sees the Buddha, the body consisting of unsurpassable dharma(s).” In interpreting “unsurpassable” to modify “dharma,” and not the whole phrase “body of dharma,” we attempt to follow the interpretations of the commentaries and Schoening. We also leave “dharma” untranslated here in an attempt to capture something of the multiple entendre of the term. See Harrison (1992) for observations about possibly earlier, non-metaphysical senses of <em>dharmakāya</em> and the associated term <em>dharmaśarīra</em> in Mahāyāna literature.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-29">back</a></li><li id="tei-note-UT22084-062-010-31"><p>“Things” here renders <em>dharma</em> / <em>chos</em>. Note the associations the source text is making in this and the next passage between <em>dharma</em> / <em>chos</em> as “phenomena,” “reality,” and “doctrine.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-31">back</a></li><li id="tei-note-UT22084-062-010-32"><p>The sense of “Dharma” here seems to be both “doctrine” and “reality,” i.e., the “doctrine” as “law” (Dharma), which describes the “true nature” (<em>dharmatā</em>) of “reality” (Dharma). According to Kamalaśīla (Schoening, vol. 2, p. 487), the phrase functions as a synonym for “true nature” (<em>dharmatā</em>, <em>chos nyid</em>). We leave it untranslated here so as not to constrain this double entendre.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-32">back</a></li><li id="tei-note-UT22084-062-010-33"><p>The available Sanskrit (Reat, p. 33) reads <em>niyāmatā</em>. Edgerton describes this term, as rendered into Tibetan with the phrase <em>chos mi ’gyur ba nyid</em>, as “the doctrine’s <em>being</em> unchangeably the same.” Kamalaśīla (Schoening, vol. 2, p. 487) has the Tibetan <em>nges par ’gyur ba</em>, and interprets it as, “purely immutable, meaning, one should know that things are dependent on certain specific causes.” Once again, “Dharma” here seems to refer both to the nature of reality and to the doctrine that describes this reality.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-33">back</a></li><li id="tei-note-UT22084-062-010-38"><p>Although the Tibetan <em>dus</em> is most often rendered with the general term “time,” the Sanskrit <em>ṛtu</em> suggests a specific time span. Also compare with Kamalaśīla’s <cite>Śālistamba</cite>[<cite>ka</cite>]<cite>ṭīkā</cite>, (p. 405): “As for ‘season,’ the division by specific momentary conditions of the earth, etc., is considered a specific aspect of time (<em>dus kyang sa la sogs pa’i gnas skabs kyi bye brag gis rab tu phye ba nyid dus kyi bye brag tu dgongs pa’o//</em>).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-38">back</a></li><li id="tei-note-UT22084-062-010-41"><p>Here, “time” as an agent is rejected, not change in time. (cf. Reat, p. 39 n4).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-41">back</a></li><li id="tei-note-UT22084-062-010-44"><p>The sentence, “The sprout…has not ceased,” is not found in the known Sanskrit sources. Reat thus assumes it might be displaced from the similar sentence in the next paragraph (Reat, p. 40 n2).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-44">back</a></li><li id="tei-note-UT22084-062-010-54"><p><em>myu gu</em>. This term is missing from the available Sanskrit materials (Reat, p. 47 n16).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-54">back</a></li><li id="tei-note-UT22084-062-010-58"><p>The Tibetan <em>gso ba</em>, literally “nourishment,” but here translated as “soul,” is not found in the Sanskrit sources (Reat, p. 50). Also compare with Schoening (vol. 1, p. 296 n2). Generally, however, the list of items in the Tibetan translation featuring <em>gso ba</em> appears in several Sanskrit Buddhist texts. Sastri (p. 9 n45) refers to such an occurrence in Prajñākaramati’s <cite>Bodhi­caryāvatāra­pañjikā</cite> (where it is, however, marked as a quote from a Prajnāpāramitā text) and inserts <em>poṣa</em> based on that. De La Vallée Poussin (p. 79) also inserts <em>poṣa</em>, but does not reference a source. Edgerton, under his entry for <em>poṣa</em> (which he defines as, “<em>person</em>, individuality, soul, spirit”), mentions <em>gso ba</em> as a common Tibetan rendering. He surmises that the Tibetan translation comes from the notion that the Sanskrit <em>poṣa</em> derives from <em>puṣ</em>, “to thrive, nourish,” when it more likely derives from <em>puruṣa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-58">back</a></li><li id="tei-note-UT22084-062-010-59"><p>In all the Śālistamba sources that are not from the Kangyur, i.e. <cite>Śikṣāsamuccaya</cite>, <cite>Bodhi­caryāvatāra­pañjikā</cite> and <cite>Bhāmatī</cite> (cf. Reat, pp. 49–50), the passage on name and form is more explicit; in all of these sources an additional passage clarifies that “name and form” includes all five aggregates: the four immaterial aggregates that emerge together with consciousness are subsumed under “name,” while physical form is subsumed under the aggregate of “form.” This point is also clarified later in the sūtra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-59">back</a></li><li id="tei-note-UT22084-062-010-60"><p>The “three factors” here, in which “factor” renders <em>chos</em> (<em>dharma</em>), are object, sense faculty, and consciousness (Reat, p. 52 n19).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-60">back</a></li><li id="tei-note-UT22084-062-010-61"><p>The Tibetan here, <em>yid la byed pa dang ldan pa</em>, reflects a rendering of the Sanskrit phrase <em>manasi­kāra­yukta</em>, partially attested in the <cite>Śikṣāsamuccaya</cite> and <cite>Mahāyāna­sūtra­saṁgraha</cite> as <em>manasi­kāra­saṁprayukta</em> (Reat, p. 52 n32).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-61">back</a></li><li id="tei-note-UT22084-062-010-63"><p>Sanskrit sources read <em>anyo anyopa­stambhana</em>, here appearing in the Tibetan translation as <em>rten pa</em> / <em>brten pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-63">back</a></li><li id="tei-note-UT22084-062-010-64"><p>The Sanskrit <em>āyadvāra</em> (Reat, p. 53) here includes the <em>āya</em> part of <em>āyatana</em>, and is defined by Edgerton as “cause or means (lit. door) of arrival or origin.” The Tibetan <em>skye ba’i sgo</em> gives the sense of “door of arising.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-64">back</a></li><li id="tei-note-UT22084-062-010-65"><p>The Sanskrit reads <em>upakleśa</em> here (Reat, p. 53), whereas the Tibetan reads <em>nyon mongs</em> (<em>kleśa</em>). However, since <em>nye ba’i nyon mongs</em> (<em>upakleśa</em>) appears in the previous discussion of “anxiety,” we have opted for the Sanskrit.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-65">back</a></li><li id="tei-note-UT22084-062-010-74"><p><em>Ngo bo</em> here in the Tibetan phrase <em>sdug pa’i ngo bo dang</em>/ <em>bde ba’i ngo bo</em> is a conceivable rendering of <em>rūpa</em>, “form” (Negi, vol. 3, p. 977), in the corresponding Sanskrit phrase <em>priya­rūpa­śāta­rūpa</em> (Reat, p. 55).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-74">back</a></li><li id="tei-note-UT22084-062-010-77"><p>Khu is missing “five” here; this is reflected in the Sanskrit (Reat, pp. 54–55).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-77">back</a></li><li id="tei-note-UT22084-062-010-80"><p>The Sanskrit resources depict this phrase in the masculine singular nominitive <em>dvādaśāṅgaḥ pratītya­samutpādo</em>; all the qualifyiers in the passage follow suit.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-80">back</a></li><li id="tei-note-UT22084-062-010-81"><p>This is following Reat (p. 57), with <em>vedayitā</em> (masculine singular nominitive of <em>vedayitṛ</em>), and Kamalaśīla’s commentary (Schoening, vol. 2, p. 509), with <em>myong ba po</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-81">back</a></li><li id="tei-note-UT22084-062-010-82"><p>“Something” here (and in the following two instances) renders <em>chos</em> (<em>dharma</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-82">back</a></li><li id="tei-note-UT22084-062-010-84"><p>“Something” here, again (and in the following two instances), renders <em>chos</em> (<em>dharma</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-84">back</a></li><li id="tei-note-UT22084-062-010-89"><p>Although the Tibetan here has the rather ambiguous <em>myong ba dang ldan pa</em>, the available Sanskrit reads <em>āsvāda-anuviddhaṁ</em> (Reat, p. 60).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-89">back</a></li><li id="tei-note-UT22084-062-010-90"><p>“Things” here renders <em>chos rnams</em> (dharma).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-90">back</a></li><li id="tei-note-UT22084-062-010-94"><p>“Thing” here in “nothing” renders <em>chos</em> (dharma).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-94">back</a></li><li id="tei-note-UT22084-062-010-98"><p>“Thing” here renders <em>chos</em> (dharma).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-98">back</a></li><li id="tei-note-UT22084-062-010-105"><p>Kamalaśīla’s commentary (Schoening, vol. 2, p. 517) interprets the Tibetan phrase <em>rtag par rgyun du</em> not to modify the adjacent <em>srog med pa</em>, as suggested by the available Sanskrit and Tibetan, but as the “constant and uninterrupted” quality of dependent arising itself.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-105">back</a></li><li id="tei-note-UT22084-062-010-106"><p>The singular number here is according to the Sanskrit and Tibetan of the Stok Palace version; the Degé and other versions recorded in the Pedurma comparative edition all read plural <em>’di dag</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-106">back</a></li><li id="tei-note-UT22084-062-010-108"><p>This renders <em>dge mtshan dang bkra shis</em> (<em>kautukamaṇgala</em>). Reat (p. 72) translates this as, “rites and rituals”; Schoening (vol. 1, p. 329) translates it as, “festive and salutary.” Monier-Williams understands the term <em>kautukamaṇgala</em> not as a <em>dvandva</em> compound, but as “an auspicious ceremony (esp. the ceremony with the marriage-thread preceding a marriage).” Kamalaśīla (Schoening, vol. 2, p. 520) presents only the phrase <em>dge mtshan dang ldan pa</em>, “endowed with <em>kautuku</em> (‘interest or curiosity’),” which he interprets as follows: “This refers to things like riddles, tales, legends, song, dance and the like that bring one enjoyment, because one becomes infatuated.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-108">back</a></li><li id="tei-note-UT22084-062-010-109"><p>The passage, “prone to agitation or dullness,” is missing in the available Sanskrit sources and has been reconstructed from the Tibetan by de La Vallée Poussin and Sastri as <em>vā unmiñjita­nimiñjitāni</em>, and <em>unmiñjitāni nimiñjitāni ca</em>, respectively (Reat, p. 72). However, Kamalaśīla seems to have had a version similar to the Tibetan, since he states in his <cite>Śālistamba</cite>[<cite>ka</cite>]<cite>ṭīkā</cite> (p. 422): “ ‘Agitation or dullness’ means the mind is either distracted or withdrawn. These are features of dogma.” (<em>lhag par g.yo ba dang bral bar g.yo ba zhes bya ba ni/ sems rgyas pa dang zhum par gyur pa ste/ de dag ni lta bar song ba’i bye brag go/</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-109">back</a></li><li id="tei-note-UT22084-062-010-110"><p>Unlike other trees, the palm tree does not produce cambium—the layer that closes a wound and protects the trunk from rotting. As a result a palm tree dies when its head is cut off.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-062-010-110">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/062-008-toh208-the-great-rumble.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/062-011-toh211-sutra-teaching-fundamental-exposition-and-detailed-analysis-of-dependent-arising.html">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

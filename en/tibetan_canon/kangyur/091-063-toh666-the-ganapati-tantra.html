@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 666 — The Tantra of Great Gaṇapati — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 666 — The Tantra of Great Gaṇapati</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 666 — The Tantra of Great Gaṇapati        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Mahā­gaṇa­pati­tantra          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Dharmachakra Translation Committee under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Tantra of Great Gaṇapati</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.193.a</span> Homage to Lokeśvara.</p><section class="tei-section tei-section--chapter"><h5>Chapter 1: The Arising of Siddhi</h5><div class="tei-verse"><div class="tei-line">After one has paid homage to glorious great Gaṇapati</div><div class="tei-line">And glorious Gaṇapati is pleased, one should</div><div class="tei-line">Place the statue in <span class="tei-ref">F.193.b</span> a square maṇḍala</div><div class="tei-line">And perform the offering for six months.</div></div><div class="tei-verse"><div class="tei-line">One will have the same good fortune in this life</div><div class="tei-line">As a divine universal emperor.</div><div class="tei-line">One will incur great merit.</div><div class="tei-line">One’s wealth will equal that of the gods.</div></div><div class="tei-verse"><div class="tei-line">One’s lifespan will greatly increase.</div><div class="tei-line">Humans and other beings will be under one’s control,</div><div class="tei-line">And even the gods will become one’s servants</div><div class="tei-line">And obey one’s commands.</div></div><div class="tei-verse"><div class="tei-line">The nāgas will also obey one’s commands</div><div class="tei-line">And accomplish any task like servants.</div><div class="tei-line">The pleasure one will experience will be</div><div class="tei-line">Greater than the pleasures of the god realms.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-73" href="#tei-note-UT22084-091-063-73">[1]</a></sup></div></div><div class="tei-verse"><div class="tei-line">The great deity Great Gaṇapati will create<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-75" href="#tei-note-UT22084-091-063-75">[2]</a></sup></div><div class="tei-line">Emanation bodies that consecrate fortunate</div><div class="tei-line">Disciples who have attained siddhi.</div><div class="tei-line">When one attains the highest supreme siddhi,</div></div><div class="tei-verse"><div class="tei-line">One becomes extremely powerful, and it</div><div class="tei-line">Increases wealth like a wish-fulfilling jewel.</div><div class="tei-line">The person who performs this offering to the benefactor</div><div class="tei-line">Of the world, the god of gods, will attain siddhi.</div></div>This is chapter 1 in “<cite>The Tantra of the Great Deity Gaṇapati</cite>,” “The Arising of Siddhi.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 2: Instructions on the Mantra for the Deity’s Siddhi</h5><div class="tei-verse"><div class="tei-line">Make a square maṇḍala</div><div class="tei-line">In a secluded place as follows:</div><div class="tei-line">Smear the ground with cow dung making it</div><div class="tei-line">Smooth and soft, and place a statue of Gaṇapati</div></div><div class="tei-verse"><div class="tei-line">In the center of its raised middle section.</div><div class="tei-line">Scatter white flowers on it,</div><div class="tei-line">Get naked, adopt the form</div><div class="tei-line">Of Vināyaka, and perform the offering.</div></div><div class="tei-verse"><div class="tei-line">Adopt a six-month observance<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-81" href="#tei-note-UT22084-091-063-81">[3]</a></sup></div><div class="tei-line">And perform 108 mantra recitations</div><div class="tei-line">Three times each day.</div><div class="tei-line">All one’s hopes will be fulfilled, and</div></div><div class="tei-verse"><div class="tei-line">Everything one wishes will come to pass.</div><div class="tei-line">Place the glorious and auspicious syllable oṃ</div><div class="tei-line">At the beginning of the mantra.</div><div class="tei-line">Place <em>the syllable that grants siddhi</em></div></div><div class="tei-verse"><div class="tei-line">Like a wish-fulfilling jewel</div><div class="tei-line">Next in line.</div><div class="tei-line">Recite <em>the syllable that is</em></div><div class="tei-line"><em>Like the sun</em> after that.</div></div><div class="tei-verse"><div class="tei-line">Use the first syllable</div><div class="tei-line">Of the Tathāgata’s name.</div><div class="tei-line">Recite the first consonant</div><div class="tei-line">At the end of that.</div></div><div class="tei-verse"><div class="tei-line">Recite the precious syllable svā</div><div class="tei-line">And the activating syllable hā.</div><div class="tei-line">This is how<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-86" href="#tei-note-UT22084-091-063-86">[4]</a></sup> one who seeks siddhi <span class="tei-ref">F.194.a</span></div><div class="tei-line">Should recite the secret mantra.</div></div>This is chapter 2 in “<cite>The Siddhi Practice of the Great Deity</cite>,”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-88" href="#tei-note-UT22084-091-063-88">[5]</a></sup> “Instruction on the Mantra for the Deity’s Siddhi.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 3: A Description of Gaṇapati</h5><div class="tei-verse"><div class="tei-line">Ganapaṭi is described as follows:</div><div class="tei-line">Gaṇapati’s body is white,</div><div class="tei-line">He has the head of an elephant,</div><div class="tei-line">And one of his tusks is broken.</div></div><div class="tei-verse"><div class="tei-line">He holds a radish in his right hand,</div><div class="tei-line">He is mounted upon a rat,</div><div class="tei-line">His body is adorned with jewels, and</div><div class="tei-line">He is crowned with a crescent moon.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-91" href="#tei-note-UT22084-091-063-91">[6]</a></sup></div></div><div class="tei-verse"><div class="tei-line">He is radiant and sends forth rays of light.</div><div class="tei-line">He has a beautiful complexion and color, a big belly, and is clad in jewelry.</div></div>This is chapter 3 in “<cite>The Tantra of Accomplishing Siddhi”</cite>, “A Description of Gaṇapati.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 4: The Practice of One-Faced, Four-Armed Gaṇapati</h5><p>A skilled person should pick white flowers on a day during the lunar month Puṣya and draw the image of Gaṇapati, depicting him with a white complexion and the head of an elephant, holding a radish in his right hand and a precious jewel in his left hand, with a big belly, adorned with all his ornaments, and seated on his throne atop a rat and a lunar disk. Then one should place the image in the center of the maṇḍala facing oneself, adopt the form of Vināyaka, and perform the offering.</p>This is chapter 4, “The Practice of One-Faced, Four-Armed Gaṇapati.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 5: A Teaching on Gaṇapati’s Mudrā</h5><p>Gaṇapati is in the northeast. He has a white complexion, the head of an elephant, a rat for his mount, and three eyes. He wears a crescent moon. His right hands hold a radish and battle-axe, and his left hands hold a trident and skull bowl.</p><p>For the Gaṇapati mudrā, the left hand is clenched in a fist with the forefinger and middle finger extended and the forefinger is bent so that it grasps the joint of the middle finger.</p>This is chapter 5, “A Teaching on Gaṇapati’s Mudrā.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 6: A Teaching on Great Gaṇapati’s Mantra</h5><div class="tei-verse"><div class="tei-line">The mantra is taught as follows:</div><div class="tei-line">Place the glorious syllable oṃ at the beginning.</div><div class="tei-line">Write<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-100" href="#tei-note-UT22084-091-063-100">[7]</a></sup> the precious wish-fulfilling</div><div class="tei-line">Jewel syllable after that.</div></div><div class="tei-verse"><div class="tei-line">The first consonant of the first class</div><div class="tei-line">Should be written after that.</div><div class="tei-line">Adorn the first letter of the Tathāgata’s</div><div class="tei-line">Name <span class="tei-ref">F.194.b</span> with the eighth vowel.</div></div><div class="tei-verse"><div class="tei-line">Bring the first consonant syllable</div><div class="tei-line">To mind and mentally write it.</div><div class="tei-line">Write the third member of the third class<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-103" href="#tei-note-UT22084-091-063-103">[8]</a></sup></div><div class="tei-line">And the fourth of the first class.</div></div><div class="tei-verse"><div class="tei-line">Write the third member of the seventh class,</div><div class="tei-line">And add it after the first member of the third.</div><div class="tei-line">The fifth member of the fourth class accompanies</div><div class="tei-line">The wish-fulfilling jewel syllable, and is</div></div><div class="tei-verse"><div class="tei-line">Adorned with the third vowel.</div><div class="tei-line">Then, pronounce the third of the fourth group,</div><div class="tei-line">And write the <em>syllable for</em></div><div class="tei-line"><em>Attaining siddhi</em> after that.</div></div><div class="tei-verse"><div class="tei-line">The fierce mantra syllable</div><div class="tei-line">Is pronounced at the end of all of them.</div><div class="tei-line">Lokeśvara himself grants</div><div class="tei-line">The siddhi of this secret mantra.</div></div><div class="tei-verse"><div class="tei-line">It will fulfill every need.</div></div>This is chapter 6, “A Teaching on Great Gaṇapati’s Mantra.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 7: A Teaching on the Name Mantra</h5><div class="tei-verse"><div class="tei-line">Now there is the additional teaching on</div><div class="tei-line">The heart mantra for accomplishing siddhi</div><div class="tei-line">Called <em>the name mantra that</em></div><div class="tei-line"><em>Accomplishes all the siddhis</em>.</div></div><div class="tei-verse"><div class="tei-line">Take śrī and the syllable yaṃ and place</div><div class="tei-line">Them at the beginning where it says oṃ.</div><div class="tei-line">Write the wish-fulfilling jewel syllable and</div><div class="tei-line">Adorn it with the solar syllable after that.</div></div><div class="tei-verse"><div class="tei-line">Write the sixth vowel next and</div><div class="tei-line">Ornament it with a <em>nāda</em> and <em>bindu</em>.</div><div class="tei-line">Pronounce the first syllable</div><div class="tei-line">Of the name after that.</div></div><div class="tei-verse"><div class="tei-line">Write the fifth member of the fourth group</div><div class="tei-line">And then the first member of the fifth group.</div><div class="tei-line">Write the first syllable of the Tathāgata’s name,</div><div class="tei-line">The wind element syllable, and</div></div><div class="tei-verse"><div class="tei-line">Ornament it with the eighth vowel</div><div class="tei-line">After that.</div><div class="tei-line">Pronounce the <em>two pacification</em></div><div class="tei-line"><em>Seed syllables</em> at the end.</div></div><div class="tei-verse"><div class="tei-line"><em>The name mantra</em></div><div class="tei-line">Accomplishes all one desires.</div></div>This is chapter 7, “A Teaching on the Name Mantra.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 8: The Gaṇapati Offering</h5><div class="tei-verse"><div class="tei-line">Now I will explain further.</div><div class="tei-line">Pluck some white flowers by the root</div><div class="tei-line">On a day during the lunar month of Puṣya.</div><div class="tei-line">The statue of Gaṇapati should be</div></div><div class="tei-verse"><div class="tei-line">Made by a skilled person</div><div class="tei-line">Out of pure white sandalwood.</div><div class="tei-line">It should be one thumb-length high,</div><div class="tei-line">Have a big belly, four arms, <span class="tei-ref">F.195.a</span> and be well made.</div></div><div class="tei-verse"><div class="tei-line">Place it in a container made of precious materials.</div><div class="tei-line">When the full moon is out, one should</div><div class="tei-line">Clean the area inside, where the image is located,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-119" href="#tei-note-UT22084-091-063-119">[9]</a></sup></div><div class="tei-line">So that it is clean, sparkling, and beautiful.</div></div><div class="tei-verse"><div class="tei-line">Wash it with a vase<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-121" href="#tei-note-UT22084-091-063-121">[10]</a></sup> containing</div><div class="tei-line">Scented water and a cleaning solution</div><div class="tei-line">Of perfume made of white flowers.</div><div class="tei-line">Immediately after,</div></div><div class="tei-verse"><div class="tei-line">Invite him into the center of the maṇḍala</div><div class="tei-line">And present the white flowers to him.</div><div class="tei-line">Present him with a large <em>bali</em> offering</div><div class="tei-line">Of radishes and <em>laḍḍus</em>,</div></div><div class="tei-verse"><div class="tei-line">And then perform an offering with incense,</div><div class="tei-line">Perfume, lamps, and divine foods.</div></div><p>For the mantra, one should present a <em>bali</em> offering to Gaṇapati consisting of radishes, <em>laḍḍus</em>, water, and the three white offerings, and also offer incense and flowers. After it is performed in this way, nothing can pose an obstacle.</p>This is chapter 8, “The Gaṇapati Offering.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 9: A Description of the Food for Attaining Siddhi</h5><div class="tei-verse"><div class="tei-line">The term <em>radish</em> refers to</div><div class="tei-line">A mustard root with eight flavors</div><div class="tei-line">That is the best of all foods</div><div class="tei-line">And has the best flavors.</div></div><div class="tei-verse"><div class="tei-line">These are bitter, sour, astringent,</div><div class="tei-line">Sweet, spicy, and salty flavors,</div><div class="tei-line">As well as juicy and savory.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-128" href="#tei-note-UT22084-091-063-128">[11]</a></sup></div><div class="tei-line">They are antidotes to the eight types of illness.</div></div><div class="tei-verse"><div class="tei-line">They are helpful for all diseases and illnesses</div><div class="tei-line">Related to bile, phlegm, a mixture of the two,</div><div class="tei-line">Blood, lymph, indigestion, and wind.</div><div class="tei-line">No other food compares to it.</div></div><div class="tei-verse"><div class="tei-line">It can make even the lips of the gods quiver.</div><div class="tei-line">It is the food that grants siddhi and</div><div class="tei-line">One should offer it to Gaṇapati.</div><div class="tei-line">The term <em>laḍḍu</em> refers to a type of food</div></div><div class="tei-verse"><div class="tei-line">Containing the three sweets and the three fruits,</div><div class="tei-line">That is sprinkled with a delicious fragrance,</div><div class="tei-line">Rolled into a dough ball,</div><div class="tei-line">Boiled in milk and butter, and</div></div><div class="tei-verse"><div class="tei-line">Used as a great <em>bali</em> offering to the gaṇas.</div><div class="tei-line">Offer it to Gaṇapati along with</div><div class="tei-line">Various common foods such as</div><div class="tei-line">Butter, pastries, and the three sweets.</div></div><div class="tei-verse"><div class="tei-line">These are the offerings to Gaṇapati.</div></div><p>Place the statue of Gaṇapati in the palm of your right hand and recite the mantra one hundred thousand times without allowing your mind to wander. <span class="tei-ref">F.195.b</span> If one incants the radish with the mantra and offers it to Gaṇapati, one’s merit in this lifetime will equal to that of a universal emperor. If one offers white flowers, one will not be defeated by kings and the like. One will gain a high rank such as king, and kings, ministers, and others will be brought under one’s control.</p>This is chapter 9 on “A Description of the Food That Grants Siddhi.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 10: Practices for Becoming a King and the Like</h5><div class="tei-verse"><div class="tei-line">Now I will present the ritual instructions.</div><div class="tei-line">Make a statue of Great Gaṇapati</div><div class="tei-line">Holding a wish-fulfilling jewel in his hands</div><div class="tei-line">Out of the precious material known as silver.</div></div><div class="tei-verse"><div class="tei-line">Make a maṇḍala measuring one cubit across</div><div class="tei-line">And scatter precious stones and white flowers on it.</div><div class="tei-line">Recite the mantra one hundred thousand times,</div><div class="tei-line">And illness and suffering will be pacified.</div></div><div class="tei-verse"><div class="tei-line">A skilled person should make a Gaṇapati statue out of crystal</div><div class="tei-line">And conch shell according to the following procedure.</div><div class="tei-line">It will remove all types of suffering.</div><div class="tei-line">Make the Gaṇapati statue</div></div><div class="tei-verse"><div class="tei-line">One thumb-length in height</div><div class="tei-line">Out of precious crystal, and</div><div class="tei-line">Recite the <em>senapra</em>… vidyāmantra</div><div class="tei-line">One hundred thousand times,</div></div><div class="tei-verse"><div class="tei-line">While polishing the crystal statue.</div><div class="tei-line">Then, on a day during the lunar month</div><div class="tei-line">Of Puṣya, one should face east,</div><div class="tei-line">Put on white robes, wash, place one’s</div></div><div class="tei-verse"><div class="tei-line">Hands together, and mentally supplicate the deity.</div><div class="tei-line">If some obstructing being is causing one harm,</div><div class="tei-line">One should place the crystal statue on top of</div><div class="tei-line">A mirror so that it does not move or wobble.</div></div><div class="tei-verse"><div class="tei-line">Then one should bathe, face east,</div><div class="tei-line">And the robber or spy<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-143" href="#tei-note-UT22084-091-063-143">[12]</a></sup></div><div class="tei-line">Will appear in the mirror,</div><div class="tei-line">And be identified.</div></div><div class="tei-verse"><div class="tei-line">If one recites the <em>nāga kuru</em> vidyā</div><div class="tei-line">One hundred thousand times</div><div class="tei-line">While making offerings and illuminating</div><div class="tei-line">The crystal statue of Gaṇapati,</div></div><div class="tei-verse"><div class="tei-line">Simply showing this statue to someone</div><div class="tei-line">Afflicted by illness and suffering</div><div class="tei-line">Will cure them of any illness</div><div class="tei-line">And free them from suffering.</div></div><div class="tei-verse"><div class="tei-line">That is the great pacification ritual.</div></div><div class="tei-verse"><div class="tei-line">Make a statue of Great Gaṇapati</div><div class="tei-line">Out of the precious gold.</div><div class="tei-line">Open its eyes on a day during Puṣya,</div><div class="tei-line">Make offerings to it and consecrate it. <span class="tei-ref">F.196.a</span></div></div><div class="tei-verse"><div class="tei-line">Recite the <em>vara</em> mantra</div><div class="tei-line">One hundred thousand times,</div><div class="tei-line">And all the wealth of the household in which</div><div class="tei-line">The statue resides will increase.</div></div><div class="tei-verse"><div class="tei-line">When they see the golden Gaṇapati,</div><div class="tei-line">Obstructing beings will give you riches.</div><div class="tei-line">Obstructing beings will be unable to cause harm,</div><div class="tei-line">And will present offerings fit for a king.</div></div><div class="tei-verse"><div class="tei-line">A rain of precious substances will fall in the</div><div class="tei-line">Location where the golden Gaṇapati resides.</div><div class="tei-line">All kings of obstructing beings will<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-151" href="#tei-note-UT22084-091-063-151">[13]</a></sup></div><div class="tei-line">Give all their wealth</div></div><div class="tei-verse"><div class="tei-line">To the golden Gaṇapati,</div><div class="tei-line">And one will become wealthy.</div><div class="tei-line">The qualities that constitute a</div><div class="tei-line">Superior Gaṇapati statue are</div></div><div class="tei-verse"><div class="tei-line">That it reveals treasures concealed by yakṣas,</div><div class="tei-line">It will ensure one’s possessions always increase</div><div class="tei-line">In this life and in future lives, and</div><div class="tei-line">It causes the lord of wealth, Vaiśravaṇa,</div></div><div class="tei-verse"><div class="tei-line">To honor one like a king.</div><div class="tei-line">Place the statue of glorious Gaṇapati</div><div class="tei-line">In a square maṇḍala.</div><div class="tei-line">Recite the <em>bhaga</em> mantra</div></div><div class="tei-verse"><div class="tei-line">One hundred thousand times, and</div><div class="tei-line">One will attain siddhi in this life.</div><div class="tei-line">It will grant whatever one desires,</div><div class="tei-line">And the power of the king of gods</div></div><div class="tei-verse"><div class="tei-line">Will be bestowed upon the practitioner.</div><div class="tei-line">The compassionate glorious Gaṇapati and his</div><div class="tei-line">Multitude of compassionate ones will protect one</div><div class="tei-line">From poverty with their compassionate nature.</div></div><div class="tei-verse"><div class="tei-line">Draw the Great God of Wealth</div><div class="tei-line">On a piece of silk or a piece of cloth,</div><div class="tei-line">Open its eyes on a day during Puṣya,</div><div class="tei-line">And good fortune will come to the location</div></div><div class="tei-verse"><div class="tei-line">Of the household in which it is placed.</div><div class="tei-line">A skilled person should make a well-crafted</div><div class="tei-line">Gaṇapati statue out of copper.</div><div class="tei-line">Place it on top of a maṇḍala</div></div><div class="tei-verse"><div class="tei-line">On ground that has been smeared with red sandalwood.</div><div class="tei-line">Make an offering of bandhūka flowers,</div><div class="tei-line">Rubies, and all manner of red flowers</div><div class="tei-line">While reciting the <em>bruṃ </em>vidyāmantra,</div></div><div class="tei-verse"><div class="tei-line">And one will enthrall a king’s daughter,</div><div class="tei-line">A goddess, a female nāga,</div><div class="tei-line">A kinnara’s daughter, <span class="tei-ref">F.196.b</span></div><div class="tei-line">Or a reputable brahmin’s daughter.</div></div><div class="tei-verse"><div class="tei-line">She will be extremely beautiful, respectful,</div><div class="tei-line">And will obey your command like a servant.</div><div class="tei-line">Relying upon immeasurably superior</div><div class="tei-line">Statues such as these can allow one to</div></div><div class="tei-verse"><div class="tei-line">Gain siddhis simply by making offerings.</div><div class="tei-line">Make a statue of Gaṇapati</div><div class="tei-line">Out of precious materials</div><div class="tei-line">And place it on top of the maṇḍala.</div></div><div class="tei-verse"><div class="tei-line">Recite the <em>ratnasiddhi </em>vidyā</div><div class="tei-line">One hundred thousand times,</div><div class="tei-line">And it will allow one to discover buried treasures</div><div class="tei-line">And indulge in whatever one desires.</div></div>This is chapter 10 in “<cite>The Tantra of Great Gaṇapati</cite>,” “Practices for Becoming a King and the Like.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 11: Great Gaṇapati’s Maṇdala</h5><div class="tei-verse"><div class="tei-line">Glorious Great Gaṇapati is</div><div class="tei-line">Very fierce with a fierce grimace.</div><div class="tei-line">He has the heart of a buddha, the head of an animal,</div><div class="tei-line">And the face of a young elephant</div></div><div class="tei-verse"><div class="tei-line">With three eyes and four tusks.</div><div class="tei-line">He has four arms, four feet, and bears a large nāga.</div><div class="tei-line">The first hand holds a white tusk, and</div><div class="tei-line">The hand below it holds a noose. The left hands</div></div><div class="tei-verse"><div class="tei-line">Hold a battle-axe and three-pointed khaṭvāṅga.</div><div class="tei-line">He is dark blue and has a huge belly.</div><div class="tei-line">This statue of Gaṇapati should be cast</div><div class="tei-line">In molten bell metal and bronze.</div></div><div class="tei-verse"><div class="tei-line">Consecrate it on a day during Puṣya.</div><div class="tei-line">For the meditation and practice,</div><div class="tei-line">Choose a location to construct the maṇḍala</div><div class="tei-line">And draw a maṇḍala with nine sections.</div></div><div class="tei-verse"><div class="tei-line">Include the gates and porticos.</div><div class="tei-line">Draw a lotus with eight petals in the middle on which</div><div class="tei-line">Gaṇapati tramples the target of the rite.</div><div class="tei-line">He is seated on a moon disk</div></div><div class="tei-verse"><div class="tei-line">In nondual union with his consort.</div><div class="tei-line">Her name is Arcikarī,</div><div class="tei-line">And she is known as the Vajra Sow-Faced One.</div><div class="tei-line">She holds a battle-axe and a cup</div></div><div class="tei-verse"><div class="tei-line">Filled with blood that she offers to her lord.</div></div><p>The Lord of the Three Realms is in the eastern section, which is yellow. He holds a radish and a sword.</p><p>The great yakṣa Vajratuṇḍa is in the southern section, which is blue. He has the face of Mahādeva,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-174" href="#tei-note-UT22084-091-063-174">[14]</a></sup> holds a mace and hammer, and is black.</p><p>The yakṣa king Lord of Clouds is in the western section, which is red. He is red and holds a noose and a billowing cloud full of water. <span class="tei-ref">F.197.a</span></p><p>The yakṣa lord Abode of Wealth is in the northern section, which is green. He is green and holds a mace and a jeweled khaṭvāṅga.</p><p>Vināyaka,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-178" href="#tei-note-UT22084-091-063-178">[15]</a></sup> the Lord of Obstructing Beings, is in the northeastern section, which is white. He has the face of an elephant, holds a trident and a radish, and is black.</p><p>Rudra, Lord of Pretas, is in the southeast section, which is red. He holds an axe and an intact skull, and he is black.</p><p>Cloud Light is in the southwest section, which is black. He holds a billowing cloud with a flashing thunderbolt beneath it with both hands.</p><p>Curved Trunk Vināyaka, the King of Obstructing Beings, has an elephant trunk and is in the northwest section, which is black. He holds a trident and a dry skull that has a radish inside and is full of flesh.</p><p>The eight nāga kings who obey these deities are the nāga kings Abala, Varuṇa, Śaṅkhapāla, Takṣaka, Kulika, Ananta, Padma, and Mahāpadma.</p><p>The great king Dhṛtarāṣṭra is at the eastern gate, Virūḍhaka is at the southern gate, Virūpākṣa is at the western gate, and Vaiśravaṇa is at the northern gate. The colors of their bodies are white, blue, red, and green, respectively, and each of them holds a precious jewel and a sword. Their consorts are not depicted.</p><p>Make a wax effigy of the enemy that is thin, black, and has disheveled hair,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-185" href="#tei-note-UT22084-091-063-185">[16]</a></sup> and place it inside a triangular killing maṇḍala to the northeast of the drawing. Smear it with sesame oil, write the family name in the center, place it there, and tie a cord made from the hair of a corpse around its neck.</p><p>After you have done that, set up <em>bali</em> offerings of <em>laḍḍu</em> and radishes for each of the eight great yakṣas as well as red bali offerings that contain fish and onions for each of the eight great yakṣas. Prepare a single large <em>bali</em> offering for the eight great nāgas and one for each of the four great kings. If one cannot afford that, prepare a single large <em>bali</em>. Present divine food offerings to each of them. One should also set out wrathful substances such as <span class="tei-ref">F.197.b</span> a wolf’s skull, black cumin, mustard seed, white mustard seed, and black mustard seed.</p>This is chapter 11, “Great Gaṇapati’s Maṇdala.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 12: The Meditation System</h5><div class="tei-verse"><div class="tei-line">Now I will explain further.</div><div class="tei-line">A meditation system like this has never</div><div class="tei-line">Appeared before and will not appear again—</div><div class="tei-line">It is a well-kept secret, and one should practice it.</div></div><div class="tei-verse"><div class="tei-line">The nature of yaṃ is emptiness. Hūṁ</div><div class="tei-line">Arises out of that and its nature is appearance.</div><div class="tei-line">Ya is the seed syllable of the eight gaṇas,</div><div class="tei-line">Who are generated from their name mantras.</div></div><div class="tei-verse"><div class="tei-line">The wrathful one’s emanations fill the three-thousandfold world.</div><div class="tei-line">Light rays gather and coalesce in the initial syllable hūṁ.</div><div class="tei-line">Then, one generates Great Gaṇapati, who</div><div class="tei-line">Appears for the benefit of beings in his complete</div></div><div class="tei-verse"><div class="tei-line">Form as a terrifying great wrathful being</div><div class="tei-line">With his consort and retinue.</div><div class="tei-line">One generates the eight nāgas out of eight phuḥ syllables</div><div class="tei-line">And the wrathful kings are likewise</div></div><div class="tei-verse"><div class="tei-line">Generated from the syllable bhai and their names.</div><div class="tei-line">Draw them in with light rays, and use</div><div class="tei-line">Jaḥ and jaḥ’s expanding and contracting light rays,</div><div class="tei-line">Hūṁ and the hūṁ mantra,</div></div><div class="tei-verse"><div class="tei-line">And the hook mudrā to draw them in.</div><div class="tei-line">Have them assume their full power.</div><div class="tei-line">Perform the offering and the <em>bali</em> offering.</div><div class="tei-line">Augment their heart mantras with</div></div><div class="tei-verse"><div class="tei-line">The mantra baliṃ gṛhṇa kha.</div></div>This is chapter 12, “The Meditation System.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 13: The Arising of the Secret Mantras of the Great Yakṣas</h5><div class="tei-verse"><div class="tei-line">The king of mantras is as follows:</div><div class="tei-line">For its vowels and consonants,</div><div class="tei-line">Write the first followed by the fourth.</div><div class="tei-line">Place the fifth member of the fourth next.</div></div><div class="tei-verse"><div class="tei-line">Imagine the wish-fulfilling</div><div class="tei-line">Jewel syllable after that,</div><div class="tei-line">And recite the first syllable of</div><div class="tei-line">The Tathāgata’s name after that.</div></div><div class="tei-verse"><div class="tei-line">Ornament it with the eighth vowel.</div><div class="tei-line">Add the second vowel to</div><div class="tei-line">The attracting syllables</div><div class="tei-line">And the wind element syllable</div></div><div class="tei-verse"><div class="tei-line">That is called <em>the victorious king</em>.</div><div class="tei-line">Add the second vowel</div><div class="tei-line">To the wish-fulfilling jewel syllable.</div><div class="tei-line">Write the sun syllable</div></div><div class="tei-verse"><div class="tei-line">And then the fifth of the fourth class.</div><div class="tei-line">Ornament that with the eighth vowel.</div><div class="tei-line">Adorn the fourth syllable of the second <span class="tei-ref">F.198.a</span></div><div class="tei-line">Class with the fourth vowel.</div></div><div class="tei-verse"><div class="tei-line">Add the fourth of the fifth syllable</div><div class="tei-line">And the fifth of the third syllable.</div><div class="tei-line">Ornament the first syllable of the fourth</div><div class="tei-line">Class with the fourth vowel.</div></div><div class="tei-verse"><div class="tei-line">Add the wind element</div><div class="tei-line">Syllable after that.</div><div class="tei-line">Pronounce the precious syllable</div><div class="tei-line">And the action syllable at the end.</div><div class="tei-line">Great Gaṇapati’s root mantra</div><div class="tei-line">Grants everything one desires.</div></div><div class="tei-verse"><div class="tei-line">The mantras of the eight yakṣas</div><div class="tei-line">Are ya and so forth,</div><div class="tei-line">Yaya and so forth,</div><div class="tei-line">Vaṃ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-204" href="#tei-note-UT22084-091-063-204">[17]</a></sup> and so forth,</div></div><div class="tei-verse"><div class="tei-line">Vināyaka and so forth, bhaira and so forth, hūṁ, and tri. The eight are flanked by hūṁ and phaṭ, which makes them vital energy heart mantras.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-206" href="#tei-note-UT22084-091-063-206">[18]</a></sup></div></div><div class="tei-verse"><div class="tei-line">One generates the nāga mantras</div><div class="tei-line">From their names and adds oṃ and hūṁ phaṭ.</div></div><div class="tei-verse"><div class="tei-line">The mantras of the great kings are the mantras bhai, bhi, and bha.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-209" href="#tei-note-UT22084-091-063-209">[19]</a></sup></div></div>This is chapter 13, “The Arising of the Secret Mantras of the Great Yakṣas.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 14: The Fierce Killing Mantra</h5><div class="tei-verse"><div class="tei-line">For the mantra to attract a target,</div><div class="tei-line">Recite śatrūṃ nṛja nija</div><div class="tei-line">With ya, kṣa, ka, la</div><div class="tei-line">Ma, hā, bhairabhe,</div></div><div class="tei-verse"><div class="tei-line">Tri, rā, and ca</div><div class="tei-line">Many times.</div><div class="tei-line">One should use the eight yakṣa mantra</div><div class="tei-line">To excavate an enemy’s soul stone.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-213" href="#tei-note-UT22084-091-063-213">[20]</a></sup></div></div><div class="tei-verse"><div class="tei-line">Then, one should burn the soul stone</div><div class="tei-line">And trample the soul stone.</div><div class="tei-line">For the king of impelling<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-215" href="#tei-note-UT22084-091-063-215">[21]</a></sup> mantras,</div><div class="tei-line">Recite the invocation</div><div class="tei-line">Ya, kṣa, ka, la,</div></div><div class="tei-verse"><div class="tei-line">Ma, hā, bhairabhe,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-217" href="#tei-note-UT22084-091-063-217">[22]</a></sup></div><div class="tei-line">Deva, yakṣa, yama,</div><div class="tei-line">Nāga nāga thumrilaya,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-218" href="#tei-note-UT22084-091-063-218">[23]</a></sup></div><div class="tei-line">The target’s name, thumrilaya</div></div><div class="tei-verse"><div class="tei-line">And yaya.</div><div class="tei-line">For the killing mantra,</div><div class="tei-line">Recite the phrase as above</div><div class="tei-line">Beginning with ma, hā,</div></div><div class="tei-verse"><div class="tei-line">Bhairabhe,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-221" href="#tei-note-UT22084-091-063-221">[24]</a></sup>yakṣa, and the like</div><div class="tei-line">Followed by two</div><div class="tei-line">Nāśaya nāśaya,</div><div class="tei-line">Cūrnaya cūrnaya,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-222" href="#tei-note-UT22084-091-063-222">[25]</a></sup></div></div><div class="tei-verse"><div class="tei-line">Nāga­yakatra māraya,</div><div class="tei-line">Hana and cakra twice,</div><div class="tei-line">Vināyaka<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-224" href="#tei-note-UT22084-091-063-224">[26]</a></sup>ji bhindha,</div><div class="tei-line">And tantakara, <span class="tei-ref">F.198.b</span></div></div><div class="tei-verse"><div class="tei-line">The target’s name, māraya,</div><div class="tei-line">And then hūṁ hūṁ phaṭ phaṭ.</div></div>This is chapter 14, “The Fierce<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-227" href="#tei-note-UT22084-091-063-227">[27]</a></sup> Killing Mantra.”</section><section class="tei-section tei-section--chapter"><h5>Chapter 15: Praising Gaṇapati</h5><p>There is also the following fierce mantra:</p><p>oṃ bhi­ghābhi­vabhyi sarva­vidyāviśaya­hṛdam itaya | hūṁ citu vatu | traṃ pramarutāya | hana hana | gṛhṇa gṛhṇa | paca paca | bhrahma bhrahma | bhrahmaya bhrahmaya | hūṁ hūṁ phaṭ phaṭ |</p><div class="tei-verse"><div class="tei-line">Make a statue of Great Vināyaka</div><div class="tei-line">Out of bell metal or pure copper,</div><div class="tei-line">Consecrate it, and make offerings to it.</div><div class="tei-line">Place it on top of an effigy of the enemy</div></div><div class="tei-verse"><div class="tei-line">So that it acts as Gaṇapati’s seat,</div><div class="tei-line">And the enemy will surely die.</div><div class="tei-line">Rites that employ it are also</div><div class="tei-line">Said to be highly effective.</div></div><p>Make a statue of Gaṇapati out of sandalwood or jewels, consecrate it, and make offerings to it. If one wants to stop a hailstorm, make a statue of Vāyu and <em>Varuṇa</em>, the Lords of Hail. Make an effigy of a cloud and a statue of a dragon and press it down as Gaṇapati’s seat. Imagine yourself trampling it as well while reciting the mantra that begins <em>hika candra</em> and the hail will stop. One should scatter white mustard seeds in the directions.</p><p>If one wants to cause hail, make a clear drawing of a water and cloud maṇḍala, visualize Gaṇapati riding a dragon, and imagine them as one’s servants.</p><div class="tei-verse"><div class="tei-line">To prepare the secret substances,</div><div class="tei-line">Make a dough using powdered iron,</div><div class="tei-line">Gold, copper, rainwater, and rice flour.</div></div><p>Form it into hailstones the size and shape you desire, anoint them with blood, and do this many times over for forty-nine days. Place them inside a crow’s skull,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-063-236" href="#tei-note-UT22084-091-063-236">[28]</a></sup> cover the crow’s skull with clouds, and write the mantra on it.</p><p>For the third stage, set out the materials to support the rite. Recite the mantra that begins <em>bruṃ bruṃ bhariśaya</em> one hundred thousand times. Three, seven, or eight of the hailstones inside the crow’s skull will emerge. One should bring them to the enemy’s territory. <span class="tei-ref">F.199.a</span> Recite the mantra after the repelling mantra and it will fall on the enemy. If it does not hail, hide the Gaṇapati statue in the middle of the enemy’s territory with its head facing down and its feet facing up, and it will immediately hail. Hail the size of kalandaka bird eggs and red-colored hail the size of deer testicles will fall for a long time. This will happen because bruṃ is a mantra that destroys crops.</p><p>If you want to eliminate them, do not remove the statue and the crow skull. It will hail every day, and they will leave. Present offerings to the Gaṇapati statue. Perform one hundred and eight mantra recitations that are flawless from start to finish using a jewel rosary. Bathe, and ask Gaṇapati to be present in the center of one’s own maṇḍala.</p><div class="tei-verse"><div class="tei-line">Gaṇapati accomplishes limitless</div><div class="tei-line">Supreme acts such as that.</div><div class="tei-line">Homage to joyous, glorious Gaṇapati!</div><div class="tei-line">Homage to great, glorious Gaṇapati!</div><div class="tei-line">Homage to the glorious, great, peaceful, and wrathful one!</div></div>This is chapter 15 in “<cite>The Arising of Siddhi Tantra</cite>,” “Praising Gaṇapati.”This concludes “<cite>The Gaṇapati Tantra: Arising of Siddhi.”</cite></section></section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><div class="tei-verse"><div class="tei-line">The Indian preceptor Dīpaṁkaraśrījñāna</div><div class="tei-line">Arrived from India carrying this</div><div class="tei-line">For the sake of worldly siddhis.</div><div class="tei-line">He entrusted it to Gyalwé Jungné.</div></div><div class="tei-verse"><div class="tei-line">This tantra fulfills wishes.</div></div></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-091-063-73"><p>Following D and S: <em>lha yi longs spyod mnga’ ris las /’dod pa’i longs spyod ’byung bar ’gyur</em>. This translation is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-73">back</a></li><li id="tei-note-UT22084-091-063-75"><p>Following D and S: <em>lha chen tshogs bdag chen pos bya</em>. This translation is tentative. It is also possible to translate this line as “Mahādeva and Gaṇapati will create.” However, since the chapter colophon does refer to Gaṇapati as a “great deity” (<em>lha chen</em>), this alternate reading is less likely.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-75">back</a></li><li id="tei-note-UT22084-091-063-81"><p>Following D and S: <em>ba ra ta ka zla ba drug</em>. Y, J, and C: <em>ba ra ta ga zla ba drug</em>. This translation is tentative and reads the Tibetan <em>ba ra ta ka</em> as a transliteration of the Sanskrit *<em>vrataka</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-81">back</a></li><li id="tei-note-UT22084-091-063-86"><p>The phrase “this is how” has been added to the English translation for the sake of clarity. No equivalent of this phrase appears in the Tibetan witnesses.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-86">back</a></li><li id="tei-note-UT22084-091-063-88"><p>Following D and S: <em>lha chen dngos grub sgrub pa</em>. Readers should note that the term <em>lha chen</em> translates the Sanskrit <em>mahādeva</em>, which is a common epithet for the Hindu deity Śiva. In this case, however, it most likely refers to Gaṇapati.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-88">back</a></li><li id="tei-note-UT22084-091-063-91"><p>Following D and S: <em>zla ba tshes pa</em>. The Tibetan term <em>zla ba tshes pa </em>translates a number of Sanskrit terms such as “the new moon” (<em>navacandra</em>), “young moon” (<em>abhinavendu</em>), “lunar digit” (<em>candralekhā</em>), and “half moon” (<em>ardhacandra</em>). Here the term likely refers to the “new moon” as well as a “lunar digit,” or the individual phases that the moon passes through as it waxes and wanes. In this case, the description of Gaṇapati wearing a “lunar digit” in his crown describes the first lunar digit of the crescent waxing moon, which is a well-known iconographic component of deities like Gaṇapati who are directly related to the deity Śiva.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-91">back</a></li><li id="tei-note-UT22084-091-063-100"><p>Although it is not explicitly stated here, elsewhere in this “selection of mantra syllables” chapter we see that these instructions pertain to <em>mentally</em> writing Gaṇapati’s mantra, though it is also possible that these instructions would accompany the physical process of writing the mantra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-100">back</a></li><li id="tei-note-UT22084-091-063-103"><p>Following Y, N, H, and S: <em>gsum pa’i gsum pa</em>. D: <em>gsum pas gsum pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-103">back</a></li><li id="tei-note-UT22084-091-063-119"><p>Following D and S: <em>nang gi cha ris sku khrus gsol</em>. This translation is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-119">back</a></li><li id="tei-note-UT22084-091-063-121"><p>Following Y, J, N, C, H, and S: <em>bum pa yis</em>. D: <em>bum pa yi.</em></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-121">back</a></li><li id="tei-note-UT22084-091-063-128"><p>D: <em>bzhun dang bro mchog che ba yin</em>. S: <em>bzhun dang bro mchog che ba yang</em>. The translation of these two flavors is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-128">back</a></li><li id="tei-note-UT22084-091-063-143"><p>Following D and S: <em>dza ra pa dang rkun ma ni</em>. This translation is tentative and reads the Tibetan <em>dza ra pa </em>as a transliteration of the Sanskrit term <em>cārapāla</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-143">back</a></li><li id="tei-note-UT22084-091-063-151"><p>Following D and S: <em>bgegs kyi rgyal po thams cad kyis</em>. While the term <em>bgegs kyi rgyal po</em> (Skt. <em>vighnarāja</em>) can function as an alternate name of Gaṇapati, in this case it likely refers to both human kings who act as obstacles and other non-human “kings of obstructing beings” who, like Gaṇapati, rule over retinues of non-human beings that bring about obstacles and misfortune.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-151">back</a></li><li id="tei-note-UT22084-091-063-174"><p>Following Y, K, J, C, and S: <em>ma hA de ba</em>. D: <em>ma he de ba</em>. .</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-174">back</a></li><li id="tei-note-UT22084-091-063-178"><p>D: <em>byi na ya ka</em>; Y, J, K, N, C, U, H, and S: <em>bi na ya ka</em>. This transliteration amends the reading in the Tibetan witnesses to the proper Sanskrit spelling of this name, <em>vināyaka</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-178">back</a></li><li id="tei-note-UT22084-091-063-185"><p>Following N, U, and H: <em>skra zing ba</em>. D: <em>skra zed pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-185">back</a></li><li id="tei-note-UT22084-091-063-204"><p>The text breaks meter at this point and briefly resumes meter for the nāga mantra section that concludes this chapter.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-204">back</a></li><li id="tei-note-UT22084-091-063-206"><p>D: <em>brgyad la hUM dang phaT kyis mtha’ brten pas srog gi snying po’i</em>. Y, K: <em>brgyad la hUM dang phaT kyis mtha’ brten pa’i srog gi snying po’i</em>. S: <em>brgyad po la hUM dang phaT kyis mtha’ rten pas srog gi snying po’i</em>. The translation of this entire passage on the eight yakṣa mantras is tentative. The text shows some signs of corruption, and only lists seven of the eight opening mantra syllables.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-206">back</a></li><li id="tei-note-UT22084-091-063-209"><p>There are four great kings but the text only provides three mantra syllables.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-209">back</a></li><li id="tei-note-UT22084-091-063-213"><p>This reference to a “soul stone” (<em>bla rdo</em>), a term commonly associated with Tibetan mythology and sorcery that does not have any clear Indic correlate, suggests that this section of the text might derive from a non-Indic source.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-213">back</a></li><li id="tei-note-UT22084-091-063-215"><p>Following N, H, and S: <em>rbad pa</em>. D: <em>sbad pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-215">back</a></li><li id="tei-note-UT22084-091-063-217"><p>Following U: <em>bhai ra b+he</em>. D and S: <em>b+he ra b+he</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-217">back</a></li><li id="tei-note-UT22084-091-063-218"><p>Following C: <em>thum rila ya</em>. D and S: <em>thum ril yang</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-218">back</a></li><li id="tei-note-UT22084-091-063-221"><p>D and S: <em>b+he ra b+he</em>. The transliteration is corrected here based on the standard spelling of this term.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-221">back</a></li><li id="tei-note-UT22084-091-063-222"><p>D: <em>nA sha ya na lan gnyis so/ /sha ya tsUr na tsUr na ya</em>. The transliteration and word order in these verses is corrupted and has been restored in this transliteration to the proper duplicate forms of <em>nāśaya nāśaya </em>(“destroy destroy”) and <em>cūrṇaya cūrṇaya </em>(“pulverize pulverize”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-222">back</a></li><li id="tei-note-UT22084-091-063-224"><p>Following S: <em>bi nA ya ka</em>. D: <em>bi na ya ga</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-224">back</a></li><li id="tei-note-UT22084-091-063-227"><p>Following N and H: <em>drag po</em>. D and S: <em>drag pos</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-227">back</a></li><li id="tei-note-UT22084-091-063-236"><p>D and S: <em>ka ka ki ku’i thod pa’i nang du blugs te</em>. This translation “crow’s skull” for the Tibetan <em>ka ka ki ku’i thod pa</em> is tentative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-063-236">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/091-062-toh665-1084-ganapatis-heart-mantra.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/091-064-toh667-the-mahakala-tantra.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

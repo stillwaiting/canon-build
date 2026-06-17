@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 361 — Summary of Empowerment — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 361 — Summary of Empowerment</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 361 — Summary of Empowerment        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Sekoddeśa          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Vienna Buddhist Translation Studies Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3></h3><h3>Summary of Empowerment</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.14.a</span> Homage to Glorious Kālacakra!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-97" href="#tei-note-UT22084-077-002-97">[1]</a></sup><br /></p><br /><p>Sucandra requested:</p><div class="tei-verse"><div class="tei-line">The sevenfold and threefold empowerment,</div><div class="tei-line">And also the unsurpassable one, O Teacher—</div><div class="tei-line">Explain them to me in short,</div><div class="tei-line">For the sake of mundane and supramundane accomplishments! {1}</div></div><p>The Illustrious One replied:</p><div class="tei-verse"><div class="tei-line">Listen, O Sucandra! I will explain to you in summary</div><div class="tei-line">The empowerment and its purpose; these sevenfold,</div><div class="tei-line">Threefold, and unsurpassable empowerments;</div><div class="tei-line">And the movement in the <em>channels</em> and its control. {2}</div></div><div class="tei-verse"><div class="tei-line">In the tantras there are three types of summaries</div><div class="tei-line">And three types of explanations [pertaining to the <cite>Sekoddeśa</cite>],</div><div class="tei-line">Including the precise summary, the extensive summary,</div><div class="tei-line">The precise explanation, and the other (i.e., the extensive explanation). {3}</div></div><div class="tei-verse"><div class="tei-line">The summary and explanation</div><div class="tei-line">Are referred to as the recitation of the tantra.</div><div class="tei-line">The precise summary and the [precise] explanation</div><div class="tei-line">Are word-by-word commentaries. {4}</div></div><div class="tei-verse"><div class="tei-line">The extensive summary and the [extensive] explanation</div><div class="tei-line">Are commentaries that indicate the entirety of the meaning.</div><div class="tei-line">They must be composed by those who have obtained supramundane knowledge,</div><div class="tei-line">Not by mere scholars. {5}</div></div><div class="tei-verse"><div class="tei-line">Through these six [summaries and explanations],</div><div class="tei-line">The tantra of the Ādibuddha called Kālacakra is perfect:</div><div class="tei-line">Perfect through fourfold <em>vajrayoga</em>;</div><div class="tei-line">Perfect through the four types of awakening; {6}</div></div><div class="tei-verse"><div class="tei-line">Perfect through the psycho-physical aggregates,</div><div class="tei-line"><em>Elements</em>, sense bases, and six families;</div><div class="tei-line">Perfect through the five chapters, on the world realm and so forth;</div><div class="tei-line">And perfect through [adherence to the principle of] two truths. {7}</div></div><div class="tei-verse"><div class="tei-line">First, there is the sevenfold empowerment</div><div class="tei-line">To introduce the childish;</div><div class="tei-line">Then the threefold one in terms of the relative truth of the world;</div><div class="tei-line">And the fourth in terms of the ultimate truth. {8}</div></div><div class="tei-verse"><div class="tei-line">The teaching of myself, the vajra holder,</div><div class="tei-line">Concerning phenomena, is in terms of the twofold truth:</div><div class="tei-line">The relative truth of the world</div><div class="tei-line">And the ultimate truth. {9}</div></div><div class="tei-verse"><div class="tei-line">The sevenfold empowerment, O King,</div><div class="tei-line">Consists of those of water,</div><div class="tei-line">Crown, ribbon, vajra and bell,</div><div class="tei-line">Great vow, name, and permission. {10}</div></div><div class="tei-verse"><div class="tei-line">The purification of body, speech, and mind, <span class="tei-ref">F.14.b</span></div><div class="tei-line">With two each, comprise the first six empowerments;</div><div class="tei-line">The purification of wisdom, the permission empowerment.</div><div class="tei-line">The other purifications are the purification of the <em>elements</em> and so forth: {11}</div></div><div class="tei-verse"><div class="tei-line">The water empowerment is the purification of the <em>elements</em>;</div><div class="tei-line">That of the crown is the purification of the psycho-physical aggregates;</div><div class="tei-line">That of the ribbon is the purification of the perfections;</div><div class="tei-line">Those of the vajra and the bell are for the great immovable bliss {12}</div></div><div class="tei-verse"><div class="tei-line">And one’s uninterrupted buddha speech, respectively—</div><div class="tei-line">They are the purification of the sun and moon [so that they are united] into one.</div><div class="tei-line">The purification of the objects and sense faculties</div><div class="tei-line">Is the vajra vow that remains intact. {13}</div></div><div class="tei-verse"><div class="tei-line">The name empowerment is the purification of love, compassion, joy, and equanimity.</div><div class="tei-line">That of permission is the purification for achieving buddhahood.</div><div class="tei-line">These seven empowerments must only be given</div><div class="tei-line">After having created the <em>maṇḍala</em>. {14}</div></div><div class="tei-verse"><div class="tei-line">Next follows the vase empowerment, the secret empowerment,</div><div class="tei-line">That called <em>wisdom from a prajñā</em>,</div><div class="tei-line">Then, again, that of great prajñā,</div><div class="tei-line">Which is known as <em>wisdom gained from her</em>. {15}</div></div><div class="tei-verse"><div class="tei-line">The first three are, respectively, moving, moving, and vibrating,</div><div class="tei-line">And the supreme one is beyond vibration.</div><div class="tei-line">The first three empowerments are taken, respectively,</div><div class="tei-line">As the purification of body, speech, and mind, {16}</div></div><div class="tei-verse"><div class="tei-line">And the fourth is the purification of wisdom.</div><div class="tei-line">The purification of body, speech, and mind.</div><div class="tei-line">The three correspond to the level of a child, adult, and elder,</div><div class="tei-line">And the fourth to the level of the universal ancestor. {17}</div></div><div class="tei-verse"><div class="tei-line">From touching the breast of the prajñā,</div><div class="tei-line">There is the bliss of descending bodhicitta.</div><div class="tei-line">The adept empowered by the breast is the child</div><div class="tei-line">Because such bliss is attained from touching the breast. {18}</div></div><div class="tei-verse"><div class="tei-line">From moving the vajra in the secret part for a long time,</div><div class="tei-line">The bliss of the further-descending bodhicitta has arisen.</div><div class="tei-line">The adept empowered by the secret part is the adult</div><div class="tei-line">Because such bliss is attained from the secret part. {19}</div></div><div class="tei-verse"><div class="tei-line">From moving the vajra in the secret part for a long time,</div><div class="tei-line">The bliss of vibration has arisen at the tip of the vajra.</div><div class="tei-line">The adept empowered by the wisdom from a prajñā is the elder</div><div class="tei-line">Because of having realized the bliss from vibration. {20}</div></div><div class="tei-verse"><div class="tei-line">That which has arisen from passion for the mahāmudrā</div><div class="tei-line">Is bliss without vibration.</div><div class="tei-line">The adept empowered by the great prajñā is the universal ancestor</div><div class="tei-line">Because he realizes the [blissful] state without vibration. {21}</div></div><div class="tei-verse"><div class="tei-line">The universal ancestor should be known</div><div class="tei-line">As the creator of all protectors.</div><div class="tei-line">Being in a state without duality or movement,</div><div class="tei-line">He is called Vajrasattva, the Great Being, and Bodhisattva, <span class="tei-ref">F.15.a</span> {22}</div></div><div class="tei-verse"><div class="tei-line">The Commitment Being,</div><div class="tei-line">Fourfold Vajrayoga,</div><div class="tei-line">And finally, here, Kālacakra—</div><div class="tei-line">The one bestowing <em>liberation</em> on yogins. {23}</div></div><div class="tei-verse"><div class="tei-line">This practice must be accomplished</div><div class="tei-line">Through manifestations, that are not mentally produced (Skt. <em>acintitaiḥ</em>),<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-705" href="#tei-note-UT22084-077-002-705">[2]</a></sup></div><div class="tei-line">Namely, the ten signs beginning with smoke,</div><div class="tei-line">Which are reflections of insight, similar to the sky. {24}</div></div><div class="tei-verse"><div class="tei-line">They are beyond <em>existence</em> and nonexistence.</div><div class="tei-line">Their status (Skt. <em>artha</em>) is certain from one’s own experience.</div><div class="tei-line">They are entirely devoid</div><div class="tei-line">Of accumulations of atoms and particles. {25}</div></div><div class="tei-verse"><div class="tei-line">They are smoke, a mirage,</div><div class="tei-line">A firefly, a lamp, a flame, the moon, the sun,</div><div class="tei-line"><em>Darkness</em>, digit of the moon, and the great drop—</div><div class="tei-line">This clear reflection of everything. {26}</div></div><div class="tei-verse"><div class="tei-line">With eyes neither closed nor open,</div><div class="tei-line">This reflection is seen in emptiness,</div><div class="tei-line">Like in a dream. Without conceptualizing it,</div><div class="tei-line">One must constantly meditate on this reflection. {27}</div></div><div class="tei-verse"><div class="tei-line">Once the reflection [is seen] in the non-existent (i.e., cloudless sky),</div><div class="tei-line">The meditation is not the [conceptual] meditation of yogins;</div><div class="tei-line">To the mind appears neither <em>existence</em> nor nonexistence,</div><div class="tei-line">Because of seeing the reflection of emptiness<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-130" href="#tei-note-UT22084-077-002-130">[3]</a></sup> without having imagined them. {28}</div></div><div class="tei-verse"><div class="tei-line">Just as a virgin sees in the divinatory mirror</div><div class="tei-line">The magical image of something unreal,</div><div class="tei-line">So, too, the yogin of true reality sees in space</div><div class="tei-line">Past and future phenomena. {29}</div></div><div class="tei-verse"><div class="tei-line">The object in the reflection is not something real</div><div class="tei-line">Because she sees what is empty of real entities.</div><div class="tei-line">Something consisting of nonexistent entities</div><div class="tei-line">Is like an illusion, a dream, or magic. {30}</div></div><div class="tei-verse"><div class="tei-line">Yet, even though it does not exist,</div><div class="tei-line">The manifestation of a phenomenon is observed.</div><div class="tei-line">It is like a wish-fulfilling jewel</div><div class="tei-line">That fulfills the hopes of limitless beings. {31}</div></div><div class="tei-verse"><div class="tei-line">In the magical image, the virgin</div><div class="tei-line">Sees a thief and so forth not yet seen [by the officiants].</div><div class="tei-line">Having gone there, the officiants of the divination</div><div class="tei-line">See him with their ordinary eyes. {32}</div></div><div class="tei-verse"><div class="tei-line">If she sees a real form,</div><div class="tei-line">Why does she not see her own face?</div><div class="tei-line">But if she sees an unreal form,</div><div class="tei-line">Why does she not see a hare’s horn? {33}</div></div><div class="tei-verse"><div class="tei-line">She sees neither with other/superior eyes,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-706" href="#tei-note-UT22084-077-002-706">[4]</a></sup></div><div class="tei-line">Nor with her own eyes.</div><div class="tei-line">What is being seen has not arisen—</div><div class="tei-line">It is like the <em>child</em> of a virgin. <span class="tei-ref">F.15.b</span> {34}</div></div><div class="tei-verse"><div class="tei-line">Once the reflection is seen,</div><div class="tei-line">One must immediately perform breath control,</div><div class="tei-line">Because body, speech, and mind</div><div class="tei-line">Should be arrested in the three upper and three lower <em>channels</em>. {35}</div></div><div class="tei-verse"><div class="tei-line">With regard to the channels—which are the path for</div><div class="tei-line">The moon, the sun, Rāhu, excrement, urine, and semen,</div><div class="tei-line">And which correspond to the families of the <em>elements</em> of</div><div class="tei-line">Water, fire, space, earth, wind, and wisdom— {36}</div></div><div class="tei-verse"><div class="tei-line">The <em>channels</em> of body, speech, and mind are taught to be,</div><div class="tei-line">With regard to the vital wind and downward-moving wind, respectively,</div><div class="tei-line">The channels of the moon, the sun, and Rāhu,</div><div class="tei-line">As well as those of excrement, urine, and semen. {37}</div></div><div class="tei-verse"><div class="tei-line">The moon is the body of means,</div><div class="tei-line">The sun is the speech of insight,</div><div class="tei-line">The <em>channel</em> of excrement is the body of insight,</div><div class="tei-line">The channel of urine is the speech of the omnipresent. {38}</div></div><div class="tei-verse"><div class="tei-line">One upward and one downward—the two <em>channels</em> of mind</div><div class="tei-line">Carry Rāhu and the semen, respectively.</div><div class="tei-line">The mind of means is the channel of Rāhu,</div><div class="tei-line">And the mind of insight is the channel of semen. {39}</div></div><div class="tei-verse"><div class="tei-line">Upward and downward and combined with body, speech, and mind,</div><div class="tei-line">These channels are the six families.</div><div class="tei-line">They reside in embodied beings</div><div class="tei-line">As the aspects of means and the aspects of insight. {40}</div></div><div class="tei-verse"><div class="tei-line">Due to strong winds above and below,</div><div class="tei-line">Signs of death emerge in the <em>channels</em> of body and speech.</div><div class="tei-line">Birth, death, and duration</div><div class="tei-line">Are related to the channels of Rāhu and of semen. {41}</div></div><div class="tei-verse"><div class="tei-line">At the time of birth, death, and during intercourse,</div><div class="tei-line">The channel of semen [swells].</div><div class="tei-line">Rāhu flows upward during equinox,</div><div class="tei-line">When the sun passes [from one sign to the other]. {42}</div></div><div class="tei-verse"><div class="tei-line">At the moment of transit, [each time] the ascendant rises,</div><div class="tei-line">The middle channel carries the breath of equinox.</div><div class="tei-line">It lasts fifty-six and one-quarter breaths, O protector of men,</div><div class="tei-line">Counting inhalation and exhalation as one. {43}</div></div><div class="tei-verse"><div class="tei-line">In one day and night there are six hundred</div><div class="tei-line">Seventy-five [breaths in the middle channel].</div><div class="tei-line">The winds—twenty-one thousand</div><div class="tei-line">Six hundred times {44}</div></div><div class="tei-verse"><div class="tei-line">Minus those [675 breaths]—</div><div class="tei-line">Flow in the <em>left</em> and right channels.</div><div class="tei-line">They flow in the middle channel for three years</div><div class="tei-line">And three fortnights during one hundred years. {45}</div></div><div class="tei-verse"><div class="tei-line">In the upper part, the <em>left</em> and right channels</div><div class="tei-line">Are the moon, lalanā, and <em>iḍā</em>; and the sun, <em>piṅgalā</em>, and the other (i.e., rasanā).</div><div class="tei-line">These two have the nature of water and fire,</div><div class="tei-line">And are taken to hold the lotus (i.e., Amitābha) and the jewel (i.e., Ratnasambhava). {46}</div></div><div class="tei-verse"><div class="tei-line">In the lower part, there are the two channels of excrement and urine,</div><div class="tei-line">Having the nature of earth and wind. <span class="tei-ref">F.16.a</span></div><div class="tei-line">They are the middle and <em>left channel</em>s,</div><div class="tei-line">And are known to hold the disc (i.e., Vairocana) and the sword (i.e., Amoghasiddhi). {47}</div></div><div class="tei-verse"><div class="tei-line">In the upper and the lower part, the middle and right channel,</div><div class="tei-line">Are those of Rāhu and semen.</div><div class="tei-line">They have the nature of emptiness and wisdom,</div><div class="tei-line">And both are known to hold vajras (i.e., Akṣobhya and Vajrasattva). {48}</div></div><div class="tei-verse"><div class="tei-line">The channel of excrement connects with the path of the moon,</div><div class="tei-line">The channel of urine with the path of the sun,</div><div class="tei-line">And the channel of semen with the path of Rāhu.</div><div class="tei-line">The latter is responsible for birth, death, [the breath of] equinox, and intercourse. {49}</div></div><div class="tei-verse"><div class="tei-line">The <em>avadhūtī</em> above the navel is called</div><div class="tei-line"><em>Suṣumnā</em>, the <em>channel of darkness</em>.</div><div class="tei-line">The channel of the semen below is called</div><div class="tei-line">Sky-goer face (Skt. <em>khagamukhā</em>) and conch-shell channel (Skt. <em>śaṅkhinī</em>). {50}</div></div><div class="tei-verse"><div class="tei-line">Passing through the lotuses of the navel, heart, throat,</div><div class="tei-line">Forehead, and crown of the head,</div><div class="tei-line">[The vital wind in the avadhūtī] transports earth into water, water into fire,</div><div class="tei-line">Fire into wind, and wind into emptiness—in the mode of dissolution. {51}</div></div><div class="tei-verse"><div class="tei-line">Exhaling and inhaling again,</div><div class="tei-line">It reenters the earth element by way of production.</div><div class="tei-line">The avadhūtī runs</div><div class="tei-line">From center to center {52}</div></div><div class="tei-verse"><div class="tei-line">And carries body, speech, and mind</div><div class="tei-line">At the navel and the secret lotus of the jewel.</div><div class="tei-line">Exhaling and inhaling,</div><div class="tei-line">It has the nature of dissolution and production, respectively. {53}</div></div><div class="tei-verse"><div class="tei-line">The śaṅkhinī carries the downward-moving wind</div><div class="tei-line">Of all living beings.</div><div class="tei-line">Due to the bliss of [enjoying] women,</div><div class="tei-line">It carries semen; and at the time of menstruation it carries blood. {54}</div></div><div class="tei-verse"><div class="tei-line">The <em>left</em> and right channels above,</div><div class="tei-line">And those carrying excrement and urine below,</div><div class="tei-line">Refer to the factors of insight and means respectively,</div><div class="tei-line">As do the channels of menstrual blood and semen. {55}</div></div><div class="tei-verse"><div class="tei-line">Carrying menstrual blood, the śaṅkhinī is called <em>caṇḍālī</em>.</div><div class="tei-line">Carrying semen, it is called <em>khagamukhā</em>.</div><div class="tei-line">Above, the avadhūtī is called <em>ḍombī</em> in women referring to menstruation;</div><div class="tei-line">In men it is called avadhūtī. {56}</div></div><div class="tei-verse"><div class="tei-line">The five maṇḍalas, starting with consciousness,</div><div class="tei-line">Always flow in the <em>left channel</em>;</div><div class="tei-line">The ones starting with earth, in the right channel;</div><div class="tei-line">The sixth (i.e., that of wisdom), in the middle channel. {57}</div></div><div class="tei-verse"><div class="tei-line">On the lotus petals at the level of the navel are,</div><div class="tei-line">In successive order, sixty maṇḍalas.</div><div class="tei-line">At the time of the left and right ascendants,</div><div class="tei-line">Constituted by the six starting with Aries and the six starting with Taurus, {58}</div></div><div class="tei-verse"><div class="tei-line">The vital breath flows in the two nostrils in due order</div><div class="tei-line">To the base, the left, the right, above, and to the <em>middle</em>,</div><div class="tei-line">Passing through one maṇḍala after the other,</div><div class="tei-line">Starting with earth, during each <em>daṇḍa</em>.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-162" href="#tei-note-UT22084-077-002-162">[5]</a></sup><span class="tei-ref">F.16.b</span> {59}</div></div><div class="tei-verse"><div class="tei-line">One <em>nāḍikā</em><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-164" href="#tei-note-UT22084-077-002-164">[6]</a></sup> successively</div><div class="tei-line">Carries 360 breaths.</div><div class="tei-line">Five of them</div><div class="tei-line">Carry 1,800. {60}</div></div><div class="tei-verse"><div class="tei-line">One day and night have 60 nāḍikās;</div><div class="tei-line">They are the maṇḍalas of the body [starting with earth].</div><div class="tei-line">The vital breath flows to the center of the petals (space) and then, in due order,</div><div class="tei-line">Above (wind), to the right (fire), left (water), and below (earth). {61}</div></div><div class="tei-verse"><div class="tei-line">In the left nostril the elements always start with space,</div><div class="tei-line">And in the right with earth in reverse order.</div><div class="tei-line">In the left occurs formation starting with consciousness,</div><div class="tei-line">And in the right occurs dissolution starting with earth. {62}</div></div><div class="tei-verse"><div class="tei-line">The earth is below and the wind above—</div><div class="tei-line">They are insight and means respectively.</div><div class="tei-line">Therefore, the [secret] empowerment happens through</div><div class="tei-line">The thumb and the ring finger in the mouth [of the disciple]. {63}</div></div><div class="tei-verse"><div class="tei-line">Fire is on the right and water on the left—</div><div class="tei-line">They are insight and means respectively.</div><div class="tei-line">Therefore, the mudrā of the sword is formed with</div><div class="tei-line">The <em>middle</em> and index fingers. {64}</div></div><div class="tei-verse"><div class="tei-line">The void is above and the immovable below—</div><div class="tei-line">They are insight and means respectively;</div><div class="tei-line">Therefore, the mudrā of the fangs, which has the shape of a half-moon,</div><div class="tei-line">Is formed with the little fingers looking like a hooked knife. {65}</div></div><div class="tei-verse"><div class="tei-line">The <em>union</em> of the ten maṇḍalas</div><div class="tei-line">Is that of the ten fingers, one [hand] with the other,</div><div class="tei-line">Palms joined above the head.</div><div class="tei-line">This is the mudrā of the one-pointed vajra and knife. {66}</div></div><div class="tei-verse"><div class="tei-line">The equinox in the middle channel</div><div class="tei-line">Causes creation and dissolution.</div><div class="tei-line">Having entered the middle channel, the psycho-physical aggregates,</div><div class="tei-line"><em>Elements</em>, and the three vajras [of body, speech, and mind] become one. {67}</div></div><div class="tei-verse"><div class="tei-line">When the <em>channels</em> of the moon and the sun are blocked,</div><div class="tei-line">The <em>channels</em> of excrement and urine become blocked.</div><div class="tei-line">When the <em>channel</em> of Rāhu is blocked,</div><div class="tei-line">The channel of semen below becomes blocked. {68}</div></div><div class="tei-verse"><div class="tei-line">When [the upper ones] are released, the respective lower ones are then released,</div><div class="tei-line">Causing creation and dissolution.</div><div class="tei-line">This is the movement in the <em>channels</em></div><div class="tei-line">Along the threefold paths of both the vital wind and the downward-moving wind. {69}</div></div><div class="tei-verse"><div class="tei-line">If excessive vital wind flows</div><div class="tei-line">In the <em>left</em> or right channels</div><div class="tei-line">For one or five nights [and days],</div><div class="tei-line">Then one will die within three years. {70}</div></div><div class="tei-verse"><div class="tei-line">[If the vital wind flows] with the death sign of the sun in the right channel,</div><div class="tei-line">For five, ten, fifteen, twenty, twenty-five,</div><div class="tei-line">Twenty-six, and twenty-seven [nights and] days,</div><div class="tei-line">Then for thirty-three (i.e., fifteen, ten, five, and three nights and days), {71}</div></div><div class="tei-verse"><div class="tei-line">The life of embodied beings will be gone <span class="tei-ref">F.17.a</span></div><div class="tei-line">Within a period of three, two, or one year,</div><div class="tei-line">Six, three, two, or one month,</div><div class="tei-line">Fifteen, ten, five, or three days, respectively. [Then only] two, [and finally only] one day [are left].<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-177" href="#tei-note-UT22084-077-002-177">[7]</a></sup> {72}</div></div><div class="tei-verse"><div class="tei-line">With the ascent of the moon from the base</div><div class="tei-line">In the <em>left channel</em>, one by one,</div><div class="tei-line">For days and months,</div><div class="tei-line">In steps of three days and three months, {73}</div></div><div class="tei-verse"><div class="tei-line">The days of death signs increase</div><div class="tei-line">And the months of virtue decrease.</div><div class="tei-line">Further, death ascends in the middle channel</div><div class="tei-line">At the completion of one hundred years. {74}</div></div><div class="tei-verse"><div class="tei-line">Its ascent occurs in relation to even and odd days</div><div class="tei-line">And in relation to the maṇḍalas arisen at the time of birth</div><div class="tei-line">Once the two parts [of the lotus] on the right and left side</div><div class="tei-line">[Consisting of six petals each] have been destroyed. {75}</div></div><div class="tei-verse"><div class="tei-line">Otherwise, there will be no death</div><div class="tei-line">When the two parts [of the lotus] remain</div><div class="tei-line">Due to the movement of [vital wind in those] left and right parts,</div><div class="tei-line">And because the five maṇḍalas [of earth and the rest] remain active. {76}</div></div><div class="tei-verse"><div class="tei-line">Knowing the defining characteristics of the death signs,</div><div class="tei-line">[The adept] must bring the vital wind into the drop.</div><div class="tei-line">Based on the bottom of the avadhūtī,</div><div class="tei-line">Great immovable bliss must be cultivated. {77}</div></div><div class="tei-verse"><div class="tei-line">One needs to keep the vajra continuously erect,</div><div class="tei-line">Because the paths of the moon and the sun are suppressed.</div><div class="tei-line">Otherwise, the vital wind</div><div class="tei-line">Will not enter the <em>body</em> of the avadhūtī, {78}</div></div><div class="tei-verse"><div class="tei-line">Nor will the downward-moving wind enter the śaṅkhinī;</div><div class="tei-line">And, as a consequence, there will be death.</div><div class="tei-line">This circumvention of the death signs</div><div class="tei-line">Will occur through the four joys of the yogin. {79}</div></div><div class="tei-verse"><div class="tei-line">The initial joy is the descent of the semen</div><div class="tei-line">From the lotus at the crown of the head to the one between the eyebrows.</div><div class="tei-line">Between the throat and the heart there is the supreme joy;</div><div class="tei-line">From there, descending further, the intense joy. {80}</div></div><div class="tei-verse"><div class="tei-line">This variegated joy (i.e., intense joy) [occurs until the semen is] at the navel.</div><div class="tei-line">At this point, having entered the secret lotus,</div><div class="tei-line">The semen descends into the vajra jewel,</div><div class="tei-line">Causing coemergent joy—so long as it is not emitted. {81}</div></div><div class="tei-verse"><div class="tei-line">Therefore he is called the all-pervading lord of immovable great passion.</div><div class="tei-line">Being in nonabiding nirvāṇa, [he avoids these two situations:]</div><div class="tei-line">[The semen abiding at the crown of the head] due to the lack of passion,</div><div class="tei-line">And blissful emission, which is abiding nirvāṇa.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-188" href="#tei-note-UT22084-077-002-188">[8]</a></sup> {82}</div></div><div class="tei-verse"><div class="tei-line">The manifestation of the moon drop of semen is located at the crown of the head,</div><div class="tei-line">And the phase of the full moon in the lotus of the secret part.</div><div class="tei-line">The sixteenth phase is located in the lotus of the jewel,</div><div class="tei-line">At the tip of the vajra. {83}</div></div><div class="tei-verse"><div class="tei-line">After that, at the beginning of the dark period,</div><div class="tei-line">There is the phase of emission.</div><div class="tei-line">The sun, because of the absence of passion,</div><div class="tei-line">Arrives at the place of the tuft [between the eyebrows] at the time of the new moon. {84}</div></div><div class="tei-verse"><div class="tei-line">The sixteenth solar phase <span class="tei-ref">F.17.b</span></div><div class="tei-line">Is located in the lotus at the crown of the head.</div><div class="tei-line">Because of non-attachment to passionate bliss in this state,</div><div class="tei-line">It is called <em>moonless</em>. {85}</div></div><div class="tei-verse"><div class="tei-line">In all corporeal beings, at the time of death,</div><div class="tei-line">The lunar nectar moves downward;</div><div class="tei-line">The solar blood upward; and the consciousness, which is Rāhu,</div><div class="tei-line">To what is characterized by becoming (i.e., rebirth). {86}</div></div><div class="tei-verse"><div class="tei-line">For this reason, O King,</div><div class="tei-line">You must make the lunar nectar move upward,</div><div class="tei-line">The solar blood downward,</div><div class="tei-line">And the consciousness, which is Rāhu, to immovable bliss. {87}</div></div><div class="tei-verse"><div class="tei-line">The full moon of the lunar nectar</div><div class="tei-line">Occurs for all buddhas in the lotus of the tuft between the eyebrows,</div><div class="tei-line">And the new moon of solar blood in the secret part.</div><div class="tei-line">The sixteenth phase of these two occurs in the crown of the head and the jewel. {88}</div></div><div class="tei-verse"><div class="tei-line">This vajra verse of the Teacher</div><div class="tei-line">Is in opposition to the situation of corporeal beings.</div><div class="tei-line">His nirvāṇa is nonabiding,</div><div class="tei-line">In opposition to the <em>elements</em>. {89}</div></div><div class="tei-verse"><div class="tei-line">The mind in the jewel, the speech in the secret part,</div><div class="tei-line">And the body in the navel emerge from great bliss.</div><div class="tei-line">The dharmakāya, saṃbhogakāya, and nirmāṇakāya</div><div class="tei-line">Radiate from this pure body. {90}</div></div><div class="tei-verse"><div class="tei-line">What emerges from below, O King, belongs to means,</div><div class="tei-line">And what emerges from above belongs to insight (Skt. <em>prajñā</em>).</div><div class="tei-line">The body vajra of the prajñā is at the forehead.</div><div class="tei-line">The vajras of speech, mind, and wisdom {91}</div></div><div class="tei-verse"><div class="tei-line">Are at the lotuses of the throat, heart, and navel.</div><div class="tei-line">They (i.e., the vajras of body, speech, mind, and wisdom) radiate from the nirmāṇakāya and the other bodies.</div><div class="tei-line">The psycho-physical aggregates and <em>elements</em> radiate</div><div class="tei-line">From unobstructed bliss (i.e., the body of Vajrasattva). {92}</div></div><div class="tei-verse"><div class="tei-line">Due to the <em>union</em> with a karmamudrā,</div><div class="tei-line">The visualized support of a jñānamudrā,</div><div class="tei-line">And the unique union with a mahāmudrā,</div><div class="tei-line">Immovable bliss increases. {93}</div></div><div class="tei-verse"><div class="tei-line">Of that which has increased, there is no increasing;</div><div class="tei-line">Of that which has diminished, there is no diminishing.</div><div class="tei-line">Of that which has set, there is no setting;</div><div class="tei-line">Likewise, of that which has risen, there is no rising. {94}</div></div><div class="tei-verse"><div class="tei-line">Of that which is illuminated, there is no illumination;</div><div class="tei-line">Of that which is obscured, there is also no obscuring.</div><div class="tei-line">Of that which is born, there is no taking birth;</div><div class="tei-line">Of that which is dead, there is no dying. {95}</div></div><div class="tei-verse"><div class="tei-line">Of that which is liberated, there is also no liberation;</div><div class="tei-line">Of that which does not abide, there is no nonabiding.</div><div class="tei-line">Of that which does not exist, there is no nonexistence;</div><div class="tei-line">Of that which exists, there is no <em>existence</em>. {96}</div></div><div class="tei-verse"><div class="tei-line">Of that which moves, there is no movement;</div><div class="tei-line">And of that which does not move, there is no nonmovement.</div><div class="tei-line">The rise and fall of all phenomena,</div><div class="tei-line">Which lack their own nature, are thus an illusion. <span class="tei-ref">F.18.a</span> {97}</div></div><div class="tei-verse"><div class="tei-line">Elements neither come into nor pass out of <em>existence</em></div><div class="tei-line">By means of their own nature.</div><div class="tei-line">This manifold world lacks its own nature</div><div class="tei-line">And has the unique characteristics of [apparent] <em>existence</em> and [ultimate] nonexistence. {98}</div></div><div class="tei-verse"><div class="tei-line">When embracing one’s prajñā (i.e., karmamudrā), the bodhicitta</div><div class="tei-line">Enters the vajra jewel, which by then is inside the lotus.</div><div class="tei-line">When the moon (i.e., bodhicitta) has entered into the jewel, it is in vibration.</div><div class="tei-line">The meditation on the unchangeable [mahāmudrā] is free from vibration. {99}</div></div><div class="tei-verse"><div class="tei-line">The meditation on body, speech, and mind</div><div class="tei-line">Is based on the <em>channels</em> of body, speech, and mind.</div><div class="tei-line">The fusion of the three vajras [of body, speech, and mind]</div><div class="tei-line">In the śaṅkhinī is the meditation on jñāna. {100}</div></div><div class="tei-verse"><div class="tei-line">Because of attachment to the prajñā, the drops</div><div class="tei-line">Trickle from the head via the aforementioned stages,</div><div class="tei-line">And enter the stage of the full [moon].</div><div class="tei-line">They are fixed through [meditation on] the ultimate. {101}</div></div><div class="tei-verse"><div class="tei-line">Just as the waxing moon</div><div class="tei-line">Becomes gradually full along its phases—</div><div class="tei-line">Its fullness due to the receding of its shadow,</div><div class="tei-line">And not because of being annihilated and made full again— {102}</div></div><div class="tei-verse"><div class="tei-line">So the waxing wisdom</div><div class="tei-line">Becomes gradually full along the bodhisattva levels—</div><div class="tei-line">Its fullness due to the receding of defilements and so forth,</div><div class="tei-line">And not because of being annihilated and made full again. {103}</div></div><div class="tei-verse"><div class="tei-line">Just as the moon, with the mark of the rabbit in its <em>middle</em>,</div><div class="tei-line">Does not remain in the phase of the full moon,</div><div class="tei-line">So, too, the mind does not remain in unchangeable bliss</div><div class="tei-line">Because of its mark of saṃsāric imprints. {104}</div></div><div class="tei-verse"><div class="tei-line">The waxing and waning fortnights</div><div class="tei-line">Are established as the bright and the dark.</div><div class="tei-line">The full moon in between these two</div><div class="tei-line">Does not remain at its fullest. {105}</div></div><div class="tei-verse"><div class="tei-line">Fully complete enlightenment in one instant</div><div class="tei-line">Is immovable in its fullness.</div><div class="tei-line">When the bodhicitta is in the vajra jewel,</div><div class="tei-line">It fills all moments with this experience. {106}</div></div><div class="tei-verse"><div class="tei-line">[The mind vajra] is neither based on the bright fortnight,</div><div class="tei-line">Nor does it go to the dark one.</div><div class="tei-line">It is located in the <em>middle</em> of the two sides—</div><div class="tei-line">Based on the full moon, without duality. {107}</div></div><div class="tei-verse"><div class="tei-line">Its waxing starts from the crown of the head</div><div class="tei-line">And becomes full in the vajra jewel.</div><div class="tei-line">Due to lack of passion, these lunar phases are lost. Because of this loss,</div><div class="tei-line">[The solar blood] starts from the vajra, becoming full [at the crown of the head]. <span class="tei-ref">F.18.b</span> {108}</div></div><div class="tei-verse"><div class="tei-line">For corporeal beings, waxing happens again at the crown of the head,</div><div class="tei-line">And fullness in the [vajra] jewel.</div><div class="tei-line">Due to lack of passion, these lunar phases are lost,</div><div class="tei-line">But there is no loss of wisdom (i.e., the sixteenth lunar phase). {109}</div></div><div class="tei-verse"><div class="tei-line">Its (i.e., bodhicitta’s) nature is great bliss</div><div class="tei-line">And is praised using the metaphor of the full moon.</div><div class="tei-line">All other <em>things</em> are the cause</div><div class="tei-line">Of creation and dissolution [of sentient beings’ great bliss]. {110}</div></div><div class="tei-verse"><div class="tei-line">Just as the moon [proceeds] through its two fortnights</div><div class="tei-line">And the sun through its two routes,</div><div class="tei-line">So nirvāṇa proceeds from existence</div><div class="tei-line">And existence from nirvāṇa. {111}</div></div><div class="tei-verse"><div class="tei-line">Immovable great bliss is completed</div><div class="tei-line">Through the [bodhisattva] levels during the full moon,</div><div class="tei-line">With the help of 21,600 breaths,</div><div class="tei-line">Which are devoured by moments of immovable bliss. {112}</div></div><div class="tei-verse"><div class="tei-line">It (i.e., immovable bliss) is without the two fortnights,</div><div class="tei-line">And is completed through the [bodhisattva] levels.</div><div class="tei-line">Its true meaning has twelve aspects,</div><div class="tei-line">And its immovable character has sixteen aspects. {113}</div></div><div class="tei-verse"><div class="tei-line">Through the [bodhisattva] levels it is full</div><div class="tei-line">In twelve aspects, being supreme nonduality.</div><div class="tei-line">The bodhicitta, which is full through the lunar phases,</div><div class="tei-line">Has sixteen aspects. {114}</div></div><div class="tei-verse"><div class="tei-line">It is of one meaning, a phenomenon beyond duality,</div><div class="tei-line">The ultimate, indestructible.</div><div class="tei-line">It is bodhicitta in the state of fullness,</div><div class="tei-line">Completely full in every way. {115}</div></div><div class="tei-verse"><div class="tei-line">It is the great passion, which starts with freedom from passion,</div><div class="tei-line">Vajra body, great immovable bliss,</div><div class="tei-line">Completely full, and unpolluted</div><div class="tei-line">By the imprints of both sides (i.e., passion and freedom from passion). {116}</div></div><div class="tei-verse"><div class="tei-line">Just as the waters of rivers become the same</div><div class="tei-line">As the ocean upon entering it,</div><div class="tei-line">So, too, the entirety of <em>existence</em> becomes the same</div><div class="tei-line">As the immovable upon entering it. {117}</div></div><div class="tei-verse"><div class="tei-line">Just as a set of metals becomes an elixir</div><div class="tei-line">When it is devoured [by mercury],</div><div class="tei-line">And just as the nature of seeds is acquired through the seeds</div><div class="tei-line">And beyond measure<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-636" href="#tei-note-UT22084-077-002-636">[9]</a></sup> at the time of fruition, {118}</div></div><div class="tei-verse"><div class="tei-line">So, too, the entirety of existence,</div><div class="tei-line">When devoured by supreme immovable (bliss),</div><div class="tei-line">Becomes supreme immovable bliss,</div><div class="tei-line">Which embraces all aspects. {119}</div></div><div class="tei-verse"><div class="tei-line">He who is bitten does not notice the pain</div><div class="tei-line">In the wound or elsewhere,</div><div class="tei-line">Nor does he notice objects through his sense faculties,</div><div class="tei-line">When the poison develops its full effect. {120}</div></div><div class="tei-verse"><div class="tei-line">Likewise, the yogin does not experience true bliss <span class="tei-ref">F.19.a</span></div><div class="tei-line">In the vajra jewel or elsewhere,</div><div class="tei-line">Nor does he notice objects through his sense faculties,</div><div class="tei-line">When the bodhicitta has reached the phase of the full moon. {121}</div></div><div class="tei-verse"><div class="tei-line">Just as the great elixir is first present</div><div class="tei-line">In only one part of the metal,</div><div class="tei-line">And then penetrates to every part of the metal</div><div class="tei-line">When red-hot from violent fire, {122}</div></div><div class="tei-verse"><div class="tei-line">So, too, the immovable bliss is first present</div><div class="tei-line">In only one part (i.e., the vajra jewel)</div><div class="tei-line">And then penetrates every part of the mind</div><div class="tei-line">When the latter is red-hot from the fire of desire. {123}</div></div><div class="tei-verse"><div class="tei-line">Just as metals that are penetrated by the elixir</div><div class="tei-line">Have no stains anywhere,</div><div class="tei-line">So, too, the penetrated mindstreams</div><div class="tei-line">Have no imprints anywhere. {124}</div></div><div class="tei-verse"><div class="tei-line">Just as metal transformed into gold</div><div class="tei-line">Becomes stainless through fire,</div><div class="tei-line">So, too, the mind, repeatedly red-hot from the fire of passion,</div><div class="tei-line">Becomes stainless. {125}</div></div><div class="tei-verse"><div class="tei-line">Just as a stone clearly shines</div><div class="tei-line">When touched by a great jewel,</div><div class="tei-line">So, too, the mind becomes blissful</div><div class="tei-line">Through contact with immovable bliss. {126}</div></div><div class="tei-verse"><div class="tei-line">But why all these words here?</div><div class="tei-line">On the level of the relative truth of the world,</div><div class="tei-line">The power of the elixir is incomprehensible</div><div class="tei-line">In terms of penetrating metal. {127}</div></div><div class="tei-verse"><div class="tei-line">How much more, on the level of ultimate truth,</div><div class="tei-line">Is the power of wisdom incomprehensible</div><div class="tei-line">In terms of penetrating the mind</div><div class="tei-line">Defiled by adventitious stains? {128}</div></div><div class="tei-verse"><div class="tei-line">The stains are neither externally added to the mind,</div><div class="tei-line">Nor are they older than the mind.</div><div class="tei-line">They are neither born elsewhere than the mind,</div><div class="tei-line">Nor do they remain inexhaustibly in the mind. {129}</div></div><div class="tei-verse"><div class="tei-line">If the stains were externally added,</div><div class="tei-line">Then the mind would have been stainless beforehand.</div><div class="tei-line">If they had existed before the mind,</div><div class="tei-line">Then what could they have arisen from? {130}</div></div><div class="tei-verse"><div class="tei-line">If they had arisen without the mind,</div><div class="tei-line">Then they would be like a sky-flower.</div><div class="tei-line">If they had always resided in the mind,</div><div class="tei-line">Then they could never be eliminated. {131}</div></div><div class="tei-verse"><div class="tei-line">Just as the stains of copper</div><div class="tei-line">Are eliminated through <em>union</em> with an elixir,</div><div class="tei-line">And its <em>existence</em>—which remains stainless—</div><div class="tei-line">Is not eliminated, {132}</div></div><div class="tei-verse"><div class="tei-line">So, too, the stains of mind</div><div class="tei-line">Are eliminated through its <em>union</em> with emptiness,</div><div class="tei-line">And its wisdom—which remains stainless—</div><div class="tei-line">Is not eliminated. <span class="tei-ref">F.19.b</span> {133}</div></div><div class="tei-verse"><div class="tei-line">Just as iron that has been penetrated by the <em>elixir</em></div><div class="tei-line">Does not revert to the nature of iron,</div><div class="tei-line">So, too, the mind that has been penetrated by bliss</div><div class="tei-line">Does not revert to a state of suffering. {134}</div></div><div class="tei-verse"><div class="tei-line">There is no greater transgression than the lack of passion;</div><div class="tei-line">No greater merit than supreme bliss.</div><div class="tei-line">Therefore, the mind should constantly embrace</div><div class="tei-line">Immovable bliss, O King! {135}</div></div><div class="tei-verse"><div class="tei-line">Without having made love, a young maiden</div><div class="tei-line">Cannot describe sexual bliss.</div><div class="tei-line">Having made love in her youth,</div><div class="tei-line">She will know great bliss for herself. {136}</div></div><div class="tei-verse"><div class="tei-line">Likewise, bliss cannot be described</div><div class="tei-line">By those without meditative concentration.</div><div class="tei-line">When immovable bliss is attained in meditative concentration,</div><div class="tei-line">The yogins will know it for themselves. {137}</div></div><div class="tei-verse"><div class="tei-line">Even the omniscient ones are uncertain</div><div class="tei-line">About recognizing the bliss which arises from the immovable.</div><div class="tei-line">Thus, a state without passion must be avoided by all means,</div><div class="tei-line">Because, without it, the mind will lack bliss. {138}</div></div><div class="tei-verse"><div class="tei-line">It is recorded that from emission the lack of passion is born,</div><div class="tei-line">And from the lack of passion, suffering.</div><div class="tei-line">From suffering, the <em>elements</em> of men are ruined,</div><div class="tei-line">And from ruining the <em>elements</em>, death will come. {139}</div></div><div class="tei-verse"><div class="tei-line">From death a new existence will follow,</div><div class="tei-line">And from that again, death and transmigration.</div><div class="tei-line">Accordingly, the existence of sentient beings</div><div class="tei-line">Comes from the lack of passion and nothing else. {140}</div></div><div class="tei-verse"><div class="tei-line">Therefore, one must avoid with all effort</div><div class="tei-line">The passion of emission.</div><div class="tei-line">By doing so, the yogin proceeds</div><div class="tei-line">From the fetters of saṃsāra to immovable bliss. {141}</div></div><div class="tei-verse"><div class="tei-line">Without passion one would not [even] be a [good] lover</div><div class="tei-line">And not seek out the <cite>Kāmaśāstra</cite>.</div><div class="tei-line">Why, then, would a yogin (likewise) wish for suffering</div><div class="tei-line">With regard to this tantra proclaimed by me?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-250" href="#tei-note-UT22084-077-002-250">[10]</a></sup> {142}</div></div><div class="tei-verse"><div class="tei-line">Through a state in which the semen remains immovable,</div><div class="tei-line">[The yogin] must attain supreme immovable (bliss).</div><div class="tei-line">Once the support has reached the state of emission,</div><div class="tei-line">The supported will be passionless.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-252" href="#tei-note-UT22084-077-002-252">[11]</a></sup> {143}</div></div><div class="tei-verse"><div class="tei-line">The relation of support and supported remains</div><div class="tei-line">As long as [the mind] does not proceed to the immovable.</div><div class="tei-line">Once the mind has attained the immovable,</div><div class="tei-line">It is without the characteristics of support and supported. {144}</div></div><div class="tei-verse"><div class="tei-line">For the adept whose body has been born from the immovable</div><div class="tei-line">And whose bodhicitta has reached the cakra at the forehead,</div><div class="tei-line">Neither the union of the two series of vowels and consonants</div><div class="tei-line">Nor the syllable hūṁ is needed anymore, O King. {145}</div></div><div class="tei-verse"><div class="tei-line">The reflection, arisen from emptiness, is the cause, <span class="tei-ref">F.20.a</span></div><div class="tei-line">And bliss, born from the immovable, is the result.</div><div class="tei-line">The cause is sealed by the result,</div><div class="tei-line">And the result is sealed by the cause. {146}</div></div><div class="tei-verse"><div class="tei-line">Holding the reflection of emptiness is the cause,</div><div class="tei-line">Holding immovable compassion is the result.</div><div class="tei-line">Bodhicitta—which is inseparable from</div><div class="tei-line">Emptiness and compassion—is not emitted. {147}</div></div><div class="tei-verse"><div class="tei-line">The reflection is free from nirvāṇa</div><div class="tei-line">And the immovable transcends saṃsāra.</div><div class="tei-line">Their <em>union</em> is supreme nonduality,</div><div class="tei-line">Free from eternalism and nihilism. {148}</div></div><div class="tei-verse"><div class="tei-line">Because the reflection has the character of having arisen</div><div class="tei-line">From nonexistence, it is not nonexistent.</div><div class="tei-line">Because the immovable, in turn, has the character of having arisen</div><div class="tei-line">From <em>existence</em>, <em>existence</em> does not apply to it. {149}</div></div><div class="tei-verse"><div class="tei-line">The perfect union of <em>being</em> and nonbeing</div><div class="tei-line">Is the nondual, supreme <em>vajrayoga</em>.</div><div class="tei-line">It is beyond form and nonform,</div><div class="tei-line">Like a magical image in a mirror. {150}</div></div><div class="tei-verse"><div class="tei-line">The reflection is not immersed in cyclic existence,</div><div class="tei-line">Nor is the immovable immersed in nirvāṇa.</div><div class="tei-line">Their mutual connection is peace:</div><div class="tei-line">The supreme neutral state. {151}</div></div><div class="tei-verse"><div class="tei-line">Because insight has not arisen from a cause,</div><div class="tei-line">The result has arisen from insight as [its only possible] cause.</div><div class="tei-line">That which has arisen from insight has not arisen from a cause,</div><div class="tei-line">Because insight has not arisen from a cause. {152}</div></div><div class="tei-verse"><div class="tei-line">Therefore, the wisdom is the unsurpassable</div><div class="tei-line"><em>Prajñā</em> cum wisdom,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-708" href="#tei-note-UT22084-077-002-708">[12]</a></sup> which has not arisen from a cause.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-707" href="#tei-note-UT22084-077-002-707">[13]</a></sup></div><div class="tei-line">There is no mutual sealing, one by the other,</div><div class="tei-line">Through result and cause. {153}</div></div><div class="tei-verse"><div class="tei-line">Cause and result—everything—</div><div class="tei-line">Has arisen through dependence.</div><div class="tei-line">The reflection, in which [the two] are mutually sealed,</div><div class="tei-line">Is neither born nor extinguished. {154}</div></div><div class="tei-verse"><div class="tei-line">[Its] prajñā [aspect] is constant extinction</div><div class="tei-line">And [its upāya aspect,] the supreme immovable, is [always] present (lit. “<em>arisen</em>”).</div><div class="tei-line">Free from cause and effect,</div><div class="tei-line">There is no mutual sealing. {155}</div></div><div class="tei-verse"><div class="tei-line">The vision of knowable objects in this world,</div><div class="tei-line">Which are neither born nor extinguished,</div><div class="tei-line">Are one’s own mind, and nothing else.</div><div class="tei-line">This is because external objects of knowledge are [only mentally] separated [from oneself]. {156}</div></div><div class="tei-verse"><div class="tei-line">Therefore nothing can seal itself,</div><div class="tei-line">With itself, anywhere.</div><div class="tei-line">Can a great sword cut itself</div><div class="tei-line">With its own blade? {157}</div></div><div class="tei-verse"><div class="tei-line">Just as one experiences bliss through <em>union</em></div><div class="tei-line">In a dream with the daughter of a barren woman,</div><div class="tei-line">So, too, one experiences bliss for oneself <span class="tei-ref">F.20.b</span></div><div class="tei-line">By serving the reflection emerging from space (Viśvamātā, i.e., mahāmudrā). {158}</div></div><div class="tei-verse"><div class="tei-line">Neither insight nor means [are independent].</div><div class="tei-line">The coemergent one (i.e., Kālacakra) in <em>union</em> with his prajñā</div><div class="tei-line">Is full of bliss, indeed,</div><div class="tei-line">And without any hindrances. {159}</div></div><div class="tei-verse"><div class="tei-line">It is unstained like the sky,</div><div class="tei-line">Without object or sense faculty,</div><div class="tei-line">Present in everything,</div><div class="tei-line">Indivisible, without distinctions. {160}</div></div><div class="tei-verse"><div class="tei-line">Self-arisen are Vajrasattva [at the secret part],</div><div class="tei-line">The supremely immovable one with the great intent,</div><div class="tei-line">And Mahāsattva [at the navel], whose passion is great,</div><div class="tei-line">Giving joy to sentient beings. {161}</div></div><div class="tei-verse"><div class="tei-line">Self-arisen are Bodhisattva [at the heart], whose hatred is great,</div><div class="tei-line">The great enemy destroying defilements;</div><div class="tei-line">And Samayasattva [at the throat], whose delusion is great,</div><div class="tei-line">Clearing the delusion of deluded intellect. {162}</div></div><div class="tei-verse"><div class="tei-line">Self-arisen are Vajrayoga [at the forehead], whose anger is great,</div><div class="tei-line">The great enemy of wrathful demons;</div><div class="tei-line">And Kālacakra [at the crown of the head], whose attachment is great,</div><div class="tei-line">Removing the passion for fleeting bliss. {163}</div></div><div class="tei-verse"><div class="tei-line">“The vajra is <em>indivisible</em>”—with that the Illustrious One</div><div class="tei-line">Taught [Vajrasattva’s] great intent.</div><div class="tei-line">Being (Skt. <em>sattva</em>) refers to the unity of the threefold existence.</div><div class="tei-line">It is said to be the supreme immovable bliss. {164}</div></div><div class="tei-verse"><div class="tei-line">The one whose supreme immovable bliss is complete,</div><div class="tei-line">Who has become perfect through the bodhisattva levels,</div><div class="tei-line">Is Mahāsattva, whose passion is great,</div><div class="tei-line">Giving joy to all sentient beings. {165}</div></div><div class="tei-verse"><div class="tei-line">Being a hero persevering in enlightenment</div><div class="tei-line">Without wavering, he is Bodhisattva,</div><div class="tei-line">Whose hatred is great, the great enemy</div><div class="tei-line">Of all hatred, defilements, and so forth. {166}</div></div><div class="tei-verse"><div class="tei-line">For he whose lunar nectar or semen has not been emitted,</div><div class="tei-line">The commitment (Skt. <em>samaya</em>) is the devouring [of bliss].</div><div class="tei-line">Due to these circumstances he is called Samayasattva,</div><div class="tei-line">Clearer of the delusion of deluded intellect. {167}</div></div><div class="tei-verse"><div class="tei-line">[Vajrayoga] is the unity of all vajras,</div><div class="tei-line">Endowed with insight, bodies, and the immovable.</div><div class="tei-line">His anger is great,</div><div class="tei-line">Being the great enemy of wrathful demons. {168}</div></div><div class="tei-verse"><div class="tei-line">Given his means of great immovable bliss,</div><div class="tei-line">[Kālacakra] never abandons the welfare of sentient beings.</div><div class="tei-line">Having great attachment, he liberates sentient beings <span class="tei-ref">F.21.a</span></div><div class="tei-line">And removes the passion for fleeting bliss. {169}</div></div><div class="tei-verse"><div class="tei-line">These six forms of deities are also said</div><div class="tei-line">To be the families of the six aggregates:</div><div class="tei-line">Wisdom, sensation, consciousness, matter, karmic formations,</div><div class="tei-line">And discrimination—all of them in an immovable state. {170}</div></div><div class="tei-verse"><div class="tei-line">Likewise they are also, in order,</div><div class="tei-line">The elements of wisdom, fire, space, earth,</div><div class="tei-line">Wind, and water; the sense faculties of</div><div class="tei-line">The mind, the eyes, ears, the body, nose, and tongue; {171}</div></div><div class="tei-verse"><div class="tei-line">And the cognitive objects of mental objects (Skt. <em>dharmadhātu</em>),</div><div class="tei-line">Visible objects, sound, touch, odor, and taste.</div><div class="tei-line">The terrifying King of Wrath with six faces</div><div class="tei-line">Is purified with regard to these six families. {172}</div></div><div class="tei-verse"><div class="tei-line">The body, the secret organ, and the mind have always been</div><div class="tei-line">The threefold maṇḍala [of the Buddha’s body, speech, and mind].</div><div class="tei-line">These three vajras, each consisting of insight and means,</div><div class="tei-line">Are in the state of Vajrasattva. {173}</div></div><div class="tei-verse"><div class="tei-line">These means of accomplishing empowerment,</div><div class="tei-line">The means of accomplishing the supreme immovable,</div><div class="tei-line">Together with the <em>channels</em> and families,</div><div class="tei-line">Have been explained in summary, O [Su]candra.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-077-002-623" href="#tei-note-UT22084-077-002-623">[14]</a></sup> {174}</div></div><br />This concludes the summary of the means of the supreme immovable empowerment (i.e., the “<cite>Sekoddeśa</cite>”), from the fifth chapter of the [“<cite>Paramādibuddha</cite>” that begins with the] chapter on the world realm.</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>It was translated, edited, and finalized by the Kashmiri paṇḍita Somanātha and the Tibetan translator and monk Dro Sherap Drakpa. Rinchen Gyaltsen retranslated, edited, and corrected it in accordance with the commentary (Skt. <em>ṭīkā</em>) of glorious Nāropa.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-077-002-97"><p>“Kālacakra” is according to the Sanskrit, which accords with the Tibetan translation of Ra Chörap and Samantaśrī. The translation by Dro Sherap Drakpa and Somanātha reads “Vajrasattva” (Tib. <em>rdo rje sems dpa’</em>). See Orofino 1994, 54.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-97">back</a></li><li id="tei-note-UT22084-077-002-705"><p>The Tibetan translation has “inconceivable” (<em>bsam gyis mi khyab pa</em>) for <em>acintita</em>, and links it as a genitive attribute to “smoke” in the third line. However, see verse <span class="tei-ref">#UT22084-077-002-128</span>, where the reflection (i.e., smoke and the other signs is seen without conceptualizing it).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-705">back</a></li><li id="tei-note-UT22084-077-002-130"><p>The Sanskrit has <em>bimbe</em>, and the Tibetan <em>stong par</em>. However, from the context the reading <em>śūnyatābimba</em> is required.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-130">back</a></li><li id="tei-note-UT22084-077-002-706"><p>See Nāropa’s commentary (Sferra and Merzagora 2006, 146<span>5</span>): “She sees neither with other/superior eyes, i.e., those appearing on the forehead” (<em>anyacakṣurbhyāṃ lalāṭādibhavābhyāṃ na paśyati</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-706">back</a></li><li id="tei-note-UT22084-077-002-162"><p>One <em>daṇḍa</em> or <em>ghaṭikā</em> is equivalent to 24 minutes. See Gnoli and Orofino 1994, 277 fn. 1.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-162">back</a></li><li id="tei-note-UT22084-077-002-164"><p>One <em>nāḍikā</em> is equivalent to 24 minutes. See Gnoli and Orofino 1994, 279 fn. 1.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-164">back</a></li><li id="tei-note-UT22084-077-002-177"><p>When there are two days left, the wind flows in the <em>left channel</em>, and when there is only one day left, it flows in the middle channel. See Gnoli and Orofino 1994, 290.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-177">back</a></li><li id="tei-note-UT22084-077-002-188"><p>Nāropa’s <cite>Sekoddeśaṭīkā</cite> gives the following commentary on this verse: “The semen of bliss, which, due to the lack of passion (the absence of passion) abides at the crown of the head, is abiding. Emitted from the jewel of the vajra, it is nirvāṇa. This king of bliss is someone whose nirvāṇa is nonabiding, because of pervading the space between the crown of the head and the jewel of the vajra” (<em>virāgād rāgavigamād uṣṇīṣasthaṃ yat saukhyaṃ śukram tat pratiṣṭhitam / yat tu vajramaṇeś cyutaṃ tan nirvāṇam / ayaṃ tu sukharāja uṣṇīṣavajramaṇyantarālavyāpitvād apratiṣṭithanirvāṇaḥ</em>. See Sferra and Merzagora 2006, 165, l. 16–18).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-188">back</a></li><li id="tei-note-UT22084-077-002-636"><p>Skt. <em>mānavarjitam</em>; Tib. <em>nga rgyal spangs</em>. In their edition of the Tibetan of Nāropa’s commentary, Sferra and Merzagora (2006, footnote p. 373) explain that the Tibetan translation of the <cite>Sekoddeśaṭikā</cite> translates the Sanskrit <em>māna°</em> as <em>nga rgyal</em>, but a more correct interpretation (<em>tshad</em>) can be found in Vijayendra’s <cite>*Sekoddeśaṭippaṇī</cite> (<cite>dbang mdor bstan pa’i brjed byang</cite>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-636">back</a></li><li id="tei-note-UT22084-077-002-250"><p>The reading of this verse according to the <cite>Sekoddeśa</cite> as quoted in Sahajavajra’s <cite>Sthitisamāsa</cite> (<cite>gnas pa bsdus pa</cite>, Toh 2227, Degé 97.a.6–7, Peking 104.b.5–6)<a href="https://read.84000.co/translation/toh2227.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh2227.html</a> makes better sense than the corresponding verse from the versions of the <cite>Sekoddeśa</cite> itself in the Kangyur. The <cite>Sthitisamāsa</cite> reads <em>chags bral ’dod ldan ma yin te / / ’dod pa’i sbyor thabs mi </em>(Degé: <em>’di</em>) <em>’dod na / / nga yis bstan pa’i</em> (Degé, Peking: <em>pa</em>) <em>rgyud du</em> (Peking: <em>rgyun du</em>) <em>yang / / ci ste rnal ’byor sdug bsngal bskyed.</em><br /> Even in the worldly art of love one avoids fast emission. All the more should a tantric yogin avoid emission, thus not creating suffering in accordance with tantras. To be sure, the Kālacakra prescribes the avoidance of emission.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-250">back</a></li><li id="tei-note-UT22084-077-002-252"><p>The support is here the seminal drop, and the supported the yogin.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-252">back</a></li><li id="tei-note-UT22084-077-002-708"><p>I.e., taking <em>prajñājñāna</em> as a <em>dvandva</em> compound. See <cite>Vimalaprabhā</cite> (Dwivedi and Bahulkar 1994) on v. 5.114 (vol. 3, 53<span>20-22</span>): “Here, insight and wisdom are the perceiving mind and the perceived object of this perceiving mind, respectively. The ten [signs] starting with smoke, like a magical reflection in a mirror, are wisdom. The idea is that this is the mind insofar as it is the perceived object.” (<em>iha prajñā ca jñānaṃ ca yathāsaṃkhyaṃ grāhakacittam, tasya ca grāhakacittasya yo daśavidho dhūmādiko grāhya ādarśābhāsaḥ pratisenāvat, sa eva jñānaṃ grāhyacittam ity arthaḥ |</em>). The alternative would be taking <em>prajñājñāna</em> as “wisdom from a <em>prajñā</em>” and translate: “Therefore, the unsurpassable wisdom is not the wisdom from a <em>prajñā</em>, which has <em>arisen</em> from a cause.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-708">back</a></li><li id="tei-note-UT22084-077-002-707"><p>The alternative would be taking <em>prajñājñāna</em> as “wisdom from a <em>prajñā</em>” and translate: “Therefore, the unsurpassable wisdom is not the wisdom from a prajñā, which has <em>arisen</em> from a cause.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-707">back</a></li><li id="tei-note-UT22084-077-002-623"><table><h4>DEITY FAMILIES</h4><tr><td>Verses</td><td>Aspect</td><td>Vajrasattva</td><td>Mahāsattva</td><td>Bodhisattva</td><td>Samayasattva</td><td>Vajrayoga</td><td>Kālacakra</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-270</span></td><td>cakras</td><td>secret</td><td>navel</td><td>heart</td><td>throat</td><td>forehead</td><td>crown</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-273</span></td><td>purifies*</td><td>threefold existence</td><td>passion</td><td>hatred</td><td>delusion</td><td>anger</td><td>attachment</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-279</span></td><td>aggregates [**]</td><td>wisdom</td><td>sensation [feeling]</td><td>consciousness</td><td>matter <br />[form]</td><td>karmic formations</td><td>discrimination [perception]</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-280</span></td><td><em>elements</em></td><td>wisdom</td><td>fire</td><td>space</td><td>earth</td><td>wind</td><td>water</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-280</span></td><td>faculties</td><td>mind</td><td>eyes</td><td>ears</td><td>body</td><td>nose</td><td>tongue</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-281</span></td><td>objects</td><td>sounds</td><td>tastes</td><td>mental objects</td><td>odors</td><td>tangible objects</td><td>visible objects</td></tr><tr><td><span class="tei-ref">#UT22084-077-002-281</span>***</td><td>objects reordered</td><td>mental objects</td><td>visible objects</td><td>sounds</td><td>tangible objects</td><td>odors</td><td>tastes</td></tr>* Tentative interpretation.** Alternate common designations in brackets.*** Reordered to match v. <span class="tei-ref">#UT22084-077-002-280</span>.</table> <a class="tei-backlink" href="#tei-note-ref-UT22084-077-002-623">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/076-012-toh358-the-exemplary-tale-of-sardulakarna.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/079-008-toh381-the-emergence-from-samputa.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

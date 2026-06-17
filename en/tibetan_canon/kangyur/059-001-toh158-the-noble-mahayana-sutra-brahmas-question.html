@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 158 — Brahmā’s Question — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 158 — Brahmā’s Question</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 158 — Brahmā’s Question        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Brahma­pari­pṛcchā          </p>
+                      </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>Brahmā’s Question</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.1.b</span> Homage to all the buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Bhagavān was staying at Kūṭāgāraśālā in the great forest grove near Vaiśālī together with a great assembly of twelve thousand monks and a great many bodhisattva mahāsattvas.</p><p>In the middle of the night, the Bhagavān sat awake in a cross-legged position, settled in mindfulness. He entered the first meditative concentration, wherein joy and happiness arise from engaging in thought and scrutiny while in seclusion.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-81" href="#tei-note-UT22084-059-001-81">[1]</a></sup> Emerging from that, the Bhagavān entered the second meditative concentration, wherein joy and happiness arise from meditative absorption that involves no thought or scrutiny.<span class="tei-ref">F.2.a</span> Emerging from that, the Bhagavān entered the third meditative concentration, wherein there is no attachment to joy, and one rests comfortably with mindfulness and equanimity. Emerging from that, the Bhagavān entered the fourth meditative concentration, wherein happiness is relinquished, and with suffering already having been relinquished, notions of mental comfort and mental discomfort subside and disappear, and there is only mindfulness and equanimity in which there is neither suffering nor happiness.</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-82" href="#tei-note-UT22084-059-001-82">[2]</a></sup></p><p>Then the Bhagavān emerged from the fourth concentration and entered the third concentration; he emerged from the third concentration and entered the second concentration; he emerged from the second concentration and entered the first concentration. And when he had emerged from the first concentration, he entered the meditative absorption called <em>displaying physical forms to beings in accordance with disciples’ capacities</em>. As soon as he entered the meditative absorption <em>displaying physical forms to beings in accordance with disciples’ capacities</em>, the Bhagavān immediately radiated light, clear and bright.</p><p>Brahmā, lord of the Sahā world, dwelling in the <em>brahmā abodes</em>, saw the Bhagavān shining with great radiance, clear and bright, beautifully adorned with the thirty-two marks of a great being. When he saw this, he disappeared from the <em>brahmā world</em><span class="tei-ref">F.2.b</span> and he appeared in the great forest, bathing it and everything in it in light, and he was seated before the Bhagavān, very close to him.</p><p>Then Brahmā, lord of the Sahā world, thought to himself, “It is difficult to approach and difficult to understand buddha bhagavāns. Since the Bhagavān is immersed in meditative absorption, it would not be appropriate for me to rouse him from his meditation by making a noise like clearing my throat or saying something. Instead, I should politely request the Bhagavān to emerge from his meditation by addressing him in verse.” Assuring himself that this was the case, Brahmā, lord of the Sahā world, draped his upper robe over one shoulder, and with his palms joined, he bowed towards the Bhagavān and, with his head still bowed, he urged the Bhagavān to emerge from his meditation with the following verses:</p><div class="tei-verse"><div class="tei-line">“Lord, unsullied, unblemished, and immaculate,</div><div class="tei-line">You are justly worshipped by gods, by the best of humans,</div><div class="tei-line">By gandharvas, nāgas, and asuras as well,</div><div class="tei-line">Worshipped in order to heal sentient beings.</div></div><div class="tei-verse"><div class="tei-line">“Sage, Most Excellent of Humans, engaged in concentration,</div><div class="tei-line">You are as unshakable as a mountain,</div><div class="tei-line">As unfathomable as an ocean,</div><div class="tei-line">And imperturbable, even by hordes of māras.</div></div><div class="tei-verse"><div class="tei-line">“Sage, Holy One, engaged in concentration,</div><div class="tei-line">You are without material concern, without marks,</div><div class="tei-line">Without distinctions, without reliance,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-89" href="#tei-note-UT22084-059-001-89">[3]</a></sup></div><div class="tei-line">Without location, and without appearance.</div></div><div class="tei-verse"><div class="tei-line">“Your concentration is the perfection of concentration;</div><div class="tei-line">It is beyond the scope of discursive thought,</div><div class="tei-line">Beyond the scope of childlike beings,</div><div class="tei-line">And it transcends the mind and mental factors.</div></div><div class="tei-verse"><div class="tei-line">“Lord whose speech is like the roar of a lion,</div><div class="tei-line">Sage whose voice reverberates like thunder,</div><div class="tei-line">Hero with the grace of the moon,</div><div class="tei-line">Homage to you, O jewel for sentient beings.”</div></div><p>Thereupon, becoming aware of these verses of invocation uttered by Brahmā, lord of the Sahā world, <span class="tei-ref">F.3.a</span> the Bhagavān emerged from his meditative absorption while remaining cross-legged. Once he had emerged, the Bhagavān cleared his throat to summon Brahmā, lord of the Sahā world. When Brahmā, lord of the Sahā world, saw that the Bhagavān had emerged from his absorption while remaining cross-legged, he approached the Bhagavān, circumambulated him three times, bowed his head at the feet of the Bhagavān, and sat down to one side.</p><p>Once seated, Brahmā, lord of the Sahā world, said to the Bhagavān, “Were the Bhagavān to grant me a moment, I would like to request a teaching from the tathāgata, arhat, truly complete Buddha, regarding a certain point.” The Bhagavān replied to Brahmā, lord of the Sahā world, “Brahmā, the Tathāgata always has time to grant you a teaching. Brahmā, you may ask the Tathāgata whatever you like, and I will oblige with a teaching that will delight you.”</p><p>Granted the opportunity by the Bhagavān, Brahmā, lord of the Sahā world, asked the Bhagavān, “Bhagavān, do bodhisattva mahāsattvas require many dharmas to quickly reach the unsurpassable, truly complete awakening of buddhahood?” The Bhagavān replied to Brahmā, lord of the Sahā world, “Brahmā, if bodhisattva mahāsattvas have just one dharma, they will quickly reach the unsurpassable, truly complete awakening of buddhahood. <span class="tei-ref">F.3.b</span> What is that one dharma? It is mindfulness that observes the body. Brahmā, how do bodhisattvas mindfully observe the body? Brahmā, it is like this; when bodhisattvas think ‘I am going,’ they are mindful that they are going and recognize what they are doing exactly. When they come back, they are mindful that they are coming back, and they recognize what they are doing exactly. When they lie down, stand, walk, or sit, they are mindful that they are lying down, standing, walking, or sitting, and they recognize what they are doing exactly.</p><p>“Sitting alone in seclusion, absorbed inwardly, with a peaceful mind, they reflect on the body as follows: ‘Alas, the body is unstable, impermanent, and inherently weak. It is without essence, in constant flux, subject to disintegration, subject to destruction, dependently originated, like an illusion, and like a dewdrop. It is unstable and impure, maculated with pus, eventually overcome by wind and sun, at the end reduced to dust, and ultimately repulsive. It is vulnerable to many diseases, full of malignancy, beset by headaches, and is by its nature ruined by illness. This stinking, oozing pile of bones needs so much attentive care!’</p><p>“By being mindful, bodhisattvas analyze these faults of the body exactly as they are. In this way they are not attached to the body, they do not desire the body, and they do not grasp the body as theirs. Because they do not esteem the body, they are not attached to life, they do not desire life, and they do not grasp life as theirs. Without esteeming the body or life, they are content with the bare necessities when it comes to monastic robes, food, bedding, seating, medicines, and basic goods. <span class="tei-ref">F.4.a</span> Every activity undertaken by those engaged in the spiritual life—even those that are beneficial or virtuous—are seen as empty, yet they do not grow weary and they do not despair, and their minds are not burdened with melancholy.</p><p>“When they go before preceptors or teachers, they are mindful and think, ‘To meet a preceptor is rare. To meet a teacher is rare. If I were to go there, and they were to mention or make me recall some wrong or unwholesome deed that I have committed, that would be bad.’</p><p>“That consideration is the cause, condition, and foundation for observing the precepts with respect, with scrupulousness, with wholesome deeds, with quiet composure, and with great thoroughness. Observing the precepts with respect, with scrupulousness, with wholesome deeds, with quiet composure, and with great thoroughness, they are able to go before preceptors and teachers without any anxiety or timidity. They are fearless and do not even show their burgeoning excitement. Why? Because they are respectful, deferential, and cautious, like a bride from a good family. Because they are cautious, they avoid each and every kind of fault and misdeed of the body.</p><p>“Brahmā, what are the faults and misdeeds of the body for bodhisattvas? Brahmā, killing is a fault and a misdeed of the body for bodhisattvas. Brahmā, for bodhisattvas taking what is not given and unchaste conduct are faults and misdeeds of the body. Brahmā, how do bodhisattvas renounce killing? <span class="tei-ref">F.4.b</span> Brahmā, bodhisattvas do not kill living creatures under the sway of attachment, nor do they kill under the sway of hatred or delusion. They hold other sentient beings and other people dear, just as they hold themselves and those they love dear. They do not themselves kill other sentient beings or other people, nor do they cause others to kill, nor do they rejoice in any act of killing done by others. They do not themselves cut beings, nor do they cause others to cut them, nor do they rejoice in any cutting done by others. They do not themselves strike, nor do they cause others to strike, nor do they rejoice when others strike.</p><p>“How do they renounce taking what is not given? Brahmā, bodhisattvas have no desire for the worldly possessions of beings, such as gold, jewels, pearls, beryl, conch shells, crystal, coral, gold dust, silver, and so on, or for clothing, adornments of various kinds, cattle, grain, stores, or for any kind of pleasing thing. Since they do not even give them a thought, they do not steal or take them. They do not steal, nor do they cause others to steal, nor do they rejoice in the act of stealing. Whether they are in a city or a remote place, they do not take anything, not even a blade of grass, that has not been given to them.</p><p>“How do they renounce unchaste conduct? Brahmā, bodhisattvas always protect the doors of their sense faculties. They are thoroughly restrained. They only go to suitable places. They are mindful to be well guarded. They are mindful to always be guarded. And with such mindfulness, their minds are safeguarded. <span class="tei-ref">F.5.a</span> They have control over their bodies and their speech. Being mindful to visit only suitable places, they develop the outlook that it would be preferable to take burning hot sand in their cupped hands and pour it into their own eyes than to look at a beautiful local woman with lust. Why? Because they have the thought that looking at a beautiful local woman in such a way will lead to their ruin and downfall, and to being miserable for a long time.</p><p>“With physical observation of the body like this, they maintain proper mindfulness toward food, drink, lodging, bedding, and seating. They make use of these things, but they do not relish them and they are not attached to them. If they find themselves really relishing them, then they should reflect like this: ‘That which appears to be pleasurable turns out to be the opposite—suffering. There is no conditioned entity in the three realms that can really bring happiness. Why? Because that which is conditioned is impermanent. How can those who are intelligent by nature find happiness in impermanent things?’</p><p>“Brahmā, if bodhisattvas are thoroughly engaged in practice and become oppressed by the sadness that ‘there is only suffering and no happiness,’ they should counter that affliction with the consideration that since this body requires regulation and development, it needs bribery for success.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-104" href="#tei-note-UT22084-059-001-104">[4]</a></sup> This body cannot be sustained with only painful exertion. It must be sustained with happy exertion. With a stable body through this life, one can achieve virtuous qualities.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-105" href="#tei-note-UT22084-059-001-105">[5]</a></sup> By analogy, a merchant who seeks profit may hire a thousand porters and compensate them well. He does not do so in order to enrich the porters with adornments, or in order to make them happy, but rather to have the loads carried. Similarly, when bodhisattvas eat food, they do not eat in order to beautify the body or to please the body, <span class="tei-ref">F.5.b</span> but rather in order to be able to do those virtuous activities that require a body and that lead to liberation.</p><p>“Brahmā, if bodhisattvas are not able to understand the mind with the antidotes taught by the Tathāgata, then they should reflect as follows: ‘that which we call “the mind” is difficult to perfect. It grasps inappropriately. It is drawn toward saṃsāra and not toward that which is virtuous. It is drawn toward society and not toward seclusion. It is drawn toward pleasure and not toward suffering. It is drawn toward the joy of speaking and not toward the view of reality. It is drawn toward the impure and not toward the pure. It is hard to control, it is hard to catch, for it is baseless, void, hollow, momentary, and arises from combinations of causes and conditions. Who among those who are intelligent by nature would let themselves be led astray by the mind, which has such a nature?’ They think in this way and, by developing awareness of the mind like this, they make effort to tame the mind.</p><p>“In order to tame the tendency toward miserliness, they practice giving. Even giving a single mouthful of food, just a berry, a bean,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-108" href="#tei-note-UT22084-059-001-108">[6]</a></sup> or a grain of sesame, is enough, so long as it is offered to anyone, and not just to those whom one already holds dear or with whom one is already acquainted.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-109" href="#tei-note-UT22084-059-001-109">[7]</a></sup></p><p>“In order to tame the tendency toward immoral conduct, they guard their discipline and do not commit misdeeds of body, speech, or mind. They do not get mixed up with or stained by such faults. Also, those with moral discipline do not praise themselves or disparage others.</p><p>“In order to tame the tendency toward ill will, they cultivate forbearance. When they enter cities or towns, they take no notice of the abuse they receive. Even if they are struck, beaten, threatened, overpowered, and insulted, <span class="tei-ref">F.6.a</span> they think nothing of it. Even if they are harangued by local people, saying, ‘Oh these śrāmaṇas with shaved heads are bad! Oh, these śrāmaṇas with ugly shaved heads are bad!’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-112" href="#tei-note-UT22084-059-001-112">[8]</a></sup>—they think nothing of it. Even when they are slandered with false accusations, they accept it with forbearance and remain focused on what they have to do. And those with forbearance do not praise themselves or disparage others.</p><p>“In order to tame the tendency toward indolence, to attain those qualities oriented toward awakening that have not yet been attained, to develop those that have already been attained, to mature those that have been developed, to master those that have been matured, and to refine those that have been mastered, they apply effort. When acting for the sake of beings, they do not grow weary, they do not despair, and they do not lose heart. Whether it is to benefit an outcaste or a king, they will always go the distance for them, without prejudice. Whether bodhisattvas are offered some base, second-rate object by a miserable and destitute person, or a supremely wonderful gift by a prosperous and wealthy person, bodhisattvas have compassion. They praise them respectfully, encourage and reassure them, and accept the second-rate object. Why? Because it is not an easy thing for a miserable person to give a gift.</p><p>“In order to tame the tendency toward distraction, they develop stable meditative concentration. How do they practice concentration? Brahmā, first of all, bodhisattvas control their body well. Physically, they live in seclusion and avoid physical contact. <span class="tei-ref">F.6.b</span> They give up excessive attachment to the body. When the body is lethargic or agitated, they are aware of it. They know what agrees with their body, what sustains it, and what makes it strong. Likewise, they control their speech well. They speak little and their answers are short. What they do say is meaningful and reasonable. They abandon any delight in frivolous talk. Likewise, they also control the mind well. They renounce all unwholesome thoughts.</p><p>“By purifying the three places<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-116" href="#tei-note-UT22084-059-001-116">[9]</a></sup> in this way, they strive to make blue, yellow, red, and white visible forms disappear, not grasping at them as characteristics and not grasping at them as evidence.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-117" href="#tei-note-UT22084-059-001-117">[10]</a></sup> They do not grasp onto the characteristics of adornments and clothing or take them as indications of some object. They do not grasp onto the characteristics of various visible forms, sounds, smells, tastes, and tangible objects, or take them as indications. They do not grasp onto the characteristics of men, women, boys, and girls, nor take them as indications.</p><p>“They stay alone in seclusion, settle inwardly, and strive to make the mind stable. Whether taking repulsion as the object of meditation, loving-kindness as the object, or compassion as the object, any despondency that may arise is focused on in the same way, without any physical tension, and the flow of the in breath and the out breath is maintained without interruption so that the wind element is not disturbed. Their minds do not veer off and get distracted. Whether walking, lying, standing, or sitting, they stay with the object and they keep their mind focused on it.</p><p>“Brahmā, once bodhisattvas have achieved stability of mind when focused on an object, they enter meditative equipoise on the mind, in which even the mind is not apprehended as an object by the mind. <span class="tei-ref">F.7.a</span> The one who is in meditative equipoise is not apprehended and the purpose of meditative equipoise is not apprehended. They think to themselves, ‘Alas! Foolish ordinary people are fixated on worthless, hollow things.’ This is called the special insight of bodhisattvas. With such insight, they neither engage with mental afflictions nor produce them anew. This is called the calm abiding of bodhisattvas.</p><p>“Brahmā, moreover, when bodhisattvas staying in seclusion are settled inwardly, they contemplate the names and letters they have heard and think about what is actually signified by words. When they examine words in this way, they see that letters are worthless and hollow. Having seen that letters are worthless and hollow, they see that names are worthless and hollow. They see that what is signified by a name is also worthless and hollow. They see that any forms that may appear are worthless and hollow. By seeing them as worthless and hollow, they correctly understand them. Because they correctly understand them, conditioned phenomena come to appear as dreamlike. Having examined phenomena in this way, they rest with their minds firmly established in great compassion toward sentient beings.</p><p>“In order to tame the tendency toward erroneous understanding, they cultivate wisdom. How do they cultivate it? They take as unerring all sūtras—whether expounded by means of relative truth or expounded by means of ultimate truth—that have been clearly and lucidly expressed.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-122" href="#tei-note-UT22084-059-001-122">[11]</a></sup> They reflect unerringly on what they have understood from the Dharma that has been unerringly taught therein. They apply themselves with effort to the yoga of meditation. With the strength of gnosis and wisdom in particular, they do not apprehend sentient beings, <span class="tei-ref">F.7.b</span> they do not apprehend life, they do not apprehend hollowness, they do not apprehend people, they do not apprehend persons, they do not apprehend humankind, and they do not apprehend humanity.</p><p>“Nevertheless, they do not fall into the view of nihilism about everything. They carefully study imputed designations. With correct wisdom, they analyze the inner earth element and the outer earth element<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-124" href="#tei-note-UT22084-059-001-124">[12]</a></sup> as being one. With correct wisdom, they likewise analyze the inner water element, fire element, wind element, and their outer counterparts, as being one. They see both kinds of elements as worthless and hollow. They see them as inanimate, essenceless, and as emptiness. Because they see them as such, just as they are not attached to the external elements, they are also not attached to the internal elements.</p><p>“With wisdom, they analyze visual consciousness and physical forms as being one. With wisdom, they analyze auditory consciousness and sounds, olfactory consciousness and smells, gustatory consciousness and tastes, and tactile consciousness and tangible objects as being one.</p><p>“Regarding the earth element, they recognize its solidity but also recognize its wetness, heat, and insubstantiality. Regarding the water element, they recognize its wetness but also recognize its solidity, heat, and insubstantiality. Regarding the fire element, they recognize its heat but also recognize its solidity, wetness, and insubstantiality. Regarding the wind element, they recognize its motility and they also recognize its buoyant motility. Regarding the space element, they recognize its insubstantiality and they recognize that it pervades everything. They recognize the consciousness element as being like an illusion; <span class="tei-ref">F.8.a</span> they recognize it to be both mistaken and not mistaken. They recognize the visual consciousness as emptiness and visible forms as impermanence. They recognize the auditory consciousness as emptiness and sounds as impermanence. They recognize the olfactory consciousness as emptiness and smells as impermanence. They recognize the gustatory consciousness as emptiness and tastes as impermanence They recognize the tactile consciousness as emptiness and tangible objects as impermanence.</p><p>“Learned in wisdom, they have the wisdom that fully realizes and the wisdom that is sharp. They recognize those dharmas that are nonvirtuous and they recognize those dharmas that are virtuous. They recognize the dharmas that bring hearers their attainment. They recognize the dharmas that bring solitary realizers their attainment. They recognize the dharmas that bring bodhisattvas their attainment. They recognize the dharmas that bring buddhas their attainment.</p><p>“They recognize how the weak, middling, and strong ripening of nonvirtuous dharmas leads to rebirth as ghosts, animals, and hell beings. They recognize the weak, middling, and strong feelings of beings who are reborn in those realms. They recognize how the weak, middling, and strong ripening of virtuous dharmas leads to rebirth among gods or humans. And they recognize how the karmic fruits for those reborn there may be weak, middling, and strong.</p><p>“They recognize the dharmas that bring hearers their full attainment: actualizing the fruit of stream-entry, actualizing the fruit of being a once-returner, actualizing the fruit of being a non-returner, and actualizing the fruit of arhatship. <span class="tei-ref">F.8.b</span> They recognize both liberation through wisdom and the twofold liberation.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-130" href="#tei-note-UT22084-059-001-130">[13]</a></sup> They recognize the dharmas that bring solitary realizers their full attainment. They recognize their karmic fruits and their peace. They recognize the dharmas that bring bodhisattvas their full attainment: they recognize the path of accumulation and the path of gnosis. Knowing them, they endeavor to progress on the path of accumulation and the path of gnosis.</p><p>They recognize the dharmas that bring the full attainment of buddhahood: great miraculous manifestation, great power, holiness, excellence, preeminence, and greatness, which are not shared by any hearer, solitary realizer, and bodhisattva, not to mention other sentient beings.</p><p>“In this way, they view all phenomena in accordance with the Dharma and properly maintain mindfulness, free from all sinful dharmas, and fully replete with virtuous dharmas. They commit no bodily harm, they are not thrown off by consciousness, they are not thrown off by mind, for they understand the complex of causes and fruits of dharmas just as they are.</p><p>“By analogy, virtuous dharmas spread like ocean waves. But unlike ocean waves that come in only to recede again, for bodhisattvas, those dharmas do not recede. Rather the virtuous dharmas grow like the waxing moon. But unlike how the waning moon recedes, for bodhisattvas, those dharmas do not recede. The virtuous dharmas grow like a raging torrent in the summertime. But unlike a torrent <span class="tei-ref">F.9.a</span> that recedes when the summer is over, for bodhisattvas, those dharmas do not recede. Brahmā, bodhisattvas who train in this way will soon completely awaken to unsurpassable, truly complete buddhahood.”</p><p>Thereupon, the Bhagavān spoke these verses:</p><div class="tei-verse"><div class="tei-line">“When you recognize the faults of the body,</div><div class="tei-line">You won’t rely<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-001-136" href="#tei-note-UT22084-059-001-136">[14]</a></sup> on the faults that the body has;</div><div class="tei-line">When you are mindful of the body,</div><div class="tei-line">You will obtain a state of faultless peace.</div></div><div class="tei-verse"><div class="tei-line">“When you don’t recognize the faults of the body,</div><div class="tei-line">You won’t be aware of the faults the body has;</div><div class="tei-line">When you are not mindful of the body,</div><div class="tei-line">You will find suffering hard to bear.</div></div><div class="tei-verse"><div class="tei-line">“When you recognize the faults of the mind,</div><div class="tei-line">You won’t rely on the faults that the mind has;</div><div class="tei-line">When you are mindful of the mind,</div><div class="tei-line">You will obtain a state of faultless peace.</div></div><div class="tei-verse"><div class="tei-line">“When you do not recognize the faults of the mind,</div><div class="tei-line">You won’t be aware of the faults the mind has;</div><div class="tei-line">When you are not mindful of the mind,</div><div class="tei-line">You will find suffering hard to bear.</div></div><div class="tei-verse"><div class="tei-line">“One who relies on virtuous dharmas,</div><div class="tei-line">Will not rely on nonvirtuous dharmas;</div><div class="tei-line">One who is skilled in the dharmas</div><div class="tei-line">Will obtain a state of faultless peace.</div></div><div class="tei-verse"><div class="tei-line">“One who does not rely on virtuous dharmas,</div><div class="tei-line">Will rely on nonvirtuous dharmas;</div><div class="tei-line">One who is not skilled in the dharmas</div><div class="tei-line">Will find suffering hard to bear.”</div></div><p>Then, Brahmā, lord of the Sahā world, conjured divine mandārava flowers and scattered them over the Bhagavān. Having strewn the flowers, he was delighted and rejoiced in what the Bhagavān had said. He circumambulated the Bhagavān three times and then departed from the Bhagavān’s presence.</p><p>After that, aware that dawn was breaking, the Bhagavān took a seat that had been prepared for him amongst the assembly of monks. Once seated, the Bhagavān said to the monks, “Monks, <span class="tei-ref">F.9.b</span> last night in the middle of the night, not yet asleep, I was sitting alone in seclusion absorbed inwardly, when Brahmā, lord of the Sahā world, came before me, bathing this great forest and everything in it with light. He praised me, he circumambulated me three times, and he sat down to one side. Once seated, Brahmā, lord of the Sahā world, said to me, ‘Were the Bhagavān to grant me a moment, I would like to request a teaching from the tathāgata, arhat, truly complete Buddha, regarding a certain point.’ Monks, this was his request, and I replied to Brahmā, lord of the Sahā world, ‘Brahmā, the Tathāgata always has time to grant you a teaching. Brahmā, ask the Tathāgata whatever you like, and I will oblige with a teaching that will delight you.’ Granted this opportunity, Brahmā, lord of the Sahā world, asked me, ‘Bhagavān, do bodhisattva mahāsattvas require many dharmas to quickly reach the unsurpassable, truly complete awakening of buddhahood?’ I replied to Brahmā, lord of the Sahā world, ‘Brahmā, if bodhisattva mahāsattvas have just one dharma, they will quickly reach the unsurpassable, truly complete awakening of buddhahood. What is that one dharma? It is mindfulness that observes the body.’ Then, monks, I taught Brahmā, lord of the Sahā world, the causes, practices, and results of mindfully observing the body.”</p><p>Then, Venerable Ānanda said to the Bhagavān, “Wonderful, wonderful! <span class="tei-ref">F.10.a</span> Please tell us what the Bhagavān taught to Brahmā, lord of the Sahā world, for the benefit of many beings, for the happiness of many beings, for the benefit, health, and happiness of gods and humans! When new monks, who have only recently gone forth in the Dharma and Vinaya and have not held it for long, or good people who have only recently entered the Mahāyāna, listen to it, they will be delighted, will gain faith, and will maintain their effort in adhering to their training.” Then the Bhagavān explained to the monks the explanation he had given to Brahmā, lord of the Sahā world.</p><p>Afterward, Venerable Ānanda said to the Bhagavān, “The Bhagavān has spoken well. The Sugata has spoken well. Brahmā, lord of the Sahā world, also spoke well when he came before the Bhagavān to request such a discourse and asked him to teach. Bhagavān, even if Brahmā, lord of the Sahā world, possessed no root of virtue before, just by the root of virtue generated by requesting this discourse, he will quickly awaken to unsurpassable, truly complete awakening. Why? Because, Bhagavān, no hearer or solitary realizer is capable of realizing the limit and the end of this root of virtue. Why? Because, Bhagavān, Brahmā, lord of the Sahā world, asked this question for the common benefit of all sentient beings.”</p><p>“Yes, Ānanda, it is as you say,” said the Bhagavān. Then Venerable Ānanda asked the Bhagavān, “Bhagavān, what is the name of this Dharma discourse? <span class="tei-ref">F.10.b</span> How should we remember it?” The Bhagavān replied, “You may remember it, Ānanda, as <cite>Brahmā’s Question</cite>. You may remember it as <cite>The Teaching on the Applications of Mindfulness</cite>. You may remember it as <cite>The Teaching on Heedfulness</cite>.”</p><p>When the Bhagavān had finished speaking, Venerable Ānanda, the monks, the bodhisattvas, the entire retinue, and the entire world with its gods, humans, asuras, and gandharvas, rejoiced and praised what the Bhagavān had said.</p>This concludes <cite>The Noble Mahāyānasūtra </cite>“<cite>Brahmā’s Question</cite>.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>Translated, edited, and finalized by the Indian preceptor Jinamitra and the chief editor and translator Bandé Yeshé Dé.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-059-001-81"><p>Here the Tibetan for the first concentration is slightly different from the classic formulation as found in the <cite>Mahāvyutpatti</cite> and elsewhere. The present text reads <em>rtog pa dang bcas pa/ dpyod pa dang bcas pa’i ting nge ’dzin las skyes pa</em> “[joy] arising from meditative absorption with thought and scrutiny,” whereas the <cite>Mahāvyutpatti</cite> reads <em>rtog pa dang bcas pa dpyad pa dang bcas pa dben pa las skyes pa</em> “arising from thought and scrutiny while in seclusion.” Note that here “in seclusion” does not refer to seclusion in the sense of being in a secluded place while practicing, but rather to being mentally secluded, as it were, from the objects of the senses. In the <cite>Mahāvyutpatti</cite> it is only the second concentration, not the first, that mentions “absorption.” Since the <cite>Mahāvyutpatti</cite> is an authoritative source, we have emended the translation here to conform with the first concentration as found there, as does Skilling (2021) in his translation. For the equivalent Sanskrit consult the <a href="https://www2.hf.uio.no/polyglotta/index.php?page=fulltext&amp;view=fulltext&amp;vid=263&amp;cid=336150&amp;mid=483933" target="_blank" rel="noopener noreferrer">Mahāvyutpatti with sGra sbyor bam po gñis pa</a> online at Bibliotecha Polyglotta (see Bibliography).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-81">back</a></li><li id="tei-note-UT22084-059-001-82"><p>For an elaboration of the four concentrations as found in the Perfection of Wisdom literature, see, for example, <cite>The Perfection of Wisdom in Eighteen Thousand Lines</cite> (Toh 10, <span class="tei-ref">#UT22084-029-001-1620</span>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-82">back</a></li><li id="tei-note-UT22084-059-001-89"><p>Following Narthang and Stok Palace <em>brten pa</em>. Degé here reads <em>brtan pa</em>, “stability,” which doesn’t fit the context.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-89">back</a></li><li id="tei-note-UT22084-059-001-104"><p>Tib. <em>gsug gis bsgrub dgos pa ste.</em> See Skilling 2021, p. 562 n. 800.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-104">back</a></li><li id="tei-note-UT22084-059-001-105"><p>The translation of this passage is tentative. Tib. <em>lus ’di ni sdug bsngal rtsom pas gzung bar mi nus kyi/ bde ba rtsom pas gzung ba bya ba yin te/ bdag gis lus brtan zhing ’tsho ba ’dis dge ba’i chos rnams bsgrub par bya’o</em></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-105">back</a></li><li id="tei-note-UT22084-059-001-108"><p>Tib. <em>rgya shug tsam mam/ mon sran gre’u tsam</em>. On the possible referents of these terms see Skilling 2021, p. 562 n. 803 and n. 804.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-108">back</a></li><li id="tei-note-UT22084-059-001-109"><p>Following the Narthang and Stok among others, <em>’dris pa rnams la ma yin no</em>. The Degé reads <em>’dris pa rnams la yin no</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-109">back</a></li><li id="tei-note-UT22084-059-001-112"><p>As noted by Skilling, <em>śrāmaṇas</em> were often considered inauspicious in ancient Indian society, as reflected in the term <em>muṇḍaka srāmaṇa</em>. See Skilling 2021, p. 562 n. 805.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-112">back</a></li><li id="tei-note-UT22084-059-001-116"><p>Tib. <em>gnas gsum</em>. This is likely a reference to the head, throat, and heart, which represent the body, speech, and mind, respectively.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-116">back</a></li><li id="tei-note-UT22084-059-001-117"><p>Tib. <em>de dag la mtshan mar mi ’dzin mngon rtags su mi ’dzin to</em>. This phrase is repeated in the following sentences, where we have translated it as “not grasping onto characteristics or taking them as indications [of some object].” Peter Skilling translates it as “he does not grasp at the features, he does not grasp at the details.” Skilling 2021, pp. 363–4.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-117">back</a></li><li id="tei-note-UT22084-059-001-122"><p>The implication being that they were taught by the Buddha himself. See Skilling 2021, p. 563 n. 817.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-122">back</a></li><li id="tei-note-UT22084-059-001-124"><p>Tib. <em>zin pa’i sa’i khams dang/ ma zin pa’i sa’i khams</em>. As noted by Skilling (2021, p. 563 n. 821), the Tib. <em>zin pa</em> and <em>ma zin pa</em> (lit. “held” and “not held”) here translate the Sanskrit <em>upātta</em> and <em>anupātta</em>, respectively, terms with which the elements are classified as “appropriated,” in the sense of being part of a person’s body, or “unappropriated” in the sense of belonging to any other matter. Hence our translation, following Skilling, as “inner” and “outer” elements, respectively.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-124">back</a></li><li id="tei-note-UT22084-059-001-130"><p>The twofold liberation (Skt. <em>ubhayato­bhāgavimuktaḥ</em>, Tib. <em>gnyis ka’i cha las rnam par grol ba</em>) refers to being liberated through both wisdom (<em>prajñā</em>, <em>shes rab</em>) and meditative concentration (<em>dhyāna</em>, <em>bsam gtan</em>), whereas being liberated through wisdom alone lacks the perfection of <em>dhyāna</em>. See Buswell and Lopez 2014, p. 931. For references to further discussion, see Skilling 2021, p. 563 n. 825.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-130">back</a></li><li id="tei-note-UT22084-059-001-136"><p>We read here <em>lus yod skyon rnams mi sten to</em>, following the Beijing and Stok Palace editions, instead of <em>lus yod skyon rnams mi ston to</em>, as found in the Degé.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-001-136">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/058-006-toh157-questions-of-the-kinnara-king-druma.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/059-002-toh159-the-sutra-of-the-questions-of-brahmadatta.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 675 — The Aparimitāyurjñāna Sūtra (2) — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 675 — The Aparimitāyurjñāna Sūtra (2)</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 675 — The Aparimitāyurjñāna Sūtra (2)        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Aparimitāyur­jñānasūtra          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by Peter Alan Roberts and Emily Bower under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna</h3><h3>Sūtra of Aparimitāyur­jñāna</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.216.a</span><span class="tei-ref">F.216.b</span> Homage to all the buddhas and bodhisattvas.</p><br /><p>Thus did I hear at one time. The Bhagavān was staying in Śrāvastī, in the Jetavana, Anāthapiṇḍada’s Park, with a great saṅgha of bhikṣus comprised of 1,250 bhikṣus, and with a great number of bodhisattva mahāsattvas.</p><p>Then the Bhagavān said to Mañjuśrī Kumārabhūta, “Mañjuśrī, in the upward direction there is a universe named Aparimita­guṇa­saṃcaya.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-80" href="#tei-note-UT22084-091-073-80">[1]</a></sup> There, the tathāgata, arhat, perfectly awakened buddha Aparimitāyur­jñāna­suviniścita­tejo­rāja<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-366" href="#tei-note-UT22084-091-073-366">[2]</a></sup> resides, and with the wish to sustain life and extend life to its very limit,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-367" href="#tei-note-UT22084-091-073-367">[3]</a></sup> teaches the Dharma to beings.</p><p>“Listen, Mañjuśrī Kumārabhūta, the lives of humans in this Jambudvīpa are short; their lifespan is no more than a hundred years, and most of them are seen to have<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-368" href="#tei-note-UT22084-091-073-368">[4]</a></sup> premature deaths. Mañjuśrī, those beings who will write out or cause to be written out this Dharma discourse called ‘Uttering the Praise of the Qualities<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-82" href="#tei-note-UT22084-091-073-82">[5]</a></sup> of the Tathāgata Aparimitāyur­jñāna,’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-83" href="#tei-note-UT22084-091-073-83">[6]</a></sup> and even those who hear or recite its title only, up to those who write a copy, keep it at home,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-369" href="#tei-note-UT22084-091-073-369">[7]</a></sup> and offer flowers, perfume, incense, and garlands to it,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-84" href="#tei-note-UT22084-091-073-84">[8]</a></sup> will, when their lifespan is ending, still be able to live to a hundred years.</p><p>“Mañjuśrī, the lifespan of beings who hear<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-362" href="#tei-note-UT22084-091-073-362">[9]</a></sup> the one hundred and eight names<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-87" href="#tei-note-UT22084-091-073-87">[10]</a></sup> of the tathāgata Aparimitāyur­jñāna­suviniścita­tejo­rāja will be lengthened.</p><p>Those beings whose lifespan is coming to an end, who keep<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-363" href="#tei-note-UT22084-091-073-363">[11]</a></sup> those names, will also <span class="tei-ref">F.217.a</span> have their lifespan lengthened.</p><p>“Therefore, Mañjuśrī, the noble sons or noble daughters who wish to have long lives, and who hear, write, or cause to be written<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-364" href="#tei-note-UT22084-091-073-364">[12]</a></sup> the one hundred and eight names of the tathāgata Aparimitāyur­jñāna,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-320" href="#tei-note-UT22084-091-073-320">[13]</a></sup> will obtain these qualities and benefits.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-370" href="#tei-note-UT22084-091-073-370">[14]</a></sup></p><p>oṁ<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-371" href="#tei-note-UT22084-091-073-371">[15]</a></sup>namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-93" href="#tei-note-UT22084-091-073-93">[16]</a></sup></p><p>“Mañjuśrī, those who write or cause to be written these one hundred and eight names of the tathāgata,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-372" href="#tei-note-UT22084-091-073-372">[17]</a></sup> who make a text of them, keep it at home, and recite it, when their lifespan is coming to an end they will still be able to live to a hundred years. When they pass away from this world, they will be reborn in the tathāgata Aparimitāyur­jñāna’s<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-321" href="#tei-note-UT22084-091-073-321">[18]</a></sup> blissful<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-95" href="#tei-note-UT22084-091-073-95">[19]</a></sup> buddha realm named Aparimita­guṇa­saṃcaya.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-373" href="#tei-note-UT22084-091-073-373">[20]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time nine hundred ninety million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-98" href="#tei-note-UT22084-091-073-98">[21]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time eight hundred forty million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya <span class="tei-ref">F.217.b</span> arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time seven hundred seventy million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time six hundred fifty million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time five hundred fifty million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time four hundred fifty million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time three hundred fifty million<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-115" href="#tei-note-UT22084-091-073-115">[22]</a></sup> buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya <span class="tei-ref">F.218.a</span> arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time two hundred fifty million buddhas, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Then at that time tens of millions of buddhas, as many as there are grains of sand in ten Ganges Rivers, with a single intention and a single voice, uttered this <cite>Aparimitāyur­jñāna Sūtra</cite>.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-122" href="#tei-note-UT22084-091-073-122">[23]</a></sup> this <cite>Aparimitāyur­jñāna Sūtra</cite>, when their lifespan is coming to an end, will still be able to live to a hundred years and their lifespan will be lengthened.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will never be born among hell beings, in the womb of an animal, or in Yama’s realm. They will never have an unfortunate rebirth. Wherever they are reborn, in each rebirth they will remember their previous lifetimes.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate <span class="tei-ref">F.218.b</span> svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will cause the whole collection of eighty-four thousand Dharma teachings to be written.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will cause the practice and the continuation of the whole collection of eighty-four thousand Dharma teachings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-374" href="#tei-note-UT22084-091-073-374">[24]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will be purified of the five karmas that have immediate result at death.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-133" href="#tei-note-UT22084-091-073-133">[25]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will be purified of their accumulation of bad karma, even if it is the size of Mount Sumeru.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-136" href="#tei-note-UT22084-091-073-136">[26]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will be invulnerable to any harm that Māra, Māra’s gods, yakṣas, or rākṣasas may seek<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-336" href="#tei-note-UT22084-091-073-336">[27]</a></sup> to inflict.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya <span class="tei-ref">F.219.a</span> arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>When whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> dies, six hundred ninety million<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-337" href="#tei-note-UT22084-091-073-337">[28]</a></sup> buddhas will give them prophecies directly,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-141" href="#tei-note-UT22084-091-073-141">[29]</a></sup> and a thousand buddhas will extend their hands to them. They will go from buddha realm to buddha realm. Have no doubt, hesitation, or uncertainty about this.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-142" href="#tei-note-UT22084-091-073-142">[30]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ puṇye puṇye mahāpuṇye aparimitāyur­puṇya-jñāna saṃbhāro­pacite | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will be followed by the four Mahārājas, who will guard, protect, and hide them.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will be reborn in the world of Sukhāvatī, the buddha realm of the tathāgata Amitābha.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Wherever this sūtra<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-151" href="#tei-note-UT22084-091-073-151">[31]</a></sup> is written or caused to be written,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-152" href="#tei-note-UT22084-091-073-152">[32]</a></sup> that place will be a stūpa<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-153" href="#tei-note-UT22084-091-073-153">[33]</a></sup> and worthy of veneration. Those birds and animals born in the animal realm who happen to hear this <cite>Aparimitāyur­jñāna Sūtra</cite> will all become perfectly awakened in the highest, most complete awakening.</p><p><span class="tei-ref">F.219.b</span></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written this <cite>Aparimitāyur­jñāna Sūtra</cite> will never be reborn in a female state.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever makes a gift of even a single <em>kārṣāpaṇa</em> coin<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-160" href="#tei-note-UT22084-091-073-160">[34]</a></sup> with regard to this Dharma discourse, the <cite>Aparimitāyur­jñāna Sūtra</cite>, will have made a gift of the whole trichiliocosm filled with the seven jewels.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever makes an offering to this Dharma discourse<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-163" href="#tei-note-UT22084-091-073-163">[35]</a></sup> will comprehend the entirety of the good Dharma.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-164" href="#tei-note-UT22084-091-073-164">[36]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>As a comparison,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-338" href="#tei-note-UT22084-091-073-338">[37]</a></sup> it is possible to calculate the extent of the accumulation of merit that comes from making offerings of the seven jewels to the tathāgatas Vipaśyin, Śikhin, Viśvabhu, Krakucchanda, Kakutsunda<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-167" href="#tei-note-UT22084-091-073-167">[38]</a></sup> Kanakamuni, Kāśyapa, Śākyamuni, and so on, but it is impossible to calculate the extent of the accumulation of merit for Aparimitāyur­jñāna.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-340" href="#tei-note-UT22084-091-073-340">[39]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | <span class="tei-ref">F.220.a</span> tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>As a comparison, it is possible to calculate the extent of the accumulation of merit that comes from making a gift of a heap of jewels the same as Sumeru, the king of mountains,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-339" href="#tei-note-UT22084-091-073-339">[40]</a></sup> but it is impossible to calculate the extent of the accumulation of merit for Aparimitāyur­jñāna.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-341" href="#tei-note-UT22084-091-073-341">[41]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>As a comparison, it is possible to count each drop that makes up all the water in the four great oceans, but it is impossible to calculate the extent of the accumulation of merit for Aparimitāyur­jñāna.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-342" href="#tei-note-UT22084-091-073-342">[42]</a></sup></p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>Whoever writes or causes to be written, honors,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-176" href="#tei-note-UT22084-091-073-176">[43]</a></sup> and makes offerings to this <cite>Aparimitāyur­jñāna Sūtra</cite> will have paid homage and made offerings to all tathāgatas in all the buddha realms in the ten directions.</p><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><div class="tei-verse"><div class="tei-line"><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-179" href="#tei-note-UT22084-091-073-179">[44]</a></sup>The Buddha has risen high through the power of generosity,</div><div class="tei-line">The lion among men has realized the power of generosity,</div><div class="tei-line">And upon the compassionate one’s entry into his city<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-180" href="#tei-note-UT22084-091-073-180">[45]</a></sup></div><div class="tei-line">The resounding<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-181" href="#tei-note-UT22084-091-073-181">[46]</a></sup> of the power of generosity is heard.</div></div><div class="tei-verse"><div class="tei-line">The Buddha has risen high through the power of good conduct,</div><div class="tei-line">The lion among men has realized the power of good conduct,</div><div class="tei-line">And upon the compassionate one’s entry into his city</div><div class="tei-line">The resounding of the power of good conduct is heard.</div></div><div class="tei-verse"><div class="tei-line">The Buddha has risen high through the power of patience, <span class="tei-ref">F.220.b</span></div><div class="tei-line">The lion among men has realized the power of patience,</div><div class="tei-line">And upon the compassionate one’s entry into his city</div><div class="tei-line">The resounding of the power of patience is heard.</div></div><div class="tei-verse"><div class="tei-line">The Buddha has risen high through the power of diligence,</div><div class="tei-line">The lion among men has realized the power of diligence,</div><div class="tei-line">And upon the compassionate one’s entry into his city</div><div class="tei-line">The resounding of the power of diligence is heard.</div></div><div class="tei-verse"><div class="tei-line">The Buddha has risen high through the power of meditation,</div><div class="tei-line">The lion among men has realized the power of meditation,</div><div class="tei-line">And upon the compassionate one’s entry into his city</div><div class="tei-line">The resounding of the power of meditation is heard.</div></div><div class="tei-verse"><div class="tei-line">The Buddha has risen high through the power of <em>wisdom</em>,</div><div class="tei-line">The lion among men has realized the power of <em>wisdom</em>,</div><div class="tei-line">And upon the compassionate one’s entry into his city</div><div class="tei-line">The resounding of the power of <em>wisdom</em> is heard.</div></div><p>oṁ namo bhagavate aparimitāyur­jñāna-suviniścita-tejorājāya tathāgatāya arhate samyak­saṃ­buddhāya | tadyathā | oṁ sarva-saṃskāra-pariśuddha-dharmate gagana-samudgate svabhāva-viśuddhe mahā­naya-pari­vāre svāhā |</p><p>This is what the Bhagavān taught,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-191" href="#tei-note-UT22084-091-073-191">[47]</a></sup> and Mañjuśrī Kumārabhūta, the complete assembly, and the world with its devas, humans, asuras, and gandharvas were delighted and praised the Bhagavān’s words.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-192" href="#tei-note-UT22084-091-073-192">[48]</a></sup></p><cite>The Noble Mahāyāna </cite><cite>Sūtra of Aparimitāyur­jñāna</cite> is concluded.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-091-073-194" href="#tei-note-UT22084-091-073-194">[49]</a></sup></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-091-073-80"><p>We have here completed the name of the buddha realm in line with the form it takes in <span class="tei-ref">#UT22084-091-073-94</span>. For this mention, the Degé text of Toh 675 omits altogether the final part of the realm’s name, <em>[la] sogs pa</em> (<em>saṃcaya</em>), although in the Dunhuang manuscripts it is present, sometimes with and sometimes without <em>la</em>, and in the archaic orthography <em>scogs pa</em>. The Degé of Toh 674 and most other Kangyurs have <em>yon tan dpag tu med pa la sogs pa</em>. The usual meaning of <em>la sogs pa</em> is “et cetera,” and is probably a scribal corruption of <em>sogs pa</em>, which would be the correct translation of the <em>saṃcaya</em> in the Sanskrit. The Choné and Urga Kangyurs, in their “three <em>oṁ</em>” versions of the text, have the correct <em>sogs pa</em> (Choné vol. 15, ba, F.281b.4; Urga vol. 101, e, F.57b.3), but in their “two <em>oṁ</em>” versions omit this part of the name, as here in the Degé Kangyur (Choné vol. 15, ba, F.287b.8; Urga vol. 91, ba, F.216.b.3).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-80">back</a></li><li id="tei-note-UT22084-091-073-366"><p>“The Blazing King Who Is Completely Certain of Immeasurable Longevity and Wisdom.” This is the longest form of Aparimitāyurjñāna’s name. There are several spellings of this name in Tibetan to be found in the canonical texts. Here in version (2) of the sūtra in the Degé (Toh 675) and in most other Kangyurs, as well as in the Dunhuang texts, it is <em>tshe dang ye shes dpag tu med pa shin tu rnam par gdon mi za ba’i rgyal po</em>, while in version (1) of the sūtra (Toh 674 and 849) in most Kangyurs it is <em>tshe dang ye shes dpag tu med pa shin tu rnam par nges pa’i gzi brjid kyi rgyal po</em>. In the Lhasa Kangyur, however, version (2) has the spelling <em>tshe dang ye shes dpag tu med pa shin tu rnam par nges pa gdon mi za ba’i rgyal po</em>. The longest form of the equivalent name in <cite>The Root Manual of the Rites of Mañjuśrī</cite> (Toh 543, <a href="https://read.84000.co/translation/toh543.html#UT22084-088-038-3692" target="_blank" rel="noopener noreferrer">27.27</a>) is <em>tshe dang ye shes dpag tu med pa rnam par nges pa’i dbang po’i rgyal po</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-366">back</a></li><li id="tei-note-UT22084-091-073-367"><p>The Nepalese Sanskrit texts read <em>eva hi tiṣṭhati dhriyate yāpayati</em>, which is the standard phrase in descriptions of tathāgatas inhabiting their respective realms, and can be seen in the Sanskrit of such texts as <cite>The Display of the Pure Land of Sukhāvatī</cite> (Toh 115) <a href="https://read.84000.co/translation/toh115.html#UT22084-051-003-15" target="_blank" rel="noopener noreferrer">1.2</a>. The standard rendering in Tibetan is <em>bzhugs te ’tsho zhing gzhes</em> (“resides, lives, and remains”) and is found in numerous translated sūtras. It is frequently followed by a phrase such as “and there teaches the Dharma.” Here, while in the Dunhuang manuscripts it is rendered <em>bzhugs te ’tsho zhing gzhes</em>, Toh 675 reads <em>bzhugs so/ /tshe ’dzin cing tshe mthar phyin par bzhed de</em> and Toh 674, with a different spelling of the final verb, <em>bzhugs te tshe ’dzin cing tshe mthar phyin par gzhes te</em>. Tāranātha notes in his commentary (Tāranātha 2014, p. 65) that this expanded rendering is how Patshab Nyima Drak, Chödrak Pal (<em>kun spang chos grags dpal</em>), and Lodrö Pal (<em>lo tsA ba blo gros grags dpal</em>) translate this phrase, thus specifying the particular teaching taught and not simply applying to the one who teaches it (the significance of Tāranātha mentioning the latter two translators, both early fourteenth century Jonangpa scholars of whom sūtra translations do not appear to have survived, is not entirely clear to us). The other two commentaries follow similar interpretations, Amnyé Zhab (Amnyé Zhab 2014, p. 47) specifying that “extending life to its very limit” indeed refers to the actions of Aparimitāyus with regard to beings. Finally, the fact that in the present “two oṁ” version, Toh 675, this phrase appears in Tibetan as the latter rendering, as in the “three oṁ” version, Toh 674, while in the Dunhuang manuscripts it appears in the former, standard rendering, is further evidence that Toh 675 may be a back-adaptation of this translation to the “two oṁ” form rather than simply representing an earlier translation (see Introduction <span class="tei-ref">#UT22084-091-073-66</span>). Tāranātha also mentions (Tāranātha 2014, p. 76) the importance of this phrase, along with the wording of the verses on the six pāramitās (<span class="tei-ref">#UT22084-091-073-178</span> et seq.) as indicating an interpretation of the text as a tantra involving empowerment and blessing.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-367">back</a></li><li id="tei-note-UT22084-091-073-368"><p><em>bstan to</em>; the Dunhuang manuscripts have <em>brjod do</em>, “said to have.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-368">back</a></li><li id="tei-note-UT22084-091-073-82"><p>From the Sanskrit <em>guṇavarṇa</em>, which was translated into Tibetan as “qualities and praise” (<em>yon tan dang bsngags pa</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-82">back</a></li><li id="tei-note-UT22084-091-073-83"><p>According to Toh 675, the Khotanese, and the Dunhuang manuscripts. In the Nepalese Sanskrit manuscripts and in Toh 674 <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-81" target="_blank" rel="noopener noreferrer">1.4</a>, Aparimitāyur­jñāna is shortened to Aparimitāyus.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-83">back</a></li><li id="tei-note-UT22084-091-073-369"><p><em>khyim na ’chang gi bar du byed dam</em>; the Dunhuang manuscripts have only <em>’chang ngam</em>, making no mention of “at home” or (with the preceding phrases) of a progression from hearing or writing the title alone to doing so for the whole text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-369">back</a></li><li id="tei-note-UT22084-091-073-84"><p>The Nepalese Sanskrit reads “who recite it and continually make offerings of flowers, perfume, incense, garlands, ointments, powders, robes, parasols, banners, bells, and flags.” None of the Tibetan versions, including the Dunhuang manuscripts, add these extra items of offering.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-84">back</a></li><li id="tei-note-UT22084-091-073-362"><p>The Nepalese Sanskrit texts read <em>śroṣyanti dhārayiṣyanti vācayiṣyanti</em>, “hear, keep, or recite,” while the Dunhuang Tibetan manuscripts mostly read <em>’dzin par ’gyur ba</em>, “hold.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-362">back</a></li><li id="tei-note-UT22084-091-073-87"><p>One hundred and eight names for this buddha are not given in this sūtra or in any other. This mention might possibly refer to another, lost sūtra, or perhaps be a corruption of repeating these actions 108 times (as one of the mentions in one of the Chinese translations seems to suggest). Alternatively—but plausibly only for the other version of the text, the “three oṁ” version (Toh 674 and 849)—this could also be a peculiarly worded reference to the dhāraṇī having 108 syllables, which is the case if the two instances of the final and initial a in the Tibetan transliteration are elided into ā as they should be according to the rules of euphonic combination in classical Sanskrit (and as they are in the Sanskrit versions). Indeed, in the paragraph that follows and in <span class="tei-ref">#UT22084-091-073-94</span>, “the one hundred and eight names” does seem to refer to the dhāraṇī, and could therefore be interpreted as “the-one-hundred-and-eight-syllable appellation” of Buddha Aparimitāyur­jñāna. On the other hand, here in Toh 675 and in the other “two oṁ” versions of the text (the Dunhuang manuscripts, the Khotanese, and all the Chinese versions), the dhāraṇīs have far fewer syllables, yet this mention is present nevertheless (although in the case of the Dunhuang manuscripts only in the equivalent of the following paragraph, not in this one). The possible discrepancy was used by some Sarma authors (see introduction, <span class="tei-ref">#UT22084-091-073-387</span>) as proof that the “two oṁ” dhāraṇī was incomplete, but they may not have been aware of the existence of Sanskrit manuscripts and Chinese translations featuring the “two oṁ” version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-87">back</a></li><li id="tei-note-UT22084-091-073-363"><p>This version, as well as Toh 674, has <em>’chang bar ’gyur ba</em> here, but as in the preceding sentence, the Nepalese Sanskrit texts read <em>śroṣyanti dhārayiṣyanti vācayiṣyanti</em>, “hear, keep, or recite.” Many of the Dunhuang Tibetan manuscripts seem to omit this sentence entirely.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-363">back</a></li><li id="tei-note-UT22084-091-073-364"><p>The Nepalese Sanskrit texts read <em>śroṣyanti likhiṣyanti</em>, “hear or write.” The Tibetan version of the Druptap Küntü adds, at the end of these verbs, <em>klog par gyur pa</em>, “or recite,” not present in any of the canonical versions.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-364">back</a></li><li id="tei-note-UT22084-091-073-320"><p>As in <span class="tei-ref">#UT22084-091-073-83</span>, according to Toh 675, the Khotanese, and the Dunhuang manuscripts. In the Nepalese Sanskrit manuscripts and in Toh 674 <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-89" target="_blank" rel="noopener noreferrer">1.6</a>, Aparimitāyur­jñāna is shortened to Aparimitāyus.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-320">back</a></li><li id="tei-note-UT22084-091-073-370"><p><em>de dag gi yon tan dang legs par gyur pa ni ’di dag go</em>; the Dunhuang manuscripts read <em>de dag gi yon tan dang legs pa ni ’di dag go</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-370">back</a></li><li id="tei-note-UT22084-091-073-371"><p>The Dunhuang manuscripts omit the initial <em>oṁ</em> in all instances of the dhāraṇī, but start the first instance (only) with <em>tadyathā</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-371">back</a></li><li id="tei-note-UT22084-091-073-93"><p>The dhāraṇī transliterated throughout the text is shown according to the version in the Degé Kangyur. Versions in other Kangyurs have only minor variants in spelling and punctuation. An approximate translation is: “<em>Oṁ</em>, Homage to the Bhagavān Aparimitāyur­jñāna­suviniścita­tejo­rāja, the tathāgata, arhat, perfectly awakened buddha. It is thus: <em>Oṁ</em>, the true nature that is completely pure of all mental events! The one who has risen high in the sky! Who is completely pure in nature! Whose entourage is of the great way! <em>Svāhā</em>.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-93">back</a></li><li id="tei-note-UT22084-091-073-372"><p>The Dunhuang manuscripts make no mention here of the one hundred and eight names, but just read <em>sngags kyi tshig ’di dag</em>, “these mantra words.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-372">back</a></li><li id="tei-note-UT22084-091-073-321"><p>As in <span class="tei-ref">#UT22084-091-073-83</span> and <span class="tei-ref">#UT22084-091-073-320</span>, according to Toh 675, the Khotanese, and the Dunhuang manuscripts. In the Nepalese Sanskrit manuscripts and in Toh 674 <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-94" target="_blank" rel="noopener noreferrer">1.8</a>, Aparimitāyur­jñāna is shortened to Aparimitāyus.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-321">back</a></li><li id="tei-note-UT22084-091-073-95"><p>The prefix <em>bde ba can</em>, which is here rendered as “blissful” but could also be interpreted as the realm name Sukhāvatī, is present in this version of the text but not in the equivalent sentence of Toh 674 (see Toh 674, <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-94" target="_blank" rel="noopener noreferrer">1.8</a>), nor in the Dunhuang manuscripts. It somewhat confusingly identifies this realm at the zenith with the western realm of the “other” Amitāyus who is Amitābha, perhaps confirming that the conflation of these two buddhas (see <span class="tei-ref">#UT22084-091-073-14</span>) occurred at an early date in Tibet.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-95">back</a></li><li id="tei-note-UT22084-091-073-373"><p>The Nepalese Sanskrit here has the additional line, “And they will have measureless life in the Aparimita­guṇa­saṃcaya realm.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-373">back</a></li><li id="tei-note-UT22084-091-073-98"><p>The Nepalese Sanskrit and Dunhuang Khotanese and Tibetan manuscripts, in all the references to the sūtra in the rest of the text, call it the <cite>Aparimitāyus Sūtra</cite>, and the Dunhuang Tibetan manuscripts use the term <em>mdo</em> in place of the Degé’s <em>mdo sde</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-98">back</a></li><li id="tei-note-UT22084-091-073-115"><p>The Nepalese Sanskrit and Toh 674 (<a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-114" target="_blank" rel="noopener noreferrer">1.22</a>), as well as the Dunhuang manuscripts, here instead have “three hundred sixty million” in conformity with the other numbers.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-115">back</a></li><li id="tei-note-UT22084-091-073-122"><p>In the Tibetan of the Kangyur, here in Toh 675 as well as in Toh 674 (see Toh 674, <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-121" target="_blank" rel="noopener noreferrer">1.28</a>), this phrase and its recurrences in the passages that follow is <em>yi ger ’dri’am/ yi ger ’drir ’jug na</em>. In some of the Dunhuang manuscripts it is <em>yi ger ’dri’am/ ’drir ’jug na</em>, while in others it is simply <em>’drir bchug na</em> or <em>’drir bcug na</em>, presumably meaning “set in writing.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-122">back</a></li><li id="tei-note-UT22084-091-073-374"><p>This entire sentence, along with the repeated dhāraṇī that goes with it, is absent from the Khotanese manuscript (see Konow 1916, p. 310) and appears to be absent from the Dunhuang Tibetan manuscripts that we have examined, although it is present in both Kangyur versions, in the Druptap Küntü, and in the Nepalese Sanskrit manuscripts.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-374">back</a></li><li id="tei-note-UT22084-091-073-133"><p>While Toh 674 reads <em>de’i mtshams med pa lnga byas pa yang yongs su byang bar ’gyur ro</em> (“will be purified even of having committed the five karmas…”), here in Toh 675 this reads more simply <em>de’i mtshams med pa lnga yongs su byang bar ’gyur ro</em>. This is closer than Toh 674 to the Dunhuang manuscripts, which read <em>de mtshams myed pa lnga yongs su ’byang bar ’gyur ro</em>. The Nepalese Sanskrit mentions the “karmic obscurations” of the five actions with immediate result (<em>pañcānantaryāṇi karmavaraṇāni</em>), with a precision that does not appear to be present in the Khotanese manuscript (see Konow 1916, p. 310).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-133">back</a></li><li id="tei-note-UT22084-091-073-136"><p>This paragraph is not present in the Nepalese Sanskrit texts, but is in the Dunhuang Khotanese (see Konow 1916 p. 312).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-136">back</a></li><li id="tei-note-UT22084-091-073-336"><p>Toh 675 here has <em>glags btsal kyang</em> where Toh 674 and the Dunhuang manuscripts have <em>glags bltas kyang</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-336">back</a></li><li id="tei-note-UT22084-091-073-337"><p>Toh 674 and the Dunhuang manuscripts here have “nine hundred ninety million.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-337">back</a></li><li id="tei-note-UT22084-091-073-141"><p><em>mngon sum du lung ston pa mdzad</em>, which could also just mean “teach them,” is the reading here in both Toh 675 and Toh 674. The Dunhuang manuscripts have <em>mngon du ston par mdzad</em> or <em>mngon sum du ston pa mdzad</em>, “appear directly to them.” Nepalese Sanskrit has <em>darśanaṃ dāsyanti</em>, “appear before them.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-141">back</a></li><li id="tei-note-UT22084-091-073-142"><p>Degé in this version has <em>ma byed cig</em>, while the other version (see Toh 674, <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-140" target="_blank" rel="noopener noreferrer">1.42</a>) and the Dunhuang manuscripts read <em>ma za shig</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-142">back</a></li><li id="tei-note-UT22084-091-073-151"><p>Here in Toh 675, the Tibetan of the Degé reads simply <em>mdo sde ’di</em>, “this sūtra,” while in the Dunhuang manuscripts, as well as in the other version, Toh 674 (in the Degé and all other Kangyurs except the Lithang and Choné), the equivalent phrase reads <em>mdo sde dkon mchog ’di</em>, “this precious sūtra.” In the “three oṁ” version (i.e. the equivalent of Toh 674) in the Lithang and Choné Kangyurs, the phrase is as here. The Nepalese Sanskrit and Khotanese, here and in the other passages between the repeated dhāraṇī, instead use the title of the text, <em>aparimitāyuḥ sūtraṃ</em>, “the Aparimitāyus sūtra.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-151">back</a></li><li id="tei-note-UT22084-091-073-152"><p>The phrase “or caused to be written” is omitted in the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-152">back</a></li><li id="tei-note-UT22084-091-073-153"><p>The phrase <em>sa pṛthivīpradeśaś caityabhūto bhavet</em> (here rendered in Tibetan <em>sa phyogs de yang mchod rten du ’gyur te</em>) is to be found in a number of texts, including the <cite>Vajra­cchedikā</cite> (Toh 16<a href="https://read.84000.co/translation/toh16.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh16.html</a>), <cite>Aṣṭa­sāhasrikā</cite> (Toh 12<a href="https://read.84000.co/translation/toh12.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh12.html</a>), <cite>Kāśyapa­parivarta</cite> (Toh 87<a href="https://read.84000.co/translation/toh87.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh87.html</a>), and <cite>Suvarṇa­bhāsottama­sūtra</cite>s (<a href="https://read.84000.co/translation/toh555.html" target="_blank" rel="noopener noreferrer">Toh 555</a>, <a href="https://read.84000.co/translation/toh556.html" target="_blank" rel="noopener noreferrer">Toh 556</a>, <a href="https://read.84000.co/translation/toh557.html" target="_blank" rel="noopener noreferrer">Toh 557</a>). In his detailed analysis of the use of the phrase, Schopen suggests (in essence) that it should probably be understood as meaning that the place where the written text in question is to be found becomes “like a stūpa” in the sense of being no less worthy of veneration than a monument housing or representing the relics of a tathāgata’s body, as set out in <cite>The Teaching of Vimalakīrti</cite> (<cite>Vimala­kīrti­nirdeśa</cite>, Toh 176) <a href="https://read.84000.co/translation/toh176.html#UT22084-060-005-442" target="_blank" rel="noopener noreferrer">12.2–5</a>, and in <cite>The White Lotus of the Good Dharma</cite> (<cite>Saddharma­puṇḍarīka</cite>, Toh 113) <span class="tei-ref">#UT22084-051-001-1684</span>–<span class="tei-ref">#UT22084-051-001-1686</span>. See Schopen 2005, pp. 25–62.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-153">back</a></li><li id="tei-note-UT22084-091-073-160"><p>The Dunhuang manuscripts have <em>kar sha pa ni ’ga’ zhig</em>, “a few <em>kārṣāpaṇa</em> coins.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-160">back</a></li><li id="tei-note-UT22084-091-073-163"><p>According to the Tibetan <em>chos kyi rnam grangs</em>, which appears to have been translated from <em>dharmaparyāya</em>, and is the same in the two canonical versions in Tibetan (Toh 674 and 675) as well as in the Dunhuang manuscripts. One of the Nepalese Sanskrit versions reads “this Aparimitāyuḥ Sūtra” (Walleser 1916, p. 24), but the Nepalese Sanskrit edition used by Konow to compare with the Khotanese (Konow 1916, p. 319) has <em>dharmabhāṇaka</em>, which means “one who recites the Dharma from memory” or “one who expounds the teaching.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-163">back</a></li><li id="tei-note-UT22084-091-073-164"><p>The Degé here in Toh 675 reads <em>dam pa’i chos thams cad khong du chud par ’gyur</em>. In Toh 674 (<a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-162" target="_blank" rel="noopener noreferrer">1.54</a>) this paragraph reads <em>dam pa’i chos mtha’ dag mchod par ’gyur</em>, “will have made an offering to the entirety of the good Dharma.” In the Dunhuang manuscripts, it reads <em>dam pa’i chos mtha’ dag chub par mchod par ’gyur</em>, with the same meaning.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-164">back</a></li><li id="tei-note-UT22084-091-073-338"><p><em>’di lta ste dper na</em>. In most (but not all) of the Dunhuang manuscripts, here and in the two similar statements that follow, <em>dper na</em> is absent.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-338">back</a></li><li id="tei-note-UT22084-091-073-167"><p><em>’khor ba ’jig</em>. Here Toh 675 appears to add another buddha to the list by including this alternative translation of Krakucchanda to the less common <em>log par dad sel</em>, but without omitting the latter. In the ninth century <cite>Mahāvyuttpati</cite>, the Tibetan <em>’khor ba ’jig</em> was used to translate Kakutsunda, which is one of the hybrid Sanskrit forms for Krakucchanda (compare, for example, to Krakutsanda in the Sanskrit of the <cite><a href="https://read.84000.co/translation/toh112.html" target="_blank" rel="noopener noreferrer">White Lotus of Compassion Sūtra</a></cite> and Kakusandha in Pali). The <cite>Mahāvyutpatti</cite> has <em>log pa dad sel</em> for Krakucchanda, but this latter translation fell into disuse.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-167">back</a></li><li id="tei-note-UT22084-091-073-340"><p>Whereas the equivalent phrases of this and the next two statements in Toh 674 (<a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-166" target="_blank" rel="noopener noreferrer">1.56–1.60</a>) clearly refer to the merit related to the <cite>Aparimitāyur­jñāna Sūtra</cite>, here in Toh 675 the accumulation of merit “of” (or perhaps “relating to”) Aparimitāyur­jñāna himself (i.e. the tathāgata, not the text) is mentioned: <em>tshe dang ye shes dpag tu med pa’i bsod nams kyi phung po’i tshad ni bgrang bar mi nus so</em>. This could be interpreted most literally as Aparimitāyur­jñāna’s own merit, but presumably refers rather to the merit to be obtained by making offerings to him. This same difference between the two versions of the text is present in these three paragraphs, not only in the Degé Kangyur but also in the other Kangyurs, and does not therefore seem to be due merely to a one-off scribal error. The Nepalese Sanskrit and Khotanese manuscripts as well as the Dunhuang texts all match Toh 674 in referring to the sūtra, not the tathāgata.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-340">back</a></li><li id="tei-note-UT22084-091-073-339"><p>Here in Toh 675, <em>ri’i rgyal po ri rab dang mnyam pa’i rin po che’i phung por byas te/ sbyin pa byin pa</em>. In Toh 674, the reading is <em>rin po che’i phung po ri rab tsam spungs te sbyin pa byin pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-339">back</a></li><li id="tei-note-UT22084-091-073-341"><p>See <span class="tei-ref">#UT22084-091-073-340</span>. Also, this whole paragraph is absent in most of the complete Dunhuang manuscripts that we have seen, but is present in the Nepalese Sanskrit and Khotanese manuscripts.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-341">back</a></li><li id="tei-note-UT22084-091-073-342"><p>See <span class="tei-ref">#UT22084-091-073-340</span>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-342">back</a></li><li id="tei-note-UT22084-091-073-176"><p>This version has <em>gus par byas te</em>, while Toh 674 (<a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-175" target="_blank" rel="noopener noreferrer">1.62</a>) has <em>bsti stang du byas te</em>. The Dunhuang manuscripts only have “causes to be written or makes offerings to.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-176">back</a></li><li id="tei-note-UT22084-091-073-179"><p>One of the Nepalese Sanskrit versions (Walleser 1916, p. 25) introduces the following verses with the sentence, “Then at that time the Bhagavān spoke these verses:”.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-179">back</a></li><li id="tei-note-UT22084-091-073-180"><p>According to all three commentaries—by Amé Zhab Ngawang Kunga Sönam, Kunga Lekrin, and Tāranātha—mentioned in the introduction, “entering the city” (<em>grong khyer ’jug pa</em>, <em>pure praviśantaṃ</em>) here and in the following verses refers to the Buddha engaging in benefiting others by teaching disciples. In addition, Tāranātha’s commentary seems to suggest that from a tantra perspective this is one element of the wording of the verses on the six pāramitās that can be taken as referring to empowerment.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-180">back</a></li><li id="tei-note-UT22084-091-073-181"><p>The commentaries by Kunga Lekrin and Ngawang Kunga Sönam interpret the “resounding” (<em>sgra</em>, <em>śabda</em>) of the power of generosity (and of the other perfections in the verses that follow) as the Buddha’s proclamations of his past generosity and praise of generosity, etc. Tāranātha explains it as meaning the sound of the dhāraṇī, the very expression of the six perfections.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-181">back</a></li><li id="tei-note-UT22084-091-073-191"><p>In Toh 674, at <a href="https://read.84000.co/translation/toh674.html#UT22084-091-072-190" target="_blank" rel="noopener noreferrer">1.71</a>, as well as in the Dunhuang manuscripts, the word “joyfully” (<em>dgyes shing</em>) is added before “taught.” It seems anomalous and is not usually a part of this traditional formula at the conclusion of sūtras. It may have been derived from the Sanskrit <em>idam avocad bhagavān āttamanās</em>, where <em>āttamanās</em> is describing the joy of the audience, but could possibly have been erroneously translated twice. It is not present in Toh 675, but is in some of the Dunhuang manuscripts.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-191">back</a></li><li id="tei-note-UT22084-091-073-192"><p>The Nepalese Sanskrit has “This is what the Bhagavān said, and, overjoyed, the bhikṣus, the bodhisattva mahāsattvas, the complete assembly, and the world with its devas, humans, asuras, and gandharvas praised the Bhagavān’s words.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-192">back</a></li><li id="tei-note-UT22084-091-073-194"><p>There is no translators’ colophon, although the version in the nineteenth-century Sakya compendium of sādhanas, the Druptap Küntü, has one; see introduction, <span class="tei-ref">#UT22084-091-073-49</span>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-091-073-194">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/091-072-toh674-849-the-aparimitayurjnana-sutra-1.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/091-074-toh676-850-dharani-the-essence-of-immeasurable-longevity-and-wisdom.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

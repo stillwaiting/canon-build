@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MĀ 2 — The Pārijāta Tree — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/chinese_canon/ma.html">Madhyama Āgama</a>
+        <div class="sutta-breadcrumbs hidden">Madhyama Āgama · MĀ 2 — The Pārijāta Tree</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          MĀ 2 — The Pārijāta Tree        </h1>
+      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <h1><a href='index.html'>The Medium Discourses</a></h1>
+<h2>Chapter 1: The Sevens</h2>
+
+<table class="trans">
+  <th class='ch'>（二）中阿含七法品晝度樹經第二(初一日誦)</th>
+  <th class='en'>2. The Pārijāta Tree</th>
+  <tr>
+    <td class='ch' title='t26.1.422a19'>我聞如是： 一時，佛遊舍衛國，在勝林、給孤獨園。</td>
+    <td id='p1'>1. Thus I have heard:<sup id="ref1"><a href="#n1">1</a></sup> One time, the Buddha traveled to the country of Śrāvastī and stayed at Anāthapiṇḍada’s Park in Jeta’s Grove.</td>
+  </tr>
+<tr>
+  <td class='ch' title='t26.1.422a20'></td>
+  <td class='subheading'>The Seasons of the Pārijāta Tree</td>
+</tr>
+  <tr>
+    <td class='ch' title='t26.1.422a20'>爾時，世尊告諸比丘： 「若三十三天晝度樹葉萎黄，是時三十三天悦樂、歡喜： 『晝度樹葉不久當落！』</td>
+    <td id='p2'>2. It was then that the Bhagavān addressed the monks, “When the leaves of the Trāyastriṃśa Heaven’s<sup id="ref2"><a href="#n2">2</a></sup> <em>pārijāta</em> tree<sup id="ref3"><a href="#n3">3</a></sup> turn yellow, the Trāyastriṃśa gods are delighted and rejoice: ‘It won’t be long before the <em>pārijāta</em> tree’s leaves begin to fall!’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422a22'>「復次，三十三天晝度樹葉已落，是時三十三天悦樂、歡喜： 『晝度樹葉不久當還生！』</td>
+    <td id='p3'>3. “Furthermore, once the leaves of the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree have fallen, the Trāyastriṃśa gods are delighted and rejoice: ‘It won’t be long before the <em>pārijāta</em> tree’s leaves grow back!’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422a24'>「復次，三十三天晝度樹葉已還生，是時三十三天悦樂、歡喜： 『晝度樹不久當生網！』</td>
+    <td id='p4'>4. “Furthermore, once the leaves of the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree have grown back, the Trāyastriṃśa gods are delighted and rejoice: ‘It won’t be long before the <em>pārijāta</em> tree grows a web of buds!’<sup id="ref4"><a href="#n4">4</a></sup></td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422a26'>「復次，三十三天晝度樹已生網，是時三十三天悦樂、歡喜： 『晝度樹不久當生如鳥喙！』</td>
+    <td id='p5'>5. “Furthermore, once the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree has grown a web of buds, the Trāyastriṃśa gods are delighted and rejoice: ‘It won’t be long before the <em>pārijāta</em> tree’s buds will grow like bird beaks!’<sup id="ref5"><a href="#n5">5</a></sup></td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422a28'>「復次，三十三天晝度樹已生如鳥喙，是時三十三天悦樂、歡喜： 『晝度樹不久當開如鉢！』</td>
+    <td id='p6'>6. “Furthermore, once the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree has grown buds like bird beaks, the Trāyastriṃśa gods are delighted and rejoice: ‘It won’t be long before the <em>pārijāta</em> tree’s buds open like bowls!’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b1'>「復次，三十三天晝度樹已開如鉢，是時三十三天悦樂、歡喜： 『晝度樹不久當盡敷開！』</td>
+    <td id='p7'>7. “Furthermore, once the buds of the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree have opened like bowls, the Trāyastriṃśa gods are delighted and rejoice: ‘It won’t be long before the <em>pārijāta</em> tree will be in full bloom!’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b2'>「若晝度樹已盡敷開，光所照、色所映、香所熏周百由延。 是時三十三天於中夏四月，以天五欲、功徳具足而自娯樂。 是謂三十三天於晝度樹下集會，娯樂也。</td>
+    <td id='p8'>8. “Once the <em>pārijāta</em> tree is in full bloom, the light that it shines, the colors that it reflects, and the fragrance that it produces have a range of a hundred <em>yojana</em>s.<sup id="ref6"><a href="#n6">6</a></sup> During the four months of summer, the Trāyastriṃśa gods entertain themselves with the five heavenly pleasures and the virtues with which they’re endowed. This is called the gathering under the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree.</td>
+  </tr>
+<tr>
+  <td class='ch' title='t26.1.422b6'></td>
+  <td class='subheading'>The Seasons of the Noble Disciple</td>
+</tr>
+  <tr>
+    <td class='ch' title='t26.1.422b6'>「如是義，聖弟子亦復爾。 思念出家，是時聖弟子名為『葉黄』。 猶三十三天晝度樹葉萎黄也。</td>
+    <td id='p9'>9. “The meaning of the noble disciple is like this, too. When they consider leaving home, the disciple is called ‘leaves turning yellow.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when its leaves turn yellow.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b8'>「復次，聖弟子剃除鬚髮，著袈裟衣，至信，捨家，無家，學道。是時，聖弟子名為『葉落』。 猶三十三天晝度樹葉落也。</td>
+    <td id='p10'>10. “Furthermore, when they shave off their hair and beard, put on the reddish-brown robes, become a believer, and leave home to train on the path in homelessness,<sup id="ref7"><a href="#n7">7</a></sup> then the noble disciple is called ‘falling leaves.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when it drops its leaves.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b11'>「復次，聖弟子離欲，離惡、不善之法。 有覺、有觀，離生喜樂，得初禪成就遊。 是時聖弟子名『葉還生』。 猶三十三天晝度樹葉還生也。</td>
+    <td id='p11'>11. “Furthermore, the noble disciple is secluded from desires and secluded from bad and unskillful things. While they notice and examine things, this seclusion produces joy and happiness in them, and they accomplish and dwell in the first meditation.<sup id="ref8"><a href="#n8">8</a></sup> The noble disciple then is called ‘growing back leaves.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when it grows back its leaves.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b14'>「復次，聖弟子覺、觀已息，内靜、一心。 無覺、無觀，定生喜樂，得第二禪成就遊。 是時聖弟子名為『生網』。 猶三十三天晝度樹生網也。</td>
+    <td id='p12'>12. “Furthermore, once noticing and examining things has subsided, the noble disciple has inner calm and a unified mind. Without noticing or examining things, this <em>samādhi</em> produces joy and happiness, and they accomplish and dwell in the second meditation.<sup id="ref9"><a href="#n9">9</a></sup> The noble disciple then is called ‘growing a web of buds.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when it grows a web of buds.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b17'>「復次，聖弟子離於喜欲，捨、無求遊。 正念、正智而身覺樂，謂聖所說，聖所捨、念、樂住、空。 得第三禪成就遊。 是時聖弟子名『生如鳥喙』。 猶三十三天晝度樹如鳥喙也。</td>
+    <td id='p13'>13. “Furthermore, parting with desire for that joy, the noble disciple lives in equanimity and pursues nothing. With right mindfulness and right knowledge, they personally experience happiness, about which the noble ones teach them the noble’s happy abiding place of detachment and mindfulness. They accomplish and dwell in the third meditation.<sup id="ref10"><a href="#n10">10</a></sup> The noble disciple then is called ‘growing buds like bird beaks.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when it grows buds like bird beaks.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b20'>「復次，聖弟子樂滅，苦滅。 喜、憂本已滅，不苦、不樂。 捨、念、清淨，得第四禪成就遊。 是時聖弟子名『生如鉢』。 猶三十三天晝度樹如鉢也。</td>
+    <td id='p14'>14. “Furthermore, the noble disciple’s pleasure ceases and their pain ceases. Their past joy and sorrow having ceased, they feel neither pain nor pleasure. With the purification of their equanimity and mindfulness, they accomplish and dwell in the fourth meditation.<sup id="ref11"><a href="#n11">11</a></sup> The noble disciple then is called ‘opening like a bowl.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when its buds open like bowls.</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422b23'>「復次，聖弟子諸漏已盡，心解脱、慧解脱。 於現法中，自知、自覺、自作證成就遊。 『生已盡，梵行已立，所作已辦， 不更受有，』知如眞。 是時聖弟子名『盡敷開』。 猶三十三天晝度樹盡敷開也。</td>
+    <td id='p15'>15. “Furthermore, once the noble disciple’s contaminants have ended, their mind is liberated, and their wisdom is liberated. In the present life, they accomplish and dwell in their own knowledge, awakening, and direct experience. They truly know: ‘Birth has been ended, the religious practice has been established, the task has been accomplished, and I will not again be subject to existence.’<sup id="ref12"><a href="#n12">12</a></sup> The noble disciple then is called ‘in full bloom.’ They’re like the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree when it’s in full bloom.</td>
+  </tr>
+<tr>
+  <td class='ch' title='t26.1.422b28'></td>
+  <td class='subheading'>Conclusion</td>
+</tr>
+  <tr>
+    <td class='ch' title='t26.1.422b28'>「彼為漏盡阿羅訶比丘。 三十三天集在善法正殿，咨嗟、稱歎： 『某尊弟子於某村邑剃除鬚髮，著袈裟衣，至信捨家，無家學道。 諸漏已盡，心解脱、慧解脱。 於現法中，自知、自覺自作證成就遊。 「生已盡，梵行已立，所作已辦。 不更受有，知如眞。」』</td>
+    <td id='p16'>16. “He becomes an <em>arhat</em><sup id="ref13"><a href="#n13">13</a></sup> monk whose contaminants have ended. The Trāyastriṃśa gods assemble in the Sudharmā Meeting Hall, sighing admiringly and praising them, ‘Some worthy disciple at some town shaved off their hair and beard, put on the reddish-brown robes, became a believer, and left home to train on the path in homelessness. Once their contaminants were ended, their mind was liberated, and their wisdom was liberated. In the present life, they accomplished and dwelt in their own knowledge, awakening, and direct experience. They truly know: “Birth has been ended, the religious practice has been established, the task has been accomplished, and I will not again be subject to existence.”’</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422c4'>「是謂漏盡阿羅訶共集會也，如三十三天晝度樹下共集會也。」</td>
+    <td id='p17'>17. “This is called the assembly that coincides with the end of an <em>arhat</em>’s contaminants, which is like the gathering held under the Trāyastriṃśa Heaven’s <em>pārijāta</em> tree.”</td>
+  </tr>
+  <tr>
+    <td class='ch' title='t26.1.422c6'>佛說如是。 彼諸比丘聞佛所說歡喜，奉行。</td>
+    <td id='p18'>18. This is what the Buddha said. Those monks who heard what the Buddha taught rejoiced and approved.</td>
+  </tr>
+</table>
+
+<hr/>
+
+<h3 id="notes">Notes</h3>
+
+<ol class="notes-list">
+<li id="n1"><p>For the source text, cf. <a href="https://cbetaonline.dila.edu.tw/zh/T01n0026_p0422a18" target="_blank">T26.1.422a18-c8</a>. Direct parallels to this <em>sūtra</em> include <a href="https://suttacentral.net/an7.69" target="_blank">AN 7.69</a>, EĀ 39.2, and T28. [<a href="#ref1">back</a>]</p></li>
+<li id="n2"><p><em>Trāyastriṃśa Heaven</em>. C. <span class="ch">三十三天</span>, G. <em>trayatriśa</em>, P. <em>tāvatiṃsa</em>, S. <em>trāyastriṃśa</em>. The C. translates S. <em>trāyastriṃśa</em> lit. as “Heaven of the Thirty-Three.” This was a Buddhist heaven where thirty-two Vedic gods and Indra reside at the top of Mount Sumeru. [<a href="#ref2">back</a>]</p></li>
+<li id="n3"><p><em>pārijāta</em>. C. <span class="ch">晝度</span> (EMC. <em>tɪəu-do</em>), G. ?, P. <em>pāricchattaka</em>, S. <em>pārijātaka</em>. Previously, I believed that the C. was perhaps a partial transliteration (<em>-jāta</em>), based on the Mandarin pronunciation of <span class="ch">晝度</span> (M. <em>zhòudù</em>), but the EMC. pronunciation (EMC. <em>tɪəu-do</em>) doesn’t support this idea. It seems instead to be an interpretive translation that means lit. “day liberation,” which we find in EĀ, too. In any case, I’ve decided to replace the C. with the S. name.</p>
+<p>This is also the present-day name for <a href="https://en.wikipedia.org/wiki/Nyctanthes_arbor-tristis" target="_blank"><em>Nyctanthes arbor-tristis</em></a>, which is commonly called the night-flowering jasmine tree in English. Perhaps more relevant to this <em>sūtra</em>, however, is the sacred Parijat tree located in the modern village of Kintoor of Uttar Pradesh in India. This Parijat tree is actually a Baobab tree estimated to be 800 years old and from a species native to Africa. Local Hindu legends claim that it descends from a tree brought from the heavens by Arjun, or that it was a gift made by Lord Krishna. Its existence suggests that there was a sacred tree tradition that dates back at least to classical times. This <em>sūtra</em> may be a Buddhist adaptation of this Vedic tradition. While Buddhists created their own sacred tree connected to the Buddha’s awakening, they incorporated this sacred tree as well that was connected to the Vedic gods. [<a href="#ref3">back</a>]</p></li>
+<li id="n4"><p><em>grows a web of buds</em>. C. <span class="ch">生網</span>. The Pali parallel reads: <em>Na cirass’eva dāni jālakajāto bhavissati</em>. Bhikkhu Bodhi reports that the Manorathapūraṇī commentary says: “The occasion when the tree gives birth to webs of leaves and flower, which come forth together.” C. 網 can also mean “web.” I take it to describe the overall appearance of a budding tree, so I’ve added “buds” to my translation. [<a href="#ref4">back</a>]</p></li>
+<li id="n5"><p><em>grow into bird beaks</em>. C. <span class="ch">生如鳥喙</span>. Pali: <em>Na cirass’eva dani kharakajato bhavissati</em>. Bhikkhu Bodhi translates the commentary as: “The occasion when it becomes possessed of a web of leaves and of flowers well divided and growing separately.” The C. 鳥喙 lit. means “bird beak;” presumably, it refers to the shape of the buds as they grow larger and prepare to open. [<a href="#ref5">back</a>]</p></li>
+<li id="n6"><p><em>hundred </em>yojana<em>s</em>. C. <span class="ch">百由延</span> (EMC. “hundred” + <em>yiəu-yiɛn</em> = G. <em>śada yoyan[a]</em>). S. <em>yojana</em> was an ancient Indic measure of distance. Traditional accounts of a <em>yojana</em>’s length range from 7 to 9 miles. [<a href="#ref6">back</a>]</p></li>
+<li id="n7"><p><em>shave off their hair and beard, put on the reddish-brown robes, become a believer, and leave home to train on the path in homelessness</em>. C. <span class="ch">剃除鬚髮，著袈裟衣，至信，捨家，無家，學道</span>, P. <em>kesamassuṁ ohāretvā kāsāyāni vatthāni acchādetvā agārasmā anagāriyaṁ pabbajito</em>, S. <em>keśaśmaśru avatārya kāṣāyāṇi vastrāṇy ācchādya samyag eva śraddhayā agārād anagārikāṁ pravrajitaḥ</em></p>
+<p>This standard description of a faithful man going forth to become a monk is nearly identical with the P. version: <span class="ch">剃除鬚髮</span> = <em>kesamassuṁ ohāretvā</em>, <span class="ch">著袈裟衣</span> = <em>kāsāyāni vatthāni acchādetvā</em>, <span class="ch">捨家無家</span> = <em>agārād anagārikāṁ</em>, <span class="ch">學道</span> = <em>pabbajito</em>. The exception is “becoming a believer” (<span class="ch">至信</span>, lit. “utmost faith”), and this addition is found in SĀ and extant S. sources like the <cite>Avadānaśataka</cite> as well. On the other hand, there is a shorter version of this pericope in DĀ that reads: “shave off their hair and beard, put on the three-piece robe, and leave home to cultivate the path” (<span class="ch">剃除鬚髮，服三法衣，出家修道</span>). [<a href="#ref7">back</a>]</p></li>
+<li id="n8"><p><em>first meditation.</em> C. <span class="ch">初禪</span> (EMC. “first” + <em>ʒɪɛn</em> = G. <em>paḍhama j̄ana</em>), G. <em>paḍhama j̄ana</em>, P. <em>paṭhama jhāna</em>, S. <em>prathama dhyāna</em>.</p>
+<p>C. <span class="ch">聖弟子離欲，離惡、不善之法。有覺、有觀，離生喜樂，得初禪成就遊</span>, P. <em>vivicceva kāmehi vivicca akusalehi dhammehi vivekajaṁ pītisukhaṁ paṭhamaṁ jhānaṁ upasampajja viharati</em>, S. <em>viviktaṁ kāmair viviktaṁ pāpakair akuśalair dharmaiḥ vivekajaṁ prītisukhaṁ prathamaṁ dhyānam upasaṁpadya viharati</em>.</p>
+<p>While this and the attainments that follow were called “four meditations,” they are better thought of as a process of establishing and stabilizing <em>samādhi</em>, which has been divided into four steps or stages. <em>Samādhi</em> itself is a difficult word to translate to English because it combines both the idea of concentration with that of an undisturbed state of mind. This results in the ability to attend to a single thing for long periods of time without interruption. What exactly that subject of attention was varied. Some Buddhist sources describe contemplations of different Dharma topics, like the seven factors of awakening, others describe contemplation of visual objects, and some describe contemplation of metaphysical entities like <em>nirvāṇa</em>.</p>
+<p>The extant Sarvāstivāda exegetical tradition is quite large, and this topic was covered by most of the definitive texts. Here, I will summarize the commentary found in the <cite>Abhidharma Dharmaskandha</cite>, which is one of the foundational commentaries of Sarvāstivāda Buddhism. It was translated to Chinese by Xuanzang in 659 CE, and a portion of it has survived in Sanskrit.</p>
+<p><em>secluded from desires and secluded from bad and unskillful things</em>. C. <span class="ch">離欲，離惡、不善之法</span>, P. <em>vivicceva kāmehi vivicca akusalehi dhammehi</em>, S. <em>viviktaṁ kāmair viviktaṁ pāpakair akuśalair dharmaiḥ</em>. The commentary first notes that the word “desires” (<span class="ch">欲</span>) can refer to three things: Greed (<span class="ch">貪</span>), the desire realm (<span class="ch">欲界</span>), or the field of five excellent desires (<span class="ch">五妙欲境</span>). Of these, the third is what’s intended. This term appears to be equivalent to P. <em>pañca kāmaguṇā</em>. The commentator spends time discussing these five sensory desires and notes that they are not the actual substance of desire. Rather, they are the objects of desire. The seclusion from desires is discussed at length as well, going so far as to present four kinds of seclusion (physical, mental, neither, and both). The word “seclusion” (<span class="ch">離</span>) is glossed as meaning “far away from, quite far away from, empty, and unobtainable” (<span class="ch">遠離、極遠離、空、不可得</span>).</p>
+<p>The commentator also equates “bad and unskillful things” (<span class="ch">惡、不善之法</span>) with the five hindrances (<span class="ch">五蓋</span>), which are greed (<span class="ch">貪欲</span>), hate (<span class="ch">瞋恚</span>), stupor (<span class="ch">惛沈</span>) and drowsiness (<span class="ch">睡眠</span>), agitation (<span class="ch">掉舉</span>), and doubt (<span class="ch">疑</span>).</p>
+<p><em>while they notice and examine things.</em> C. <span class="ch">有覺、有觀</span>, P. <em>savitakkaṁ savicāraṁ</em>, S. <em>savitarkaṁ savicāraṁ</em>. This expression lit. means “having noticing and having examination.” Being that it describes a mode of practice, I’ve inserted the implied subject, a generic direct object, and used a preposition that indicates a continuing condition.</p>
+<p>Xuanzang translated <em>vitarka</em> and <em>vicāra</em> as <span class="ch">尋</span> and <span class="ch">伺</span>, which mean “seeking" and “examining.” <span class="ch">尋</span> has the connotation of “quick, hasty,” while <span class="ch">伺</span> can also mean “to wait in ambush.” Thus, the two terms have a sense of short and long attention spans, which agrees with the idea of initial and sustained thought in some Theravāda interpretations of <em>vitakka</em> and <em>vicāra</em>.</p>
+<p>The <cite>Dharmaskandha</cite> commentary describes <em>vitarka</em> in this way: “Once one is secluded from desires and bad and unskillful things, their mind seeks things, seeking everywhere and seeking nearby. Their mind is apparent, quite apparent, directly apparent. They speculate, postulate, think, and discern things. This is generally called seeking.” (<span class="ch">離欲惡不善法者，心尋求、遍尋求、近尋求。心顯了、極顯了、現前顯了。推度搆畫、思惟分別，總名為尋。</span>)</p>
+<p><em>Vicāra</em> is described in this way: “Once one is secluded from desires and bad and unskillful things, their mind examines things, examining everywhere and examining nearby. It follows actions, follows developments, follows streams, and follows relationships. This is generally called examining.” (<span class="ch">離欲惡不善法者，心伺察、遍伺察、近伺察。隨行隨轉、隨流隨屬，總名為伺。</span>)</p>
+<p>These two words are very similar in meaning. The question naturally arises: What is the difference between them? The commentary’s answer is that <em>vitarka</em> makes thoughts that are crude in nature, and <em>vicāra</em> makes thoughts that are fine in nature (<span class="ch">令心麁性是尋，令心細性是伺</span>). This is illustrated with several concrete metaphors: When a temple bell is struck, the sound is crude in the initial moment, and then a finer sound developments afterward. The crude sound is like <em>vitarka</em>, and the finer sound is like <em>vicāra</em>. It’s the same with the sounds made by shaking a hand bell, knocking a bowl, blowing a conch, hitting a drum, shooting an arrow, and a thunderclap. It’s also likened to a flock of birds flying in the sky. The flapping of their wings is like <em>vitarka</em>, and the lifting of their bodies is like <em>vicāra</em>.</p>
+<p>After this discussion, the whole expression “having seeking and having examining” is described in this way: “Once one is secluded from desires and bad and unskillful things, their mind seeks and examines associated requisites.” (<span class="ch">離欲惡不善法者，心相應品具有尋伺。</span>)</p>
+<p><em>this seclusion produces joy and happiness in them.</em> C. <span class="ch">離生喜樂</span>, P. <em>vivekajaṁ pītisukhaṁ</em>, S. <em>vivekajaṁ prītisukhaṁ</em>. The commentary lists several things that seclusion (<span class="ch">離</span>) means: Being secluded from desires, being secluded from bad and unskillful things, having left home, the form realm’s roots of goodness, and the first meditation. The commentator takes the intended meaning to be the last option.</p>
+<p>Joy (<span class="ch">喜</span>) is described as being delighted, pleased, gladdened, joyous, exultant, and satisfied. In combination with happiness, it makes a person celebrate and rejoice. Happiness (<span class="ch">樂</span>) is described as a lack of heaviness and unsuitability in body and mind, as well as gaining smoothness, easiness, suitability, seclusion from the hindrances, serenity, being untroubled, and gentleness in body and mind.</p>
+<p>Finally, the commentary gives a thorough gloss of “giving rise to,” saying that it means causing, being based upon, being established by, power being derived from, birth, coming about, and manifestation. In these ways, the practitioner’s seclusion brings about joy and happiness.</p>
+<p><em>they accomplish and dwell in the first meditation.</em> C. <span class="ch">得初禪成就遊</span>, P. <em>paṭhamaṁ jhānaṁ upasampajja viharati</em>, S. <em>prathamaṁ dhyānam upasaṁpadya viharati</em>. The commentary on this final portion of the first meditation’s description is mainly devoted to explaining the meaning of meditation (<span class="ch">禪</span>). In S., this word was <em>dhyāna</em>, meaning “thought, reflection, profound meditation, insensibility, dullness.” The verb form was <em>dhyāyati</em>, meaning “meditate deeply, be thoughtful, recollect, call to mind, contemplate, think, imagine, muse” and so forth.</p>
+<p>The early C. translit. of this word was <span class="ch">禪</span> (which sounded like <em>jhān-</em>). It became a borrow word that represented <em>dhyāna</em> (or, Prakrit <em>jāna</em>) and synomynous with Buddhist meditation. The original meaning of <span class="ch">禪</span> was to level a place for a sacrificial ritual, or a royal ceremony to consecrate land. Thus, <span class="ch">禪</span> was chosen both for its connotation of sacredness and its pronunciation.</p>
+<p>Xuanzang, however, chose to translate <em>dhyāna</em> as <span class="ch">靜慮</span>, which lit. meant “quiet deliberation.” This agreed with the S. reading of <em>dhyāna</em> as “meditation” in general.</p>
+<p>Turning to the commentary in the <cite>Dharmaskandha</cite>, it begins by placing this first meditation in the context of the nine successive <em>samādhi</em>s, which begin with the four meditations. This is the beginning of that series of attainments. The word meditation is itself glossed simply as “being in these <em>samādhi</em>s” (<span class="ch">靜慮者，謂在此定中</span>). When a meditation consists of seeking, examining, joy, happiness, and one-pointedness of mind, it is the first meditation.</p>
+<p>The commentary continues by describing the mental activity in this meditation, which makes it clear that one-pointedness didn’t mean a stillness of mind, but rather a continuous subject of contemplation. The commentary says that in this <em>samādhi</em> there are thoughts, mind, and awareness that occur together in the first meditation. This is glossed with a series of words for various mental actitivies such as thinking (<span class="ch">思</span>), forming thoughts (<span class="ch">造心</span>), and mental actions (<span class="ch">意業</span>). The commentary adds that this meditation involves such things as feeling, conception, desire, attention, recollection, <em>samādhi</em>, and wisdom. Thus, it was considered to be focused reflection or deliberation in the absence of desires and the five hindrances. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0482b10" target="_blank">T1537.26.482b10-4a15</a>] [<a href="#ref8">back</a>]</p></li>
+<li id="n9"><p><em>second meditation.</em> C. <span class="ch">覺、觀已息，内靜、一心。無覺、無觀，定生喜樂，得第二禪成就遊</span>, P. <em>vitakkavicārānaṁ vūpasamā ajjhattaṁ sampasādanaṁ cetaso ekodibhāvaṁ avitakkaṁ avicāraṁ samādhijaṁ pītisukhaṁ dutiyaṁ jhānaṁ upasampajja viharati</em>, S. <em>vitarkavicārāṇāṃ vyupaśamād adhyātmasaṃprasādāc cetasa ekotībhāvād avitarkam avicāraṃ samādhijaṃ prītisukhaṃ dvitīyaṃ dhyānam upasaṃpadya viharati</em>.</p>
+<p><em>Samādhi</em> is established in the second meditation when the cognitive distractions caused by noticing and examining thoughts and perceptions stop. Below is a summary of the <cite>Dharmaskandha</cite> commentary on this description.</p>
+<p><em>once noticing and examining things has subsided.</em> C. <span class="ch">覺、觀已息</span>, P. <em>vitakkavicārānaṁ vūpasamā</em>, S. <em>vitarkavicārāṇāṃ vyupaśamād</em>. The commentator refers us to the definitions for <em>vitarka</em> and <em>vicāra</em> given for the first meditation. The term <em>vyupaśama</em> was trans. as <span class="ch">息</span> (“to subside, stop”) here in MĀ and <span class="ch">寂靜</span> (“to quiet, still”) by Xuanzang. The commentary glosses it as meaning: “these two things are quieted, quieted everywhere, quieted nearby, have become empty, and inexistent” (<span class="ch">此二寂靜、遍寂靜、近寂靜、空、無所有</span>). We can surmise that this was considered a natural subsidence or calming, and not a sudden stop to this cognitive activity.</p>
+<p><em>the noble disciple has inner calm and a unified mind</em>. C. <span class="ch">聖弟子⋯内靜、一心</span>, P. <em>ajjhattaṁ sampasādanaṁ cetaso ekodibhāvaṁ</em>, S. <em>adhyātmasaṃprasādāc cetasa ekotībhāvād</em>. The Indic term trans. here as <span class="ch">内靜</span> appears to have varied some between sources. It consists of S. <em>adhyātma</em> (“in oneself”) and <em>saṃprasāda</em> (“serenity, confidence”). However, the second word is <em>sampasādana</em> (“calming, confidence”) in P. sources. The latter seems to be less ambiguous in meaning “calming” rather than “confidence.”</p>
+<p>Xuanzang translates this term <em>adhyātmasaṃprasāda</em> as “inner and even clarity (or purity)” (<span class="ch">內等淨</span>). This reads the prefix <em>saṃ-</em> and <em>prasāda</em> as two separate words. The commentary in the <cite>Dharmaskandha</cite> interprets <em>adhyātmasaṃprasāda</em> in this way: “With the subsidence of seeking and examining, one is confident, of a confident nature, of a directly confident nature, and one accords with what is confirmed. They are loving, of a loving nature, and their mind is clarified and purified. This is generally called inner and even clarity.” (<span class="ch">尋伺寂靜故，諸信信性、現前信性、隨順印可。愛慕愛慕性、心澄心淨。總名內等淨。</span>) This certainly doesn’t agree with a narrow reading of <em>saṃprasāda</em> as “calming,” as it includes the word’s other positive meanings.</p>
+<p>Xuanzang translated S. <em>cetasa ekotībhāva</em> as “mind with a single inclination” (<span class="ch">心一趣性</span>). This was glossed in this way: “Because of the subsidence of seeking and examining things, the mind is not scattered, not confused, and not flowing. It securely rests on a single point, so it’s called mind with a single inclination.” (<span class="ch">尋伺寂靜故，心不散不亂不流。安住一境，故名心一趣性。</span>)</p>
+<p><em>without noticing or examining things, <em>samādhi</em> produces joy and happiness, and they accomplish and dwell in the second meditation.</em> C. <span class="ch">無覺、無觀，定生喜樂，得第二禪成就遊</span>, P. <em>avitakkaṁ avicāraṁ samādhijaṁ pītisukhaṁ dutiyaṁ jhānaṁ upasampajja viharati</em>, S. <em>avitarkam avicāraṃ samādhijaṃ prītisukhaṃ dvitīyaṃ dhyānam upasaṃpadya viharati</em>. In this second stage of meditation, the wandering mind settles down. This allows <em>samādhi</em> to be established, which causes a renewed joy and happiness to arise.</p>
+<p><em>without noticing or examining things</em>. C. <span class="ch">無覺、無觀</span>, P. <em>avitakkaṁ avicāraṁ</em>, S. <em>avitarkam avicāraṃ</em>. The commentary elaborates by saying that in the second meditation seeking and examining is not found, is not actively manifest, and doesn’t exist.</p>
+<p>samādhi<em> produces joy and happiness</em>. C. <span class="ch">定生喜樂</span>, P. <em>samādhijaṃ prītisukhaṃ</em>, S. <em>samādhijaṃ prītisukhaṃ</em>.</p>
+<p>The C. translation of <em>samādhi</em> was <span class="ch">定</span>, which meant “fixed, established, settled, stabilized,” but English translators typically disregard this and translate <span class="ch">定</span> as “concentration.” In Buddhist language, which was not very different from Sanskrit literature in this case, <em>samādhi</em> meant fixing the mind on one subject without distraction, which was considered a purification of mind. It was also described as the merging of the subject and object in the mind. Given this special usage, I’ve chosen not to translate the term to English.</p>
+<p>The commentary in the <cite>Dharmaskandha</cite> describes <em>samādhi</em> as the mind resting, completely resting, resting nearby, and resting securely in someone in whom seeking and examining has subsided. Their mind is not scattered or distracted. It’s collected and fully maintained, and it has a single-pointed nature.</p>
+<p>Joy and happiness are defined in the same way as they were in the first meditation, except that here it is the subsiding of seeking and examining that produces the <em>samādhi</em> that produces this joy and happiness.</p>
+<p>Finally, the commentary defines this second meditation as consisting of four factors: an inner and even clarity, joy, happiness, and a one-pointedness of mind. Interestingly, despite the subsidence of seeking and examining, meditation is defined as involving all the same cognitive activities as were mentioned in the first meditation. It would seem that <em>vitarka</em> and <em>vicāra</em> represented the habitual cognitive distractions that ordinarily impede <em>samādhi</em>. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0484a16" target="_blank">T1537.26.484a16-b17</a>] [<a href="#ref9">back</a>]</p></li>
+<li id="n10"><p><em>third meditation.</em> C. (MĀ) <span class="ch">聖弟子離於喜欲，捨、無求遊。正念、正智而身覺樂，謂聖所說，聖所捨、念、樂住、空。得第三禪成就遊</span>, C. (DhSk) <span class="ch">離喜住捨。正念正知，身受樂，聖說應捨。第三靜慮具足住</span>, C. (T1547) <span class="ch">比丘離喜欲，無求遊。念住、正智，覺受身樂，謂彼聖說、捨、念、安樂遊處。三禪成就遊處</span>, P. <em>pītiyā ca virāgā upekkhako ca viharati sato ca sampajāno, sukhañca kāyena paṭisaṁvedeti, yaṁ taṁ ariyā ācikkhanti: ‘upekkhako satimā sukhavihārī’ti tatiyaṁ jhānaṁ upasampajja viharati. </em>, S. <em>sa tatprārthayamānas taddhetos tatsaṃvartanīyaṃ prīter virāgād upekṣako viharati / smṛtaḥ saṃprajānan sukhaṃ ca kāyena pratisaṃvedayate / yat tad āryā ācakṣate upekṣakaḥ smṛtimāṃ sukhavihārīti tṛtīyaṃ dhyānam upasaṃpadya viharati</em>.</p>
+<p>The description for this third meditation is not as consistent across sources as the first and second have been. Comparing versions of this third meditation found in Pali, Sanskrit, and Chinese sources, it becomes evident that there was some disagreement on the wordings between traditions. I will, therefore, reference another exegetical source’s explanation of terms not found in the <cite>Dharmaskandha</cite> commentary. This second source, T1547, was a commentary on the <cite>Jñānaprasthāna</cite> that had a very similar version of the third meditation that we find translated here in MĀ.</p>
+<p><em>parting with desire for that joy, the noble disciple lives in equanimity and pursues nothing.</em> C. <span class="ch">聖弟子離於喜欲，捨、無求遊</span>, P. <em>pītiyā ca virāgā upekkhako ca viharati</em>, S. <em>prīter virāgād upekṣako viharati</em>. In the <cite>Dharmaskandha</cite> version of this phrase, there is no mention of desire. It explains parting with joy (<span class="ch">離喜</span>) as the mind being freed from being affected by the joy that was felt in the previous two meditations. T1547 lists many different explanations for the presence of the word desire in its version, which matches this one in MĀ. It says that desire refers to any desire for the second meditation, not just for joy. As to why the two are placed together, it suggests that joy can become problematic for the practitioner, and so they move away from it to achieve the third meditation. (cf. T1547.28.489a8-15)</p>
+<p>The remainder of this phrase says that the practitioner lives in two ways: with equanimity (<span class="ch">捨</span>) and without pursuits (<span class="ch">無求遊</span>). However, the <cite>Dharmaskandha</cite> only includes equanimity in its commentary, and T1547 only includes having no pursuits. So, I will combine the two here. Equanimity is explained as the mind becoming even, straightforward, unaroused, and quiet in nature when it parts with joy (<span class="ch">離喜時心平等性、心正直性、心無警覺寂靜住性</span>). Having no pursuits is explained as meaning the pracitioner is happy and doesn’t pursue anything else after attaining the third meditation.</p>
+<p><em>with right mindfulness and right knowledge, they personally experience happiness.</em> C. <span class="ch">正念、正智而身覺樂</span>, P. <em>sato ca sampajāno, sukhañca kāyena paṭisaṁvedeti</em>, S. <em>smṛtaḥ saṃprajānan sukhaṃ ca kāyena pratisaṃvedayate</em>. This passage in our text is very close to that found in the <cite>Dharmaskandha</cite>.</p>
+<p>In the commentary, right mindfulness (<span class="ch">正念</span>) is interpreted in a standard way: thoughts, subsequent thoughts, focused thoughts, and memories that are not forgotten, not lost, not dropped, and not leaked away. Being of an unforgetful nature, the mind has a clear expression. This definition was used for mindfulness in general in other contexts.</p>
+<p>Right knowledge (<span class="ch">正智</span>) is glossed with a definition for wisdom in general, which is described as discernment of the Dharma, understanding, comprehension, intelligence, mastery, investigation, perceptiveness, erudition, wise action, and contemplation. Thus, this, combined with mindfulness, describes a state of clear, wise comprehension and awareness after the excitement of the previous joy dissipates.</p>
+<p>The second half of this phrase reads literally: “body perceives happiness” (<span class="ch">身覺樂</span>). Read purely from a Chinese point of view, <span class="ch">身</span> could very easily be read to mean “person” or “individual,” especially when paired with a psychological verb like <span class="ch">覺</span>. Turning to the P. and S., we see that <span class="ch">身</span> translates <em>kāyena</em>, which is the instrumental singular case of <em>kāya</em>. This would literally mean “bodily” or “with the body.” The word <em>kāya</em>, though, does not necessarily mean a person’s body, but the main part of anything. This point is brought out when we turn to the commentary, which glosses body as meaning the body of mind (<span class="ch">意身</span>). It’s this body of mind that has a feeling of happiness. To ensure the reader understands, the commentary adds that the body of the four primary elements (i.e., the physical body) also becomes comfortable. Thus, our intuition from the Chinese reading is essentially correct. The term effectively meant the “whole person” (mind and body) to the author of the <cite>Dharmaskandha</cite>.</p>
+<p>The commentary in T1547 tells us nothing about the meaning of <em>kāya</em>. It simply says that two kinds of happiness are perceived: serene happiness and felt happiness. The <cite>Dharmaskandha</cite> similarly defines the happiness of this meditation in both mental and physical terms: It says that happiness means the end to physical and mental heaviness and having a gentleness of mind and body.</p>
+<p><em>about which the noble ones teach them the noble’s happy abiding place of detachment and mindfulness</em> C. <span class="ch">謂聖所說，聖所捨、念、樂住、空</span>, C. (T1547) <span class="ch">謂彼聖說、捨、念、安樂遊處</span>, C. (DhSk) <span class="ch">聖說應捨</span>, P. <em>yaṁ taṁ ariyā ācikkhanti: ‘upekkhako satimā sukhavihārī’ti</em>, S. <em>yat tad āryā ācakṣate upekṣakaḥ smṛtimāṃ sukhavihārīti</em>. This section of the third meditation displays some variation between Chinese sources, which I will address as I move through the commentaries.</p>
+<p>The first part of this section reads <span class="ch">謂聖所說</span> in MĀ 2, <span class="ch">謂彼聖說</span> in T1547, and simply <span class="ch">聖說</span> in the <em>Dharmaskandha</em>. Here, I would interpret <span class="ch">謂</span> (“that is to say” or “which is said to be”) as translating an expression like P. <em>yaṁ taṁ</em> and functioning like “which is” in English. The commentaries are silent on this word, given that it’s a straightforward bit of grammar. Nobles (<span class="ch">聖</span>) according to the <em>Dharmaskandha</em> refers to the <em>buddha</em>s and their disciples, and teaching (<span class="ch">說</span>) refers to teaching others according to T1547.</p>
+<p>In T1547, the question is asked, “Why is the teaching of the noble people mentioned only here in the third meditation?” The answer given is that maintaining the third meditation is difficult because of two things. First, attachment to the joy that was experienced in the second meditation can cause the meditator to retreat back to it. Second, the affect of the sublime happiness of the third meditation, which is the highest form of happiness in all of <em>saṃsāra</em>, can cause the practitioner to become attached to the third meditation. For these reasons, the nobles teach the practitioners to maintain right mindfulness and become detached to guard against these two problems.</p>
+<p>Thus, T1547 interprets the remainder of this section to refer to what the nobles teach meditators: To be detached and mindful as they abide in that happy place. This achieves the third stage of meditation. At this point, we should discuss two textual issues regarding the end of this section.</p>
+<p>The first issue is that in MĀ there is confusion among the various official editions of the text about what the fourth character should be. There are three different versions that occur inconsistently throughout MĀ: The one that CBETA editors chose to adopt adds the word emptiness (<span class="ch">空</span>), resulting in the reading: “the noble ones teach the noble’s detachment, mindfulness, happy abiding, and emptiness” (<span class="ch">聖所說，聖所捨、念、樂住、空</span>). The other two readings end the passage instead with <span class="ch">定</span> (<em>samādhi</em>) or <span class="ch">室</span> (“abode”). Because these three characters are all similarly written, the inconsistencies between different passages are probably the result of typos made by copyists, and this calls into question which is correct. When we consult the versions in T1547, we find this reading: <span class="ch">聖說、捨、念、安樂遊處</span>. Here, <span class="ch">遊</span> (“wandering”) translates <em>viharati</em>, which is translated as <span class="ch">住</span> (“abiding”) in MĀ. <span class="ch">處</span> (“abode, place”) would also be equivalent to <span class="ch">室</span> (“room, abode”). This gives us concrete evidence that <span class="ch">室</span> is the correct reading in MĀ. Thus, my translation follows this conclusion.</p>
+<p>The second textual issue is that the <em>Dharmaskandha</em> version of this passage reads <span class="ch">聖說應捨</span> (“noble people teach that one should be detached”). This reading does not mention the mindfulness or happy abiding found in all the other versions of the third meditation. The commentary explains this expression in this way: The noble ones “discern, reveal, and encourage those cultivating <em>samādhi</em> that they should be detached from its happiness and not indulge in it. They should only abide detached with right mindfulness and right knowledge.” Thus, the interpretation is essentially the same as what we find in T1547.</p>
+<p><em>they accomplish and dwell in the third meditation.</em> C. <span class="ch">得第三禪成就遊</span>, P. <em>tatiyaṁ jhānaṁ upasampajja viharati</em>, S. <em>tṛtīyaṃ dhyānam upasaṃpadya viharati</em>. The conclusion of this third stage of meditation is interpreted in the same way as it was for the previous two stages. This third meditation is analyzed as consisting of five factors: Right mindfulness, right knowledge, personally experienced happiness, and one-pointedness of mind. The term meditation is defined in the same way as it was in the other meditations, describing a variety of cognitive activities involved with wisdom. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0484b18" target="_blank">T1537.26.484b18-c16</a> and <a href="https://cbetaonline.dila.edu.tw/zh/T28n1547_p0489a08" target="_blank">T1547.28.489a8-b6</a>] [<a href="#ref10">back</a>]</p></li>
+<li id="n11"><p><em>fourth meditation.</em> C. <span class="ch">聖弟子樂滅，苦滅。喜、憂本已滅，不苦、不樂。捨、念、清淨，得第四禪成就遊</span>, P. <em>Sukhassa ca pahānā dukkhassa ca pahānā pubbeva somanassadomanassānaṁ atthaṅgamā adukkhamasukhaṁ upekkhāsatipārisuddhiṁ catutthaṁ jhānaṁ upasampajja viharati.</em>, S. <em>sa tatprārthayamānas taddhetos tatsaṃvartanīyaṃ sukhasya ca prahāṇād duḥkhasya ca prahāṇāt pūrvam eva ca saumanasyadaurmanasyayor astagamād aduḥkhāsukhaṃ upekṣāsmṛtipariśuddhaṃ caturthaṃ dhyānam upasaṃpadya viharati</em>. This fourth stage of meditation is the point at which the meditator has achieved an undisturbed <em>samādhi</em> after having dispensed with the joy and happiness that the initial entry had created. Detached from those positive reactions to it, they achieve a stable and clear <em>samādhi</em>.</p>
+<p>The descriptions of this fourth meditation are the same across different sources, setting aside the usual translation issues, so here I will cover mainly the <em>Dharmaskandha</em> commentary, turning to T1547 only where it adds more information.</p>
+<p><em>the noble disciple’s pleasure ceases and their pain ceases.</em> C. <span class="ch">聖弟子樂滅，苦滅</span>, P. <em>sukhassa ca pahānā dukkhassa ca pahānā</em>, S. <em>sukhasya ca prahāṇād duḥkhasya ca prahāṇāt</em>. The <em>Dharmaskandha</em> defines pleasure (<span class="ch">樂</span>) as physical and mental pleasure that arises from pleasant contact as well as the happiness experienced in the third meditation. It defines pain (<span class="ch">苦</span>) here as physical pain that arises from painful contact. This pleasure and pain are fully known to have ended. Both are far away, subdued, subsided, and disappeared.</p>
+<p>In T1547, the question is raised as to how there could be painful feelings after the bonds of the desire realm and the happiness of the third stage of meditation are gone. The answer given is that pain had already ceased prior to entering the fourth meditation. What the description is saying here is that the meditator becomes aware that they have achieved a cessation of both pleasure and pain, but they did not both cease at the same time. Other explanations are also cited. One is that the meditator realizes that the final end of pleasure and pain will happen in the future. Another explanation is that the happiness of the third meditation is painful in the sense that it is impermanent. A <em>sūtra</em> is quoted in which the Buddha tells the monks that pleasant feelings should be regarded as thorns and neutral feelings as poisonous snakes. Another <em>sūtra</em> passage is cited saying that breathing in and out is considered to be the most painful thing by a noble person, rather than pains of hell that are considered the worst by ordinary people. This last point no doubt alludes to the cessation of breathing that’s often associated with the fourth meditation. We can see from this discussion in T1547 that this part of the description was understood in a variety of ways.</p>
+<p><em>their past joy and sorrow having ceased, they feel neither pain nor pleasure.</em> C. <span class="ch">喜、憂本已滅，不苦、不樂</span>, P. <em>pubbeva somanassadomanassānaṁ atthaṅgamā adukkhamasukhaṁ</em>, S. <em>pūrvam eva ca saumanasyadaurmanasyayor astagamād aduḥkhāsukhaṃ</em>. The <em>Dharmaskandha</em> commentary simply defines joy and sorrow as mental feelings that arise from joyful or sorrowful contact. These two things have previously subsided. The commentator then says that sorrow was ended upon entering the first meditation, pain ended upon entering the second meditation, and joy ended upon entering the third meditation. Now, upon entering the fourth meditation, pleasure, pain, joy, and sorrow have all ended. This agrees with the point made earlier in T1547. The <em>Dharmaskandha</em> commentary concludes by saying that painful and pleasant feelings have ended, leaving only neutral feelings in the fourth meditation. The commentary on this passage in T1547 specifies that it was the removal of desire realm desires that ended sorrow, and the removal of second meditation desires that ended joy.</p>
+<p><em>with the purification of their equanimity and mindfulness, they accomplish and dwell in the fourth meditation.</em> C. <span class="ch">捨、念、清淨，得第四禪成就遊</span>, P. <em>upekkhāsatipārisuddhiṁ catutthaṁ jhānaṁ upasampajja viharati</em>, S. <em>upekṣāsmṛtipariśuddhaṃ caturthaṃ dhyānam upasaṃpadya viharati</em>. The <em>Dharmaskandha</em> commentary defines equanimity (<span class="ch">捨</span>) and mindfulness (<span class="ch">念</span>) in the same way as was done in the third meditation. It then states that purification (<span class="ch">清淨</span>) here refers to the purification of the meditator’s equanimity and mindfulness as a result of stopping pleasure, pain, joy, sorrow, seeking, and investigation.</p>
+<p>The commentary in T1547 says that equanimity refers to the meditator having stopped breathing and not desiring to pursue any more thoughts. It then says that purification of mindfulness refers to the purity of their mindfulness of eight subjects. These eight subjects aren’t stated there, but the same expression is used to refer to the eight liberations in a later chapter of T1547.</p>
+<p>There is also a discussion in T1547 that explains the essential quality of this fourth meditation: There are no more disturbances to its mindfulness. The first meditation was disturbed by noticing and investigating things, which is like a flame being disturbed. The second meditation was disturbed by joy, which is like a body of water being disturbed by waves produced by wind blowing on it. The third meditation was disturbed by breathing, which is like a wind blowing. This fourth stage of meditation doesn’t have any disturbances. This is why the <em>samādhi</em> achieved at this stage is called imperturbable.</p>
+<p>The <em>Dharmaskandha</em> reiterates the cognitive activity associated with wisdom and understanding that occurs in <em>samādhi</em>. It defines this fourth stage of meditation as consisting of four factors: neutral feeling, equanimity, mindfulness, and one-pointedness of mind. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0484c17" target="_blank">T1537.26.484c17-485a25</a> and <a href="https://cbetaonline.dila.edu.tw/zh/T28n1547_p0489b06" target="_blank">T1547.28.489b6-c22</a>] [<a href="#ref11">back</a>]</p></li>
+<li id="n12"><p><em>once the noble disciple’s contaminants have ended, their mind is liberated, and their wisdom is liberated. In the present life, they accomplish and dwell in their own knowledge, awakening, and direct experience</em>. C. <span class="ch">聖弟子諸漏已盡，心解脱、慧解脱。於現法中，自知、自覺自作證成就遊</span>, P. <em>bhikkhu āsavānaṁ khayā anāsavaṁ cetovimuttiṁ paññāvimuttiṁ diṭṭheva dhamme sayaṁ abhiññā sacchikatvā upasampajja viharati</em>, S. <em>āsravāṇāṃ kṣayād anāsravāṃ cetovimuktiṃ prajñāvimuktiṃ dṛṣṭa eva dharme svayam abhijñāya sākṣīkṛtvopasaṃpadya pravedayati kṣīṇā me jātir uṣitaṃ brahmacaryaṃ kṛtaṃ karaṇīyaṃ nāparam asmād bhavaṃ prajānāmi</em>.</p>
+<p>This first half of the C. passage is nearly identical to the P. parallel found in other sources. In AN 7.69, it’s abbreviated, but the full P. passage can be found in other <em>sutta</em>s. Here, <span class="ch">諸漏已盡</span> = <em>āsavānaṁ khayā</em>, <span class="ch">心解脱、慧解脱</span> = <em>cetovimuttiṁ paññāvimuttiṁ</em>, <span class="ch">於現法中</span> = <em>diṭṭheva dhamme</em>, <span class="ch">自知</span> = <em>sayaṁ abhiññā</em>, <span class="ch">自作證</span> = <em>sacchikatvā</em>, and <span class="ch">成就遊</span> = <em>upasampajja viharati</em>. The only difference is the addition of the term <span class="ch">自覺</span>. P. <em>abhisambujjhati abhisameti</em> corresponds to <span class="ch">自知、自覺</span> in the parallel to SN 22.94. It’s possible that one of these synonyms was inserted into MĀ’s version of this often repeated description of a pracitioner realizing they are an <em>arhat</em>.</p>
+<p>The <cite>Dharmaskandha</cite> doesn’t cover this standard passage, but we do find some commentary for its primary terms offered in other Abhidharma texts. The ending of the contaminants (S. <em>āsrava</em>) is synonymous with becoming an <em>arhat</em> and being assured to no further rebirths in the future. This entire passage was the standardized way of describing this.</p>
+<p>There are three kinds of contaminants ended by an <em>arhat</em>: Those of desire, existence, and ignorance. The <cite>Saṅgītiparyāya</cite> (cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1536_p0383a04" target="_blank">T1536.26.383a4</a>) defines these contaminants in this way: The contaminants of desire are the ties, bonds, fetters, tendencies, secondary afflictions, and hindrances that are tied to the desire realm, with the exception of ignorance. The contaminants of existence are the same set of detrimental things that are tied to the form and formless realms. Again, the exception is ignorance tied to those realms. The contaminant of ignorance is the lack of knowledge about the three realms. Taken together, these three types of contaminants represent the defiled mind.</p>
+<p>The <cite>Saṅgītiparyāya</cite> (cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1536_p0376a02" target="_blank">T1536.26.376a2</a>) also offers us an interpretation of the two kinds of liberation. It says that one’s mind being liberated (<span class="ch">心解脱</span>) refers to the conviction (S. <em>adhimokṣa</em>) that’s associated with the good root of having no greed. One’s wisdom being liberated refers to the conviction that’s associated with the goot root of having no delusion. The <em>Mahāvibhāṣā</em> elaborates on this further: The good roots of having no greed and no delusion are the solutions for greed and delusion. Being freed from greed frees one’s mind, and being freed from delusion frees one’s wisdom (cf. <a href="https://cbetaonline.dila.edu.tw/zh/T27n1545_p0758a05" target="_blank">T1545.27.758a5</a>).</p>
+<p><em>They truly know: ‘Birth has been ended, the religious practice has been established, the task has been accomplished, and I will not again be subject to existence.’</em> C. <span class="ch">『生已盡，梵行已立，所作已辦。不更受有，』知如眞。</span>, P. <em>‘Khīṇā jāti, vusitaṁ brahmacariyaṁ, kataṁ karaṇīyaṁ, nāparaṁ itthattāyā’ti pajānāti. </em>, S. <em>kṣīṇā me jātir uṣitaṃ brahmacaryaṃ kṛtaṃ karaṇīyaṃ nāparam asmād bhavaṃ prajānāmi</em>. This second half of the C. passage is found in P. sources in a nearly identical form, except for the ending. <span class="ch">生已盡</span> = <em>khīṇā jāti</em>, <span class="ch">梵行已立</span> = <em>vusitaṁ brahmacariyaṁ</em>, and <span class="ch">所作已辦</span> = <em>kṛtaṃ karaṇīyaṃ</em>. However, <span class="ch">不更受有</span> only approximates the meaning of <em>nāparaṁ itthattāyā</em>, which lit. means “no more being here.” Specifically, the last word <span class="ch">有</span> would mostly likely trans. <em>bhava</em> (“existence”).</p>
+<p>S. sources preserve at least a couple different conclusions to this passage: One reads <em>asmād bhavaṃ</em> (“my existence”) and another <em>ithyātvam</em> (“being here”). They also sometimes match our MĀ passage’s <span class="ch">知如眞</span> with <em>yathābhūtaṃ prajānāti</em>, where P. sources have a single verb like <em>pajānāti</em> or <em>abbhaññāsi</em>. We can see from this brief survey that the last two parts of the passage varied somewhat between textual traditions.</p>
+<p>In terms of the Sarvāstivāda interpretation of this passage, we can turn to a section of the <cite>Jñānaprasthāna</cite>. The text depicts a practitioner thinking this about ending birth, establishing the practice, and accomplishing the task: “This is the path; this is the practice. Based on this path and this practice, I have fully known suffering, forever ended its formation, realized its cessation, and cultivated the path.” This is clearly criticized as a form of arrogance in the commentary, but it shows the basic meaning that the passage implied to the author. [<a href="#ref12">back</a>]</p></li>
+<li id="n13"><p><em>arhat</em>. C. <span class="ch">阿羅訶</span> (EMC. <em>•a-la-ha</em> = G. <em>araha</em>), P. <em>arahant</em>, S. <em>arhat</em>. The title S. <em>arhat</em> lit. meant “worthy, venerable, deserving [of alms],” and was sometimes interpreted as “unattached one” in C. translations. It was a title used by Indian ascetics (Buddhists and Jains) to mean a person fully liberated in this life, and it was one of the most common titles given to the Buddha (along with Bhagavān, Tathāgata, and Sugata). Here, it was used to refer to a fully liberated disciple who was destined for <em>parinirvāṇa</em>. I’ve left the term untranslated as a title of special religious significance. [<a href="#ref13">back</a>]</p></li>
+</ol>
+<hr/>
+
+<p class="translator">Translator: Charles Patton</p>
+<p class='revised'>Last Revised: 14 October 2024</p>
+
+<hr/>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/ma/ma1.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/ma/ma3.html">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 349 — The Exemplary Tale of Śrīsena — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 349 — The Exemplary Tale of Śrīsena</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 349 — The Exemplary Tale of Śrīsena        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Śrīsenāvadāna          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Lokākṣi Translator Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Exemplary Tale of Śrīsena</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.31.b</span> Homage to the Three Jewels!</p><br /><p>When they were at Śrāvastī, the Blessed One said to the monks, “Monks, I know the fruits of generosity. I also know how the fruits of generosity ripen. What if, like me, sentient beings too knew the fruits of generosity? What if, like me, they knew how the fruits of generosity ripen? Were this so and were someone to ask them for their last mouthful, the last remaining mouthful of their food, they would not eat it so long as they had not offered it or shared it. The growth of miserliness would not continue to completely entangle their minds. I know the fruits of generosity. I also know how the fruits of generosity ripen. But unlike me, sentient beings do not know the fruits of generosity. Unlike me, they do not know how the fruits of generosity ripen. This ignorance is why their minds grasp at everything, why they are not generous, and why they eat without generosity. The growth of miserliness continues to completely entangle their minds.” <span class="tei-ref">F.32.a</span></p><p>This is what the Blessed One said. After the Well-Gone One had said this, the Teacher<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-28" href="#tei-note-UT22084-076-003-28">[1]</a></sup> also said:</p><div class="tei-verse"><div class="tei-line">“As the great sages have said,</div><div class="tei-line">The ripening of sharing is a matter of great import.</div></div><div class="tei-verse"><div class="tei-line">“Thus, if sentient beings knew about this,</div><div class="tei-line">They would not eat so long as they could offer.</div><div class="tei-line">They would not be miserly,</div><div class="tei-line">And never would they give rise to grasping minds.</div></div><div class="tei-verse"><div class="tei-line">“But ignorance obscures immature beings.</div><div class="tei-line">Since they do not know, their minds are grasping.</div><div class="tei-line">Thus they always eat without first offering,</div><div class="tei-line">They become miserly, and their minds are overcome.”</div></div><p>When the Blessed One delivered this discourse, the earth shook in six different ways and light rays shone from the Blessed One’s body. When the monks saw the Blessed One’s inconceivable and marvelous miracles, they were amazed and inquired of the Buddha, the Blessed One, “Honorable One, the thus-gone, worthy, perfect Buddha would not display such marvelous miracles without causes or conditions. That being so, Honorable One, what are the causes and conditions of such marvelous miracles?”</p><p>“Monks, would you like to hear what caused a miracle like this?” asked the Blessed One. The monks requested just this. Then the Blessed One replied, “Monks, if this is so, listen carefully, remember my words, and I will tell you.</p><p>“Monks, at one time there was a royal estate called Ariṣṭa.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-37" href="#tei-note-UT22084-076-003-37">[2]</a></sup> It was wealthy, vast, joyous, with good harvests, and full of people. It was twelve leagues long and seven leagues wide.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-38" href="#tei-note-UT22084-076-003-38">[3]</a></sup> It was partitioned into quadrants. Parasols, victory banners, and flags were erected over its archways.</p><p>“At this royal estate lived a king named Śrīsena, <span class="tei-ref">F.32.b</span> who was a universal monarch who ruled through force. He had a lovely physique, and was beautiful, pleasing to the eye, and had a good complexion. He possessed the best attributes in abundance. He could remember his past lives naturally, and he was righteous. He was a Dharma king who ruled Jambudvīpa through righteousness.</p><p>“King Śrīsena’s power caused the plants to blossom and bear fruit continuously, the gods to make the rains fall at the right times, and the harvests to be exceedingly abundant. The beings there were free from illness and they all maintained a loving attitude toward each other.</p><p>“The king’s noble queen was called Jayaprabhā. She had a lovely figure and was beautiful and pleasing to the eye. She had all her major and minor body parts. She was the perfect daughter of that land, and King Śrīsena loved, adored, and cherished her.</p><p>“Monks, King Śrīsena levied no taxes on any of Jambudvīpa’s people; he collected neither road tolls nor boat fares. The harvests made all the people wealthy, and they were peaceful. Families<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-44" href="#tei-note-UT22084-076-003-44">[4]</a></sup> filled the lands, cities, towns, countryside, and the king’s estate.</p><p>“Monks, King Śrīsena was a bodhisattva, so he gave away everything. He let go of everything completely—indeed, he let go of everything completely and without attachment. Absorbed in great <em>giving</em>, he even gave away his own flesh. There was nothing that he would not give away or let go.</p><p>“Monks, at the eastern edge of the city, at Ariṣṭa Estate, King Śrīsena created a site for gift offerings from which he distributed gifts and performed meritorious deeds. He distributed gifts and performed meritorious deeds at the city’s southern, western, and northern gates as well, and he distributed gifts and performed meritorious deeds at its intersections. He would, for example, give food to the hungry and drink to the thirsty. He distributed gifts and performed meritorious deeds by giving food, drink, lamps, flower garlands, <span class="tei-ref">F.33.a</span> scents, perfumes, clothes, blankets, mattresses, back supports, shelters, images, horse-carts, elephants, horses, ornaments, golden containers filled with silver dust, silver containers filled with gold dust, oxen with golden horns and silver hoofs, bronze milking containers that were twice covered with cloth, and maidens who were adorned with various ornaments.</p><p>“Monks, King Śrīsena gave gifts until everyone in Jambudvīpa was affluent, prosperous, and deeply contented. At that time, 960 million people lived in the city where the king’s royal estate, Ariṣṭa, was located. King Śrīsena was loved and adored by all. What was more, when men and women saw him, they experienced insatiable delight.</p><p>“Monks, King Śrīsena had twelve thousand ministers. The supreme one among them was called Mahāmati. He was learned, bright, wise, his charisma affected all, and he took great care<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-49" href="#tei-note-UT22084-076-003-49">[5]</a></sup> of the king. King Śrīsena loved, adored, and esteemed him. Mahāmati would never tire of gazing upon the king’s form, his complexion, his features, or his shape. He could not be separated from the king for even a moment.</p><p>“Monks, King Śrīsena acquainted all of Jambudvīpa’s people with the path of the ten virtuous actions. He said to them, ‘People of Jambudvīpa, you must follow the path of the ten virtuous actions. You must adopt the path of the ten virtuous actions correctly.’ Monks, this is how King Śrīsena instructed his subjects. Thus, during the reign of this universal monarch, when people in Jambudvīpa would die and their bodies would perish, <span class="tei-ref">F.33.b</span> they were reborn in one of the six god realms. Most were born in the Heaven of the Thirty-Three, and the divine city Darśanīya was filled with crowds of gods from the Heaven of the Thirty-Three. When it became too crowded and there was not enough space in the divine city, the gods dwelled on the outskirts of Darśanīya at the Pārijāta and in groves such as Caitraratha, Nandanavana, and so forth. Following this influx, the gods who had been born earlier in the Heaven of the Thirty-Three viewed the perfect accomplishments of the newcomers and were overjoyed. They spoke to Śakra, <em>lord</em> of the gods, saying, ‘Kauśika, how is it that Mount Sumeru is filled with gods, and the divine assembly has increased, while the demigods’ assembly has decreased? We are beholding something marvelous.’</p><p>“After hearing about this from the gods, Śakra, <em>lord</em> of the gods, inspected Mount Sumeru, and as soon as he did, he too saw that Mount Sumeru was teeming with multitudes of gods. Seeing this, he thought, ‘What causes and conditions led this many sentient beings to be born here?’ With this in mind, he began to inspect all of Jambudvīpa, and as soon as he did, he saw that it was a result of King Śrīsena’s influence. Then, with great joy, Śakra, <em>lord</em> of the gods, said to the gods of the Heaven of the Thirty-Three:</p><div class="tei-verse"><div class="tei-line">“ ‘Friends, you must listen!</div><div class="tei-line">There is a king, a ruler of Jambudvīpa,</div><div class="tei-line">Who is renowned as Śrīsena.</div><div class="tei-line">He is always inclined toward the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“ ‘This great king lives by the Dharma.</div><div class="tei-line">In the beginning, middle, and end, he is always virtuous.</div><div class="tei-line">He delights in helping all sentient beings</div><div class="tei-line">And, principally, he continually brings humans to virtue.</div></div><div class="tei-verse"><div class="tei-line">“ ‘He is constantly compassionate,</div><div class="tei-line">He gives away his external possessions,</div><div class="tei-line">And to those who ask for his flesh,</div><div class="tei-line">He gives this away too, with love.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Whether that which is asked for is external or internal,</div><div class="tei-line">Without any sense of grasping</div><div class="tei-line">He bestows everything with kindness</div><div class="tei-line">And works diligently to achieve awakening.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Like refined gold, <span class="tei-ref">F.34.a</span></div><div class="tei-line">He accomplishes the wishes of all beings.</div><div class="tei-line">Through the encouragement of this king</div><div class="tei-line">Everyone is inspired to pursue higher rebirths.</div><div class="tei-line"></div></div><div class="tei-verse"><div class="tei-line">“ ‘Because of the influence</div><div class="tei-line">Of this great, intelligent king</div><div class="tei-line">No one will be born in hell,</div><div class="tei-line">In the preta realm, or the animal realm.</div></div><div class="tei-verse"><div class="tei-line">“ ‘This king’s resplendent radiance</div><div class="tei-line">Illuminates their migrations.</div><div class="tei-line">They take joy in giving and discipline,</div><div class="tei-line">And they play joyfully in Nandanavana.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Those who follow Śrīsena</div><div class="tei-line">Are respectful and live</div><div class="tei-line">In pleasurable divine worlds,</div><div class="tei-line">Where they shine with joy.’</div></div><p>“When the gods of the Heaven of the Thirty-Three heard these words, their minds were overjoyed, and they celebrated. With such joy in their minds, they exclaimed, ‘This king aspires to fulfill his wish to give away his major and minor body parts—this is marvelous! Yet it is difficult to give away one’s major and minor body parts. Since there is no one as dear as oneself, he will not be able to give away his major and minor body parts without concern for his own suffering. This act of giving is not something that one can simply infer.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-62" href="#tei-note-UT22084-076-003-62">[6]</a></sup></p><p>“ ‘Friends,’ replied Śakra, ‘do not say these things! This king is powerful. He has magical powers and intense compassion. This is why he can give away even his own flesh. There is nothing that he cannot relinquish.’</p><p>“Shortly thereafter, on another occasion, Śrīsena’s queen, Jayaprabhā, went to sleep on her large mattress, and just before dawn she dreamt four dreams. First, she dreamt that Śrīsena carried her down off the mattress and then lifted her back onto it. Then he gouged out his own eyes, but they were later restored. He chopped off his right arm, which fell to the ground, but it was also restored. Finally, she dreamt of a nonhuman that resembled a stone grinder, made from silver. It suddenly pulled off King Śrīsena’s left arm. After it was thus stolen, however, that too was restored. Then she woke up. Filled with fear, she gasped and the hairs on her body stood on end. She thought, ‘Either the lord or I <span class="tei-ref">F.34.b</span> will experience nothing but suffering.’ She told King Śrīsena of her dreams. He had been trained to interpret dreams, so he thought, ‘As she has seen in her dream, someone will soon come to ask for my wife.’ But he comforted her and said, ‘Do not be afraid—what is the point of thinking about illusion-like dreams? Do you not see Śrīsena sitting on his mattress? My eyes are as they were, and my right and left arms are intact.’ The queen sat silently.</p><p>“The second night after this, the supreme one among the ministers, the one named Mahāmati, dreamt a dream in which King Śrīsena’s mansion, which was built of various precious stones, collapsed. The precious stones were then taken away by fearful-looking demons. Later, however, he dreamt that the mansion was rebuilt. He awoke terrified and distressed, with the hairs on his body standing on end. He thought, ‘Could someone come to ask for Lord Śrīsena’s body? Could they ask for the body of he who pleases and is affectionate toward all sentient beings, the lord who offers everything, who gives everything completely, he who gives without attachment? There is nothing that he would not give to lesser, blind, hungry, suffering, and deprived beings. I will not speak of my dream to King Śrīsena. He would be too delighted about it!’</p><p>“He then called a soothsayer and commanded him, ‘Wise one, you must foretell the significance of the dream that I had.’ The soothsayer said, ‘According to the dream, someone will come soon to ask for the lord’s body.’ When he heard the significance of the dream, the great minister Mahāmati was struck by deep sorrow. His eyes filled with tears, he rested his hand on his cheek, and <span class="tei-ref">F.35.a</span> he sat depressed, pondering how the force of impermanence had arrived too soon for the loving and compassionate King Śrīsena, he who had been so affectionate toward all sentient beings and possessed so many great qualities.</p><p>“Then, on the third night, twelve thousand ministers dreamt five dreams. They dreamt that ten thousand beings robbed King Śrīsena of his parasol and crown, but they were then handed back to him; that everyone’s heads were chopped off, but then restored; that the eyes of every human in Jambudvīpa were gouged out, but then restored; that the hands and feet of every human in Jambudvīpa were chopped off, but then restored; and that King Śrīsena attempted to ascend the lion throne again after he had descended from it. The terrified, distressed, and despairing ministers thought, ‘Will the force of impermanence come for King Śrīsena? Will it be the end of this protector of a vast land, he who is so loving and compassionate, he who brings joy and rouses affection in all sentient beings? Will we live without the king? Will we be separated? Will we be parted? Will we be alone? Will Jambudvīpa lose its protector and defender?’</p><p>“The ministers then called for soothsayers to ask about the dreams’ significance. After a while, the soothsayers foretold that things would be just as they had dreamt.</p><p>“After hearing about the dreams, the populace of Ariṣṭa city was wretched and started to weep aloud. Word spread from person to person, and soon everyone in Jambudvīpa wailed because of their suffering and intense grief. King Śrīsena heard of this and thought, ‘How pleasing and delightful that someone would ask for my body!’ Thus, he made an announcement: ‘Wise ones, people of Jambudvīpa, engage in virtue with joy and calmness. What is the point of thinking about illusion-like dreams?’ <span class="tei-ref">F.35.b</span> When the people of the world heard King Śrīsena’s announcement, they were relieved.</p><p>“In those days, five hundred sages lived on a mountain about two miles<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-71" href="#tei-note-UT22084-076-003-71">[7]</a></sup> north of the royal estate of Ariṣṭa. A short time after the dreams, one of the sages came to the king’s estate to do the sages’ bidding. At that time, King Śrīsena and Queen Jayaprabhā were strolling in the garden. The sage exclaimed, ‘May the king be victorious and live for a long time!’ The sage also saw Queen Jayaprabhā adorned with ornaments. In a past life the queen had been his wife. The influence of this previous desire and their previous relationship caused him to have inappropriate thoughts. Thinking these inappropriate thoughts, he walked along the path, completed his chores in Ariṣṭa city, and went back to his dwelling.</p><p>“A little while later, on another occasion, a student of this same sage, a brahmin boy, completed his recitation of the Vedas, touched his preceptor’s feet, and asked in gratitude, ‘Preceptor, what wealth can I offer you?’</p><p>“The sage replied, ‘Son, if you wish, go ask for King Śrīsena’s supreme queen, Jayaprabhā. Give her to me as your offering, a gift for your preceptor, an homage to your guru.’</p><p>“When this was said, the brahmin boy was overwhelmed by great sorrow and acute despair; he was like a deer whose vital organ has been pierced. He thought, ‘This situation will only come about with difficulty, and it will be no easy task to acquire her. How could a troubled brahmin like me ask the king to give him Queen Jayaprabhā? Why am I being asked to get something that is unattainable? <span class="tei-ref">F.36.a</span> The preceptor clearly wants to place a curse on me.’</p><p>“The change in the boy’s facial expression allowed the sage to realize his thoughts, and the sage said, ‘Son, do not be afraid. Why are you so depressed? The king is a great being. He gives away everything. He lets go of everything. He lets go of everything completely and without attachment. He would even give away his own flesh. There is nothing that he would not relinquish in this way. Therefore, son, do not despair; the king will give you his supreme queen.’</p><p>“Then the boy thought, ‘If I do not go, I will be cursed.’ And out of fear of this curse, he said to the sage, ‘Preceptor, if that is so, I will go.’ After touching the sage’s feet, he traveled to the king’s estate, Ariṣṭa.</p><p>“Having applied dust to his body, wearing tree-bark cloth, and holding a staff and a little vase in his hands, the boy went to the site where King Śrīsena was and exclaimed, ‘May the king be victorious and may his life be long!’ Then he thought, ‘Should I ask? Or will he give her to me without my having to ask? Or will he not give her to me? Will my wishes be fulfilled or not?’ And he stood in front of the king with an unsettled look on his face, castigating himself, not speaking.</p><p>“Thinking that the brahmin boy had come to beg something from him, King Śrīsena asked him, ‘Brahmin, what is it that you want? Today, I will fulfill your wishes completely.’</p><p>When the king said this, the brahmin boy gained confidence and replied to the bodhisattva, ‘This is good. Lord, on a certain mountain my preceptor lives with his companions; they are five hundred sages who recite the Vedas. I have completed my Vedic studies with him. Great King, through your compassion give me Queen Jayaprabhā, and I will offer her to my preceptor as a gift, <span class="tei-ref">F.36.b</span> an homage to my guru.’</p><p>“When these words were spoken, King Śrīsena was distraught. He loved the queen. ‘If Queen Jayaprabhā were separated from me,’ he thought, ‘will we survive?’ For a while, all the members of the king’s and queen’s retinues were as quiet as the oceans’ depths. Then it was as if a great pain were piercing their vital organs. ‘What is this?’ they cried out. ‘What is this?’</p><p>“The bodhisattva remained silent, in thought. ‘Unsurpassed and perfect awakening cannot be attained without giving up sons, wife, and so forth,’ he pondered. ‘Therefore, I must happily give my wife to this brahmin.’ This thought lifted him out of his sadness at losing a loved one. He descended from the lion throne immediately, and keeping in mind the aspirational mind of awakening, he took the goddess-like, intensely beautiful Queen Jayaprabhā with his left hand and held a golden vase in his right. The queen felt great pain at the prospect of being separated from her husband and sighed heavily. Her eyes filled with tears and her face dropped. She suffered as if she had fallen into a deep, dark abyss.</p><p>“ ‘Come here, come here great brahmin,’ the king said to the brahmin boy:</p><div class="tei-verse"><div class="tei-line">“ ‘Handsome, fine brahmin,</div><div class="tei-line">You may take my beloved wife.</div><div class="tei-line">May this act of generosity swiftly bring</div><div class="tei-line">The attainment of true awakening.’</div></div><p>“Then, maintaining the mind of awakening, he poured water onto the brahmin’s palm.</p><p>“Monks, at the very instant that King Śrīsena poured the water, the earth shook in six different ways. Having witnessed how a bodhisattva gives, a great act of <em>giving</em>, an extremely difficult act of <em>giving</em>, the brahmin boy was utterly seized with wonder. The act even caused hundreds of thousands of sky-dwelling gods to murmur in amazement. Instantly, meteors fell, blazing in all directions, and the celestial gods beat their drums. <span class="tei-ref">F.37.a</span></p><p>“Fearing that the king might change his mind, the brahmin boy praised the bodhisattva, uttered some prayers for his prosperity, and left quickly for home, taking Queen Jayaprabhā with him. He then gave the queen to his teacher. For Queen Jayaprabhā, being separated from her beloved was like being a fish taken out of water. She was wretched, but she knew that thinking about or following the bodhisattva would be in vain, like wandering from shadows into pitch darkness. Therefore, she merely lamented, ‘Alas, Great King. Alas, Great King.’ Her sadness even caused her to refuse food.</p><p>“As the queen suffered, the shaking caused by King Śrīsena’s deed rattled even Śakra’s abode. The gods spontaneously know what happens below them but not what happens above them. Śakra, <em>lord</em> of the gods, therefore wondered:</p><div class="tei-verse"><div class="tei-line">“ ‘The earth quakes with a tremendous sound.</div><div class="tei-line">Whose power is behind this sign?</div><div class="tei-line">What kind of power is it?</div><div class="tei-line">I must know this very clearly.’</div></div><p>“He began to search all over Jambudvīpa. After a while, he discovered that the shaking was a result of the bodhisattva’s extremely difficult act. When he understood this, he was awed. To the gods of the Heaven of the Thirty-Three, he said, ‘Consider the incredible, amazing act King Śrīsena has performed. Who can give away such a loving, beautiful, and dear wife without any hesitation, as if they were <em>giving</em> away straw? Friends, through this act we know the great being will give away even his major and minor body parts, without hesitation.’</p><p>“ ‘Kauśika,’ replied the gods, ‘we believe that he can give away his sons and daughters. But we do not believe he can give away his major and minor body parts. It is too difficult.’</p><p>“Śakra, <em>lord</em> of the gods, responded, ‘Friends, leave it be, leave it be. Do not measure the ocean against a drop of water so small it rests on the tip of a hair strand. <span class="tei-ref">F.37.b</span> Do not measure space with your arms. Do not compare the light of a firefly to the sun. Do not compare the size of a seed to Mount Sumeru. I will produce evidence for you all.’</p><p>“At dawn, Śakra, <em>lord</em> of the gods, spoke again to the gods of the Heaven of the Thirty-Three. ‘Look, friends! Now you shall understand!’ That morning, he and four other gods from the Heaven of the Thirty-Three descended to earth, alighting in a forest near Ariṣṭa city. Śakra transformed himself into an old brahmin whose body had been hacked away below the navel, as if by a saw. Blood gushed from all sides of the wound. The other four gods of the Heaven of the Thirty-Three emanated as this old brahmin’s sons. They lifted him onto a stretcher while wailing wretchedly at the agony of losing their father. They left the forest at sunrise, traveling toward the city, intending to claim that the old brahmin’s lower body had been eaten by a tiger. They arrived at the city gate quickly. Hawks, gulls, and vultures hovered in the sky above them, drawn by the smell of the old brahmin’s blood. Dogs and foxes trailed behind them on the ground.</p><p>“The old brahmin looked pitiful. His plight moved the men and women who saw him. Some asked each other, ‘Friends, how is the old brahmin still alive when he has no lower body? How are his organs intact?’ Others speculated, ‘He must be a nonhuman demon who has come to devour us. How else would someone survive without his lower body?’ When the fainthearted heard this, they ran away out of fear. But one brave man thought, ‘He must be a demon. If he isn’t a demon, how could he appear to have his faculties despite his imperiled state? <span class="tei-ref">F.38.a</span> I will ask him if he is a nonhuman or a demon. It will be difficult for him to speak, but if he does, that would be astonishing.’ A while later, one of the others who saw the spectacle asked, ‘Brahmin! Are you a human or a demon? Who cut off the lower half of your body and left you in this state? Where did you come from?’</p><p>“Then Śakra, <em>lord</em> of the gods, in the form of the old brahmin, lying on the stretcher and acting as if he were in tremendous pain, replied in verse:</p><div class="tei-verse"><div class="tei-line">“ ‘Man of Śibi, be not afraid.</div><div class="tei-line">I am a brahmin, not a demon.</div><div class="tei-line">Because of past deeds,</div><div class="tei-line">I have ended up in this state.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Were I to explain everything,</div><div class="tei-line">My time would run out.</div><div class="tei-line">The <em>Lord</em> of Death is coming quickly.</div><div class="tei-line">He will snatch my life away.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Please report all this</div><div class="tei-line">To your Dharma king.</div><div class="tei-line">It is certain that I must experience</div><div class="tei-line">The fruits of past actions today.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Where can I gaze upon the great one?</div><div class="tei-line">Where is the one adorned with all good qualities,</div><div class="tei-line">The one who is as peaceful as the moon,</div><div class="tei-line">The one who loves giving and discipline?</div></div><div class="tei-verse"><div class="tei-line">“ ‘Where does the Dharma king live?</div><div class="tei-line">Where lives the one who is as deep as the ocean,</div><div class="tei-line">The one who is as stable as Mount Sumeru,</div><div class="tei-line">He who is chief among all beings?</div></div><div class="tei-verse"><div class="tei-line">“ ‘Where is he who is a refuge for the fearful?</div><div class="tei-line">Where is the one to whom all beggars travel,</div><div class="tei-line">The one who speaks pleasantly,</div><div class="tei-line">He who gives generously and upholds discipline?</div></div><div class="tei-verse"><div class="tei-line">“ ‘Quickly, death is looming before me.</div><div class="tei-line">Tell me, people of Śibi, where can I see him?</div><div class="tei-line">No one but the great compassionate one</div><div class="tei-line">Will give me half his own body.’</div></div><p>“In this manner, the old brahmin kept wailing pitifully, uttering weak and disheartened words as he made his way along the path toward the gate of King Śrīsena’s royal estate. Hundreds and thousands of astonished beings followed after him. As they proceeded, crowds of gods, nāgas, yakṣas, asuras, garuḍas, kinnaras, and mahoragas, <span class="tei-ref">F.38.b</span> those who understood the physical damage and bodily pain King Śrīsena was about to endure, were tormented by sadness and began to lament. ‘Alas,’ they cried, ‘it is painful to learn that the loving, compassionate King Śrīsena, who is peaceful and affectionate toward all sentient beings, is about to suffer and will be overpowered by impermanence.’</p><p>“Hearing this, the throngs of people began to lament, too. At this time, the whole of Jambudvīpa descended into turmoil and chaos spread everywhere. Smoke darkened the land, meteors fell blazing in all directions, and the celestial gods beat their drums.</p><p>“While all this was happening, the brahmin who lived in the mountains, who had been offered Queen Jayaprabhā, noticed her distress at being separated from her husband. He noticed that she sighed heavily, refused to eat, and gave no thought to him. His heart trembled with compassion for her, and he thought, ‘I should give her back to King Śrīsena.’ Queen Jayaprabhā was greatly relieved when he assured her that he would do this.</p><p>“He also saw that the whole of Jambudvīpa had descended into great turmoil, and chaos had spread everywhere. Seeing this, he said to his disciple, the brahmin boy, ‘Brahmin boy, Jambudvīpa is dark with smoke in every direction; it has descended into great turmoil, and chaos has spread everywhere. Not even the sun and moon are shining, bright and steady. Surely, in a short time Jambudvīpa’s great being will cease to exist.’ Then the brahmin recited the following verses:</p><div class="tei-verse"><div class="tei-line">“ ‘The kinnaras, the forest-dwelling gods,</div><div class="tei-line">And even the celestial gods complain.</div><div class="tei-line">The moon has no light; the sun cannot dispel the darkness.</div><div class="tei-line">Not even musical instruments make a sound today.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Trees with fruit and flowers are falling,</div><div class="tei-line">As if blown over by the wind.</div><div class="tei-line">Given that everyone has heard the fearsome and awful sounds,</div><div class="tei-line">It is clear that the city will experience unbearable sorrow. <span class="tei-ref">F.39.a</span></div></div><div class="tei-verse"><div class="tei-line">“ ‘All the residents in the delightful city Ariṣṭa are suffering.</div><div class="tei-line">Expressing grief and pain among themselves,</div><div class="tei-line">They say, “We are definitely defeated.”</div><div class="tei-line">Young women with faces like goddesses wail on rooftops.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-108" href="#tei-note-UT22084-076-003-108">[8]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“ ‘The people weep profusely as if they were in a terrifying cemetery.</div><div class="tei-line">These clouds hanging in the sky thunder but do not rain.</div><div class="tei-line">Even the waterholes resting in the earth are drying up.</div><div class="tei-line">Peacocks scream as if the forest were crushing them.</div></div><div class="tei-verse"><div class="tei-line">“ ‘People rush between their homes in turmoil.</div><div class="tei-line">Their lands shake as if they were a ship at sea, battered by winds.</div><div class="tei-line">Gales blast piles of garbage and dust into the air.</div><div class="tei-line">There are many signs of demise in Ariṣṭa.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Brahmin boy, today in this land with which you have a karmic connection,</div><div class="tei-line">There are many inauspicious signs.</div><div class="tei-line">It is only reasonable that we set off</div><div class="tei-line">Toward a place that is auspicious.’</div></div><p>“ ‘Alas, brahmin boys,’ the sage continued, ‘just as these trees are being blown in the direction of the Ariṣṭa royal estate, so it is certain, brahmin boys, that there will long be tremendous fear of harm and destruction in Ariṣṭa.’</p><p>“At the same time, in Ariṣṭa, the bodhisattva was seated on the top floor of his mansion. Hearing a large crowd of people lamenting below, he came down from his mansion made of precious stones and sat on his large lion throne. Urgently he asked, ‘Wise ones, what is it? What is happening?’</p><p>“The four gods carried Śakra, <em>lord</em> of the gods, into the king’s court on his stretcher, and then placed the stretcher on the floor. Blood dripped from his bisected body, but he still extended his right hand and in a pitiable voice called out salutations of victory and long life to the bodhisattva. As his eyes filled with tears, he displayed his bisected body to the bodhisattva, and implored him, <span class="tei-ref">F.39.b</span> ‘You are this world’s compassionate one. You suffer the pains of others. Lord, protect me. Give me half your body.’</p><p>“Hearing this request, Mahāmati, supreme among ministers, said, ‘Lord, this person is not human. He must be a demon or someone possessed by demons. A human would not survive being sliced in half at the waist. It is impossible and unheard of.’</p><p>“To this, Śakra, <em>lord</em> of the gods, responded, ‘People of Śibi, you need not be afraid. I am not a demon. On the contrary, I am a brahmin. I left my wife and children because we were poor and, intent on creating wealth, I traveled in King Śrīsena’s direction. I came to the royal estate slowly, and by the time I arrived the sun had set, and the city’s gates were closed. I stayed at a manor not far from the city. While I was there, I was overcome by the weariness of traveling and fell into a deep sleep. Because of my previous negative deeds, during the night a tiger came along and used its sharp, saw-like teeth to cut my body in half and steal away the lower half. When I awoke, I experienced an extreme sensation. The tiger may have used its saw-like teeth to cut my body in half, but because I recognized this was caused by my previous actions, I did not die. Still, my suffering was incomparable. It was incomparably violent. It was incomparably harsh. It was incomparably intense. It was an incomparably overwhelming pain, and how I screamed in my misery!</p><p>“ ‘When the celestial gods overheard my cries, they consoled me. A goddess said:</p><div class="tei-verse"><div class="tei-line">“ ‘ “Be not afraid, best of brahmins, be not afraid.</div><div class="tei-line">We foresee a long life for you.</div><div class="tei-line">Once you have swiftly traveled to Ariṣṭa,</div><div class="tei-line">You will be fine.</div></div><div class="tei-verse"><div class="tei-line">“ ‘ “A king lives there who grants everything.</div><div class="tei-line">He is known as Śrīsena. <span class="tei-ref">F.40.a</span></div><div class="tei-line">If you beg him for half his body,</div><div class="tei-line">He will certainly give it to you.”</div></div><p>“ ‘Having said this, the goddess disappeared. As I heard these words from the goddess, my hope of survival grew, and the pain subsided. Then I became dejected again as I realized I could not get up, let alone walk, with only half of my body. Coincidentally, at dawn, my four kin arrived. They started to cry when they saw my desperate state and thought I would die. To console them, I told them in detail about the goddess’s words. They placed me on this stretcher and carried me here.’</p><p>“Having spoken these words, the face of Śakra, <em>lord</em> of the gods, was awash with waves of tears. He then said to the bodhisattva:</p><div class="tei-verse"><div class="tei-line">“ ‘Great King, I am poor and sick.</div><div class="tei-line">I am also an old man and a brahmin.</div><div class="tei-line">Please give me half your body,</div><div class="tei-line">To grant me this life so difficult to find.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Please compassionately grant me</div><div class="tei-line">The gift of preserving my life.</div><div class="tei-line">Please give me half your body,</div><div class="tei-line">Such a gift being the highest of aims.</div></div><div class="tei-verse"><div class="tei-line">“ ‘By giving me half of your body</div><div class="tei-line">The merit accrued will be as vast as the ocean.</div><div class="tei-line">Similarly, the merit you will gain</div><div class="tei-line">Will be as limitless as space.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Having seen my excruciating pain</div><div class="tei-line">And my unbearable hunger and thirst,</div><div class="tei-line">Exercise supreme compassion</div><div class="tei-line">And give me half your body!</div></div><div class="tei-verse"><div class="tei-line">“ ‘Virtuous bodhisattva, you abide by the Dharma.</div><div class="tei-line">If you claim to become the equal of an omniscient one,</div><div class="tei-line">Then please give me half your body today.</div><div class="tei-line">Let me keep this life so difficult to find.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Great King, give to me half of your body,</div><div class="tei-line">Which is so difficult to give;</div><div class="tei-line">If you do, the Dharma, and likewise your fame,</div><div class="tei-line">Will spread throughout the entire world.’</div></div><p>“Upon hearing these words, the bodhisattva’s past habits of virtue and his stores of positive predispositions infused his mind, causing him to shake with compassion. <span class="tei-ref">F.40.b</span> ‘Great brahmin,’ he consoled him, ‘do not be afraid. Your body will soon be whole. Your wishes will be fulfilled. With an unwavering mind, I offer you half my body.’ His heart filled with joy, the bodhisattva then spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“ ‘O, soon you will see me</div><div class="tei-line">Give away my body.</div><div class="tei-line">It will not be very difficult</div><div class="tei-line">To give away my limbs.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Although I am my father’s only son,</div><div class="tei-line">You can take my body.</div><div class="tei-line">Offering my body will result in great awakening.</div><div class="tei-line">May it alleviate the intense suffering of all beings.’</div></div><p>“The bodhisattva had heard Śakra’s words, which he had spoken in the form of a brahmin. Therefore, with an entirely satisfied mind and his eyes open, he said, ‘Brahmin, I will give you half my body. Take it without any qualms.’</p><p>“Looking around, he saw his attendants and said to one of them, ‘O, you, go quickly and bring me an exceedingly sharp saw.’</p><p>“As he had been enchanted by Śakra, the attendant quickly found a saw and brought it to the bodhisattva. ‘Lord,’ he said, ‘here is a saw.’</p><p>“Promptly, the bodhisattva said to his ministers, ‘Quickly cut off my lower body and give it to the brahmin, before the <em>Lord</em> of Death takes him to the other world. I offer it to the brahmin.’</p><p>“The sound of the bodhisattva’s utterly horrifying words created panic in the city as if they were lightning strikes.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-137" href="#tei-note-UT22084-076-003-137">[9]</a></sup> ‘Oh, the sorrow, the sorrow!’ the people cried in secret and from on high. Then Mahāmati, the great minister, was wretched with intense pain, as if a vital organ had been pierced, and his face was as wet from crying as from the rain. He feared the bodhisattva would give away his body without any attachment to it, <span class="tei-ref">F.41.a</span> and seeking to change his mind, he bowed down at his feet and said, ‘Lord, this is not possible. If your body is cut by a saw, you will certainly die. If you die, you will become a useless corpse. A useless corpse is no good to this brahmin. Giving your life to him is pointless. Cutting one person’s limb off and attaching it to another does not work. Your divine efforts will be in vain. Please, be patient. Do not kill yourself in vain. Do not give up your life.’</p><p>“Consoling the great minister Mahāmati, the bodhisattva replied, ‘Mahāmati, leave it be, leave it be. At some point, I hope to attain unsurpassed, perfect awakening and liberate saṃsāra’s beings. Do not hinder my awakening. It is the nature of our existence that we must all separate, even from those who have been very dear to us for a long time, like our children.’ Having said this, he glanced once again at the saw and said, ‘This saw is an incomparable object that will direct my merit toward unsurpassed and perfect awakening.’ This is how he thought of it, and again he said to his minister, ‘Cut off the lower half of my body as soon as you can, before the brahmin dies. Otherwise, my intent will be fruitless.’</p><p>“Mahāmati, the great minister, knew then that the bodhisattva was determined to give away his body. He held the bodhisattva’s feet in both his hands and kissed them. As tears flowed down his face like rain, he despaired and, overwhelmed with compassion, said to the bodhisattva, ‘Alas, the force of impermanence will strike the lord today. The lord takes care of all of Jambudvīpa, he is the compassionate one, he has innumerable qualities, and he pleases and is affectionate to all sentient beings. <span class="tei-ref">F.41.b</span> But, alas, impermanence is powerful! Whoever has seen the lord was fortunate.’</p><p>“Having spoken, he stared at the bodhisattva’s face for a long time without blinking. Then, as he contemplated how he could not bear to witness the bodhisattva’s death, his eyes closed and he fell to the ground unconscious. The bodhisattva then spoke to two carpenters who happened to be present: ‘Good people,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-141" href="#tei-note-UT22084-076-003-141">[10]</a></sup> will you help me complete the perfection of generosity? Will you take this saw and quickly cut off the lower half of my body? Let us fulfill the brahmin’s wish. Let us fulfill my wish to attain awakening.’</p><p>“Tears of immense sadness covered the two carpenters’ faces like stormy weather. They touched the bodhisattva’s feet and said, ‘Lord, your words are inappropriate. If someone else were to challenge you, we could oppose them. But how are we to use a weapon against you? You are compassionate, loving, pleasing, and affectionate toward all sentient beings. You take care of all of Jambudvīpa. If we were to use this saw to cut through your body, our actions would cause us to fall instantly into hell.’</p><p>“ ‘Sons,’ responded the bodhisattva, ‘do not block the final outpouring of the immortal elixir of a bodhisattva’s patience. Come here, help me to awaken. Cut off the lower half of my body while the brahmin is still alive.’</p><p>“Śakra, <em>lord</em> of the gods, used his power to compel the two carpenters to begin the process. A little while later, hundreds of thousands of people had gathered in the royal estate and hundreds of thousands of gods had <span class="tei-ref">F.42.a</span> gathered in the sky. They had flocked to see the bodhisattva perform this extremely difficult task, a task so difficult it made their body hairs stand on end. The bodhisattva stepped down instantly from his lion throne. His intention to give away his body gave him extreme joy, and he was overwhelmed by his love for the brahmin who asked for it.</p><p>“Monks, at the very instant the bodhisattva Śrīsena stepped down from his lion throne, all of Jambudvīpa’s parasols, banners, and flags bent toward Ariṣṭa Estate. Meteors fell toward it from the four directions. But those who dwelled in the city wailed with the pain of separation. ‘This evil brahmin is going to kill King Śrīsena!’ they shouted. ‘Throw him out of here!’</p><p>“Śakra, <em>lord</em> of the gods, prevented the people from hearing what was happening. They were stupefied. The yakṣas, those who dwell in space and on the ground, came to know that the bodhisattva was unconcerned with his body and wailed in the torment of their immense sorrow. ‘Alas,’ they cried, ‘King Śrīsena! He who takes care of everyone in Jambudvīpa, he who is compassionate toward all sentient beings, he will give up his entire body!’ A deity who lived on the royal estate also came to know that he would give up his entire body, and lamented aloud, ‘King Śrīsena, he who is endowed with so many qualities, is not going to survive because of this beggar!’</p><p>“After this, the bodhisattva looked around in the four directions. ‘Gods, nāgas, yakṣas, and kinnaras, all you who dwell in this city, listen! Make pure prayers for me! I am making this gift today. <span class="tei-ref">F.42.b</span> I am making the greatest of gifts, the gift of one’s body. I am not making this gift for myself, the king, nor to attain rebirth in a higher realm. I am not making it for Śakra or for Brahmā. I am not making it to become a universal monarch. I make this gift to attain unsurpassed and perfect awakening. I make it to liberate sentient beings who are not yet liberated. I make it to console those who need consoling, to unbind those who are bound. By the truth of my words, may it be accomplished. May some small sign of my awakening appear!’</p><p>“To the brahmin, he said, ‘By this action, may you attain all you have imagined. May all your wishes be fulfilled. And may I realize unsurpassed awakening completely.’</p><p>“The bodhisattva asked his relatives and the city’s inhabitants for patience. He consoled the poor and stricken, before speaking to the two carpenters. ‘Good people, come here. Before the brahmin’s time runs out, saw at my navel. May I protect all beings who suffer!’ In this way, with love suffusing all, and with the help of a man who supported him, he promptly lay down on his back and stretched out his legs.</p><p>“Monks, as the bodhisattva was lowered onto the ground, the great earth shook in six different ways. The ladies of the court were deeply tormented when they heard the news and rushed to the bodhisattva’s side. Tears poured down their faces like rain. They let their hair fall and beat their chests in mourning. ‘Alas,’ they cried, ‘the pain!’ They were no longer attractive like goddesses. <span class="tei-ref">F.43.a</span> They touched the bodhisattva’s feet briefly and wailed, ‘Please have mercy!’ ‘Alas,’ they cried, ‘it pains us that the power of impermanence is now at hand and today will separate, isolate, detach, and remove us from our relationships with this lord. He is the lord who protects all of Jambudvīpa, who pleases and is affectionate toward all sentient beings, who has immense compassion, and who has innumerable good qualities.’</p><p>“ ‘Lord,’ they persisted, ‘please have patience with us! Please don’t leave all of the communities of people living in Jambudvīpa without a protector by taking your own life. Lord, please look at the ladies of the court and your vast treasuries and storehouses filled with myriad precious gems. Look at Jambudvīpa’s people, who are always experiencing many types of happiness. Look at the city of Ariṣṭa, which resembles a divine park complete with an abundance of fine features, where so many joyful people live.</p><div class="tei-verse"><div class="tei-line">“ ‘Protector, you have always taken care of everyone</div><div class="tei-line">As if they were your own children.</div><div class="tei-line">How will these beings survive</div><div class="tei-line">When they are surely scorched by the fire of losing you?</div></div><div class="tei-verse"><div class="tei-line">“ ‘If separated from you,</div><div class="tei-line">We will all be overpowered by the <em>Lord</em> of Death.</div><div class="tei-line">O Protector, if we are separated from you,</div><div class="tei-line">We will not be able to survive!</div></div><div class="tei-verse"><div class="tei-line">“ ‘If the queen is stricken by suffering,</div><div class="tei-line">And if sentient beings all suffer as one,</div><div class="tei-line">We pray that you look upon us, ruler of humans,</div><div class="tei-line">With the compassion of one who embodies compassion.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Lord who is affectionate toward all beings,</div><div class="tei-line">Please take care of us—don’t give away your life!</div><div class="tei-line">Who will be our protector, our hero, if you pass on?</div><div class="tei-line">Who will protect the world?’</div></div><p>“After hearing their pitiable lament, the bodhisattva’s heart was heavy with compassion. ‘Your lament is understandable,’ he said to console them, <span class="tei-ref">F.43.b</span> ‘but it is the way of the world that we must separate even from those we have known for a long time. For this reason, you should always be mindful of virtuous deeds.’ Then he turned to the two carpenters again and said, ‘Good people, come here. Without taking too much time, cut my body.’</p><p>“Because Śakra had enchanted them, the two carpenters immediately began sawing the bodhisattva’s body at his navel. Mahāmati, revived and imagining the unbearably intense pain the bodhisattva was experiencing, rebuked the two carpenters. ‘Alas,’ he cried, ‘alas! What are the two of you doing! How can you kill the compassionate one? How can you kill the one who is pleasing and affectionate to everyone, he who has numerous good qualities, he who takes care of all of Jambudvīpa, he who is faultless and harms none? How can you ignorant people take joy in killing a Dharma king? How does this great land’s goddess allow you to live? Why haven’t you been pierced by the single-pointed vajra? The weapon-wheel? The great arrow? The single-pointed weapons of the gods, nāgas, yakṣas, asuras, gandharvas, garuḍas, kinnaras, and mahoragas? You have committed such an ignoble act. How is it that your bodies have not exploded into a thousand pieces? Why haven’t you fallen instantly into hell, in this very body? Didn’t this great being also treat you as his sons? You ignorant beings!’</p><p>“He said these things and many others besides. ‘Alas, lord!’ he cried, and getting up from his seat, Mahāmati, the great minister, <span class="tei-ref">F.44.a</span> grabbed the saw with his own two hands, and as his tears wet the bodhisattva’s body, he pushed the two carpenters away. To console the discouraged Mahāmati, the bodhisattva said, ‘Son, leave it be, leave it be. Do not lament. It is certain that we will be separated from those dear to us, those we love, those who draw near to us, and those of whom we are extremely fond. We will be isolated, divided, and separated. Moreover, son:</p><div class="tei-verse"><div class="tei-line">“ ‘The end of all accumulation is dispersion.</div><div class="tei-line">The end of rising is falling.</div><div class="tei-line">The end of meeting is parting.</div><div class="tei-line">The end of living is dying.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-164" href="#tei-note-UT22084-076-003-164">[11]</a></sup></div></div><p>“ ‘Therefore, do not stop those who ask for my body. Mahāmati, in the past, another person tried to ask for my body but goddesses stopped them. Not only did those goddesses prevent me from achieving unsurpassed awakening, they also created much nonvirtue. If the goddesses had not prevented that person asking for my body, I would have attained unsurpassed and perfect awakening by now.</p><p>“ ‘What is more, son, in this very place I met a tigress whose hunger pains were so intense that she wanted to eat her own cubs. Out of supreme compassion, I gave myself to her immediately so that she might be saved. By so doing, I surpassed<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-167" href="#tei-note-UT22084-076-003-167">[12]</a></sup> the deeds of the bodhisattva Maitreya, who had set out for buddhahood forty eons before that.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-168" href="#tei-note-UT22084-076-003-168">[13]</a></sup></p><p>“ ‘Another time, Mahāmati, when I was king of the Śibi people, an old brahmin came seeking the gift of sight. Moved by compassion, I immediately extracted my unimpaired eyes and gave them to him, while they were still stained with blood. My eyes had been as unstained as an utpala flower, a blue lotus. They were extremely beautiful and captured the hearts and attention of all people—indeed, all beings.</p><p>“ ‘Yet another time, Mahāmati, when I was a king named Candraprabha, <span class="tei-ref">F.44.b</span> a brahmin rudely asked me for not only my eyes but also my head. Groups of nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, mahoragas, siddhas, vidyādharas, and hundreds of thousands of gods tried to stop me from making this gift. Despite all this opposition, I saw that sentient beings had no protector, and with the loving intention to liberate them from saṃsāra’s wilderness, I aspired to attain unsurpassed and perfect awakening. My sword was the blue color of an utpala flower. It was decorated with precious gems, gold, silver, beryl, diamonds, sapphires, and emeralds. I picked it up and chopped off my head as if it were a blade of grass, and then I gave it to the brahmin.</p><p>“ ‘Another time, Mahāmati, when I was again king of the Śibi people, I saw an unprotected, terrified pigeon, ducking and diving as it was chased by a hawk. As I watched the unprotected pigeon seek refuge, I shook with supreme compassion. To protect the pigeon from the hawk and to deceive the hawk, I cut off a piece of my own flesh and gave it to the hawk.</p><p>“ ‘In the past, in this very land, I have given thousands of legs, hands, sons, and wives for the sake of unsurpassed and perfect awakening, and no one stopped me. You should understand this, Mahāmati. And you should not stop the brahmin seeking my body.’</p><p>“Following this, the great minister Mahāmati understood that the bodhisattva had given rise to great miraculous powers, and he developed profound faith in him. This great minister remained silent while waves of tears flowed down his face continually. He thought, ‘Alas, these beings are unfortunate. They will soon lose their Dharma king. Alas, the Dharma’s victory banner is about to fall.</p><div class="tei-verse"><div class="tei-line">“ ‘The lamp of Dharma will be extinguished.</div><div class="tei-line">The lamp of Dharma will disappear.</div><div class="tei-line">The Dharma drum is about to break.</div><div class="tei-line">The ocean of Dharma will dry up. <span class="tei-ref">F.45.a</span></div></div><div class="tei-verse"><div class="tei-line">“ ‘The great mountain of Dharma will soon crumble.</div><div class="tei-line">The city of Dharma will soon be looted.</div><div class="tei-line">The ship of Dharma will soon disintegrate.</div><div class="tei-line">When the Dharma tree is uprooted, it is painful indeed.</div></div><div class="tei-verse"><div class="tei-line">“ ‘The wheel of time is about to crush</div><div class="tei-line">The father of the entire world,</div><div class="tei-line">Who has helped all beings.</div><div class="tei-line">The great king will be no more.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Yet, in this unbearable moment,</div><div class="tei-line">Why hasn’t this great being’s mind</div><div class="tei-line">Been shattered into a thousand pieces,</div><div class="tei-line">But is instead like a great vajra?</div></div><div class="tei-verse"><div class="tei-line">“ ‘The good times are all gone.</div><div class="tei-line">Unbearable times are now at hand.</div><div class="tei-line">There will not be many wise people left</div><div class="tei-line">And worldly ones will also be destroyed.</div></div><div class="tei-verse"><div class="tei-line">“ ‘Through many omens of the earth,</div><div class="tei-line">Which can be clearly seen,</div><div class="tei-line">It is certain that it won’t be long</div><div class="tei-line">Before the lion king is no more.</div></div><div class="tei-verse"><div class="tei-line">“ ‘This stainless sun of humanity,</div><div class="tei-line">So difficult to find, is about to set.</div><div class="tei-line">Before long, it will no longer</div><div class="tei-line">Shine forth in this world.</div></div><div class="tei-verse"><div class="tei-line">“ ‘In the absence of this great king</div><div class="tei-line">Who benefits all sentient beings,</div><div class="tei-line">When his light no longer illumines the world,</div><div class="tei-line">Who will there be to protect the world?’</div></div><p>“After this speech, the two carpenters whom Śakra, <em>lord</em> of the gods, had enchanted recovered enough from their grief to reapply the saw to the bodhisattva’s body. The bodhisattva encouraged them. ‘Well done, good people! Cut off the lower half of my body more quickly! Won’t my travail be fruitless if the brahmin dies?’</p><p>“There was a great crowd of people wailing, mourning, and attempting to stop the two carpenters from following the bodhisattva’s instructions and cutting his body, but Śakra had stupefied them. The bodhisattva kept silent, aspiring for awakening and joyously intending to fulfill the gift seeker’s wishes. After a while, a great deal of blood gushed from the bodhisattva’s middle where the saw was cutting. Seeing this, the great minister Mahāmati <span class="tei-ref">F.45.b</span> became despondent and fell unconscious, thinking, ‘It is too painful to see the lord killed.’</p><p>“Wracked by intense grief, masses of sky-dwelling gods, nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, and mahoragas started to cry. As their tears flowed, the crowds of people below wondered what was happening and looked up at the sky. There they saw hundreds of thousands of weeping gods, which made them fall further into grief. They saw the bodhisattva in great pain and, becoming utterly confused, they thought, ‘Alas! It is so very painful to see the lord killed!’</p><p>“A few moments later, Śakra, <em>lord</em> of the gods, gazed with intense compassion and concern upon the hundreds of thousands of beings who were stricken by the bodhisattva’s tragedy. Then compassionate thoughts suddenly arose in him. ‘It is not right to cause intense pain to this great being who is so kind and affectionate toward all sentient beings and who gives away everything out of compassion. I will do the opposite. I will make him immortal.’</p><p>“As the two carpenters cut his body with the sharp saw, the bodhisattva suffered intense pain. But he had the power to keep his mind stable and generate a loving attitude toward the gift seeker. ‘If I have understood the nature of saṃsāra’s faults and thereby gained firm and lasting perseverance but am nonetheless suffering this much pain as my body is cut in half, what can be said of the excruciating painful sensations suffered by the majority of sentient beings when they previously took rebirth in hell!’ Thinking thus, the bodhisattva established a loving mind <span class="tei-ref">F.46.a</span> that encompassed all sentient beings, and with a lion’s roar, he declared, ‘By attaining unsurpassed and perfect awakening, I must free sentient beings from such suffering!’</p><p>“In order to uplift his own mind that was wracked by such intense pain, the bodhisattva also said the following:</p><div class="tei-verse"><div class="tei-line">“ ‘Look at the world’s suffering, mind, and abandon your faults!</div><div class="tei-line">Be very steady and develop vastness in scope.</div><div class="tei-line">Be mentally stable in patient endurance so as to protect</div><div class="tei-line">These beings tormented by the pain of birth, aging, sickness, and death.’</div></div><p>And again he said:</p><div class="tei-verse"><div class="tei-line">“ ‘Alas, these poor sentient beings!</div><div class="tei-line">Because you are the cause for all beings</div><div class="tei-line">To cross over the ocean of saṃsāra,</div><div class="tei-line">It would be unreasonable for you</div><div class="tei-line">To not patiently endure such harms.’</div></div><p>“These were the ways the bodhisattva truly settled his mind and established a compassionate attitude toward all sentient beings. He thought to himself, ‘Alas! The suffering of beings who are stuck in saṃsāra is unbearable. For the sake of these beings in saṃsāra, by rejoicing in patiently enduring all saṃsāra’s suffering, may no sentient being have the misfortune of suffering!’</p><p>“Monks, the very instant the bodhisattva generated this mind of awakening, the pain produced by his body being sawed abruptly ceased. The bodhisattva wondered, ‘Why did the pain of my body being sawed in two cease? Did they stop sawing?’ He checked, but he could still see the saw. Having seen it, he felt extremely distressed and started to shake.</p><p>“Reading the king’s mind, Śakra, <em>lord</em> of the gods, said:</p><div class="tei-verse"><div class="tei-line">“ ‘King, why do you shake so,</div><div class="tei-line">Like a feeble, sickly person?</div><div class="tei-line">Look at how my body is cut in half,</div><div class="tei-line">Yet my mind is not shaken.</div></div><div class="tei-verse"><div class="tei-line">“ ‘You are renowned all over the earth</div><div class="tei-line">For saying that you give everything away.</div><div class="tei-line">So it doesn’t make sense to feel regret,</div><div class="tei-line">Or else your words would be lies.’</div></div><p>“ ‘Brahmin,’ responded the bodhisattva, ‘this is not why my body shakes. I have no regrets <span class="tei-ref">F.46.b</span> whatsoever. I am shaking at this thought: “The saw has penetrated deep into my body, but so far my lower body has not been severed. What if I am unable to make this gift? What if I am not able to fulfill the gift seeker’s wish?” I would be happy if they were to saw my body with more force.’ Hearing this, Śakra, <em>lord</em> of the gods, was completely in awe of the bodhisattva and fell silent.</p><p>“In the meantime, the two carpenters whom Śakra had enchanted finished cutting the bodhisattva’s body in half. They placed the lower half of his body on the ground and it began to twitch. Without thinking of his own suffering—the suffering of having his body cut in half—the bodhisattva addressed the two men: ‘Good people, join my lower half to the brahmin’s body without delay.’ They did as he instructed. At the moment the two body halves were joined, Śakra, <em>lord</em> of the gods, imbued the body with a blessing that made its wounds heal, the joints join together well, and the two bodies’ skin tones match. He showed everyone the body, and to please the bodhisattva, he, Śakra, <em>lord</em> of the gods, stood up from his stretcher, walked around, stood still, and then sat down.</p><p>“Seeing that his labors had borne fruit, that the gift seeker had a complete body and his wishes had been fulfilled, the bodhisattva’s mind overflowed with joy. ‘I have saved this brahmin’s life,’ he thought to himself, ‘and staved off his fear of death by giving him my body. May the seed of this virtue cause me to attain unsurpassed and perfect awakening. Then may I be able to rescue <span class="tei-ref">F.47.a</span> this brahmin from the suffering of saṃsāra and establish him in nirvāṇa where he will experience the ultimate happiness.’</p><p>“As he thought this, the bodhisattva was overwhelmed. Even as he aspired to awaken, he slipped into unconsciousness, and his eyes began to close. Śakra, <em>lord</em> of the gods, revived him immediately. He used medicines and care to treat and heal him.</p><p>“Monks, in the instant King Śrīsena’s body was cut in half, the trichiliocosm shook in three different ways: it shook, shook a lot, and shook extremely much. It also rocked, rocked a lot, and rocked extremely much. This great earth was unable to support the bodhisattva’s great act of generosity. It was a marvelous gift of everything and thus it resounded—it resounded as if all the world’s cauldrons had been beaten at once. Mountains, ravines, rivers, and oceans all emitted horrifying noises. Terrifying smoke appeared from the four directions. Meteors fell from all sides. Falling stars blazed in every direction. The gods beat drums in the sky.</p><p>“The trichiliocosm first darkened and then turned pitch black. Even the gods traversing the center of the sky chattered about a bodhisattva tormented with sorrow. They arranged utpala flowers above the bodhisattva and showered him with pink and white lotus flowers. They also sprinkled agaru, tagara, cinnamon-leaf, and sandalwood incense on him, and the flowers of the gods’ tree, the mandārava.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-201" href="#tei-note-UT22084-076-003-201">[14]</a></sup> They even draped their clothes on him, danced, and played divine music loudly. All of Jambudvīpa’s people were deeply puzzled by these noises. <span class="tei-ref">F.47.b</span></p><p>“When the city’s inhabitants, hundreds and thousands of people, saw the bodhisattva’s body cut, they were tormented by intense grief. With a single voice they cried out in their grief, ‘Alas, seeing the lord killed is painful!’</p><p>“Some rolled on the ground, others flailed their arms and wailed. The voices of some became hoarse from passionate sobbing. They were unable to clearly voice their words, yet still they screamed and beat their chests. Others remained silent, their minds mournful and unsettled, thinking, ‘Impermanence is powerful indeed!’</p><p>“Śakra, <em>lord</em> of the gods, was convinced that the bodhisattva’s resolve to attain unsurpassed and perfect awakening was as immovable as Mount Sumeru. He marveled at how the bodhisattva had given so completely. The hairs on his body stood on end. He was filled with joy and witnessed something outstanding. Marveling at this, he opened his eyes, and together with the other four gods, he dissolved his brahmin semblance, and he and the four gods appeared in their own forms. Śakra then spoke to the bodhisattva: ‘Great King! I am no brahmin, I am Śakra, <em>lord</em> of the gods. Well done, Great King, well done! How amazing, your diligence! How amazing, your uncontrived resolve! How amazing that you gave your body so completely, without clinging! How amazing, your compassion toward sentient beings and love for them! Your joy in giving! Well done, well done! Great King, even though you were overwhelmed by intense suffering, you did not change your mind about giving away your body. Great King, I have a question for you: what was the reason you underwent such hardship and such a prolonged trial?’</p><p>“ ‘Kauśika,’ replied the bodhisattva, ‘by giving away my body, I wish to attain unsurpassed and perfect awakening. I wish to liberate sentient beings from saṃsāra.’</p><p>“Śakra then asked, ‘Great King, as your body was deteriorating, as you offered your body, as you gave it away completely, did you have any regrets? Did your mental state change at all?’ <span class="tei-ref">F.48.a</span></p><p>“ ‘Kauśika, I had no regrets,’ replied the bodhisattva.</p><p>“ ‘How can we know this?’ Śakra asked.</p><p>“ ‘Kauśika,’ said the bodhisattva, ‘to prove it, I will allow you to place the lower half of my body wherever you like.’</p><p>“Śakra, <em>lord</em> of the gods, then put the lower half of the bodhisattva’s body in a place of his liking. The bodhisattva established a loving attitude toward all sentient beings, and invoking truth at that time, he spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“ ‘As I wish for awakening,</div><div class="tei-line">I did not experience miserliness or sadness</div><div class="tei-line">When I let go of my body compassionately.</div><div class="tei-line">Now, I have no regrets.</div></div><div class="tei-verse"><div class="tei-line">“ ‘And as I have no regrets, Śakra,</div><div class="tei-line">May the truth of my words and goodness of my actions</div><div class="tei-line">Now restore my body,</div><div class="tei-line">Exactly as it was before.</div><div class="tei-line">May all my senses be complete!’</div></div><p>“Monks, as soon as he spoke these verses, the bodhisattva’s body was restored. The sky-dwelling gods, nāgas, yakṣas, garuḍas, kinnaras, and mahoragas who witnessed this were wide-eyed in amazement and started babbling and laughing. The crowds of people gathered there were also awed and amazed. Both gods and humans were overjoyed at this magical display. When they saw that the bodhisattva’s body was completely restored, they developed wonder as if they had found their own lives after having lost them. They said, ‘How amazing! Let us gaze upon this marvel of your resurrection! The beings of this world, those on the land and in the forest, are fortunate indeed!’</p><p>“When Śakra, <em>lord</em> of the gods, saw that the bodhisattva’s body had been restored to its original state, he was overwhelmed. To please the bodhisattva, he said, ‘Great King, your mind is <span class="tei-ref">F.48.b</span> heroic. Your aspiration is steadfast, and you engage with sentient beings out of great compassion. Well done, well done! You are not afraid of anyone who attempts to frighten you. Due to your efforts, you will, therefore, attain unsurpassed and perfect awakening in a short while.’ Śakra, <em>lord</em> of the gods, then recited the following verses:</p><div class="tei-verse"><div class="tei-line">“ ‘Ah! Your diligence is great and fierce.</div><div class="tei-line">Your steadfastness is unsurpassed.</div><div class="tei-line">Ah! Your compassion for beings!</div><div class="tei-line">Ah! Your determination to awaken!</div></div><div class="tei-verse"><div class="tei-line">“ ‘Ah! How wonderful would the world be</div><div class="tei-line">If you, lord, were its ruler!</div><div class="tei-line">You will travel beyond suffering’s fearful and ferocious ocean;</div><div class="tei-line">You will attain nirvāṇa!’</div></div><p>“As he said these words, Śakra, <em>lord</em> of the gods, shed tears like rain, and in a hoarse voice he sought forgiveness from the bodhisattva. ‘O Great King,’ he said, ‘thinking that you might meet with failure, I coerced you to suffer excruciating pain. Please forgive me.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-003-218" href="#tei-note-UT22084-076-003-218">[15]</a></sup> And please think of me when you attain unsurpassed and perfect awakening.’</p><p>“ ‘Kauśika,’ replied the bodhisattva, ‘I am patient. I will do as you ask and remember you.’ In that instant, due to the bodhisattva’s power, a variety of divine, enchanting, precious gems rained down upon all of Jambudvīpa. All of Jambudvīpa was ornamented by myriad precious stones, and it became even brighter than the realms of the gods.</p><p>“The sage who lived in the mountains had witnessed all these marvels, and he was overwhelmed. ‘What are these marvels?’ he thought. ‘Have such marvels ever been seen before? Whose power occasions this?’</p><p>“A god who lived in the same place as he told him the story in detail. As he listened to the story of the bodhisattva’s extraordinary, awe-inspiring austerities, <span class="tei-ref">F.49.a</span> the sage came to genuinely admire him. ‘This great being is <em>worthy</em> of veneration,’ he thought. After that, he hastily led his five-hundred-strong retinue and Queen Jayaprabhā to the bodhisattva. There they uttered salutations of victory and long life to the king. In unison with Śakra, the sage said, ‘Lord, you have protected these fine, goddess-like, beautiful women. Now please enjoy life with this virtuous woman. I offer you back the beautiful queen. She has not been unhappy with her husband. Please do not give her away again to anyone else who asks for her.’</p><p>“The bodhisattva compassionately accepted the request of the sage and Śakra, <em>lord</em> of the gods, by remaining silent. Śakra, <em>lord</em> of the gods, then summoned Viśvakarma, the architect of the gods. ‘Viśvakarma,’ he said, ‘please set up a divine lion throne quickly. I would like to honor King Śrīsena myself.’</p><p>“ ‘That is excellent, Kauśika,’ Viśvakarma responded. ‘I will do as you instruct.’ <br />Indeed, at the very moment he was listening to Śakra, <em>lord</em> of the gods, Viśvakarma, the architect of the gods, magically created a lion throne. It was decorated with a variety of precious gems, and it was garlanded with pearls on all sides. Śakra, <em>lord</em> of the gods, took the bodhisattva with both his hands and escorted him onto the divine lion throne. Hundreds of thousands of gods played and sang melodious music for him. Having shown great respect in this way, they crowned him.</p><p>“During the coronation, the bodhisattva’s power caused the earth to shake in six different ways. Out of joy and satisfaction, the gods showered flowers and precious gems on Jambudvīpa. So many fell that the flowers and gems were piled up to the peoples’ knees. In sheer amazement at seeing this amount of wealth, the gods and humans exclaimed, <span class="tei-ref">F.49.b</span> ‘Amazing! How powerful is King Śrīsena’s merit! Amazing! It is wondrous!’</p><p>“After thoroughly pleasing the bodhisattva, Śakra, <em>lord</em> of the gods, along with hundreds of thousands of other gods, returned to his abode. The sage and his retinue of five hundred also returned home, after openly praising the bodhisattva.</p><p>“After these events, the much-venerated bodhisattva ruled as a Dharma king for a long time. He satiated Jambudvīpa’s poor, blind, hungry, and destitute by granting them wealth, and he led everyone along the path of the ten virtuous actions. He thoroughly satisfied all six classes of gods in the desire realm. At another time, he caused them, along with hundreds of thousands of others, to be reborn in Tuṣita heaven.”</p><p>After telling this tale, the Blessed One said, “Monks, do not have any doubts or confusion that King Śrīsena was someone other than me. At that time, I was the king and I gave away my body. Monks, the one who was King Śrīsena’s wife back then, Queen Jayaprabhā, is none other than Yaśodharā. The supreme one among the ministers, Mahāmati, is none other than the monk Śāriputra. Śakra, <em>lord</em> of the gods, is none other than King Bimbisāra. Those who were the gods of the Heaven of the Thirty-Three at that time are none other than the eighty thousand gods who realized the truth simultaneously with King Bimbisāra. The masses of people in the city of Ariṣṭa are none other than <span class="tei-ref">F.50.a</span> the brahmins and householders of Magadha who come to me along with King Bimbisāra. Monks, the sage who lived in the mountains is none other than the monk Maudgalyāyana. The young brahmin boy who came to me to beg for Queen Jayaprabhā is none other than the Śākya lady Gopā. Monks, the two who were carpenters at that time are Devadatta and Kokālika.</p><p>“It is due to the power of his prayers that such miracles of the Thus-Gone One manifested. Monks, therefore, you too must train in this way. You must train by telling yourselves, ‘I will practice generosity and perform meritorious acts.’ ”</p><br /><p>When the Blessed One had said these words, the monks rejoiced and praised the Blessed One’s words.</p><cite>This completes “The Exemplary Tale of King Śrīsena</cite>.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>This was translated by the Indian preceptor Dharmaśrībhadra and the chief editor-translator Sherab Lekpa. It was then revised and finalized by the translator Rinchen Zangpo.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-076-003-28"><p>Blessed One (<em>bhagavān</em>), Well-Gone One (<em>sugata</em>), and the Teacher (<em>śāstṛ</em>) are all epithets for the Buddha. The repetition of terms referring to the Buddha is most probably for emphasis.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-28">back</a></li><li id="tei-note-UT22084-076-003-37"><p>We chose to translate <em>pho brang</em> as “royal estate” instead of the more usual “palace” as the text says this “palace” included fields and the dwellings of the king’s subjects. A palace is a building; it does not include grounds, fields, or villages.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-37">back</a></li><li id="tei-note-UT22084-076-003-38"><p>Here we have read <em>chur</em> as <em>tshur</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-38">back</a></li><li id="tei-note-UT22084-076-003-44"><p>This translation follows the Narthang edition, which reads <em>khyim ba</em>. The Degé edition reads <em>khyim bya</em>, meaning “chicken.” We assume this is a misspelling.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-44">back</a></li><li id="tei-note-UT22084-076-003-49"><p>This translation follows the Degé edition, which reads <em>skyong ba</em>. The Comparative Edition, Narthang, and Lhasa editions read <em>skyob pa</em>, which means “to protect.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-49">back</a></li><li id="tei-note-UT22084-076-003-62"><p>In other words, it has to be seen to be believed.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-62">back</a></li><li id="tei-note-UT22084-076-003-71"><p>One <em>rgyang grags</em> (Skt. <em>krośa</em>) is approximately two miles.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-71">back</a></li><li id="tei-note-UT22084-076-003-108"><p>The use of <em>mchog</em> to describe a house is ambiguous; it could mean “the best of houses” or “the (roof)top of a house.” Clues for how to translate the line were found in a similar line from the Newari version of the <cite>Candra­prabhāvadāna</cite> (<cite>The Exemplary Tale of Candraprabha</cite>). This line reads: <em>etāś candranibhānanā yuvatayo rodanti veśmottame</em> (Matsumura 1980, p. 101, n. 34). This line could be translated as: “These young women, whose faces resemble the moon, cry on the (roof)tops of their houses.” As this text provides more context for the young women’s actions, we have rendered <em>mchog</em> as “(roof)top.” We thank our anonymous reviewer for this reference.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-108">back</a></li><li id="tei-note-UT22084-076-003-137"><p><em>rdo rje lhung</em> is a Tibetan translation of the Sanskrit term <em>vajrapāta</em>, which means “the fall of a thunderbolt” or a “lightning strike.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-137">back</a></li><li id="tei-note-UT22084-076-003-141"><p>We have read <em>gzhin bzangs</em> as <em>bzhin bzang</em>. The Lhasa edition of the text reads <em>bzang</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-141">back</a></li><li id="tei-note-UT22084-076-003-164"><p>This stanza is widely quoted in Buddhist literature across traditions. It is found, for example, in the <cite>Vinayavastu</cite> and <cite>Udānavarga</cite>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-164">back</a></li><li id="tei-note-UT22084-076-003-167"><p>Here the Tibetan reads <em>phyir lus</em>, which usually means “turn back” but can also be a Tibetan translation of the Sanskrit term <em>avapṛṣṭhīkṛtaḥ</em>. A synonym of <em>paścān­mukhīkṛtaḥ</em>, <em>avapṛṣṭhīkṛtaḥ</em> also has the figurative meaning of “surpassed, outdone.” This is the only meaning that makes sense in the context of this story, so we have chosen to translate <em>phyir lus</em> as “surpassed.” The obtuseness of this usage is most probably compensated for by the familiarity most readers of the avadāna would have with the story of the Buddha offering his body to the tigress.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-167">back</a></li><li id="tei-note-UT22084-076-003-168"><p>The Tibetan grammar in this short rendition of a famous tale is less than clear. It could be read to suggest that Maitreya lengthened his period as a bodhisattva by offering his life to the tiger. The idea that such an action would increase the time it took to attain buddhahood runs counter to the rest of the narrative, however, in which Śrisena, a past rebirth of the Buddha Śākyamuni, is trying to hasten buddhahood by offering his body. It also contradicts several other renditions of this tale, all of which explain that a previous incarnation of Maitreya could not offer himself to the tigress but a previous incarnation of the Buddha Śākyamuni did, thereby surpassing the deeds of the bodhisattva Maitreya, who had set out for buddhahood forty eons earlier than the Buddha Śākyamuni. This tale is not only told in both the <cite>Śrīsenāvadāna</cite> and the <cite>Candra­prabhāvadāna</cite>, but also in the <cite><a href="https://read.84000.co/translation/toh556.html" target="_blank" rel="noopener noreferrer">Suvarṇaprabhāsa Sūtra</a></cite> (See translation in Emmerick 1970, pp. 85–97). This last work identifies Maitreya as the older brother Mahāpraṇāda, who had set out for buddhahood forty eons earlier, but does not offer his body to the tigress and is consequently surpassed by his younger brother who does make this sacrifice. Ohnuma (2007, pp. 9–14) discusses this story. She concludes (p. 14) that “[i]t was his (Maitreya’s) failure to act in the same exalted manner as Śākyamuni that made him lose the cosmic race toward perfect buddhahood.” Among all the other retellings of the tigress tale, one that is particularly helpful for understanding this passage is a parallel passage in the Sanskrit and Tibetan editions of the <cite>Candra­prabhāvadāna</cite><a href="https://read.84000.co/translation/toh348.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh348.html</a> (Matsumura 1980). This avadāna includes a reminiscence by another of the Buddha Śākyamuni’s incarnations, Candraprabha, about the same offering to the tigress. The passage in question reads, in Sanskrit: <em>esa eva devate sa pradeśo yatra mayā vyāghryātmanam parityajya catvārimsat-ka[lpa sam]prasthito maitreyo bodhisatvaḥ ekena śirasā parityāgena avapṛṣṭhīkṛtaḥ</em> (Matsumura, pp. 111–12). And, in Tibetan: <em>lha mo gang du ngas stag mo la bdag nyid yongs su btang ste / lus yongs su gtong ba gcig gis byang chub sems dpa’ byams pa bskal pa bzhi bcur zhugs pa / phyir ’dums par byas pa’i sa phyogs ni ’di yin no //</em> (Matsumura 1980, p. 267). It could be translated: “Goddess, this is the very place in which I gave myself to the tigress. By this one act of completely <em>giving</em> my head (body in Tibetan), I surpassed the bodhisattva Maitreya who had set out (for buddhahood) forty eons earlier (than I).” In this passage, the use of the Sanskrit pronoun <em>mayā</em> clearly indicates that it was Candraprabha’s previous incarnation (and, therefore, the Buddha Śākyamuni’s and Śrīsena’s previous incarnation) who offered his body (or head) to the tigress, not the previous incarnation of the bodhisattva Maitreya. As explained in the preceding note, the use of ambiguous phrases in the present rendition of this tale was probably compensated for by the familiarity most readers had with the tale of the hungry tigress. We are much indebted to one of our anonymous reviewers for helping to understand this short but complicated vignette and to refine our translation of it.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-168">back</a></li><li id="tei-note-UT22084-076-003-201"><p>Puṇḍarīka is a white lotus flower, <em>Nelumbium speciosum</em>. Agaru is agarwood, taken from the inside of the <em>Aquilaria</em> and <em>Gyrinops</em> trees after they have been attacked by mold. Tagara incense is made from the milky sap of <em>Tabernaemontana divaricata</em>. Indian tradition has it that the mandārava tree growing in Indra’s garden is the <em>Erythrina variegata</em>, or Indian coral tree.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-201">back</a></li><li id="tei-note-UT22084-076-003-218"><p>Translated based on Narthang and Lhasa, which read <em>bzod par mdzod</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-003-218">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/076-001-toh347-the-exemplary-tale-of-punyabala.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/076-004-toh350-the-past-endeavor-of-kanakavarna.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

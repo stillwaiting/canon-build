@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 307 — The Limits of Life — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 307 — The Limits of Life</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 307 — The Limits of Life        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Āyuḥparyanta          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by Bruno Galasek with Lama Kunga Thartse Rinpoche under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Sūtra on the Limits of Life</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.139.a</span><span class="tei-ref">{S74}</span> Homage to the Three Jewels!</p><br /><p>Thus did I hear at one time.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-47" href="#tei-note-UT22084-072-007-47">[1]</a></sup><span class="tei-ref">{S75}</span> The Bhagavān was staying in Śrāvastī, in Prince Jeta’s grove, Anāthapiṇḍada’s Park. There the Bhagavān addressed the monks: “Monks, do you wish to learn about the lifespans of beings?”</p><p>“Yes, Bhagavān, this is the right time for it! Sugata, the time is right for the Bhagavān to teach the monks the lifespans of living beings. Bhagavān, having heard the teaching from the Bhagavān, the monks will retain it.”</p><p>“Monks, listen carefully and concentrate! I will teach.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-50" href="#tei-note-UT22084-072-007-50">[2]</a></sup></p><p>“Monks, the maximum lifespan in the hell realms is one eon. Premature death does occur.</p><p>“Monks, the maximum lifespan in the animal realm <span class="tei-ref">F.139.b</span> is one eon. Premature death does occur.</p><p>“Monks, one day for the pretas corresponds to thirty days for humans. Since thirty such days constitute one month, and twelve months constitute one year, pretas have a lifespan of five hundred years by this way of calculating.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-54" href="#tei-note-UT22084-072-007-54">[3]</a></sup> According to human years, this is fifteen thousand years. Premature death does occur.”</p><br /><p>Then, at this time, the Bhagavān spoke these verses:</p><div class="tei-verse"><div class="tei-line">“With their mouths and throats parched, they suffer intensely.</div><div class="tei-line">Their bodies rise high like mountains tall.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-57" href="#tei-note-UT22084-072-007-57">[4]</a></sup></div><div class="tei-line">They are all coated in hair,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-58" href="#tei-note-UT22084-072-007-58">[5]</a></sup> their mouths are fretfully agape,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-59" href="#tei-note-UT22084-072-007-59">[6]</a></sup></div><div class="tei-line">Their noses extremely thin like needles. <span class="tei-ref">{S76}</span></div></div><div class="tei-verse"><div class="tei-line">“Their skeleton-like, naked bodies are clad only in their own hair—</div><div class="tei-line">Deformed figures with hands like cups,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-61" href="#tei-note-UT22084-072-007-61">[7]</a></sup></div><div class="tei-line">They suffer intensely from hunger, thirst, and fatigue.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-62" href="#tei-note-UT22084-072-007-62">[8]</a></sup></div><div class="tei-line">They howl, and their aching bodies writhe.</div></div><div class="tei-verse"><div class="tei-line">“Constantly experiencing painful sensations, they cry out in agony.</div><div class="tei-line">Those who resort to jealousy and spite for others in this world,</div><div class="tei-line">Having committed negative actions,</div><div class="tei-line">Will be born in the realm of the pretas.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-64" href="#tei-note-UT22084-072-007-64">[9]</a></sup></div></div><p>“Monks, the lifespan of human beings inhabiting the eastern continent Pūrvavideha<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-66" href="#tei-note-UT22084-072-007-66">[10]</a></sup> is two hundred fifty years. Premature death does occur.</p><p>“Monks, the lifespan of human beings inhabiting the western continent Avaragodānīya<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-68" href="#tei-note-UT22084-072-007-68">[11]</a></sup> is five hundred years. Premature death does occur.</p><p>“Monks, the lifespan of human beings inhabiting the northern continent Uttarakuru<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-70" href="#tei-note-UT22084-072-007-70">[12]</a></sup> is one thousand years. Premature death does not occur.</p><p>“Why do the human beings who inhabit the continent Uttarakuru have a lifespan of one thousand years and not experience premature death?</p><p>“Monks, the human beings inhabiting the continent Uttarakuru have no sense of <em>mine</em> and no notion of ownership, and their lifespan is predetermined. When they die and pass from there, they progress higher and higher,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-73" href="#tei-note-UT22084-072-007-73">[13]</a></sup> and in the future they go to heaven. Monks, this is why the human beings inhabiting the continent Uttarakuru have a lifespan of one thousand years and do not experience premature death.”</p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Beings who are stricken by poverty <span class="tei-ref">F.140.a</span></div><div class="tei-line">Hope for the riches of others.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-76" href="#tei-note-UT22084-072-007-76">[14]</a></sup></div><div class="tei-line">Because they have not served and relied on noble beings,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-77" href="#tei-note-UT22084-072-007-77">[15]</a></sup></div><div class="tei-line">They will become the low and mean servants of others.</div></div><div class="tei-verse"><div class="tei-line">“The affluent and rich,</div><div class="tei-line">Possessing all kinds of enjoyments, <span class="tei-ref">{S77}</span></div><div class="tei-line">As well as money, grains, and servants,</div><div class="tei-line">Are those who have served and relied on noble beings.</div></div><div class="tei-verse"><div class="tei-line">“Those who live meritorious lives,</div><div class="tei-line">By performing virtuous actions here and now,</div><div class="tei-line">Will delight in great prosperity</div><div class="tei-line">And abundance like a deva.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-80" href="#tei-note-UT22084-072-007-80">[16]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Since what is beyond the range of sense perception is not apparent,</div><div class="tei-line">Look directly at what is present:</div><div class="tei-line">When people experience happiness in this world,</div><div class="tei-line">That is the karmic result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-82" href="#tei-note-UT22084-072-007-82">[17]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“The humans<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-84" href="#tei-note-UT22084-072-007-84">[18]</a></sup> inhabiting the northern continent</div><div class="tei-line">Have no sense of <em>mine</em> and no notion of ownership.</div><div class="tei-line">They use clothing from the wish-fulfilling tree—</div><div class="tei-line">That is the result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-85" href="#tei-note-UT22084-072-007-85">[19]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“They experience neither cold nor heat,</div><div class="tei-line">They are free from illnesses,</div><div class="tei-line">And they possess perfect bodies and complexion—</div><div class="tei-line">That is the karmic result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-87" href="#tei-note-UT22084-072-007-87">[20]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“On the northern continent</div><div class="tei-line">Grows very white rice</div><div class="tei-line">Whose grains are unbroken, smooth, pure, and clean—</div><div class="tei-line">That is the karmic result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-89" href="#tei-note-UT22084-072-007-89">[21]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Pure light-generating crystals</div><div class="tei-line">Shine for beings continuously</div><div class="tei-line">And cook their food—</div><div class="tei-line">That is the karmic result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-91" href="#tei-note-UT22084-072-007-91">[22]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“They have no vegetables,</div><div class="tei-line">And not even a little dahl.</div><div class="tei-line">They always eat rice</div><div class="tei-line">Endowed with perfect color, smell, and taste.</div></div><div class="tei-verse"><div class="tei-line">“With only one serving of that food,</div><div class="tei-line">Until they get up from their seats</div><div class="tei-line">The food on their plates is inexhaustible—</div><div class="tei-line">That is the karmic result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-94" href="#tei-note-UT22084-072-007-94">[23]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“A fruit that resembles the bottle gourd<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-96" href="#tei-note-UT22084-072-007-96">[24]</a></sup></div><div class="tei-line">Grows on branches even when cut.</div><div class="tei-line">One can eat them off the vine—<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-97" href="#tei-note-UT22084-072-007-97">[25]</a></sup></div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“The rivers there carry cool water that</div><div class="tei-line">When drunk, does not harm the stomach</div><div class="tei-line">And that possesses the eight superior qualities<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-99" href="#tei-note-UT22084-072-007-99">[26]</a></sup>—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“The people of Uttarakuru constantly divert themselves</div><div class="tei-line">With magical trees that emit music.</div><div class="tei-line">Their minds are always happy—</div><div class="tei-line">That is the karmic result of former generosity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-101" href="#tei-note-UT22084-072-007-101">[27]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“The lovely magical music-trees,</div><div class="tei-line">The many magical garment-trees,</div><div class="tei-line">The perfect-smelling perfume-trees—</div><div class="tei-line">They are the karmic result of former generosity. <span class="tei-ref">F.140.b</span></div></div><div class="tei-verse"><div class="tei-line">“Perfume, flowers, music,</div><div class="tei-line">And garments too—</div><div class="tei-line">Whatever the heart desires</div><div class="tei-line">Manifests exactly as imagined.</div></div><div class="tei-verse"><div class="tei-line">“On lush green meadows,</div><div class="tei-line">With grass soft like cotton wool,</div><div class="tei-line">They enjoy themselves all day— [91]</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“They are without anger.</div><div class="tei-line">Never begrudging or jealous,</div><div class="tei-line">They enjoy one another<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-106" href="#tei-note-UT22084-072-007-106">[28]</a></sup>—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“During the first watch of the night<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-108" href="#tei-note-UT22084-072-007-108">[29]</a></sup></div><div class="tei-line">A rain shower falls for only an instant</div><div class="tei-line">And cleans the air of dust—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“Since they are not possessive,</div><div class="tei-line">Even the mother-and-son relationship is unknown to them.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-110" href="#tei-note-UT22084-072-007-110">[30]</a></sup></div><div class="tei-line">When nothing unpleasant exists, sorrow is nonexistent<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-111" href="#tei-note-UT22084-072-007-111">[31]</a></sup>—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“Mothers can even leave their children</div><div class="tei-line">On empty roads and go their way,</div><div class="tei-line">Because milk trickles from everyone’s thumbs—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“No one cries there.</div><div class="tei-line">When someone dies, they just leave the body and go on their way.</div><div class="tei-line">Birds come and clean the island of the corpses—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“The whole of Uttarakuru is enclosed by a moat,</div><div class="tei-line">Within which Uttarakuru’s inhabitants safely enjoy and divert themselves</div><div class="tei-line">With songs and dance, most beautiful to behold—</div><div class="tei-line">That is the karmic result of former generosity.</div></div><div class="tei-verse"><div class="tei-line">“The people there live for one thousand years,</div><div class="tei-line">And they certainly use it up.</div><div class="tei-line">They do not die prematurely<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-116" href="#tei-note-UT22084-072-007-116">[32]</a></sup>—</div><div class="tei-line">That is the karmic result of former generosity!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-117" href="#tei-note-UT22084-072-007-117">[33]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Having fully enjoyed this beauty and abundance,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-119" href="#tei-note-UT22084-072-007-119">[34]</a></sup></div><div class="tei-line">Even though they will have to forsake their human bodies,</div><div class="tei-line">They will take rebirth among the devas<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-120" href="#tei-note-UT22084-072-007-120">[35]</a></sup>—</div><div class="tei-line">That is the karmic result of former generosity. <span class="tei-ref">{S78}</span></div></div><p>“Monks, the lifespan of the humans of the southern continent of Jambudvīpa<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-122" href="#tei-note-UT22084-072-007-122">[36]</a></sup> is not fixed; it varies.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-123" href="#tei-note-UT22084-072-007-123">[37]</a></sup> More precisely, monks, the maximum lifespans of the humans of Jambudvīpa are unlimited, eighty thousand years, one hundred years, and ten years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-124" href="#tei-note-UT22084-072-007-124">[38]</a></sup></p><p>“Monks, the lifespan at the present time of the humans of Jambudvīpa amounts to one hundred years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-126" href="#tei-note-UT22084-072-007-126">[39]</a></sup> Monks, presently those among the humans of Jambudvīpa who live long can reach an age of one hundred years, or a little more than that, when looked after with proper care.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-127" href="#tei-note-UT22084-072-007-127">[40]</a></sup></p><p>“Monks, during a lifespan of one hundred years, people undergo ten stages.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-129" href="#tei-note-UT22084-072-007-129">[41]</a></sup><span class="tei-ref">F.141.a</span> At the first stage, they are infants, feeble and lying on their back. At the second stage they are children, disposed to playing. At the third stage, as youths, they chase after pleasure. At the fourth stage they are endowed with physical strength and strong enthusiasm. At the fifth stage they possess prudence and self-confidence.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-130" href="#tei-note-UT22084-072-007-130">[42]</a></sup> At the sixth stage they are experienced and more given to reflection. At the seventh stage they practice religion with all their heart.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-131" href="#tei-note-UT22084-072-007-131">[43]</a></sup> At the eighth stage they are venerable and people of distinction.</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-132" href="#tei-note-UT22084-072-007-132">[44]</a></sup> At the ninth stage they are old, fragile, and weakened by age. At the tenth stage life is exhausted and only death remains.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-133" href="#tei-note-UT22084-072-007-133">[45]</a></sup> Monks, in a hundred years, their lives undergo those ten stages.</p><p>“Monks, living for one hundred years, they live for one hundred times each the three seasons: one hundred winters, one hundred summers, and one hundred rains.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-135" href="#tei-note-UT22084-072-007-135">[46]</a></sup> Living three seasons one hundred times each, they live for twelve months one hundred times: four months each of winters, four of summers, and four of rains. Living for twelve months one hundred times, they live for twenty-four times one hundred half-months, or two thousand four hundred half-months: eight half-months each of winters, eight half-months of summers, and eight half-months of rains. Living twenty-four times one hundred half-months, they live for thirty-six thousand days: twelve thousand days each of summer, winter, and rains.</p><p>“Living for thirty-six thousand days, they eat seventy-two thousand meals, except for when there is something that prevents them from eating.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-137" href="#tei-note-UT22084-072-007-137">[47]</a></sup> These meal interruptions are as follows: when they are angry, they do not eat; when they suffer, they do not eat; when impoverished,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-138" href="#tei-note-UT22084-072-007-138">[48]</a></sup> they do not eat; during fasting,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-139" href="#tei-note-UT22084-072-007-139">[49]</a></sup> they do not eat; because of loss, they do not eat; because of gain, too, they do not eat; when sleeping, they do not eat; when drunk,<span class="tei-ref">F.141.b</span> they do not eat; due to being drowsy, they do not eat. Thus, in sum, the meals that are eaten and the meals that are not eaten are altogether seventy-two thousand meals during one lifetime, including the milk from their mother that they have drunk.</p><p><span class="tei-ref">{S79}</span></p><p>“Monks, I have expounded and itemized the lives of human beings in Jambudvīpa in terms of seasons, months, half months, days, meals, and even the interruptions to meals.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-141" href="#tei-note-UT22084-072-007-141">[50]</a></sup></p><p>“Monks, fifty human years corresponds to one day and night in the life of the devas belonging to the retinue of the Four Great Kings. Since thirty such days constitute one month, and twelve months constitute one year, the lifespan of the devas belonging to the retinue of the Four Great Kings is five hundred divine years by this way of calculating. According to human years, this is nine million years. Premature death does occur.</p><p>“This—that is, nine million years—corresponds to one day and night for the beings<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-144" href="#tei-note-UT22084-072-007-144">[51]</a></sup> in the great hell Revival.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-145" href="#tei-note-UT22084-072-007-145">[52]</a></sup><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-146" href="#tei-note-UT22084-072-007-146">[53]</a></sup> Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of beings in the great hell Revival is, by this way of calculating, five hundred years. In human years, this is 1 trillion 620 billion years. Premature death does occur.”</p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“By committing harmful actions</div><div class="tei-line">With body, speech, and mind,</div><div class="tei-line">And whatever other actions that bring harm,</div><div class="tei-line">Beings are reborn in the hell Revival.</div><div class="tei-line">For one thousand times ten million years</div><div class="tei-line">They are tortured and killed, only to be revived.</div></div><div class="tei-verse"><div class="tei-line">“People who kill other people,</div><div class="tei-line">Because they are tied to one another by hatred,</div><div class="tei-line">Will, by virtue of this karma,</div><div class="tei-line">Be reborn in Revival.</div></div><p>“Monks, one hundred human years corresponds to one day and night for the devas of the Heaven of the Thirty-Three. Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the devas of the Heaven of the Thirty-Three is one thousand divine years by this way of calculating. <span class="tei-ref">F.142.a</span> According to human years, this is thirty-six million years. Premature death does occur.</p><p>“This—that is, thirty-six million years—corresponds to one day and night for the beings in the great hell Black Thread.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-152" href="#tei-note-UT22084-072-007-152">[54]</a></sup> Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of beings in the great hell Black Thread is one thousand years by this way of calculating. According to human years, this is 12 trillion 960 billion years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-153" href="#tei-note-UT22084-072-007-153">[55]</a></sup> Untimely death<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-154" href="#tei-note-UT22084-072-007-154">[56]</a></sup> does occur.” <span class="tei-ref">{S80}</span></p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Those who harm<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-157" href="#tei-note-UT22084-072-007-157">[57]</a></sup> their father or mother,</div><div class="tei-line">Or buddhas or śrāvakas,</div><div class="tei-line">Will be born in the great hell Black Thread</div><div class="tei-line">And experience painful bodily sensations.</div></div><div class="tei-verse"><div class="tei-line">“Those who are lackadaisical and brag about it,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-159" href="#tei-note-UT22084-072-007-159">[58]</a></sup></div><div class="tei-line">And people who create discord among friends,</div><div class="tei-line">Are reborn in Black Thread.</div><div class="tei-line">Likewise, those who repeatedly tell lies<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-160" href="#tei-note-UT22084-072-007-160">[59]</a></sup></div><div class="tei-line">Are reborn in the great hell Black Thread</div><div class="tei-line">Because of that karma.</div></div><p>“Monks, two hundred human years corresponds to one day and night for the devas of the Heaven Free from Strife. Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the devas of the Heaven Free from Strife is two thousand divine years by this way of calculating. According to human years this is 144 million years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-162" href="#tei-note-UT22084-072-007-162">[60]</a></sup> Premature death does occur.</p><p>“This—that is, one hundred forty-four million years—is one day and night for the beings in the great hell Crushing.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-164" href="#tei-note-UT22084-072-007-164">[61]</a></sup> Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the beings in the great hell Crushing is two thousand years by this way of calculating. According to human years, this is 103 trillion 680 billion years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-165" href="#tei-note-UT22084-072-007-165">[62]</a></sup> Premature death does occur.”</p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Having committed the threefold<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-168" href="#tei-note-UT22084-072-007-168">[63]</a></sup> unwholesome deeds,</div><div class="tei-line">And having neglected the threefold wholesome ones,</div><div class="tei-line">Through this karma one will be reborn</div><div class="tei-line">In the great hell Crushing.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-169" href="#tei-note-UT22084-072-007-169">[64]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Having slain cows,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-171" href="#tei-note-UT22084-072-007-171">[65]</a></sup> goats, water buffalo, <span class="tei-ref">F.142.b</span></div><div class="tei-line">Game, fowl,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-172" href="#tei-note-UT22084-072-007-172">[66]</a></sup> pigs,</div><div class="tei-line">Or other such animals,</div><div class="tei-line">One will be reborn in Crushing.</div></div><p>“Monks, four hundred human years corresponds to one day and night for the devas of the Heaven of Joy. Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the devas of the Heaven of Joy is four thousand divine years by this way of calculating. According to human years, this is 576 million <span class="tei-ref">{S81}</span> years. Premature death does occur.</p><p>“This—that is, five hundred seventy-six million human years—corresponds to one day and night for the beings in the great hell Wailing.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-175" href="#tei-note-UT22084-072-007-175">[67]</a></sup> Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the beings in the great hell Wailing is four thousand years by this way of calculating. According to human years, this is 829 trillion 440 billion years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-176" href="#tei-note-UT22084-072-007-176">[68]</a></sup> Premature death does occur.”</p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Those whose hands are smeared with blood,</div><div class="tei-line">Whose appearance is dreadful, fierce, and terrifying,</div><div class="tei-line">Through their evil conduct</div><div class="tei-line">Will forever go to Wailing.</div></div><div class="tei-verse"><div class="tei-line">“Flatterers and conjurers,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-180" href="#tei-note-UT22084-072-007-180">[69]</a></sup> and those who use deceit to cheat others,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-181" href="#tei-note-UT22084-072-007-181">[70]</a></sup></div><div class="tei-line">May not utter terrifying sounds,</div><div class="tei-line">But because they ruin people,</div><div class="tei-line">They will burn in hell for a long time.</div></div><p>“Monks, eight hundred human years corresponds to one day and night for the devas of the Heaven of Delighting in Emanations. Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the devas of the Heaven of Delighting in Emanations is eight thousand years by this way of calculating. According to human years, this is 2 billion 304 million years. Premature death does occur.</p><p>“This—that is, 2 billion 304 million years—corresponds to one day and night for the beings inhabiting the great hell Loud Wailing. Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the beings inhabiting the great hell Loud Wailing<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-184" href="#tei-note-UT22084-072-007-184">[71]</a></sup><span class="tei-ref">F.143.a</span> is eight thousand years by this way of calculating. According to human years, this is 6 quadrillion 635 trillion 520 billion years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-185" href="#tei-note-UT22084-072-007-185">[72]</a></sup> Premature death does occur.”</p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Those who are obstructed by the thicket of wrong views</div><div class="tei-line">And blinded by the veil of craving</div><div class="tei-line">Will certainly go to Loud Wailing<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-188" href="#tei-note-UT22084-072-007-188">[73]</a></sup></div><div class="tei-line">Due to their evil conduct. <span class="tei-ref">{S82}</span></div></div><div class="tei-verse"><div class="tei-line">“People who violate friendship and confidentiality<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-190" href="#tei-note-UT22084-072-007-190">[74]</a></sup></div><div class="tei-line">Will burn in the blazing,</div><div class="tei-line">Bloodcurdling hell Loud Wailing,</div><div class="tei-line">Where they are imprisoned in a circular house.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-191" href="#tei-note-UT22084-072-007-191">[75]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“There, swords will cut to pieces the bodies</div><div class="tei-line">Of people who have engaged in backbiting.</div><div class="tei-line">Vultures, crows, owls, and dogs</div><div class="tei-line">Will shake their bodies to and fro before devouring them.</div></div><p>“Monks, one thousand six hundred<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-194" href="#tei-note-UT22084-072-007-194">[76]</a></sup> human years corresponds to one day and night for the devas of the Heaven of the Masters of Others’ Creations.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-195" href="#tei-note-UT22084-072-007-195">[77]</a></sup> Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the devas of the Heaven of the Masters of Others’ Creations is sixteen thousand years by this way of calculating. According to human years, this is 9 billion 216 million years. Premature death does occur.</p><p>“This—that is, nine billion two hundred sixteen million years—corresponds to one day and night for the beings inhabiting the great hell <em>Heat</em>.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-197" href="#tei-note-UT22084-072-007-197">[78]</a></sup> Since thirty such days constitute one month, and twelve such months constitute one year, the lifespan of the beings inhabiting the great hell <em>Heat</em> is sixteen thousand years by this way of calculating. According to human years this is 53 quadrillion 84 trillion 160 billion years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-198" href="#tei-note-UT22084-072-007-198">[79]</a></sup> Premature death does occur.”</p><br /><p>Then, at that time, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Those who repeatedly<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-201" href="#tei-note-UT22084-072-007-201">[80]</a></sup> afflict<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-202" href="#tei-note-UT22084-072-007-202">[81]</a></sup></div><div class="tei-line">Good monks and brahmins,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-203" href="#tei-note-UT22084-072-007-203">[82]</a></sup></div><div class="tei-line">As well as their father and mother,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-204" href="#tei-note-UT22084-072-007-204">[83]</a></sup></div><div class="tei-line">Will be reborn in <em>Heat</em>.</div></div><div class="tei-verse"><div class="tei-line">“Someone who inflicts a lot of pain</div><div class="tei-line">On many beings in this world</div><div class="tei-line">Will be reborn in <em>Heat</em></div><div class="tei-line">On account of this karma. <span class="tei-ref">F.143.b</span></div></div><p>“Monks, do you want to hear about the lifespan of beings who have been reborn in the Blistering Hell?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-207" href="#tei-note-UT22084-072-007-207">[84]</a></sup></p><p>“Yes, Bhagavān, the time is right for that. Sugata, this is the right time for it. We, the monks, having heard the teaching from the Blessed One about the lifespan of beings that have been reborn in the Blistering Hell, will retain the teaching well.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-209" href="#tei-note-UT22084-072-007-209">[85]</a></sup></p><p>“Monks, in that case, listen carefully and concentrate! I will teach. Monks, it is like this: Imagine a container<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-211" href="#tei-note-UT22084-072-007-211">[86]</a></sup> with a capacity of twenty khārī<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-212" href="#tei-note-UT22084-072-007-212">[87]</a></sup> that contains a full measure of twenty khārī of Kosalan sesame seeds and is filled to the brim with them.</p><p><span class="tei-ref">{S83}</span> Now imagine that someone were to remove a single seed from that container every hundred years.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-213" href="#tei-note-UT22084-072-007-213">[88]</a></sup> I say, monks, that the contents of that container holding twenty khārīs of sesame seeds would quickly be emptied out completely by this method, but, monks, not so the lifespan of beings who have been reborn in the Blistering Hell.</p><p>“Twenty times the lifespan in the Blistering Hell is that in the Bursting Blister Hell.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-215" href="#tei-note-UT22084-072-007-215">[89]</a></sup> Twenty times the lifespan in the Bursting Blister Hell is that in the Hell of Chattering Teeth. Twenty times the lifespan in the Hell of Chattering Teeth is that in the Hell of Lamentation. Twenty times the lifespan in the Hell of Lamentation is that in the Cold Whimpering Hell. Twenty times the lifespan in the Cold Whimpering Hell is that in the Splitting Open Like a Blue Lotus Hell. Twenty times the lifespan in the Splitting Open Like a Blue Lotus Hell is that in the Splitting Open Like a Lotus Hell. Twenty times the lifespan in the Splitting Open Like a Lotus Hell is the Great Splitting Open Like a Lotus Hell.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-216" href="#tei-note-UT22084-072-007-216">[90]</a></sup> Devadatta’s<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-217" href="#tei-note-UT22084-072-007-217">[91]</a></sup> partisan,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-218" href="#tei-note-UT22084-072-007-218">[92]</a></sup> the monk Kokālika, because he felt anger toward<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-219" href="#tei-note-UT22084-072-007-219">[93]</a></sup> the monks Śāriputra and Maudgalyāyana,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-220" href="#tei-note-UT22084-072-007-220">[94]</a></sup> will be reborn in the Great Splitting Open Like a Lotus Hell with his own body.</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-221" href="#tei-note-UT22084-072-007-221">[95]</a></sup></p><p>“Therefore, monks, you should train the mind thus: not even toward the burnt stump of a tree should you generate an attitude of hatred, let alone toward a conscious being! You should train in that way, monks!”</p><br /><p>Then, at this point, the Bhagavān spoke the following verses:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-224" href="#tei-note-UT22084-072-007-224">[96]</a></sup></p><div class="tei-verse"><div class="tei-line">“Some people are born <span class="tei-ref">F.144.a</span>,</div><div class="tei-line">With a hatchet in their mouth,</div><div class="tei-line">With which they only cut themselves</div><div class="tei-line">When speaking words of evil. <span class="tei-ref">{S84}</span></div></div><div class="tei-verse"><div class="tei-line">“Those who praise the ones who are to be reproached</div><div class="tei-line">And those who reproach the ones who are to be praised</div><div class="tei-line">Accumulate with their mouths that evil,</div><div class="tei-line">Due to which they cannot find happiness.</div></div><div class="tei-verse"><div class="tei-line">“This is a small sin:</div><div class="tei-line">Losing all one’s wealth through gambling.</div><div class="tei-line">This is a great sin:</div><div class="tei-line">Getting angry at the Tathāgata.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-228" href="#tei-note-UT22084-072-007-228">[97]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Those who abuse the noble ones,</div><div class="tei-line">Having thus directed evil words and thoughts against them,</div><div class="tei-line">Will go to hell for one hundred thousand nirarbudas</div><div class="tei-line">And thirty-six arbudas.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-230" href="#tei-note-UT22084-072-007-230">[98]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Speaking untruth with a mind intending evil</div><div class="tei-line">Is what destroys one and hurls one into hell.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-232" href="#tei-note-UT22084-072-007-232">[99]</a></sup></div><div class="tei-line">A mind that is not tainted by these stains,</div><div class="tei-line">That is blameless, is steadfast. <span class="tei-ref">{S85}</span></div></div><p>“Monks, the lifespan of beings inhabiting the great hell Intense Heat<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-234" href="#tei-note-UT22084-072-007-234">[100]</a></sup> is half an eon. Premature death does occur.”</p><br /><p>Then, at that point, the Bhagavān spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Having abandoned wholesome actions</div><div class="tei-line">Through which one is reborn in heaven,</div><div class="tei-line">And having done harmful actions here, in this world,</div><div class="tei-line">One is reborn in Intense Heat.</div></div><div class="tei-verse"><div class="tei-line">“Those who harm good ascetics or brahmins,</div><div class="tei-line">Or their father or mother,</div><div class="tei-line">Or any other teacher</div><div class="tei-line">Will boil in Intense Heat.</div></div><p>“Monks, the lifespan of the beings in the great hell Incessant Torture<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-239" href="#tei-note-UT22084-072-007-239">[101]</a></sup> is one eon. Premature death does occur. This is where the fool Devadatta was reborn with his own body because he split the undivided Saṅgha<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-240" href="#tei-note-UT22084-072-007-240">[102]</a></sup> and, with evil intentions, drew the Tathāgata’s blood<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-241" href="#tei-note-UT22084-072-007-241">[103]</a></sup> and beat a nun, who was an arhantī, to death.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-242" href="#tei-note-UT22084-072-007-242">[104]</a></sup></p><p>Then, at that time, the Bhagavān spoke the following verses:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-244" href="#tei-note-UT22084-072-007-244">[105]</a></sup></p><div class="tei-verse"><div class="tei-line">“Those who are so foolish as to treat with contempt and reject</div><div class="tei-line">The teaching of those noble ones who worthily live according to the truth,</div><div class="tei-line">Because they have resorted to evil views,</div><div class="tei-line">Cultivate a deadly fruit, like the fruit of the thorny bamboo.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-246" href="#tei-note-UT22084-072-007-246">[106]</a></sup><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-247" href="#tei-note-UT22084-072-007-247">[107]</a></sup></div></div><div class="tei-verse"><div class="tei-line">They should only speak benevolently.</div><div class="tei-line">They should not speak maliciously. <span class="tei-ref">F.144.b</span></div><div class="tei-line">When they speak benevolently, things will turn out well.</div><div class="tei-line">When they speak maliciously, they will burn.</div></div><div class="tei-verse"><div class="tei-line">When fools utter malicious speech,</div><div class="tei-line">They become enchained.</div><div class="tei-line">Only fools speak maliciously;</div><div class="tei-line">Noble ones never utter them!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-250" href="#tei-note-UT22084-072-007-250">[108]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Having committed heinous acts in this world,</div><div class="tei-line">Which lead to unfortunate rebirth-destinies,</div><div class="tei-line">Through this karma,</div><div class="tei-line">One will be reborn in Incessant Torture. <span class="tei-ref">{S86}</span></div></div><p>“Monks, the lifespan of the devas in the Heaven of Brahmā’s Retinue<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-253" href="#tei-note-UT22084-072-007-253">[109]</a></sup> is half an eon. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Brahmā’s Ministers is three quarters of an eon.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-255" href="#tei-note-UT22084-072-007-255">[110]</a></sup> Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Great Brahmā is one eon.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-257" href="#tei-note-UT22084-072-007-257">[111]</a></sup> Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Limited Radiance is two eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Boundless Radiance is four eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Luminous Radiance<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-261" href="#tei-note-UT22084-072-007-261">[112]</a></sup> is eight eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Limited Virtue<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-263" href="#tei-note-UT22084-072-007-263">[113]</a></sup> is sixteen eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Boundless Virtue<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-265" href="#tei-note-UT22084-072-007-265">[114]</a></sup> is thirty-two eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Perfect Virtue<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-267" href="#tei-note-UT22084-072-007-267">[115]</a></sup> is sixty-four eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Cloudless Heaven<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-269" href="#tei-note-UT22084-072-007-269">[116]</a></sup> is one hundred twenty-five eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven Born from Merit<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-271" href="#tei-note-UT22084-072-007-271">[117]</a></sup> is two hundred fifty eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Great Reward<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-273" href="#tei-note-UT22084-072-007-273">[118]</a></sup> is five hundred eons. Premature death does occur.</p><p>“Monks, the lifespan of both the Insentient Beings and the devas of the Unlofty Heaven<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-275" href="#tei-note-UT22084-072-007-275">[119]</a></sup> is one thousand eons.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-276" href="#tei-note-UT22084-072-007-276">[120]</a></sup> Premature death does occur. <span class="tei-ref">{S87}</span></p><p>“Monks, the lifespan of the devas in Sorrowless Heaven<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-278" href="#tei-note-UT22084-072-007-278">[121]</a></sup><span class="tei-ref">F.145.a</span> is two thousand eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Sublime Vision<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-280" href="#tei-note-UT22084-072-007-280">[122]</a></sup> is four thousand eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the Heaven of Great Vision<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-282" href="#tei-note-UT22084-072-007-282">[123]</a></sup> is eight thousand eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas in the <em>Highest Heaven</em><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-284" href="#tei-note-UT22084-072-007-284">[124]</a></sup> is sixteen thousand eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas belonging to the Sphere of the Infinity of Space is twenty thousand eons.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-286" href="#tei-note-UT22084-072-007-286">[125]</a></sup> Premature death does occur.</p><p>“Monks, the lifespan of the devas belonging to the Sphere of the Infinity of Consciousness is forty thousand eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas belonging to the Sphere of Nothingness is sixty thousand eons. Premature death does occur.</p><p>“Monks, the lifespan of the devas belonging to the Sphere of Neither Perception nor Non-perception is eighty thousand eons. Premature death does occur.</p><p>“Monks, from the hell Incessant Torture up to the Sphere of Neither Perception nor Non-perception—which, monks, is the peak of existence—these states respectively demarcate the upper and lower limits of the whole of existence. These states are the manifestation of existence. They are the places where living beings of the five rebirth-destinies come and go, live, die, and are reborn. Enough with the manifestation of existence!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-291" href="#tei-note-UT22084-072-007-291">[126]</a></sup> I do not speak with even the slightest praise of the manifestation of existence, however small it may be, however short in duration.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-292" href="#tei-note-UT22084-072-007-292">[127]</a></sup> Why is that? Because the manifestation of existence is suffering. Take, for instance, something that is impure: when even a little of it stinks, how much more so does a lot of it! In the same way, I do not speak with even the slightest praise of the manifestation of existence, however small it may be, however short in duration. Why is that? Because, monks, the manifestation of existence is suffering. Ordinary, worldly people, uneducated in the Dharma,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-072-007-293" href="#tei-note-UT22084-072-007-293">[128]</a></sup> continually cycle again and again in the five rebirth-destinies;<span class="tei-ref">F.145.b</span> again and again they rush to the hells, again and again to the animal realm, again and again to evil states, to unfortunate rebirth-destinies, to destruction. Therefore, monks, you should train in this way: ‘I shall strive to cut off the stream of existence at any point and not let saṃsāra unfold!’</p><p>Monks, you should train in this way!”</p><p>After the Blessed One had thus spoken, the monks were deeply overjoyed and rejoiced in the Blessed One’s words.</p>This concludes “The Sūtra on the Limits of Life.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>This was translated by the Indian preceptor Viśuddhasiṃha and the monk Gewé Pal. It was revised and finalized by the Indian preceptor Vidyākarasiṃha and the chief editor-translator Bandé Paltsek.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-072-007-47"><p>This is the standard sūtra beginning, which is missing in the Skt. edition of our text. We know from other Buddhist texts in Skt. that the formulaic beginning of sūtras may also be translated as, “This I have heard: At one time the Bhagavān was staying at…,” etc. (Skt. <em>evam mayā śrutaṃ. ekaṃ samayaṃ bhagavā</em>…, etc.) The matter continues to be debated by scholars. However, our translation follows the punctuation as found in the Tib. translation of the Āps, and in the majority of the Tib. translations of Skt. sūtras.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-47">back</a></li><li id="tei-note-UT22084-072-007-50"><p>According to the Tib. The Skt. text additionally contains the monks’ reply: “ ‘Yes, master,’ the monks replied to the Bhagavān. Then the Bhagavān spoke to the monks thus: (<em>evaṃ bhadanteti. te bhikṣavo bhagavataḥ pratyaśroṣuḥ. atha bhagavān tān bhikṣūn idam avocat</em>; Matsumura 1998, 75).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-50">back</a></li><li id="tei-note-UT22084-072-007-54"><p>According to the Tib. For a similar passage, cf. <cite>dwags po thar rgyan</cite> in Guenther 1971, 62. It is interesting to note that syntax and lexis in a parallel passage in the <cite>dwags po thar rgyan</cite> are very similar to that of the Āps: <em>rgyal chen rigs bzhi’i tshe tshad ni gang yin pa de ni dmyal ba yang sos kyi nyin zhag gcig yin la | de sum cu la zla ba gcig| zla ba bcu gnyis la lor brtsis pa’i yang sos kyis rang lo lnga brgya thub bo | | mi lo ltar na bye ba phrag ’bum drug khri nyis stong yod do||</em>. The Skt. locution appears to be idiomatic and is difficult to render literally in English (Matsumura 1989, 75, paragraph 4): <em>tena rātri(ṃ)divasena tṛṃśad rāt[r]akeṇa māsena, dvādaśa māsakena saṃvatsareṇa, tayā saṃvatsara[ga]ṇanayā paṃca varṣaśatāni pretānām āyuṣaḥ pramāṇaṃ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-54">back</a></li><li id="tei-note-UT22084-072-007-57"><p>For the Skt. <em>āśraya</em> in the sense of “body,” cf. BHSD; the Tib. translation has <em>lus</em> (“body”), which is not attested as a standard translation equivalent for <em>āśraya</em> in the Mvy. For a similar passage in the <cite>Divyāvadāna</cite> describing the appearance of the pretas, see <span class="tei-ref">#UT22084-072-007-58</span>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-57">back</a></li><li id="tei-note-UT22084-072-007-58"><p>A similar passage describing the appearance of pretas can be found in the <cite>Divyāvadāna</cite>, tr. Rotman 2008, 47: “Soon five thousand pretas who looked like scorched wooden pillars, raised up skeletons covered with hair from head to toe, with stomachs like mountains and mouths like pinholes, surrounded Śroṇa Koṭikarṇa” (<em>yāvat pañcamātraiḥ pretasahasrair dagdha­sthūṇāsadriśair asthi­yantravaducchritaih svakeśa­roma­praticchannaiḥ parvatodara­saṃnibaiḥ sūcī­chidropama­mukhair anuparivāritaḥ Śroṇaḥ Koṭīkarṇaḥ</em>. Ed. Cowell &amp; Neil 1886, 7).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-58">back</a></li><li id="tei-note-UT22084-072-007-59"><p>Tib. <em>kha gdangs gnam du lta</em>, Skt. <em>vidāritonmukhā</em> (“with their mouths turned up and gaping”). The image that is being invoked here is perhaps that of extreme hunger that makes them gape their mouths and turn their faces upward in anxious expectation of any food or drink that might come their way.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-59">back</a></li><li id="tei-note-UT22084-072-007-61"><p>We interpret the Skt. compound <em>kapālapāṇayo (ghorāḥ)</em> as a <em>karmadhāraya</em> here (see Matsumura 1989, 76, v. 2c). For the only other occurrence of this term in Skt. Buddhist texts that we have come across so far, see <cite>Mahāvadāna­sūtra</cite>, where it clearly means “having/carrying a bowl in his hand” (see <cite>Mahāvadāna­sūtra</cite>, 16, §36.6, passim). The Tib. reads somewhat differently and its meaning is unclear: <em>gzugs mi sdug pa ’greng zhing thod pa thogs</em> (“Their deformed bodies stand erect and they hold bowl[s]”). Lama Kunga Rinpoche suggests either of two interpretations of the Tib.: (1) They are holding (skull?-)cups or bowls in their hands (constantly searching for food?); or (2) some feature of ugliness—referring to the form of their foreheads?—is being described (but the wording in Tib. is obscure). In later Skt. <em>kapālapāṇi</em> is used as an epithet of Śiva.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-61">back</a></li><li id="tei-note-UT22084-072-007-62"><p>The Tib. omits <em>vyasana</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-62">back</a></li><li id="tei-note-UT22084-072-007-64"><p>The Tib. translators changed the order of the pādas of the Skt. verses 2–4 (Matsumura 1989, pp. 75–76) from six lines (= 12 verse-quarters) with 12 syllables per line (= the Skt. meter <em>vaṃśastha</em>) to eight lines (= two verses?) with nine syllables each. The content, however, is mostly identical. My translation follows more closely the Tib. translation here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-64">back</a></li><li id="tei-note-UT22084-072-007-66"><p>Tib. <em>shar gyi lus ’phags</em>, “Majestic Body” (Jamgön Kongtrul 2003, 113). Skt. variant: <em>Prāgvideha</em> (so in AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>; see also BHSD, s.v.). We leave the names of the four great continents untranslated in the main body of the text since the original form of the words in Skt. Buddhist literature is not consistent. For extensive explanations on the Buddhist world system itself, see Jamgön Kongtrul 2003, pp. 107–47; for the AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>, see Pruden 1988–90, vol. 2, ch. 3.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-66">back</a></li><li id="tei-note-UT22084-072-007-68"><p>Tib. <em>nub kyi ba lang spyod</em>, “Bountiful Cow” (Jamgön Kongtrul 2003, 113). Variants of the name in Skt. and Pāli: <em>Aparagoyāna</em>, <em>Goyānīya</em> (Pāli), <em>Aparagodānika</em>, °<em>godānīya</em> (<cite>Mahāvastu</cite>), <em>Godānīya</em> (AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>), <em>Avaragodānīya</em> (<cite>Mūla­sarvāstivāda­vinaya</cite>, Gilgit), <em>Aparagoḍānī</em> (<cite>Lalitavistara</cite>), <em>Aparagodāni</em> (<cite>Dharmasaṃgraha</cite>); see BHSD.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-68">back</a></li><li id="tei-note-UT22084-072-007-70"><p>Tib. <em>byang gi sgra mi snyan</em>, “Unpleasant/Harsh Sound.” The Tib. translation of the Skt. <em>uttarakuru</em> derives from a folk etymology (Skt. <em>nirukti</em>): Skt. <em>ku</em> (-<em>kuṃsita</em>?) = Tib. <em>ngan pa</em> (“bad”) and Skt. <em>ru</em> (= <em>rava</em>) = Tib. <em>sgra</em> (“voice/sound”); cf. Mvy, s.v. uttarakuruḥ. The Skt. word, though, seems to have originated from the designation of an actual geographical location.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-70">back</a></li><li id="tei-note-UT22084-072-007-73"><p>The Tib. <em>khyad par du ’gro ba</em> means literally, “they achieve distinction.” For the Skt. equivalent <em>viśeṣagāmin</em>, cf. the similar phrase at SN V 370: <em>|| Yañca khvassa cittaṃ dīgharattaṃ saddhāparibhāvitam sīla-suta-cāga-paribhāvitaṃ || tam uddhagāmi hoti visesagāmi || || 5. Seyyathāpi Mahānāma puriso sappikumbham vā telakumbham vā gambhīram udakarahadam ogāhetvā bhindeyya || tatra yā assa sakkharā vā kaṭhalā vā sā adho-gāmī assa || yañca khvassa tatra sappi vā telaṃ vā tam uddhaṃgāmī assa visesāgamī ||</em>. Tr. Bhikkhu Bodhi 2000, 1808–9: “But his mind, which has been fortified over a long time by faith, virtue, learning, generosity, and wisdom—that goes upwards, goes to distinction. Suppose, Mahānāma, a man submerges a pot of ghee or a pot of oil in a deep pool of water and breaks it. All of its shards and fragments would sink downwards, but the ghee or oil there would rise upwards.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-73">back</a></li><li id="tei-note-UT22084-072-007-76"><p>According to the Tib. The Skt. is ambiguous (pāda b: <em>āśaṃsanti dhanaṃ paraṃ</em>). Matsumura (1989, 76) edited the manuscript reading <em>parāṃ</em> to <em>param</em>. But <em>parāṃ</em> is a possible genitive plural (see BHSG, 60, § 8.124.) which would match the Tib. translation. Matsumura’s edition means, “they hope for later riches.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-76">back</a></li><li id="tei-note-UT22084-072-007-77"><p>Matsumura (1989, 76, note 3 to § [11]) gives the translation of the Chinese for this passage: “because they never accumulated positive actions, they will become low servants for others.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-77">back</a></li><li id="tei-note-UT22084-072-007-80"><p>According to the Tib. The Skt. pādas cd of this verse are missing.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-80">back</a></li><li id="tei-note-UT22084-072-007-82"><p>According to the Tib. The pādas 8 ab are missing in the Skt. The verse presents an interesting argument for analogy (Skt. <em>upamāna</em>) as a source of knowledge with reference to the law of karma: the law of karma is generalized so as to apply also to cases that are not apparent or directly perceptible (Skt. <em>parokṣa</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-82">back</a></li><li id="tei-note-UT22084-072-007-84"><p>All the four main and the eight intermediate continents of the world are inhabited by humans (except for Cāmara, which is said to be inhabited by the rākṣasas); see Pruden 1988–90, vol. 2, 455–57.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-84">back</a></li><li id="tei-note-UT22084-072-007-85"><p>Cf. AN IV 396: 1. <em>Tīhi bhikkhave ṭhānehi Uttarakurukā manussā deve ca Tāvatiṃse adhigaṇhanti Jambudīpake ca manusse. Katamehi tīhi?</em> 2. <em>Amamā apariggahā niyatāyukā visesabhuno Imehi kho bhikkhave tīhi ṭhānehi Uttarakurukā manussā deve ca Tāvatiṃse adhigaṇhanti Jambudīpake ca ma-nusse</em>. “Bhikkhus, in three respects the people of Uttarakuru surpass the Tāvatiṃsa devas and the people of Jambudīpa. What three? (1) They are without selfishness and possessiveness; (2) their life span is fixed; and (3) their living conditions are exceptional. In these three respects the people of Uttarakuru surpass the Tāvatiṃsa devas and the people of Jambudīpa” (tr. Bhikkhu Bodhi 2012, 1277).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-85">back</a></li><li id="tei-note-UT22084-072-007-87"><p>Cf. AKBh(P) <a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> 269,24–269,25 on AK IV.116<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>: <em>surūpatvaṃ yaśasvi vā | priyatā sukumārartu­sukha­sparśāṅgatā tataḥ || AK IV.116 || varṇasampannaṃ dattvā surūpo bhavati | gandhasaṃpannaṃ dattvā yaśasvī bhavati | gandhavad yaśaso dikṣu vidhāraṇāt | rasasaṃpannaṃ dattvā priyo bhavati | rasa iva svāduḥ | sparśasaṃpannaṃ dattvā sukumārāṅgāś ca bhavati ṛtusukhasparśāni cāsyāṅgāni bhavanti yathā strīratnasya |</em> “ ‘Whence results beauty, glory, love, tenderness (of youth), and a body with pleasant sensations, always perfectly adapted to the seasons.’ Beauty comes from giving perfect-colored objects; fame comes from giving perfect-smelling objects, since, like a fragrance, fame is carried into all directions. By giving perfect-tasting objects, one becomes loved, just as a sweet taste [is loved by all]. By giving (things) that are excellent in their tactile quality one becomes someone whose body is ever youthful and has pleasant sensations that are always perfectly adapted to the seasons [i.e., cool when it is hot and warm when it is chilly; cf. AKBh(P)(D)<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>, 743,23–25], like the jewel-like wife [of a universal monarch].”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-87">back</a></li><li id="tei-note-UT22084-072-007-89"><p>According to the Tib. The word order is different in the Skt. Pāda b is missing, and pāda c is incomplete.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-89">back</a></li><li id="tei-note-UT22084-072-007-91"><p>According to Skt. The Tib. is unclear: “Through the gleam of a light-causing gem they are always beautified. It is [also] that which allows them to digest their food.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-91">back</a></li><li id="tei-note-UT22084-072-007-94"><p>According to the Tib., which permutes the order of the Skt. pādas bc.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-94">back</a></li><li id="tei-note-UT22084-072-007-96"><p>According to the Tib. The Skt. speaks of the <em>alābu</em>, i.e., the bottle gourd (<em>Lagenaria siceraria</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-96">back</a></li><li id="tei-note-UT22084-072-007-97"><p>Literally, “after harvesting them, they can be eaten without having to prepare them.” The Tib. is slightly ambiguous, however: <em>btso mi dgos par</em> can mean “not needing to cook” or perhaps “not needing to prepare,” i.e., the fruits can be eaten “as is.” (cf. Jäschke, s.v. <em>btso</em>: “purification, refining; <em>ser la tso tang ba</em> ‘to refine gold’ (which term eventually is the same as ‘to boil’).” The Skt. <em>apakṣalūnāṃ</em> is obscure (<em>a</em> + <em>prakṣalu</em>, “without washing”?). Lama Kunga Rinpoche favors the translation “there is no need to wash them.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-97">back</a></li><li id="tei-note-UT22084-072-007-99"><p>The water with eight superior qualities is an Indian Buddhist trope. The eight qualities are cool, sweet, light, soft, clear, flavorsome, not upsetting to the stomach, and smooth in the throat.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-99">back</a></li><li id="tei-note-UT22084-072-007-101"><p>The Tibetan and Chinese versions insert this extra stanza (cf. Matsumura 1989, 76, n. 13, [11]).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-101">back</a></li><li id="tei-note-UT22084-072-007-106"><p>According to the Tib. The verb <em>rtse</em> (= Skt. verbal root <em>krīḍ</em>) can have a sexual connotation, but it can also mean just “to frolic, play.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-106">back</a></li><li id="tei-note-UT22084-072-007-108"><p>Skt. <em>prathame yāme</em>: traditionally, the night is subdivided into three periods of three hours each; cf. MW, s.v. yāma.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-108">back</a></li><li id="tei-note-UT22084-072-007-110"><p>According to the Tib. The Tib. translation brings out a causal relationship between pādas ab. The Skt. just reads, “A mother does not recognize her son. The idea of possession and ownership does not exist.” See Skt. verse 22, pādas ab: <em>mātā puttraṃ na jānīte nāsti teṣāṃ parigrahaḥ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-110">back</a></li><li id="tei-note-UT22084-072-007-111"><p>According to the Tib. The Skt. is different: <em>na śocaṃti pṛyair nāśaṃ</em>, “They do not lament the death of a loved one.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-111">back</a></li><li id="tei-note-UT22084-072-007-116"><p>D here reads <em>bar ma don ni ’chi med pa</em>, which seems to be scribal error. We follow the readings of the other Tib. editions and the critical ed. of Matsumura here and read <em>bar ma dor ni ’chi med pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-116">back</a></li><li id="tei-note-UT22084-072-007-117"><p>According to the Tib. The syntax of the Skt. (pādas abc) is slightly different: “After they have spent one thousand human years there, they die, but not before their time” (<em>āyur varṣasahasraṃ hi kṣapayitvāttra mānuṣaṃ | mriyaṃnte nāntareṇeti</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-117">back</a></li><li id="tei-note-UT22084-072-007-119"><p>According to the Tib. The Skt. seems to suggest a reading, “Having spread and increased their glory, they will not be reborn among the devas” ((<em>kṛtvā</em>) <em>ca vipulaṃ śriyaṃ</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-119">back</a></li><li id="tei-note-UT22084-072-007-120"><p>According to the Tib. The Skt., curiously, reads (verse 27c): <em>deveṣu nopapadyate</em>, “they will <em>not</em> be reborn among the devas.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-120">back</a></li><li id="tei-note-UT22084-072-007-122"><p>The Skt. text has the orthographic variant <em>jambūdvīpa</em> (in the secondary <em>vṛddhi</em>-formation <em>jāmbūdvīpakā manuṣyā</em>). The Tib. phonetically transcribes this name <em>’dzam bu’i gling</em>; this (i.e., our) continent is named after the <em>jambu</em> tree (“rose apple”? But probably a mythical tree) that grows on it, and it is the only continent where bodhisattvas and cakravartins (universal monarchs) can be born. Cf. DPPN; Jamgön Kongtrul 2003, 112.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-122">back</a></li><li id="tei-note-UT22084-072-007-123"><p>The lifespan of human beings in Jambudvīpa decreases and increases according to the kalpas. A more literal translation of the Skt. and Tib. would be, “Monks, for the human beings of Jambudvīpa, there exists increase as well as decrease [of the lifespan].”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-123">back</a></li><li id="tei-note-UT22084-072-007-124"><p>The respective maximum lifespan depends on the current kalpa: In the first kalpa it is unlimited, in the last kalpa it is ten years (cf. AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> on AK III.78<a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a> = Pruden 1988–90, vol. 2, 470). These numbers concur with the Pāli tradition; cf., e.g., <cite>Cakkavattisīhanādasutta</cite> (DN 26).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-124">back</a></li><li id="tei-note-UT22084-072-007-126"><p>According to the Tib. The Skt. stresses “the present time” (<em>etarhi</em>) by placing it in sentence-initial position.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-126">back</a></li><li id="tei-note-UT22084-072-007-127"><p>This is an idiomatic expression in Sanskrit Buddhist texts: <em>samyaksukhena parihṛyamāna</em> = Tib. <em>legs par bde bar gnas na</em> (cf. Avś: Speyer, I.194 = Vaidya, 88: <em>samyak sukhena parihriyete</em>); cf. also the Skt. idiom <em>sukha-</em>(<em>sparśa-</em>)<em>vihara</em>, “to be comfortable, to be at ease.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-127">back</a></li><li id="tei-note-UT22084-072-007-129"><p>The Tib. omits “during a lifespan of one hundred years” (<em>varṣaśataṃ khalu jīvaṃ</em>) and reads instead “Monks, with respect to the stages of life…” (<em>dge slong dag ’tsho ba’i gnas skabs ni</em>). The term <em>avasthā</em> (or <em>daśā</em>; Tib. <em>’tsho ba’i gnas skabs</em>) is a technical term in Abhidharma literature denoting the different particular constellations (?) or states of the five <em>skandhas</em> within the chain of the twelve links of the formula of dependent arising (Skt. <em>pratītya­samutpāda</em>). Cf. Bronkhorst 2009, 94: “each of its twelve elements was a state (<em>daśā</em> or <em>avasthā</em>) of the five aggregates (<em>skandha</em>).” See also AKBh(P)<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>, p. 231,12–13 on AK IV,53 ab<a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a>, where Vasubandhu mentions a different set of <em>avasthā</em>: five stages of the embryo and five stages of a grown-up human being: <em>pañca hi garbhāvasthāḥ | kalalārbuda­peśīghana­praśākhāvasthāḥ | pañca jātāvasthāḥ | bāla­kumārava­madhya­vṛddhāvasthāḥ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-129">back</a></li><li id="tei-note-UT22084-072-007-130"><p>The Tib. reads <em>stobs dang ldan pa</em>, rendering the Skt. <em>pratibhānavān</em>, which is very likely an error; the expected translation equivalent of <em>pratibhāna</em> would be <em>spobs pa</em> (cf. Mvy, s.v.).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-130">back</a></li><li id="tei-note-UT22084-072-007-131"><p>According to the Tib. The Skt. text is corrupt here; although the meaning of the passage seems to be quite straightforward, the remaining Skt. fragment of the corresponding part of the sentence seems to have a different reading compared to the translation equivalent of the Tib. given in the Mvy: <em>khong du chud pa</em>, <em>avabodha</em> (see Mvy, s.v. avabodhaḥ; cf. Matsumura 1989, 78 [14]).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-131">back</a></li><li id="tei-note-UT22084-072-007-132"><p>According to the Skt. The Tib. reads, “In the eighth stage one is revered as an elder, and even kings show their respect” (<em>gnas skabs brgyad pa ni rgyal pos bkur zhing rgan rabs su bkur ba yin no</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-132">back</a></li><li id="tei-note-UT22084-072-007-133"><p>According to the Skt. The Tib. reads, “At the tenth stage one has reached the end of life and is near to death” (<em>gnas skabs bcu pa ni tshe’i mthar thug pa ste ’chir nye bar yin no</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-133">back</a></li><li id="tei-note-UT22084-072-007-135"><p>The three seasons are a common trope in Indian Buddhist literature; cf. AKBh(P)<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>, 177,19–21 on AK III 88c–89d<a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a> (= tr. Pruden 1988–90, vol. 2, 475). Yaśomitra, the commentator of the AKBh, makes an interesting remark about this in his commentary, <cite><a href="http://gretil.sub.uni-goettingen.de/gretil/1_sanskr/6_sastra/3_phil/buddh/yabhkvyu.htm" target="_blank" rel="noopener noreferrer">Sphuṭārthā Abhidharma­kośa­vyākhyā</a></cite>: <em>pravacane traya eva rtavo na yathā loke ṣaḍ iti. śiśiro hi śītasāmānyād dhemanta ity uktaḥ. vasanto ’py uṣṇasāmānyād grīṣma ity uktaḥ. śarad api vṛṣṭisāmānyād</em> [Tib. 320.b] <em>varṣā ity ukteti</em>, “In Scripture, only three seasons [are mentioned], not six as there are in the world.”<a href="https://read.84000.co/translation/toh4092.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4092.html</a></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-135">back</a></li><li id="tei-note-UT22084-072-007-137"><p>According to the Tib., but the passage is not entirely clear. The Skt. reads <em>sārdhaṃ (bhaktāntarāyaiḥ)</em> (Matsumura 1989: 78 [16]). The Tib. has <em>ma gtogs par</em>, which would rather correspond to Skt. <em>vinā</em>. Either way, the meaning here is <em>all the meals</em>, i.e., inclusive and/or exclusive of the times when one can or does not eat (i.e., the times in between meals as well as, and perhaps inclusive of, in-between meals). The Skt., on the other hand, as given above, may rather translate to “including that which one eats in between main meals.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-137">back</a></li><li id="tei-note-UT22084-072-007-138"><p>According to the Tib., which is quite clear: <em>phongs pa byung nas</em>, “having become poor/when impoverished”; the Skt. is more ambiguous with the adjective <em>kṛcchraprātaḥ</em>, literally “being filled with difficulty (or pain, calamity, danger).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-138">back</a></li><li id="tei-note-UT22084-072-007-139"><p>According to the Tib. (<em>bsnyungs ba byas te ma zos pa</em>). The Skt. manuscript is defective here. Twelve <em>akṣaras</em> are missing, along with a missing word or compound ending in -<em>pano</em>: <em>apatarpaṇam</em> (“fasting during illness”?). Cf. Negi, s.v. <em>bsnyung ba</em>. <em>bsnyung gnas</em> is a well-known fasting practice in Tibetan Buddhism centering on a manifestation of Avalokiteśvara.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-139">back</a></li><li id="tei-note-UT22084-072-007-141"><p>For another account of the lifespans of beings in the desire realm, see AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> on AK III. <a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a> pp.78–85 (English tr. Pruden 1988–90, vol. 2, 470–74).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-141">back</a></li><li id="tei-note-UT22084-072-007-144"><p>Here and throughout according to the Tib. (<em>de ni sems can dmyal ba chen po yang sos kyi nyin zhag gcig go</em>). The Skt. translates literally to “This is one day and night in the great hell Revival.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-144">back</a></li><li id="tei-note-UT22084-072-007-145"><p>This hell derives its name from the fact that the beings reborn there must spend their time tied to one another and beating and killing each other. They are subsequently revived by a cold wind and then start all over again (see Guenther 1986, 57).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-145">back</a></li><li id="tei-note-UT22084-072-007-146"><p>For detailed descriptions of the hells, explanations of their names, and the lifespan of beings in Gampopa’s <cite>dwags po thar rgyan</cite>, see Guenther 1986, 57–61.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-146">back</a></li><li id="tei-note-UT22084-072-007-152"><p>From Gampopa we learn that in this hell, beings wake up and find lines drawn with a <em>black thread</em> all over their bodies, which mark the places where flaming axes and saws will cut them into pieces (cf. Guenther 1986, 57).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-152">back</a></li><li id="tei-note-UT22084-072-007-153"><p>According to the Skt., which has the arithmetically correct number. The Tib. is unclear<em>: lo bye ba phrag sa ya nyis ’bum dgu khri drug stong rtsa cu gnyis</em>. The number of years mentioned in Gampopa’s <cite>dwags po thar rgyan</cite> (cf. Guenther 1986, p. 59) is identical with the Skt.: “twelve times one hundred thousand ten million years, and ninety-six thousand times ten million (= 12,960,000,000,000) years.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-153">back</a></li><li id="tei-note-UT22084-072-007-154"><p>The diction has changed in the Tib.: <em>dus ma yin par ’chi ba ni yod do</em>. The Skt. is the same as in the other paragraphs (<em>asty antareṇa kālakriyā</em>). According to Negi (Negi 2000, vol. 6, 2230, column II, s.v. <em>dus ma yin pa’i ’chi ba</em>), one would rather expect Skt. <em>akāla-maraṇa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-154">back</a></li><li id="tei-note-UT22084-072-007-157"><p>The Skt. passive past participle <em>drugdha</em> has active meaning (lexicalized), cf. pw, s.v. <em>druh</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-157">back</a></li><li id="tei-note-UT22084-072-007-159"><p>In other words, people who openly neglect their religious duties and practice. The Skt. (pāda a) of this verse is defective. Matsumura (1998, 80 [23]) reads as the first word of the defective line <em>adhura</em> (= Tib. <em>mi brtson pa</em>?). Cf. BHSD, s.v. <em>dhura</em>: “burden,” esp. religious obligation or duty (corresponds to the Pāli <em>gantha</em> (“study of texts”), <em>vipassanā</em> (“reflection”), <em>saddhā</em> (“faith”), <em>sīla</em> (“moral discipline”), and <em>paññā</em> (“knowledge”)).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-159">back</a></li><li id="tei-note-UT22084-072-007-160"><p>According to the Tib. The Skt. (pāda d) is unclear (+<em>cakā nyatikā mṛṣāḥ</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-160">back</a></li><li id="tei-note-UT22084-072-007-162"><p>The Skt. contains the arithmetically correct number. The Tib., however, deviates (<em>lo bye ba phrag bcu bzhi dang | lo khri bzhi stong</em> = ?).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-162">back</a></li><li id="tei-note-UT22084-072-007-164"><p>See Guenther 1986, 57. The beings reborn there are pressed between mountains or iron plates, and their crushed bodies are revived again only to experience the same kind of suffering again until their time there is over.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-164">back</a></li><li id="tei-note-UT22084-072-007-165"><p>According to the Skt., which has the arithmetically correct number. The Tib. deviates (<em>lo bye ba phrag sum ’bum drug khri brgyad stong rtsa gcig</em> = ?). See Guenther 1986, 59: “this is ten million times ten million years and three hundred and sixty-eight thousand times ten million years.” Konchog Gyaltsen’s translation of Gampopa (1998, 99) has: “The life span in the Crushing hell is 2,000 years, which is similar to that of the Free-of-Combat devas. In human terms, this is equal to 103,680,000,000,000 years.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-165">back</a></li><li id="tei-note-UT22084-072-007-168"><p>Threefold here means the actions carried out with body, speech, and mind.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-168">back</a></li><li id="tei-note-UT22084-072-007-169"><p>According to the Tib.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-169">back</a></li><li id="tei-note-UT22084-072-007-171"><p>According to the Tib. (<em>ba lang</em>, “cow, ox”) The Skt. manuscript has a lacuna here. Matsumura suggests reading <em>balākān</em> (“crane,” <em>balāka</em>). Cf. MW, s.v. balāka: “a kind of crane (the flesh of which is eaten).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-171">back</a></li><li id="tei-note-UT22084-072-007-172"><p>According to the Tib. (<em>bya gag</em>), which may mean either waterfowl (e.g., ducks) or chickens or other kinds of (wild) birds hunted as game. The Skt. has <em>kuk[k]uṭa</em> (“chicken”). The Mvy lists Skt. <em>vakaḥ</em>, “heron, crane” (cf. MW), as the standard translation equivalent for <em>bya gag</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-172">back</a></li><li id="tei-note-UT22084-072-007-175"><p>See Guenther 1986, 58: “so named, because the inhabitants there utter terrifying cries.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-175">back</a></li><li id="tei-note-UT22084-072-007-176"><p>This is the arithmetically correct number according to the Skt. if we interpret the word <em>nayuta</em> as “one million” (= <em>prayuta</em>?): <em>tad bhavati māṇuṣikayā gaṇanayā aṣṭau varṣakoṭīna(yutāny ekona)ttriṃśac ca varṣakoṭīśatasahasrāṇi [catuścatvāriṃ]śac ca varṣakoṭīsahasrāṇy āyuṣaḥ pramāṇaṃ</em> (Matsumura 1989, 95, [28]). The Tib. seems to have listed the numbers of the numerical expression in a different order: <em>lo bye ba phrag sa ya gnyis dang | bye ba phrag dgu ’bum bzhi khri bzhi stong dang | bye ba phrag brgyad</em> (= 82.944 x 1010 or 29,440,080,000,000 years?). Cf. <cite>dwags po thar rgyan</cite>, 43: <em>mi lo ltar na | bye ba phrag bye ba brgyad dang | bye ba phrag lnga ’bum bzhi dang | bye ba phrag sa ya lnga bzhi khri nyis stong yod do</em>, which seems to suggest yet another number. See, however, Guenther’s tr. (Guenther 1986, 59): “eight million times ten million years and two million times ten million years and nine hundred and forty-four thousand times ten million years.” Cf. also the arithmetically correct number in Konchog Gyaltsen’s translation of the <cite>dwags po thar rgyan</cite> (Konchog Gyaltsen 1998, 99): “829,440,000,000,000 years.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-176">back</a></li><li id="tei-note-UT22084-072-007-180"><p>According to the Skt. The Tib. is unclear (<em>gzhal lugs</em> [L <em>glugs</em>] <em>g.yo dang sgyu</em> [L <em>sgyur</em>] <em>byed mi</em>). The Skt. words <em>tūṭaka</em> and <em>vaṭika</em> in pāda d are problematic. <em>Vaṭika</em> seems to be just a variant spelling for <em>vātika</em>, for which see MW: “m. a man of mere words, noisy talker, flatterer; m. a juggler or conjurer.” The word <em>tūṭaka</em> seems to be a misspelling of the Skt. <em>kūṭaka</em>, for which the PED gives the following meanings: “a trap, a snare; fig. falsehood, deceit,” etc., and MW: “mfn. false, untrue, deceitful […]; n. counterfeited objects (of a merchant).” The Skt. in pāda c reads <em>na datto bhairavaṃ nādaṃ</em>, which makes sense in this context. The Tib. translation does not seem to have picked up the negation (Skt. <em>na</em>) and reads, “And who use their voice to terrify others” (<em>’jigs su rung ba’i sgra ’byin cing</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-180">back</a></li><li id="tei-note-UT22084-072-007-181"><p>The comparative list of the <cite>dpe bsdur ma</cite> Kangyur edition gives two variant readings here: Yongle has <em>gzhan la</em> for <em>gzhal (lugs?)</em>, and Choné, too, according to Matsumura’s critical edition, reads <em>gzhan</em>. We follow Yongle here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-181">back</a></li><li id="tei-note-UT22084-072-007-184"><p>See also Guenther 1986, 58; Konchog Gyaltsen 1998, 99.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-184">back</a></li><li id="tei-note-UT22084-072-007-185"><p>According to the Skt., which has the arithmetically correct number. The Tib. reads <em>bye ba phrag sa ya gsum dang bye ba phrag lnga ’bum khri nyis stong drug cu rtsa drug</em> (≠ 663.552 x 1010). See also Konchog Gyaltsen (1998, 99): “6,635,520,000,000,000 years.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-185">back</a></li><li id="tei-note-UT22084-072-007-188"><p>According to the Skt. The Tib. reads just “Wailing” (<em>ngu ’bod</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-188">back</a></li><li id="tei-note-UT22084-072-007-190"><p>According to the Tib. The Skt. reads <em>viśvāsaghātaka</em> (“traitor”), which is paraphrased in the Tib. translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-190">back</a></li><li id="tei-note-UT22084-072-007-191"><p>According to the Tib. (<em>bskor ba’i khyim gyi nang chud nas</em>). The Skt. of this pāda is defective. Matsumura’s reading is unclear (<em>dahyante nta</em> [xx] <em>ruddhā</em>); See Matsumura 1989, 82, [32].</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-191">back</a></li><li id="tei-note-UT22084-072-007-194"><p>The restored Skt. text (Matsumura 1989, 82) reads <em>ṣo[ḍaśa varṣa]śatāni</em>, “one thousand six hundred years.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-194">back</a></li><li id="tei-note-UT22084-072-007-195"><p>See also AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> on AK III.71a<a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a> and b, tr. Pruden 1988–90, vol. 2, 466: “There are beings whose objects of desire are created by others but who themselves dispose of these objects created by others. These are the Paranirmitavaśavartins.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-195">back</a></li><li id="tei-note-UT22084-072-007-197"><p>See Guenther 1986, 58; Konchog Gyaltsen 1998, 99, for descriptions of this hell.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-197">back</a></li><li id="tei-note-UT22084-072-007-198"><p>According to the Skt., which has the arithmetically correct number. The Tib. reads <em>lo bye ba sa ya phrag brgyad dang | bzhi ’bum dang | lo bye ba phrag khri drug stong lnga brgya sum cu yod de</em> (= 80,165,300,400,000?).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-198">back</a></li><li id="tei-note-UT22084-072-007-201"><p>According to the Tib. (<em>rtag tu</em>). This is not reflected in the Skt. The Skt. verse additionally contains <em>śiṣṭais</em> (a translation equivalent is missing in the Tib.): <em>śramaṇān brāhmaṇān sādhūn mātaraṃ pitaraṃ tathā | saṃtāpayati yo śiṣṭais tapane sa prapadyate</em>, “He who vexes the good ascetics and brahmins or his parents with leftover food (<em>śiṣṭa</em>?) will fall into [the great hell] <em>Heat</em>.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-201">back</a></li><li id="tei-note-UT22084-072-007-202"><p>Our reading here follows the Degé edition (which reads <em>gdung</em>, “to torment, to scorch”) against the readings of Yongle, Lithang, Narthang, and Choné (Kangxi reads <em>rdud</em>), which all read <em>rdung</em>, “to strike, hit” (the Skt. equivalent for that would be <em>kuṭṭayati</em>, cf. Mvy, s.v.). The Tib. <em>gdung byed pa</em> corresponds roughly to the Skt. <em>saṃtāpayati</em> (one would perhaps expect <em>yongs su gdung bar byed pa</em>), which reflects the older name (Tib. <em>gdung</em>) of the hell <em>Heat</em> (Skt. <em>tapana</em>), which in later Tibetan translations is rendered <em>tsha ba</em>. See also the next verse, where we translated <em>gdung byed ba</em> as “inflicts pain.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-202">back</a></li><li id="tei-note-UT22084-072-007-203"><p>The Tib. reads <em>dge slong</em> (usually = <em>bhikṣu</em>/<em>bhikṣuka</em>; cf. Negi, s.v. <em>dge slong</em>). The Skt., however, has <em>śramaṇa</em>, which usually designates, together with <em>brāhmaṇas</em>, non-Buddhist practitioners (however, see also Beckwith 2015, ch. 2). The Mvy lists <em>dge sbyong</em> as possible translation equivalent for <em>śramaṇa</em>. Cf. also <span class="tei-ref">#UT22084-072-007-237</span>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-203">back</a></li><li id="tei-note-UT22084-072-007-204"><p>Here our translation follows the edition of Yongle and Kangxi instead of Degé, which reads <em>las</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-204">back</a></li><li id="tei-note-UT22084-072-007-207"><p>Here starts an explanation of the so-called cold hells. According to Vasubandhu, the Skt. names of the cold hells indicate either the shape of the beings reborn in a particular hell or the noise that the denizens of a particular hell make (e.g., Skt. <cite>Hell of Chattering Teeth</cite>; see Pruden 1988–90, vol. 2, 459 and 473 on the lifespan in <em>arbuda</em>). According to Gampopa’s <cite>dwags po thar rgyan</cite>, the names indicate the kind of physical torment one experiences in them, e.g., in Blistering Hell (Skt. <em>arbuda</em>, Tib. <em>chu bur can</em>), blisters are said to appear on the skin and burst open due to the intense cold in this hell. Other names, like in Vasubandhu’s explanation, are clearly onomatopoeic (e.g., the Hell of Lamentation, Skt. <em>hahava</em>, Tib. <em>kyi hud zer ba</em> or Skt. <em>huhuva</em>, Tib. <em>a chu zer ba</em>). See Guenther 1986, 60–62; Konchog Gyaltsen 1998, 101–3. For another version of this story including the concluding verses, see <cite>The Hundred Deeds</cite>, Toh 340, <a href="https://read.84000.co/translation/UT22084-073-001.html#UT22084-073-001-1945" target="_blank" rel="noopener noreferrer">3.366</a>–<a href="https://read.84000.co/translation/UT22084-073-001.html#UT22084-073-001-1956" target="_blank" rel="noopener noreferrer">3.374</a>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-207">back</a></li><li id="tei-note-UT22084-072-007-209"><p>Syntax according to the Tib.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-209">back</a></li><li id="tei-note-UT22084-072-007-211"><p>The Tib. reads literally, “a <em>khal bcu tshad nyi shu pa</em> that fits <em>khal bcu tshad nyi shu</em> Kosalan sesame seeds.” It is not known what exactly this expression means, but it is clearly referring to some kind of container with fixed measurements. The equivalent in the Skt. text seems to be the word <em>vāha</em>, which here seems to refer to some sort of measuring cup with the dimension of one khārī (see the following notes <span class="tei-ref">#UT22084-072-007-212</span> and <span class="tei-ref">#UT22084-072-007-213</span>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-211">back</a></li><li id="tei-note-UT22084-072-007-212"><p>The Tib. <em>khal</em> (Skt. <em>khārī</em>) is a Tibetan measure of capacity for commodities, especially barley, etc. (1 <em>khal</em> = 20 <em>bre</em>). According to Jäschke 1977, this constitutes “a bushel.” See also Goldstein 2001, s.v.: “a standard Tib. measure of volume, equal to about thirty pounds of barley.” According to MW, however, the ancient Indian measure of capacity, one khārī, equals 3 bushels, i.e., 4 pecks (= 2,150.42 cubic inches or 35.24 liters according to the American system, and equal to 2,219.36 cubic inches or 36.37 liters in the British Imperial System; see American Heritage Dictionary, s.v. bushel). See, however, Pruden 1988–90, vol. 2, 539, note 474: “Tib. <em>khal</em> = <em>khāri</em>”? and Guenther 1986: p. 61: “a sesame store containing eighty bushels.” According to Negi, the Skt. equivalent of Tib. <em>khal brgyad bcu pa</em> is <em>viṃśatikhārika</em>, which indicates that eighty <em>khal</em> in the Tib. system corresponds to twenty khārī of the Indian measurement system (see Negi 1993, vol. 1, 333). However, the Tib. translation of the Āps has <em>khal bcu tshad nyi shu</em> (“twenty of the 10-<em>khal</em> measure” or “twenty ten-bushel vessels”; see <cite>The Hundred Deeds</cite>, Toh 340, <a href="https://read.84000.co/translation/UT22084-073-001.html#UT22084-073-001-1954" target="_blank" rel="noopener noreferrer">3.372</a>). Despite the uncertainties in both the Tib. and the Skt. readings (this passage has been restored by Matsumura based on parallel versions in other texts; see Matsumura 1989, 82 [37], note 1), we are using the Sanskrit terms in our translation. The uncertainties involved in determining the exact modern Western equivalents of these measurements seems even greater.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-212">back</a></li><li id="tei-note-UT22084-072-007-213"><p>To get an idea of the dimensions spoken of here, the reader may be referred to Thomas 1874, 26–28: “2,867,200 <em>ratis</em> = 1,638,400 grains = 20 <em>droṇas</em> = 1 ¼ <em>khārīs</em> = l <em>kumbha</em> 17,920.” See also Crook &amp; Osmaston 1994, 123–28 (the table on p. 124 states for contemporary Ladakh: 20 <em>bre</em> [= 1 <em>khal</em>] = 12–14 liters, 9–10 kg of barley).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-213">back</a></li><li id="tei-note-UT22084-072-007-215"><p>The Tibetan says literally, “Just as are twenty Blistering Hells, so is one Bursting Blister Hell.” The English translations for the <em>hahava</em> and <em>huhuva</em> hells are Rotman’s (Rotman 2008, 378). For alternative English translations (based on the Tibetan) of the other cold hells, cf. Könchok Gyaltsen 1998, 100; see also Guenther 1986, 60–62 (which also contains a translation of our passage here relating the simile of the emptying of the sesame store). For other versions of the simile, see AKBh(P)<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> on AK III, 84<a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a>, English tr. Pruden 1988–90, vol. 2, 459, 473; <cite>The Hundred Deeds</cite>, Toh 340, <a href="https://read.84000.co/translation/UT22084-073-001.html#UT22084-073-001-1954" target="_blank" rel="noopener noreferrer">3.372</a>; Sn III.10 (<cite>Kokāliyasutta</cite>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-215">back</a></li><li id="tei-note-UT22084-072-007-216"><p>Almost verbatim parallels of this paragraph are found in AKBh(P)<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> 175, pp.19–24 = SN I 152 = AN V 173. For further references to the Chinese canon, see Matsumura 1989, 83, notes on [37], [38].</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-216">back</a></li><li id="tei-note-UT22084-072-007-217"><p>We follow Narthang <em>lhas byin</em>, Skt. <em>Devadatta</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-217">back</a></li><li id="tei-note-UT22084-072-007-218"><p>For Kokālika, cf. DPPN, s.v.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-218">back</a></li><li id="tei-note-UT22084-072-007-219"><p>According to the Tib. The Skt. reads literally, “because he has defiled his mind in the presence of the monks Śāriputra and Maudgalyāyana (<em>śāriputtra­maudgalyāyanayor bhikṣor antike cittaṃ pradūṣya</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-219">back</a></li><li id="tei-note-UT22084-072-007-220"><p>See the <cite>Kokālikasutta</cite> for his story, Sn III.10, especially vv. 657–78 (Engl. = Norman 2001, pp. 85–87); AN V 171–74 and II 3; SN I 149ff; <a href="http://what-buddha-said.net/library/DPPN/abbreviations.htm#Netti." target="_blank" rel="noopener noreferrer">Netti</a>132.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-220">back</a></li><li id="tei-note-UT22084-072-007-221"><p>“With his own body” here means without taking on a new form in the intermediate state between death and rebirth (Tib. <em>bar ma do</em>, Skt. <em>antarābhava</em>) or new <em>skandhas</em> after being reborn. The AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> explains, “Actions very grave (by intention and in scope) and complete (that is, “accumulated,” iv.12) ripen before death itself. Mara then felt a retribution in this life before feeling a retribution in hell. The text thus means that Mara was enveloped, while still alive, by the fires of hell” (Pruden 1988–90, vol. 2, 388).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-221">back</a></li><li id="tei-note-UT22084-072-007-224"><p>Translation according to the Skt. unless noted otherwise. Other versions of the verses and the foregoing prose portion can also be found in the Pāli <cite>Kokāliyasutta</cite>, Sn III.10, vv. 657–61 (prose text and vv. 657–60 = SN I 152–54 (cf. AN V 170–74), and in the Uv VIII.2–6; Sn verses 661–62 = Dhp. 306, one hundred twenty-five; as well as in the <cite>Suvarṇa­varṇāvadāna</cite>, Roy 1971, 314 (English tr. Rajapatirana 1974, 120).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-224">back</a></li><li id="tei-note-UT22084-072-007-228"><p>According to the Tib. The (Buddhist Hybrid) Skt. version of this verse is a pun on the Sanskrit word <em>kali</em> that is lost in the Tibetan translation. The Tibetan translators chose to render <em>kali</em> as <em>sdig pa</em>, literally, “sin.” The word <em>kali</em> is employed here twice in its two senses: “the losing throw at dice,” and “calamity” or “evil” (see Norman 2001, 292, note to Sn verse 659). The Skt. (in Matsumura’s restored version of the verse) means, “A small measure indeed is that unlucky throw of the dice, through which one loses one’s own wealth. That is a greater calamity, which consists in getting angry toward the Sugata (<em>alpamāttro hy ayaṃ kalir / ya ihāksaiḥ svadhanaṃ parājayet / ayam attra mahattaraḥ kalir / yaḥ sugateṣu manaḥ pradūṣyet</em> // 44 // See Matsumura 1986, 84).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-228">back</a></li><li id="tei-note-UT22084-072-007-230"><p>According to the Skt. and the Pāli. Cf. the parallel verses in the Sn (v. 660) and the <cite>Suvarṇa­varṇāvadāna</cite> (Roy 1971, 313–14). The Skt. words <em>arbuda</em> and <em>nirarbuda</em>/<em>nyarbuda</em> here are numerals (= ten million and one hundred million, respectively; cf. MW and pw). See also Norman’s comment on this verse (Norman 2001, 292): “The names are not names of hells, but of numerals.” The number here expressed may be ten trillion thirty-six (and five?) million (10,000,036,000,000). But the numerals are ambiguous. For a parallel passage containing different numbers, see <cite>The Hundred Deeds</cite> (Toh 340), <a href="https://read.84000.co/translation/UT22084-073-001.html#UT22084-073-001-1942" target="_blank" rel="noopener noreferrer">3.364</a>. The Tib. of pādas cd reads <em>stong phrag brgyar ni chu bur rdol nas su | chu bur can du sum cu rtsa drug go</em>. The Tib. translators seem to have interpreted <em>chu bur rdol</em> and <em>chu bur can</em> as designating the two cold hells: “(Those who abuse a noble being will go to hell.) After one hundred thousand [years? lives?] in the Bursting Blister Hell, they [will go] to the Blistering Hell for thirty-six [years? lives?].” However, the Tib. does not indicate a time unit (years? lives?). It is likely that the Tibetan translators were unfamiliar with the use of Skt. <em>arbuda</em> and <em>nirarbuda</em> as numerals. Rajapatirana seems to have taken the parallel passage in <cite>Suvarṇa­varṇāvadāna</cite> as expressing the number of <em>arbuda</em> and <em>nirarbuda</em> hells, which is likely wrong (Rajapatirana 1974, 120): “For they are a hundred thousand Nirarbudas, and thirty-six and five Arbudas, to which hells he who blames an Ārya goes.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-230">back</a></li><li id="tei-note-UT22084-072-007-232"><p>According to the Tib.: <em>sdig pa’i sems kyis bden par mi smra ba || bdag nyid brlag cing dmyal bar ’phen par byed ||</em>. The Skt. reads <em>asatābhivadanti (pā)[pa]citta | narakān ātmavadhāya varddhayant(e)</em>, “Those who intend evil speak untruth. [Thus] they perpetuate hell and work for their own demise.” Matsumura compares a parallel verse in the Uv and notes its greater similarity to the Skt. Āps (see Matsumura 1989, 85, n. 21).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-232">back</a></li><li id="tei-note-UT22084-072-007-234"><p>Guenther 1986, 58: “(vii) Rab.tu tsha.ba (Pratāpana, Intense Heating Hell) is so called, because beings there are tormented in a very special way. When they have been burnt with molten metal so that no skin is left and while fire flames from the nine openings of the body, they are pierced through with three-spiked weapons from the anus and the soles of the feet to the head and shoulders: Some are boiled in a / Burning stream of molten bronze, / Others are impaled / On red-hot thorny iron stakes.” See also Konchog Gyaltsen 1998, 98.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-234">back</a></li><li id="tei-note-UT22084-072-007-239"><p>Guenther 1986, 58, 59: “(viii) The torture of the denizens of the mNar.med (Avīci) hell consists in being thrust into huge iron kettles filled with molten (32a) bronze or copper from vast cauldrons and then being boiled over an unbearably hot fire. As has been written: Some are cast into iron kettles / Head down like the ingredients of rice soup. / Because of the uninterrupted pain this hell is called mNar.med (Avīci).” See also Konchog Gyaltsen 1998, 98.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-239">back</a></li><li id="tei-note-UT22084-072-007-240"><p>We here read with Narthang and Lhasa: <em>mthun pa</em>. Cf. Mvy, s.v. samagraḥ, which is also the attested reading in our Skt. text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-240">back</a></li><li id="tei-note-UT22084-072-007-241"><p>Devadatta’s intention was to kill the Buddha. The story of how Devadatta schemed to kill the Buddha in order to inherit his leadership of the Saṅgha is relayed in several Buddhist texts (for the Theravāda tradition see the entry on Devadatta in DPPN).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-241">back</a></li><li id="tei-note-UT22084-072-007-242"><p>According to the Tib. (<em>dge slong ma dgra bcom pa bsad pas</em>). The Skt. reads <em>bhiksunīṃ vārhantīṃ ghātayitvā</em>, “having slain a nun or an arhantī.” No such incident is mentioned in the extant Pāli canonical accounts about Devadatta. Neither the Skt. text nor the Tib. translation of the Āps mentions the name Utpalavarṇā. But this incident, the beating of the bhikkhunī and arhantī Utpalavarṇā by Devadatta, is well known from the <cite>Mūla­sarvāstivāda­vinaya</cite>, a comparatively late Vinaya; see Lamotte 1988, 657–59. On Devadatta and his murder of the nun Utpalavarṇā in connection with the “sins of immediate retribution” (<em>ānantaryakarma</em>), see Silk 2009, 236, n. 6. For a summary of the episode itself in the <cite>Mūla­sarvāstivāda­vinaya</cite>, see Panglung 1981, 123.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-242">back</a></li><li id="tei-note-UT22084-072-007-244"><p>Almost identical to the Āps verses 49–51 are the verses Uv VIII.7–9; the last line of verse 49 is missing in the Skt. of Uv. Verses similar to Āps 49 and 50 can be found in the different extant versions of the Dhammapada (Patna, Gandhārī); for references cf. Matsumura 1989, 85, note [44].</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-244">back</a></li><li id="tei-note-UT22084-072-007-246"><p><em>Bambusa bambos</em> or <em>Bambusa arundinacea</em>. Translated according to the Tib. The Skt. reads (Matsumura 1989, 85 [44]): <em>yaḥ [śā]sanam āryāṇāṃ arhatāṃ dharmajīvināṃ | pratikrośati durmedhā dṛṣṭiṃ niśṛtya pāpikāṃ | phalaṃ kaṇṭakaveṇur vā [phalat]y [ātmavadhāya saḥ</em> || 49 ||, “He who, having resorted to evil views, scorns the teachings of the noble ones who live by the Dharma and are worthy of respect, cultivates the fruit that leads to his own destruction, like the fruit of the bamboo. (Cf. the variant readings: Dhp 164: <em>phalāni kaṭṭhakasseva</em>; GDhp 258 <em>phalāṇi kaḍakaseva</em>; and PDhp 316 <em>phalāni kaṇṭakasseva</em>, given in Matsumura 1989, 85, note on [44].) The bamboo plant is said to blossom and carry fruit very rarely, at large intervals. But when it does bear fruit, the whole plant or forest dies immediately thereafter. This is a well-known trope in Sanskrit Buddhist literature.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-246">back</a></li><li id="tei-note-UT22084-072-007-247"><p>According to the Skt. The Tib. made “those who live by the teaching of the noble ones” into the object of contempt instead of the teaching itself (<em>’phags pa rnams kyis bstan pa yi | chos kyis ’os par ’tsho rnams la</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-247">back</a></li><li id="tei-note-UT22084-072-007-250"><p>The Skt. (Matsumura 1989, 85) reads <em>saced muñcet pratimuñced mu(ñ)camāno hi vadhyate | na tām āryā vimuṃcanti bālā muṃcanti pāpikān</em> || 5 ||. The Tib. translation seems to have taken the different Skt. uses of the verbal root <em>muc</em> (“to liberate,” “to emit words”), in a different sense (cf. Matsumura 1989, 89: <em>gal te smra na dge ba smra’i | sdig pa smras na rlag par ’gyur</em>). We have followed the first two lines of another version of this verse found in Uv (Tib. and Skt.) that makes better sense; see Bernhard 1965: <em>na ca mukte pramuñcet tāṁ muñcamāno hi bādhyate | naivam āryāḥ pramuñcanti muktā bālair hi pāpikā ||</em> 8.9 [189], Tib.: <em>byis pa sdig can smra byed pa || smra ba’i tshe na ’ching ’gyur la || gal te smra na gzhan spong ba || de dag ’phags pa mi gsung ngo ||</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-250">back</a></li><li id="tei-note-UT22084-072-007-253"><p>DPPN, s.v. brahmaloka: “The term Brahmakāyikā-devā seems to be used as a class name for all the inhabitants of the Brahma-realms.” [AN I 210: <em>Kathañ ca Visākhe upakkiliṭṭhassa cittassa upakkamena pariyodapanā hoti? Idha Visākhe ariyasāvako devatānussarati—santi devā Cātummahārājikā, santi devā Tāvatiṃsā, santi devā Yāmā, santi devā Tusitā, santi devā Nimmānaratino, santi devā Paranimmitavasavattino, santi devā Brahmakāyikā, santi devā tatuttariṃ</em>.] In our text here, however, the <em>brahmakāyikā devāḥ</em> correspond to the <em>brahmaparisajjā devā</em> in the Theravāda canon instead of being a collective term. In the following, translations of the names of devas other than our own are stated in the notes; we have consulted Walshe 1995, 39; Samtani 2002, pp. 98–99; and Gethin 1998, 116.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-253">back</a></li><li id="tei-note-UT22084-072-007-255"><p>According to the Tib. The Skt. reads <em>kalpa āyuṣaḥ pramāṇaṃ</em>, “one eon,” which is the same as in the AKBh(P)<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a> on AK III.80<a href="https://read.84000.co/translation/toh4089.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4089.html</a>; cf. AKBh(D), pp. 532ff. The Pāli scholastic tradition presents yet different numbers for the lifespans of the three Brahma-devas (cf. Gethin 1998, 117): <em>brahma-pārisajjā</em>: “⅓ aeon; <em>brahma-purohitā</em> ½ aeon; <em>mahā-brahmā</em> 1 aeon.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-255">back</a></li><li id="tei-note-UT22084-072-007-257"><p>According to the Tib. The Skt. reads <em>addhyardha­kalpa</em>, “one and a half (elsewhere this is numeric) eons.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-257">back</a></li><li id="tei-note-UT22084-072-007-261"><p>Walshe: “Devas of Streaming Radiance”; Samtani: they are so called “because they flash radiance in all directions, illuminating all locations.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-261">back</a></li><li id="tei-note-UT22084-072-007-263"><p>Walshe: “Gods of Limited Glory”; Samtani: “devas of limited auspiciousness.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-263">back</a></li><li id="tei-note-UT22084-072-007-265"><p>Walshe: “Gods of Unbounded Glory”; Samtani: “their auspiciousness is unlimited.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-265">back</a></li><li id="tei-note-UT22084-072-007-267"><p>Walshe: “Gods of Refulgent Glory”; Samtani: “[These devas are] wholly auspicious”; Gethin: “Complete Beauty.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-267">back</a></li><li id="tei-note-UT22084-072-007-269"><p>This class of devas has no equivalent in the Pāli sources. Instead, the list of the Theravāda school has <em>Vehapphalā devā</em> following on the <em>Śubhakṛtsnā devā</em> (Pāli <em>Subhakiṇṇā devā</em>; Walshe: “Devas of Refulgent Glory”; Gethin: “Complete Beauty”). Samtani: “The devas [float] like clouds, never in contact with the earth. Hence they are Anabhrakā devas, the Cloudless Heaven devas.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-269">back</a></li><li id="tei-note-UT22084-072-007-271"><p>No Pāli equivalent. Samtani: “Gods of virtuous birth who take birth from imperturbable (<em>āniñjya</em>) karma. Their birth (<em>prasava</em>) is due to merit.” Cf. also Samtani 2002, 228, note 64.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-271">back</a></li><li id="tei-note-UT22084-072-007-273"><p>Pāli <em>Vehapphalā devā</em> (Walshe: “Very Fruitful devas”; Gethin: “Heaven of Great Reward”). Samtani: “Gods destined to take birth in an ordinary place […], who nonetheless obtain the great and best reward.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-273">back</a></li><li id="tei-note-UT22084-072-007-275"><p>According to the Tib. The Skt. has two separate paragraphs for the two categories, the <em>asaṃjñā-satvāḥ</em> and the <em>avṛhā devāḥ</em> (Matsumura 1989, 86, nos. [57] and [58] respectively) and gives different lifespans for each: five hundred and one thousand eons, respectively. The Skt. reads in English translation, “Precisely that—i.e., five hundred eons—is also the lifespan of the Insentient Beings. Premature death does occur. The lifespan of the devas of the Unlofty Heaven is one thousand years. Premature death does occur.” According to Matsumura (1989, 86, n. on [57]) the Chinese translation confirms the Sanskrit version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-275">back</a></li><li id="tei-note-UT22084-072-007-276"><p>According to the Tib. The <em>asaṃjñāsatvā</em> are not listed in the Arv (Samtani 2002; <a href="https://read.84000.co/translation/toh317.html" target="_blank" rel="noopener noreferrer">Dharmachakra Translation Committee 2021</a>). For <em>abṛhā devāḥ</em>, cf. Samtani: “not great” (for a more detailed description see Samtani 2002, 99: from this stage upward to Akaniṣṭha there are five Pure Abodes). For the term <em>asaṃjñāsatvā</em>—and the somewhat unsatisfactory translation “Unconscious beings”—see the discussion in the AKBh<a href="https://read.84000.co/translation/toh4090.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh4090.html</a>: Pruden 1988–90, vol. 1, 221–23.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-276">back</a></li><li id="tei-note-UT22084-072-007-278"><p>Walshe’s translation; Samtani: “The devas who acquire through special samādhi immunity from the searing heat of the defilements are called Atapā devas.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-278">back</a></li><li id="tei-note-UT22084-072-007-280"><p>Walshe: “The Beautiful (or Clearly Visible) devas (Pāli <em>sudassā devā</em>). Gethin: “Lovely”; Samtani: “Those who through pure vision see rightly are [called] Sudṛśa devas.” The Tib. translation inverts these two levels of the Pure Abodes: according to Mvy (s.v. sudarśanāḥ), the Tib. word that here seems to render Skt. <em>sudṛśa</em> (= <em>shin tu mthong ba</em> in Āps) usually corresponds to Skt. <em>sudarśana</em>, while the Tib. <em>gya nom snang gi lha rnams</em> usually renders the Skt. <em>sudṛśā devāḥ</em>. The <a href="https://read.84000.co/translation/toh317.html" target="_blank" rel="noopener noreferrer">Arv</a> gives the order as <em>sudṛśa</em> &gt; <em>sudarśana</em> (which corresponds to the Skt. ed. of the Āps) and the Pāli, too, has first <em>sudassā</em> and next <em>sudassī</em> (see Walshe 1995, 39).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-280">back</a></li><li id="tei-note-UT22084-072-007-282"><p>Walshe: “Clear-Sighted devas” (Pāli: <em>Sudassī devā</em>). Samtani: “Gods in this realm are delightful in appearance.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-282">back</a></li><li id="tei-note-UT22084-072-007-284"><p>Walshe’s translation (Pāli: <em>akaniṭṭhā devā</em>). Samtani: “There being no higher stage than this, the devas of this realm, being the eldest, are called the Akaniṣṭhā.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-284">back</a></li><li id="tei-note-UT22084-072-007-286"><p>The Skt. manuscript breaks off after <em>ākā]śānaṃtyāyatanopagānāṃ</em>. Matsumura provides his restoration of the Skt. text, based on the Tib. translation and the terminology found in Mvy 3107–13, in the notes on paragraph [63].</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-286">back</a></li><li id="tei-note-UT22084-072-007-291"><p>Tib. <em>srid pa’i ’byung bas chog shes par gyis shig</em>. Literally, “Be content with the manifestation of existence.” However, the meaning cannot be contentment here. The Buddha’s command is rather meant in the sense, “do not perpetuate saṃsāra any further.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-291">back</a></li><li id="tei-note-UT22084-072-007-292"><p>The Tibetan here may refer to a technical unit of time (Tib. <em>de’i skad cig</em>, Skt. <em>tatkṣaṇa</em>; in the order of magnitude of seconds) according to the Sarvāstivāda Abhidharma (cf. Rospatt 1995, 99).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-292">back</a></li><li id="tei-note-UT22084-072-007-293"><p>“In the Dharma” is added here for clarification.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-072-007-293">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/072-005-toh305-sutra-of-the-highest-designation.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/072-008-toh308-questions-regarding-death-and-transmigration.html">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

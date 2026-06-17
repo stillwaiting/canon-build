@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 75 — The Questions of Gaṅgottarā — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 75 — The Questions of Gaṅgottarā</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 75 — The Questions of Gaṅgottarā        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Gaṅgottara­pari­pṛcchā          </p>
+                      </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>The Questions of Gaṅgottarā</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.222.a</span> Homage to all buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Blessed One was dwelling in Śrāvastī, in Prince Jeta’s Grove, Anāthapiṇḍada’s Park. At that time a laywoman named Gaṅgottarā was living in the great city of Śrāvastī.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-74" href="#tei-note-UT22084-043-012-74">[1]</a></sup></p><p>One day, the laywoman Gaṅgottarā left Śrāvastī and went to Prince Jeta’s Grove, Anāthapiṇḍada’s Park.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-76" href="#tei-note-UT22084-043-012-76">[2]</a></sup> When she arrived, she bowed down before the Blessed One with her head at his feet, and then she sat to one side.</p><p>Once she had sat down, the Blessed One asked the laywoman Gaṅgottarā a question, even though he already knew the answer:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-78" href="#tei-note-UT22084-043-012-78">[3]</a></sup> “From where have you just come, Gaṅgottarā?”</p><p>“Blessed One,” Gaṅgottarā replied, “if someone were to ask a magically created being, ‘From where have you just come?’ what would be the answer?” <span class="tei-ref">F.222.b</span></p><p>“Gaṅgottarā,” responded the Blessed One, “a magically created being neither stands nor sits. It does not lie down. It does not come or go. It does not die. It is not born. So, how could one declare that it has come from some place?”</p><p>“Blessed One, are all things like magical creations?” asked Gaṅgottarā.</p><p>“It is so, Gaṅgottarā.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-83" href="#tei-note-UT22084-043-012-83">[4]</a></sup></p><p>“Blessed One,” she responded, “if all things are like magical creations, why do you ask, ‘Laywoman Gaṅgottarā, from where have you just come?’ ”</p><p>“Gaṅgottarā,” the Blessed One answered, “since magically created beings<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-86" href="#tei-note-UT22084-043-012-86">[5]</a></sup> do not go to the lower realms, and they do not go to the higher realms, and they do not go to parinirvāṇa, do you, too, Gaṅgottarā, not go to the lower realms, or go to the higher realms, or go to parinirvāṇa?”</p><p>“Blessed One,” Gaṅgottarā replied, “if I truly saw the laywoman Gaṅgottarā as being different in nature from a magical creation, then it would not be appropriate for me to compare myself to a magically created being by saying, ‘The laywoman Gaṅgottarā does not go to the lower realms, does not go to the higher realms, and does not go to parinirvāṇa.’ Nevertheless, Blessed One, I do not see myself as being different in nature from a magical creation.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-88" href="#tei-note-UT22084-043-012-88">[6]</a></sup> Since I do not see myself in that way, Blessed One, how can I declare in this way that the laywoman Gaṅgottarā goes to the lower realms, goes to the higher realms, or goes to parinirvāṇa?</p><p>“Even with this being the case, Blessed One, it is in accordance with the presence of mental straying, mental conceit, mental agitation, and vain imagining that one thinks the thoughts, ‘I go to the lower realms,’ ‘I go to the higher realms,’ and <span class="tei-ref">F.223.a</span> ‘I go to parinirvāṇa.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-90" href="#tei-note-UT22084-043-012-90">[7]</a></sup> Blessed One, the state of nirvāṇa<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-91" href="#tei-note-UT22084-043-012-91">[8]</a></sup> is such that it never goes to the lower realms, it never goes to the higher realms, and it never goes to parinirvāṇa. The laywoman Gaṅgottarā has a similar state, Blessed One.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-92" href="#tei-note-UT22084-043-012-92">[9]</a></sup></p><p>“Gaṅgottarā,” the Blessed One responded, “have you not set out for parinirvāṇa?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-94" href="#tei-note-UT22084-043-012-94">[10]</a></sup></p><p>“Blessed One,” Gaṅgottarā replied, “if someone were to ask what is not born, ‘Have you not set out for parinirvāṇa?’ what would be the answer?”</p><p>“Gaṅgottarā,” the Blessed One said, “since the phrase ‘what is not born’ is a designation for nirvāṇa, what would be the answer?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-97" href="#tei-note-UT22084-043-012-97">[11]</a></sup></p><p>“Blessed One,” Gaṅgottarā replied, “are all things the same as nirvāṇa?”</p><p>“It is so, Gaṅgottarā,” he said. “All things are the same as nirvāṇa.”</p><p>“If all things are the same as nirvāṇa, then why, Blessed One, do you ask, ‘Gaṅgottarā, have you not set out for parinirvāṇa?’ Blessed One, if someone were to ask a magically created being, ‘Have you not set out for parinirvāṇa?’ what would be the answer?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-101" href="#tei-note-UT22084-043-012-101">[12]</a></sup></p><p>“Gaṅgottarā,” the Blessed One responded, “this question does not have an objective basis.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-103" href="#tei-note-UT22084-043-012-103">[13]</a></sup></p><p>“Do the words that the Blessed One has spoken have some connection to an objective basis?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-105" href="#tei-note-UT22084-043-012-105">[14]</a></sup> asked Gaṅgottarā.</p><p>“Gaṅgottarā,” the Blessed One answered, “even though this question does not have an objective basis, nevertheless, asking it will be of great benefit to the noble sons and noble daughters who are gathered here in this assembly.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-107" href="#tei-note-UT22084-043-012-107">[15]</a></sup> Why is this? When the Tathāgata had not awakened directly and completely even to what is called the true nature of things, Gaṅgottarā, how much less would there be a thing arising from it that remains in parinirvāṇa?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-108" href="#tei-note-UT22084-043-012-108">[16]</a></sup><span class="tei-ref">F.223.b</span></p><p>“If the Tathāgata had not awakened directly and completely even to what is called the true nature of things, and even less would there be a thing arising from it,” she replied, “how did the Blessed One properly plant roots of virtue in order to achieve awakening?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-110" href="#tei-note-UT22084-043-012-110">[17]</a></sup></p><p>“Gaṅgottarā,” the Blessed One responded, “a root of virtue is not something that has an objective basis. During the time when the Bodhisattva was planting the roots of virtue, he never let go of inconceivability. During the time when he was not planting them, he also did not let go of inconceivability.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-112" href="#tei-note-UT22084-043-012-112">[18]</a></sup></p><p>“With respect to the inconceivable, Blessed One, why is the inconceivable called the inconceivable?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-114" href="#tei-note-UT22084-043-012-114">[19]</a></sup> asked Gaṅgottarā.</p><p>“Gaṅgottarā,” the Blessed One answered, “this teaching is not to be attained by the mind; it cannot be attained by the mind.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-116" href="#tei-note-UT22084-043-012-116">[20]</a></sup> Why is this? According to this teaching, when not even the mind itself has an objective basis, how much less so would the things that arise from the mind?<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-117" href="#tei-note-UT22084-043-012-117">[21]</a></sup> The mind’s lack of an objective basis, Gaṅgottarā, is what is called the continuous stream of the inconceivable.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-118" href="#tei-note-UT22084-043-012-118">[22]</a></sup> That which is the continuous stream of the inconceivable is not attained. It is not fully realized. It is not known. It is not something to be experienced directly. It is not something to be attained. It is not afflicted. It is not purified. Why is this? It is because, Gaṅgottarā, the Tathāgata knows with certainty that all things are like space. All things, Gaṅgottarā, are unobstructed, just like space.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-119" href="#tei-note-UT22084-043-012-119">[23]</a></sup></p><p>“Blessed One,” Gaṅgottarā asked, “if all things are unobstructed, just like space, then why does the Blessed One use verbal expressions like ‘form,’ ‘feeling,’ ‘conception,’ ‘formation,’ and ‘consciousness,’ as well as verbal expressions like ‘the aggregates,’ ‘the elements,’ and ‘the sense spheres’; ‘dependent arising’; ‘the intoxicated’ and ‘what is free of intoxication’; ‘the afflicted’ and ‘the purified’; and ‘saṃsāra’ and ‘nirvāṇa’?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-121" href="#tei-note-UT22084-043-012-121">[24]</a></sup><span class="tei-ref">F.224.a</span></p><p>“Gaṅgottarā,” the Blessed One replied, “just as one uses the expression ‘self’ even though the self has no objective basis at all, in precisely the same way, Gaṅgottarā, I use the expression ‘form,’ even though form has no objective basis at all. In the same way, too, I use the expressions ‘feeling,’ ‘conception,’ ‘formation,’ and ‘consciousness,’ even though consciousness has no objective basis at all. I also use the expressions ‘the aggregates,’ ‘the elements,’ and ‘the sense spheres’; ‘dependent arising’; ‘the intoxicated’ and ‘what is free of intoxication’; ‘the afflicted’ and ‘the purified’; and ‘saṃsāra’ and ‘nirvāṇa,’ even though nirvāṇa has no objective basis at all.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-123" href="#tei-note-UT22084-043-012-123">[25]</a></sup></p><p>“Gaṅgottarā, just as a mirage does not produce water and has no objective basis at all, in precisely the same way, Gaṅgottarā, I use the expression ‘form,’ even though form has no objective basis at all. In the same way, too, I use the expressions ‘feeling,’ ‘conception,’ ‘formation,’ and ‘consciousness,’ even though consciousness has no objective basis at all. I also use the expressions ‘the aggregates,’ ‘the elements,’ ‘the sense spheres’; ‘dependent arising’; ‘the intoxicated’ and ‘what is free of intoxication’; ‘the afflicted’ and ‘the purified’; and ‘saṃsāra’ and ‘nirvāṇa,’ even though ultimately not one of these things exists or has any objective basis.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-125" href="#tei-note-UT22084-043-012-125">[26]</a></sup></p><p>“One who practices the holy life without holding on to the Dharma as the final word, Gaṅgottarā, dwells in the practice of the holy life according to the well-stated Dharma and Discipline.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-127" href="#tei-note-UT22084-043-012-127">[27]</a></sup><span class="tei-ref">F.224.b</span> There are some who have self-conceit, Gaṅgottarā, who practice the holy life while thinking that their abiding by it has an objective basis, and I say that their practice of the holy life is not completely purified.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-128" href="#tei-note-UT22084-043-012-128">[28]</a></sup> When they hear a profound teaching such as this one on cutting off the continuous stream, those who do not practice the holy life with complete purity become terrified, and they do not become free from birth, old age, sickness, death, sorrow, lamentation, suffering, distress, and conflict; they receive their share of suffering, I say.</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-129" href="#tei-note-UT22084-043-012-129">[29]</a></sup></p><p>“Whether now or after I have passed away,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-131" href="#tei-note-UT22084-043-012-131">[30]</a></sup> Gaṅgottarā, there will be those who teach this kind of profound teaching on cutting off the continuous stream,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-132" href="#tei-note-UT22084-043-012-132">[31]</a></sup> and ignorant people will come to conceive the idea that they have the intent to kill them. Due to their misunderstanding, these ignorant people thus come to generate a homicidal hatred and go to the lower realms.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-133" href="#tei-note-UT22084-043-012-133">[32]</a></sup></p><p>“ ‘Cutting off the continuous stream, cutting off the continuous stream,’ ” Gaṅgottarā replied. “Blessed One, what is it that you call <em>cutting off the continuous stream</em>?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-135" href="#tei-note-UT22084-043-012-135">[33]</a></sup></p><p>“Gaṅgottarā,” the Blessed One answered, “this teaching does not cut off the continuous stream; it is not the disintegration of it; it is not the destruction of it. For this reason, it should be called <em>cutting off the continuous stream</em>. It should also be called <em>the ultimate endpoint</em>. It should be called <em>the continuous stream of the inconceivable</em>.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-137" href="#tei-note-UT22084-043-012-137">[34]</a></sup></p><p>Then, at that moment, the Blessed One displayed a smile. Various multicolored rays of light issued from the Blessed One’s mouth in such a way that blue, yellow, red, white, rose madder, crystalline, and silvery rays of light spread throughout endless, limitless world systems, reaching as far as the Brahmā realm, and then they returned and disappeared into the Blessed One’s mouth.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-139" href="#tei-note-UT22084-043-012-139">[35]</a></sup></p><p>At that point, the venerable Ānanda draped his upper robe over one shoulder, knelt on his right knee, and then, joining his palms together in a gesture of respect toward the Blessed One, he paid homage to the Blessed One <span class="tei-ref">F.225.a</span> and said this: “Blessed One, the tathāgatas do not display their smile without a reason. What is the cause? What is the condition? Why have you displayed your smile?”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-141" href="#tei-note-UT22084-043-012-141">[36]</a></sup></p><p>“Ānanda,” the Blessed One replied, “I have direct knowledge of the fact<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-143" href="#tei-note-UT22084-043-012-143">[37]</a></sup> that, in this very place, one thousand tathāgatas have taught this formulation of the Dharma, always starting with a single laywoman whose name was always Gaṅgottarā. All those laywomen went forth and achieved parinirvāṇa—that is, the state of parinirvāṇa without any remaining aggregates.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-144" href="#tei-note-UT22084-043-012-144">[38]</a></sup></p><p>The venerable Ānanda then asked the Blessed One, “What is the name of this formulation of the Dharma, Blessed One? How should it be remembered?”</p><p>“Ānanda,” the Blessed One replied, “you may call this formulation of the Dharma <cite>Stainless</cite>. Remember it as the one you may call <cite>Stainless</cite>.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-147" href="#tei-note-UT22084-043-012-147">[39]</a></sup></p><p>When this Dharma discourse was taught, the minds of seven hundred monks and four hundred nuns were freed from the intoxicants and did not grasp any more. Then the gods of the desire realm and the gods of the form realm magically created divine flowers and sandalwood powder and strewed them over the Blessed One while saying, “It is marvelous that such a laywoman lives in the city of Śrāvastī! Not only does she converse with the Tathāgata but also her body does not become weary from it. In the very same way, this laywoman Gaṅgottarā has served victors of the past, generated roots of virtue, practiced virtue for a long time, practiced the holy life for a long time, and venerated many buddhas!”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-149" href="#tei-note-UT22084-043-012-149">[40]</a></sup></p><p>“So it is, divine ones,” the Blessed One said. “For a long time, she has served victors of the past, generated roots of virtue, <span class="tei-ref">F.225.b</span> and practiced the holy life.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-151" href="#tei-note-UT22084-043-012-151">[41]</a></sup></p><p>After the Blessed One had spoken these words, the laywoman Gaṅgottarā was delighted, and so was the world with its gods, humans, asuras, and gandharvas, and they rejoiced at what the Blessed One had said.</p>Thus concludes “<cite>The Chapter of the Questions of Gaṅgottarā</cite>,” the thirty-first of the one hundred thousand chapters of the formulation of the Dharma known as “<cite>The Noble Great Heap of Jewels</cite>.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-012-154" href="#tei-note-UT22084-043-012-154">[42]</a></sup></section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>Translated, edited, corrected according to revised terminology, and finalized by the Indian preceptors Jinamitra and Dānaśīla, along with the chief editor and translator Bandé Yeshé Dé and others.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-043-012-74"><p>The Dunhuang manuscript says it a bit more simply: “At that time, there was a laywoman named Gaṅgottarā in the city of Śrāvastī…” (<em>de’i tshe grong khyer mnyan yod na | dge bsnyen ma gang ga’i mchog ces bya ba zhig yod de |</em> …).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-74">back</a></li><li id="tei-note-UT22084-043-012-76"><p>Degé: <em>de nas dge bsnyen ma gang gA’i mchog mnyan yod nas byung nas rgyal bu rgyal byed kyi tshal mgon med zas sbyin gyi kun dga’ ra ba ga la ba der song ste</em>… Again, the Dunhuang manuscript reads a bit more simply, “She came out from her dwelling and went to see the Blessed One” (<em>de gnas nas phyir byung ste | bcom ldang ’das ga la ba der song ste |</em> …). Similarly, the English translation of the Chinese in Chang 1991, 37, has, “Gaṅgottarā came from her dwelling in Śrāvastī to see the Buddha.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-76">back</a></li><li id="tei-note-UT22084-043-012-78"><p>Degé has <em>bcom ldan ’das kyis mkhyen bzhin du</em>… (literally “the Blessed One, though he already knew…”). The Dunhuang manuscript also has the phrase <em>mkhyen bzhin du</em>, “though he already knew,” but this part of the line is absent in the Chinese version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-78">back</a></li><li id="tei-note-UT22084-043-012-83"><p>Degé: <em>bka’ stsal pa | gang gA’i mchog de bzhin no</em>. By contrast, the Dunhuang manuscript reads, “The Blessed One said, ‘It is so, it is so. It is just as you have said…” (<em>bcom ldan ’das kyis bka’ stsal pa’ | de de bzhin no | de de bzhin de | khyod kyis ci skyad smras pa bzhin no |</em>…). Chang 1991 has “The Blessed One said, ‘Yes, indeed. What you say is true.’ ” (37).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-83">back</a></li><li id="tei-note-UT22084-043-012-86"><p>Degé: <em>sprul pa ni</em>; Dunhuang: <em>sprul pa’i skyes bu gang yin ba de ni</em>, “a being that is magically created.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-86">back</a></li><li id="tei-note-UT22084-043-012-88"><p>The Dunhuang manuscript reads differently: “If I saw my body as different from a magical illusion or a magically created being, then I would go to a good place of rebirth or a bad place of rebirth or realize complete nirvāṇa, but since I see no difference between my body and a magical illusion or a magically created being…” (<em>bdag gi lus sgyu ma dang | sprul pa dang tha dad par mthong na ni | dge ’gro dang | ngan ’gror mchi zhing mya ngan las ’das pa yang mngon du bgyid pa zhig na | bdag gi lus sgyu ma dang | sprul pa dang | tha myi dad par mthong bas</em>…).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-88">back</a></li><li id="tei-note-UT22084-043-012-90"><p>This sentence is not in the Dunhuang manuscript or in the Chinese as reflected in Chang 1991.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-90">back</a></li><li id="tei-note-UT22084-043-012-91"><p>Degé: <em>mya ngan las ’das pa’i dbyings</em>; the Dunhuang manuscript has <em>mya ngan las ’das pa’i ngo bo nyid</em>, “the true nature of nirvāṇa.” On this passage, see also Silk 2014.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-91">back</a></li><li id="tei-note-UT22084-043-012-92"><p>The Dunhuang manuscript reads, “I see that my own body also has the same nature” (<em>bdag gi lus kyang de bzhin du mthong lags so</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-92">back</a></li><li id="tei-note-UT22084-043-012-94"><p>Degé: <em>gang gA’i mchog khyod ci yongs su mya ngan las ’das pa la yang dag par ma zhugs sam</em>. The Dunhuang manuscript here reads: “Are you not inclined toward the state of nirvāṇa?” (<em>ci khyod mya ngan las ’das pa’i dbyings la gzhol bar myi byed dam</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-94">back</a></li><li id="tei-note-UT22084-043-012-97"><p>The Dunhuang manusript reads differently: “The true nature of that which is not born is nirvāṇa” (<em>kye ba myed pa gang yin ba de nyid ni mya ngan las ’das pa yin no</em>). Once again, the Dunhuang manuscript is similar to the Chinese as reflected in Chang 1991, 38.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-97">back</a></li><li id="tei-note-UT22084-043-012-101"><p>The Dunhuang manuscript reads differently here: “Furthermore, Blessed One, it would be as if one magically created being were to ask another magically created being, ‘Are you not inclined toward the state of nirvāṇa?’ In that case, what would be the answer?” (<em>gzhan yang bcom ldan ’das ’di lta ste | dper na sprul ba’i skyes bu zhig gis sprul pa’i skyes bu la ci khyod mya ngan las ’das pa’i dbyings la gzhol bar myi byed dam zhes de skad rmas par gyur na | des ci skad lan ’debs par gyur lags |</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-101">back</a></li><li id="tei-note-UT22084-043-012-103"><p>The Dunhuang manuscript agrees here with the canonical Tibetan translation. Chang 1991 reads “A magically produced being has no mental attachments” (38), but the Chinese 此所問者無有攀緣 (“this question does not have an objective basis”) clearly matches the Tibetan, so we would disagree with Chang’s reading. For the Chinese version of this text, see <em>Henghe shang youpoyi hui</em><em>恒河上優婆夷會</em> (<em>Gaṅgottara­pari­pṛcchā</em>), Taishō 310(31) (<a href="https://ntireader.org/taisho/t0310_098.html" target="_blank" rel="noopener noreferrer">CBETA</a>; <a href="https://21dzk.l.u-tokyo.ac.jp/SAT2018/T0310.html" target="_blank" rel="noopener noreferrer">SAT</a>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-103">back</a></li><li id="tei-note-UT22084-043-012-105"><p>The Dunhuang manuscript reads differently here: “Has this question been asked because there is some objective basis on the part of the Tathāgata?” (<em>ci de bzhin gshegs pa la dmyigs pa mnga’ ba’i slad du bka’s rmas pa’ ’di rmas lags sam</em>). Chang 1991 has, “Does the Tathāgata’s very question stem from some mental attachment” (38).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-105">back</a></li><li id="tei-note-UT22084-043-012-107"><p>The Dunhuang manuscript appears to read both similarly and differently from both the canonical Tibetan and the Chinese translation here: “Even though there is no objective basis to what I have said, nevertheless this question has been asked in order to bring to maturity those noble sons and noble daughters who are gathered in this assembly” (<em>ngas smras pa la dmyigs pa yod pa ma yin mod kyi | ’on kyang ’khor ’di na yod pa’i rigs kyi bu dang | rigs kyi bu mo dag yongs su smyin par bya ba’i phyir | ’dri ba ’di dris pa yin no</em>). Chang 1991 reads, “I raised the question because there are in this assembly good men and good women who can be brought to maturity. I am free of mental attachment” (38).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-107">back</a></li><li id="tei-note-UT22084-043-012-108"><p>Degé: <em>gang gA’i mchog de bzhin gshegs pas ni chos nyid ces bya ba yang mngon par rdzogs par sangs ma rgyas na gang</em> (Degé, Stok, etc.; <em>yang</em> Phugdrag) <em>de las byung ba’i chos yongs su mya ngan las ’das pa la gnas pa lta ga la yod</em>. The translation above assumes <em>de las byung ba’i chos</em> and <em>yongs su mya ngan las ’das pa</em> are not in apposition. However, it is also possible to interpret them as being in apposition, with <em>gang</em> thereby modifying the latter, in which case the translation could run as follows: “If the Tathāgata had not completely awakened even to what is called the true nature of things, Gaṅgottarā, how could he remain in the parinirvāṇa that is the thing (<em>dharma</em>) that arises from it?” Skilling 2021, pp. 348–49, translates this sentence somewhat differently: “If the Tathāgata had not fully awakened to the true nature, Gaṅgottarā, then in his final nirvāṇa there would be a remainder of the dharmas arising from it.” The passage could perhaps be rendered in other ways, too. The Dunhuang manuscript also reads quite differently here, even while some of the component terms and phrases seem to be present, such as <em>lta yod par ga la ’gyur</em>: “For the Tathāgata even the names of such things do not have an objective basis, much less the existence of the things and of those who are inclined toward nirvāṇa” (<em>de bzhin gshegs pa ni chos de dag gi mying yang dmyigs par myi ’gyur na | chos rnams dang | mya ngan las ’da’s pa la gzhol ba de dag lta yod par ga la ’gyur</em>). Chang 1991 translates the Chinese here as follows: “Because the Tathāgata knows that even the names of things are inapprehensible, let alone the things themselves or those who seek nirvāṇa” (38).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-108">back</a></li><li id="tei-note-UT22084-043-012-110"><p>The first part of this sentence, in which Gaṅgottarā simply restates the preceding sentence (see <span class="tei-ref">#UT22084-043-012-108</span>), is not found in the Dunhuang manuscript or in the Chinese as reflected in Chang 1991. In the Dunhuang manuscript, Gaṅgottarā says only, “If that is so, why then does one produce an accumulation of the roots of virtue for the sake of awakening?” (<em>gal te de ltar na | ci ltar byang chub kyi ched du dge ba’i rta ba’i stsogs par bgyid lags</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-110">back</a></li><li id="tei-note-UT22084-043-012-112"><p>The Dunhuang manuscript says, “Bodhisattvas do not have any objective basis and neither do the roots of virtue, because they have no thought at the time even that something is accumulated and similarly also at the time that something is not accumulated” (<em>byang cub sems dpa’ rnams dang | dge ba’i rtsa ba de dag kyang dmyigs su myed de | bstsags pa nyid kyi tshe sems myed pa’i phyir | bstsags pa ma yin ba’i tshe yang de bzhin no</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-112">back</a></li><li id="tei-note-UT22084-043-012-114"><p>The Dunhuang manuscript says, “What meaning is indicated by saying that there is no thought?” (<em>sems ma mchis pa zhes bka’ stsal pa des don gang zhig ston par mdzad lags</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-114">back</a></li><li id="tei-note-UT22084-043-012-116"><p>The Dunhuang manuscript says here, “This teaching can neither be understood by thinking, nor can it be attained by thinking” (<em>chos ’di ni bsam ba dag gis shes par ’gyur ba yang ma yin la | bsam ba dag gis ’thob par ’gyur ba yang ma yin no</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-116">back</a></li><li id="tei-note-UT22084-043-012-117"><p>Though it is rendered a bit differently from the canonical Tibetan translation, the Dunhuang manuscript has a similar sense here: <em>’di la sems kyang dmyigs par myi ’gyur na | sems las byung ba’i chos lta smos kyang ci dgos te</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-117">back</a></li><li id="tei-note-UT22084-043-012-118"><p>The Dunhuang manuscript says here, “In this way, the mind’s very lack of an objective basis is what is taught as the state of the inconceivable” (<em>’di ltar sems dmyigs su myed pa gang yin pa de nyid la bsams gyis myi khyab pa’i gnas shes bstan ste</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-118">back</a></li><li id="tei-note-UT22084-043-012-119"><p>The last few sentences of the canonical Tibetan translation are conveyed in the Dunhuang manuscript with much the same meaning: “The state of the inconceivable is neither attained nor fully realized; it is neither afflicted nor purified. Why is this? It is because, as the Tathāgata always teaches, all things, being the same as space, are unobstructed” (<em>bsam kyis myi khyab pa’i gnas de dag la ni thob pa yang myed | mgnon par rtogs pa yang myed de | kun nas nyon mongs pa yang ma yin | rnam par byang ba yang ma yin no | de ci’i phyir zhes na | de bzhin gshegs pas rtag du chos thams cad ni nam mkha’ dang mtshungs te | togs pa myed pa’i phyir ro zhes gsungs pas so</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-119">back</a></li><li id="tei-note-UT22084-043-012-121"><p>The above paragraph is rendered in very much the same way in the Dunhuang manuscript, though it specifies “the twelvefold chain of dependent arising” (<em>rten cing ’brel bar ’byung ba bcu gnyis</em>), rather than simply “dependent arising,” and it does not include the phrase “the aggregates.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-121">back</a></li><li id="tei-note-UT22084-043-012-123"><p>After the sentence, “…I use the expression ‘form,’ but form has no objective basis at all,” the Dunhuang manuscript says simply, “and the same is true with [the other expressions] up to nirvāṇa” (<em>mya ngan las ’da’s pa zhes bya ba’i bar du yang de bzhin no</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-123">back</a></li><li id="tei-note-UT22084-043-012-125"><p>In the Dunhuang manuscript, this whole paragraph is rendered more simply: “Furthermore, just as water has no basis in a mirage (<em>smyug </em>[sic] <em>rgyu la chu myi dmyigs pa</em>), in the same way I use the expressions from ‘forms’ up to ‘nirvāṇā,’ even though it is the same [with them].”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-125">back</a></li><li id="tei-note-UT22084-043-012-127"><p>The Dunhuang manuscript reads differently here: “Gaṅgottarā, those who are established in the practice of the holy life in accordance with my teachings, and regard all things in the right way as having no objective basis, are the first ones who should be called those who are established in the practice of the holy life in the right way” (<em>gang ga’i mchog gang gis nga’i bstan pa las tshangs par spyod pa mngon bar bsgrub pa de dag thams cad dmyigs su myed par yang dag par rjes su mthong na | gdod yang dag par tshangs par spyod pa mngon bar bsgrub pa zhes bya’o</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-127">back</a></li><li id="tei-note-UT22084-043-012-128"><p>The Dunhuang manuscript reads a bit differently here: “It should not be said that those with self-conceit, who declare that an objective basis exists, dwell in the practice of the holy life in the right way” (<em>mngon ba’i nga rgyal can dmyigs pa yod par ston pas na | yang dag par tshangs par spyod pa la gnas pa zhes myi bya ste</em>). This may help to make more sense of the terse phrase in the canonical translation,<em> gnas dmigs nas</em>, rendered in the main translation as “while thinking that their abiding by it has an objective basis.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-128">back</a></li><li id="tei-note-UT22084-043-012-129"><p>The Dunhuang manuscript continues, “When they hear such a profound teaching as this one, those with self-conceit feel extremely frightened and become filled with a great doubt (<em>the tsom</em> [sic] <em>chen po</em>). As a result, I declare, they do not become free from birth, old age, sickness, death, sorrow, lamentation, suffering, and distress.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-129">back</a></li><li id="tei-note-UT22084-043-012-131"><p>The Dunhuang manuscript reads, “After my parinirvāṇa…” (<em>nga yongs su mya ngan las ’da’s pa’i ’ong du</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-131">back</a></li><li id="tei-note-UT22084-043-012-132"><p>The Dunhuang manuscript says, “this kind of profound teaching on cutting off the continuous stream of saṃsāra” (<em>’khor ba rgyun gcod pa</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-132">back</a></li><li id="tei-note-UT22084-043-012-133"><p>The Dunhuang manuscript says, “some fools, due to the force of abiding by their wicked beliefs, will hate these individuals who teach the Dharma, and they will thereby conceive the intent to do them harm. As a result of these causes and conditions, they will fall into the hells” (<em>blun po kha cig lda ba ngan pa la gnas pa’i dbang gyis chos ’chad pa’i gang zag dag la zhe sdang gis gnod sems skyed pas na | rgu dang rkyen des sems can dmyal ba rnams su ltung bar ’gyur ro</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-133">back</a></li><li id="tei-note-UT22084-043-012-135"><p>The Dunhuang manuscript says, “When the Blessed One speaks of the teaching on cutting off the continuous stream of saṃsāra, what does it mean to say ‘cutting off the continuous stream of saṃsāra’?” (<em>bcom ldan ’das kyis ci skad du ’khor ba rgyun god pa’i chos shes gang gsungs pa de don gang gi slad du ’khor ba rgyun gcod pa zhes bgyi lags</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-135">back</a></li><li id="tei-note-UT22084-043-012-137"><p>The Dunhuang manuscipt says, “In this regard, that which should be spoken of as cutting off the continuous stream of saṃsāra is as follows: since that which is the ultimate endpoint and something (<em>chos</em>) of the state of the inconceivable cannot be destroyed or disintegrated, for this reason, I have declared it to be the teaching (<em>chos</em>) of cutting off the continuous stream of saṃsāra” (<em>de la ’khor ba rgyun gcod pa zhes bya ba ni ’di lta ste | yang dag pa’i mtha’ dang | bsam gyis myi khyap pa’i dbyings kyi chos gang yin ba de ni dbyug cing gzhig du myed pas | de’i phyir ’khor ba’i rgyun gcod pa’i chos shes bstan to</em>). In both the Dunhuang manuscript and the canonical Tibetan, the Buddha’s explanation here would seem to rely on the dual sense of the meaning of the word <em>dharma</em> (<em>chos</em>) as both a phenomenon and the teaching.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-137">back</a></li><li id="tei-note-UT22084-043-012-139"><p>The Dunhuang manuscript reads similarly, except that fewer colors of light are mentioned and the names of them are slightly different: blue, golden yellow (<em>gser po</em>), red, rose madder, and water crystalline (<em>chu shal</em>). Also, significantly, the rays of light are said to disappear “on the top of the Tathāgata’s head” (<em>de bzhin gshegs pa’i dbu’i gtsug du</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-139">back</a></li><li id="tei-note-UT22084-043-012-141"><p>The Dunhuang manuscript says, “Then, when he had seen such a thing (<em>dngos po de lta bu dag mthong nas</em>), venerable Ānanda had the thought, ‘the tathāgata, the worthy one, the fully awakened buddha does not display a smile without cause or condition,’ and so he placed his robe over one shoulder, knelt down on his right knee, joined his palms together in a gesture of respect toward the Blessed One, and said this: ‘What is the cause, what is the condition, that the Blessed One has displayed a smile?’”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-141">back</a></li><li id="tei-note-UT22084-043-012-143"><p>Degé: <em>ngas mngon par shes te</em>; the Dunhuang manuscript says, “I remember directly…” (<em>ngas mngon bar dran te</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-143">back</a></li><li id="tei-note-UT22084-043-012-144"><p>The Dunhuang manuscript says, “In a time in the past (<em>sngon ’dass</em> [sic] <em>pa’i dus</em>), in this place a thousand tathāgatas taught a teaching of this kind. At the head of each of the assemblies [to which it was taught] there was a laywoman named Gaṅgottarā. After hearing this teaching, all those laywomen and those in the assemblies went forth and achieved parinirvāṇa—that is, the nirvāṇa without any remainder (<em>lhag ma myed pa’i mya ngan las ’da’s pa</em>).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-144">back</a></li><li id="tei-note-UT22084-043-012-147"><p>In the Dunhuang manuscript, the Buddha calls it “<em>Stainless Purity</em>” (<em>dri ma myed pa’i rnam par dag pa</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-147">back</a></li><li id="tei-note-UT22084-043-012-149"><p>An almost identical paragraph appears in the Dunhuang manuscript.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-149">back</a></li><li id="tei-note-UT22084-043-012-151"><p>This sentence does not appear in the Dunhuang manuscript.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-151">back</a></li><li id="tei-note-UT22084-043-012-154"><p>The Dunhuang manuscript also has a colophon that says it is part of the one hundred thousand chapters of <cite>The Noble Great Heap of Jewels</cite>, and gives its title as “<cite>The Meeting with the Laywoman Gaṅgottarā</cite>” (<cite>dge bsnyen ma gang ga’i mchog gi ’dus pa</cite>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-012-154">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/043-011-toh74-the-inquiry-of-the-girl-sumati.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/043-013-toh76-asokadattas-prophecy.html">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

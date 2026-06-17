@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DĀ 7 — Padāśva — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/chinese_canon/da.html">Dīrgha Āgama</a>
+        <div class="sutta-breadcrumbs hidden">Dīrgha Āgama · DĀ 7 — Padāśva</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          DĀ 7 — Padāśva        </h1>
+      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <h1><a href="index.html">The Long Discourses</a></h1>
+<h2>Part II</h2>
+<h3>7. Padāśva</h3>
+<p id="p1">1. Once,<a id="ref1" href="#n1">[1]</a> Kaumāra Kāśyapa<a id="ref2" href="#n2">[2]</a> traveled with five hundred monks to Kośala. They made their way to the priest town of Śvetikā. Kaumāra Kāśyapa then stopped at the rosewood grove to the north of town.</p>
+<h4>The Priest Padāśva’s Wrong Views</h4>
+<p id="p2">2. There was a priest named Padāśva who lived in Śvetikā.<a id="ref3" href="#n3">[3]</a> The town was bountiful and happy, the people were numerous, and trees grew abundantly there. King Prasenajit had awarded this town to the priest Padāśva as his priestly due. This priest Padāśva constantly harbored unorthodox views, telling people, “There’s no other world, nor is there rebirth or the results of good and bad actions.”</p>
+<p id="p3">3. When the people in Śvetikā heard that Kaumāra Kāśyapa had made his way with 500 monks from Kośala to the rosewood grove nearby, they said to each other, “This Kaumāra Kāśyapa is quite famous. He’s a senior elder who became an arhat. He’s widely educated, intelligent, and wise. He’s as eloquent as the situation requires and skilled in holding discussions. Wouldn’t it be good to meet him now?”</p>
+<p id="p4">4. The townspeople visited Kāśyapa daily. At the time, Padāśva was up in his high tower. He saw droves of townspeople following each other but didn’t know where they were going. He asked his parasol-holders, “Why are those crowds of people following each other?”</p>
+<p id="p5">5. His servants answered, “We’ve heard that Kaumāra Kāśyapa has made his way with 500 monks from Kośala to the rosewood grove nearby. We’ve also heard that he is quite famous. He’s a senior elder who became an arhat. He’s widely educated, intelligent, and wise. He’s as eloquent as the situation requires and skilled in holding discussions. Those people following each other in droves are going to see Kāśyapa.”</p>
+<p id="p6">6. The priest Padāśva then gave a servant this order: “Quick, go tell those people, ‘Wait a minute! We’ll all go visit him together!’ Why is that? Those people are foolish, and he tricks the world. He says there’s another world, claims there’s rebirth, and says there are results of good and bad actions. Really, there’s no other world, no rebirth, and no results of good and bad actions.”</p>
+<p id="p7">7. Accepting his instructions, the servant went and told the people of Śvetikā: “The priest says, ‘Wait a minute! We’ll all go visit him together!’”</p>
+<p>The townspeople replied, “Good, good! If he’s coming, we’ll go with him!”</p>
+<p>The servant returned quickly and said, “The people are waiting to go with you.”</p>
+<p id="p8">8. The priest descended from his high tower and ordered his servant to ready horses. He then accompanied the townspeople, who surrounded him in front and back, to the rosewood grove. When they arrived, he dismounted from his chariot and proceeded on foot to Kāśyapa. After they exchanged greetings, he sat to one side. Some of the priests and householders of the town venerated Kāśyapa and sat down. Some of them exchanged greetings with him and sat down. Some of them told him their names and sat down. Some of them saluted him and sat down. Some of them remained silent and sat down.</p>
+<h4>Parable of the Sun and Moon</h4>
+<p id="p9">9. The priest Padāśva then said to Kaumāra Kāśyapa, “Now, if you have a moment, I’d like to ask a question. May I?”</p>
+<p>Kāśyapa replied, “I’ll listen to whatever questions you have and explain it.”</p>
+<p id="p10">10. The priest asked, “Now, I have the position that there’s no other world, no rebirth, and no results of misdeeds and merits. What’s your position on this?”</p>
+<p id="p11">11. Kāśyapa answered, “I’ll ask you a question. Tell me what you think. Now, are the sun and moon of this world or another world? Are they humans or gods?”</p>
+<p>The priest answered, “The sun and moon are of another world, not this world. They are gods, not humans.”</p>
+<p id="p12">12. Kāśyapa said, “We know in this way there’s surely another world, there’s rebirth, and there’s good and bad results of actions.”</p>
+<p>The priest said, “Although you say how there’s another world, rebirth, and good and bad results of actions, none of these exist in my way of thinking.”</p>
+<h4>Parable of the Thief</h4>
+<p id="p13">13. Kāśyapa asked, “Are there any causes and conditions by which we can know there isn’t another world, no rebirth, and no good and bad results of actions?”</p>
+<p>The priest answered, “There is.”</p>
+<p id="p14">14. Kāśyapa asked, “What’s the cause or condition for you to say, ‘There isn’t another world’?”</p>
+<p id="p15">15. The priest said, “Kāśyapa, I had a relative who fell seriously ill. I went and said to him, ‘Ascetics and priests each hold unorthodox views. They say that someone who kills beings, steals, engages in wrong sex, speaks duplicitously, uses harsh words, speaks falsely, speaks frivolously, or is greedy, jealous, and has wrong views will go to hell when their body breaks up and their life ends. From the start, I haven’t believed this. Why is that? To begin with, I’ve never seen anyone return after dying, though it’s claimed they fall somewhere. If someone were to come back and say where they fell, I would certainly believe it. Now, you are a friend of mine who has done the ten bad deeds. If it’s as the ascetics say, you’ll surely go to a great hell when you die. We trust each other, and I’d certainly accept what I heard from you. If you discover there is a hell, you should return and tell me about it. Then, I’ll believe it.’</p>
+<p>“Kāśyapa, my relative hasn’t come back to me since their life ended. They were my friend; they wouldn’t have lied to me. They agreed, but they didn’t come back. Surely, there’s no afterlife.”</p>
+<p id="p16">16. Kāśyapa responded, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Once, there was a thief who was constantly making schemes and breaking the king’s laws. He was hunted down, and an officer brought him to the king. ‘This man is a thief. Please let the king judge him.’</p>
+<p id="p17">17. “The king ordered his men, ‘Tie that man up and announce his crime throughout the city. After that, carry him out of the city and execute him.’</p>
+<p id="p18">18. “The thief spoke to his guards in a gentle voice, ‘You could let me go see my relatives and bid them farewell. I’ll return after I’m done.’ How would it be, priest? Would those guards let him go?”</p>
+<p>The priest replied, “They couldn’t!”</p>
+<p id="p19">19. Kāśyapa continued, “The same type of person exists in the present world, but they aren’t released. How could your friend who had done the ten evil deeds return? He surely went to hell when his body broke up and his life ended. The demons in hell have no mercy. They’re inhuman, and the dead are born in a different world. Suppose someone spoke to those demons of hell with gentle words, ‘Please let me go for a little while to return to the world and say farewell to my friend. I’ll return after I’m done.’ Would they release him?”</p>
+<p>The priest answered, “They couldn’t!”</p>
+<p>20. Kāśyapa also said, “In this way, there’s enough for us to know [there’s another world]. How can you hold to this delusion and create these wrong views for yourself?”</p>
+<p id="p20">The priest said, “Although you’ve told this story to show there’s another world, I still say there isn’t one.”</p>
+<h4>Parable of the Latrine</h4>
+<p id="p21">21. Kāśyapa again asked, “Do you have some other reason for knowing there isn’t another world?”</p>
+<p>The priest responded, “I have another reason that I know there isn’t another world.”</p>
+<p id="p22">22. Kāśyapa asked, “What’s the reason you know this?”</p>
+<p id="p23">23. He answered, “Kāśyapa, I had a relative who fell seriously ill. I went and said to him, ‘Ascetics and priests each hold unorthodox views. They say that someone who doesn’t kill beings, steal, or engage in sex, doesn’t speak duplicitously, use harsh words, speak falsely, or speak frivolously, and isn’t greedy, jealous, or have wrong views will be born in heaven when their body breaks up and their life ends. From the start, I haven’t believed this. Why is that? To begin with, I’ve never seen anyone return after dying, though it’s claimed they fall somewhere. If someone were to come back and say where they fell, I would certainly believe it. Now, you are a friend of mine who has done the ten good deeds. If it’s as the ascetics say, you’ll surely be born in heaven when your life ends. We trust each other, and I’d certainly accept what I heard from you. If you discover there is a heaven, you should return and tell me about it. Then, I’ll believe it.’</p>
+<p>“Kāśyapa, my relative hasn’t come back to me since their life ended. They were my friend; they wouldn’t have lied to me. They agreed, but they didn’t come back. Surely, there isn’t another world.”</p>
+<p id="p24">24. Kāśyapa also said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Once, there was a man who fell into a deep latrine, and he was submerged in it up to his head. The king ordered his men, ‘Pull this man out. Clean him off with bamboo, scrub his body three times, and cleanse him with beans and ash. Once he’s been washed, anoint him with incense and bathe his body. Then dust him with fine incense powder and order a barber to cut and wash his hair.’</p>
+<p id="p25">25. “He also ordered his servants to take him to a bath. They did this three times, washing him with incense water and dusting him with incense power. They adorned him with fine clothes and fed him a sumptuous meal, letting him eat what he liked. He was then led to a high hall where he could enjoy the five desires. Would that man go back to the latrine?”</p>
+<p>He answered, “He couldn’t! That’s such a disgusting place, how could he reenter it?”</p>
+<p id="p26">26. Kāśyapa said, “The gods are likewise. The lands of Jambudvīpa are polluted and impure to those in the heavens above. They can smell people’s bad odor from more than a hundred leagues away like it’s a horrible latrine. Priest, that relative you knew who completed the ten good deeds was surely born in a heaven where they enjoy the five desires. Their happiness is unsurpassable. Would they return to this latrine of Jambudvīpa?”</p>
+<p>He answered, “No.”</p>
+<p id="p27">27. Kāśyapa also said, “In this way, there’s enough for us to know [there’s another world]. How can you hold to this delusion and create these wrong views for yourself?”</p>
+<p>The priest said, “Although you’ve told this story to show there’s another world, I still say there isn’t one.”</p>
+<h4>The Life Span of Gods</h4>
+<p id="p28">28. Kāśyapa again asked, “Do you have some other reason for knowing there isn’t another world?”</p>
+<p>The priest responded, “I have another reason that I know there isn’t another world.”</p>
+<p id="p29">29. Kāśyapa asked, “What’s the reason you know this?”</p>
+<p id="p30">30. He answered, “Kāśyapa, I had a relative who fell seriously ill. I went and said to him, ‘Ascetics and priests each hold unorthodox views. They say that someone who doesn’t kill beings, steal, engage in sex, lie, or drink alcohol will be born in heaven when their body breaks up and their life ends. I don’t believe this, either. Why is that? To begin with, I’ve never seen anyone return after dying, though it’s claimed they fall somewhere. If someone were to come back and say where they fell, I would certainly believe it. Now, you are a friend of mine who has completed the five precepts … you’d surely be born in heaven when your body breaks up and your life ends. We trust each other, and I’d certainly accept what I heard from you. If you discover there is a heaven, you should return and tell me about it. Then, I’ll believe it.’</p>
+<p>“Kāśyapa, my relative hasn’t come back since their life ended. They were my friend; they wouldn’t have lied to me. They agreed, but they didn’t come back. Surely, there isn’t another world.”</p>
+<p id="p31">31. Kāśyapa answered, “A century here is exactly one day and night in the Trāyastriṃśa Heaven. Thirty days makes one month, and twelve months makes a year there. Thus, those gods live for thousands of years. How is it, priest? That relative you knew who completed the five precepts was surely born up in the Trāyastriṃśa Heaven when their body broke up and their life ended. After being born there, they would have thought, ‘It’s only been two or three days since I was born here. I’ll enjoy it and entertain myself. Afterward, I’ll go down and tell him about it.’ Would they see you?”</p>
+<p>He answered, “No. I would be long since dead. How could we see each other again?”</p>
+<h4>Parable of Being Blind from Birth</h4>
+<p id="p32">32. The priest said, “But I don’t believe this. Who came and told you that there was a Trāyastriṃśa Heaven and their life spans are like that there?”</p>
+<p id="p33">33. Kāśyapa said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Once, there was a person who was blind from birth. They didn’t know the five colors, such as blue, yellow, red, and white, or coarse, fine, long, and short. They hadn’t seen the sun, moon, stars, hills, or valleys. Someone asked them, ‘What are the five colors, such as blue, yellow, red, and white?’</p>
+<p id="p34">34. “The blind person answered, ‘There are no five colors.’ It was the same with coarse, fine, long, and short or the moon, sun, stars, hills, and valleys. The blind person said they didn’t exist. How is it, priest? Did that blind person answer correctly?”</p>
+<p>He answered, “No.”</p>
+<p id="p35">35. “Why is that? The world obviously has five colors, such as blue, yellow, red, or white, coarse, fine, long, and short, and the sun, moon, stars, hills, and valleys, but that person said they don’t exist. Priest, you are the same. The life span of the Trāyastriṃśa gods is real and not false. You haven’t witnessed it yourself, so you say it doesn’t exist.”</p>
+<p>The priest said, “Although you say it exists, I still don’t believe it.”</p>
+<h4>Parable of Dreaming</h4>
+<p id="p36">36. Kāśyapa then said, “Do you have another reason for knowing it doesn’t exist?”</p>
+<p id="p37">37. He answered, “Kāśyapa, there was a thief in the town that I was given. He was hunted down, and an officer brought him to me. He said, ‘This man is a thief. Please judge him.’</p>
+<p id="p38">38. “I answered, ‘Tie him up and put him in a large cauldron. Cover it in leather and thick mud to seal him inside. Don’t let him escape. Have people surround the cauldron and heat it with a fire.’</p>
+<p id="p39">39. “At the time, I wanted to watch his spirit escape from that container. I directed my servants to surround the cauldron and watch it. None of them saw his spirit leave that place. Also, when we opened the cauldron and looked in, we didn’t see his spirit being reborn anywhere. For this reason, I know there isn’t another world.”</p>
+<p id="p40">40. Kāśyapa said, “Now, I’ll ask you a question. If you can answer it, tell me what you think. Priest, when you’re sleeping in a high tower, do you ever dream of mountains, forests, rivers, parks, lakes, cities, or streets?”</p>
+<p>He answered, “I do dream of them.”</p>
+<p id="p41">41. He then asked, “Priest, when you are dreaming of them, are your family and servants guarding you?”</p>
+<p>He answered, “They guard me.”</p>
+<p id="p42">42. He further asked, “Priest, do your servants see your spirit leaving and returning?”</p>
+<p>He answered, “They don’t see it.”</p>
+<p id="p43">43. Kāśyapa said, “Now, your spirit leaves and returns while you’re alive, but it can’t be seen. Would it be different for someone who dies? It isn’t possible to directly witness it with your eyes while watching a sentient being.</p>
+<p id="p44">44. “Priest, suppose there’s a monk who doesn’t get sleepy from the beginning to the end of the night. He’s diligent and not negligent, focusing on the factors of the path. With the power of samādhi, he cultivates the pure heavenly eye. With the power of the heavenly eye, he watches sentient beings. They die here and are born there, and they’re born here from there. Their life spans are long and short, and their appearances are beautiful and ugly. According to the results of their actions, they arrive in good and bad destinations. He fully knows and sees this. You cannot witness the good and bad destinations of sentient beings with the polluted flesh eye, so you say they don’t exist. Priest, we know in this way there’s surely another world.”</p>
+<p>The priest said, “Although you’ve told this story showing that there’s another world, my view is still that it doesn’t exist.”</p>
+<h4>Parable of the Fire-Worshipper</h4>
+<p id="p45">45. Kāśyapa again asked, “Do you have another reason for knowing that there isn’t another world?”</p>
+<p>The priest said, “I do.”</p>
+<p id="p46">46. Kāśyapa said, “What’s the reason you know this?”</p>
+<p id="p47">47. The priest said, “There was a thief in the town that I was given. He was hunted down, and an officer brought him to me. He said, ‘This man is a thief. Please judge him.’</p>
+<p id="p48">48. “I ordered my men, ‘Tie him up, peel off his skin, and look for his spirit.’ None of them saw it. I instructed them to cut away his flesh and look for his spirit. Again, they didn’t see it. I instructed them to cut his sinews, arteries, and bones while looking for his spirit. Again, they didn’t see it. I instructed them to crush his bones, extract the marrow, and look for his spirit in the marrow. Again, they didn’t see it. Kāśyapa, I know there isn’t another world for this reason.”</p>
+<p id="p49">49. Kāśyapa again said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Long, long ago, there was a country that was destroyed. It had yet to recover from the devastation when a merchant caravan of five hundred carts passed through that land.</p>
+<p id="p50">50. “There was a wanderer who worshipped the fire spirit who always stayed in the grove where those merchants stopped for the night. When they departed the next morning, the fire-worshipping wanderer thought, ‘Those merchants who were staying in this grove may have left some effluent as they departed. I’ll go check to see.’ He quickly went to where they had stayed, but he saw nothing but a one-year-old child sitting there by himself.</p>
+<p id="p51">51. “The wanderer then thought, ‘Now, how could I bear to see this small child die in front of me? It would be better to take the child to my home and nurture him!’ The wanderer picked up the child and took it to his abode where he raised him. The child grew up and was over ten years old.</p>
+<p id="p52">52. “It was then that the wanderer was going to travel to a community for some minor reason. He said to the child, ‘I will be out traveling for a minor reason. Guard this fire well. Be careful not to let it go out! If the fire goes out, rub wood together to rekindle it.’ After giving the child these instructions, he left the grove and went on his trip.</p>
+<p id="p53">53. “After the wanderer was gone, the child spent his time playing and didn’t check the fire often, so the fire did go out. When the child returned from playing, he saw that the fire had gone out and felt terrible. He said, ‘I’ve made a mistake. When my father left, he gave me instructions to guard this fire and not let it go out. But I spent my time playing, and now the fire is out. What shall I do?’</p>
+<p id="p54">54. “The child blew on the ashes looking for the fire, but he couldn’t find it. He chopped firewood looking for the fire, but again he couldn’t find it. He also ground the firewood after cutting it up, pounding it in a mortar looking for the fire, but he still couldn’t find it.</p>
+<p id="p55">55. “The wanderer returned from the community and arrived at his grove. He asked the child, ‘Didn’t I instruct you before to guard the fire and keep it from going out?’</p>
+<p>“The child responded, ‘I went out to play and didn’t spend the day watching over it. Now, the fire has gone out.’</p>
+<p>56. “He again asked the child, ‘What was your method of looking for the fire?’</p>
+<p id="p56">“The child responded, ‘The fire came out of the wood, so I chopped wood looking for fire, but I didn’t find any. I also chopped it up and ground it in a mortar looking for the fire. I didn’t find any that way, either.’</p>
+<p id="p57">57. “The wanderer then rubbed wood together to make a fire and set a pile of firewood alight. He told the child, ‘Someone who’s looking for fire should use this method. They shouldn’t chop or grind wood to find it.’</p>
+<p id="p58">58. “Priest, you likewise didn’t use the right method when you peeled the skin off the dead man looking for his spirit. It’s not something that can be seen directly with your eyes when you examine sentient beings.</p>
+<p id="p59">59. “Priest, suppose there’s a monk who doesn’t become sleepy from the start to the end of the night. He’s diligent and not negligent, focusing on the factors of the path. He cultivates the pure heavenly eye with the power of samādhi, and he watches sentient beings with the power of the heavenly eye. They die here and are born there, and they’re born here from there. Their life spans are long and short, and their appearances are beautiful and ugly. According to the results of their actions, they have good and bad destinations. He fully knows and sees this. You cannot witness the good and bad destinies of sentient beings with the polluted flesh eye, so you say they don’t exist. Priest, we know in this way there’s surely another world.”</p>
+<p>The priest said, “Although you’ve told this story showing that there’s another world, my view is still that there isn’t one.”</p>
+<h4>Parable of Iron</h4>
+<p id="p60">60. Kāśyapa again said, “Do you have another reason for knowing there isn’t another world?”</p>
+<p>The priest said, “I do.”</p>
+<p id="p61">61. Kāśyapa asked, “What’s the reason you know this?”</p>
+<p id="p62">62. The priest said, “There was a thief in the town that I was given. He was hunted down, and an officer brought him to me. He said, ‘This man is a thief. Please judge him.’</p>
+<p id="p63">63. “I ordered my men, ‘Take this man and weigh him on a scale.’ My servants accepted this order and weighed him with a scale.</p>
+<p id="p64">64. “I then told my servants, ‘Take this man and kill him in a non-violent way that won’t damage his skin or flesh.’ They accepted my instruction and killed him in a non-violent way.</p>
+<p id="p65">65. “Again, I ordered my servants, ‘Weigh him again.’ They then weighed his body.</p>
+<p id="p66">66. “Kāśyapa, when they initially weighed that man, his spirit was still present. He looked relaxed, he could still talk, and his body was lighter. After he was dead, he was weighed again when his spirit had passed away. He had no expression, he couldn’t talk, and his body was heavier. I know there isn’t another world for this reason.”</p>
+<p>67. Kāśyapa said to the priest, “Now, I’ll ask you a question and you tell me what you think. Suppose someone weighs iron. First, they weigh it while it’s cold, and later they weigh it while it’s hot. When would it be glowing with color, flexible, and lighter? When would it not be glowing, solid, and heavier?”</p>
+<p id="p67">The priest said, “Hot iron has color, and it’s soft and light. Cold iron has no color, and it’s hard and heavy.”</p>
+<p id="p68">68. Kāśyapa said, “A man is likewise. While alive, he has color, and he’s soft and light. When he’s dead, he has no color, and he’s hard and heavy. In this way, we know there’s surely another world.”</p>
+<p>The priest said, “Although you’ve used this analogy to show there’s another world, my view is still that there surely isn’t one.”</p>
+<h4>Parable of the Horn-Blower</h4>
+<p id="p69">69. Kāśyapa said, “Do you have another reason for knowing there isn’t another world?”</p>
+<p id="p70">70. The priest answered, “I have a friend who fell seriously ill. I went to him and said [to myself], ‘It would help this sick man to turn him onto his right side.’ He looked, turned, and spoke as usual. I tried turning him onto his left side and moved him back again. He turned, looked, and spoke as usual. His life soon ended. Again, I had someone help turn him onto his left and right side, and then we moved him back again. He didn’t turn, look, or speak again. For this reason, I know there surely isn’t another world.”</p>
+<p id="p71">71. Kāśyapa again said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Once, there was a country where the sound of the conch hadn’t been heard before. A man who was skilled at blowing conch horns traveled to that country. The men and women of the town were shocked when they heard this sound. They went and asked him, ‘What is that sound that’s so melancholic and clear?’</p>
+<p>“The man pointed to his conch and said, ‘That’s the sound that this makes.’</p>
+<p id="p72">72. “Those villagers touched the conch with their hands and said, ‘You may make that sound! You may make that sound!’</p>
+<p>“The conch didn’t make a sound. Then its owner picked it up, blew it three times, and put it down.</p>
+<p id="p73">73. “The villagers then said, ‘It wasn’t a power of the conch that made that beautiful sound before. It was his hand, mouth, and breath blowing through it. Then, it makes that sound!’</p>
+<p id="p74">74. “People are likewise. When they are alive, conscious, and breathing, then they can turn, look, and speak. Without life, without awareness, and without breathing, they don’t turn, look, or speak.”</p>
+<p id="p75">75. He also said to the priest, “Now, it would be right for you to abandon this pernicious view. Don’t increase your own suffering for a long time.”</p>
+<h4>Parable of the Wise Man and the Fool</h4>
+<p id="p76">76. The priest said, “I’m not going to abandon it. Why is that? I’ve been saying it for a long time, and I’ve become set in it ways. How could I abandon it?”</p>
+<p id="p77">77. Kāśyapa again said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Long ago, there was a country that was bordered by barbarians. In that country, there were two people. One was wise, and one was foolish. They said to each other, ‘I’m your friend. I’ll leave the city with you to look for riches.’</p>
+<p id="p78">78. “They soon went together to an empty village. Seeing the land there had hemp, the wise man said to the foolish one, ‘Let’s collect it and take it home.’</p>
+<p id="p79">79. “They each took a bushel. When they passed another village ahead of them, they saw hemp thread there. The wise man said, ‘Hemp thread is a finished good that’s light and fine. It’s worth taking.’</p>
+<p>“The other man said, ‘I’ve already got this hemp tied up and secured. I can’t discard it.’</p>
+<p id="p80">80. “The wise man then took the hemp thread and added it to his burden. Again, they continued and saw some hemp cloth. The wise man said, ‘Hemp cloth is a finished good that’s light and fine. It’s worth taking.’</p>
+<p>“The other man said, ‘I’ve already got this hemp tied up and secured. I can’t discard it.’</p>
+<p id="p81">81. “The wise man discarded the hemp thread and carried the hemp cloth himself. Again, they continued and saw some cotton. The wise man said, ‘Cotton is valuable, light, and fine. It’s worth taking.’</p>
+<p>“The other man said, ‘I’ve already got this hemp tied up and secured, and I’ve carried it a long distance on the road. I can’t discard it.’</p>
+<p id="p82">82. “The wise man then discarded the hemp cloth and took the cotton. Thus, they continued and saw cotton thread … After that, they saw white muslin … they saw cupronickel … they saw silver … they saw gold. The wise man said, ‘If there were no gold, then we should take the silver. If there were no silver, we should take the cupronickel … If there were no hemp thread, we should just take the hemp. Now, this village has a great deal of gold and many superior treasures. It would be right for you to discard your hemp. I’ll take the silver, and you take the gold. We’ll carry it home ourselves.’</p>
+<p>“That other man said, ‘I’ve already got this hemp tied up and secured, and I’ve carried it a long distance on the road. I can’t discard it. If you want to take those things, then do what you like.’</p>
+<p id="p83">83. “The wise man discarded the silver and took the gold, carrying the burden back home to his family. When his relatives saw him in the distance with a treasure of gold, they rejoiced and looked up to him. When the man who brought the gold saw his relatives looking up to him, he rejoiced as well. The ignorant man carried only hemp when he returned home. His relatives weren’t happy or proud of him when they saw him. The hemp he carried had doubled his sorrow and trouble.</p>
+<p id="p84">84. “Priest, it would be right for you to abandon that pernicious view now. Don’t increase your own suffering for a long time like the man who carried the hemp. Attached to his stubborn thinking, he didn’t take the treasure of gold, and the hemp he carried home was a useless burden to him. His relatives weren’t happy, and he remained poor for a long time. It increased his own sorrow and suffering.”</p>
+<h4>Parable of the Two Caravans</h4>
+<p id="p85">85. The priest said, “I’ll never abandon this view. Why is that? I’ve taught this view to many people, and many have profited by it. The kings in the four directions hear my name, and they all know I’m the philosopher of nihilism.”</p>
+<p id="p86">86. Kāśyapa again said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Long ago, there was a country far away bordering a land of barbarians. At the time, there was a merchant who traveled through that land with a caravan of a thousand carts. They didn’t have enough water, grain, firewood, and grass. The merchant owner thought, ‘We brought a great deal, but our water, grain, firewood, and grass aren’t enough to supply us. Perhaps it would be best to split into two groups and for one group to head out first.’</p>
+<p id="p87">87. “The leader of that first group saw a man with a huge body. His eyes were red, his face was black, and his body was covered in mud. Seeing him coming from a distance, the leader called, ‘Where have you come from?’</p>
+<p>“The man replied, ‘I’ve come from a village that’s ahead.’</p>
+<p id="p88">88. “The leader asked him, ‘Is there much water, grain, firewood, and grass where you’ve come from?’</p>
+<p>“The man replied, ‘Water, grain, firewood, and grass are bountiful where I’ve come from. There was a downpour while I was on the road. That place has much water, and there’s plenty of firewood and grass.’</p>
+<p id="p89">89. “He also said to the merchant owner, ‘If your carts are carrying grain and grass, they could discard all of it. That place has plenty, so you don’t need to burden your carts with it.’</p>
+<p id="p90">90. “The merchant leader said to his company of merchants, ‘Ahead of us, there’s a man whose eyes are red, his face is black, and his body is covered in mud. We asked him from a distance, “Where have you come from?”</p>
+<p>“‘He answered us, “I’ve come from a village that’s ahead.”</p>
+<p id="p91">91. “‘We immediately asked, “Are water, grain, firewood, and grass bountiful where you came from?”</p>
+<p>“‘He answered us, “There’s a huge bounty there.”</p>
+<p id="p92">92. “‘He also told us, “While I was on the road, there was a downpour. That place has much water, and there’s plenty of firewood and grass.”</p>
+<p>“‘He again told us, “Gentlemen, if you have grain and grass on your carts, you can discard all of it. That place has plenty, so you don’t need to burden your carts with it.”</p>
+<p id="p93">93. “‘Each of you ought to discard your grain and grass. We’ll make faster progress with lighter carts.’ They did as he said, each of them discarding their grain and grass, and they made faster progress with lighter carts.</p>
+<p id="p94">94. “Thus, they didn’t see water or grass during the first day, nor did they see any on the second day … the third day … the seventh day. At that point, the merchants met their end in the wasteland and were eaten by the demon.</p>
+<p id="p95">95. “The group that was behind them went down that road, and the merchant leader saw a man ahead who had red eyes, a black face, and a body covered in mud. He asked him from a distance, ‘Where did you come from?’</p>
+<p>“The man answered, ‘I’ve come from a village that’s ahead.’</p>
+<p id="p96">96. “He also asked, ‘Are water, grain, firewood, and grass bountiful where you came from?’</p>
+<p>“That man answered, ‘There’s a huge bounty there.’</p>
+<p id="p97">97. “He also told the merchant leader, ‘While I was on the road, there was a downpour. That place has much water, and there’s plenty of firewood and grass.’</p>
+<p>“Again, he told the merchant leader, ‘Gentlemen, if you have grain and grass on your carts, you can discard it. That place has plenty, so you don’t need to burden your carts with it.’</p>
+<p id="p98">98. “The merchant leader said to his company of merchants, ‘Ahead of us, there’s a man … [He said,] “Gentlemen, if you have grain and grass on your carts, you can discard all of it. That place has plenty, so you don’t need to burden your carts with it.”’</p>
+<p id="p99">99. “The merchant leader said, ‘Take care not to discard your grain and grass. We’ll discard them when we find fresh supplies. Why is that? Once we replace them with fresh supplies, we’ll be able to cross this wasteland.’</p>
+<p id="p100">100. “Those merchants proceeded with heavy carts. Thus, they didn’t see water or grass on the first day, nor did they see any on the second day … the third day … the seventh day. All they saw of the people who had been eaten by the demon were their scattered bones.</p>
+<p id="p101">101. “Priest, that red-eyed and black-faced man was a <em>rākṣasa</em> demon. Those who follow your teaching will suffer for a long time. They’ll be like that first group of merchants who followed what their leader said and lost their lives because they lacked wisdom.</p>
+<p>102. “Priest, there are ascetics and priests who are diligent and wise. Those who put into practice the teachings that they declare obtain peace for a long time. They’re like the group of merchants who followed the first. They escaped disaster because they were wise. Priest, now you had best abandon this pernicious view. Don’t increase your own suffering for a long time.”</p>
+<h4>Parable of the Dung-Carrier</h4>
+<p id="p103">103. The priest said, “I’ll never abandon that view. If someone came to scold me about it, it would just make me resentful. I’ll never abandon this view.”</p>
+<p id="p104">104. Kāśyapa also said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Long ago, there was a country far away that was bordered by a land of barbarians. A person there delighted in raising pigs. They went to another empty village and saw dry dung there. They immediately thought, ‘This place is rich in dung that my pigs could eat. Now, I’ll wrap this dry dung in grass and carry it back home on my head.’</p>
+<p id="p105">105. “They took grass, wrapped the dung in it, and carried it that way. There was heavy rain while they were on the road, and the dung got wet and ran all the way down to the heels of their feet. People who saw that person all said, ‘You’re crazy! You’re covered in dung and reek of it! Even if it stops raining, you shouldn’t continue carrying that. Certainly don’t carry it while you’re walking in the rain!’</p>
+<p id="p106">106. “That person was offended by this and yelled back at those people: ‘You’re all fools! You don’t know that I have pigs at home to feed! If you knew that, you wouldn’t say I’m foolish!’</p>
+<p>107. “Priest, it would be best for you to abandon this pernicious view. Don’t guard this delusion and subject yourself to suffering for a long time. You’d be like that foolish person who carried dung as they walked and got offended by a ridiculing crowd, saying they don’t understand.”</p>
+<h4>Parable of the Two Wives</h4>
+<p id="p108">108. The priest said to Kāśyapa, “If all of you say someone who does good is born in heaven, then dying would be better than being alive. You ought to slit your throats with a knife or die in some other way. Maybe tie up your arms and legs and toss yourselves off a high cliff. Yet, you crave life and can’t kill yourselves, so I know that death isn’t better than birth.”</p>
+<p id="p109">109. Kāśyapa again said, “Those who are wise explain things with parables. Now, I’ll explain this for you with a story. Once, this town of Śvetikā had an elder wanderer who was 120 years old. He had two wives. One already had a child, and the other had just become pregnant.</p>
+<p id="p110">110. “Soon after that, the wanderer died. His older wife’s son said to the younger wife, ‘I should inherit all the wealth that he had. You’ll get no share of it.’</p>
+<p>“The younger wife said, ‘Wait a minute, I need a share for my unborn child. If I give birth to a son, then he would inherit a share of the wealth. If I give birth to a daughter, then you’ll marry her, and I’ll get some of his property.’</p>
+<p id="p111">111. “The son demanded the father’s wealth politely three times, and the younger mother answered as before. The son attempted to compel her, but he wasn’t successful. The younger mother then used a sharp knife on her lower abdomen to see if she carried a boy or a girl.”</p>
+<p id="p112">112. Kāśyapa told the priest, “That mother killed herself and hurt the child in her womb. You, priest, are likewise. You would kill yourself, and you’re going to kill others, too. If an ascetic or priest is diligent, cultivates virtue, and perfects the virtue of the precepts, they’ll remain in the world for a long time. They benefit many people, and gods and humans find peace.</p>
+<h4>Parable of the Jugglers</h4>
+<p id="p113">113. “Now, I’ll tell you one last story so that you’ll know the disaster of evil views. Once, there were two entertainers here in the town of Śvetikā. They were both skilled at juggling,<a id="ref4" href="#n4">[4]</a> but one was better than the other.</p>
+<p id="p114">114. “The one who wasn’t as good said, ‘Let’s take a break today, but we should have a competition tomorrow.’</p>
+<p id="p115">115. “The lesser juggler went home and picked up his juggling balls. He coated them with a poisonous plant, then set them out to dry. In the morning, he took these balls to the better juggler. He said, ‘We can juggle with these.’</p>
+<p id="p116">116. “Then they juggled in front of each other, but first he passed the poisoned balls to the better juggler, saying, ‘The better juggler swallows them.’ The lesser juggler passed the poison balls to him again, which the better juggler swallowed when he caught them. The poison traveled throughout his body and caused a seizure.</p>
+<p id="p117">117. “The lesser juggler then scolded him with this verse:</p>
+<ul class="verse"><li>“‘I coated the balls with poison,<br />
+But you swallowed them and didn’t notice.<br />
+When a lesser performer swallows it,<br />
+It takes a while for him to realize it.’”</li></ul>
+<h4>Padāśva Takes Refuge</h4>
+<p id="p118">118. Kāśyapa said to the priest, “Now, you should quickly abandon this evil view. Don’t focus on this delusion and increase your own suffering like that entertainer who swallowed poison without noticing it.”</p>
+<p id="p119">119. The priest said to Kāśyapa, “Venerable, I had understood you when we discussed that first parable about the moon. I didn’t accept it at that point because I wanted to witness the eloquence and wisdom of Kāśyapa and solidify my belief. Now, I believe and accept [that there’s another world]. I take refuge in Kāśyapa.”</p>
+<p>Kāśyapa replied, “Don’t take refuge in me. You should take refuge in the unsurpassed sage that’s my refuge.”</p>
+<p id="p120">120. The priest said, “I’m not sure about that unsurpassed sage who’s your refuge. Where is he now?”</p>
+<p>Kāśyapa replied, “It hasn’t been long now since the final liberation of my teacher, the Bhagavān.”</p>
+<p id="p121">121. The priest said, “If the Bhagavān still existed, I wouldn’t avoid him, whether he was far or near. He would be a friend to visit. I’d take refuge and venerate him. Now that I hear Kāśyapa speak of the Tathāgata’s final liberation, I’ll take refuge in the completely liberated Tathāgata, Dharma, and Saṅgha. Kāśyapa, permit me to become a layman in the correct teaching. From this day forward, I won’t kill, steal, engage in sex, lie, or drink alcohol for my whole life, and right now I’ll make a large donation.”</p>
+<h4>Madhuka’s Pure Donation</h4>
+<p id="p122">122. Kāśyapa said, “If you slaughter sentient beings and beat your servants yet hold a [donor’s] meeting, this is not pure merit. It’s like barren and meager land where weeds and brambles grow. Nothing is gained by planting such land with seed. If you slaughter sentient beings and beat your servants yet hold a meeting and give donations to assemblies with wrong views, this is not pure merit. If you’re going to give a large donation, don’t harm sentient beings and don’t discipline your servants with the cane. If you rejoice, arrange meetings, and give to a pure assembly, you’ll obtain great merit. It’s like excellent farmland that’s sure to yield substantial fruit whenever seed is planted in it.”</p>
+<p>“Kāśyapa, from now on, I’ll always give purely to the assembly, and I won’t allow the donations to be discontinued.”</p>
+<p id="p123">123. There was a junior wanderer named Madhuka who was standing behind Padāśva.<a id="ref5" href="#n5">[5]</a> Padāśva looked at him and said, “I want to arrange a large donation of everything. You’ll plan and manage it for me.”</p>
+<p>124. That junior wanderer heard what Padāśva said and planned it. Once that large donation was planned, he said, “Please don’t let Padāśva obtain a meritorious reward for this in the present or the afterlife.”</p>
+<p>Padāśva heard that that wanderer had planned the donation and then said, “Please don’t let Padāśva obtain a meritorious reward for this in the present or the afterlife.” He summoned the wanderer and asked him, “Is that what you said?”</p>
+<p id="p125">125. He answered, “Yes. I really did say that. Why was that? Now, this food that’s been prepared as a gift to the Saṅgha is coarse and vile. If it were shown to a king, the king wouldn’t touch it for a moment. How could he eat it? What’s presently arranged isn’t enjoyable. How would it be possible to get a pure reward in a later life as a result of it? The king gives the Saṅgha clothing that’s entirely made of hemp cloth. If it were shown to the king, the king wouldn’t touch it with his foot for a moment. How could he wear it? This presently arranged gift isn’t enjoyable, so how could you get a pure reward in a later life as a result of it?”</p>
+<p>The priest then told the wanderer, “From this day forward, give the Saṅgha the same food that I eat and the clothes that I wear.”</p>
+<p id="p126">126. The wanderer accepted his instruction and provided royal food and clothing as offerings to the Saṅgha. The priest arranged these pure gifts. When his body broke up and his life ended, he was born in one of the lesser heavens. The wanderer who planned the donations was born in the Trāyastriṃśa Heaven when his body broke up and his life ended.</p>
+<p id="p127">127. The priest Padāśva, the junior wanderer, the priests of Śvetikā, and the householders who heard what Kaumāra Kāśyapa taught rejoiced and approved.</p>
+<hr />
+<h3>Notes</h3>
+<p id="n1">1. This is <em>sūtra</em> no. 7 of the <cite>Dīrgha Āgama</cite> (<a href="https://cbetaonline.dila.edu.tw/zh/T01n0001_p0042b24" target="_blank">T1.1.42b24-7a12</a>). Its parallels include <a href="https://suttacentral.net/dn23" target="_blank">DN 23</a>, <a href="https://suttacentral.net/ma71" target="_blank">MĀ 71</a>, and <a href="https://cbetaonline.dila.edu.tw/zh/T0045_001" target="_blank">T45</a>.<br/>
+This <em>sūtra</em> doesn’t begin with the standard “Thus I have heard” in the original Chinese, perhaps because the Buddha is never present in the story. We should note, too, that the background stories about Kumara Kāśyapa place him as a second generation Buddhist, born to a nun during the Buddha’s lifetime, but this <em>sūtra</em> depicts him as an elderly <em>arhat</em>. Therefore, the events depicted would be after the Buddha’s <em>parinirvāṇa</em>, perhaps much longer beyond it than the <em>sūtra</em> suggests. <a href="#ref1">[back]</a></p>
+<p id="n2">2. <em>Kaumāra Kāśyapa</em>. C. 童女迦葉. P. Kumāra. DĀ is unique in translating this Kāśyapa’s epithet as 童女 (“young woman”). In other sources such as DN 23 and MĀ 71, he’s called Kumāra (“young man”). However, we should note that there is the term Kaumāra in S. (Pkt. \<em>Komāra), which indeed means a maiden woman. There’s a story found in the </em>Mahāsāṃghika Vinaya<em> (T1425.380a23-7) and Pali sources of a Kāśyapa who was born to a nun who had become pregnant before leaving home and was subsequently called 童子迦葉 (Kumāra Kāśyapa). Given how close the pronunciations are for these two terms, it may be that DĀ is preserving a particular interpretation of his name, so I’ve adopted the S. equivalent of Pkt. \</em>Komāra. Another option is the female form of Kumāra, which would be Kumārī. <a href="#ref2">[back]</a></p>
+<p id="n3">3. <em>Padāśva</em>. C. 弊宿 (MCh. biɛi-siuk), P. Pāyāsi, S. Padāśva.<br />
+<em>Śvetikā</em>. C. 斯波醯 (MCh. siĕ-pua-hei), P. Setavyā, S. Śvetikā. <a href="#ref3">[back]</a></p>
+<p id="n4">4. <em>Juggling</em>. C. 弄丸, P. akkhadhutta. The Pali parallel is interpreted to mean a dice game, especially one involving gambling. The Chinese term appears to refer to an obscure ancient game that involved juggling or throwing small objects in the air. I’ve opted for “juggling” as a translation. The Japanese translators chose a term for a game like hacky sack. <a href="#ref4">[back]</a></p>
+<p id="n5">5. <em>Madhuka</em>. C. 摩頭 (MCh. mua-dəu), P. Uttara. An alternate Chinese translation, MĀ 71, agrees with the Pali (C. 優多羅), though he is a cook rather than a priest or wanderer. Here, DĀ 7 seems to have a different name. I’ve only guessed at a possible Indic equivalent based on other uses of 摩頭 in Chinese sources. <a href="#ref5">[back]</a></p>
+<hr />
+<p class="translator">Translator: Charles Patton</p>
+<p class="revised">Last Revised: 2 November 2021</p>
+<hr />              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/chinese_canon/da/da6.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/chinese_canon/da/da8.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

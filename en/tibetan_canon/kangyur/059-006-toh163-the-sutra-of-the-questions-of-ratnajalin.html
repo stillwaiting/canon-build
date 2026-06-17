@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 163 — The Questions of Ratnajālin — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 163 — The Questions of Ratnajālin</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 163 — The Questions of Ratnajālin        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Ratnajāliparipṛcchā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Dharmachakra Translation Committee under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Great Vehicle Sūtra</h3><h3>The Questions of Ratnajālin</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.144.a</span><span class="tei-ref">B1</span> Homage to all buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Blessed One was dwelling in Vaiśālī in a mansion located by the Monkey Pond, together with a great assembly of monks. In the assembly were four hundred twenty million bodhisattvas. Some of the bodhisattvas, such as Maitreya, were held back by just one birth, while others were held back by two, three, four, five, ten, thirty, or forty births, with some bodhisattvas even held back by one thousand births. Also in the assembly were six hundred million worthy ones and nine hundred ninety million gods including the gods in the desire realm and form realm, the four great kings, Śakra who rules the gods, <em>Brahmā</em> who rules the Sahā world, the god Great Splendor, the god Candraprabha, the god Sūryaprabha, the god Pinnacle of Renown, and the god <em>Joyful</em>. In attendance were also the nāga kings Anavatapta, Sāgara, Vāsukin, Manasvin, Nanda, Upananda, Mucilinda, and Mahāmucilinda, as well as the asura sovereign Rāhu and the retinues of all the other asura sovereigns.</p><p>At that time, in the city of Vaiśālī, there was a Licchavi named Limitless Strength, who was the son of Siṃha the captain. Limitless Strength, son of Siṃha, himself had a son, a young Licchavi boy known as Ratnajālin. Since this child had previously served many buddhas, <span class="tei-ref">F.144.b</span> he had come to possess the lamp that shines with the immense light of the Dharma way. One time, when he was around eight years old, he had a dream as he slept. In his dream, the god Santuṣita descended from the Heaven of Joy and spoke to him, encouraging Ratnajālin with this melodious song:</p><div class="tei-verse"><div class="tei-line">“The essential being, the Victor, the Buddha,</div><div class="tei-line">Abides, illuminating the entire trichiliocosm.</div><div class="tei-line">With vast accumulations of merit, he appears in golden hue.</div><div class="tei-line">The appearance of this great being is beautiful in all respects.</div></div><div class="tei-verse"><div class="tei-line">“He is endowed with the light of ten million suns</div><div class="tei-line">And shines like a thousand or even ten million</div><div class="tei-line">Luminous full moons—</div><div class="tei-line">As many as there are grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">“Shining like many millions of suns,</div><div class="tei-line">He shines like the supreme disk in the east,</div><div class="tei-line">Those in the south and the west,</div><div class="tei-line">And the supreme disk in the north.</div></div><div class="tei-verse"><div class="tei-line">“The light rays that stream forth</div><div class="tei-line">From each pore of this shining protector of the world</div><div class="tei-line">Will, each and every one,</div><div class="tei-line">Make all full moons appear gloomy.</div></div><div class="tei-verse"><div class="tei-line">“From each pore in the skin of those who are omniscient,</div><div class="tei-line">Light streams forth.</div><div class="tei-line">The light that shines from him illuminates as many worlds</div><div class="tei-line">As there are grains of sand in sixty-six Ganges rivers.”</div></div><p>In the morning, the Licchavi boy Ratnajālin told his father Limitless Strength, “Father, last night the god Santuṣita arrived from the Heaven of Joy and encouraged me with a melodious song. Father, I am telling you this so that we can begin the practice of worshiping the Thus-Gone One.”</p><p>At this point the Licchavi boy Ratnajālin sang these verses to his father Limitless Strength:</p><div class="tei-verse"><div class="tei-line">“The captain of all beings, the perfect Buddha,</div><div class="tei-line">The great being inconceivably learned in the ways of the world—</div><div class="tei-line">Please, may you worship this protector, <span class="tei-ref">F.145.a</span></div><div class="tei-line">For such a guide rarely appears in the world.</div></div><div class="tei-verse"><div class="tei-line">“Just like the uḍumbara flower,</div><div class="tei-line">He has a beautiful color and delicious scent and fragrance.</div><div class="tei-line">He is stainless and without afflictions.</div><div class="tei-line">Such a perfect flower is hard to find.</div></div><div class="tei-verse"><div class="tei-line">“Father, thus I supplicate you:</div><div class="tei-line">Right now, may you joyfully agree</div><div class="tei-line">To worship the luminous protector of the world</div><div class="tei-line">Who perceives the ultimate!”</div></div><p>The Licchavi Limitless Strength was delighted and addressed the Licchavi Siṃha:</p><div class="tei-verse"><div class="tei-line">“O Captain, follow my son’s advice</div><div class="tei-line">To worship the Victorious One!”</div></div><div class="tei-verse"><div class="tei-line">To worship the Guide, the Lion of the Śākyas,</div><div class="tei-line">And to delight the wonderful youth,</div><div class="tei-line">Six hundred million householders set to work.</div><div class="tei-line">Śakra with his thousand divine eyes,</div></div><div class="tei-verse"><div class="tei-line">The powerful gods <em>Brahmā</em> and Īśvara</div><div class="tei-line">And Susārthavāha, son of <em>Māra</em>,</div><div class="tei-line">Together with ten million earthly gods,</div><div class="tei-line">All came to the delight of Vaiśālī.</div></div><div class="tei-verse"><div class="tei-line">Here they produced</div><div class="tei-line">Billions of thrones made of gold and silver</div><div class="tei-line">And ornamented with the seven precious substances.</div><div class="tei-line">Each throne had billions of precious items.</div></div><div class="tei-verse"><div class="tei-line">Each side of the thrones was adorned with jewels</div><div class="tei-line">And had a fine victory banner of the seven precious substances attached.</div><div class="tei-line">The size of the thrones was several leagues.</div><div class="tei-line">The victory banners were half a league high.</div></div><div class="tei-verse"><div class="tei-line">On either side of the victory banners</div><div class="tei-line">Was a platform higher than a league</div><div class="tei-line">Made exclusively of a single substance—</div><div class="tei-line">Precious jewels rising more than a league in height.</div></div><div class="tei-verse"><div class="tei-line">In between the thrones divine banners were hung</div><div class="tei-line">More than a league long.</div><div class="tei-line">The banners featured nets of golden tassels</div><div class="tei-line">Adorned with strings of bells.</div></div><div class="tei-verse"><div class="tei-line">Beneath the thrones were well-fastened columns,</div><div class="tei-line">More than one billion of them.</div><div class="tei-line">All of these perfect thrones</div><div class="tei-line">Were firmly placed, as if bolted to the ground.</div></div><div class="tei-verse"><div class="tei-line">The surface of the thrones was made of gold—</div><div class="tei-line">Golden and with silver and beryl,</div><div class="tei-line">Crystal, coral, and emerald too. <span class="tei-ref">F.145.b</span></div><div class="tei-line">Also, at the bottom and the base</div></div><div class="tei-verse"><div class="tei-line">Were placed natural pearl parasols,</div><div class="tei-line">Numbering in the billions</div><div class="tei-line">And colored red with deep red sandalwood.</div><div class="tei-line">Having produced the thrones</div></div><div class="tei-verse"><div class="tei-line">And the heavenly ornaments,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-39" href="#tei-note-UT22084-059-006-39">[1]</a></sup> clear as water, on the thrones,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-40" href="#tei-note-UT22084-059-006-40">[2]</a></sup></div><div class="tei-line">Golden nets were placed on them</div><div class="tei-line">And adorned with gold,</div><div class="tei-line">Silver, beryl, and crystal.</div></div><div class="tei-verse"><div class="tei-line">Having produced the ornaments of coral and emerald,</div><div class="tei-line">Affixed to those were sweet-sounding bells</div><div class="tei-line">Resounding with the voice of the Guide.</div><div class="tei-line">Fumigants were placed there for veneration.</div></div><div class="tei-verse"><div class="tei-line">In the sky above Vaiśālī</div><div class="tei-line">Was a canopy sewn of golden thread.</div><div class="tei-line">From each and every golden thread</div><div class="tei-line">Hung billions of tassels of the finest jewels</div></div><div class="tei-verse"><div class="tei-line">And billions of ornamental garlands of pearl</div><div class="tei-line">Strung with golden thread.</div><div class="tei-line">All the Licchavis who lived in the city of Vaiśālī</div><div class="tei-line">Were joyful, regardless of where they went.</div></div><div class="tei-verse"><div class="tei-line">They covered the ground of the city of Vaiśālī</div><div class="tei-line">With pieces of cloth the length of seven men</div><div class="tei-line">Printed with lattices of red sandalwood</div><div class="tei-line">And made of well-spun fabrics.</div></div><div class="tei-verse"><div class="tei-line">On the right side, seventy billion instruments</div><div class="tei-line">Of thousands of different varieties rang forth.</div><div class="tei-line">On the left side, a further seventy billion</div><div class="tei-line">Were also engaged in venerating the Lion of the Śākyas.</div></div><div class="tei-verse"><div class="tei-line">Having set forth such a great array,</div><div class="tei-line">The Licchavi boy named Ratnajālin</div><div class="tei-line">Joyfully announced to his parents,</div><div class="tei-line">“I am going before the Buddha.”</div></div><div class="tei-verse"><div class="tei-line">This learned one left the city</div><div class="tei-line">And went to where the great victorious lord was staying.</div><div class="tei-line">The young man bowed his head at the feet of this ocean of virtues</div><div class="tei-line">And stood to one side.</div></div><p>Then the Licchavi boy Ratnajālin left the city of Vaiśālī and went to where the Blessed One was staying. He bowed to the feet of the Blessed One and stood to one side. With him standing there to the side, the Blessed One <span class="tei-ref">F.146.a</span> delivered a Dharma discourse to the Licchavi boy Ratnajālin that delighted, captivated, and uplifted him, and made him utterly delighted.</p><p>The Licchavi boy Ratnajālin then stood up, draped his shawl over one shoulder, and knelt on his right knee. With his palms together he bowed toward the Blessed One and asked, “Would the Blessed One and his monastic saṅgha agree to take tomorrow’s midday meal at my home?”</p><p>Out of love for the Licchavi boy Ratnajālin, the Blessed One showed his acceptance of the offer by remaining silent. The Licchavi boy Ratnajālin understood that the Blessed One had accepted through his silence, and so he circumambulated the Blessed One three times before taking his leave.</p><p>The Licchavi boy Ratnajālin then entered the city of Vaiśālī along with Śakra who rules the gods, <em>Brahmā</em> who rules the Sahā world, and the god Great Splendor. With enthusiasm and delight, they began to prepare abundant varieties of food. When the night had passed, they set out cushions and decorated Vaiśālī. They then returned to the Blessed One, bowed to him, and stood to one side. The Licchavi boy Ratnajālin then said to the Blessed One, “Blessed One, it is time for the midday meal. If it please you, your meal is ready. The time has come.”</p><p>Accordingly, on that morning the Blessed One donned his lower garments and Dharma robes. Bearing his alms bowl, with his infinite saṅgha of monks he rose into the sky to the height of seven men <span class="tei-ref">F.146.b</span> and traveled to the city of Vaiśālī. As soon as he moved, the transformative power of the Thus-Gone One caused all the worlds of the great trichiliocosm to shake six times as they quivered, trembled, and quaked; wobbled, rocked, and swayed; vibrated, shuddered, and reeled; clattered, rattled, and clanged; and tremored, shook, and convulsed. Thus they shook six times with eighteen omens. He also displayed trillions of miracles as he traveled to the city of Vaiśālī. At that time, trillions of gods scattered and tossed blue, pink, red, and white lotuses, flowers made of precious divine substances, the powdered aloewood of the gods, powdered gems, gold from the Jambu river, and powdered divine gems upon the Blessed One. Trillions of divine instruments resounded. Unfathomable divine ornaments adorned him. In the sky above, a steady rain of red sandalwood powder fell to the depth of a chariot axle.</p><p>The Blessed One then arrived at the Licchavi boy Ratnajālin’s home and sat upon the seat that had been prepared for him along with the saṅghas of fully ordained monks and nuns and the assemblies of novice monks and nuns. Seeing that he had arrived, the Licchavi boy Ratnajālin personally served the Blessed One with an abundance of the finest food, drink, and sweets, to please him and serve him everything he wished for. When the Licchavi boy Ratnajālin noticed that the Blessed One had finished eating, he picked up the alms bowl, offered water, and covered the Blessed One’s hands. <span class="tei-ref">F.147.a</span> He then dressed the Blessed One with a priceless set of the three Dharma robes. He also dressed the saṅghas of fully ordained monks and nuns and the assemblies of novice monks and nuns with sets of the three Dharma robes. Why? He did this because he was moved by the power of the Blessed One.</p><p>The Licchavi boy Ratnajālin then asked the Blessed One, “If the Blessed One were to grant me the opportunity to request a teaching, I would like to ask the Blessed Thus-Gone One a few questions.”</p><p>The Blessed One responded to the Licchavi boy Ratnajālin, “Young man, you may ask the Thus-Gone One anything you are concerned with. Then I shall delight you with teachings that answer your questions.”</p><p>The Licchavi boy Ratnajālin then asked the Blessed One, “Blessed One, in other worlds, are there blessed buddhas that through their previous aspirations have names that, when merely heard, help noble sons and daughters who follow the Bodhisattva Vehicle to end all doubt and hesitation, to become irreversible and fully awaken to unsurpassed and perfect buddhahood, to gain recollection of past lives, to never have a stingy attitude, to be surrounded by the bodhisattva assembly and to be without the assembly of hearers, to acquire countless trillions of virtues, to satisfy all beings by pleasing all the buddhas, to terrify the māras, to purify all buddha realms, to cleanse the stains in the minds of all beings, <span class="tei-ref">F.147.b</span> to inspire all beings to the virtuous Dharma, to be protected by the gods, to be considered by the bodhisattvas, to be blessed by the thus-gone ones, to never be separated from the blessed buddhas, to perfect bodhisattva conduct by possessing the finest qualities, to gain the entirety of the 84,000 verbal expressions, to attain the voice of <em>Brahmā</em>, and to gain a voice that is in conformity with all worlds?”</p><p>The Blessed One answered the Licchavi boy Ratnajālin, “Excellent, excellent, young man. Your thought to ask the Thus-Gone One about such subjects reflects excellent eloquence and fine analysis. Thus, listen well, young man, and bear what I say in mind. Then I will teach you.”</p><p>“Blessed One, I shall do just that.”</p><p>The bodhisattva Ratnajālin listened as the Blessed One had instructed, and so the Blessed One said, “Young man, to the east of here there is a world called Pearled. Young man, consider this: There are as many peaks of existence as there are grains of sand in the Ganges. And all those too are filled with the smallest possible particles. If a person then came along and carried away one single such particle and placed it in a spot past as many trillions of buddha realms as there are smallest particles in all those world systems under the peaks of existence—then, young man, by repeating this in the same way for a long time, would that great mass of particles eventually run out <span class="tei-ref">F.148.a</span> and reach its limit? Now, young man, tell me, would it be easy to consider, count, assess, or determine the places in the universe where that person placed or did not place those particles?”</p><p>“Blessed One, it would not be easy. Blessed One, for that reason, anyone who gets the right sense of this analogy that you have expressed would gain a great degree of understanding.”</p><p>The Blessed One said, “Young man, if all the worlds in which that person placed a particle, or alternatively the worlds in which that person did not place a particle—ranging from the mass of water underlying these worlds up to their peaks—were filled with minute particles, and if a second person came along and removed a single particle from them at a time and placed it in a spot past as many trillions of buddha realms as there were minute particles in those worlds, then, young man, by repeating this for a long time, eventually that great mass of particles would become dispersed. Young man, by this way of proceeding, the latter person would travel past nine million nine hundred thousand incalculable numbers of worlds and thus arrive past countless trillions of buddha realms.</p><p>“That is where the world called Pearled is located. There the thus-gone one, the worthy one, the perfect Buddha Majestic King with the Splendorous Voice of Learning Adorned by Precious Moonlight lives, abides, and teaches the Dharma. Young man, those noble sons or daughters who abide in the Bodhisattva Vehicle, who have no doubt regarding the name of the thus-gone, worthy, perfect Buddha Majestic King with the Splendorous Voice of Learning Adorned by Precious Moonlight,<span class="tei-ref">F.148.b</span> and who trust in my vision, will attain the dominion of a universal monarch after their lives are over. A buddha will appear within their dominions. When they see that thus-gone one, they will perform boundless veneration, practice pure conduct, and master the five types of miraculous abilities. Immediately upon beholding that thus-gone one, they will achieve the <em>hundred-swirled</em> dhāraṇī. They will serve as many buddhas as there are grains of sand in the Ganges. They will turn away from saṃsāra for an equivalent number of eons. Their minds will be undeluded, and they will fully awaken to unsurpassed and perfect buddhahood. Their bodies will become solid like that of Nārāyaṇa. Residing in a single place, they will possess the four necessities.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-63" href="#tei-note-UT22084-059-006-63">[3]</a></sup> Their bodies will take on golden complexions. They will be adorned with the thirty-two major marks of a great being. They will gain the melodious voice of <em>Brahmā</em>. They will eliminate all unfree states and attain an abundance of leisure.”</p><p>In order to elaborate on the meaning of what he had taught, the Blessed One then spoke in verse:</p><div class="tei-verse"><div class="tei-line">“Those who hear the name of this world protector</div><div class="tei-line">And entertain no doubt,</div><div class="tei-line">Trusting in what I see,</div><div class="tei-line">Shall become worthy of veneration.</div></div><div class="tei-verse"><div class="tei-line">“They will attain the eternal dominion</div><div class="tei-line">Of universal monarchs and behold buddhas.</div><div class="tei-line">Having beheld them, they will perform</div><div class="tei-line">Boundless and inconceivable veneration.</div></div><div class="tei-verse"><div class="tei-line">“They will always practice pure conduct.</div><div class="tei-line">They will realize all forms of miraculous abilities.</div><div class="tei-line">Once they see the Buddha, they will achieve</div><div class="tei-line">The <em>hundred-swirled</em> dhāraṇī.</div></div><div class="tei-verse"><div class="tei-line">“They will behold as many buddhas</div><div class="tei-line">As there are sands in the Ganges.</div><div class="tei-line">They will abandon saṃsāra</div><div class="tei-line">For that many billions of eons.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of the world protector</div><div class="tei-line">Spoken to the assemblies and saṅghas <span class="tei-ref">F.149.a</span></div><div class="tei-line">Will become undeluded,</div><div class="tei-line">And it will be a cause for awakening to buddhahood.</div></div><div class="tei-verse"><div class="tei-line">“They will always be like Nārāyaṇa.</div><div class="tei-line">Residing in a single place, they will possess the four necessities.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-71" href="#tei-note-UT22084-059-006-71">[4]</a></sup></div><div class="tei-line">Their bodies will be golden colored</div><div class="tei-line">And display the thirty-two marks.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear his name</div><div class="tei-line">And prostrate with their five points</div><div class="tei-line">Will permanently gain the voice of <em>Brahmā</em></div><div class="tei-line">And abandon the unfree states.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this world protector</div><div class="tei-line">And entertain no doubt</div><div class="tei-line">Will not shy away from awakening.</div><div class="tei-line">They shall never have any hesitation.</div></div><div class="tei-verse"><div class="tei-line">“Those who remember the victor’s name</div><div class="tei-line">For a full seven days and nights</div><div class="tei-line">Will purify the infinite seeing eyes</div><div class="tei-line">Praised by the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“They shall refine the eyes of flesh</div><div class="tei-line">Into the eyes of a god.</div><div class="tei-line">They will perceive as many buddhas</div><div class="tei-line">As there are grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">“They will venerate each of them</div><div class="tei-line">And receive teachings from each as well.</div><div class="tei-line">Seeing all the buddhas with their own eyes,</div><div class="tei-line">They will bring comfort to all humanity.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this thus-gone one</div><div class="tei-line">Have already offered unfathomable service</div><div class="tei-line">To the buddhas,</div><div class="tei-line">All of whom they will recollect.</div></div><div class="tei-verse"><div class="tei-line">“If his name is relayed</div><div class="tei-line">Before any being at all,</div><div class="tei-line">When those other beings hear this name,</div><div class="tei-line">They too will definitely proceed to awakening.</div></div><div class="tei-verse"><div class="tei-line">“By generating faith in this buddha,</div><div class="tei-line">The unfree states are dispelled,</div><div class="tei-line">While by engaging in debate and quarreling,</div><div class="tei-line">One will be born into the unfree states.</div></div><div class="tei-verse"><div class="tei-line">“Once beings have heard</div><div class="tei-line">The name of this great sage,</div><div class="tei-line">They shall no longer be interested</div><div class="tei-line">In debate and quarreling.</div></div><div class="tei-verse"><div class="tei-line">“The actions that lead to the Hell of Ultimate Torment,</div><div class="tei-line">Which could last for eons,</div><div class="tei-line">As well as the actions that produce a simple headache—</div><div class="tei-line">All such actions will not ripen for these beings.</div></div><div class="tei-verse"><div class="tei-line">“They shall not be burned by fire,</div><div class="tei-line">Nor drown in water.</div><div class="tei-line">Even when they draw the ire of the king,</div><div class="tei-line">It shall be quickly assuaged. <span class="tei-ref">F.149.b</span></div></div><div class="tei-verse"><div class="tei-line">“Those who remember this sage’s name</div><div class="tei-line">Shall be spared many illnesses</div><div class="tei-line">Including blindness, defective sight,</div><div class="tei-line">Paralysis, hunchback, and decrepitude.</div></div><div class="tei-verse"><div class="tei-line">“Evil and malevolent</div><div class="tei-line">Yakṣas, gandharvas, asuras,</div><div class="tei-line">Kumbhāṇḍas, rākṣasas, and humans</div><div class="tei-line">Shall be unable to harm them.</div></div><div class="tei-verse"><div class="tei-line">“Those who remember this sage’s name</div><div class="tei-line">Shall be favored and preferred</div><div class="tei-line">By all the bhūtas, gandharvas, yakṣas,</div><div class="tei-line">Nāgas, and gods.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this protector’s name</div><div class="tei-line">Shall swiftly attain vast accumulations,</div><div class="tei-line">Sublime voices, and absorption.</div><div class="tei-line">Their myriad virtues will be renowned.</div></div><div class="tei-verse"><div class="tei-line">“Having heard this world protector’s name</div><div class="tei-line">Without doubting it,</div><div class="tei-line">They will hew to awakening</div><div class="tei-line">Throughout all their subsequent lives.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this great sage’s name</div><div class="tei-line">Shall uphold and preach</div><div class="tei-line">The way of the well-spoken Dharma</div><div class="tei-line">Taught by the buddhas who have gone beyond anguish.</div></div><div class="tei-verse"><div class="tei-line">“They shall uphold the teachings</div><div class="tei-line">Well spoken by all the buddhas.</div><div class="tei-line">They shall manifest the supreme array</div><div class="tei-line">And serve all the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Once they pass away,</div><div class="tei-line">They will swiftly behold myriad buddhas</div><div class="tei-line">And uphold the teachings</div><div class="tei-line">Spoken by the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this protector’s name</div><div class="tei-line">Shall earnestly train and establish</div><div class="tei-line">Millions of beings on the path,</div><div class="tei-line">Bringing them all to awakening.</div></div><div class="tei-verse"><div class="tei-line">“Those who trust what I have seen</div><div class="tei-line">Shall uphold the teachings</div><div class="tei-line">Of all the buddhas, the protectors,</div><div class="tei-line">And additionally venerate the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who have faith in this buddha’s wisdom,</div><div class="tei-line">Trusting in what I have seen,</div><div class="tei-line">Shall be liberated from many fetters.</div><div class="tei-line">They will cross the abyss and become fearless.</div></div><div class="tei-verse"><div class="tei-line">“Whosoever abandons the sublime Dharma</div><div class="tei-line">Is among <em>Māra</em>’s ranks.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-96" href="#tei-note-UT22084-059-006-96">[5]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“The body hairs of every being</div><div class="tei-line">Who migrates among the five types of beings</div><div class="tei-line">Could be consolidated</div><div class="tei-line">Within one hair on the teacher’s kneecap.</div></div><div class="tei-verse"><div class="tei-line">“From a single pore</div><div class="tei-line">Of the protector, the guardian of the world, <span class="tei-ref">F.150.a</span></div><div class="tei-line">As many rays of light as there are</div><div class="tei-line">Grains of sand in the Ganges stream forth.</div></div><div class="tei-verse"><div class="tei-line">“Those who trust in the <em>infinite light</em></div><div class="tei-line">Of the world protector</div><div class="tei-line">Shall in one life behold many buddhas—</div><div class="tei-line">Millions of buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the teaching</div><div class="tei-line">Of this discourse by the Dharma king</div><div class="tei-line">And never doubt it</div><div class="tei-line">Shall become like me.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the teaching</div><div class="tei-line">Of this discourse in Vaiśālī</div><div class="tei-line">Shall themselves preach it to others</div><div class="tei-line">At a later time.</div></div><div class="tei-verse"><div class="tei-line">“Those who preach this widely</div><div class="tei-line">Shall come to pervade as many worlds</div><div class="tei-line">As there are grains of sand in the Ganges</div><div class="tei-line">With a single burst of light.</div></div><div class="tei-verse"><div class="tei-line">“One may fill with gold</div><div class="tei-line">All the buddha realms,</div><div class="tei-line">The numbers of which defy counting,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-104" href="#tei-note-UT22084-059-006-104">[6]</a></sup></div><div class="tei-line">And offer it to the world protectors.</div></div><div class="tei-verse"><div class="tei-line">“Yet, in comparison, those who hear this name</div><div class="tei-line">And who are truly delighted by it</div><div class="tei-line">And utter their homage to the buddhas</div><div class="tei-line">Obtain inconceivably more merit.</div></div><div class="tei-verse"><div class="tei-line">“The mass of merit gained</div><div class="tei-line">By repeatedly paying homage</div><div class="tei-line">To all the world protectors</div><div class="tei-line">Cannot be expressed by any measure.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the world protector’s name</div><div class="tei-line">And do not hesitate about it</div><div class="tei-line">Will have their bodies filled with light</div><div class="tei-line">And become like precious gems.</div></div><div class="tei-verse"><div class="tei-line">“After they have passed beyond,</div><div class="tei-line">Those who remember the name of the sage</div><div class="tei-line">Will have the sweet scent of divine red sandalwood</div><div class="tei-line">Waft from their mouth.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name</div><div class="tei-line">Of the Buddha, the protector, the essential being,</div><div class="tei-line">Will have light stream from their pores,</div><div class="tei-line">Beautifying their bodies.</div></div><div class="tei-verse"><div class="tei-line">“In all of their ensuing lives</div><div class="tei-line">They will become deeply learned.</div><div class="tei-line">They will retain their unfathomable erudition,</div><div class="tei-line">Just like Ānanda does for the Buddha.</div></div><div class="tei-verse"><div class="tei-line">“When they behold the one who illuminates the world,</div><div class="tei-line">They will attain boundless happiness.</div><div class="tei-line">As they engage in bodhisattva conduct,</div><div class="tei-line">They will recall all their lives.</div></div><div class="tei-verse"><div class="tei-line">“Even when they see the victors’ heart sons,</div><div class="tei-line">They will attain boundless happiness. <span class="tei-ref">F.150.b</span></div><div class="tei-line">They will make extensive offerings</div><div class="tei-line">With incense, flowers, and ointments.</div></div><div class="tei-verse"><div class="tei-line">“This does not include those who do not remember</div><div class="tei-line">The name of this world protector when it is spoken,</div><div class="tei-line">Or those who are on <em>Māra</em>’s side,</div><div class="tei-line">Or those who have previously been extremists.</div></div><div class="tei-verse"><div class="tei-line">“As I have taught this Dharma way,</div><div class="tei-line">Those who have heard it now</div><div class="tei-line">Shall also receive this discourse in their hands</div><div class="tei-line">In a future life.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the explanation</div><div class="tei-line">Of this sublime discourse</div><div class="tei-line">Have previously venerated and served,</div><div class="tei-line">And they shall receive it in their hands again.</div></div><div class="tei-verse"><div class="tei-line">“Those who make aspirations</div><div class="tei-line">Shall, in a future life,</div><div class="tei-line">Receive into their hands</div><div class="tei-line">This discourse spoken by the Dharma King.</div></div><div class="tei-verse"><div class="tei-line">“Having faith in this discourse</div><div class="tei-line">Brings even more merit</div><div class="tei-line">Than honoring countless buddhas</div><div class="tei-line">With a one-pointed mind.</div></div><div class="tei-verse"><div class="tei-line">“They forever will have beautiful bodies and lots of merit</div><div class="tei-line">And be fearless and wealthy.</div><div class="tei-line">They will be mindful</div><div class="tei-line">And ornamented with the major marks.</div></div><div class="tei-verse"><div class="tei-line">“Thus, having heard</div><div class="tei-line">The teaching of this discourse,</div><div class="tei-line">In the future retain it, teach it,</div><div class="tei-line">And explain it to others!</div></div><div class="tei-verse"><div class="tei-line">“Those who have honored hundreds of thousands</div><div class="tei-line">Of buddhas, universal monarchs,</div><div class="tei-line">Shall also in the future</div><div class="tei-line">Have vision free from doubt.</div></div><div class="tei-verse"><div class="tei-line">“Those who have performed service</div><div class="tei-line">For countless world protectors in the past</div><div class="tei-line">Will trust what they hear and see</div><div class="tei-line">Of this world protector.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear his name</div><div class="tei-line">Will actualize the form of a buddha.</div><div class="tei-line">They will guard the teachings</div><div class="tei-line">And the sublime Dharma of all the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“However, those who abandon the teachings of awakening</div><div class="tei-line">Shall become like sheep—mute and with poor eyesight,</div><div class="tei-line">Or even with no eyes at all</div><div class="tei-line">For millions of eons.</div></div><div class="tei-verse"><div class="tei-line">“Compared to destroying countless caityas,</div><div class="tei-line">With one’s own hands,</div><div class="tei-line">It is a far viler deed</div><div class="tei-line">To abandon this discourse.</div></div><div class="tei-verse"><div class="tei-line">“Thus when, at a future time,</div><div class="tei-line">You attain that which I am preaching, <span class="tei-ref">F.151.a</span></div><div class="tei-line">Do not harbor any doubt</div><div class="tei-line">About the unsurpassed wisdom of the buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Once you have heard this discourse,</div><div class="tei-line">Perform respectful veneration</div><div class="tei-line">With flowers, incense, streamers,</div><div class="tei-line">Parasols, and powders!”</div></div><div class="tei-verse"><div class="tei-line">Then, with his soft and supple hands,</div><div class="tei-line">The Thus-Gone One</div><div class="tei-line">Repeatedly caressed</div><div class="tei-line">The Licchavi boy’s head.</div></div><div class="tei-verse"><div class="tei-line">After this, the gods</div><div class="tei-line">Made a loud cry</div><div class="tei-line">And scattered pleasing divine flowers,</div><div class="tei-line">Filling the realm.</div></div><div class="tei-verse"><div class="tei-line">The gods, having remained in the sky,</div><div class="tei-line">Then sang countless songs.</div><div class="tei-line">Millions of brahmā gods</div><div class="tei-line">Cast down a rain of red sandalwood powder.</div></div><div class="tei-verse"><div class="tei-line">When Ratnajālin heard this discourse</div><div class="tei-line">Spoken by the Thus-Gone One,</div><div class="tei-line">He was pleased and delighted,</div><div class="tei-line">And spoke these words to the Thus-Gone One:</div></div><div class="tei-verse"><div class="tei-line">“In the future,</div><div class="tei-line">I will become a monk</div><div class="tei-line">And fearlessly preach this discourse</div><div class="tei-line">In towns and villages.</div></div><div class="tei-verse"><div class="tei-line">“I will act according to the Buddha’s teaching,</div><div class="tei-line">Which the perfect Buddha has spoken so gloriously.</div><div class="tei-line">Traveling millions of leagues</div><div class="tei-line">I will preach the way.</div></div><div class="tei-verse"><div class="tei-line">“I will serve all the gods, nāgas,</div><div class="tei-line">And kinnaras,</div><div class="tei-line">And other non-human beings,</div><div class="tei-line">Satisfying them with the gift of Dharma.”</div></div><div class="tei-verse"><div class="tei-line">When this unsurpassed discourse</div><div class="tei-line">Was taught by the Buddha,</div><div class="tei-line">The assembly of asuras celebrated</div><div class="tei-line">And scattered countless flowers.</div></div><div class="tei-verse"><div class="tei-line">A single hair of the Dharma King,</div><div class="tei-line">The Lion of the Śākyas,</div><div class="tei-line">Who is the supreme being in all buddha realms,</div><div class="tei-line">Illuminated all the realms.</div></div><div class="tei-verse"><div class="tei-line">Then, the tongue of the Teacher,</div><div class="tei-line">The great being, the essential being,</div><div class="tei-line">Emerged and covered millions of realms</div><div class="tei-line">As numerous as the grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">As the Thus-Gone One covered millions of realms</div><div class="tei-line">Throughout the ten directions of the universe,</div><div class="tei-line">The youth Ratnajālin,</div><div class="tei-line">As well as other heroes and Licchavis</div></div><div class="tei-verse"><div class="tei-line">Numbering six hundred million,</div><div class="tei-line">Arrived saying, “Please teach us!”</div><div class="tei-line">The Teacher then introduced <span class="tei-ref">F.151.b</span></div><div class="tei-line">The Dharma to them all.</div></div><div class="tei-verse"><div class="tei-line">The buddhas gift every form of happiness,</div><div class="tei-line">And their eyes are unimpeded.</div><div class="tei-line">The countless thus-gone ones</div><div class="tei-line">Have abandoned doubt about awakened qualities.</div></div><div class="tei-verse"><div class="tei-line">The buddhas’ wisdom is unimpeded—</div><div class="tei-line">It perceives the three times.</div><div class="tei-line">Given that they have dominion over all phenomena,</div><div class="tei-line">There is nothing unknown to the buddhas.</div></div><div class="tei-verse"><div class="tei-line">The Guide of Humans preaches</div><div class="tei-line">That the aggregates are nonexistent.</div><div class="tei-line">The four elements are as if hollow,</div><div class="tei-line">And nowhere are there sounds to be attached to.</div></div><div class="tei-verse"><div class="tei-line">The essence of the aggregates</div><div class="tei-line">Of form, feeling, perception,</div><div class="tei-line">Thoughts, formations, and consciousness</div><div class="tei-line">Should be known to be nonexistent.</div></div><div class="tei-verse"><div class="tei-line">Just as the Buddha has taught,</div><div class="tei-line">If one distinguishes the aggregates,</div><div class="tei-line">One will swiftly attain the dhāraṇīs</div><div class="tei-line">And become undeluded.</div></div><div class="tei-verse"><div class="tei-line">All phenomena are void—</div><div class="tei-line">All of them are empty and without self.</div><div class="tei-line">Of this there can be no debate or delusion.</div><div class="tei-line">This is what the Thus-Gone One has taught.</div></div><p>“Young man, located in the south, past twelve buddha realms reckoned as twice the number of smallest particles in the previous analogy, there is a world called Adorned by the Moon. There resides the thus-gone, worthy, perfect Buddha King of Knowledge of Floral Light Displays. He is alive and well and teaches the Dharma. Young man, when those noble sons or daughters who abide in the Bodhisattva Vehicle hear the name of the blessed one, the thus-gone one King of Knowledge of Floral Light Displays—as long as they do not doubt this but trust in my vision—they will achieve the absorption of <em>emitting light rays</em> once they have passed away. They will become knowledgeable in ten thousand countless trillions of methods to gain absorption. <span class="tei-ref">F.152.a</span> They will become knowledgeable in sixty countless trillions of dhāraṇī methods—from the <em>oceanic</em> dhāraṇī to the <em>precious treasury</em> dhāraṇī. They will be undeluded in this regard until reaching final awakening. When they die, ten million buddhas will come from the east and reveal themselves, and the same will occur from all other directions. They will retain the Dharma that these blessed buddhas teach. Until they reach awakening they will not lose this Dharma way. Having worked to turn away from cyclic existence for five hundred eons starting from the time they began as bodhisattvas, they will reach unsurpassed and perfect awakening.”</p><p>The Blessed One then expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Hearing the name of this protector,</div><div class="tei-line">The lord of humans, the world protector,</div><div class="tei-line">They will eliminate five hundred eons</div><div class="tei-line">Of cyclic existence.</div></div><div class="tei-verse"><div class="tei-line">“When death comes to those noble sons and daughters,</div><div class="tei-line">Millions of buddhas will appear to them.</div><div class="tei-line">Having seen them, paying homage with their faculties,</div><div class="tei-line">They will listen to the Dharma and retain it.</div></div><div class="tei-verse"><div class="tei-line">“When they hear that thus-gone one’s name</div><div class="tei-line">And engage in sacred practice,</div><div class="tei-line">They will not waste the Dharma taught by them—</div><div class="tei-line">Even for millions of eons.</div></div><div class="tei-verse"><div class="tei-line">“By proclaiming the name of this buddha,</div><div class="tei-line">They will attain seventy thousand</div><div class="tei-line">Absorptions known as <em>precious</em>,</div><div class="tei-line">And they will proclaim millions of virtues.</div></div><div class="tei-verse"><div class="tei-line">“Those who apprehend the name of this sage</div><div class="tei-line">Will come to abide</div><div class="tei-line">In countless millions</div><div class="tei-line">Plus sixty million absorptions.</div></div><div class="tei-verse"><div class="tei-line">“Thus, when heroes of equilibrium</div><div class="tei-line">Engage in bodhisattva conduct,</div><div class="tei-line">They establish many thousands of beings</div><div class="tei-line">In supreme awakening.</div></div><div class="tei-verse"><div class="tei-line">“Until reaching perfect awakening,</div><div class="tei-line">They will not engage in desirous conduct.</div><div class="tei-line">The beings to whom they teach the name of this buddha</div><div class="tei-line">Will also turn away from desire.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this buddha <span class="tei-ref">F.152.b</span></div><div class="tei-line">And teach it to all beings</div><div class="tei-line">Will never again enter unfree states;</div><div class="tei-line">It will not be hard for them to find leisure.</div></div><div class="tei-verse"><div class="tei-line">“By pleasing the excellent<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-156" href="#tei-note-UT22084-059-006-156">[7]</a></sup> buddhas</div><div class="tei-line">That appear,</div><div class="tei-line">They will abandon all the unfree states<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-157" href="#tei-note-UT22084-059-006-157">[8]</a></sup></div><div class="tei-line">That I have described.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-158" href="#tei-note-UT22084-059-006-158">[9]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Young man, if you were to understand</div><div class="tei-line">What the guide knows,</div><div class="tei-line">Once you knew the name of this teacher,</div><div class="tei-line">You would spread it throughout the ten directions.</div></div><div class="tei-verse"><div class="tei-line">“Thus, young man,</div><div class="tei-line">If you share this name with others,</div><div class="tei-line">You will acquire genuine awakening</div><div class="tei-line">And become a protector of the world.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this buddha’s name,</div><div class="tei-line">Remember it without distraction,</div><div class="tei-line">And share it with others,</div><div class="tei-line">Will guard their awakening.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this discourse</div><div class="tei-line">And teach it to others</div><div class="tei-line">Will guard these teachings</div><div class="tei-line">Of the well-spoken Dharma way.”</div></div><p>“Young man, located in the west, past worlds numbering three times the number of smallest particles in the previous analogy, there is a world called Citraratna. There the thus-gone, worthy, perfect Buddha King of Blossoming Sal Tree Flowers lives. He is alive and well and teaches the Dharma. Young man, when those noble sons or daughters who abide in the Great Vehicle hear the name of the thus-gone one King of Blossoming Sal Tree Flowers—as long as they do not doubt this but trust in my vision—they will acquire five qualities once they have passed away. What are these five? When their bodies are destroyed, buddhas will appear and they will attain the position of a universal monarch, the five forms of miraculous abilities, the recall of Dharma teachings, the <em>thousand-swirled</em> dhāraṇī, and the thirty-two marks of a great being until they attain awakening. They will achieve these five qualities.”</p><p>The Blessed One then expressed the meaning of this in verse: <span class="tei-ref">F.153.a</span></p><div class="tei-verse"><div class="tei-line">“Those who hear the name of this leader of men, this protector,</div><div class="tei-line">And are faithful, without hesitation,</div><div class="tei-line">Will acquire these five qualities,</div><div class="tei-line">Which shall not be lost until they attain awakening.</div></div><div class="tei-verse"><div class="tei-line">“They will gain a golden-colored appearance,</div><div class="tei-line">The supreme knowledge of a universal monarch,</div><div class="tei-line">Merit rivaling that of Nārāyaṇa,</div><div class="tei-line">And the unceasing turning of the wheel of the sacred Dharma.</div></div><div class="tei-verse"><div class="tei-line">“They will be fortunate and have a thousand sons</div><div class="tei-line">Who are heroic and courageous, capable of defeating their opponents.</div><div class="tei-line">Adorned with marks, their bodies will have perfect limbs.</div><div class="tei-line">Therefore, their power will resemble that of a supreme ruler.</div></div><div class="tei-verse"><div class="tei-line">“They will have many thousands of queens</div><div class="tei-line">Who are fine and beautiful, with golden complexions.</div><div class="tei-line">Going late to bed and rising early,</div><div class="tei-line">They will never cause their supreme rulers any sorrow.</div></div><div class="tei-verse"><div class="tei-line">“The vassals, ministers, and major householders</div><div class="tei-line">Living in his realm</div><div class="tei-line">Will never cause the king any grief when they meet.</div><div class="tei-line">Their merit will even be greater than that.</div></div><div class="tei-verse"><div class="tei-line">“Even the crafty gods will find them difficult to match.</div><div class="tei-line">All the yakṣas and nāgas living in the human world</div><div class="tei-line">And all the other beings living in his realm</div><div class="tei-line">They will establish at the seat of awakening.</div></div><div class="tei-verse"><div class="tei-line">“Their dominion will expand and the harvests grow bountiful.</div><div class="tei-line">Their realm will be happy and buddhas will appear.</div><div class="tei-line">They will perform sacred worship of them.</div><div class="tei-line">The land of the king will be free from malice.</div></div><div class="tei-verse"><div class="tei-line">“Even those scholars who hear the perfect name of this buddha,</div><div class="tei-line">Yet doubt it or become displeased with it,</div><div class="tei-line">Will benefit from the perfect Dharma</div><div class="tei-line">In the sublime discourse that I have spoken today.</div></div><div class="tei-verse"><div class="tei-line">“However, this is not the case for those who abandoned the Dharma</div><div class="tei-line">Of previous victors, or those in the grip of demons,</div><div class="tei-line">Or those who in the past despised</div><div class="tei-line">The essential beings, the perfect victors.</div></div><div class="tei-verse"><div class="tei-line">“Young man, those who haven’t witnessed the delights</div><div class="tei-line">Of the royal palace and this realm of the Licchavis</div><div class="tei-line">And who haven’t seen me <span class="tei-ref">F.153.b</span></div><div class="tei-line">Will harbor doubts when they hear the name of this buddha.</div></div><p>“Young man, located in the north, past sixty buddha realms reckoned as thrice the number of smallest particles in the previous analogy, there is a world called Covered with a Jewel Net. There the thus-gone, worthy, perfect Buddha Pure Moon Disk lives. He is alive and well and teaches the Dharma. Young man, when those noble sons or daughters who abide in the Great Vehicle hear the name of the thus-gone one Pure Moon Disk—as long as they do not doubt this but trust in my vision—they will obtain the absorption called <em>source of jewels</em> and behold as many buddhas as there are grains of sand in the Ganges once they have passed away. For as many millions of eons, they will turn away from cyclic existence. Such beginning bodhisattvas will reach unsurpassed and perfect awakening. They will also attain the absorption called <em>pleasant melody</em>. They will not turn away from unsurpassed and perfect awakening.</p><p>“Should women hear the name of the blessed thus-gone one Pure Moon Disk without feeling any hesitation or doubt and with trust in my vision, they will abandon their female faculties and gain male faculties once they have passed away. They will establish many beings in unsurpassed and perfect awakening. They will achieve the absorption called <em>pleasant melody</em>. They will not turn back from unsurpassed and perfect awakening.”</p><p>The Blessed One then expressed this in verse:</p><div class="tei-verse"><div class="tei-line">“Those who hear the name of this sublime human</div><div class="tei-line">And do not doubt it</div><div class="tei-line">Will, after as many eons as there are grains of sand in the Ganges, <span class="tei-ref">F.154.a</span></div><div class="tei-line">Abandon rebirth and change to a state free from anguish.</div></div><div class="tei-verse"><div class="tei-line">“They will behold and venerate</div><div class="tei-line">Buddhas as numerous as the sands of the Ganges.</div><div class="tei-line">All those buddhas they will venerate</div><div class="tei-line">In a single life, as the victors pass beyond anguish.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this leader of men</div><div class="tei-line">As they engage in the perfect actions of sacred awakening</div><div class="tei-line">And remember it without ever doubting it</div><div class="tei-line">Will achieve a similar exalted state.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this supreme human</div><div class="tei-line">And do not doubt it at all</div><div class="tei-line">Shall obtain self-existing wisdom, buddhahood itself,</div><div class="tei-line">And skillfully attain the absorption called <em>pleasant voice</em>.</div></div><div class="tei-verse"><div class="tei-line">“As they engage in the perfect actions of sacred awakening,</div><div class="tei-line">They will achieve the faculties of a pure individual.</div><div class="tei-line">They will be beautiful and endowed with all qualities—</div><div class="tei-line">Such distinctions they will attain.</div></div><div class="tei-verse"><div class="tei-line">“They will shine in all directions</div><div class="tei-line">And proceed to countless millions of realms.</div><div class="tei-line">As they behold the great sage engaging with the world,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-184" href="#tei-note-UT22084-059-006-184">[10]</a></sup></div><div class="tei-line">They will escape anguish and later discover awakening.</div></div><div class="tei-verse"><div class="tei-line">“Having heard the name</div><div class="tei-line">Of that great lord, that thus-gone one,</div><div class="tei-line">They will attain such distinctions as perfect miraculous powers,</div><div class="tei-line">And also the desire to attain awakening.</div></div><div class="tei-verse"><div class="tei-line">“Having developed interest in immaculate awakening,</div><div class="tei-line">They will share the name of the victor with others.</div><div class="tei-line">They will obtain virtues similar to his—</div><div class="tei-line">As brilliant as the full moon.</div></div><div class="tei-verse"><div class="tei-line">“Such learned persons will establish</div><div class="tei-line">Fathomless multitudes of beings in supreme awakening.</div><div class="tei-line">Like the chariot of the moon in the sky,</div><div class="tei-line">They will be beautiful and shine brightly.</div></div><div class="tei-verse"><div class="tei-line">“Those who remember the name of this victor</div><div class="tei-line">Will have bodies that are just as beautiful.</div><div class="tei-line">Yet some scholars who hear the name of this victor</div><div class="tei-line">Might doubt it, finding displeasure in it.</div></div><div class="tei-verse"><div class="tei-line">“As they engage in the perfect actions of sacred awakening,</div><div class="tei-line">These teachings will be helpful for them.</div><div class="tei-line">Due to the supreme great sage who engages with the world,</div><div class="tei-line">Such scholars will not come to ruin. <span class="tei-ref">F.154.b</span></div></div><p>“Young man, located below us, past ninety-nine times the number of particles in the previous analogy, there is a world called Lord of the Supreme Banner. There resides the thus-gone, worthy, perfect Buddha King Who Is Peaceful and Splendorous in His Learning and Rich in Melody. He is alive and well and teaches the Dharma. Young man, when those noble sons or daughters who abide in the Great Vehicle hear the name of the thus-gone one King Who is Peaceful and Splendorous in His Learning and Rich in Melody—as long as they do not doubt this but trust in my vision—they will achieve the absorption called <em>utterly illuminating</em> once they have passed away. At the time of death, they will see trillions of buddhas. In all directions, as in the east, they will see trillions of buddhas. They will retain all the Dharma teachings given by these blessed buddhas. Until reaching awakening, they will be blessed by trillions of buddhas. Such beginning bodhisattvas, having turned from cyclic existence for ninety-nine trillion eons, will reach unsurpassed and perfect awakening.”</p><p>The Blessed One then expressed the meaning of this in verse:</p><div class="tei-verse"><div class="tei-line">“Those in this world who hear<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-193" href="#tei-note-UT22084-059-006-193">[11]</a></sup> the supreme name</div><div class="tei-line">Of this buddha with an ocean of virtues</div><div class="tei-line">Will swiftly perform unsurpassed veneration</div><div class="tei-line">Of one hundred billion buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Once they have venerated these limitless beings free from stains,</div><div class="tei-line">They will engage in the splendorous activity</div><div class="tei-line">Of the magnificent buddhas in all existences.</div><div class="tei-line">Later, they will also reach the perfect insight of awakening.</div></div><div class="tei-verse"><div class="tei-line">“Those who, in a single life, venerate as many guides</div><div class="tei-line">As there are grains of sand in the Ganges</div><div class="tei-line">Attain the <em>utterly illuminating</em> absorption <span class="tei-ref">F.155.a</span></div><div class="tei-line">And subsequently reach awakening beyond anguish.</div></div><div class="tei-verse"><div class="tei-line">“Having obtained immaculate awakening, great awakening,</div><div class="tei-line">They will turn the sublime wheel of Dharma,</div><div class="tei-line">Whereby they will establish beings in the supreme awakening of buddhahood,</div><div class="tei-line">Transcending anguish just as rainfall quenches flames.</div></div><div class="tei-verse"><div class="tei-line">“The guide of humans, the charioteer of humans,</div><div class="tei-line">Is the single field of merit, the single mount of merit.</div><div class="tei-line">If people simply develop faith toward that buddha,</div><div class="tei-line">They will instantly discard all unfree states.</div></div><div class="tei-verse"><div class="tei-line">“Those who recite the name of this well-gone one</div><div class="tei-line">Will obtain human bodies and gain leisure.</div><div class="tei-line">Then these wise persons will create merit</div><div class="tei-line">In the limitless ocean wherein the thus-gone ones dwell.</div></div><div class="tei-verse"><div class="tei-line">“Those who chant the name of this buddha</div><div class="tei-line">A mere one hundred thousand times will attain concordant acceptance</div><div class="tei-line">And the attainment of the divine eye, just as I did.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-200" href="#tei-note-UT22084-059-006-200">[12]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“When I saw the Buddha Dīpaṃkara I scattered flowers</div><div class="tei-line">And thereby attained acceptance.</div><div class="tei-line">They will acquire that sort of acceptance.</div></div><div class="tei-verse"><div class="tei-line">“Only those who are extremists,</div><div class="tei-line">Or who suffer from jealousy</div><div class="tei-line">Would not want teachings</div><div class="tei-line">Upon hearing the name of this illuminating sage who protects the world.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear such a discourse taught</div><div class="tei-line">Directly from the guide, the Buddha,</div><div class="tei-line">Will remember it in the future</div><div class="tei-line">And teach it to others.</div></div><p>“Young man, located above this buddha realm, as in the previous analogy, past as many realms as there are grains of sand in the Ganges, there is a world called Wide Open. There the thus-gone, worthy, perfect Buddha Stable in Immeasurable Diligence lives. He is alive and well and teaches the Dharma. Young man, when those noble sons or daughters who abide in the Great Vehicle hear the name of the thus-gone one Stable in Immeasurable Diligence—as long as they do not doubt this <span class="tei-ref">F.155.b</span> but trust in my vision—their diligence will never decrease once they have passed away. Never again will they indulge in desire. Never again will they be stained by the suffering of a mother. Never again will they be stained by the suffering of a father, relative, and friend. Never will they be stained by the suffering of a sister. Never again will they be stained by the suffering of a companion, ally, clansman, or kinsman. Never will their bodies not be adorned by the thirty-two marks of a great being. Never again will their attachment, aggression, and ignorance increase. Never again will any diseases proliferate. Never again will any anguish grow. Instead, they will gain limitless happiness. On the way to awakening, they will gain countless trillions of limitless virtues.”</p><p>The Blessed One then expressed the meaning of this in verse:</p><div class="tei-verse"><div class="tei-line">“Those who hear the name of this world protector</div><div class="tei-line">And do not doubt it</div><div class="tei-line">Will never have to witness</div><div class="tei-line">The suffering of parents and many relatives.</div></div><div class="tei-verse"><div class="tei-line">“Above us abides the supreme human,</div><div class="tei-line">Who illuminates the world.</div><div class="tei-line">He illuminates the three realms of existence</div><div class="tei-line">And teaches beings the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this perfect buddha</div><div class="tei-line">And teach it to others</div><div class="tei-line">Will be perennially adorned</div><div class="tei-line">With the thirty-two marks.</div></div><div class="tei-verse"><div class="tei-line">“Those who remember the name of this sage</div><div class="tei-line">Will not have their insight impaired.</div><div class="tei-line">When they are engaged in the practices of awakening,</div><div class="tei-line">They will venerate the bodhisattvas as well.</div></div><div class="tei-verse"><div class="tei-line">“By teaching this buddha’s name,</div><div class="tei-line">When later they practice for awakening,</div><div class="tei-line">These insightful ones shall constantly venerate</div><div class="tei-line">Inconceivable millions of buddhas.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear the name of this perfect buddha</div><div class="tei-line">And then reveal it to others</div><div class="tei-line">Will obtain a mass of merit <span class="tei-ref">F.156.a</span></div><div class="tei-line">The measure of which is impossible to describe.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this name</div><div class="tei-line">Shall never come to doubt—</div><div class="tei-line">Even for the longest time in the future—</div><div class="tei-line">The unsurpassed wisdom of buddhahood.</div></div><div class="tei-verse"><div class="tei-line">“Those who see this perfect buddha</div><div class="tei-line">And render service and honor unto him</div><div class="tei-line">Shall receive this discourse</div><div class="tei-line">In their hands at a future time.</div></div><div class="tei-verse"><div class="tei-line">“Those who see me surrounded by bodhisattvas,</div><div class="tei-line">As well as Ratnajālin,</div><div class="tei-line">And hear this discourse</div><div class="tei-line">Will not come to doubt it.</div></div><div class="tei-verse"><div class="tei-line">“They will abandon any doubt</div><div class="tei-line">In the boundless thus-gone ones and their buddha qualities.</div><div class="tei-line">They will continue their earlier practices</div><div class="tei-line">For many billions of eons.</div></div><div class="tei-verse"><div class="tei-line">“They will give up their hands and legs</div><div class="tei-line">And give away their ears, noses, heads,</div><div class="tei-line">Sons, daughters, and subjects</div><div class="tei-line">Without any displeasure.</div></div><div class="tei-verse"><div class="tei-line">“When those who hear this discourse</div><div class="tei-line">Come in contact with it in the future,</div><div class="tei-line">They shall teach it to others,</div><div class="tei-line">And so become worthy of veneration.</div></div><div class="tei-verse"><div class="tei-line">“Let those who desire complete awakening,</div><div class="tei-line">Which is the domain of all the buddhas,</div><div class="tei-line">Never doubt the teachings</div><div class="tei-line">Of the world protector!</div></div><div class="tei-verse"><div class="tei-line">“Those who have heard this discourse</div><div class="tei-line">Must uphold it free from deceit.</div><div class="tei-line">They should preach this discourse again and again,</div><div class="tei-line">Wherever they may go.</div></div><div class="tei-verse"><div class="tei-line">“If they can perfect the meaning of this discourse,</div><div class="tei-line">Entirely within three months,</div><div class="tei-line">They shall attain the wisdom of recall</div><div class="tei-line">That recollects all teachings.”</div></div><p>Once the Young Licchavi Ratnajālin had heard these well-spoken teachings of the Blessed One, he draped the Blessed One in priceless fabrics ornamented with gold. Then the Blessed One performed a miracle such that from every pore of the Blessed One’s body, light streamed forth, illuminating all the countless, infinite worlds in the east. All the beings born in those buddha realms beheld this buddha realm, and all the beings gathered in the Thus-Gone One’s <span class="tei-ref">F.156.b</span> assembly in this buddha realm also beheld this buddha realm. At that moment as many blessed buddhas, including their fourfold assemblies, were illuminated as ninety-nine times the number of grains of sand in the Ganges. Such was the miracle that he performed.</p><p>The Blessed One then asked the young Licchavi Ratnajālin, “Young man, when you look above, do you see all the blessed buddhas, who are so unfathomably, innumerably, limitlessly, immeasurably, and indescribably many?”</p><p>“Blessed One, I see them. Well-Gone One, I see them.”</p><p>“Noble son, the names of these thus-gone ones vastly outnumber the names of the gods and humans gathered in the worlds of the great trichiliocosm. Each of them has an inconceivable and boundless agglomeration of names. This also applies to the thus-gone one Majestic King with the Elegant Peaceful Voice in the east, and likewise to the thus-gone one Pure Moon Disk, the thus-gone one King of Knowledge of Floral Light Displays, the thus-gone one King of Blossoming Sal Tree Flowers, and the thus-gone one Majestic King with the Splendorous Voice of Learning Adorned by Precious Moonlight. Just as it is with the name of a single thus-gone one, so it is with that of any thus-gone one. Do you see that?”</p><p>“Blessed One, I see it. Well-Gone One, I see it. So it is in the south, in the west, in the north, below, <span class="tei-ref">F.157.a</span> and above—in each of the ten directions there are countless names of the individual thus-gone ones and myriad different names of the thus-gone ones.”</p><p>“Young man, do you see how the blessed buddhas vastly exceed those who abide in the realm of a universal monarch?”</p><p>“Blessed One, I see it. Well-Gone One, I see it.”</p><p>The young Licchavi Ratnajālin became pleased, delighted, joyful, and happy. At that moment when he was happy and delighted the earth quaked. A great burst of light appeared that benefitted all beings, brought them happiness, pleased their minds, and aroused roots of virtue in them. Trillions of gods stationed in the sky cast down powdered gold from the divine Jambu River. Trillions of brahmā gods tossed, scattered, and sprinkled divine red sandalwood powder upon the Blessed One. Trillions of gods tossed, scattered, and sprinkled divine blue, pink, red, and white lotuses, as well as smaller and larger māndārava flowers. Trillions of gods offered thousands of <em>jeweled</em> parasols. Trillions of gods wept as they bowed their heads to the Blessed One’s feet, recalling trillions of their past lives. It was the blessings of the Blessed Buddha that allowed these trillions of miracles to occur.</p><p>About this, it was said,</p><div class="tei-verse"><div class="tei-line">Billions of gods</div><div class="tei-line">Stationed in the periphery</div><div class="tei-line">Tossed fine red sandalwood powder</div><div class="tei-line">Upon the perfect Buddha. <span class="tei-ref">F.157.b</span></div></div><div class="tei-verse"><div class="tei-line">Tens of billions of <em>śakra</em> gods</div><div class="tei-line">Stationed in the sky</div><div class="tei-line">Tossed much powdered gold from the Jambu River</div><div class="tei-line">Upon the Thus-Gone One.</div></div><div class="tei-verse"><div class="tei-line">Ten million brahmā gods arrived</div><div class="tei-line">And tossed powdered red sandalwood</div><div class="tei-line">Upon the perfect Buddha</div><div class="tei-line">And sang melodious songs.</div></div><div class="tei-verse"><div class="tei-line">Seeing the immaculate light,</div><div class="tei-line">The gods arrayed themselves in the sky.</div><div class="tei-line">They sang countless songs</div><div class="tei-line">And waved fabrics in the sky.</div></div><div class="tei-verse"><div class="tei-line">The gods arrayed in the sky,</div><div class="tei-line">Holding thousands of lotus flowers,</div><div class="tei-line">Displayed them to the World Illuminator</div><div class="tei-line">And venerated him with banners and so forth.</div></div><div class="tei-verse"><div class="tei-line">With minds filled with joy,</div><div class="tei-line">They honored the unparalleled supreme Victor, the Lord of Sages.</div><div class="tei-line">They praised him and scattered upon him</div><div class="tei-line">Garlands of precious jewels and pearls.</div></div><div class="tei-verse"><div class="tei-line">A trillion people</div><div class="tei-line">Venerated the unparalleled supreme Victor.</div><div class="tei-line">They remembered hundreds of their past lives</div><div class="tei-line">And bowed their heads to the unparalleled Lord of Sages.</div></div><div class="tei-verse"><div class="tei-line">Then, the World Illuminator</div><div class="tei-line">Beat the Dharma drum;</div><div class="tei-line">Its sound was heard throughout many billions</div><div class="tei-line">Of buddha realms.</div></div><div class="tei-verse"><div class="tei-line">At that moment,</div><div class="tei-line">Countless millions of beings arrived from all directions.</div><div class="tei-line">They were established in the wisdom of buddhahood</div><div class="tei-line">By the perfect Buddha.</div></div><div class="tei-verse"><div class="tei-line">The young man was delighted;</div><div class="tei-line">He offered a seat of uraga sandalwood</div><div class="tei-line">And venerated the supreme Buddha</div><div class="tei-line">With powdered gems.</div></div><div class="tei-verse"><div class="tei-line">The light of one precious gem</div><div class="tei-line">Shone throughout thousands of worlds.</div><div class="tei-line">The light of that single gem</div><div class="tei-line">Radiated throughout billions of worlds.</div></div><div class="tei-verse"><div class="tei-line">In the same way, light sprang forth</div><div class="tei-line">From every gem without exception.</div><div class="tei-line">At that moment, they also</div><div class="tei-line">Illuminated Vaiśālī.</div></div><div class="tei-verse"><div class="tei-line">All of these gems were used</div><div class="tei-line">To venerate the principle Buddha.</div><div class="tei-line">A great pile of gems</div><div class="tei-line">Also was offered to the Great Sage.</div></div><div class="tei-verse"><div class="tei-line">Parasols adorned</div><div class="tei-line">With pearl garlands surrounded him.</div><div class="tei-line">Each had twenty-five thousand</div><div class="tei-line">Surrounding layers.</div></div><div class="tei-verse"><div class="tei-line">They venerated the Great Sage</div><div class="tei-line">Through such excellent means. <span class="tei-ref">F.158.a</span></div><div class="tei-line">Woven fabrics were offered</div><div class="tei-line">To all the bodhisattvas.</div></div><div class="tei-verse"><div class="tei-line">Lion thrones were placed</div><div class="tei-line">Before emanated trees of awakening.</div><div class="tei-line">All told, two hundred fifty million</div><div class="tei-line">Were set out.</div></div><div class="tei-verse"><div class="tei-line">For millions of years,</div><div class="tei-line">Countless bodhisattvas—</div><div class="tei-line">Hundreds of millions in fact—</div><div class="tei-line">Arrived there.</div></div><div class="tei-verse"><div class="tei-line">They arrived first from the east,</div><div class="tei-line">And then from the south, west, and north,</div><div class="tei-line">From above and below,</div><div class="tei-line">And from the intermediate directions.</div></div><div class="tei-verse"><div class="tei-line">The golden-colored light</div><div class="tei-line">Of the Refuge, the World Protector,</div><div class="tei-line">Filled as many realms</div><div class="tei-line">As the eye could see.</div></div><div class="tei-verse"><div class="tei-line">Bodhisattvas arrived</div><div class="tei-line">From all worlds</div><div class="tei-line">To the place where the Teacher was sitting</div><div class="tei-line">And the Dharma was shining.</div></div><div class="tei-verse"><div class="tei-line">In this fashion, Ratnajālin,</div><div class="tei-line">The young Licchavi,</div><div class="tei-line">Performed boundless,</div><div class="tei-line">Limitless, and inconceivable homage.</div></div><div class="tei-verse"><div class="tei-line">Then the great person,</div><div class="tei-line">The supreme human, the Lion of the Śākyas,</div><div class="tei-line">Brought comfort to the assembled</div><div class="tei-line">Gods, nāgas, and humans:</div></div><div class="tei-verse"><div class="tei-line">“Standing before me,</div><div class="tei-line">You have performed such veneration.</div><div class="tei-line">This veneration has been done with offerings</div><div class="tei-line">As numerous as the grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">“Those who hear this discourse,</div><div class="tei-line">Which has been taught for the sake of Ratnajālin,</div><div class="tei-line">Shall not turn back from awakening;</div><div class="tei-line">They will become supreme preachers of buddhahood.</div></div><div class="tei-verse"><div class="tei-line">“One cannot describe</div><div class="tei-line">The measure of the mass of merit</div><div class="tei-line">That ensues from remembering this discourse</div><div class="tei-line">By saying, ‘It shall be this much.’</div></div><div class="tei-verse"><div class="tei-line">“While one can describe the extent</div><div class="tei-line">Of the earth, water, fire, and wind</div><div class="tei-line">Throughout the ten directions,</div><div class="tei-line">It is impossible to describe this mass of merit.</div></div><div class="tei-verse"><div class="tei-line">“When a monk or nun,</div><div class="tei-line">Or a novice monk or nun,</div><div class="tei-line">Hears this discourse,</div><div class="tei-line">All beings including gods, nāgas, and mahoragas</div></div><div class="tei-verse"><div class="tei-line">“Will arrive near them</div><div class="tei-line">And find their splendor overwhelming.</div><div class="tei-line">While it is possible that fire can turn cold,</div><div class="tei-line">Their splendor will never diminish. <span class="tei-ref">F.158.b</span></div></div><div class="tei-verse"><div class="tei-line">“When someone who remembers this discourse</div><div class="tei-line">Engages in the conduct of awakening,</div><div class="tei-line">All beings will attend to them</div><div class="tei-line">And venerate the mind of awakening.</div></div><div class="tei-verse"><div class="tei-line">“A powerful person</div><div class="tei-line">Might hold up a thousand worlds</div><div class="tei-line">For millions of eons</div><div class="tei-line">On the tip of a hair that has been split a billion times.</div></div><div class="tei-verse"><div class="tei-line">“Still, compared to that, during the latter days</div><div class="tei-line">One may teach to others</div><div class="tei-line">A discourse of the buddhas’ awakening</div><div class="tei-line">That one has heard in this fashion.</div></div><div class="tei-verse"><div class="tei-line">“In that case the great wonder</div><div class="tei-line">Of the former example</div><div class="tei-line">Shall not measure even a hundredth of that—</div><div class="tei-line">As no number, figure, or example could suffice.</div></div><div class="tei-verse"><div class="tei-line">“In the latter days,</div><div class="tei-line">When people hear the unsurpassed teachings</div><div class="tei-line">Of the lion’s roar in this manner,</div><div class="tei-line">It will not be contradicted or opposed.</div></div><div class="tei-verse"><div class="tei-line">“In the future, when people hear</div><div class="tei-line">Of those who have seen the World Protector—</div><div class="tei-line">The shining perfect Buddha—</div><div class="tei-line">They will act with respect and reverence.</div></div><div class="tei-verse"><div class="tei-line">“If all beings</div><div class="tei-line">In millions of buddha realms</div><div class="tei-line">Were endowed with the wisdom of buddhahood—</div><div class="tei-line">As many of them as there are grains of sand in the Ganges—</div></div><div class="tei-verse"><div class="tei-line">“One might perform service to them</div><div class="tei-line">For many hundreds of eons,</div><div class="tei-line">And offer them as many fine temples</div><div class="tei-line">As there are worlds in the great trichiliocosm.</div></div><div class="tei-verse"><div class="tei-line">“The temples could be made of sandalwood;</div><div class="tei-line">And each supreme and divine temple</div><div class="tei-line">Would have ten billion assembly halls.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-267" href="#tei-note-UT22084-059-006-267">[13]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Each of the billion assembly halls</div><div class="tei-line">Could be made from divine jewels as an offering.</div><div class="tei-line">One could arrange thrones for everyone,</div><div class="tei-line">Complete with a billion servants.</div></div><div class="tei-verse"><div class="tei-line">“Skillfully, one could take nets of jewels</div><div class="tei-line">And adorn the thrones.</div><div class="tei-line">For eons as numerous as the grains of sand in the Ganges,</div><div class="tei-line">The great sages who wander through the world could then abide there.</div></div><div class="tei-verse"><div class="tei-line">“One could offer all that is fit to be offered</div><div class="tei-line">To each of those buddhas.</div><div class="tei-line">One could also create caityas for their parinirvāṇas</div><div class="tei-line">As numerous as the grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">“One could create a caitya to every single buddha</div><div class="tei-line">In all the worlds of the great trichiliocosm—</div><div class="tei-line">Composed of jewels, with thousands of divine doors, <span class="tei-ref">F.159.a</span></div><div class="tei-line">Reaching as high as the peak of existence.</div></div><div class="tei-verse"><div class="tei-line">“One could offer parasols as numerous as the grains of sand in the Ganges</div><div class="tei-line">To each of these caityas.</div><div class="tei-line">The parasols offered at that time would be</div><div class="tei-line">Covered with ornamental garlands of pearl.</div></div><div class="tei-verse"><div class="tei-line">“One could also offer millions of streamers</div><div class="tei-line">As numerous as the grains of sand in the Ganges</div><div class="tei-line">And billions of banners made of various precious jewels</div><div class="tei-line">To these caityas as numerous as the grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">“One could play billions of instruments</div><div class="tei-line">At each caitya of the omniscient illuminators.</div><div class="tei-line">Trillions of respectful humans too</div><div class="tei-line">Would join in making offerings.</div></div><div class="tei-verse"><div class="tei-line">“They would offer hundreds of flowers and parasols to the caitya</div><div class="tei-line">And venerate the great sages in this manner every day</div><div class="tei-line">For as many eons as there are grains of sand in the Ganges.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-006-276" href="#tei-note-UT22084-059-006-276">[14]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Compared to all this, hearing just one verse from this discourse</div><div class="tei-line">While not doubting it, developing interest,</div><div class="tei-line">And reciting these victors’ names</div><div class="tei-line">Brings merit that is unsurpassed and supreme.</div></div><div class="tei-verse"><div class="tei-line">“Wise ones should listen to the names of absorptions,</div><div class="tei-line">Maintain flawless discipline, remember these names,</div><div class="tei-line">And venerate the thus-gone buddhas.</div><div class="tei-line">Thereby, they will behold as many buddhas as the grains of sand in the Ganges.</div></div><div class="tei-verse"><div class="tei-line">“Having directed their minds to the sacred veneration</div><div class="tei-line">Of the supreme humans, the great sages,</div><div class="tei-line">They will always be sane, they will teach the Dharma,</div><div class="tei-line">And for millions of eons they will remain undeluded.</div></div><div class="tei-verse"><div class="tei-line">“As the World Protector teaches</div><div class="tei-line">This supreme king of discourses,</div><div class="tei-line">Those who hear what the Supreme Victor has previously seen</div><div class="tei-line">Will obtain happiness in the future.</div></div><div class="tei-verse"><div class="tei-line">“They will discard desires, knowing them to have faults,</div><div class="tei-line">Like a person tossing away a vessel filled with foul-smelling excrement.</div><div class="tei-line">Such wise beings will delight in emancipation and peace,</div><div class="tei-line">Be constantly sane, and rely on the protectors.</div></div><div class="tei-verse"><div class="tei-line">“Those who saw me teach this</div><div class="tei-line">In the city of Vaiśālī,</div><div class="tei-line">Including Ratnajālin, who beheld and venerated me,</div><div class="tei-line">Shall remember this supreme discourse in the future.</div></div><div class="tei-verse"><div class="tei-line">“Those of my children who always follow me,</div><div class="tei-line">Engage in the supreme acts of awakening and peace,</div><div class="tei-line">And constantly train beings <span class="tei-ref">F.159.b</span></div><div class="tei-line">Shall uphold this supreme discourse in the future.</div></div><div class="tei-verse"><div class="tei-line">“Those who serve the buddhas, the guides,</div><div class="tei-line">As they engage in the fathomless and incalculable practices,</div><div class="tei-line">And likewise engage in perfect worship,</div><div class="tei-line">Shall uphold this teaching of the Supreme Victor in the future.</div></div><div class="tei-verse"><div class="tei-line">“One could have engaged in pure conduct for a million eons</div><div class="tei-line">Or previously worked for the benefit of infinite worlds;</div><div class="tei-line">Yet the merit of hearing this discourse in the future</div><div class="tei-line">Shall not be countable at all.</div></div><div class="tei-verse"><div class="tei-line">“Let those intelligent beings who desire to behold</div><div class="tei-line">These peaceful and immortal buddhas—</div><div class="tei-line">The unfathomable and limitless buddhas—</div><div class="tei-line">Uphold the unfathomable greatness of this discourse!</div></div><div class="tei-verse"><div class="tei-line">“Let those who wish to behold all these buddhas,</div><div class="tei-line">Including Amitāyus, Akṣobhya, Vimalaprabhā,</div><div class="tei-line">and Siṃhaketu,</div><div class="tei-line">Uphold this teaching of the Supreme Victor in the future!</div></div><div class="tei-verse"><div class="tei-line">“Let those who wish to behold these principle illuminators,</div><div class="tei-line">The buddhas Maitreya and Vimalaprabhā,</div><div class="tei-line">Mahātman, and Siṃhaketu,</div><div class="tei-line">Uphold this teaching of the Supreme Victor in the future!</div></div><div class="tei-verse"><div class="tei-line">“I have taught this noble and supreme discourse</div><div class="tei-line">to Ratnajālin.</div><div class="tei-line">In the future,</div><div class="tei-line">Do not stay in heedless places!</div></div><div class="tei-verse"><div class="tei-line">“When the future times come,</div><div class="tei-line">Be careful and always keep your discipline flawless.</div><div class="tei-line">Then, when your time comes to die,</div><div class="tei-line">You will go to the realm of the victor Infinite Light.</div></div><div class="tei-verse"><div class="tei-line">“His realm is known as Jeweled,</div><div class="tei-line">And is located in a world above us.</div><div class="tei-line">Following that, when your time comes to die,</div><div class="tei-line">You will swiftly behold the Buddha Maitreya.”</div></div><p>Once the Blessed One gave this teaching, the young Licchavi Ratnajālin as well as four hundred million bodhisattvas such as Maitreya, and also six hundred million worthy ones and nine hundred ninety million gods rejoiced and praised what the Blessed One had said.</p>This completes the Great Vehicle sūtra “<cite>The Questions of Ratnajālin</cite>.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>It was translated by the Indian preceptor Jñānagarbha and the translator Bandé Yeshé Nyingpo. It was proofed and finalized by the editor-translator Bandé Paltsek.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-059-006-39"><p>Here “heavenly ornaments” translates the Tibetan <em>mkha’ rten</em>. The Sanskrit listed in the Negi dictionary for this term is <em>vyomaka</em>, which Monier-Williams defines as “a kind of ornament.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-39">back</a></li><li id="tei-note-UT22084-059-006-40"><p>Translated based on Stok: <em>khri rnams dang ni khri la chu lta bu’i/ /mkha’ rten dag kyang byas nas de la ni</em>. Degé: <em> khri rnams dang ni khril tshul lta bu yi / mkha’ rten dag kyang byas nas de la ni</em>. Yongle, Peking Kangxi, and Narthang: <em>khri rnams dang ni khril chu lta ba’i / mkha’ rten dag kyang byas nas de la ni</em>. Lhasa Zhol: <em>khri rnams dang ni khri tshul lta bu yi / mkha’ rten dag kyang byas nas de la ni</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-40">back</a></li><li id="tei-note-UT22084-059-006-63"><p>Translation tentative. Degé: <em>lus dbyibs gcig la spi dza bzhi par ’gyur</em>. The Pedurma edition records no variants. Stok: <em>rus dbyibs gcig la spi dza bzhi bar ’gyur</em>. Here we have translated this line based on the corresponding passage in the Chinese version, which reads <em>住在一處具足四事</em>: “Residing in a single place, they will possess the four necessities” (i.e., shelter, clothing, food, and medicine).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-63">back</a></li><li id="tei-note-UT22084-059-006-71"><p>Translation tentative. Degé: <em>lus dbyibs gcig la spi dza bzhi</em>. The Pedurma edition records no variants. Stok: <em>rus dbyibs gcig la spi dza bzhi</em>. Although the Chinese translation does not include this line, we have adopted the meaning from the seemingly identical line that occurred above (see <span class="tei-ref">#UT22084-059-006-63</span>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-71">back</a></li><li id="tei-note-UT22084-059-006-96"><p>In the Tibetan text, this verse has only two lines.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-96">back</a></li><li id="tei-note-UT22084-059-006-104"><p>Translated based on Yongle, Peking Kangxi, and Stok: <em>chod</em>. Degé: <em>mchod</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-104">back</a></li><li id="tei-note-UT22084-059-006-156"><p>Translated based on Yongle and Peking Kangxi: <em>shin tu bzang ba</em>. Degé and Stok: <em>shin tu bzung ba</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-156">back</a></li><li id="tei-note-UT22084-059-006-157"><p>Translated based on Yongle, Peking Kangxi, and Stok: <em>nga yis</em>. Degé: <em>nga yi</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-157">back</a></li><li id="tei-note-UT22084-059-006-158"><p>Translated based on Yongle, Peking Kangxi, and Stok: <em>bstan</em>. Degé: <em>bsten</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-158">back</a></li><li id="tei-note-UT22084-059-006-184"><p>The translation “engaging with the world” is tentative. All Tibetan versions consulted read: <em>’jig rten spyod pa</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-184">back</a></li><li id="tei-note-UT22084-059-006-193"><p>Translated based on Yongle, Peking Kangxi, Narthang, Lhasa Zhol, and Stok: <em>thos</em>. Degé: <em>thob</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-193">back</a></li><li id="tei-note-UT22084-059-006-200"><p>This and the following verse only have three lines in the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-200">back</a></li><li id="tei-note-UT22084-059-006-267"><p>In the Tibetan this verse only has three lines.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-267">back</a></li><li id="tei-note-UT22084-059-006-276"><p>In the Tibetan this verse only has three lines.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-006-276">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/059-005-toh162-the-sutra-of-the-questions-of-srivasu.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/059-007-toh164-the-sutra-of-the-questions-of-ratnacandra.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

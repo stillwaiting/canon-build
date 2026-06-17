@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 159 — The Questions of Brahmadatta — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 159 — The Questions of Brahmadatta</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 159 — The Questions of Brahmadatta        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Brahma­datta­paripṛcchā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Ratnaśrī Translation Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>The Questions of Brahmadatta</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.10.b</span> Homage to all buddhas and bodhisattvas.</p><br /><p>Thus did I hear at one time. The Blessed One was residing in Śrāvastī, in Jeta’s Grove, Anāthapiṇḍada’s park, together with a great assembly of two hundred fifty thousand monks and a large number of bodhisattva great beings. All of these were bodhisattvas who were versed in extraordinary knowledge, had acquired extraordinary knowledge along with dhāraṇī, samādhi, and unimpeded dhāraṇī, and were skilled in the dhāraṇīs that accomplish the seal of infinite gateways.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-002-21" href="#tei-note-UT22084-059-002-21">[1]</a></sup> They dwelled in emptiness, they had the experience of signlessness, and they had aspirations that were not imputed. They all had reached the acceptance that phenomena are unarisen.</p><p>Then, the bodhisattva <span class="tei-ref">F.11.a</span> Amoghadarśin, together with about five hundred bodhisattvas, prostrated at the feet of the Blessed One, circumambulated him, and departed. After traveling through several towns, they finally arrived in the region of Pañcāla. When King Brahmadatta learned of the bodhisattva Amoghadarśin’s arrival in his land, he felt pleased and happy, and he rejoiced. Overjoyed and content, he led a large following of people to the place where the bodhisattva Amoghadarśin was staying. When he arrived there, he prostrated by touching his head to the bodhisattva Amoghadarśin’s feet, then sat to one side. His many followers also prostrated by touching their heads to the bodhisattva Amoghadarśin’s feet, then sat to one side.</p><p>When he saw that King Brahmadatta and his assembled retinue and attendants were present, the bodhisattva Amoghadarśin said to him, “Great King, an anointed king of royal descent who possesses five attributes will continuously progress while traversing saṃsāra and will never take birth in unfavorable states.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-002-25" href="#tei-note-UT22084-059-002-25">[2]</a></sup> He will also meet and please thus-gone ones. When the blessed buddhas teach the Dharma, he will also master their allegorical speech. He will maintain uninterrupted mindfulness, look attractive, and not lack any sense faculty. The blessed buddhas will also speak to him with words of absolute truth; that is to say, they will demonstrate the four truths.</p><p>“What are these five attributes?</p><p>“Great King, an anointed king of royal descent possesses faith. He possesses a mind that is strong in faith and is without animosity. His faith is also demonstrated to be rooted in certainty. <span class="tei-ref">F.11.b</span> His faith should furthermore be observed in ten ways. What are these ten? They are as follows: (1) He gives without deceit. (2) He gives away all possessions completely. (3) He has no excessive pride. (4) He has exceptional clarity. (5) He does not apprehend any fault in the teachings of the noble ones. (6) He does not investigate the best, intermediate, or lesser monks for mistakes. (7) He believes in emptiness. (8) His physical actions are pure. (9) His verbal actions are pure. (10) His mental activity is pure.</p><p>“Great King, one of royal descent who possesses this first attribute and is an anointed king accomplishes these qualities just mentioned.</p><p>“Moreover, Great King, an anointed king of royal descent longs for the Dharma. He always yearns to behold the noble ones, and he insatiably seeks to hear the Dharma. Using his mind he carefully investigates the many things he has learned, and then fully realizes them through experience. Great King, a king should be understood to be endowed with the Dharma if he has ten qualities. What are these ten? They are as follows: (1) He is without concern for his body or life in his quest for the Dharma. (2) He possesses a mindset that is weary of saṃsāra. (3) He thinks that a householder’s life entails too many faults. (4) He has a mindset that is not concerned with material things. (5) He is critical toward the negative actions that stem from his previous karma, and he does not create future formations. (6) He possesses a mindset that discriminates between all that is attractive and all that is repulsive. (7) Mastering his intent, he perfects the conduct of a bodhisattva and does not privilege words. (8) He is steadfast in his commitments because he seeks wisdom. (9) He fosters awakening in his servants and retinue and completely matures them <span class="tei-ref">F.12.a</span> continuously with the gift of the Dharma. (10) He also fulfills their material needs.</p><p>“Great King, one of royal descent who possesses this second attribute and is an anointed king accomplishes these qualities just mentioned.</p><p>“Moreover, Great King, an anointed king of royal descent believes in accepting the profound Dharma and accomplishes the samādhi of emptiness. His interest in the profundity of the Dharma should also be understood in ten ways. What are these ten? They are as follows: (1) His actions accord with his words. (2) He completes all his virtuous Dharma activities with very strong devotion and rids himself of the formations of unpleasant actions. (3) He creates pleasing formations. (4) He does not unjustly suppress individuals who possess power and riches. (5) He provides others with pleasing gifts and eliminates all that is not pleasant. (6) Thinking that all phenomena are empty, he cultivates renunciation. (7) His view is free of contrivance, thus he neither believes in the singularity of the limit of reality nor holds concepts of its multiplicity. (8) He does not use his own qualities to belittle the qualities of others. (9) He does not form definite judgments. (10) He brings those who do not practice into alignment with the inconceivable realm of phenomena.</p><p>“Great King, one of royal descent who possesses this third attribute and is an anointed king accomplishes these qualities just mentioned.</p><p>“Moreover, Great King, when an anointed king of royal descent clearly perceives the contamination that comes from the harm of living in this world, he upholds the teachings for the sake of accomplishing unsurpassed, complete, and perfect awakening. He perseveres <span class="tei-ref">F.12.b</span> in generating the power of the six perfections and never tires of fully maturing sentient beings. Furthermore, the ways in which he upholds the teachings should be understood in ten ways. What are these ten? They are as follows: (1) He perseveres in attaining samādhi that is unimpeded by the eight worldly concerns. (2) He perseveres in seeking out the dhāraṇīs. (3) He is skilled in ascertaining so that he completely apprehends the supreme Dharma. (4) He never tires of providing various necessities to those who persevere, including clothes, food, bedding, cushions, and medicines to cure sickness. (5) He strives to encourage awakening. (6) He thinks excellent thoughts, speaks excellent words, and performs excellent deeds. (7) He is inclined towards renunciation. (8) He thinks that it is a mistake to delight in being a king. (9) He possesses a mindset that has no concern for any beautiful or pleasant forms. (10) At the very least he does not think that anything is accomplished by only craving kingship.</p><p>“Great King, one of royal descent who possesses this fourth attribute and is an anointed king accomplishes these qualities just mentioned.</p><p>“Moreover, Great King, an anointed king of royal descent follows the Dharma in guarding, protecting, and shielding those who uphold, read, and teach unsurpassed, complete, and perfect awakening, which one fully accomplishes in a hundred billion trillion incalculable eons. He likewise punishes beings who are harmful to such individuals in order to completely protect the enjoyment of this resource of Dharma. His effort to completely uphold the supreme Dharma <span class="tei-ref">F.13.a</span> should also be understood in ten ways. What are these ten? They are as follows: (1) He accomplishes it completely. (2) He regards it as absolutely invaluable. (3) He believes in the Dharma. (4) He always acts without confusion. (5) He desires wisdom and has trust in distinctions of enlightened qualities. (6) He acts as a messenger of the Thus-Gone One. (7) He is a suitable vessel for buddhahood. (8) He holds together the lineage of the Three Jewels. (9) He causes the supreme Dharma to blaze brightly. (10) He completely matures many people.</p><p>“Great King, one of royal descent who possesses this fifth attribute and is an anointed king accomplishes these qualities just mentioned.”</p><br /><p>After this, the bodhisattva Amoghadarśin recited the following verses:</p><div class="tei-verse"><div class="tei-line">“The king who always has a sincere attitude</div><div class="tei-line">Toward the Buddha, Dharma, and Saṅgha</div><div class="tei-line">Has indestructible faith and confidence</div><div class="tei-line">And never lacks the following qualities.</div></div><div class="tei-verse"><div class="tei-line">“His faith is not contrived but is born from understanding,</div><div class="tei-line">And he does not hang on to anything he owns.</div><div class="tei-line">Rather, he feels no regret when it is given away.</div><div class="tei-line">These qualities are a sign of faith.</div></div><div class="tei-verse"><div class="tei-line">“Those whose thoughts are always unsullied</div><div class="tei-line">Are unshakable like the indestructible Mount Meru.</div><div class="tei-line">Just as a full vase does not move when it is well placed,</div><div class="tei-line">Their faith is absolutely unmoving.</div></div><div class="tei-verse"><div class="tei-line">“Those who see without seeing and hear without hearing</div><div class="tei-line">Are immovable like a mountain.</div><div class="tei-line">Such are the characteristics of faith,</div><div class="tei-line">Which will not change at all in any situation.</div></div><div class="tei-verse"><div class="tei-line">“Wise ones who wish for the Dharma because they wish for peace</div><div class="tei-line">Should abandon everything else for the sake of the Dharma</div><div class="tei-line">And, after abandoning everything, should not think of it.</div><div class="tei-line">These are the characteristics of those who wish for the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“When a lord of humans who wishes for the Dharma</div><div class="tei-line">Does not listen to the eloquent teachings,</div><div class="tei-line">Like a rotten seed sown in a bad field,</div><div class="tei-line">The pure instructions of the Leader of Beings will not grow. <span class="tei-ref">F.13.b</span></div></div><div class="tei-verse"><div class="tei-line">“Even if one hears them, but thinks, ‘I am wise in them,’</div><div class="tei-line">Or, ‘I have realized the exact nature of all phenomena,’</div><div class="tei-line">One cannot purify their conduct with a sincere attitude;</div><div class="tei-line">How can one with a dualistic mind become pure?</div></div><div class="tei-verse"><div class="tei-line">“Those who wish for the Dharma with mindfulness,</div><div class="tei-line">Who are respectful, unwavering, not stupid like sheep,</div><div class="tei-line">And are not like a rushing torrent but like a still ocean—</div><div class="tei-line">Such are vessels for supreme awakening.</div></div><div class="tei-verse"><div class="tei-line">“Those who wish for the Dharma</div><div class="tei-line">Never cling to any outer or inner things.</div><div class="tei-line">They are cherished by the knowledgeable and criticized by fools.</div><div class="tei-line">These are the ways to recognize people who wish for the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“Therefore, as a king who wishes for the Dharma,</div><div class="tei-line">Practice purely after hearing these words,</div><div class="tei-line">And don&#039;t fixate on mere words or studies;</div><div class="tei-line">There is no wisdom in degenerate thoughts.</div></div><div class="tei-verse"><div class="tei-line">“Those who believe in the acceptance of the profound</div><div class="tei-line">Do not cling to pleasant or unpleasant forms.</div><div class="tei-line">Just like the wind, they have no attachment,</div><div class="tei-line">Yet they practice for hundreds of infinite eons.</div></div><div class="tei-verse"><div class="tei-line">“King, if awakening is what you wish for,</div><div class="tei-line">Purify your thoughts with a sincere attitude.</div><div class="tei-line">Do not remain in this mistaken state</div><div class="tei-line">Because of prideful thoughts of ‘I’ and ‘mine.’</div></div><div class="tei-verse"><div class="tei-line">“You should continuously confess faults.</div><div class="tei-line">You should maintain favorable vows.</div><div class="tei-line">Regard power and relationships as impermanent.</div><div class="tei-line">This absence of support is genuine emptiness.</div></div><div class="tei-verse"><div class="tei-line">“However many teachings on emptiness you preach,</div><div class="tei-line">This is not abiding in emptiness just as it is.</div><div class="tei-line">Anyone who acts contrary to reality</div><div class="tei-line">Does not accept the profound way.</div></div><div class="tei-verse"><div class="tei-line">“Thus, this emptiness is totally wrong.</div><div class="tei-line">One who knows emptiness just as it is</div><div class="tei-line">Will escape the worldly realm and reach supreme awakening</div><div class="tei-line">Like the king of geese leaving a swamp.</div></div><div class="tei-verse"><div class="tei-line">“After generating respect for the Thus-Gone One,</div><div class="tei-line">King, you should examine what he has taught.</div><div class="tei-line">King, because the body is going to fall apart completely,</div><div class="tei-line">Do not get discouraged on the vehicle to awakening. <span class="tei-ref">F.14.a</span></div></div><div class="tei-verse"><div class="tei-line">“You should always protect the wise,</div><div class="tei-line">Who know the texts, experience, and rites of the Teacher.</div><div class="tei-line">Do not fall under the influence of mere words,</div><div class="tei-line">For you will undoubtedly remain sick for a long time.</div></div><div class="tei-verse"><div class="tei-line">“One who examines the teachings thoroughly</div><div class="tei-line">Should focus within in order to truly guard them.</div><div class="tei-line">Abandoning the myriad afflictions and karma,</div><div class="tei-line">One will attain in particular the supreme awakening.</div></div><div class="tei-verse"><div class="tei-line">“Train well in the six perfections.</div><div class="tei-line">Through training in them, you will attain supreme awakening.</div><div class="tei-line">Put into practice all that has been taught,</div><div class="tei-line">And before long you will achieve the virtues of omniscience.</div></div><div class="tei-verse"><div class="tei-line">“The mind that relates to objects</div><div class="tei-line">Like a bee unattached to a flower&#039;s nectar</div><div class="tei-line">Or a bird leaving no trace in the sky,</div><div class="tei-line">Is a mind, O King, that reaches buddhahood.</div></div><div class="tei-verse"><div class="tei-line">“You should follow the Dharma in protecting</div><div class="tei-line">Those who have found acceptance and courage for the profound</div><div class="tei-line">And hold the treasury of the buddhas.</div><div class="tei-line">Never forsake such wise ones, even at the cost of your life.</div></div><div class="tei-verse"><div class="tei-line">“There are many people, devoid of Dharma,</div><div class="tei-line">Who strive to harm such wise ones;</div><div class="tei-line">You should constantly prevent this through punishments,</div><div class="tei-line">Or else the way of the Dharma will quickly degenerate.</div></div><div class="tei-verse"><div class="tei-line">“If the Lord of the World does not appear,</div><div class="tei-line">Those wise ones will be the teachers of the world.</div><div class="tei-line">They will light the lamp of the Dharma for the benefit of living beings.</div><div class="tei-line">Therefore, devote yourself always to their benefit.</div></div><div class="tei-verse"><div class="tei-line">“There are many tens of billions of bodhisattvas</div><div class="tei-line">Who do not act for the benefit of sentient beings from their hearts.</div><div class="tei-line">They have neither a sincere attitude nor ethical discipline.</div><div class="tei-line">The Conqueror will not make prophecies about them.</div></div><div class="tei-verse"><div class="tei-line">“Those who act in accordance with what I have just described</div><div class="tei-line">Are endowed with the experience of nonarising.</div><div class="tei-line">You, King, having listened to these correct practices,</div><div class="tei-line">Should abide by these teachings I have revealed.”</div></div><p>Thereafter, King Brahmadatta said the following to the bodhisattva great being Amoghadarśin: “Amoghadarśin, apparently I have all of the shortcomings <span class="tei-ref">F.14.b</span> but none of the good qualities. Amoghadarśin, I am contaminated with harmful pollutants. Amoghadarśin, I am strongly addicted to unjust actions. I always intensely seek out wealth and gather attendants. Consequently, my thoughts arise due to a malevolent attitude that I am incapable of removing. Besides that, I have also thrashed others with sticks and struck them with weapons. Therefore, Amoghadarśin, I did not generate the mind of awakening. I generated a malevolent attitude toward others, even in my dreams. Amoghadarśin, I shall now generate with a sincere attitude the unsurpassed, complete, and perfect mind of awakening. Amoghadarśin, if I do not train in the precepts of bodhisattvas as they are delineated, it will amount to deceiving all the blessed buddhas who dwell in the world systems of the ten directions. In order to fully accomplish unsurpassed, complete, and perfect awakening, I shall act exactly as you have spoken.”</p><p>Thereafter eighty thousand beings, following after King Brahmadatta, generated the unsurpassed, complete, and perfect mind of awakening for the first time, and they also prayed to achieve the conduct of a bodhisattva as it was expounded. Twenty thousand beings acquired the pure eye of Dharma that is flawless and without defilements with respect to all phenomena.</p><p>Then, King Brahmadatta said the following to the bodhisattva great being Amoghadarśin: “Amoghadarśin, out of your love for me and for the benefit of the people gathered here, please consent to remain here at my place to observe the summer retreat.</p><p>“Amoghadarśin, we may not meet the conditions of being a vessel, <span class="tei-ref">F.15.a</span> we may not meet the conditions of having the scope of experience, and we may not be people of equal status to the fortunate ones. Also, since we do not see the Thus-Gone One or listen to the Dharma continuously, our accumulation of the roots of virtue may not be so large, and we may not have matured many sentient beings. Nevertheless, your presence will benefit us.”</p><p>Then, the bodhisattva great being Amoghadarśin, along with some five hundred other bodhisattvas, accepted King Brahmadatta’s request out of love for him. King Brahmadatta prepared a variety of bedding, cushions, mats, clothing, and food for the bodhisattva Amoghadarśin and his retinue of five hundred bodhisattvas. He also made various Dharma offerings to the bodhisattva great being Amoghadarśin.</p><p>At that time, there were sixty monks staying in that place. All of them were lazy, limited in their studies, full of hostile intent, and resentful when others received offerings. They claimed to be bodhisattvas themselves, but were coarse, crude bodhisattvas. They indulged their senses; they were wild, proud, and vain; they talked nonsense and were deceitful like crows. They had no regard for their next lives and no fear of karma; they enjoyed foolish talk, slept excessively, and had desire for what is not the Dharma. Their physical, verbal, and mental actions were without any restraint; they were argumentative, resented those with ethical discipline, and took no interest at all in the knowledge of others.</p><p>They did not even like to see the teacher, let alone fellow practitioners of pure conduct. Thus, they denigrated the bodhisattva Amoghadarśin in a manner that was not in accord with the Dharma. <span class="tei-ref">F.15.b</span> Moreover, they spread such remarks by visiting the homes of brahmins and householders with little faith, who, as a result of listening, would be born and live as denizens of the great hells for eight hundred million eons. The bodhisattva Amoghadarśin did not tell this to King Brahmadatta because of his compassion for those sentient beings.</p><p>At that time, King Brahmadatta had a court priest, a brahmin named Thorough Obscurer. He caused a rift between the bodhisattva Amoghadarśin and the monks who were there, and he made rude remarks that were at odds with the Dharma. He also secretly caused a rift between King Brahmadatta and the bodhisattva Amoghadarśin. He furthermore discouraged all those who had developed extraordinary joy in the Dharma and used every possible means to plant disdain for the bodhisattva Amoghadarśin in their minds. Even when he participated in Dharma discussions, he spoke in opposition to the Dharma, thereby carrying out by every means the activities of the crude bodhisattvas.</p><p>In this regard, bodhisattvas are crude when they possess four attributes. What are these four? They are as follows: (1) They are deceitful like a crow, talk nonsense, and do not accommodate other perspectives. (2) They praise themselves and criticizes others. (3) They are obsessed with this life and have negative thoughts. (4) They aggressively sow discord. Bodhisattvas are crude when they possess these four attributes.</p><p>The bodhisattva Amoghadarśin completed the summer retreat there in both comfort and suffering, and with happiness and sadness. Why was this so? Well, someone who dwells with a lazy person tends to suffer. Thus, the bodhisattva great being Amoghadarśin observed the summer retreat, and after the three months had passed, he <span class="tei-ref">F.16.a</span> made and completed a Dharma robe. He then left, carrying his alms bowl and Dharma robe. After passing through several kingdoms, he finally arrived at Jeta’s Grove, Anāthapiṇḍada’s park, in Śrāvastī, where the Blessed One was residing. Arriving there, he touched the Blessed One’s feet with his head to pay homage and sat to one side.</p><p>King Brahmadatta later heard the news that the bodhisattva Amoghadarśin had gone directly to the Blessed One because the resident monks had mistreated him. King Brahmadatta, along with ten thousand others, thus left the region of Pañcāla for Kośala where the Blessed One was residing. Arriving there, he touched the Blessed One’s feet with his head to pay homage and sat to one side. After he sat down, King Brahmadatta said to the Blessed One, “Blessed One, the bodhisattva Amoghadarśin left my country too soon.”</p><p>The Blessed One replied, “Great King, the Thus-Gone One and the hearers of the Thus-Gone One do not share a dwelling with individuals who are jealous, make no effort whatsoever, are fond of gossip, engage in excessive foolish talk, are very poorly behaved, and do not practice. Great King, know that there are ten causes for a person&#039;s lack of effort. What are these ten? They are as follows: (1) sleeping excessively, (2) cultivating the blatant pride of thinking oneself wise, (3) praising oneself, (4) criticizing others, (5) being fond of foolish talk, (6) being fond of gossip, (7) being fond of crowds, (8) clinging strongly to wealth, (9) clinging strongly to respect, and (10) being a hypocrite.</p><p>“Great King, an individual who possesses these ten causes <span class="tei-ref">F.16.b</span> is known as one who lacks effort.”</p><br /><p>Then the Blessed One spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Those who are unreasonable are always inharmonious;</div><div class="tei-line">They remain as far from the wise ones</div><div class="tei-line">As a corpse in the ocean</div><div class="tei-line">Or a creature riding on a bird.</div></div><div class="tei-verse"><div class="tei-line">“Those without faith search for faults in others;</div><div class="tei-line">They speak foolishly and are fond of being in a crowd,</div><div class="tei-line">They do not respect the teachings of the conquerors,</div><div class="tei-line">And they will migrate to the lower realms immediately after death.</div></div><div class="tei-verse"><div class="tei-line">“Those who are lacking have neither mindfulness nor wisdom;</div><div class="tei-line">They will not pass into or reach nirvāṇa and do not have ethical discipline,</div><div class="tei-line">And like a blind person on a road,</div><div class="tei-line">They stray farther and farther from the path of the noble ones.</div></div><div class="tei-verse"><div class="tei-line">“Persons who are lacking will talk too much;</div><div class="tei-line">They like to laugh and their senses are always distracted;</div><div class="tei-line">Regarding the teachings, they are not fit to drink the dregs of a water pot,</div><div class="tei-line">And the food they receive from villages will go down like lumps of iron.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-002-149" href="#tei-note-UT22084-059-002-149">[3]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“When a donor makes an offering out of faith,</div><div class="tei-line">For those not lacking and for the liberated, it is I who give it.</div><div class="tei-line">If one who is lacking consumes even a single morsel,</div><div class="tei-line">My disapproval will be as great as Mount Meru.</div></div><div class="tei-verse"><div class="tei-line">“According to the teachings, food provided by royalty is difficult to purify.</div><div class="tei-line">Even those who are not lacking abstain from it.</div><div class="tei-line">If those who are lacking consume it like a vulture,</div><div class="tei-line">They will be reborn as an elephant, horse, cow, or donkey.</div></div><div class="tei-verse"><div class="tei-line">“When they eat it they will take contemptible forms,</div><div class="tei-line">Becoming skeletal, weak, and loathsome.</div><div class="tei-line">After eating alms food they will be filthy and exude a foul odor,</div><div class="tei-line">And can only be purified by being struck with a rod.</div></div><div class="tei-verse"><div class="tei-line">“Their minds will be distracted, and their mindfulness will erode away;</div><div class="tei-line">They will be forced to beg and will go mad.</div><div class="tei-line">Despite obtaining this meritorious platform of the teachings,</div><div class="tei-line">If they are not heedful, they will fall into the lower realms.</div></div><div class="tei-verse"><div class="tei-line">“For an infinite million trillion years,</div><div class="tei-line">They will undergo great suffering in the lower realms,</div><div class="tei-line">After which they will obtain the relief of the human world,</div><div class="tei-line">But due to their misdeeds they will fall again into the lower realms.</div></div><div class="tei-verse"><div class="tei-line">“When a lump of iron plummets into the great ocean</div><div class="tei-line">Its location is not fixed. <span class="tei-ref">F.17.a</span></div><div class="tei-line">Even after ten billion years</div><div class="tei-line">It will be impossible to recover it again from the ocean.</div></div><div class="tei-verse"><div class="tei-line">“It is the same for the childish ones who fall into the lower realms.</div><div class="tei-line">For a hundred billion trillion eons,</div><div class="tei-line">It is doubtful that they will again be born as human beings.</div><div class="tei-line">How can they attain the higher realms and awakening?</div></div><div class="tei-verse"><div class="tei-line">“With a pure mind and lasting diligence,</div><div class="tei-line">With perfect restraint and without being deceptive,</div><div class="tei-line">And with a mind of equanimity, one can attain awakening.</div><div class="tei-line">For such a person, the state of omniscience is not difficult.</div></div><p>“Great King, recognize the following sixteen things as characteristics of jealous people. What are these sixteen? They are as follows: (1) being deceitful like a crow, (2) talking foolishly, (3) lacking self-control, (4) being pleased when others are denounced, (5) doubting the qualities of others, (6) thinking excessively, (7) being excessively sorrowful, (8) possessing extreme mental discomfort, (9) being envious, (10) possessing a decrepit figure and complexion, (11) being overwhelmed with pride, (12) disliking monks, (13) being rude toward unexpected visitors, (14) looking for mistakes to start an argument, (15) being stingy regarding one’s residence, and (16) not attending teachings, not listening with attention but having a distracted mind, spreading rumors, and saying with contempt for the Dharma, ‘I don’t understand what was said. It is a foolish, mundane, and conventional Dharma being taught.’</p><p>“These people, who have no respect for the Vinaya and Dharma that was realized by the noble ones, are ignorant fools.</p><p>“Saying, ‘I shall attain awakening; only then shall I sit under the Bodhi tree and be respectful toward the Dharma,’ they stand outside the door and listen even when the Dharma is being taught to the monks. They think, ‘I am not willing to sit down. But, since it provides the monks with their livelihood, I will listen when there is a talk on the eight branches of awakening.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-002-177" href="#tei-note-UT22084-059-002-177">[4]</a></sup> If I listen to this, my illness will be dispelled.’ <span class="tei-ref">F.17.b</span> Thus these foolish people who chase after awakening by yearning for what is not the Dharma are like people who pluck out their eyes and then want to see. They are like those wishing to satisfy many guests after getting rid of all their wealth. They are like those wishing to follow a path after cutting off their legs. Great King, this is how these foolish people with such wishes think about awakening.</p><p>“Great King, someone who has fallen away from awakening should be understood as having the following twenty-five attributes. What are the twenty-five? They are as follows: (1) being stingy regarding their residence; (2) being stingy regarding their household; (3) being stingy with their praise; (4) being jealous; (5) having no faith; (6) being shameless; (7) being immodest; (8) being malicious; (9) being deceptive; (10) being harmful toward others; (11) behaving in a way that is self-absorbed; (12) being hypocritical; (13) being vengeful; (14) excessively accumulating wealth; (15) misinterpreting and exaggerating the teachings of the Thus-Gone One out of fear and thus (16) abandoning the Dharma; (17) not asking any questions because of excessive pride; (18) lacking remorse, even after betraying the Dharma; (19) being dislikable and having many enemies; (20) after joining the assembly, exposing someone’s faults immediately upon seeing them in an attempt to reverse others’ fondness for them; (21) scorning those who have trust in secret topics; (22) disparaging monks whether one has previously seen them or not, thinking that no one should like them; (23) disparaging in order to harm; (24) forsaking others in order to disparage them; and (25) guarding their ethical discipline motivated by the thought that failing to keep the fully ordained monk’s vows would not bring as much profit.</p><p>“Great King, such individuals will seriously drift from the teachings, <span class="tei-ref">F.18.a</span> or they will become householders.”</p><br /><p>Then the Blessed One spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Like crows they are deceitful and talk nonsense without restraint.</div><div class="tei-line">They are disrespectful to the teachings of the knowers of the world,</div><div class="tei-line">Proud, shameless, and combative at all times—</div><div class="tei-line">These are the signs of those who are overwhelmed with jealousy.</div></div><div class="tei-verse"><div class="tei-line">“How can awakening be achieved</div><div class="tei-line">By those who feel no unhappiness when others are criticized,</div><div class="tei-line">Who like a pauper finding gold, cherish it and forsake all else,</div><div class="tei-line">And who have the intention to cause harm?</div></div><div class="tei-verse"><div class="tei-line">“In the past they cultivated<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-002-374" href="#tei-note-UT22084-059-002-374">[5]</a></sup> a vindictive attitude,</div><div class="tei-line">Which ripened in their experience of the lower realms.</div><div class="tei-line">They are jealous even now, despite having found a human body,</div><div class="tei-line">And in appearance are dull and ugly.</div></div><div class="tei-verse"><div class="tei-line">“Time and again, they mock everyone;</div><div class="tei-line">Their minds are always hostile.</div><div class="tei-line">Even upon seeing the expertise of others,</div><div class="tei-line">They become jealous and so abandon the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“As they are wild and their hearts know no restraint,</div><div class="tei-line">They speak about many bad things with others;</div><div class="tei-line">And even when others have not spoken negatively,</div><div class="tei-line">They pass their nights intending to fight.</div></div><div class="tei-verse"><div class="tei-line">“In town they behave differently,</div><div class="tei-line">While in the temple they act like wild horses.</div><div class="tei-line">They recognize others’ faults but not their own.</div><div class="tei-line">Such are the attributes of those who are jealous.</div></div><div class="tei-verse"><div class="tei-line">“They will think, ‘Now, I definitely won&#039;t stay around here,</div><div class="tei-line">But will say such-and-such things in that person&#039;s house.</div><div class="tei-line">Tomorrow I will speak offensively….’</div><div class="tei-line">This is how they keep plotting with a malicious mindset.</div></div><div class="tei-verse"><div class="tei-line">“Their minds are full of sorrow and without joy.</div><div class="tei-line">When they see others venerated because of what they know,</div><div class="tei-line">They lose their conviction in the ripening of karma,</div><div class="tei-line">And, controlled by vice, they speak critically.</div></div><div class="tei-verse"><div class="tei-line">“When honor and respect grows</div><div class="tei-line">For wise ones who have mastered the remedies,</div><div class="tei-line">Jealous people do not recognize them as holders of the supreme Dharma</div><div class="tei-line">Who practice unsurpassed, supreme generosity.</div></div><div class="tei-verse"><div class="tei-line">“If they see monks who are gentle in their pure activity</div><div class="tei-line">Suddenly coming, they feel ashamed.</div><div class="tei-line">With disrespect they say faithless things, <span class="tei-ref">F.18.b</span></div><div class="tei-line">Such as ‘What do you want in this miserable place?</div></div><div class="tei-verse"><div class="tei-line">“ ‘There is always a lot of work in this monastery,</div><div class="tei-line">And with nothing to gain, your activities here will be unbearable.’</div><div class="tei-line">If the monks refuse to leave despite their dissuasions,</div><div class="tei-line">They will lose their temper and pick a fight.</div></div><div class="tei-verse"><div class="tei-line">“There are no such people in this pure place.</div><div class="tei-line">Remember what happened in the other land?</div><div class="tei-line">After the resident monks expelled you,</div><div class="tei-line">Did you come here to disparage them?</div></div><div class="tei-verse"><div class="tei-line">“Naive lay disciples do not understand;</div><div class="tei-line">They do not know who has ethical discipline or who is unethical.</div><div class="tei-line">Monks leave frequently, both willingly and unwillingly,</div><div class="tei-line">And certainly leave when facing spite and viciousness.</div></div><div class="tei-verse"><div class="tei-line">“When this is seen by Dharma teachers,</div><div class="tei-line">Students of the Buddha who are gentle, superior, and steadfast,</div><div class="tei-line">They say it is inappropriate to clash with fools,</div><div class="tei-line">And that they will just go back where they came from.</div></div><div class="tei-verse"><div class="tei-line">“How sad! These teachings of mine that guide,</div><div class="tei-line">This Dharma of the conquerors, will come to an end;</div><div class="tei-line">These wicked monks will proliferate,</div><div class="tei-line">While those who preach the Dharma decrease.</div></div><div class="tei-verse"><div class="tei-line">“When a learned individual suddenly arrives</div><div class="tei-line">And reveals that which brings joy to many people,</div><div class="tei-line">They say, ‘What does one with such little intelligence know?’</div><div class="tei-line">And they pronounce to others their lack of respect.</div></div><div class="tei-verse"><div class="tei-line">“They have neither received transmissions nor asked Dharma questions.</div><div class="tei-line">What is their preceptor like and who is their master?</div><div class="tei-line">Like a self-sprouting tree, they don their Dharma robe</div><div class="tei-line">And seek wealth for their own happiness.</div></div><div class="tei-verse"><div class="tei-line">“They think, ‘He is not learned in the collection of sūtras,</div><div class="tei-line">And we know as much as he knows.’</div><div class="tei-line">They are foolish and refute the teachings.</div><div class="tei-line">They have not attained samādhi, and they think like a child.</div></div><div class="tei-verse"><div class="tei-line">“King, as I recall in past times,</div><div class="tei-line">There was a buddha called Jñānaprabha.</div><div class="tei-line">He taught the Dharma for eighty thousand years,</div><div class="tei-line">After which the conqueror attained nirvāṇa.</div></div><div class="tei-verse"><div class="tei-line">“After that conqueror had passed,</div><div class="tei-line">When the sublime Dharma declined and came close to an end,</div><div class="tei-line">A monk named Mindful Intellect appeared—</div><div class="tei-line">He did not attain dhāraṇī, but he had obtained eloquence. <span class="tei-ref">F.19.a</span></div></div><div class="tei-verse"><div class="tei-line">“He was good looking, gentle, and well-spoken,</div><div class="tei-line">And always satisfied with plain, simple things.</div><div class="tei-line">Like a cloud satisfying all beings with its rain,</div><div class="tei-line">He satisfied all migratory beings, including the gods, with the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“At that time, there was upon the earth a town</div><div class="tei-line">Called Vyūharāja;</div><div class="tei-line">It measured eight yojanas in circumference,</div><div class="tei-line">And the people there were intelligent and happy with bountiful harvests.</div></div><div class="tei-verse"><div class="tei-line">“When Mindful Intellect, the teacher of the Dharma, arrived,</div><div class="tei-line">He gave Dharma teachings for the benefit of all living beings.</div><div class="tei-line">Two hundred thirty million living beings</div><div class="tei-line">Became established in the state of unsurpassed awakening.</div></div><div class="tei-verse"><div class="tei-line">“With flowers, incense, and garments,</div><div class="tei-line">And with delicacies, libations, and wholesome songs,</div><div class="tei-line">And with excellent sounds from musical instruments,</div><div class="tei-line">They worshiped him as they would a buddha.</div></div><div class="tei-verse"><div class="tei-line">“Five hundred monks became extremely hostile;</div><div class="tei-line">They spread criticism of him in the town,</div><div class="tei-line">Saying, ‘He has no ethical discipline; he is a miscreant, and I know this to be so’</div><div class="tei-line">To each and every person they met.</div></div><div class="tei-verse"><div class="tei-line">“During the restoration and purification rites on the day of the full moon,</div><div class="tei-line">Some of these wicked monks stood up and said,</div><div class="tei-line">‘If you do not leave quickly, by tonight,</div><div class="tei-line">We will slash your vital parts and kill you.’</div></div><div class="tei-verse"><div class="tei-line">“With compassion for those monks,</div><div class="tei-line">The pure sentient being left undismayed.</div><div class="tei-line">Thousands of gods mourned and cried,</div><div class="tei-line">‘Why is this child of the Buddha being harassed?’</div></div><div class="tei-verse"><div class="tei-line">“All of the five hundred monks there</div><div class="tei-line">Passed the whole night laughing, elated.</div><div class="tei-line">They thought, ‘At last! We are finally free of him,’</div><div class="tei-line">And felt as if a heavy burden had been lifted.</div></div><div class="tei-verse"><div class="tei-line">“When the five hundred monks died,</div><div class="tei-line">They remained in hell for eighty eons.</div><div class="tei-line">For a period of seven hundred sixty trillion eons,</div><div class="tei-line">Those monks lived in the world of hungry ghosts.</div></div><div class="tei-verse"><div class="tei-line">“Life after life, these sentient beings will become blind.</div><div class="tei-line">They will be born as venomous snakes and eat dust.</div><div class="tei-line">Children will pelt them with clods of dirt when they see them.</div><div class="tei-line">They will have neither protectors nor defenders.</div></div><div class="tei-verse"><div class="tei-line">“For one hundred eighty billion lifetimes,</div><div class="tei-line">They will be born into poverty in the human realm. <span class="tei-ref">F.19.b</span></div><div class="tei-line">They will go mad and go blind, and their bodies will continuously rot.</div><div class="tei-line">They will look ugly, be contemptible, and have little power.</div></div><div class="tei-verse"><div class="tei-line">“They will be afflicted in that way for five billion years.</div><div class="tei-line">They themselves will always do many unpleasant things</div><div class="tei-line">And find fault in the generous acts of others.</div><div class="tei-line">They will throw themselves into a deep abyss.</div></div><div class="tei-verse"><div class="tei-line">“In the future, the sixtieth eon</div><div class="tei-line">Will be called the Eon of Great Fame.</div><div class="tei-line">During that time there will appear ten thousand thus-gone ones</div><div class="tei-line">Who will protect and benefit the world.</div></div><div class="tei-verse"><div class="tei-line">“During the time of the last of those buddhas,</div><div class="tei-line">Those five hundred monks will obtain their human forms.</div><div class="tei-line">After seeing that buddha, they will attain the state of acceptance</div><div class="tei-line">And will see as many buddhas as there are grains of sand in the Ganges River.</div></div><div class="tei-verse"><div class="tei-line">“In the past, all of them together</div><div class="tei-line">Had made aspirations for the mind of omniscience,</div><div class="tei-line">Yet at that stage they had not generated the mind of awakening.</div><div class="tei-line">Depending on their particular mental states, they fell into the lower realms.</div></div><div class="tei-verse"><div class="tei-line">“At that time, I was a Dharma preacher, a conqueror’s son,</div><div class="tei-line">Known as Mindful Intellect.</div><div class="tei-line">Those who refuted me were shown to be refuted.</div><div class="tei-line">Thus, they gave up pride and left it behind.</div></div><div class="tei-verse"><div class="tei-line">“They gave up what was unsuitable and practiced wisdom.</div><div class="tei-line">Those who do not wish to destroy themselves,</div><div class="tei-line">After discarding all ignorant speaking,</div><div class="tei-line">Should also get rid of jealousy as if it were a mass of flame.</div></div><div class="tei-verse"><div class="tei-line">“Whether they are seen or unseen, heard or unheard,</div><div class="tei-line">True or untrue, do not discuss them with others—</div><div class="tei-line">A monk who wishes to attain supreme awakening</div><div class="tei-line">Will remove his own faults.</div></div><div class="tei-verse"><div class="tei-line">“Those who are gentle will give away</div><div class="tei-line">All outer and inner things.</div><div class="tei-line">Why would one aspiring to my supreme awakening</div><div class="tei-line">Take delight in anything else?</div></div><div class="tei-verse"><div class="tei-line">“In the future many crude people</div><div class="tei-line">Will deny awakening in connection with my teachings.</div><div class="tei-line">They plunge into gorges and chasms—</div><div class="tei-line">How can one with degenerate thoughts reach awakening?</div></div><div class="tei-verse"><div class="tei-line">“One who wishes to attain my supreme awakening</div><div class="tei-line">Gets rid of pride, as does a low-caste boy,</div><div class="tei-line">Generates the mind of love for all sentient beings,</div><div class="tei-line">And is never dissatisfied whether there is attainment or no attainment.</div></div><p>“Also, Great King, the Thus-Gone One and the hearers of the Thus-Gone One will not want to stay for long in places where there are people who lack <span class="tei-ref">F.20.a</span> respect and faith and who hate others and seek to harm them. They will leave such places immediately.</p><p>“Great King, there are sixteen attributes that describe an individual who lacks faith. What are these sixteen? They are (1) instigating discord, (2) considering wicked teachings reasonable, (3) considering Dharma talks unreasonable, (4) having wicked thoughts, (5) having a mind that is proud, (6) seeking to harm, (7) having ulterior motives, (8) possessing a livelihood that is totally impure, (9) desiring respect, (10) having a mental continuum that is not virtuous, (11) lacking practice, (12) belittling others, (13) being fully intent on finding only faults, (14) not ascertaining the teachings, (15) holding wrong views, and (16) doubting the ripening of karma.</p><p>“Great King, these sixteen attributes describe an individual who lacks faith.”</p><br /><p>Then the Blessed One spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Those who do not properly adhere to the teachings</div><div class="tei-line">Abandon them completely like a dried-up well.</div><div class="tei-line">Those who follow another stream that is incompatible with liberation</div><div class="tei-line">Are no different from hostile-minded heretics.</div></div><div class="tei-verse"><div class="tei-line">“They do not believe in the ripening of karma.</div><div class="tei-line">Since they do not believe, they do not provide for others.</div><div class="tei-line">Regarding themselves to be as high as the summit of Mount Meru,</div><div class="tei-line">They act like someone who is intoxicated with pride.</div></div><div class="tei-verse"><div class="tei-line">“When the well-spoken Dharma is explained to them,</div><div class="tei-line">They find it disagreeable due to their wicked perspective.</div><div class="tei-line">Without faith, they generate doubt toward the Dharma</div><div class="tei-line">And lose their minds for many tens of millions of eons.</div></div><div class="tei-verse"><div class="tei-line">“They will become wicked from their thoughts that lack faith.</div><div class="tei-line">They do nothing to guard against a mind filled with anger.</div><div class="tei-line">Abandoning everything that is of substance,</div><div class="tei-line">Those without faith will cling to defilements.</div></div><div class="tei-verse"><div class="tei-line">“Posturing and always arrogant,</div><div class="tei-line">Those who lack faith will not bow to others.</div><div class="tei-line">After their deaths, they will be born into lower castes,</div><div class="tei-line">Become destitute, and resent others. <span class="tei-ref">F.20.b</span></div></div><div class="tei-verse"><div class="tei-line">“Those who lack faith do not assess themselves.</div><div class="tei-line">They find faults in others and hold on to their mistakes.</div><div class="tei-line">Like a castor-oil tree in a forest,</div><div class="tei-line">They are neither householders nor monks.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-059-002-375" href="#tei-note-UT22084-059-002-375">[6]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“They are as deceitful as they are impure.</div><div class="tei-line">They simply do not follow anyone’s teachings.</div><div class="tei-line">They resent others, even when they are trusted.</div><div class="tei-line">They will never be a friend, even if one sustains them for an eon.</div></div><div class="tei-verse"><div class="tei-line">“Their livelihood is impure.</div><div class="tei-line">Without faith, these ordained monks</div><div class="tei-line">Forsake the many teachings that liberate them,</div><div class="tei-line">And thus, before very long, they will fall.</div></div><div class="tei-verse"><div class="tei-line">“Since, lacking faith, they desire veneration,</div><div class="tei-line">They make others understand things that are untrue.</div><div class="tei-line">Acting deceitfully and hiding their true nature,</div><div class="tei-line">They attempt to trick and flatter.</div></div><div class="tei-verse"><div class="tei-line">“Their mental states are always hateful and discordant.</div><div class="tei-line">Even when they hear others talk,</div><div class="tei-line">They think the conversation is about them.</div><div class="tei-line">Without faith, they become consumed by doubt.</div></div><div class="tei-verse"><div class="tei-line">“They make comments about others</div><div class="tei-line">And see others as impure as they are themselves.</div><div class="tei-line">Without faith, they are like frightened deer—</div><div class="tei-line">They find that no one is reliable or agreeable.</div></div><div class="tei-verse"><div class="tei-line">“Their practice is degenerate and they disregard the feelings of others.</div><div class="tei-line">They become intimidated at gatherings;</div><div class="tei-line">With trembling hands, they pick fights,</div><div class="tei-line">And they even put an end to those they come across.</div></div><div class="tei-verse"><div class="tei-line">“Thus, their assertions and criticisms are unfounded.</div><div class="tei-line">Slanderous by nature, they are abundantly wicked,</div><div class="tei-line">And they are unfriendly, confrontational, and angry.</div><div class="tei-line">These are the natural marks of those who are without faith.</div></div><div class="tei-verse"><div class="tei-line">“After those without faith are ordained,</div><div class="tei-line">They refute even the teachings of the Guide.</div><div class="tei-line">Whenever there is harmony among the Saṅgha,</div><div class="tei-line">They contradict with words that are not of the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“Since they question the teachings of the conquerors,</div><div class="tei-line">They are like heretics doubting and hesitating,</div><div class="tei-line">Bringing harm to the Dharma and contradicting it.</div><div class="tei-line">Without faith, they reject even the Dharma.</div></div><div class="tei-verse"><div class="tei-line">“When they fail to abandon wrong views,</div><div class="tei-line">They are condemned to join with non-Buddhist heretics. <span class="tei-ref">F.21.a</span></div><div class="tei-line">They are not rooted in the teachings</div><div class="tei-line">And are called monks merely because they wear Dharma robes.</div></div><div class="tei-verse"><div class="tei-line">“By deeply cultivating immutable selflessness,</div><div class="tei-line">A monk free of the view of the transitory collection</div><div class="tei-line">Will experience the wisdom of the teachings</div><div class="tei-line">And like the wind will not be attached to compounded things.</div></div><div class="tei-verse"><div class="tei-line">“Without faith, they are not convinced of karma.</div><div class="tei-line">Falling under the power of wicked thoughts,</div><div class="tei-line">They will soon reside in the lower realms,</div><div class="tei-line">Tormented just as they tormented others.</div></div><div class="tei-verse"><div class="tei-line">“Just as water constitutes the great ocean,</div><div class="tei-line">Faith in this teaching is the basis.</div><div class="tei-line">As for anyone who does not have faith in the teachings,</div><div class="tei-line">I am not for them, and they are not for me.</div></div><div class="tei-verse"><div class="tei-line">“Faith is the basis for this wondrous journey.</div><div class="tei-line">It is the path and light that lead to the elixir.</div><div class="tei-line">Just like the king of Jambudvīpa,</div><div class="tei-line">It is the foremost of all qualities.</div></div><p>“Great King, the monks in your monastery lacked qualities such as these. Therefore, the bodhisattva Amoghadarśin examined them individually and did not stay but quickly departed.</p><p>“Great King, after they die and pass on, all of those sixty monks will circle in the lower realms for three eons. Thereafter, they will be born into low classes of beings for eighty thousand lives; they will be inferior, survive on leftover food, and be reviled by the world. They will have emaciated bodies, be of hideous complexion, be considered insignificant, be disfigured, and be afflicted with chronic ailments in almost all successive lifetimes. They will be agitated due to imbalanced health, wail with pitiful voices, and die in a bad state.</p><p>“Then, after dying in their last lifetime, they will be reborn in the realm of Sukhāvatī. For eighty thousand years they will hear but not understand the teachings of the thus-gone Amitāyus. They will be able to see that thus-gone one’s light but not him; his light will not even shine on their bodies. In order to purify their faults completely, <span class="tei-ref">F.21.b</span> they will confess their faults to the gathering of bodhisattvas three times a day and three times a night, with their limbs and heads touching the ground. Only then will their actions become completely purified. Thereafter, they will be able to see the Thus-Gone One, understand the teachings, and receive predictions regarding their awakening.”</p><p>Then King Brahmadatta said to the Blessed One, “Blessed One, give me your permission to remove these monks. I do not wish for such wicked monks to be known among my subjects, let alone be seen.” Then King Brahmadatta dispatched his men in order to remove those monks, ensuring that they did not remain among his subjects. “Blessed One, this is the fruition of their karma in this life. These are people who will harm themselves in future lives as well.”</p><p>As he said this, the Blessed One said to King Brahmadatta, “Great King, there are four pitfalls for those who have gone forth into this teaching of mine. What are these four? They are as follows: (1) not respecting the Buddha, (2) forsaking the supreme Dharma, (3) loathing those who teach the Dharma, and (4) taking offerings given with faith when one lacks true effort.</p><p>“Great King, these are the four pitfalls for those who have gone forth into this teaching of mine.”</p><br /><p>Then the Blessed One spoke the following verses:</p><div class="tei-verse"><div class="tei-line">“Doubting the Buddha is the ultimate pitfall.</div><div class="tei-line">The whole word cannot protect such a person.</div><div class="tei-line">Such a narrow-minded person turns from the teacher,</div><div class="tei-line">And without a protector will migrate to the lower realms.</div></div><div class="tei-verse"><div class="tei-line">“Forsaking the Dharma, they migrate to a lower existence.</div><div class="tei-line">For a period of no less than a thousand years,</div><div class="tei-line">They will be blind, with dull senses and a degenerate mind.</div><div class="tei-line">This great suffering is the second pitfall.</div></div><div class="tei-verse"><div class="tei-line">“To deprecate those who are fearless in upholding the Buddha&#039;s teachings,</div><div class="tei-line">And who sustain the wisdom of omniscience,</div><div class="tei-line">Is the third great pitfall; <span class="tei-ref">F.22.a</span></div><div class="tei-line">It is experienced for many tens of millions of eons.</div></div><div class="tei-verse"><div class="tei-line">“Those who misuse offerings given by the faithful,</div><div class="tei-line">Which is the fourth great pitfall,</div><div class="tei-line">Will be impossible to protect, even by the entire world.</div><div class="tei-line">Possessing bad karma, they will wander through all lower existences.</div></div><div class="tei-verse"><div class="tei-line">“The purity of thoughts is the purity of the noble ones.</div><div class="tei-line">Not wavering from awakening, that is the basis of the mind.</div><div class="tei-line">One cannot attain awakening through mere words.</div><div class="tei-line">One must also purify the mind—this is taught by the Thus-Gone One.</div></div><p>When the Blessed One spoke this discourse of the Dharma, five thousand beings generated the aspiration for unsurpassed, perfect, and complete awakening, which they had never done before, and achieved the acceptance of phenomena as unarisen. King Brahmadatta also became irreversibly oriented toward unsurpassed, perfect, and complete awakening. One hundred thousand beings possessed the pure eye of the Dharma, which is devoid of stains and free from defilements with respect to phenomena. One hundred million gods generated the mind of awakening, which they had never done before.</p><p>The Blessed One then smiled, and as happens whenever the blessed ones smile, at that moment light of myriad colors—blue, yellow, red, white, crimson, crystalline, and silver—emerged from his mouth. The light illuminated boundless, limitless realms and reached all the way up to the world of Brahmā. It even eclipsed the magnificence of the sun and moon. Then the light rays returned, circled around the Blessed One three times, and dissolved into the crown of his head.</p><p>Then the bodhisattva Amoghadarśin folded his hands and bowed in the direction of the Blessed One and asked him, “Blessed One, what are the causes of your smile? What are the conditions?”</p><p>The Blessed One said, <span class="tei-ref">F.22.b</span> “Amoghadarśin, King Brahmadatta will not fall into any bad state for thirty eons, and after enjoying the bounties of the gods and humans, he will please eight hundred million buddhas. In all his lives, he will be universal emperor. Forsaking the four continents completely, he will respect and revere the blessed buddhas with an intention free of any hostility.</p><p>“Thereafter, he will actually attain buddhahood—unsurpassed, perfect, and complete awakening—in a buddha field that will be equal in display to Sukhāvatī, and he will become a thus-gone, worthy, perfect buddha called King of Limitless Display.”</p><p>Thus, King Brahmadatta felt contented, elated, jubilant, and overjoyed. Happy and blissful, he bowed down with the five points of his body at the feet of the bodhisattva Amoghadarśin. He then said, “Blessed One, because Amoghadarśin endured being with that community of monks for my sake, I sincerely appeal to him for forgiveness.” Out of his love for King Brahmadatta, the bodhisattva Amoghadarśin then forgave him.</p><p>When the Blessed One spoke thus, King Brahmadatta, and the world with its gods, humans, asuras, and gandharvas all rejoiced and praised the words of the Blessed One.</p>Here ends the noble Mahāyāna sūtra “The Questions of Brahmadatta.”</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>It was translated, edited, and finalized by the Indian preceptors Surendrabodhi and Prajñāvarman, as well as the editor and translator Bandé Yeshé Dé and others.</p><p>It consists of three hundred stanzas.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-059-002-21"><p>There is a text in the Kangyur that goes by this name: <cite>Dhāraṇī That Accomplishes the Seal of Infinite Gateways</cite> (<cite>Ananta­mukha­sādhaka­nāma­dhāraṇī</cite>,<cite>’phags pa sgo mtha’ yas pa sgrub pa zhes bya ba’i gzungs</cite>), Toh 140, Degé Kangyur vol. 56 (mdo sde na), folios 289.b–299.a.<a href="https://read.84000.co/translation/toh140.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh140.html</a></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-002-21">back</a></li><li id="tei-note-UT22084-059-002-25"><p>Tib. <em>mi khom pa</em>; Skt. <em>akṣaṇa</em>. This refers to being born into circumstances in which one is unable to practice the Dharma properly, specifically to eight possible states of existence: as a hell being, hungry ghost, animal, long-lived god, or barbarian, possessing wrong views, living in a time without buddhas, and having impaired faculties.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-002-25">back</a></li><li id="tei-note-UT22084-059-002-149"><p>The two analogies here are idiomatic and challenging to capture in translation. The crux of the first analogy is that the water left in a vessel is not fresh, and so would be considered unfit for drinking. The second analogy is based in Buddhist proscriptions against misusing the offerings of the faithful. The consequences of doing so are considered spiritually deadly, and likened to swallowing chunks of iron.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-002-149">back</a></li><li id="tei-note-UT22084-059-002-177"><p>Tib. <em>brgyad sde’i byang chub kyi yan lag</em>: the eight branches of awakening refers to the eightfold path, which includes (1) right view (Tib. <em>yang dag pa’i lta ba</em>; Skt. <em>samyagdṛṣṭi</em>), (2) right thought (Tib. <em>yang dag pa’i rtog pa</em>; Skt. <em>samyaksaṅkalpa</em>), (3) right speech (Tib. <em>yang dag pa’i ngag</em>; Skt. <em>samyagvak</em>), (4) right action (Tib. <em>yang dag pa’i las kyi mtha’</em>; Skt. <em>samyakkarmānta</em>), (5) right livelihood (Tib. <em>yang dag pa’i ’tsho ba</em>; Skt. <em>samyagājīva</em>), (6) right effort (Tib. <em>yang dag pa’i rtsol ba</em>; Skt. <em>samyagvyāyāma</em>), (7) right mindfulness (Tib. <em>yang dag pa’i dran pa</em>; Skt. <em>samyaksmṛti</em>), and (8) right samādhi (Tib. <em>yang dag pa’i ting nge ’dzin</em>; Skt. <em>samyaksamādhi</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-002-177">back</a></li><li id="tei-note-UT22084-059-002-374"><p>We follow the Kangxi, Yongle, and Stok versions of the translation in reading <em>brtas</em>/<em>rtas</em> instead of <em>ltas</em> as attested in the Degé version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-002-374">back</a></li><li id="tei-note-UT22084-059-002-375"><p>The analogy being made here in unclear. In Buddhist scripture, the castor-oil tree (Skt. <em>eraṇḍa</em>) is sometimes listed along with the plantain tree as something that lacks an essential core. Alternatively, because of its foul smell it is compared negatively to the pleasant-smelling sandalwood tree.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-059-002-375">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/059-001-toh158-the-noble-mahayana-sutra-brahmas-question.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/059-003-toh160-the-sutra-of-the-questions-of-brahmavisesacintin.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

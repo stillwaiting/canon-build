@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 350 — The Past Endeavor of Kanakavarṇa — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 350 — The Past Endeavor of Kanakavarṇa</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 350 — The Past Endeavor of Kanakavarṇa        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Kanakavarṇa­pūrvayoga          </p>
+                      </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Past Endeavor of Kanakavarṇa</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">F.50.a</span> Homage to all buddhas and bodhisattvas.</p><br /><p>Thus did I hear at one time. The Blessed One was dwelling at Jetavana, Anāthapiṇḍada’s Park, together with a large monastic community of 1,250 monks.</p><p>The Blessed One was respected, honored, revered, and venerated by monks, nuns, devoted laymen, devoted laywomen, kings, ministers, the various tīrthikas, ascetics, brahmins,<span class="tei-ref">F.50.b</span> practitioners, and wanderers, as well as by gods, nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, and mahoragas. The Blessed One received abundant and exquisite requisites—robes, alms, bedding and seating, and medicine in case of illness—both divine and human. Yet, the Blessed One remained untainted by them, like a lotus untainted by water. The Blessed One’s renown, fame, and acclaim,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-135" href="#tei-note-UT22084-076-004-135">[1]</a></sup> was vast, excellent, and exalted.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-136" href="#tei-note-UT22084-076-004-136">[2]</a></sup> In this way, the Blessed One, the tathāgata, arhat, perfectly awakened one, accomplished in knowledge and conduct, the well gone one, the knower of the world, the unsurpassed guide for people to be tamed, the teacher of gods and humans, the Buddha, the Blessed One, having directly understood and clearly perceived <sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-137" href="#tei-note-UT22084-076-004-137">[3]</a></sup> this world with its gods, māras, brahmās, ascetics, brahmins, gods, and humans,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-138" href="#tei-note-UT22084-076-004-138">[4]</a></sup> was teaching the Dharma<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-139" href="#tei-note-UT22084-076-004-139">[5]</a></sup> that is excellent in the beginning, excellent in the middle, and excellent in the end, fine in meaning and fine in expression, and was expounding the entire and complete spiritual life that is completely pure and completely clean.</p><p>Then the Blessed One addressed the monks, “Monks, if beings were to know the fruit of giving and the karmic fruition of sharing gifts<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-141" href="#tei-note-UT22084-076-004-141">[6]</a></sup> as I know the fruit of giving and the karmic fruition of sharing gifts, they would not eat even their last mouthful, their last morsel, themselves<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-142" href="#tei-note-UT22084-076-004-142">[7]</a></sup> without giving, without sharing it with others,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-143" href="#tei-note-UT22084-076-004-143">[8]</a></sup> and the arisen defilement of selfishness would not remain in possession of their minds.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-144" href="#tei-note-UT22084-076-004-144">[9]</a></sup><span class="tei-ref">F.51.a</span> But, monks, because beings do not know the fruit of giving and the karmic fruition of sharing gifts as I know the fruit of giving and the karmic fruition of sharing gifts, they eat even their last mouthful, their last morsel, themselves<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-145" href="#tei-note-UT22084-076-004-145">[10]</a></sup> without giving,</p><p>without sharing it with others, and the arisen defilement of selfishness remains in possession of their minds. Why is this?</p><p>“Previously, monks, in a past time, there was a king named Kanakavarṇa, who was handsome, beautiful, and pleasing to behold, being endowed with a sublime golden complexion. That king Kanakavarṇa was rich, wealthy, and prosperous, having abundant possessions;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-147" href="#tei-note-UT22084-076-004-147">[11]</a></sup> abundant wealth and means; abundant riches, grains, gems, pearls,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-148" href="#tei-note-UT22084-076-004-148">[12]</a></sup> crystal, coral, gold, and silver; abundant elephants, horses, cows, and stud horses;<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-149" href="#tei-note-UT22084-076-004-149">[13]</a></sup> and treasuries and storehouses that were completely filled.</p><p>“King Kanakavarṇa had a royal capital called Kanakāvatī that was twelve yojanas in length from east to west and seven yojanas wide from south to north. It was prosperous, thriving, happy, well provisioned, pleasant, and bustling with many people. King Kanakavarṇa had eighty thousand such cities <sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-151" href="#tei-note-UT22084-076-004-151">[14]</a></sup> that were prosperous, thriving, happy, well provisioned, pleasant, and bustling with many people; five hundred and seventy million villages <sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-152" href="#tei-note-UT22084-076-004-152">[15]</a></sup> that were prosperous, thriving, happy, well provisioned, pleasant, and bustling with many people; and sixty thousand market towns that were prosperous, thriving, happy, well provisioned, pleasant, and bustling with many people. And, King Kanakavarṇa had eighteen thousand courtiers and a retinue of twenty thousand attendant women. <span class="tei-ref">F.51.b</span></p><p>“Monks, King Kanakavarṇa was righteous and he ruled his kingdom according to the Dharma as a Dharma king.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-154" href="#tei-note-UT22084-076-004-154">[16]</a></sup> He engaged in all acts of generosity and there was nothing that he had not given away, including the flesh of his own body. During those times people would attain a lifespan of eighty-four thousand years.</p><p>“Now, at one time, when King Kanakavarṇa was alone, having withdrawn in private, a deliberation arose in his mind: ‘Let me free all merchants from customs duties and transit fees. Let me free all the people of Jambudvīpa from taxes and fees.’</p><p>“King Kanakavarṇa thereupon summoned his accountants, ministers, courtiers, gatekeepers, and councilors, and announced to them, ‘As of today, sirs,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-157" href="#tei-note-UT22084-076-004-157">[17]</a></sup> all merchants should be freed from customs duties and transit fees. All the people of Jambudvīpa should be freed from taxes and fees.’</p><p>“While ruling his kingdom by these means<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-159" href="#tei-note-UT22084-076-004-159">[18]</a></sup> for many years, at a certain time, the constellations became adverse such that it would not rain for twelve years. The brahmins who could understand the indications read the signs<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-160" href="#tei-note-UT22084-076-004-160">[19]</a></sup> and did divinations.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-161" href="#tei-note-UT22084-076-004-161">[20]</a></sup> Having observed this in the movements of the constellations and the planet Venus, they went to King Kanakavarṇa and said, ‘Your Majesty, please know that the constellations have become adverse such that it will not rain for twelve years.’</p><p>“Upon hearing this news, King Kanakavarṇa broke down in tears, ‘Oh, my people of Jambudvīpa! Oh, my people of Jambudvīpa!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-163" href="#tei-note-UT22084-076-004-163">[21]</a></sup> Oh, my Jambudvīpa that is prosperous, thriving, <span class="tei-ref">F.52.a</span> happy, well provisioned, pleasant, and bustling with many people—before long you will be empty and bereft of people!’</p><p>“After weeping sorrowfully for a moment, King Kanakavarṇa thought, ‘Those who are rich, wealthy, and prosperous will be able to support themselves, but those who are poor, with little wealth, and with little to eat and drink—how will they survive? Let me collect all the foodstuffs in Jambudvīpa, build a storehouse for all the villages, cities, and market towns, as well as for the royal capital,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-165" href="#tei-note-UT22084-076-004-165">[22]</a></sup> and distribute an equal share to all the people of Jambudvīpa.’</p><p>“King Kanakavarṇa then summoned his accountants, ministers, courtiers, gatekeepers, and councilors, and ordered, ‘Sirs, go and collect all the foodstuffs in Jambudvīpa, count them and measure them out, and place them in a storehouse for all the villages, cities, and market towns, as well as for the royal capital.’</p><p>“The accountants, ministers, courtiers, gatekeepers, and councilors did as King Kanakavarṇa had ordered, and when they had stored the foodstuffs in the storehouse, they went to King Kanakavarṇa and said, ‘Your Majesty, please know that the foodstuffs from all the villages, cities, and market towns, <span class="tei-ref">F.52.b</span> as well as from the royal capital, have all been collected, counted, measured out, and stored in a storehouse for all the villages, cities, and market towns, as well as for the royal capital. What does Your Majesty deem fit now?’</p><p>“King Kanakavarṇa then summoned his counters, accountants, and scribes and ordered, ‘Sirs, go and count all the people of Jambudvīpa. Having properly<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-169" href="#tei-note-UT22084-076-004-169">[23]</a></sup> counted everyone starting with myself,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-170" href="#tei-note-UT22084-076-004-170">[24]</a></sup> properly distribute an equal share of food to all the people of Jambudvīpa.’</p><p>“The counters, accountants, and scribes obeyed<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-172" href="#tei-note-UT22084-076-004-172">[25]</a></sup> and they properly counted all the people of Jambudvīpa. When they had properly counted everyone, starting with King Kanakavarṇa, they assigned an equal share of food to all the people of Jambudvīpa.</p><p>“For eleven years everyone survived, but during the first month of the twelfth year, many men, women, and children began to die from hunger and thirst. As the second, third, fourth, and fifth months passed, many more men, women, and children died.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-174" href="#tei-note-UT22084-076-004-174">[26]</a></sup> This went on until the eleventh month, when all the food in Jambudvīpa had been exhausted,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-175" href="#tei-note-UT22084-076-004-175">[27]</a></sup> apart from a single measure of food left for King Kanakavarṇa.</p><p>“Now, at that time, there was a bodhisattva who had been embarked upon the path for forty eons and who had reached this Sahā world. That bodhisattva saw, somewhere in a forest, a son having sexual intercourse with his mother. Seeing this, he thought, ‘Oh, how defiled,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-177" href="#tei-note-UT22084-076-004-177">[28]</a></sup> how defiled these beings are!<span class="tei-ref">F.53.a</span> It was in her womb that he stayed for nine months and it was from her breasts that he drank—and now he does this here!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-178" href="#tei-note-UT22084-076-004-178">[29]</a></sup> I’ve had enough of such<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-179" href="#tei-note-UT22084-076-004-179">[30]</a></sup> beings who are driven by craven desires not in keeping with the Dharma, who have wrong views, who are overcome by unbearable lust, who do not honor their fathers,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-180" href="#tei-note-UT22084-076-004-180">[31]</a></sup> their mothers, monks, or brahmins, and who do not respect the elders of their family. Who would bother to practice the conduct of a bodhisattva for the sake of such beings? Surely I should practice for my own sake alone.’</p><p>“Then the bodhisattva went to a tree and sat down at its base. Having crossed his legs and made his body upright, he established mindfulness to the fore.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-182" href="#tei-note-UT22084-076-004-182">[32]</a></sup> He then dwelled on observing the arising and passing away of the five aggregates that are subject to clinging: ‘This is form, this is the arising of form, this is the vanishing of form; this is feeling; this is perception; these are conditionings; this is consciousness, this is the arising of consciousness, this is the vanishing of consciousness.’ As he remained like this, observing the arising and passing away of the five aggregates that are subject to clinging, before long, he realized that whatever is of the nature to arise is all of the nature to cease,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-183" href="#tei-note-UT22084-076-004-183">[33]</a></sup> and right there he reached individual awakening.</p><p>“Thereupon, after beholding the dharmas attained according to their conditions,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-185" href="#tei-note-UT22084-076-004-185">[34]</a></sup> on that occasion the blessed pratyekabuddha spoke this verse:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-186" href="#tei-note-UT22084-076-004-186">[35]</a></sup></p><div class="tei-verse"><div class="tei-line">Keeping close company, one comes to have attachments;</div><div class="tei-line">It is from attachment that this suffering comes about.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-189" href="#tei-note-UT22084-076-004-189">[36]</a></sup></div><div class="tei-line">Realizing the danger coming from attachment,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-191" href="#tei-note-UT22084-076-004-191">[37]</a></sup></div><div class="tei-line">One should move alone like a rhinoceros.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-193" href="#tei-note-UT22084-076-004-193">[38]</a></sup></div></div><p>“Then the blessed pratyekabuddha thought, ‘I have performed many difficult deeds for the sake of sentient beings, but no one has yet been benefitted. <span class="tei-ref">F.53.b</span> To whom should I now extend my compassion? Whose alms should I now receive and eat?’</p><p>“The blessed pratyekabuddha surveyed the whole of Jambudvīpa with his superhuman<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-196" href="#tei-note-UT22084-076-004-196">[39]</a></sup> divine vision, and he saw that all the food in Jambudvīpa had been exhausted apart from a single measure of food left for King Kanakavarṇa. He then thought, ‘Let me extend my compassion to King Kanakavarṇa. Let me receive and eat the single measure of food that is left for King Kanakavarṇa.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-197" href="#tei-note-UT22084-076-004-197">[40]</a></sup></p><p>“Then the blessed pratyekabuddha, by such miraculous ability of his,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-199" href="#tei-note-UT22084-076-004-199">[41]</a></sup> rose up into the sky, and, like a bird in bodily appearance, through his miraculous ability, proceeded to the royal capital Kanakāvatī.</p><p>“At that time King Kanakavarṇa was on the palace terrace, accompanied by five thousand courtiers. One minister saw the blessed pratyekabuddha coming from a distance. Seeing this, he called the other ministers, ‘Look, sirs, look! From the distance, a red-winged bird is coming toward us here!’</p><p>“Another minister said, ‘Sirs, this is not a red-winged bird—it’s a life-robbing demon that is coming here! It is now going to devour us!’</p><p>“Then King Kanakavarṇa rubbed his face with both hands and said to the ministers, ‘Sirs, this is not a red-winged bird, nor is it a life-robbing demon—it’s a sage who is coming out of compassion for us!’</p><p>“Thereupon that blessed pratyekabuddha alighted on top of King Kanakavarṇa’s palace. Rising from his seat, King Kanakavarṇa <span class="tei-ref">F.54.a</span> welcomed the blessed pratyekabuddha, bowed his head at the feet of the blessed pratyekabuddha, and invited him to sit on a seat that had been prepared. King Kanakavarṇa then asked the blessed pratyekabuddha, ‘Sage, for what purpose have you come here?’</p><p>“‘For the purpose of food, great king,’ the sage replied.</p><p>“Upon this, King Kanakavarṇa was very distraught, and weeping, he cried, ‘Oh, how poor I am! Even though I have dominion over Jambudvīpa, I am not able to provide alms to even a single sage!’</p><p>“Then the deity of the royal capital Kanakāvatī uttered this verse to King Kanakavarṇa:</p><div class="tei-verse"><div class="tei-line">What is suffering? It is to be poor.</div><div class="tei-line">What is greater suffering? It is poverty itself.</div><div class="tei-line">To be in poverty is the same as death.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-210" href="#tei-note-UT22084-076-004-210">[42]</a></sup></div><div class="tei-line">I would not choose poverty over death!<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-212" href="#tei-note-UT22084-076-004-212">[43]</a></sup></div></div><p>“King Kanakavarṇa then summoned the person in charge of the storehouse and asked, ‘Sir, is there any food in the house that I could offer to this sage?’</p><p>“‘Your Majesty,’ he replied, ‘Please know that all the food in Jambudvīpa has been exhausted apart from a single measure of food that remains for Your Majesty.’</p><p>“King Kanakavarṇa thought, ‘If I eat it, I will live. If I do not eat it, I will die.’ But then he thought, ‘Even if I eat it,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-216" href="#tei-note-UT22084-076-004-216">[44]</a></sup> I will certainly come to die—enough of this life of mine! How could such a virtuous and excellent sage leave my house today with an alms bowl as pristine as before he entered?’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-217" href="#tei-note-UT22084-076-004-217">[45]</a></sup></p><p>“King Kanakavarṇa then gathered his accountants, ministers, courtiers, gatekeepers, and councilors, and said, ‘Please rejoice, sirs! This is King Kanakavarṇa’s final act of charity.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-219" href="#tei-note-UT22084-076-004-219">[46]</a></sup> By this root of virtue, <span class="tei-ref">F.54.b</span> may there be a complete end to poverty for all the people of Jambudvīpa.’</p><p>“Thereupon King Kanakavarṇa put all there was of the measure of food into the bowl of that blessed pratyekabuddha and gave the bowl into the blessed pratyekabuddha’s right hand.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-221" href="#tei-note-UT22084-076-004-221">[47]</a></sup></p><p>“Now, it is in the nature of things that blessed pratyekabuddhas teach the Dharma bodily, not verbally.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-223" href="#tei-note-UT22084-076-004-223">[48]</a></sup> So the blessed pratyekabuddha received the alms<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-224" href="#tei-note-UT22084-076-004-224">[49]</a></sup> from King Kanakavarṇa and, in this way by miraculous ability,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-225" href="#tei-note-UT22084-076-004-225">[50]</a></sup> departed into the sky. With folded hands, King Kanakavarṇa<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-226" href="#tei-note-UT22084-076-004-226">[51]</a></sup> stood looking on, without blinking, until he had passed from sight.</p><p>“Then King Kanakavarṇa summoned his accountants, ministers, courtiers, gatekeepers, and councilors, and said, ‘Sirs, go to your respective homes. Please do not end your time by dying from hunger and thirst here at the palace.’</p><p>“They replied, ‘When Your Majesty possessed wealth and good fortune, we amused and enjoyed ourselves together with Your Majesty. How could we now abandon Your Majesty at the end, at this final hour?’</p><p>“Then, King Kanakavarṇa broke down in tears and wept. Wiping away his tears, he again said to his accountants, ministers, courtiers, gatekeepers, and councilors, ‘Sirs, go to your respective homes. All of you, please do not end your time by dying from hunger and thirst here at the palace.’</p><p>“At this, the accountants, ministers, courtiers, gatekeepers, and councilors also broke down in tears and wept. Wiping away their tears, they approached King Kanakavarṇa, bowed their heads at his feet, and with folded hands said to King Kanakavarṇa, ‘Today is our last sight of Your Majesty. <span class="tei-ref">F.55.a</span> Please forgive us for anything we have done contrary to Your Majesty’s instruction.’ <sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-231" href="#tei-note-UT22084-076-004-231">[52]</a></sup></p><p>“But just as that blessed pratyekabuddha finished eating the alms, at that very moment, four masses of clouds emerged from all four directions, and cool winds began to blow that swept Jambudvīpa clean.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-233" href="#tei-note-UT22084-076-004-233">[53]</a></sup> And then, during the second half of that day, it rained various kinds of foods and edible things. There were foods such as boiled rice, sattu, khichri, meat, and fish. There were edible things<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-234" href="#tei-note-UT22084-076-004-234">[54]</a></sup> such as edible roots, stalks,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-235" href="#tei-note-UT22084-076-004-235">[55]</a></sup> leaves, flowers, fruits, sesame, sesame oil,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-236" href="#tei-note-UT22084-076-004-236">[56]</a></sup> jaggery,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-237" href="#tei-note-UT22084-076-004-237">[57]</a></sup> and cane sugar.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-238" href="#tei-note-UT22084-076-004-238">[58]</a></sup> And there were many other kinds of foods, edible things, and delicacies that rained down.</p><p>“King Kanakavarṇa was thrilled, exalted, and elated, and as he rejoiced, full of rapture and gladness, he said to his accountants, ministers, courtiers, gatekeepers, and councilors, ‘Look, sirs! Right now the sprout of giving that single portion of alms has appeared! Fruits, leaves, and flowers<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-240" href="#tei-note-UT22084-076-004-240">[59]</a></sup> will come later!’</p><p>“On the second day, a week-long rain of goods and grains began. For seven days it rained sesame, rice, mung beans, black gram, barley, wheat, lentils, white rice, and all types of grains.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-242" href="#tei-note-UT22084-076-004-242">[60]</a></sup> For seven days it rained ghee. For seven days it rained sesame oil. For seven days it rained cotton cloth. For seven days it rained various kinds of materials.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-243" href="#tei-note-UT22084-076-004-243">[61]</a></sup> And for seven days it rained the seven precious substances, namely, gold, silver, crystal, beryl, ruby, emerald, and sapphire. <span class="tei-ref">F.55.b</span></p><p>“So, by the power of King Kanakavarṇa, there was a complete end to poverty for all the people of Jambudvīpa.</p><p>“Monks, you might be uncertain or in doubt, thinking that it was someone else who was King Kanakavarṇa at that time, at that moment.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-246" href="#tei-note-UT22084-076-004-246">[62]</a></sup> But, monks, it should not be seen in this way. I was that king named Kanakavarṇa at that time, at that moment.</p><p>“Monks, through this teaching, this should be understood: One<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-248" href="#tei-note-UT22084-076-004-248">[63]</a></sup> should know the fruit of giving and the karmic fruition of sharing gifts as I know the fruit of giving and the karmic fruition of sharing gifts. One should not eat<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-249" href="#tei-note-UT22084-076-004-249">[64]</a></sup> the last mouthful, the last morsel, oneself—without giving it or sharing it with others—and the arisen defilement of selfishness will not remain in possession of one’s mind. But because beings do not know the fruit of giving and the karmic fruition of sharing gifts as I know the fruit of giving and the karmic fruition of sharing gifts, they eat even their last mouthful, their last morsel, themselves—without giving, without sharing it with others—and the arisen defilement of selfishness remains in possession of their minds.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-250" href="#tei-note-UT22084-076-004-250">[65]</a></sup></p><div class="tei-verse"><div class="tei-line">Past deeds, virtuous or unvirtuous, do not perish,</div><div class="tei-line">To have attended upon the wise does not perish,</div><div class="tei-line">What is well said by the noble <sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-254" href="#tei-note-UT22084-076-004-254">[66]</a></sup> does not perish,</div><div class="tei-line">What is done for the grateful does not perish.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-256" href="#tei-note-UT22084-076-004-256">[67]</a></sup></div></div><p>This is what the Blessed One said. Elated, the bodhisattvas, monks, and the world with its gods, humans, asuras, and gandharvas rejoiced at what the Blessed One had said.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-076-004-258" href="#tei-note-UT22084-076-004-258">[68]</a></sup></p>This concludes “<cite>The Past Endeavor of Kanakavarṇa</cite>.”</section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-076-004-135"><p>The Tibetan translators have here rendered the Sanskrit <em>śloka</em> as <em>tshigs su bcad pa</em>, “verse,” but since it is here used in conjunction with <em>kīrti</em>, “renown,” and <em>śabda</em>, “fame,” it is more appropriate to interpret <em>śloka</em> in its wider sense as “acclaim” or “praise.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-135">back</a></li><li id="tei-note-UT22084-076-004-136"><p>The extant Sanskrit of the <cite>Divyāvadāna</cite> version (henceforth “the extant Sanskrit version”) here adds <em>digvidikṣu</em>, “in [all] directions and subdirections.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-136">back</a></li><li id="tei-note-UT22084-076-004-137"><p>The extant Sanskrit version in the <cite>Divyāvadāna</cite> here adds <em>dṛṣṭa eva dharme</em>, “in this present life.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-137">back</a></li><li id="tei-note-UT22084-076-004-138"><p>The extant Sanskrit version here adds the verbs <em>upa­saṃpadya pravedayate</em>, “having attained which, he makes it known,” which then concludes the sentence. Both the Tibetan and the Chinese translation lack renderings of these verbs, which indicates that they were absent in the underlying Sanskrit versions from which they were made.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-138">back</a></li><li id="tei-note-UT22084-076-004-139"><p>The Tibetan translation has <em>dam pa’i chos ston te</em> (S, N, H: <em>to</em>), which may be translated as a present or an imperfect past tense. The phrase <em>dam pa’i chos</em> suggests that the translators had read <em>saddharmaṃ</em>, “the good Dharma,” in the underlying Sanskrit text. The standard reading of this set passage, however, is <em>sa dharmaṃ deśayati</em>, “he teaches the Dharma,” which is the reading in the extant Sanskrit. The Chinese translation likewise does not contain an equivalent for the Tibetan <em>dam pa’i</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-139">back</a></li><li id="tei-note-UT22084-076-004-141"><p>Following S: <em>sbyin pa la ’gyed pa</em>; D, N: <em>sbyin pa la ’ged pa</em>; Y, J, C: <em>sbyin pa la ’god pa</em>; U: <em>sbyin pa la dged pa</em>. The Stok reading seems to be the older rendering for the Sanskrit <em>dāna­saṃvibhāgasya</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-141">back</a></li><li id="tei-note-UT22084-076-004-142"><p>The extant Sanskrit version here lacks an equivalent for the Tibetan <em>bdag gis</em>, “themselves.” The Chinese rendering <em>自</em>, however, indicates that another Sanskrit version here did read <em>ātmanas</em>, “themselves.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-142">back</a></li><li id="tei-note-UT22084-076-004-143"><p>The Tibetan translation reads <em>gzhan dag la</em>, “to others,” whereas the extant Sanskrit reads <em>sacel labheran dakṣiṇīyaṃ pratigrāhakam</em>, “if they were to meet a recipient worthy of offerings,” which is also the reading in the <cite>Dāna Sūtra</cite> (Tripathi 1995, p. 18). The Chinese translation here reads <em>他</em>, in agreement with the Tibetan, which suggests that another Sanskrit version indeed read <em>parān</em>, “to others.” Similar to the extant Sanskrit, the parallel passage in the Pali <cite>Dānasaṃvibhāga Sutta</cite> (It 26) contains the phrase “if there were to be recipients” (<em>sace nesaṃ paṭiggāhakā assu</em>), and in the following verses the recommended recipients are specified as “noble ones” (<em>ariyesu</em>) and “those worthy of offerings” (<em>dakkhiṇeyyesu</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-143">back</a></li><li id="tei-note-UT22084-076-004-144"><p>While the extant Sanskrit version here only reads <em>mātsaryaṃ</em>, “selfishness,” the Tibetan <em>ser sna’i sems kyi dri ma</em>, “mental defilement of selfishness,” indicates that its underlying Sanskrit read <em>mātsaryamalaṃ</em>, “the defilement of selfishness.” This is in agreement with the Pali <em>maccheramalaṃ</em> in the <cite>Dānasaṃvibhāga Sutta</cite> (It 26). In the first part of the Sanskrit <cite>Dāna Sūtra</cite> we also find the expression <em>mātsaryamala</em>, but then in the second part and in the verses only <em>mātsarya</em> is used (cf. Tripathi 1995, p. 18). It should be noted here that the Tibetan translators seem to have taken the Sanskrit <em>cittaṃ</em>, “mind,” with <em>mātsaryamalaṃ</em>, “defilement of selfishness,” rather than as the object of the verb <em>paryādāya</em>, “having taken possession of,” with <em>mātsaryamalaṃ</em> being the subject of this sentence. The Tibetan instead reads “they would not remain possessed by the arisen mental defilement of selfishness” (<em>ser sna’i sems kyi dri ma skyes pas kun nas dkris te ma ’dug cig</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-144">back</a></li><li id="tei-note-UT22084-076-004-145"><p>The extant Sanskrit version lacks an equivalent for the Tibetan <em>bdag nyid</em>, “themselves,” but instead adds <em>āgṛhītena cetasā</em>, “with a stingy mind.” The latter phrase is also present in the parallel passage in the Sanskrit <cite>Dāna Sūtra</cite> (Tripāṭhi 1995, p. 18). The Chinese translation, however, has <em>自</em>, which indicates that another Sanskrit version indeed read <em>ātmanas</em>, “themselves,” as is the case above.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-145">back</a></li><li id="tei-note-UT22084-076-004-147"><p>The extant Sanskrit version reads <em>prabhūta­sattva­svāpateyaḥ</em>, “abundant beings and possessions,” but neither the Tibetan or the Chinese translation contain an equivalent for <em>sattva</em>, “being.” The Sanskrit edition, therefore, needs to be emended to <em>prabhūta­svāpateyaḥ</em>, as pointed out by Hiraoka (2009, p. 66).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-147">back</a></li><li id="tei-note-UT22084-076-004-148"><p>The extant Sanskrit version adds <em>vaiḍūrya</em>, “beryl,” and <em>śaṅkha</em>, “conch.” The Chinese translation has <em>珂</em>, “white jade shell,” but, like the Tibetan, it lacks a rendering of <em>vaiḍūrya</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-148">back</a></li><li id="tei-note-UT22084-076-004-149"><p>Following S, N: <em>rta pho rgod</em>; D: <em>rta rgod ma</em>. The Stok and Narthang reading would indicate that the underlying Sanskrit text read <em>vaḍava/ vaḍaba</em>, whereas the extant Sanskrit manuscripts read <em>eḍaka</em>, “sheep” or “goats.” The Chinese <em>騲馬群</em> also appears to be a rendering of <em>vaḍava</em>, with no indication of any female gender <em>vaḍavā</em>, which the Degé reading <em>rta rgod ma</em>, “mare,” would suggest.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-149">back</a></li><li id="tei-note-UT22084-076-004-151"><p>The extant Sanskrit version adds <em>aṣṭādaśa kulakoṭī</em>, but this makes little sense here and has no equivalent in either the Tibetan or the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-151">back</a></li><li id="tei-note-UT22084-076-004-152"><p>We have here followed the standard understanding of the Sanskrit <em>koṭi</em> as “ten million.” The Tibetan reads <em>sa ya phrag lnga bdun ’bum</em>, “5.7 million,” which indicates that the Tibetan translators had understood the Sanskrit <em>koṭi</em> as “100,000,” a number which is normally denoted by the Sanskrit <em>lakṣa</em>. In the Chinese translation the Sanskrit <em>koṭi</em> has been rendered as <em>億</em>, “hundred million.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-152">back</a></li><li id="tei-note-UT22084-076-004-154"><p>The extant Sanskrit version lacks an equivalent phrase for the Tibetan <em>chos kyi rgyal po’i</em>, “as a Dharma king.” It also lacks the following two sentences on the king’s generosity and the people’s lifespan at the time. The Chinese translation, however, confirms that the phrase and these sentences were present in another Sanskrit version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-154">back</a></li><li id="tei-note-UT22084-076-004-157"><p>The Tibetan translators have taken the Sanskrit <em>grāmaṇyaḥ</em>, “sirs,” as the object of the sentence, and have translated it (as <em>grong mi</em> “city people”), understanding it as together with <em>sarvabaṇijo</em>, “all merchants.” However, in the Sanskrit it is in the vocative case, so it should be understood as the king’s form of address to his courtiers, as is the case throughout the narrative.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-157">back</a></li><li id="tei-note-UT22084-076-004-159"><p>The reading <em>anekopāyena</em> in Cowell and Neil’s Sanskrit edition of the <cite>Divyāvadāna</cite> (p. 292) is erroneous and should be emended to <em>anenopāyena</em> in light of the Tibetan <em>thabs ’dis</em>, as also pointed out by Hiraoka (2009, p. 66). It seems that Vaidya has silently made this emendation in his Sanskrit edition (p.181).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-159">back</a></li><li id="tei-note-UT22084-076-004-160"><p>Following S, N: <em>ltas ngan pa</em>; D: <em>ltas pa</em>. The Stok and Narthang reading appears to bring out a specific connotation of the Sanskrit <em>naimittika</em> as “one who can read bad omens.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-160">back</a></li><li id="tei-note-UT22084-076-004-161"><p>Following S, N: <em>mos pa rnams dang</em> / <em>bar snang gi</em>; D: <em>mo ba rnams sa dang</em> / <em>bar snang gi</em>. The extant Sanskrit version reads <em>bhūmyantarī­kṣamantra­kuśalā</em>, “skilled in consulting the earth and the sky,” and it seems that <em>sa</em>, “earth,” in the Degé reading and the following <em>bar snang gi</em>, “sky,” in all three Kangyurs reflect the first half of this compound, albeit misplaced within the sentence.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-161">back</a></li><li id="tei-note-UT22084-076-004-163"><p>The extant Sanskrit version lacks this second exclamation, but it is there in both the Tibetan and the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-163">back</a></li><li id="tei-note-UT22084-076-004-165"><p>The extant Sanskrit version here adds the sentences: “Let me count all the beings of Jambudvīpa. And having counted them, let me make measurements.” (<em>sarva­jāmbudvīpān sattvān gaṇeyam</em> / <em>atha gaṇayitvā māpeyam</em>). These sentences are also present in the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-165">back</a></li><li id="tei-note-UT22084-076-004-169"><p>The extant Sanskrit version lacks an equivalent for the Tibetan <em>legs par</em>, “properly,” in this sentence, but in the following passage we find the verb <em>gaṇ</em>- prefixed with <em>saṃ</em>-. The Sanskrit version that underlies the Tibetan translation might have had the prefix here. In the Chinese translation the prefix appears to have been rendered as <em>善</em>, “well,” but only for the second instance of the verb <em>gaṇ</em>- in this sentence.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-169">back</a></li><li id="tei-note-UT22084-076-004-170"><p>The extant Sanskrit version here lacks the phrase “starting with myself,” but it is there in both the Tibetan and the Chinese translation. In the following passage the extant Sanskrit version does contain the phrase <em>rājanaṃ kanaka­varṇam ādau kṛtvā</em>, “starting with King Kanakavarṇa.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-170">back</a></li><li id="tei-note-UT22084-076-004-172"><p>The extant Sanskrit version here adds <em>paraṃ deveti</em>, “saying, ‘Yes, Your Majesty.’” The Chinese translation lacks a rendering of this phrase, as is the case in the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-172">back</a></li><li id="tei-note-UT22084-076-004-174"><p>The extant Sanskrit version lacks this sentence and any mention of the eleventh month in the following sentence, but it is there in both the Tibetan and the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-174">back</a></li><li id="tei-note-UT22084-076-004-175"><p>The Chinese translation adds that the entire storehouse was empty and that the food that was left was only for one person for one day.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-175">back</a></li><li id="tei-note-UT22084-076-004-177"><p>The extant Sanskrit version here adds <em>ime sattvāḥ</em>, “these beings [are].” The Chinese translation contains this exclamatory sentence only once.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-177">back</a></li><li id="tei-note-UT22084-076-004-178"><p>The extant Sanskrit version reads <em>atraiva kālaṃ kariṣyatīti</em>, which does not make sense here and should be emended to <em>atraiva evaṃ kariṣyatīti</em> in light of the Tibetan <em>de nyid du de ltar byed</em>. This emendation is also suggested by Hiraoka (2009, p. 66).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-178">back</a></li><li id="tei-note-UT22084-076-004-179"><p>The extant Sanskrit version here adds <em>adhārmikair</em>, “unrighteous,” which is also reflected in the Chinese translation as <em>非法</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-179">back</a></li><li id="tei-note-UT22084-076-004-180"><p>We have followed the order of the Tibetan, which begins with <em>phar mi ’dzin pa</em>, “those who do not honor their fathers.” The extant Sanskrit begins with <em>amātṛjñair</em>, “those who do not honor their mothers,” and lacks any reference to fathers, but the Chinese <em>不識父母</em> confirms that another Sanskrit version did contain the phrase <em>apitṛjñair</em>, “those who do not honor their fathers.” This emendation is also suggested by Hiraoka (2009, p. 66).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-180">back</a></li><li id="tei-note-UT22084-076-004-182"><p>We have followed the extant Sanskrit <em>prati­mukhaṃ smṛtim upasthāpya</em> in rendering this standard description of establishing mindfulness. The Tibetan translation reads <em>dga’ ba dang bde ba dang dran pa mngon du bzhag nas</em>, “established joy, ease, and mindfulness.” This might reflect a misreading of the Sanskrit <em>pratimukhaṃ</em> as <em>prītisukhaṃ</em>. The Chinese translation also makes no mention of establishing joy and ease.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-182">back</a></li><li id="tei-note-UT22084-076-004-183"><p>The Tibetan reads <em>gang cung zad skye ba’i chos de thams cad ni</em> / <em>yun mi ring ba nyid du ’gag pa’i chos yin</em>, “Whatever is of the nature to arise, all that, before long, is of the nature to cease,” but this well known statement, most famously expressed by Ājñātakauṇḍinya after the first teaching of the Buddha in <cite>The Sūtra of Turning the Wheel of Dharma </cite>(<em>Dharma­cakra­pravartana­sūtra</em>, Toh 31),<a href="http://read.84000.co/translation/toh31.html" target="_blank" rel="noopener noreferrer">http://read.84000.co/translation/toh31.html</a> usually never contains the phrase “before long.” Rather, the Sanskrit <em>acirād eva</em>, “before long,” should here be taken with the verb <em>viditvā</em>, “having realized,” as has been done in the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-183">back</a></li><li id="tei-note-UT22084-076-004-185"><p>The Tibetan <em>rkyen ji lta ba bzhin gyis chos thob pa mthong nas</em> seems to be preserving the full and correct reading, whereas the extant Sanskrit only reads <em>yathāprāptān dharmān avalokya</em>, “after beholding dharmas according to how they are attained.” The Chinese <em>以是因緣</em> likewise indicates that another Sanskrit version contained the word <em>pratyaya</em>, “condition,” a term which is traditionally associated with the pratyekabuddha (see Norman 1983), and which is reflected in such Tibetan renderings as <em>rten ’brel bsgom</em>, “one who meditates on dependence,” and <em>rkyen gcig rtogs</em>, “one who realizes every single condition.” On the basis of the Tibetan and Chinese translations, Hiraoka (2009, p. 66) has proposed to emend the Sanskrit edition to <em>yathāpratyayaṃ prāptān dharmān avalokya</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-185">back</a></li><li id="tei-note-UT22084-076-004-186"><p>Following S, N: <em>tshigs su bcad pa ’di smras pa</em>; D reads <em>tshigs su bcad pa ’di dag smras pa</em>, with “verses” (plural). The Stok and Narthang reading is in agreement with the Sanskrit <em>gāthāṃ bhāṣate</em>. The Degé reading, however, seems to indicate that at some point the following five-lined verse, with its added line (see next note), was considered to consist of two verses. On this verse, and its Sanskit and Pali equivalents, see the Introduction.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-186">back</a></li><li id="tei-note-UT22084-076-004-189"><p>The Tibetan <em>chags las sdug bsngal ’di byung ste</em> is here followed by a further line that reads <em>chags la</em> (S, N, H: <em>las</em>) <em>sdug bsngal ’di ’jug pas</em>. This extra line, which would make for an odd five-lined verse, seems to be a slightly adjusted second rendering of the same underlying Sanskrit line which somehow got included in the final Tibetan translation. In the extant Sanskrit version, the line reads <em>snehānvayaṃ saṃ­bhavatīha duḥkham</em>, “Suffering here [in saṃsāra] comes about as a consequence of attachments,” for which the parallel verse in the <cite>Mahāvastu</cite> (Mvu I 358) reads <em>snehānvayaṃ duḥkham idaṃ prabhoti</em>, which is in close correspondence with the Pali <em>snehanvayaṃ dukkhaṃ idaṃ pahoti</em> in the <cite>Khaggavisāṇa Sutta</cite> (Sn 6). The Tibetan <em>’di</em> could possibly be a shortened form of <em>’di na</em> for metrical reasons, but in light of these attestations, it seems more likely that the Sanskrit version from which the Tibetan translation was made did in fact have <em>idaṃ</em>, “this,” instead of <em>iha</em>, “here,” which is the reading found in the extant Sanskrit version, as given in the Introduction.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-189">back</a></li><li id="tei-note-UT22084-076-004-191"><p>The Tibetan reads <em>de phyir mkhas pas chags sun phyung</em>, “Therefore the wise one, wary of attachments,” but the extant Sanskrit version reads <em>ādīnavaṃ snehagataṃ viditvā</em>, so the Tibetan seems to have misread the Sanskrit <em>viditvā</em>, “realizing,” as <em>vidvān</em>, “the wise one” (“Therefore the wise one, wary of attachments, should move alone like a rhinoceros”). Like the extant Sanskrit, the Chinese translation of this verse makes no mention of “the wise one,” but then it lacks the first line of the verse and differs significantly in the subsequent lines: <div class="tei-verse"><div class="tei-line">It is from attachments that suffering originates;</div><div class="tei-line">One should therefore abandon attachments,</div><div class="tei-line">One should delight in a solitary place,</div><div class="tei-line">Like the single horn of a rhinoceros.</div></div></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-191">back</a></li><li id="tei-note-UT22084-076-004-193"><p>Like the Sanskrit <em>khaḍgaviṣāṇa</em>, the Tibetan <em>bse ru</em> allows for two interpretations: (1) either <em>bse</em> is interpreted as “tanned leather,” which, together with <em>ru</em>, “horn,” makes for a compound word that means “rhinoceros;” (2) or <em>bse</em> is taken as “rhinoceros” for short, which would make for a phrase meaning “the horn of a rhinoceros.” We have chosen to translate the term according to the interpretation commonly found in the Buddhist Sanskrit tradition, since this is the tradition that would have been familiar to the Tibetan translators. For more on the ambiguity of the compound word <em>khaḍgaviṣāṇa</em>, see <span class="tei-ref">#UT22084-076-004-76</span> to the Introduction.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-193">back</a></li><li id="tei-note-UT22084-076-004-196"><p>The extant Sanskrit version here adds <em>viśuddhena</em>, “completely pure,” which is also rendered in the Chinese translation as <em>清淨</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-196">back</a></li><li id="tei-note-UT22084-076-004-197"><p>The extant Sanskrit version reads “Let me receive and eat alms from the house of King Kanakavarṇa (<em>kanaka­varṇasya niveśanāt</em>).” The Chinese translation agrees with the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-197">back</a></li><li id="tei-note-UT22084-076-004-199"><p>The Tibetan <em>de’i rdzu ’phrul ’di lta bus</em> indicates that the Tibetan translators read <em>tasya evaṃ ṛddhyā</em> where the extant Sanskrit has <em>tata eva ṛddhyā</em>, “from there, by miraculous ability.” The Chinese rendering <em>即以神通</em> seems to be in agreement with the extant Sanskrit reading.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-199">back</a></li><li id="tei-note-UT22084-076-004-210"><p>Following S, N: <em>dbul ba dag gi nang na shi dang mtshungs par gyur pa ste</em>; D: <em>dbul ba dag ni nang na shi dang mtshungs par gyur pa ste</em>. The Sanskrit reads: <em>maraṇasamaṃ dāridryam</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-210">back</a></li><li id="tei-note-UT22084-076-004-212"><p>The last line of this verse is not preserved in the extant Sanskrit version. It is, however, present in the Chinese translation, albeit more elaborately rendered for metrical reasons.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-212">back</a></li><li id="tei-note-UT22084-076-004-216"><p>The extant Sanskrit version lacks an equivalent <em>api</em> for the Tibetan <em>kyang</em>, “even,” but instead it adds the phrase <em>yadi vā na paribhokṣye</em>, “or if I do not eat it.” The Chinese translation agrees with the extant Sanskrit version.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-216">back</a></li><li id="tei-note-UT22084-076-004-217"><p>The Tibetan translation reads <em>’di ’dra ba’i drang srong tshul khrims dang ldan pa dge ba’i chos can de</em> (S, N: <em>te</em>), without the second half of the sentence that would have contained the verb. We have supplied this from the extant Sanskrit: <em>mama niveśane ’dya yathādhautena pātreṇa nirgamiṣyati</em>, which is also reflected in the Chinese translation. By way of explanation, the Chinese translators have paraphrased the Sanskrit <em>yathādhautena pātreṇa</em> as <em>其不得飯食空鉢</em>, “without having gotten food in his empty alms bowl.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-217">back</a></li><li id="tei-note-UT22084-076-004-219"><p>The Tibetan <em>sbyin pa gtong ba</em>, lit. “giving away a gift,” indicates that the Tibetan translators read <em>dānātisargaḥ</em> in the underlying Sanskrit, whereas the extant Sanskrit version in the <cite>Divyāvadāna</cite> reads <em>odanātisargaḥ</em>, “giving away boiled rice.” Rotman translates it “this last bit of rice” (Rotman 2017, 233). The Chinese rendering <em>最後布施</em> also suggests an underlying Sanskrit reading with <em>dāna</em>-.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-219">back</a></li><li id="tei-note-UT22084-076-004-221"><p>The extant Sanskrit version is more elaborate in the description of this scene: “Thereupon King Kanakavarṇa took the bowl of that great sage (<em>tasya maharṣes</em>), put the single measure of food in the bowl, and holding the bowl in both hands, fell to his knees (<em>ubhābhyāṃ pāṇibhyāṃ pātraṃ gṛhītvā jānubhyāṃ nipatya</em>) and placed the bowl in the blessed pratyekabuddha’s right hand.” Like the Tibetan, the Chinese translation does not describe the king as holding the bowl in both hands and falling to his knees, nor does it here refer to the pratyekabuddha as “that great sage.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-221">back</a></li><li id="tei-note-UT22084-076-004-223"><p>This statement refers to the tradition whereby a Buddhist monk will usually give a short Dharma teaching or recitation for any donor from whom he receives alms. It is said that a pratyekabuddha, however, simply accepts the alms and silently leaves, but in doing so can display supernormal powers as a highly realized being. As stated by Vasubandhu in the <cite>Abhi­dharma­kośabhāṣya</cite> (Pradhan 1975, p. 183.21; Toh 4090, F.159.b), pratyekabuddhas “are not without compassion, because they display their miraculous power for the sake of benefitting beings” (<em>nāpi niṣkaruṇāḥ</em> / <em>sattvānu­grahārtham ṛddher āviṣkaraṇāt</em>). This statement implied that by manifesting supernormal abilities in bodily form, pratyekabuddhas can instill faith in the Dharma in those who witness their miraculous feats, but without giving any verbal teaching.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-223">back</a></li><li id="tei-note-UT22084-076-004-224"><p>The extant Sanskrit version reads <em>piṇḍapātram</em>, “alms bowl,” which is likely a scribal error for <em>piṇḍapātaṃ</em>, “alms,” as reflected in the Tibetan <em>bsod snyoms</em> and the Chinese <em>所施食</em>. Elsewhere in the extant Sanskrit, an alms bowl is simply referred to as <em>pātra</em>, “bowl.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-224">back</a></li><li id="tei-note-UT22084-076-004-225"><p>The Tibetan <em>’di ltar rdzu ’phrul gyis</em> indicates that the Tibetan translators read <em>evamṛddhyā</em> where the extant Sanskrit version has <em>tata eva ṛddhyā</em>, “from there, by miraculous ability.” The Chinese translation reads <em>即以神通</em>, which seems to be in agreement with the extant Sanskrit.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-225">back</a></li><li id="tei-note-UT22084-076-004-226"><p>The Chinese translation here adds <em>并諸大眾</em>, “together with the great crowd.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-226">back</a></li><li id="tei-note-UT22084-076-004-231"><p>The extant Sanskrit version lacks an equivalent for the Tibetan <em>lha’i bka’</em>, “Your Majesty’s instruction,” and it has these two sentences in reverse order. The Chinese translation is in agreement with the extant Sanskrit.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-231">back</a></li><li id="tei-note-UT22084-076-004-233"><p>The extant Sanskrit version reads <em>meghāśca pra­varṣayantaḥ pāṃśūn śamayanti</em>, “and raining rainclouds settled the dust.” The Chinese translation instead repeats the sentence <em>涼風吹閻浮提其地淨</em>, “cold winds began to blow in Jambudvīpa that made the ground clean.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-233">back</a></li><li id="tei-note-UT22084-076-004-234"><p>Following S, N, H: <em>bca’i bar bya</em>; D: <em>bza’i bar bya</em>. The Stok, Narthang, and Lhasa reading is in agreement with the Sanskrit <em>khādanīyaṃ</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-234">back</a></li><li id="tei-note-UT22084-076-004-235"><p>The extant Sanskrit version here includes <em>skandha</em>-, “stalks,” which is not rendered in the Tibetan. The Chinese translation does contain a rendering of this as <em>莖</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-235">back</a></li><li id="tei-note-UT22084-076-004-236"><p>The Tibetan here adds <em>til mar</em>, “sesame oil,” and in the Chinese translation we also find oil included in the list, but this item seems out of place. The extant Sanskrit lacks this item. Note that there will be a separate rain of sesame oil further on.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-236">back</a></li><li id="tei-note-UT22084-076-004-237"><p>Following S, N, H, Y, Q, C: <em>bu ram</em>; D: <em>bur mar</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-237">back</a></li><li id="tei-note-UT22084-076-004-238"><p>The extant Sanskrit version here concludes the list with <em>piṣṭa­khādanīyam</em>, “edible flour,” and it lacks the following sentence, which is found in both the Tibetan and the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-238">back</a></li><li id="tei-note-UT22084-076-004-240"><p>We have followed the Tibetan for this last sentence. The extant Sanskrit version is shorter, reading only <em>phalam anyad bhaviṣyati</em>, “There will be another fruit.” The Chinese translation likewise makes no mention of leaves and flowers here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-240">back</a></li><li id="tei-note-UT22084-076-004-242"><p>The extant Sanskrit version lacks an equivalent for the Tibetan <em>’bru’i rigs thams cad dang</em>, “and all types of grains.” The Chinese translation only reads <em>等</em>, “and so forth.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-242">back</a></li><li id="tei-note-UT22084-076-004-243"><p>Following S, N, H: <em>rdzas rnam pa sna tshogs</em>; D: <em>zas rnam pa sna tshogs,</em> “various kinds of food”. The Stok, Narthang, and Lhasa reading is preferable in light of the extant Sanskrit which reads <em>nānāvidhadūṣya</em>, “various kinds of cloths.” The Tibetan translators appear to have read <em>dravya</em>, “substance” or “material,” instead of <em>dūṣya</em>, “cloth.” The Chinese rendering <em>種種雜</em>, “various miscellaneous things,” likewise seems to suggest that <em>dravya</em> may have been the underlying Sanskrit reading.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-243">back</a></li><li id="tei-note-UT22084-076-004-246"><p>The Tibetan translation has taken this sentence as an exhortation: “Monks, you should not be uncertain and in doubt about whether that king Kanakavarṇa at that time, at that moment, was someone else. Monks, you should see that at that time, at that moment, it was I who was named Kanakavarṇa.” As a standard passage that comes at the end of an <em>avadāna</em>, we have followed the extant Sanskrit version here, with which the Chinese translation is in agreement.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-246">back</a></li><li id="tei-note-UT22084-076-004-248"><p>The extant Sanskrit version here includes <em>bhikṣavaḥ</em>, “Monks,” at the beginning, but this is absent in both the Tibetan and the Chinese translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-248">back</a></li><li id="tei-note-UT22084-076-004-249"><p>Following S: <em>bza’ bar mi bya’o</em> ; D: <em>bar mi bya’o</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-249">back</a></li><li id="tei-note-UT22084-076-004-250"><p>The Tibetan text is problematic in this passage with repeated use of <em>mi bya’o</em>. We have, therefore, translated the passage in accordance with the passage at the beginning of the text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-250">back</a></li><li id="tei-note-UT22084-076-004-254"><p>Following the Tibetan <em>’phags pa’i skyes bos legs par bshad pa</em>. The extant Sanskrit version reads <em>ārya­janeṣu bhāṣitaṃ</em>, “What is said among the noble,” but the Tibetan indicates that the Tibetan translators were reading <em>āryajane subhāṣitaṃ</em>. The Chinese <em>聖眾中善語</em> is also a rendering of such a reading.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-254">back</a></li><li id="tei-note-UT22084-076-004-256"><p>The extant Sanskrit version and the Chinese translation add another verse that is commonly found at the end of <em>avadānas</em>: <div class="tei-verse"><div class="tei-line">“Whether a beautiful good deed</div><div class="tei-line">Or an unbeautiful bad deed,</div><div class="tei-line">It has its karmic fruition,</div><div class="tei-line">It will certainly bear fruit.”</div></div></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-256">back</a></li><li id="tei-note-UT22084-076-004-258"><p>There is no mention of bodhisattvas being present in the extant Sanskrit version or the Chinese translation. These versions instead read: “Elated, the monks, nuns, devoted laymen, devoted laywomen, gods, nāgas, yakṣas, gandharvas, asuras, garuḍas, kinnaras, mahoragas, and so on, and the entire assembly, rejoiced at what the Blessed One had said.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-076-004-258">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/076-003-toh349-the-exemplary-tale-of-srisena.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/076-008-toh354-teaching-the-causes-and-results-of-good-and-ill.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

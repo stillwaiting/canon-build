@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 68 — Determining the Vinaya: Upāli’s Questions — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 68 — Determining the Vinaya: Upāli’s Questions</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 68 — Determining the Vinaya: Upāli’s Questions        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Vinaya­viniścayopāli­paripṛcchā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the UCSB Buddhist Studies Translation Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>Determining the Vinaya: Upāli’s Questions</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">B1</span><span class="tei-ref">F.115.a</span> Homage to all the buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time: The Bhagavān was dwelling in Śrāvastī, in Prince Jeta’s Grove, Anāthapiṇḍada’s Park, together with a great monastic assembly of about five hundred monks as well as a thousand bodhisattvas. The Bhagavān looked upon those bodhisattva mahāsattvas with a gaze like an elephant’s and said to them, “Sons of noble birth, for the sake of upholding the holy Dharma in the future, in later times, who among you wishes to take up the unsurpassed, completely perfect awakening that took the Tathāgata countless myriads of eons to accomplish? Who among you, for the sake of bringing beings to maturity, wishes to nurture them by means of various methods, ways, and ideas?”</p><p>Then the bodhisattva mahāsattva Maitreya arose from his seat, adjusted his upper robe on one shoulder, knelt on his right knee, bowed to the Bhagavān with his palms joined in devotion, and said, “Bhagavān, for the sake of upholding the holy Dharma in the future, in later times, I wish to take up the unsurpassed, completely perfect awakening that took the Tathāgata countless myriads of eons to accomplish.”</p><p>The bodhisattva Siṃha said, “Bhagavān, I wish to nurture beings using various methods, ways, and ideas.” <span class="tei-ref">F.115.b</span></p><p>The bodhisattva Vajrapāṇi said, “Bhagavān, I wish to release beings from going to the lower realms.”</p><p>The bodhisattva Youthful Mañjuśrī said, “Bhagavān, I wish to fulfill the individual aspirations of beings.”</p><p>The bodhisattva Jñānaketu said, “Bhagavān, I wish to bring untold numbers of beings to maturity.”</p><p>The bodhisattva Dharmaketu said, “Bhagavān, I wish to bring beings to maturity through the gift of Dharma.”</p><p>The bodhisattva Candraketu said, “Bhagavān, I wish to bring beings to maturity by means of good qualities.”</p><p>The bodhisattva Sūryaketu said, “Bhagavān, I wish to bring beings to maturity by means of the easy vehicle.”</p><p>The bodhisattva Niḥśaṅka said, “Bhagavān, I wish to bring the limitless realms of beings to maturity and to support them.”</p><p>The bodhisattva Bhadrapāla said, “Bhagavān, I wish to bring beings to maturity by proclaiming the names they are to attain as result.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-30" href="#tei-note-UT22084-043-005-30">[1]</a></sup></p><p>The bodhisattva Akṣayamati said, “Bhagavān, I wish to liberate inexhaustible realms of beings through extensive aspirations.”</p><p>The bodhisattva Youthful Candraprabha said, “Bhagavān, I wish to supply beings with all the requisites of happiness.” <span class="tei-ref">F.116.a</span></p><p>The bodhisattva Sunetra said, “Bhagavān, I wish to establish the foundation for the happiness and contentment of beings.”</p><p>The bodhisattva Avalokiteśvara said, “Bhagavān, I wish to protect beings from lower realms and bad rebirths.”</p><p>The bodhisattva Mahā­sthāma­prāpta said, “Bhagavān, I wish to save beings who have not escaped from the lower realms.”</p><p>The bodhisattva Rāśika said, “Bhagavān, I wish to teach undisciplined beings the way of discipline.”</p><p>The bodhisattva Sumanas said, “Bhagavān, I wish to bring beings with inferior inclinations to maturity.”</p><p>The bodhisattva Sūrata said, “Bhagavān, I wish to bring beings with inferior wisdom to maturity.”</p><p>The bodhisattva Tejorāśi said, “Bhagavān, I wish to bring beings who have been born from the wombs of animals to maturity.”</p><p>The bodhisattva Recognizer of Unafflicted Realization said, “Bhagavān, I wish to bring beings to maturity by correctly teaching them the way.”</p><p>The bodhisattva Priya­darśana said, “Bhagavān, I wish to equip beings with the immeasurable requisites of happiness.”</p><p>The bodhisattva Excellent Faculties said, “Bhagavān, I wish to bring beings to maturity by causing them to reflect on suffering.”</p><p>The bodhisattva Engaged in Inconceivable Liberation said, “Bhagavān, with merely a thought I wish to liberate beings born in the world of pretas.” <span class="tei-ref">F.116.b</span></p><p>The bodhisattva Sūryaprabha said, “Bhagavān, I wish to bring to maturity those beings who are not yet mature.”</p><p>The bodhisattva Vimalakīrti said, “Bhagavān, I wish to fulfill every intention beings have.”</p><p>The bodhisattva Tejobala said, “Bhagavān, I wish to destroy the way beings take unfortunate rebirths.”</p><p>The bodhisattva Vimatiprahāṇa said, “Bhagavān, I wish to liberate inferior beings.”</p><p>The bodhisattva Niḥśaṅka­sthāna said, “Bhagavān, for the sake of gathering beings I wish to express encouragement by saying ‘Wonderful!’ ”</p><p>The bodhisattva Jñānaśrī said, “Bhagavān, I wish to bring beings to maturity according to their varying predispositions.”</p><p>The bodhisattva Boundless Stillness said, “Bhagavān, I wish to teach beings the way of the unconditioned.”</p><p>The bodhisattva Fearless toward All Phenomena said, “Bhagavān, I wish to teach beings according to their own predisposition.”</p><p>The bodhisattva Ratnaśrī said, “Bhagavān, I wish to display a heap of jewels to beings.”</p><p>The bodhisattva Sumati said, “Bhagavān, I wish to bring beings to maturity by showing them a beautiful form.”</p><p>The bodhisattva Vimalatejas said, <span class="tei-ref">F.117.a</span> “Bhagavān, I wish to support and bring beings to maturity through affection.”</p><p>The bodhisattva Maṇibhadra said, “Bhagavān, I wish to bring beings to maturity by causing them to remember their past births.”</p><p>The bodhisattva Puṇyaraśmi said, “Bhagavān, I wish to guide beings by means of perfect aspiration prayers.”</p><p>The bodhisattva <em>Bhadraśrī</em> said, “Bhagavān, I wish to permanently liberate beings from suffering.”</p><p>The bodhisattva Ratnapāṇi said, “Bhagavān, I wish to make beings happy with jewels.”</p><p>The bodhisattva Mati said, “Bhagavān, I wish to end the poverty of poor beings.”</p><p>The bodhisattva Sarva­nīvaraṇa­viṣkambhin said, “Bhagavān, I wish to liberate beings from all the afflictions.”</p><p>The bodhisattva Vajra Light said, “Bhagavān, I wish to teach beings the exalted way.”</p><p>The bodhisattva Manifesting the Appearance of Good Qualities said, “Bhagavān, I wish to liberate beings by causing all their thoughts to be joyful.”</p><p>The bodhisattva Exalted Dharma said, “Bhagavān, I wish to show the pure eye of Dharma to beings.”</p><p>The bodhisattva Vajragarbha said, “Bhagavān, I wish to liberate beings from the obscurations. <span class="tei-ref">F.117.b</span></p><p>The bodhisattva Dharmākara said, “Bhagavān, I wish to liberate beings through the Dharma.”</p><p>The bodhisattva <em>Nothing</em> said, “Bhagavān, I wish to eliminate all the poisonous afflictions of beings.”</p><p>The bodhisattva Candrottara said, “Bhagavān, I wish to teach the perspective of the Dharma to beings.”</p><p>The bodhisattva Siṃhamati said, “Bhagavān, I wish to give the gift of Dharma to beings.”</p><p>The bodhisattva Luminous Youth said, “Bhagavān, I wish to liberate beings from inferior states.”</p><p>The bodhisattva Glorious Awakening said, “Bhagavān, I wish to block beings’ way to lower rebirths by teaching them the exalted way.”</p><p>The bodhisattva Suvarṇa­prabha said, “Bhagavān, I wish to bring beings to maturity by displaying a physical body.”</p><p>The bodhisattva Puṇyaketu said, “Bhagavān, I wish to help those beings who help others.”</p><p>The bodhisattva Jagatīndhara said, “Bhagavān, I wish to destroy beings’ gateway into hell.”</p><p>The bodhisattva Nectar Holder said, “Bhagavān, I wish to save beings from saṃsāra.”</p><p>The youthful bodhisattva Jālinīprabha said, “Bhagavān, in the future, in later times, I wish to pacify beings’ afflictions through displays of light.”</p><p>After hearing such revelations from the bodhisattvas about <span class="tei-ref">F.118.a</span> donning the armor that will mature beings, the venerable Śāriputra was seized with wonder and amazement. He said to the Bhagavān, “Ah! Bhagavān, the great compassion possessed by these bodhisattva mahāsattvas is amazing, as is their inconceivable skill in means and their donning of the great armor of stable diligence. It is amazing how these bodhisattvas cannot be overcome by any being, how difficult they are to fathom, to meet with, or to subjugate, and how their brilliance cannot be overcome. Furthermore, Bhagavān, when supplicants come before these bodhisattva mahāsattvas, whose brilliance cannot be overcome, and beg for their heads, hands, feet, and eyes—even when they beg for everything—these bodhisattva mahāsattvas do not recoil or become discouraged but rather are overjoyed. This is amazing to me. Bhagavān, I also think that any beings who harm bodhisattva mahāsattvas and then ask for their various inner and outer constituents will surely become bodhisattva mahāsattvas who rest in inconceivable liberation.”</p><p>The Bhagavān replied to the venerable Śāriputra, “So it is, Śāriputra, so it is! Such is the scope of these bodhisattvas’ samādhi, methods, wisdom, and gnosis. Śāriputra, the scope of these bodhisattvas is not that of śrāvakas or pratyekabuddhas. Śāriputra, bodhisattva mahāsattvas, in order to meet the inclinations of beings, manifest all the emanations of the buddhas, but while doing so they do not waver from their bodhisattva nature. <span class="tei-ref">F.118.b</span></p><p>“Śāriputra, bodhisattva mahāsattvas will manifest the bodies of householders in order to dispel the delusions of grandeur held by householders who are intoxicated with arrogance. In order to remove the manic arrogance of beings who are inflated and intoxicated by mania, they display the power of a champion,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-79" href="#tei-note-UT22084-043-005-79">[2]</a></sup> or the exuberant power of Nārāyaṇa. They reveal the various paths to nirvāṇa for those beings who seek nirvāṇa. They display the form of śrāvakas to those beings oriented to the Śrāvakayāna and use the Śrāvakayāna to bring them to complete nirvāṇa. They display the form of pratyekabuddhas to beings oriented to the Pratyekabuddhayāna so that they can direct them toward dependent arising. They display the forms of buddhas to those beings who seek awakening so that they may attain all the qualities of a buddha.</p><p>“Śāriputra, in this way, once bodhisattva mahāsattvas have matured the realm of beings using a variety of methods, they set beings firmly in the qualities of buddhahood. Why? Śāriputra, beings will find no liberation apart from the liberation of final nirvāṇa, the gnosis of the tathāgatas. This is why they are called <em>tathāgatas</em>. Why? They are called <em>tathāgatas</em> because tathāgatas know the nature of reality just as it is. They are called <em>tathāgatas</em> because they use various concepts to induce understanding in beings. <span class="tei-ref">F.119.a</span> They are called <em>tathāgatas</em> because they possess all virtuous qualities and have abandoned all nonvirtuous qualities. They are called <em>tathāgatas</em> because they demonstrate liberation to beings who are in bondage. They are called <em>tathāgatas</em> because they reveal the exalted path to beings who have embarked on an evil path. They are called <em>tathāgatas</em> because they teach emptiness and arise from emptiness.</p><p>“Śāriputra, bodhisattva mahāsattvas demonstrate liberation to ordinary, deluded, childish beings by using various forms of knowledge that align with their inclinations and thus bring them to an understanding of the true Dharma. And yet, they never waver from their bodhisattva nature. They display various types of illusion in order cause beings to progressively reach the seat of awakening.</p><p>“Furthermore, Śāriputra, lay householder bodhisattva mahāsattvas should practice two types of giving: giving the Dharma and giving material goods. Śāriputra, lay householder bodhisattva mahāsattvas should practice these two types of giving without attachment or anger.</p><p>“Śāriputra, renunciant bodhisattva mahāsattvas should engage in four types of giving:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-84" href="#tei-note-UT22084-043-005-84">[3]</a></sup> giving pens, giving ink, giving books, and giving the Dharma. Śāriputra, renunciant bodhisattva mahāsattvas should practice these four types of giving.</p><p>“Śāriputra, bodhisattva mahāsattvas who have accepted that phenomena are unproduced should practice three types of relinquishment: <span class="tei-ref">F.119.b</span> relinquishment, great relinquishment, and the highest relinquishment. With respect to these, “relinquishment” means to give away the kingdom; “great relinquishment” is to give away one’s wives, sons, and daughters; and the “greatest relinquishment” is to give away one’s own head, hands, feet, eyes, skin, bones, and marrow. Śāriputra, a bodhisattva mahāsattva who has accepted that phenomena are unproduced should practice these three types of relinquishment.”</p><p>Śāriputra asked, “Bhagavān, are bodhisattvas not afraid of desire? Are they not afraid of anger and delusion?”</p><p>The Bhagavān replied,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-88" href="#tei-note-UT22084-043-005-88">[4]</a></sup> “Śāriputra, the faults associated with the great misdeeds of bodhisattvas are twofold: those related to anger and those related to delusion. Śāriputra, these are the two faults associated with the great misdeeds of bodhisattvas.</p><p>“Śāriputra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-90" href="#tei-note-UT22084-043-005-90">[5]</a></sup> among these, desire is a minor misdeed and is given up slowly. Anger is a major misdeed and is given up quickly. Delusion is a major misdeed and is given up slowly. Why is this? Śāriputra, desire is the ensnaring vine of saṃsāra and thus the seed of rebirth. Anger is eliminated quickly and is the cause of unfortunate rebirths. Delusion is difficult to relinquish and is the cause of falling into the eight great hells.</p><p>“Regarding these, Śāriputra, a bodhisattva should openly confess the weightiest of faults to an assembly of ten.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-92" href="#tei-note-UT22084-043-005-92">[6]</a></sup> A weighty fault of the hand—that is, grasping a woman’s hand—should be confessed to an assembly of five. <span class="tei-ref">F.120.a</span> The fault of looking at a woman with ill intent should be confessed before one or two people.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-93" href="#tei-note-UT22084-043-005-93">[7]</a></sup> A bodhisattva should confess the faults associated with the five grave acts of immediate retribution, faults related to women, faults related to boys, faults related to the hand, faults related to stūpas, faults related to the saṅgha, or any other weighty fault before the thirty-five bhagavān buddhas, doing so on their own throughout the day and night. The confession is as follows:</p><br /><div class="tei-verse"><div class="tei-line">“ ‘I (name) seek refuge in the Buddha,</div><div class="tei-line">I seek refuge in the Dharma,</div><div class="tei-line">I seek refuge in the Saṅgha.</div></div><div class="tei-verse"><div class="tei-line">“ ‘I pay homage to the tathāgata, the arhat, the completely perfect Buddha Śākyamuni!</div><div class="tei-line">I pay homage to Vajra­garbha­pramardin.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-95" href="#tei-note-UT22084-043-005-95">[8]</a></sup></div><div class="tei-line">I pay homage to Ratnārcis.</div><div class="tei-line">I pay homage to Nāgeśvara­rāja.</div><div class="tei-line">I pay homage to Vīrasena.</div><div class="tei-line">I pay homage to Vīranandin.</div><div class="tei-line">I pay homage to Ratnāgni.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-96" href="#tei-note-UT22084-043-005-96">[9]</a></sup></div><div class="tei-line">I pay homage to Ratna­candra­prabha.</div><div class="tei-line">I pay homage to Amoghadarśin.</div><div class="tei-line">I pay homage to Ratnacandra.</div><div class="tei-line">I pay homage to Vimala.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-97" href="#tei-note-UT22084-043-005-97">[10]</a></sup></div><div class="tei-line">I pay homage to Śūradatta.</div><div class="tei-line">I pay homage to <em>Brahmā</em>.</div><div class="tei-line">I pay homage to Brahma­datta.</div><div class="tei-line">I pay homage to Varuṇa.</div><div class="tei-line">I pay homage to Varuṇadeva.</div><div class="tei-line">I pay homage to Bhadraśrī.</div><div class="tei-line">I pay homage to Candanaśrī.</div><div class="tei-line">I pay homage to Anantaujas.</div><div class="tei-line">I pay homage to Prabhāsa­śrī.</div><div class="tei-line">I pay homage to Aśokaśrī.</div><div class="tei-line">I pay homage to <em>Nārāyaṇa</em>.</div><div class="tei-line">I pay homage to Kusumaśrī.</div><div class="tei-line">I pay homage to the Tathāgata Brahma­jyotir­vikrīḍitābhijña.</div><div class="tei-line">I pay homage to the Tathāgata Padma­jyotir­vikrīḍitābhijña.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-98" href="#tei-note-UT22084-043-005-98">[11]</a></sup><span class="tei-ref">F.120.b</span></div><div class="tei-line">I pay homage to Dhanaśrī.</div><div class="tei-line">I pay homage to Smṛtiśrī.</div><div class="tei-line">I pay homage to Suparikīrtita­nāmadheya­śrī.</div><div class="tei-line">I pay homage to Indra­ketu­dhvaja­rāja.</div><div class="tei-line">I pay homage to Suvikrānta­śrī.</div><div class="tei-line">I pay homage to Suvijita­saṃgrāma.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-99" href="#tei-note-UT22084-043-005-99">[12]</a></sup></div><div class="tei-line">I pay homage to Vikrānta­gāmin.</div><div class="tei-line">I pay homage to Samantāvabhāsa­vyūha­śrī.</div><div class="tei-line">I pay homage to Ratna­padma­vikrāmin.</div><div class="tei-line">I pay homage to the tathāgata, the arhat, the completely perfect Buddha Ratna­padma­supratiṣṭhita­śailendra­rāja.</div></div><p>“ ‘To them, and to all the other tathāgata, arhat, and completely perfect buddhas who dwell, live, and endure in all realms throughout the ten directions—to those blessed buddhas, I pray, please pay heed to me!</p><p>“ ‘In this and in all the other births that I have taken in saṃsāra without beginning or end, I have committed evil actions, I have asked others to commit them, or have rejoiced when they were committed.</p><p>“ ‘I have stolen the property of stūpas,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-102" href="#tei-note-UT22084-043-005-102">[13]</a></sup> the property of the saṅgha, or the property of the saṅghas of the four directions,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-103" href="#tei-note-UT22084-043-005-103">[14]</a></sup> have made others steal them, or have rejoiced when they were stolen.</p><p>“ ‘I have committed the five grave acts of immediate retribution, have made others commit them, or have rejoiced when they were committed.</p><p>“ ‘I have taken the path of the ten nonvirtuous actions, have made others take it, or have rejoiced in their taking it.</p><p>“ ‘Having been affected by karmic obscurations, I will go to the hells,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-104" href="#tei-note-UT22084-043-005-104">[15]</a></sup> I will go to the animal realm,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-105" href="#tei-note-UT22084-043-005-105">[16]</a></sup> I will go to the preta realm, I will be born among barbarians in a border region,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-106" href="#tei-note-UT22084-043-005-106">[17]</a></sup> I will be born among the long-lived devas, I will have incomplete faculties, I will hold false views, or I will not be able to delight in the appearance of a buddha in the world.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-107" href="#tei-note-UT22084-043-005-107">[18]</a></sup><span class="tei-ref">F.121.a</span></p><p>“ ‘All these karmic obscurations I confess in the presence of the bhagavān buddhas, who are wise, who have vision, who witness, who are authoritative, and who know and see. I reveal these actions; I do not conceal them, and I will henceforth show restraint.</p><p>“ ‘May those bhagavān buddhas pay heed to me!</p><p>“ ‘In this and in all the other births that I have taken in saṃsāra without beginning or end, whatever gifts I have given, even if just a small bit of food to an animal, whatever roots of virtue I may possess from maintaining discipline, whatever roots of virtue I may possess from chaste conduct, whatever roots of virtue I may possess by bringing beings to maturity, whatever roots of virtue I may possess through the mind of awakening, and whatever roots of virtue I may possess through unsurpassed gnosis, I collect, combine, and coalesce all of it and dedicate it to unsurpassed, completely perfect awakening by making unsurpassable, unexcelled, and supreme dedications.</p><p>“ ‘Just as the bhagavān buddhas of the past have dedicated, just as the bhagavān buddhas of the future will dedicate, and just as the bhagavān buddhas of the present now dedicate,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-109" href="#tei-note-UT22084-043-005-109">[19]</a></sup> in the same way, I also dedicate the virtue. I confess all evil actions.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-110" href="#tei-note-UT22084-043-005-110">[20]</a></sup> I rejoice in all merit. I supplicate all buddhas. May my gnosis be unsurpassed.</p><div class="tei-verse"><div class="tei-line">“ ‘With folded hands I seek refuge</div><div class="tei-line">In all the conquerors, the most supreme beings</div><div class="tei-line">Of the present, of the past, and who have not yet come,</div><div class="tei-line">Who possess an ocean of qualities limitless and praiseworthy.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-112" href="#tei-note-UT22084-043-005-112">[21]</a></sup><span class="tei-ref">F.121.b</span></div></div><br /><p>“Śāriputra, in the same way, a bodhisattva should follow all tathāgatas in contemplating the thirty-five bhagavān buddhas and the rest, and thereby purify all their evil actions.</p><p>“Similarly, for the sole purpose of liberating beings, those very bhagavān buddhas reveal themselves directly to those who purify all evil actions. They likewise teach confused, foolish beings using a variety of words in order to bring them to maturity,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-115" href="#tei-note-UT22084-043-005-115">[22]</a></sup> all without wavering from the dharmadhātu. They make perfect aspirations for the sake of liberating beings, liberating each according to their own predispositions.</p><p>“Śāriputra, bodhisattva mahāsattvas who have entered into the samādhi of <em>great compassion</em> appear in the form of hell beings, animals, beings in the world of Yama, and asuras for the sake of bringing beings to maturity. Bodhisattva mahāsattvas who have entered into the samādhi of <em>great array</em> appear in the form of householders for the sake of bringing beings to maturity. Bodhisattva mahāsattvas who have entered into the <em>supreme</em> samādhi appear in the form of cakravartins for the sake of bringing beings to maturity. Bodhisattva mahāsattvas who have entered into the samādhi of <em>intense brilliance</em> appear in the forms of Indra and Brahmā for the sake of bringing beings to maturity. Bodhisattva mahāsattvas who have entered into the <em>single-pointed</em> samādhi appear in the form of śrāvakas for the sake of bringing beings to maturity. <span class="tei-ref">F.122.a</span> Bodhisattva mahāsattvas who have entered into the samādhi of <em>nondual purity</em> appear in the form of pratyekabuddhas for the sake of bringing beings to maturity. Bodhisattva mahāsattvas who have entered into the samādhi of <em>peace</em> appear in the form of completely perfect buddhas for the sake of bringing beings to maturity. Bodhisattva mahāsattvas who have entered into the samādhi <em>mastery of all phenomena</em> appear in forms aligned with various predispositions for the sake of bringing beings to maturity.</p><p>“Śāriputra, in that way, for the sake of bringing beings to maturity, holy beings sometimes appear in the form of Indra, sometimes in the form of Brahmā, and sometimes in the form of a cakravartin, all without wavering from the dharmadhātu. How so? Bodhisattvas, for the sake of bringing beings to maturity, appear to beings of different predispositions in a variety of recognizable forms, but the bodhisattvas objectify neither themselves nor beings as they appear in various forms to those beings.</p><p>“Śāriputra, what do you think? Can a cat withstand the roar of a lion, the king of beasts?”</p><p>Śāriputra replied, “Bhagavān, it cannot withstand it.”</p><p>The Bhagavān said, “Śāriputra, what do you think? Can a donkey bear the load of a great rutting elephant?”</p><p>Śāriputra replied, “Bhagavān, it cannot bear it.”</p><p>The Bhagavān said, <span class="tei-ref">F.122.b</span> “Śāriputra, what do you think? Can poor people endure the lordly magnificence of Indra and Brahmā?”</p><p>Śāriputra replied, “Bhagavān, they cannot endure it.”</p><p>The Bhagavān said, “Śāriputra, what do you think? Can a fledgling vulture withstand the attack of a garuḍa, the king of birds?”</p><p>Śāriputra replied, “Bhagavān, it cannot withstand it.”</p><p>“Similarly Śāriputra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-127" href="#tei-note-UT22084-043-005-127">[23]</a></sup> no ordinary being or follower of the Śrāvakayāna or Pratyekabuddhayāna is able to purify the faults of bodhisattvas that have arisen from the power of their courageous mind and roots of virtue or from their knowledge, nor can they purify pernicious faults, which are purified by entering the samādhi of <em>seeing the buddhas</em>. Bodhisattvas memorize and recite the names of these bhagavān buddhas, and by reciting the Dharma discourse of the Three Sections<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-128" href="#tei-note-UT22084-043-005-128">[24]</a></sup> three times during the day and three times at night, they renounce their pernicious faults and obtain samādhi.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-129" href="#tei-note-UT22084-043-005-129">[25]</a></sup><span class="tei-ref">B2</span></p><br /><p>On the same occasion, the venerable Upāli emerged from meditative seclusion and came to where the Bhagavān was staying.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-131" href="#tei-note-UT22084-043-005-131">[26]</a></sup> Upon arriving, he bowed his head at the feet of the Bhagavān, circumambulated him three times, and sat to one side. The venerable Upāli then said to the Bhagavān, “Bhagavān, when I was in solitary meditative seclusion, this thought arose in my mind: <span class="tei-ref">F.123.a</span> the Bhagavān has taught the followers of the Śrāvakayāna and the Pratyekabuddhayāna that the prātimokṣa vows are the pure training and superior ethical discipline. The Bhagavān has also taught that followers of the Bodhisattva­yāna do not abandon their training even for the sake of their lives.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-132" href="#tei-note-UT22084-043-005-132">[27]</a></sup> How then would a bhagavān, one who has either passed into parinirvāṇa or still remains, explain the prātimokṣa vows of the followers of the Śrāvakayāna? How would the prātimokṣa vows of the followers of the Pratyekabuddhayāna be explained? How would the prātimokṣa vows of bodhisattvas who follow the Mahāyāna be explained? The Bhagavān has said that I am supreme among those who uphold the Vinaya. I will certainly listen closely to the Bhagavān’s expertise in the Vinaya and, having mastered it precisely, will gain fearlessness and teach it perfectly and in detail to the assemblies. Therefore, I thought to ask the Bhagavān to teach me perfectly and in detail.</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-133" href="#tei-note-UT22084-043-005-133">[28]</a></sup></p><p>“Bhagavān, while I was alone in private meditative seclusion, I thought, ‘I should go before the Tathāgata and request a detailed explanation of the Vinaya.’ Since this thought came to mind, Bhagavān, I ask the Tathāgata to offer a clear, thorough, and detailed explanation of the Vinaya to this great assembly of monks and bodhisattvas.”</p><p>The Bhagavān responded to the venerable Upāli, “Upāli, you should say that the training of the followers of the Śrāvakayāna is pure in terms of its distinctive application and distinctive orientation. <span class="tei-ref">F.123.b</span> You should also say that the training of bodhisattvas who follow the Mahāyāna is pure in terms of its distinctive application and distinctive orientation. Why? Upāli, it is because the followers of the Śrāvakayāna have a distinctive application and orientation, while bodhisattvas who follow the Mahāyāna have another distinctive application and orientation.</p><p>“Upāli, the pure ethical discipline of the followers of the Śrāvakayāna is impure ethical discipline for bodhisattvas who follow the Mahāyāna; for the latter it is highly corrupt ethical discipline. The pure ethical discipline of bodhisattvas who follow the Mahāyāna is impure ethical discipline for the followers of the Śrāvakayāna; for the latter it is highly corrupt ethical discipline. Why? Upāli, it is because the followers of the Śrāvakayāna do not even have the fleeting desire to take rebirth in the world. This is pure ethical discipline for the followers of the Śrāvakayāna but is impure, highly corrupt ethical discipline for bodhisattvas who follow the Mahāyāna. Upāli, why is it that pure ethical discipline of bodhisattvas who follow the Mahāyāna is impure, highly corrupt ethical discipline for the followers of the Śrāvakayāna? Upāli, it is because bodhisattvas who follow the Mahāyāna take rebirth in saṃsāra for countless eons without aversion or weariness. This is pure ethical discipline for bodhisattvas who follow the Mahāyāna <span class="tei-ref">F.124.a</span> but is impure, highly corrupt ethical discipline for the followers of the Śrāvakayāna.</p><p>“Upāli, you should therefore say that the training of bodhisattvas who follow the Mahāyāna guards and that the training of the followers of the Śrāvakayāna does not guard. You should say that the training of bodhisattvas who follow the Mahāyāna serves as a remedy and that the training of those who follow the Śrāvakayāna does not serve as a remedy. You should say that the training of bodhisattvas who follow the Mahāyāna is pursued over a long duration and that the training of the followers of the Śrāvakayāna proceeds in stages.</p><p>“Upāli, why is it that the training of bodhisattvas who follow the Mahāyāna guards, while the training of the followers of the Śrāvakayāna does not guard? Upāli, bodhisattvas who follow the Mahāyāna should work with the minds of other beings and other people,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-139" href="#tei-note-UT22084-043-005-139">[29]</a></sup> while the followers of the Śrāvakayāna do not need to. Upāli, that is why the training of bodhisattvas who follow the Mahāyāna guards, while the training of the followers of the Śrāvakayāna does not guard.</p><p>“Upāli, why is it that the training of bodhisattvas who follow the Mahāyāna serves as a remedy, while the training of the followers of the Śrāvakayāna does not serve as a remedy? Upāli,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-141" href="#tei-note-UT22084-043-005-141">[30]</a></sup> if a bodhisattva who follows the Mahāyāna commits a fault in the morning and does not part from the omniscient mind at midday,<span class="tei-ref">F.124.b</span> then the complement of ethical discipline of the bodhisattva who follows the Mahāyāna is not at all inhibited. If the bodhisattva commits a fault at midday and has not parted from, but rather maintains, the omniscient mind in the afternoon, then the complement of ethical discipline of the bodhisattva who follows the Mahāyāna is not at all inhibited. If the bodhisattva commits a fault in the afternoon and has not parted from, but rather maintains, the omniscient mind in the first watch of the night, then the complement of ethical discipline of the bodhisattva who follows the Mahāyāna is not at all inhibited. If the bodhisattva commits a fault in the first watch of the night and has not parted from, but rather maintains, the omniscient mind in the middle watch of the night, then the complement of ethical discipline of the bodhisattva who follows the Mahāyāna is not at all inhibited. If the bodhisattva commits a fault in the middle watch of the night and has not parted from, but rather maintains, the omniscient mind in the last watch of the night, then the complement of ethical discipline of the bodhisattvas who follow the Mahāyāna is not at all inhibited.</p><p>Therefore, Upāli, the training of bodhisattvas who follow the Mahāyāna serves as a remedy. Bodhisattvas should neither give rise to excess remorse for nor feel overly dejected about their faults.</p><p>“Upāli, you should understand that when the followers of the Śrāvakayāna commit a fault repeatedly, the complement of ethical discipline of those followers of the Śrāvakayāna deteriorates,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-143" href="#tei-note-UT22084-043-005-143">[31]</a></sup> degenerates, and is exhausted.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-144" href="#tei-note-UT22084-043-005-144">[32]</a></sup> Why? Because followers of the Śrāvakayāna, for the sake of eliminating all afflictions, act as if their head and clothes were on fire. <span class="tei-ref">F.125.a</span> In this way, the training of the followers of the Śrāvakayāna—who fervently desire parinirvāṇa—does not serve as a remedy.</p><p>“Upāli, how is it that the training of bodhisattvas who follow the Mahāyāna is pursued over a long duration, while the training of the Śrāvakayāna proceeds in stages? Upāli, you should understand that even if bodhisattvas who follow the Mahāyāna revel in, relish, and enjoy the five sense pleasures for as many eons as there are grains of sand in the river Ganges but do not give up the mind of awakening, then the training of bodhisattvas who follow the Mahāyāna will not be inhibited at all.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-146" href="#tei-note-UT22084-043-005-146">[33]</a></sup> Why? Because, Upāli, there are times and instances in which bodhisattvas who follow the Mahāyāna have so fully assimilated bodhicitta that they are not even affected by the afflictions in their dreams. Upāli, bodhisattvas who follow the Mahāyāna do not eliminate the afflictions in a single lifetime; the afflictions of bodhisattvas whose roots of virtue have matured are exhausted gradually. Followers of the Śrāvakayāna, whose roots of virtue have not matured<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-147" href="#tei-note-UT22084-043-005-147">[34]</a></sup> and who act as if their head and clothes were on fire, will not take rebirth in saṃsāra for even an instant. Therefore, Upāli, the training of bodhisattvas who follow the Mahāyāna is to be pursued over a long duration, and the training of the followers of the Śrāvakayāna proceeds in stages.</p><p>“Therefore, Upāli, you should say that the training of bodhisattvas who follow the Mahāyāna guards, serves as a remedy, and is pursued over a long duration. <span class="tei-ref">F.125.b</span> You should say that the training of the followers of the Śrāvakayāna does not guard, does not serve as a remedy, and proceeds in stages. Why? Upāli, unsurpassed, completely perfect awakening requires significant requisites; it is not easy for bodhisattvas who follow the Mahāyāna to take rebirth and transmigrate for limitless eons if they are singularly discontented with saṃsāra.</p><p>“Upāli, the tathāgata, arhat, completely perfect buddhas recognize that there is a purpose in not teaching bodhisattvas engaged in the Mahāyāna about discontentment alone, or in teaching them about dispassion alone or only about revulsion. They also teach on being joyful and delighted,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-150" href="#tei-note-UT22084-043-005-150">[35]</a></sup> on what is profound and what is not defiled, about subtleties, analysis,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-151" href="#tei-note-UT22084-043-005-151">[36]</a></sup> and about being without regret and obsession. They teach about what is unobstructed, about what is unobscured, and about emptiness. Hearing these teachings, bodhisattvas are overjoyed, do not feel discontent for saṃsāra, and perfect nonattachment, the unsurpassed, completely perfect state of awakening.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-152" href="#tei-note-UT22084-043-005-152">[37]</a></sup></p><p>Then the venerable Upāli asked the Bhagavān, “Bhagavān, among the things considered to be errors, some are associated with desire, some are associated with anger, and some are associated with delusion. That being so, Bhagavān, which of those are the weightiest errors for bodhisattvas who follow the Mahāyāna—those associated with desire, those associated with anger, or those associated with delusion?” <span class="tei-ref">F.126.a</span></p><p>The Bhagavān replied to the venerable Upāli,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-155" href="#tei-note-UT22084-043-005-155">[38]</a></sup> “Upāli, suppose that, on the one hand, a bodhisattva who follows the Mahāyāna commits faults associated with desire for as many eons as there are grains of sand in the river Ganges; and suppose that, on the other hand, the same bodhisattva commits a single fault related to anger. If we consider each of these cases in the context of the Bodhisattva­yāna, then the fault related to anger is much weightier than the faults related to desire. Why? Upāli, anger forsakes beings, whereas desire brings beings together. Upāli, bodhisattvas are not deceived by and do not fear afflictions that gather beings together; but bodhisattvas are deceived by and fear the afflictions that forsake beings.</p><p>“Moreover, Upāli, the Tathāgata has taught that desire is a minor misdeed that is given up slowly, anger is a major misdeed that is given up quickly, and delusion is a major misdeed that is given up slowly. Among those, Upāli, minor misdeeds that are given up slowly are not considered afflictions for bodhisattvas. Major misdeeds that are given up quickly should be viewed as afflictions for bodhisattvas; indeed, they should not desire them, even in their dreams. Therefore, Upāli, you should say that the faults of bodhisattvas that are associated with desire are not faults, because for bodhisattvas there is no deception or fault in them. <span class="tei-ref">F.126.b</span> You should say that faults associated with anger are faults, because for bodhisattvas there is deception and fault in them.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-157" href="#tei-note-UT22084-043-005-157">[39]</a></sup> Upāli, those bodhisattvas who are not skilled in means are frightened by the faults associated with desire but are not frightened by the faults associated with anger. Bodhisattvas who are skilled in means are frightened by the faults associated with anger but are not frightened by the faults associated with desire.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-158" href="#tei-note-UT22084-043-005-158">[40]</a></sup></p><p>Then Youthful Mañjuśrī, who was in the assembly, said to the Bhagavān, “Bhagavān, what is discipline when all phenomena are thoroughly tamed?”</p><p>The Bhagavān replied to Youthful Mañjuśrī, “Mañjuśrī, if foolish beings knew that all phenomena are thoroughly tamed, then the Tathāgata would not have to formulate the Vinaya over and over. Because beings do not know this, the Tathāgata gradually formulated the Vinaya so that they may understand that all phenomena are thoroughly tamed.”<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-161" href="#tei-note-UT22084-043-005-161">[41]</a></sup></p><p>Then the venerable Upāli said to the Bhagavān, “Bhagavān, Youthful Mañjuśrī has not offered any kind of explanation on the instructions for determining the Vinaya. Bhagavān, for that reason, please have Youthful Mañjuśrī teach some of the important points.”</p><p>The Bhagavān said to Youthful Mañjuśrī, <span class="tei-ref">F.127.a</span> “Mañjuśrī, because the monk Upāli wishes to hear about mastering the Vinaya, give a teaching beginning with the topic of the <em>thoroughly tamed</em>.”</p><p>Then Youthful Mañjuśrī said to the venerable Upāli, “Honorable Upāli, all phenomena are thoroughly tamed—it is for the sake of disciplining one’s own mind that the topic of the <em>thoroughly tamed</em> is taught. No phenomenon is defiled; it is because the self cannot be apprehended that the discipline of remorse is taught. No phenomenon is mistaken; it is because they are inherently pure that the topic of the <em>thoroughly tamed</em> is taught. All phenomena are an ultimate gateway to suchness; it is because training should be free of deceit that pure training is taught. All phenomena are nonconceptual, cannot be accepted, and cannot be rejected; it is because they are inconceivable that the state of nonattachment is taught. All phenomena are free of attachment and do not persist; it is because they do not persist for long that the purity of all beings is taught. All phenomena are found within the limits of space; it is because they lack materiality that the lack of inherent existence has been taught. No phenomenon can be differentiated; it is because the limits of past, future, and present are not apprehended that the sameness of the three times is taught. All phenomena lack designations; it is because the mind is oriented to equanimity that the elimination of doubt is taught.</p><p>“Honorable Upāli, that is the thoroughly tamed dharmadhātu realized by bhagavān buddhas. Noble sons and daughters who do not have faith in the true nature of phenomena are far removed from the training of the Tathāgata.”</p><p>Then the venerable Upāli said to the Bhagavān, <span class="tei-ref">F.127.b</span> “Bhagavān, the teaching that Youthful Mañjuśrī has given emerges from the inconceivable itself.”</p><p>The Bhagavān replied to the venerable Upāli, “Upāli, the Dharma teaching of Youthful Mañjuśrī is aligned with liberation; there is no liberation that is not rooted in inconceivability. For that reason Youthful Mañjuśrī teaches the Dharma for the sake of removing the arrogance of those arrogant ones who believe that they are free of all concepts but are caught up in thought.”</p><p>Then the venerable Upāli asked the Bhagavān, “Bhagavān, what thoughts do monks have that illustrate this arrogance?”</p><p>The Bhagavān then replied to the venerable Upāli, “Upāli, if a monk thinks he has eliminated desire, then he acts with arrogance. If he thinks he has eliminated anger and delusion, then he acts with arrogance. If he thinks, ‘The qualities of desire are one thing, and the qualities of a buddha are another,’ then he acts with arrogance. If he thinks, ‘The qualities of anger are one thing and the qualities of a buddha are another,’ or ‘the qualities of delusion are one thing and the qualities of the Buddha are another,’ he acts with arrogance. If he thinks he is happy, he acts with arrogance. If he thinks of his deeds, he acts with arrogance. If he thinks he is liberated, he acts with arrogance. If he thinks of emptiness, he acts with arrogance. If he thinks of signlessness, he acts with arrogance. If he thinks of wishlessness, he acts with arrogance. <span class="tei-ref">F.128.a</span> If he thinks of preconceived notions, he acts with arrogance. If he thinks of nonorigination, he acts with arrogance. If he thinks of immateriality, he acts with arrogance. If he thinks that phenomena exist, he acts with arrogance. If he thinks that all phenomena are impermanent, he acts with arrogance. If he thinks, ‘What is there to do if all phenomena are empty?’ then he acts with arrogance. This is the arrogance of a follower of the Śrāvakayāna.</p><p>“What is the arrogance of a follower of the Bodhisattva­yāna? If he thinks, ‘I have generated the attitude that aspires to the gnosis of the buddhas, which is superior to everything else,’ then he acts with arrogance. If he thinks, ‘I should practice the six perfections,’ then he acts with arrogance. If he thinks that the perfection of wisdom refers to renunciation, then he acts with arrogance. If he thinks, ‘This is profound, and that is not profound,’ then he acts with arrogance. If he thinks, ‘This leads to purity, and that does not lead to purity,’ then he acts with arrogance. If he thinks, ‘These are the qualities of buddhas, these are the qualities of pratyekabuddhas, and these are the qualities of śrāvakas,’ then he acts with arrogance. If he thinks, ‘This is logical, and that is not logical,’ then he acts with arrogance. If he thinks, ‘This is defiled, and that is not defiled,’ then he acts with arrogance. If he thinks, ‘This is the path, and that is not the path,’ then he acts with arrogance. <span class="tei-ref">F.128.b</span> If he thinks, ‘I will quickly and fully attain unsurpassed, completely perfect awakening,’ then he acts with arrogance. If he thinks, ‘Since all phenomena are inconceivable, I will not contemplate them,’ then he acts with arrogance. If he thinks, ‘Since unsurpassed, completely perfect awakening is inconceivable, there is nothing to be contemplated,’ then he is engaged in significant objectification. This is the arrogance of a follower of the Bodhisattva­yāna.”</p><p>Then the venerable Upāli asked the Bhagavān, “How does a monk avoid arrogance?”</p><p>The Bhagavān replied to the venerable Upāli, “Upāli, a monk avoids arrogance if he is not attached to the causal conditions for omniscient gnosis, to the inconceivable.”</p><br /><p>Then, to explain the inconceivable in detail, the Bhagavān spoke in verse:</p><div class="tei-verse"><div class="tei-line">“Always happy are those people</div><div class="tei-line">Who understand that phenomena are inconceivable.</div><div class="tei-line">They have no concept of Dharma and non-Dharma;</div><div class="tei-line">Everything is differentiated by mental elaboration.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-175" href="#tei-note-UT22084-043-005-175">[42]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Since everything is inconceivable and everything is unreal,</div><div class="tei-line">Gnosis should discern between the existent and non-existent.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-177" href="#tei-note-UT22084-043-005-177">[43]</a></sup></div><div class="tei-line">But fools who have fallen under the power of mind</div><div class="tei-line">Suffer for billions of existences.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-178" href="#tei-note-UT22084-043-005-178">[44]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“The Buddha is inconceivable and nonexistent;</div><div class="tei-line">Monks who do not consider him supreme are incorrect in their thinking.</div><div class="tei-line">The Buddha is a product of their conceptualization,</div><div class="tei-line">But even this conceptualization is unreal.</div></div><div class="tei-verse"><div class="tei-line">“Fools who think that phenomena are empty</div><div class="tei-line">Have taken a wrong path. <span class="tei-ref">F.129.a</span></div><div class="tei-line">Phenomena that are declared empty with words</div><div class="tei-line">Are themselves wordless but expressed in words.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-181" href="#tei-note-UT22084-043-005-181">[45]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“The mind that thinks phenomena are peaceful and pacified</div><div class="tei-line">Is itself unborn and unreal.</div><div class="tei-line">All conceptual elaborations are postulations of the mind.</div><div class="tei-line">Therefore, know that phenomena are inconceivable.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-183" href="#tei-note-UT22084-043-005-183">[46]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“All of these phenomena are unthinkable, unimaginable;</div><div class="tei-line">To the extent they are unthought, so are they empty.</div><div class="tei-line">A person who wants to think about emptiness</div><div class="tei-line">Finds it all the more inconceivable.</div></div><div class="tei-verse"><div class="tei-line">“When all conditions are right, the eye sees.</div><div class="tei-line">But forms that the eye normally sees</div><div class="tei-line">Cannot be seen at night or when conditions are not right.</div><div class="tei-line">Thus the presence or absence of conditions are concepts.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-186" href="#tei-note-UT22084-043-005-186">[47]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“In dependence on light, the eye sees</div><div class="tei-line">Various forms both pleasing and unpleasant.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-188" href="#tei-note-UT22084-043-005-188">[48]</a></sup></div><div class="tei-line">Since it sees depending on the right conditions,</div><div class="tei-line">The eye in fact never sees.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-189" href="#tei-note-UT22084-043-005-189">[49]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Pleasant sounds that are heard</div><div class="tei-line">Never actually enter the ear.</div><div class="tei-line">Their entry is not observable;</div><div class="tei-line">Sound occurs through the force of concepts.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-191" href="#tei-note-UT22084-043-005-191">[50]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“All these phenomena have been explained</div><div class="tei-line">Using words to label and account for them.</div><div class="tei-line">Although phenomena are neither present nor absent,</div><div class="tei-line">That is not how it appears to fools.</div></div><div class="tei-verse"><div class="tei-line">“Although I have praised generosity to the world,</div><div class="tei-line">The phenomenon of avarice is not to be found.</div><div class="tei-line">Similarly, the Conqueror’s qualities are inconceivable;</div><div class="tei-line">They are also not found and not seen.</div></div><div class="tei-verse"><div class="tei-line">“Although I have taught pure ethical discipline,</div><div class="tei-line">Ethical infractions are like a hand in space.</div><div class="tei-line">All bad ethical discipline is like space,</div><div class="tei-line">And so too is proper ethical discipline.</div></div><div class="tei-verse"><div class="tei-line">“Although I have explained the excellence of patience,</div><div class="tei-line">Its essence can never be seen.</div><div class="tei-line">Even though there is no phenomenon to be upset by,</div><div class="tei-line">The Conqueror has explained patience. <span class="tei-ref">F.129.b</span></div></div><div class="tei-verse"><div class="tei-line">“I have praised supreme wakefulness,</div><div class="tei-line">For the purpose of remaining vigilant day and night.</div><div class="tei-line">Although one may exert oneself for hundreds of eons,</div><div class="tei-line">Nothing increases and nothing diminishes.</div></div><div class="tei-verse"><div class="tei-line">“Beings have been taught the excellence of meditation, liberation, and samādhi,</div><div class="tei-line">As well as their points of entry.</div><div class="tei-line">Although there is no end to the doctrines they contain,</div><div class="tei-line">I have taught them after determining their sections.</div></div><div class="tei-verse"><div class="tei-line">“Stating that phenomena must be understood through wisdom,</div><div class="tei-line">I have taught on wisdom, insight, and the intellect.</div><div class="tei-line">And yet, nature and its lack can never be understood,</div><div class="tei-line">But it is still necessary to teach them.</div></div><div class="tei-verse"><div class="tei-line">“I have taught the world that asceticism is bad,</div><div class="tei-line">Saying, ‘Take delight in cultivating isolation and contentment!’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-200" href="#tei-note-UT22084-043-005-200">[51]</a></sup></div><div class="tei-line">Anything that cannot be attained through contentment<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-201" href="#tei-note-UT22084-043-005-201">[52]</a></sup></div><div class="tei-line">Is not to be found in this Dharma.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-202" href="#tei-note-UT22084-043-005-202">[53]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“I have taught about the frightening hells</div><div class="tei-line">That terrify many thousands of beings.</div><div class="tei-line">And yet, there is no one who, upon death,</div><div class="tei-line">Takes a terrifying rebirth.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-204" href="#tei-note-UT22084-043-005-204">[54]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“There is no one who inflicts harm</div><div class="tei-line">With a sword, a spear, or a blade.</div><div class="tei-line">It is through the power of concepts that in those lower realms</div><div class="tei-line">Nonexistent weapons are seen to fall upon the body.</div><div class="tei-line"></div></div><div class="tei-verse"><div class="tei-line">“There is no one who has made</div><div class="tei-line">The various delightful, blossoming flowers</div><div class="tei-line">And pleasant, radiant golden palaces;</div><div class="tei-line">They manifest through the power of concepts.</div></div><div class="tei-verse"><div class="tei-line">“The world is fabricated by concepts;</div><div class="tei-line">Fools discriminate by clinging to ideas.</div><div class="tei-line">Clinging and non-clinging do not exist;</div><div class="tei-line">Fabrications are like illusions and mirages.</div></div><div class="tei-verse"><div class="tei-line">“Although I have taught exalted, supreme conduct,</div><div class="tei-line">Saying, ‘Generate the mind of awakening for the benefit of beings!’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-209" href="#tei-note-UT22084-043-005-209">[55]</a></sup></div><div class="tei-line">There is no awakening to be observed;</div><div class="tei-line">That which is desired simply does not exist.</div></div><div class="tei-verse"><div class="tei-line">“I have taught that the mind is luminous and pure by nature,</div><div class="tei-line">That it is dustless, free of dust, and stainless.</div><div class="tei-line">Fools conceptualize that which is nonexistent,</div><div class="tei-line">And so they develop desire, anger, and delusion. <span class="tei-ref">F.130.a</span></div></div><div class="tei-verse"><div class="tei-line">“When the sublime Dharma of meditative equanimity is attained,</div><div class="tei-line">Desire, anger, and delusion do not exist.</div><div class="tei-line">Phenomena, which are free of desire and liberated,</div><div class="tei-line">Do not serve as the basis of anything, and nirvāṇa is attained.</div></div><div class="tei-verse"><div class="tei-line">“Those who understand these space-like phenomena</div><div class="tei-line">Can go to hundreds of realms unhindered.</div><div class="tei-line">Since their mind is free of desire,</div><div class="tei-line">They must cultivate the path without obstruction.</div></div><div class="tei-verse"><div class="tei-line">“Although one has practiced for hundreds of eons</div><div class="tei-line">And liberated countless beings,</div><div class="tei-line">There never were beings;</div><div class="tei-line">They neither decrease nor proliferate endlessly.</div></div><div class="tei-verse"><div class="tei-line">“A magician can conjure</div><div class="tei-line">Hundreds of beings into the world</div><div class="tei-line">And then kill all those emanations</div><div class="tei-line">Without any illusions being killed.</div></div><div class="tei-verse"><div class="tei-line">“Similarly, all beings have an illusory nature,</div><div class="tei-line">And their extent is wholly unknown.</div><div class="tei-line">Those who invested themselves in this infinite multitude</div><div class="tei-line">Are insensitive to the world.</div></div><div class="tei-verse"><div class="tei-line">“Those who know that phenomena lack inherent nature</div><div class="tei-line">Are heroes who found nirvāṇa in the world.</div><div class="tei-line">Although they enjoy sense pleasures, they are unattached;</div><div class="tei-line">They forsake attachments and discipline beings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-217" href="#tei-note-UT22084-043-005-217">[56]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“Although there are neither beings nor living things here,</div><div class="tei-line">The lords of men work for the welfare of beings.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-219" href="#tei-note-UT22084-043-005-219">[57]</a></sup></div><div class="tei-line">They benefit beings, even though beings do not exist.</div><div class="tei-line">For them, this is an arduous task.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-220" href="#tei-note-UT22084-043-005-220">[58]</a></sup></div></div><div class="tei-verse"><div class="tei-line">“If one shows a closed hand to a child</div><div class="tei-line">And says ‘Here is a laḍḍu,’</div><div class="tei-line">The child will cry</div><div class="tei-line">Upon seeing an empty hand.</div></div><div class="tei-verse"><div class="tei-line">“Likewise, the inconceivable buddhas,</div><div class="tei-line">Who know and are proficient in the ways of beings,</div><div class="tei-line">Realize that all phenomena are deceptive</div><div class="tei-line">But teach the world about material things.</div></div><div class="tei-verse"><div class="tei-line">“In this delightful instruction,</div><div class="tei-line">The compassionate one also taught,</div><div class="tei-line">‘Abandon the trappings of a householder and renounce.</div><div class="tei-line">Then the best results will come.’<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-224" href="#tei-note-UT22084-043-005-224">[59]</a></sup><span class="tei-ref">F.130.b</span></div></div><div class="tei-verse"><div class="tei-line">“Having abandoned the trappings of a householder and renounced,</div><div class="tei-line">One will attain every result.</div><div class="tei-line">Yet if one considers the nature of phenomena,</div><div class="tei-line">There is no attainment and no results at all.</div></div><div class="tei-verse"><div class="tei-line">“However, those who attain results and attainments<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-227" href="#tei-note-UT22084-043-005-227">[60]</a></sup></div><div class="tei-line">Feel great astonishment and say,</div><div class="tei-line">‘Ah! The best of men,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-043-005-228" href="#tei-note-UT22084-043-005-228">[61]</a></sup> the compassionate Conqueror,</div><div class="tei-line">Has explained his reasoning well.’</div></div><div class="tei-verse"><div class="tei-line">“In this way these peaceful phenomena</div><div class="tei-line">Have been taught using thousands of terms and phrases.</div><div class="tei-line">They are referred to as <em>sense faculties</em>, <em>meditative concentration</em>, <em>liberation</em>,</div><div class="tei-line"><em>Powers</em>, <em>factors of awakening</em>, and <em>peace</em>.</div></div><div class="tei-verse"><div class="tei-line">“Sense faculties have never developed, and there are no powers;</div><div class="tei-line">No factor of awakening or peace has ever been generated.</div><div class="tei-line">Though these phenomena are neither material nor immaterial,</div><div class="tei-line">They have been explained in the world through the force of knowledge.</div></div><div class="tei-verse"><div class="tei-line">“Of the attainments that I have explained to beings,</div><div class="tei-line">All completely lack characteristics.</div><div class="tei-line">Those who think that they have reached attainment</div><div class="tei-line">Are arrogant about an attainment they have never actually had.</div></div><div class="tei-verse"><div class="tei-line">“Since there is nothing substantial in the entire world,</div><div class="tei-line">There is also no attainment whatsoever.</div><div class="tei-line">One who understands attainment and nonattainment as I have taught it to beings</div><div class="tei-line">Is one who has reached attainment.</div></div><div class="tei-verse"><div class="tei-line">“This attainment of the result is superior to all others.</div><div class="tei-line">I have taught that such beings do not actually exist,</div><div class="tei-line">That beings are not found at all;</div><div class="tei-line">If beings do not exist, who is it that attains?</div></div><div class="tei-verse"><div class="tei-line">“Sprouts do not grow in a field</div><div class="tei-line">Where seeds have not been planted.</div><div class="tei-line">Likewise, if beings are nowhere to be found,</div><div class="tei-line">Where is attainment in the absence of beings?</div></div><div class="tei-verse"><div class="tei-line">“All these beings have reached nirvāṇa,</div><div class="tei-line">But its roots are nowhere to be found.</div><div class="tei-line">To those who believe in this way of Dharma,</div><div class="tei-line">I taught nirvāṇa without remainder.</div></div><div class="tei-verse"><div class="tei-line">“Many hundreds of buddhas have passed beyond,</div><div class="tei-line">And none have tamed any beings. <span class="tei-ref">F.131.a</span></div><div class="tei-line">If any beings were to appear here,</div><div class="tei-line">They would never pass into nirvāṇa.</div></div><div class="tei-verse"><div class="tei-line">“Therefore, this path has no defilement,</div><div class="tei-line">And there is no attachment in it at all.</div><div class="tei-line">The minds of those who believe in this reality</div><div class="tei-line">Will have no attachment to mundane existence.”</div></div><p>When the Bhagavān finished speaking these verses that teach accomplishment, two hundred arrogant monks, freed from clinging, were liberated from the defilements. Sixty thousand bodhisattvas accepted that phenomena are unproduced.</p><p>Then the venerable Upāli said to the Bhagavān, “Bhagavān, what is the name of this Dharma discourse? How should it be preserved?”</p><p>The Bhagavān said, “Upāli, since you asked, this Dharma discourse should be preserved under the name <cite>Determining the Vinaya</cite> or <cite>Conquering All Beings</cite>.”</p><p>After the Bhagavān spoke, the venerable Upāli, Youthful Mañjuśrī, the bodhisattvas, the monks, everyone assembled there, and the gods, humans, asuras, and gandharvas rejoiced and praised the Bhagavān’s teaching.</p>This concludes <cite>Determining the Vinaya: Upāli’s Questions</cite>, the twenty-fourth of the one hundred thousand sections of the Dharma discourse known as The Noble Great Heap of Jewels.</section><section class="tei-section tei-section--colophon"><h4>Colophon</h4><p>Translated, edited, and finalized by the Indian preceptors Jinamitra, Prajñāvarman, and Surendrabodhi, with the chief Tibetan editor and translator, Bandé Yeshé Dé, and others.</p></section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-043-005-30"><p>Tib. <em>ming ’bras bu mchis pa</em>. This translation is conjectural and is informed by the act of bestowing names upon newly awakened beings.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-30">back</a></li><li id="tei-note-UT22084-043-005-79"><p>Tib. <em>tshan po che chen po</em>; Skt. <em>mahānagna</em>. This enigmatic term seems to refer to someone with athletic strength and prowess or a seasoned fighter.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-79">back</a></li><li id="tei-note-UT22084-043-005-84"><p>The Lhasa, Narthang, and Stok Palace versions of the translation read <em>sbyin pa chen po bzhi</em>, “the four types of great giving.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-84">back</a></li><li id="tei-note-UT22084-043-005-88"><p>The following passage, with some variants and omissions, is cited by Śāntideva in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a>. See Bendall’s edition (1902), 168–71.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-88">back</a></li><li id="tei-note-UT22084-043-005-90"><p>This paragraph is not included in the citation recorded in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-90">back</a></li><li id="tei-note-UT22084-043-005-92"><p>Given the sequence that follows, the “weightiest fault” or “primary fault” (Skt. <em>prathamāpatti</em>; Tib. <em>nyes pa dang po’i lci ba</em>) perhaps refers to sexual intercourse on the part of a renunciant bodhisattva.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-92">back</a></li><li id="tei-note-UT22084-043-005-93"><p>The Skt. passage cited in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> reads, “The heavy fault of the hand should be confessed to an assembly of five. Holding a woman’s hand or looking at her—the weighty fault of ill intent (<em>duṣṭa­cittāpatti</em>)—should, Śāriputra, be confessed before one or two people.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-93">back</a></li><li id="tei-note-UT22084-043-005-95"><p>Tib. <em>rdo rje’i snying pos rab tu ’joms pa</em>. In the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> this name is given as Vajrapramardin.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-95">back</a></li><li id="tei-note-UT22084-043-005-96"><p>Tib. <em>rin chen me</em>. In the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> this name is given as <em>Ratnaśrī</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-96">back</a></li><li id="tei-note-UT22084-043-005-97"><p>Tib. <em>dri ma med pa</em>. The <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> lists two names here: Nirmala and Vimala.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-97">back</a></li><li id="tei-note-UT22084-043-005-98"><p>This name does not appear in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-98">back</a></li><li id="tei-note-UT22084-043-005-99"><p>In the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> this name is replaced with Vicitra­saṃkrama. The names are orthographically similar, so the difference is likely the result of a variant or scribal error in the Skt. manuscript.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-99">back</a></li><li id="tei-note-UT22084-043-005-102"><p>John Strong notes that stūpas containing relics were venerated as if they were the Buddha himself. If built near or in a monastery, the stūpa was treated as a legal resident of that monastery and was considered to have personal ownership of the land it was built on; thus, destroying a stūpa was tantamount to murder. See Strong 2004, 3–4.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-102">back</a></li><li id="tei-note-UT22084-043-005-103"><p>“The saṅghas of the four directions” is not found in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> citation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-103">back</a></li><li id="tei-note-UT22084-043-005-104"><p>For more on the complex conceptions of hells in Buddhist cosmography, see the entry for <em>nāraka</em> in the <cite>Princeton Dictionary of Buddhism</cite>, 575.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-104">back</a></li><li id="tei-note-UT22084-043-005-105"><p>Here the passage in the <cite>Śikṣāsamuccaya</cite> includes the additional line “I will go to the realm of Yama.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-105">back</a></li><li id="tei-note-UT22084-043-005-106"><p>“Border region” refers to a place where the Dharma of the Buddha is unknown. The English translation here follows the Skt. syntax <em>pratyanta­jana­padeṣu mleccheṣu</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-106">back</a></li><li id="tei-note-UT22084-043-005-107"><p>This is a version of the “eight freedoms” (Skt. <em>aṣṭakṣaṇa</em>; Tib. <em>dal ba brgyad</em>), the requirements for proper practice of the Dharma.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-107">back</a></li><li id="tei-note-UT22084-043-005-109"><p>The passage cited in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> reads, “and just as the bhagavān buddhas of the present from throughout the ten directions.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-109">back</a></li><li id="tei-note-UT22084-043-005-110"><p>This line is not found in the passage cited in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-110">back</a></li><li id="tei-note-UT22084-043-005-112"><p>The citation in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> includes another verse not attested in Tibetan sources.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-112">back</a></li><li id="tei-note-UT22084-043-005-115"><p>At this point the passage cited in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> skips ahead to a later section of the sūtra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-115">back</a></li><li id="tei-note-UT22084-043-005-127"><p>The <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> cites this passage, with some variation from what appears in the Tib. translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-127">back</a></li><li id="tei-note-UT22084-043-005-128"><p>This rite of the Three Sections is further explained in the introduction to this translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-128">back</a></li><li id="tei-note-UT22084-043-005-129"><p>The passage from the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a> reads, “A bodhisattva escapes pernicious faults—a condition that anyone belonging to the Śrāvakayāna or Pratyekabuddhayāna is unable to purify—by recalling and reciting the names and epithets of those bhagavān buddhas day and night and by employing the Dharma discourse of Three Sections. [They then] attain samādhi.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-129">back</a></li><li id="tei-note-UT22084-043-005-131"><p>The abridged citation of this sūtra found in the <cite>Bodhisattva­prātimokṣa­sūtra</cite> begins here. The Sanskrit of the <cite>Bodhisattva­prātimokṣa­sūtra</cite> was edited and published in Dutt 1931.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-131">back</a></li><li id="tei-note-UT22084-043-005-132"><p>This translation follows the reading consistent across Tibetan versions of the text. The attested Skt., however, reads, “But the Bhagavān has taught followers of the Bodhisattva­yāna that the training is also [forsaken] when [the current] life is forsaken.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-132">back</a></li><li id="tei-note-UT22084-043-005-133"><p>The Skt. witness preserves a slightly different reading: “Grant me understanding of this, Bhagavān. Demonstrate expertise in the Vinaya. Bhagavān, listening closely in the Bhagavān’s presence, learning what [I was taught] directly, I will have attained fearlessness and will illuminate [the topic] in detail among the assemblies.” Here we disagree with Dutt’s conjecture of <em>upāyakauśalya</em>, and instead read <em>vinayakauśalya</em>, “expertise in the Vinaya,” as supported by the Tibetan.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-133">back</a></li><li id="tei-note-UT22084-043-005-139"><p>In the section of this sūtra found in the <cite>Bodhisattva­prātimokṣa­sūtra</cite>, this line reads “take up the benefit (<em>hita</em>) of other beings and other people.” It would thus seem that the Sanskrit witness translated by the Tibetans reads <em>cittam anuvartitavyam</em>, where the extant Sanskrit witness reads <em>hitam anuvartitavyam</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-139">back</a></li><li id="tei-note-UT22084-043-005-141"><p>In addition to being cited in the <cite>Bodhisattva­prātimokṣa­sūtra</cite>, the Skt. of the following paragraph is also cited in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a>. See Bendall’s edition, 178. The translation that follows here is deeply informed by the attested Skt. terminology and syntax from both these sources, which are in general agreement.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-141">back</a></li><li id="tei-note-UT22084-043-005-143"><p>Śāntideva’s citation ends here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-143">back</a></li><li id="tei-note-UT22084-043-005-144"><p>“Degenerates and is exhausted” is not found in the two Skt. witnesses.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-144">back</a></li><li id="tei-note-UT22084-043-005-146"><p>As incorporated into the <cite>Bodhisattva­prātimokṣa­sūtra</cite>, this line reads, “Upāli, bodhisattvas who follow the Mahāyāna revel in, relish, and enjoy the five sense pleasures for as many eons as there are grains of sand in the river Ganges but do not give up the mind of awakening. This, Upāli, is to be understood as the training of a bodhisattva who follows in the Mahāyāna” (Dutt 1931, 282).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-146">back</a></li><li id="tei-note-UT22084-043-005-147"><p>The Narthang and Lhasa versions of the Tib. translation, as well as the Skt. of the <cite>Bodhisattva­prātimokṣa­sūtra</cite>, read “followers of the Śrāvakayāna whose roots of virtue have matured.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-147">back</a></li><li id="tei-note-UT22084-043-005-150"><p>At this point the passage in the <cite>Bodhisattva­prātimokṣa­sūtra</cite> includes the line, “teach on experiencing dependent origination.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-150">back</a></li><li id="tei-note-UT22084-043-005-151"><p>“Analysis” is not found in the passage from the <cite>Bodhisattva­prātimokṣa­sūtra</cite>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-151">back</a></li><li id="tei-note-UT22084-043-005-152"><p>This line, as cited in the <cite>Bodhisattva­prātimokṣa­sūtra</cite>, reads, “Having heard these teachings, [bodhisattvas] are overjoyed, fulfilled, and do not feel discontent. They perfect the requisites for awakening” (Dutt 1931, 283).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-152">back</a></li><li id="tei-note-UT22084-043-005-155"><p>Śāntideva cites an abridged version of the following passage in the <cite>Śikṣāsamuccaya</cite><a href="https://read.84000.co/translation/toh3940.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3940.html</a>. See Bendall (1902), 164–65.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-155">back</a></li><li id="tei-note-UT22084-043-005-157"><p>This line is not found in the passage from the <cite>Bodhisattva­prātimokṣa­sūtra</cite>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-157">back</a></li><li id="tei-note-UT22084-043-005-158"><p>Śāntideva’s citation ends here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-158">back</a></li><li id="tei-note-UT22084-043-005-161"><p>The citation of this sūtra preserved in the <cite>Bodhisattva­prātimokṣa­sūtra</cite> ends here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-161">back</a></li><li id="tei-note-UT22084-043-005-175"><p>This verse is cited by Candrakīrti in chapter 21 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 429 and Lang (2001), 237, 239.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-175">back</a></li><li id="tei-note-UT22084-043-005-177"><p>Here we understand the Tib. term <em>rnam par shig</em> to be a translation of the Skt. <em>vibhāvayi</em> and have translated it into English accordingly.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-177">back</a></li><li id="tei-note-UT22084-043-005-178"><p>This verse is cited by Candrakīrti in chapter 21 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 429 and Lang (2001), 237, 239.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-178">back</a></li><li id="tei-note-UT22084-043-005-181"><p>This verse is cited by Candrakīrti in chapter 21 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 429 and Lang (2001), 237, 239.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-181">back</a></li><li id="tei-note-UT22084-043-005-183"><p>This verse is cited by Candrakīrti in chapter 21 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 430 and Lang (2001), 237, 239. In this version, the fourth line reads, “Know that phenomena are subtle and inconceivable.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-183">back</a></li><li id="tei-note-UT22084-043-005-186"><p>This verse is cited by Candrakīrti in chapter 3 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 121 and Lang (2001), 237, 239.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-186">back</a></li><li id="tei-note-UT22084-043-005-188"><p>For this line the Skt. reads, “[The eye] distinguishes various pleasing forms.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-188">back</a></li><li id="tei-note-UT22084-043-005-189"><p>This verse is cited by Candrakīrti in chapter 3 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 121 and Lang (2001), 237, 239.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-189">back</a></li><li id="tei-note-UT22084-043-005-191"><p>This verse is cited by Candrakīrti in chapter 3 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 122 and Lang (2001), 237, 239.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-191">back</a></li><li id="tei-note-UT22084-043-005-200"><p>The Stok Palace and Phukdrak versions of the translation read <em>chos shes</em> (“knowledge of the Dharma”) for <em>chog shes</em> (“contentment”). This is a compelling variant, as many versions of the translation, including the Degé, Stok Palace, and Phukdrak versions, read <em>chos shes</em> in line three of this verse.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-200">back</a></li><li id="tei-note-UT22084-043-005-201"><p>In this case, we follow the Kangxi reading of <em>chog shes</em> for <em>chos shes</em>. The Narthang and Lhasa read <em>mchog shes</em>. Also in this line the Stok Palace and Phukdrak versions read <em>mi mthong</em> (“not see”) in place of <em>mi ’thob</em> (“not attain).”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-201">back</a></li><li id="tei-note-UT22084-043-005-202"><p>This Tibetan translation of this verse varies substantially across the versions found in the diverse Kangyur collections. For this reason, this translation can only be a conjecture. We have elected to consistently read the variant <em>chog shes</em> (“contentment”), but this verse could just as viably read <em>chos shes</em> (“knowledge of the Dharma”) in place of one or both instances of “contentment.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-202">back</a></li><li id="tei-note-UT22084-043-005-204"><p>This and the next three verses are cited by Candrakīrti in chapter 1 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 53–54 and Lang (2001), 237–39.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-204">back</a></li><li id="tei-note-UT22084-043-005-209"><p>Reading the variant, imperative form <em>skyed</em> attested in the Yongle and Kangxi versions of the translation.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-209">back</a></li><li id="tei-note-UT22084-043-005-217"><p>This verse is cited by Candrakīrti in chapter 23 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 474 and Lang (2001), 238–39.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-217">back</a></li><li id="tei-note-UT22084-043-005-219"><p>Where the Tib. reads <em>mi’i dbang po</em> (“lords of men”) the extant Sanskrit reads <em>jinendra</em> (“lords of conquerors”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-219">back</a></li><li id="tei-note-UT22084-043-005-220"><p>This verse is cited by Candrakīrti in chapter 14 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. The Sanskrit manuscript edited by La Vallée Poussin (1903, 257) was illegible in places but has been restored by Lang (2001, 238–39).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-220">back</a></li><li id="tei-note-UT22084-043-005-224"><p>This and the next two verses are cited by Candrakīrti in chapter 20 of the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a>. See La Vallée Poussin (1903), 408–9 and Lang (2001), 238–39.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-224">back</a></li><li id="tei-note-UT22084-043-005-227"><p>The citation from the <cite>Prasannapadā</cite><a href="https://read.84000.co/translation/toh3860.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3860.html</a> reads “those who do not attain” (<em>alabhanta</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-227">back</a></li><li id="tei-note-UT22084-043-005-228"><p>Here the Tib. reads <em>mi mchog</em> (“best of men”) where the extant Skt. reads <em>narasiṃha</em> (“lion among men”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-043-005-228">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/043-004-toh67-the-great-lions-roar.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/tibetan_canon/kangyur/043-006-toh69-inspiring-determination.html">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

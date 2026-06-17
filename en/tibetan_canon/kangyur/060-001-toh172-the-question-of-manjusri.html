@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toh 172 — The Question of Mañjuśrī — Buddhist Canon Foundation</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"The Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1781705533" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1781705533" />
+    <link rel="icon" href="/assets/favicon.ico?_=1781705533" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1781705533" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1781705533" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Text size"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Close dialog"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Text size">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Larger text</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Smaller text</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Text size">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/tibetan_canon/kangyur.html">Kangyur Translations</a>
+        <div class="sutta-breadcrumbs hidden">Kangyur Translations · Toh 172 — The Question of Mañjuśrī</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          Toh 172 — The Question of Mañjuśrī        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(14px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Mañjuśrī­paripṛcchā          </p>
+                          <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Translated by the Kīrtimukha Translation Group under the patronage and supervision of 84000: Translating the Words of the Buddha          </p>
+              </header>
+
+      <div class="tei-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.55] text-ink">
+                  <section class="tei-section tei-section--translation"><h3>The Noble Mahāyāna Sūtra</h3><h3>The Question of Mañjuśrī</h3><section class="tei-section tei-section--section"><p><span class="tei-ref">B1</span><span class="tei-ref">F.1.b</span> Homage to all buddhas and bodhisattvas!</p><br /><p>Thus did I hear at one time. The Blessed One was dwelling in the Samanta Assembly Hall in Śrāvastī together with a great saṅgha of 1,250 monks, innumerable bodhisattva mahāsattvas, and many hundreds of thousands of beings to be tamed, and other bodhisattva mahāsattvas headed by Avalokiteśvara.</p><p>The Blessed One sat unwavering upon a jeweled lion throne. Through the power of the Buddha, the bodhisattva mahāsattva Mañjuśrī rose from his seat, draped his upper robe over one shoulder, and knelt on his right knee. Joining his palms toward the Blessed One, <span class="tei-ref">F.2.a</span> he said, “Blessed One, how extensive is the great merit of the Tathāgata’s Dharma conch,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-33" href="#tei-note-UT22084-060-001-33">[1]</a></sup> the great merit by which the wishes of the many hundred sextillions of beings to be tamed are completely fulfilled?”</p><p>The Blessed One replied to the bodhisattva mahāsattva Mañjuśrī, “Mañjuśrī, the great merit of the Tathāgata’s Dharma conch,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-35" href="#tei-note-UT22084-060-001-35">[2]</a></sup> the great merit by which the wishes of a hundred sextillion beings to be tamed are completely fulfilled, arises from insight and is imbued with great compassion.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-36" href="#tei-note-UT22084-060-001-36">[3]</a></sup> It is inconceivable.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-38" href="#tei-note-UT22084-060-001-38">[4]</a></sup></p><p>“Mañjuśrī, if all of the beings in the world were to engage in the path of the ten virtuous actions, and if that collection of merit, which is the collection of merit of all those beings, were multiplied by a hundred, it would equal that of a cakravartin king who has dominion over the four continents and possesses the seven treasures. The seven treasures are as follows: the precious wheel, the precious elephant, the precious horse, the precious jewel, the precious woman, the precious steward, and the precious minister. He has a thousand heroic sons who are courageous, have excellent well-built bodies, and utterly defeat opposing armies. Mañjuśrī, such is the cakravartin king’s great miraculous powers and might.<span class="tei-ref">F.2.b</span></p><p>“Mañjuśrī, if all beings in the world with its four continents were to possess the cakravartin king’s merit, and if that merit, which is the merit of all those beings, were multiplied by a hundred,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-40" href="#tei-note-UT22084-060-001-40">[5]</a></sup> it would equal that of Śakra, lord of the gods. Such is the lord of the gods’ great miraculous powers and great might.</p><p>“Mañjuśrī,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-42" href="#tei-note-UT22084-060-001-42">[6]</a></sup> if all of the beings in the realm of the world with its four continents were to possess Śakra’s merit, and if that merit, which is the merit of all those beings, were multiplied by a hundred thousand,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-310" href="#tei-note-UT22084-060-001-310">[7]</a></sup> it would equal that of Māra, lord of the desire realm, who understands the teachings within the desire realm.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-43" href="#tei-note-UT22084-060-001-43">[8]</a></sup> Such is Māra of the desire realm’s great miraculous powers and great might.</p><p>“Mañjuśrī,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-45" href="#tei-note-UT22084-060-001-45">[9]</a></sup> if all of the beings in the realm of the world with its four continents were to possess Māra’s merit, and if that merit, which is the merit of all of those beings, were multiplied by a hundred thousand, it would equal that of a brahmā, sovereign of a chiliocosm,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-46" href="#tei-note-UT22084-060-001-46">[10]</a></sup> whose love pervades the domain of a chiliocosm.</p><p>“Mañjuśrī, if all of the beings in this chiliocosm were to possess the merit of a brahmā god, sovereign of a chiliocosm, and if that merit, which is the merit of all those beings, were multiplied by a hundred thousand, it equal that of a brahmā god, sovereign of a dichiliocosm,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-48" href="#tei-note-UT22084-060-001-48">[11]</a></sup> whose love pervades the domain of a dichiliocosm.</p><p>“Mañjuśrī, if all of the beings in this dichiliocosm were to possess the merit of a brahmā god, sovereign of a dichiliocosm, and if that merit, which is the merit of all of those beings, were multiplied by a hundred thousand, it would equal that of a supremely great almighty brahmā, sovereign of a trichiliocosm,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-50" href="#tei-note-UT22084-060-001-50">[12]</a></sup><span class="tei-ref">F.3.a</span> whose love pervades the domain of a great trichiliocosm.</p><p>“Mañjuśrī, consider a supremely great almighty brahmā. In a single intermediate eon following the rise of the waters after the eon of destruction,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-52" href="#tei-note-UT22084-060-001-52">[13]</a></sup> the trichiliocosm fills up with rainfall with its droplets of water. A supremely great almighty brahmā knows all the drops of water that have amassed in his world. Therefore, he is endowed with great wisdom and has great miraculous powers and great might. The root of virtue of a great almighty one is no trifling thing.</p><p>“Mañjuśrī, if all of the beings in this trichiliocosm were to possess the merit of a great brahmā, sovereign of a trichiliocosm, and if that merit, which is the merit of all those beings, were multiplied by many hundred sextillions, it would equal that of a pratyekabuddha who had obtained great might.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-54" href="#tei-note-UT22084-060-001-54">[14]</a></sup></p><p>“Mañjuśrī, put aside this great trichiliocosm. Mañjuśrī, if all the beings in the domain of the buddhas, the realm of the worlds of the ten directions, were to possess the merit obtained by a pratyekabuddha who had obtained great might, and if that merit, which is the merit of all of those beings, were multiplied by many hundred sextillions, it would equal that of a single bodhisattva in their final existence.</p><p>“Mañjuśrī, if all of the beings in the realm of the worlds of the ten directions of space—beings born from an egg, born from a womb, born from heat and moisture, and born miraculously; those with form and those without; and those with perception, those without perception, and those with neither perception nor nonperception<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-57" href="#tei-note-UT22084-060-001-57">[15]</a></sup><span class="tei-ref">F.3.b</span>—were to possess the merit of a bodhisattva in their final existence, and if that merit, which is the merit of all of those beings, were multiplied by many hundred sextillions, it would equal that of a single hair pore on the body of the Tathāgata. Each of the nine million nine hundred thousand hair pores on the body of the Tathāgata are established in the same way.</p><p>“Mañjuśrī, if the merit that is equal to the merit contained in all those hair pores were multiplied many hundred sextillions, it would equal that of one of the eighty excellent signs on the body of the Tathāgata.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-60" href="#tei-note-UT22084-060-001-60">[16]</a></sup> Each of the eighty excellent signs is established on the body of the Tathāgata in the same way.</p><p>“Mañjuśrī, if that merit, which is the merit contained in the eighty excellent signs, were multiplied by many hundred sextillions, it would be like that of one of the designs marking the Tathāgata’s hands and feet.</p><p>“The eighty designs are as follows:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-63" href="#tei-note-UT22084-060-001-63">[17]</a></sup> (1) a parasol, (2) a victory banner, (3) a <em>śrīvatsa</em>, (4) a garland, (5) a hook, (6) a diadem, (7) a staff,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-64" href="#tei-note-UT22084-060-001-64">[18]</a></sup> (8) a vase, (9) an elephant, (10) a horse, (11) a tiger, (12) a makara, (13) a fish, (14) a turtle, (15) a peacock, (16) a kalaviṅka bird, (17) a partridge, (18) a cāṣa bird,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-65" href="#tei-note-UT22084-060-001-65">[19]</a></sup> (19) a cakravāka shelduck, (20) a parrot, (21) a goose, (22) a dove, (23) barley, (24) the great medicine, (25) bamboo, (26) a gayal, (27) a nāga, (28) a goat, (29) a bull, (30) a mountain, (31) a bilva fruit tree,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-66" href="#tei-note-UT22084-060-001-66">[20]</a></sup> (32) a black antelope, (33) a precious jewel, (34) a supreme sword, (35) a vajra, (36) a bow, (37) an arrow, (38) a lance, (39) a trident, (40) a plow, (41) a mace, (42) an axe, (43) a lasso,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-67" href="#tei-note-UT22084-060-001-67">[21]</a></sup> (44) a boat, (45) a pearl ornament, (46) a cloud, (47) Brahmā, (48) Indra, (49) Dhṛtarāṣṭra,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-68" href="#tei-note-UT22084-060-001-68">[22]</a></sup> (50) Varuṇa, (51) Virūḍhaka, (52) Virūpākṣa, (53) Dhanada, (54) a great sage, (55) Śrī, (56) a sun, (57) a moon,<span class="tei-ref">F.4.a</span> (58) a fire, (59) wind, (60) a lotus, (61) a <em>nandyāvarta</em>, (62) a triangle,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-69" href="#tei-note-UT22084-060-001-69">[23]</a></sup> (63) an excellent throne, (64) a mirror, (65) a tail whisk, (66) dūrvā grass, (67) <em>puroḍāśa</em> cake, (68) a boy, (69) a girl, (70) a drum, (71) a <em>conch</em>, (72) a <em>mṛdaṅga</em><em>drum</em>,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-70" href="#tei-note-UT22084-060-001-70">[24]</a></sup> (73) a bracelet, (74) an armband, (75) an earring,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-71" href="#tei-note-UT22084-060-001-71">[25]</a></sup> (76) a ring, (77) a dangling earring, (78) an excellent flower, (79) a wish-granting tree, and (80) a lion at the center of a wheel.</p><p><sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-72" href="#tei-note-UT22084-060-001-72">[26]</a></sup> These are the eighty designs. They appear on the palms of the Tathāgata’s hands and the soles of his feet.</p><p>“Mañjuśrī, if that merit, which is the merit contained in those eighty designs, were multiplied by many hundred sextillions, it would be like one of the signs of a great being on the Tathāgata’s body; each of the thirty-two signs of a great being are established in the same way. They are as follows:<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-74" href="#tei-note-UT22084-060-001-74">[27]</a></sup> (1) the uṣṇīṣa on the head, (2) right-curling dark blue hair on the head, (3) an even forehead, (4) being adorned with a beautiful complexion,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-75" href="#tei-note-UT22084-060-001-75">[28]</a></sup> (5) an <em>ūrṇā</em> hair between the eyebrows, (6) dark blue eyes with bovine eyelashes, (7) forty close-fitting teeth, (8) white canine teeth, (9) cheeks like a lion, (10) a large and slender tongue, (11) a torso like a lion, (12) an arm span and height that are identical like the banyan tree, (13) a hair growing from every pore,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-76" href="#tei-note-UT22084-060-001-76">[29]</a></sup> (14) a concealed male organ, (15) full and rounded thighs, (16) calves like those of Eṇeya, king of antelopes, (17) broad heels, (18) palms and soles that are soft and supple, (19) webbed fingers and toes, (20) long fingers and toes, (21) feet with high arches, (22) a supreme organ of taste, (23) round shoulders, (24) the seven prominent parts, (25) fine skin the color of gold, (26) the ability to reach the hands to the knees without bending, (27) well-positioned feet, (28) palms and soles with the mark of the wheel,<span class="tei-ref">F.4.b</span> and (29) the voice of Brahmā.</p><p>These are the thirty-two signs of a great being. They appear on the body of the Tathāgata.</p><p>“Mañjuśrī, if that merit, which is the merit contained in the thirty-two signs of a great being, were multiplied innumerable times, multiplied inconceivably, multiplied incalculably, and multiplied beyond expression, it would be like that of the Tathāgata’s Dharma conch. By the power of taming with the Dharma conch, with his voice the Tathāgata engenders understanding throughout limitless and countless world realms. Just as with his voice, so it is with his light and his body.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-58" href="#tei-note-UT22084-060-001-58">[30]</a></sup></p><p>“In this way, Mañjuśrī, this great merit, arisen from great insight, imbued with compassion, generated through skill-in-means and aspirations, completely pure in moral discipline,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-81" href="#tei-note-UT22084-060-001-81">[31]</a></sup> and authentically born from the distinctions of practice, is inconceivable to all śrāvakas and pratyekabuddhas.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-82" href="#tei-note-UT22084-060-001-82">[32]</a></sup></p><p>“Mañjuśrī, the form body of the Tathāgata is especially exalted for two reasons. What are these two reasons? They are the power of aspiration and the power of the complete ripening of the virtue of sentient beings to be tamed. Mañjuśrī, for these two reasons the form body of the Tathāgata is especially exalted.</p><p>“Mañjuśrī, just as the form body of the Tathāgata is especially exalted,<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-85" href="#tei-note-UT22084-060-001-85">[33]</a></sup> the Dharma taught is also especially exalted.</p><p>“Mañjuśrī, just as the Dharma taught by the Tathāgata, his light is also especially exalted.</p><p>“Mañjuśrī, just as the light of the Tathāgata is especially exalted, his conduct is also especially exalted.</p><p>“Mañjuśrī, the Tathāgata pervades the entire world with his body.<sup class="tei-note-ref"><a id="tei-note-ref-UT22084-060-001-89" href="#tei-note-UT22084-060-001-89">[34]</a></sup></p><p>“Mañjuśrī, whatever particular color, shape, or conduct will tame sentient beings, <span class="tei-ref">F.5.a</span> sentient beings will see the Tathāgata accordingly as having that particular color, shape, and conduct.</p><p>“Mañjuśrī, whatever particular signs will tame sentient beings, sentient beings will see the Tathāgata accordingly as having those particular signs.</p><p>“Mañjuśrī, whatever Dharma teachings will fully ripen sentient beings, sentient beings will understand the particular Dharma teachings of the Tathāgata to be Dharma teachings of that kind.</p><p>“Mañjuśrī, whatever conduct tames sentient beings and causes them to engage with the teachings of the Tathāgata, sentient beings will see the Tathāgata abiding by that conduct.</p><p>“Mañjuśrī, in this way the tathāgata, arhat, perfect Buddha comes into the world, benefits and brings happiness to many beings, has love and affection for the world, and takes birth in order to help, benefit, and bring happiness to gods, humans, and the host of beings.”</p><br /><p>Then the bodhisattva Mañjuśrī rose from his seat and, approaching the Blessed One, pressed his palms together and said, “Blessed One—my unparalleled, matchless teacher, supreme protector in the three realms and benefactor for all sentient beings, unperturbed by worldly phenomena, unblemished like the sky, inconceivable, a worthy inspiration, desirable to behold, and beautiful to behold—I have truly found a great treasure! Sugata, I have truly found a great treasure!”</p><p>Youthful Mañjuśrī was overjoyed at what the Tathāgata had said. The bodhisattva great beings and the monks praised the words of the Blessed One.</p>This completes the noble Mahāyāna sūtra “The Question of Mañjuśrī.”</section></section><section class="tei-notes"><h2>Notes</h2><ol><li id="tei-note-UT22084-060-001-33"><p>Here we followed the Sanskrit, K<span>Y</span>, F, S, and U, which have “Dharma conch” (<em>chos kyi dung</em>); C, D, and J have “in the presence of the Tathāgata” (<em>de bzhin gshegs pa’i drung</em>); H, K, and N, have “in the presence of the Dharma of the Tathāgata” (<em>de bzhin gshegs pa’i chos kyi drung</em>). In these cases, <em>drung</em> is likely a scribal error for <em>dung</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-33">back</a></li><li id="tei-note-UT22084-060-001-35"><p>Following Sanskrit, K<span>Y</span>, F, S, and U. See <span class="tei-ref">#UT22084-060-001-33</span>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-35">back</a></li><li id="tei-note-UT22084-060-001-36"><p>Go. adds several descriptions qualifying this great merit: “it is engendered by skill in means and aspirations, and it is authentically born from special meditation that fully purifies discipline. This great merit is inconceivable to all śrāvakas and pratyekabuddhas” (<em>thabs la mkhas pa chen po smon lam gyis bskyed pa/ thul khrims dang / ting nge ’dzind shind tu rnam par dag pa bsgoms pa’i khyad par gis yang dag pa grub pa ste/ nyan thos dang / rang sang rgyas thams cad kyis bsam gyis myi khyab pa yin no/</em>). This correlates with the description of the Dharma conch at the end of the sūtra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-36">back</a></li><li id="tei-note-UT22084-060-001-38"><p>&quot;Following this, the Sanskrit text includes an additional stage in the hierarchy of merit not attested in the Tibetan translation. This stage, for a <em>rājā jambudvīpeśvaraḥ</em> (“a king who is lord of Jambudvīpa&quot;), ranks below a cakravārtin king, the first stage in the hierarchy of merit as listed in the Tibetan text.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-38">back</a></li><li id="tei-note-UT22084-060-001-40"><p>From here throughout the rest of the text, the numbers for multiplying merit vary in the different sources. Here, for example, Go., Taishō 473, Taishō 662, and the Sanskrit have “multiplied by a thousand”; Taishō 661 has “multiplied by a hundred thousand.” For the sake of simplicity, we have translated the text from D and refrained from annotating these numerical variations from the sources unless they significantly change the meaning.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-40">back</a></li><li id="tei-note-UT22084-060-001-42"><p>Taishō 473 adds an additional stage in the hierarchy of merit comparing that of Śakra to that of Nārāyaṇa, before going on to compare Nārāyaṇa to Māra.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-42">back</a></li><li id="tei-note-UT22084-060-001-310"><p>The Sanskrit witness of this sūtra abruptly ends here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-310">back</a></li><li id="tei-note-UT22084-060-001-43"><p>D: <em>’dod pa’i khams su bstan pas go bar byed pa</em>. Our translation here is corroborated by Taishō 662: <em>教受護持</em> “who upholds and bears in mind the teachings.” The implication of this remark is not clear. Taishō 473 adds “in the heaven of Paranirmitavaśavartin.” This implies that Māra is the highest deity presiding within the bounds of the desire realm, where Paranirmitavaśavartin is the highest heaven according to Abhidharma cosmology.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-43">back</a></li><li id="tei-note-UT22084-060-001-45"><p>The following passage is omitted in Taishō 473, which skips to the next stage in the hierarchy of merit, comparing the merit of Māra to that of a brahmā, sovereign of a dichiliocosm, in the same format.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-45">back</a></li><li id="tei-note-UT22084-060-001-46"><p>Taishō 662 adds that this is a brahmā “of the first <em>dhyāna</em>.” This is consistent with the cosmology presented in the sūtra. As Māra represents the highest deity of the desire realm, “a brahmā, sovereign of a chiliocosm,” represents a god in one of the three lowest strata of the form realm, which is associated with the first dhyāna, while the brahmās of a dichiliocosm and trichiliocosm represent gods of the higher strata associated with the second and fourth dhyānas respectively. There are some sources that seem to give the dhyānas and the spatial locations they encompass in the form realm progressively greater dimensions. For instance, the <cite>Abhidharma­kośa­bhāṣya</cite> states that while each chiliocosm contains a thousand sets of four continents, along with a thousand <em>suns</em>, <em>moons</em>, Mount Merus, and so forth up to the desire realms, there is one position that states that the first dhyāna encompasses a single world system, the second dhyāna a chiliocosm, the third dhyāna a dichiliocosm, and the fourth dhyāna a trichiliocosm. The text goes on to state that there is a differing opinion in which the first dhyāna encompasses a chiliocosm, the second dhyāna a dichiliocosm, and the third dhyāna a trichiliocosm, and the fourth dhyāna is without measure. The first of these two opinions would seem to be validated by the context of this sūtra, where the sequential brahmās are described as being “sovereign” of exponentially larger domains. See Vasubandhu, <cite>Abhidharma­kośa­bhāṣya</cite>, in Sangpo (2012), pp. 1075–6.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-46">back</a></li><li id="tei-note-UT22084-060-001-48"><p>Taishō 662 adds “a brahmā of the second dhyāna.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-48">back</a></li><li id="tei-note-UT22084-060-001-50"><p>Taishō 662 adds “a brahmā of the fourth dhyāna.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-50">back</a></li><li id="tei-note-UT22084-060-001-52"><p>All the Chinese versions of the sūtra describe this moment as the destruction of the world through <em>fire</em> rather than water, and then, following this, the great brahmā commands the rain to come down and fill the trichiliocosm up to the brahmā heavens in the form realm. Go. has the phrase “when the eon of incineration arises” (<em>’sreg pa’i bskal pa ’byung ba de’i tshe</em>), and following this it also describes the trichiliocosm filling up with rain and drops of water. The <cite>Abhidharma­kośa­bhāṣya</cite> describes the destruction of the world through water up to the top of the first dhyāna, through <em>fire</em> up to the top of second dhyāna, and through <em>wind</em> up to the top of the third. See Vasubandhu, <cite>Abhidharma­kośa­bhāṣya</cite>, in Sangpo (2012), pp. 1109–15.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-52">back</a></li><li id="tei-note-UT22084-060-001-54"><p>Go. adds an additional stage in the hierarchy of merit, comparing the merit of a great brahmā, sovereign of a trichiliocosm, to that of a great śrāvaka with great miraculous powers (<em>nyan thos chen po rdzu ’phrul chen po dang ldan pa</em>). Then, in the next passage, the śrāvaka’s merit is compared to that of a pratyekabuddha, and it continues in the same form as in the other versions.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-54">back</a></li><li id="tei-note-UT22084-060-001-57"><p>This is a truly all-inclusive list of possible beings found in Buddhist cosmology. The latter categories, including those with and without forms or perceptions all the way up to those with neither perceptions nor the absence of them, is representative of beings abiding in formless realms. See also the glossary entry for “beings with neither perception nor nonperception.”</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-57">back</a></li><li id="tei-note-UT22084-060-001-60"><p>Taishō 661 and Taishō 662 provide a list of the eighty excellent signs here.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-60">back</a></li><li id="tei-note-UT22084-060-001-63"><p>There are many minor spelling variations found among the Kangyur recensions for the eighty designs. For the sake of clarity, variant readings have not been noted unless they affected the meaning or interpretation of the term; however, all the attested spelling variations have been represented in the glossary. For a detailed analysis of the eighty designs compared across various sources see Skilling (1992), pp. 67–79.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-63">back</a></li><li id="tei-note-UT22084-060-001-64"><p>Go. has <em>dbyig tog</em>; all other Tibetan recensions have <em>dbyig to</em>. The meaning of “staff” is derived from correlation with Taishō 473 and from consultation with a series of dictionary entries. The meaning of <em>dbyig to(g)</em> could also be “jewel” or “crest jewel.” For more details on this see Vinītā (2010), p. 741, note d. Also see Skilling (1992), p. 73.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-64">back</a></li><li id="tei-note-UT22084-060-001-65"><p>Go. omits.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-65">back</a></li><li id="tei-note-UT22084-060-001-66"><p>Go.: <em>bil shing ba</em>; F: <em>bil ba dang</em>; C, D, H, J, K, K<span>Y</span>, N, S, and U: <em>bil ba dang / shing dang /</em> (“a bilva fruit, a tree” as two items). In addition to Go., F and the <cite>Saṃskṛtāsaṃskṛta­viniścaya</cite> also omit “a tree” as a separate item. We have chosen to translate this as one item, “bilva fruit tree,” following Go., as this results in a list of exactly eighty items, and the “wish-granting tree” already appears as item number 79 in the list.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-66">back</a></li><li id="tei-note-UT22084-060-001-67"><p>F omits.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-67">back</a></li><li id="tei-note-UT22084-060-001-68"><p>C, D, H, J, N, and U: <em>’khor srung</em>. This form is listed as an alternate spelling for Dhṛtarāṣṭra in the <cite>Mahāvyutpatti</cite> (the imperial period Sanskrit–Tibetan dictionary), no. 3381. K and K<span>Y</span>: <em>’khor bsrung</em>; S: <em>’khor bsrungs</em>; Go.: <em>yul ’khor srung</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-68">back</a></li><li id="tei-note-UT22084-060-001-69"><p>Go. omits.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-69">back</a></li><li id="tei-note-UT22084-060-001-70"><p>F and S: <em>mri tang ga</em> (transliteration of the Sanskrit <em>mṛdaṅga</em>). Go. and the <cite>Saṃskṛtāsaṃskṛta­viniścaya</cite> have <em>rdza rnga</em>, which has the same translated meaning as the former transliteration. D, H, J, and N: <em>smri ga</em>; K: <em>smri dang ga/ ga dang /</em>; K<span>Y</span>: <em>smri dang ga</em>; C and U: <em>smrig</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-70">back</a></li><li id="tei-note-UT22084-060-001-71"><p>Go.: <em>rna cha gdub ’khord</em> (“round earring”).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-71">back</a></li><li id="tei-note-UT22084-060-001-72"><p>Translated from Go. and the <cite>Saṃskṛtāsaṃskṛta­viniścaya</cite>: <em>’khor lo’i dbus kyi seng ge</em>. C, D, H, K, K<span>Y</span>, J, N, and U: <em>’khor lo dang / dpung gi seng ge</em>; F and S: <em>’khor lo dpung gi seng ge</em>.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-72">back</a></li><li id="tei-note-UT22084-060-001-74"><p>Only twenty-nine of the thirty-two signs of a great being are listed here, although in other sources (6) and (7) are usually counted as two signs each. There are many instances of the list of thirty-two signs found throughout the Kangyur, and significant differences can be found among them. For other examples of the list complete with thirty-two signs, see Dharmachakra Translation Committee, trans., <cite><a href="https://read.84000.co/translation/toh95.html#UT22084-046-001-474" target="_blank" rel="noopener noreferrer">The Play in Full</a></cite>, Toh 95 (84000: Translating the Words of the Buddha, 2013), 7.98; or Padmakara Translation Group, trans, <cite><a href="https://read.84000.co/translation/toh11.html#UT22084-031-002-270" target="_blank" rel="noopener noreferrer">The Transcendent Perfection of Wisdom in Ten Thousand Lines</a></cite>, Toh 11 (84000: Translating the Words of the Buddha, 2018), <a href="https://read.84000.co/translation/toh11.html#UT22084-031-002-270" target="_blank" rel="noopener noreferrer">2.15</a> (which contains thirty-three signs). In the latter, see also <a href="https://read.84000.co/translation/toh11.html#end-note-UT22084-031-002-271" target="_blank" rel="noopener noreferrer">note 61</a> for further details concerning the various locations of the list found throughout the Kangyur. There is also a standard list found in the <cite>Mahāvyutpatti</cite> (the imperial period Sanskrit–Tibetan dictionary), entries 235–67. If one looks to the latter as a standard, the missing three can be accounted for by entries 242, “even teeth” (<em>samadanta</em>, <em>tshems mnyam pa</em>), and 243, “close-fitting teeth” (<em>aviraladanta</em>, <em>tshems thag bzang ba</em>), which in the <cite>Mahāvyutpatti</cite> is separate from the sign of “forty teeth,” whereas in <cite>The Question of Mañjuśrī</cite> they are joined; 251, “collarbones that are well covered” (<em>citāntarāṃsa</em>, <em>thal gong rgyas pa</em>); and 257 “body hairs that grow upward” (<em>ūrdhvagaroma</em>, <em>sku’i spu gyen du phyogs pa</em>), which <em>is</em> found in Go. (see <span class="tei-ref">#UT22084-060-001-76</span>). Note that here in <cite>The Question of Mañjuśrī</cite>, the fourth sign in the list, “being adorned with a beautiful complexion,” is not found in the <em>Mahāvyutpatti</em>. Thus by omitting these four and adding one more <cite>The Question of Mañjuśrī</cite> lists a total of twenty-nine signs.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-74">back</a></li><li id="tei-note-UT22084-060-001-75"><p>Go. omits.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-75">back</a></li><li id="tei-note-UT22084-060-001-76"><p>Go. adds: “body hairs that grow upward” (<em>sku’i spu gyend du phyogs pa</em>). This is usually included in other lists of the thirty-two signs.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-76">back</a></li><li id="tei-note-UT22084-060-001-58"><p>A very similar passage, with the same sequence of meritorious figures and signs culminating in the Buddha’s voice, can be seen in the <cite>Ratna­megha­sūtra</cite> (Toh 231); see Dharmachakra Translation Committee, trans., <cite>The Jewel Cloud</cite> (84000: Translating the Words of the Buddha, 2019), <a href="https://read.84000.co/translation/toh231.html#UT22084-064-001-310" target="_blank" rel="noopener noreferrer">1.233–4</a>. A somewhat less similar calculation of merit beginning with the Buddha’s pores, but culminating specifically in the Dharma conch, is found in the <cite>Akṣaya­mati­nirdeśa­sūtra</cite>: see Jens Braarvig and David Welsh, trans., <cite>The Teaching of Akṣayamati</cite>, Toh 175, (84000: Translating the Words of the Buddha, 2020), <a href="https://read.84000.co/translation/toh175.html#UT22084-060-004-130" target="_blank" rel="noopener noreferrer">1.103</a>. See also Āryaśūra’s <cite>Pāramitāsamāsa</cite> (<cite>pha rol tu phyin pa bsdus pa</cite>, Toh 3944), folios 227a–b.<a href="https://read.84000.co/translation/toh3944.html" target="_blank" rel="noopener noreferrer">https://read.84000.co/translation/toh3944.html</a></p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-58">back</a></li><li id="tei-note-UT22084-060-001-81"><p>Go. adds “and samādhi” (<em>dang / ting nge ’dzin</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-81">back</a></li><li id="tei-note-UT22084-060-001-82"><p>Go. again adds the passage, “The presence of the Tathāgata’s Dharma completely fulfilling the wishes of beings to be tamed” (<em>de bzhin gshegs pa’i chos kyi mur ’gram gdul bya’i bsam ba yongs su rdzogs par byed par ’gyur ro/</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-82">back</a></li><li id="tei-note-UT22084-060-001-85"><p>This following sequence of comparison differs in Go., which first compares the Tathāgata’s body to his voice (<em>gsung sgra</em>), then compares his voice to his “signs” (<em>mtshan</em>), and then compares his signs to the Dharma taught (<em>chos bstan pa</em>). From there the sequence continues in the same manner as D and the other sources, continuing with his light and so forth.</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-85">back</a></li><li id="tei-note-UT22084-060-001-89"><p>For this sentence Go. has “Mañjuśrī, the Tathāgata’s body is vast through all its marks.” (<em>’jam dpal de bzhin gshegs pa’i sku mtshan thams cad kyis rgyas pa yin</em>).</p> <a class="tei-backlink" href="#tei-note-ref-UT22084-060-001-89">back</a></li></ol></section>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/059-014-toh171-questions-of-old-lady.html">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Previous sutta</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Add to bookmarks"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/en/tibetan_canon/kangyur/060-002-toh173-the-sutra-of-the-questions-of-nairatma.html">
+            <span class="hidden md:inline-flex">Next sutta</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:w-[min(320px,90%)] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1781705533"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1781705533"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1781705533"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1781705533"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1781705533"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>
