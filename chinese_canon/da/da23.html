@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DĀ 23 — Кутатандья — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1791393943" />
+    <link rel="icon" href="/assets/favicon.ico?_=1791393943" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1791393943" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1791393943" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Выбор перевода"
+          data-mobile-translation-toggle
+        >
+          <span class="block w-full truncate" title="Русский — Anthropic Claude Sonnet 5">Русский — Anthropic Claude Sonnet 5</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-mobile-translation-menu hidden>
+                                              <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/chinese_canon/da/da23.html"
+              title="English — Dharma Pearls"
+            ><span class="block w-full truncate">English — Dharma Pearls</span></a>
+                  </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/chinese_canon/da.html">Dīrgha Āgama</a>
+                <div class="sutta-breadcrumbs hidden">Dīrgha Āgama · DĀ 23 — Кутатандья</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          DĀ 23 — Кутатандья        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Перевод: Anthropic Claude Sonnet 5          </p>
+                      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <p id="p1">1. Так я слышал<sup id="ref1"><a href="#n1">[1]</a></sup>: однажды Будда находился в стране Кошала в сопровождении великого собрания из 1250 монахов. Странствуя среди людей, они прибыли к северу от жреческого города [Кхануматы]<sup id="ref2"><a href="#n2">[2]</a></sup> в Кошале и остановились в роще розового дерева.</p>
+    <h4>Жрец Кутатандья</h4>
+<p id="p2">2. В [Кхануmate] жил жрец по имени Кутатандья<sup id="ref3"><a href="#n3">[3]</a></sup>. Город был изобилен, а люди процветали. В нём были живописные парки, купальные пруды и прохладные деревья. Царь Прасенаджит пожаловал этот город жрецу Кутатандье в качестве его жреческого надела. Этот жрец происходил от семи поколений истинных [предков] по отцу и матери, так что никто не пренебрегал им. Он в совершенстве постиг три Веды, умел различать все многообразные виды писаний и был учён во всех тонкостях мирской словесности. Он также был искусен в приёмах [распознавания] знаков великого человека, в гадании об удаче и несчастье, а также в обрядах жертвоприношений и этикете. У него было пятьсот учеников, которых он обучал без изъятия.</p>
+<p id="p3">3. В то время тот жрец собирался устроить великое жертвоприношение. Он приобрёл пятьсот быков, пятьсот коров, пятьсот бычков, пятьсот тёлочек, пятьсот овец и пятьсот баранов, чтобы принести их в жертву.</p>
+<p id="p4">4. Жрецы, знатные люди и домохозяева [Кхануматы] услышали: «Отшельник Гаутама из рода Шакьев, оставивший дом и достигший пробуждения, странствует среди людей Кошалы. Он прибыл к северу от [Кхануматы] и остановился в тамошней роще розового дерева. Его великая слава разносится по всему миру: „Он — Татхагата, Архат и Совершенно Пробуждённый, обладающий десятью эпитетами в совершенстве!“ Среди богов и мирских людей, будь то Мары, Брахмы, подвижники или жрецы, он учит других тому, что сам постиг. Его слова все истинны в начале, середине и конце, совершенны по содержанию и выражению и очищают целомудренную жизнь. Подобает получить аудиенцию у столь просветлённого человека».</p>
+<p id="p5">5. Тогда они сказали: «Пойдём же навестим его сейчас!» Сказав это, они друг за другом покинули [Кхануmату]. Толпы людей отправились навестить Будду.</p>
+<p id="p6">6. Жрец Кутатандья находился на верхнем этаже своего дома и издали увидел эти толпы людей, следующих друг за другом. Он спросил своего слугу: «По какой причине эти толпы людей следуют друг за другом? Куда они направляются?»</p>
+<p id="p7">7. Его слуга сказал: «Я слышал следующее: „Отшельник Гаутама из рода Шакьев, оставивший дом и достигший пробуждения, странствует среди людей Кошалы. Он прибыл к северу от [Кхануматы] и остановился в тамошней роще розового дерева. Его великая слава разносится по всему миру: «Он — Татхагата, Архат и Совершенно Пробуждённый, обладающий десятью эпитетами в совершенстве!» Среди богов и мирских людей, будь то Мары, Брахмы, подвижники или жрецы, он учит других тому, что сам постиг. Его слова все истинны в начале, середине и конце, совершенны по содержанию и выражению и очищают целомудренную жизнь“. Те толпы жрецов, знатных людей и домохозяев из города направляются навестить отшельника Гаутаму».</p>
+<p id="p8">8. Жрец Кутатандья тогда наставил своего слугу: «Быстро запомни мои слова. Иди скажи тем людям вот что: „Все, подождите меня немного. Мы вместе пойдём навестить того отшельника Гаутаму“».</p>
+<p id="p9">9. Его слуга пошёл и передал тем людям послание Кутатандьи: «„Все, подождите меня немного. Мы вместе пойдём навестить того Гаутаму“».</p>
+<p id="p10">10. Люди ответили его слуге: «Быстро возвращайся к жрецу и скажи ему: „Сейчас подходящее время. Пойдём вместе“».</p>
+<p id="p11">11. Слуга вернулся и сказал: «Люди ждут. Они говорят: „Сейчас подходящее время. Пойдём вместе“». Жрец Кутатандья тогда спустился с верхнего этажа и остановился у входа в свой дом.</p>
+    <h4>Жрецы возражают против визита к Будде</h4>
+<p id="p12">12. В то время у его двери уже сидели другие пятьсот жрецов, ожидая, чтобы помочь Кутатандье подготовить его великое жертвоприношение. Увидев, что подходит жрец Кутатандья, они все поднялись и приветствовали его. Они сказали: «Великий жрец, куда ты идёшь?»</p>
+<p id="p13">13. Кутатандья ответил: «Я слышал следующее: „Отшельник Гаутама из рода Шакьев, оставивший дом и достигший пробуждения, странствует среди людей Кошалы. Он прибыл к северу от [Кхануматы] и остановился в тамошней роще розового дерева. Его великая слава разносится по всему миру: «Он — Татхагата, Архат и Совершенно Пробуждённый, обладающий десятью эпитетами в совершенстве!» Среди богов и мирских людей, будь то Мары, Брахмы, подвижники или жрецы, он учит других тому, что сам постиг. Его слова все истинны в начале, середине и конце, совершенны по содержанию и выражению и очищают целомудренную жизнь. Подобает получить аудиенцию у столь просветлённого человека“.</p>
+<p id="p14">14. «Жрецы, я также слышал, что Гаутама знает три вида жертвоприношений и шестнадцать жертвенных принадлежностей. Ныне прежние поколения и старейшины в нашем собрании не знали этих вещей, но я хочу совершить великое жертвоприношение и уже приготовил для него скот и овец. Я иду навестить Гаутаму, чтобы спросить его о трёх видах жертвоприношений и шестнадцати жертвенных принадлежностях. Как только мы обретём эти способы жертвоприношения, мы в совершенстве исполним их добродетели, и наша слава разнесётся далеко и широко».</p>
+<p id="p15">15. Те пятьсот жрецов сказали Кутатандье: «Не ходи навещать его. Почему? Это он должен прийти навестить тебя; тебе не следует идти навещать его. Ныне, великий жрец, ты происходишь от семи поколений истинных [предков] по отцу и матери, так что другие люди не пренебрегают тобой. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его».</p>
+<p id="p16">16. Они продолжили: «Великий жрец, ты в совершенстве постиг три Веды, умеешь различать все многообразные писания и учён в тонкостях мирской словесности. Ты также искусен в приёмах [распознавания] знаков великого человека, в гадании об удаче и несчастье, а также в обрядах жертвоприношений и этикете. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p17">17. «Более того, великий жрец, ты красив лицом и обрёл облик, подобный Брахме. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p18">18. «Более того, великий жрец, твои заповеди и добродетель превосходны, а мудрость твоя совершенна. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p19">19. «Более того, великий жрец, твои слова мягки и красноречивы, а их содержание и выражение чисты. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p20">20. «Более того, великий жрец, ты глава этого собрания и обладаешь множеством учеников. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p21">21. «Более того, великий жрец, ты постоянный наставник пятисот жрецов. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p22">22. «Более того, великий жрец, учёные приходят с четырёх сторон света с просьбами [о наставлении], спрашивая о технике жертвоприношений. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p23">23. «Более того, великий жрец, царь Прасенаджит и царь Бимбисара почитают и поддерживают тебя. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p24">24. «Более того, великий жрец, ты богат, обладаешь сокровищами, и твоя казна переполнена. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p25">25. «Более того, великий жрец, твоя мудрость проницательна, твои слова учёны, и тебе не свойственна робость. Ты достиг такого положения, так что это он должен прийти навестить тебя; тебе не следует идти навещать его.</p>
+<p id="p26">26. «Великий учитель, ты в совершенстве обладаешь этими одиннадцатью достоинствами. Это он должен прийти навестить тебя; тебе не следует идти навещать его».</p>
+    <h4>Кутатандья объясняет, почему подобает посетить Будду</h4>
+<p id="p27">27. Кутатандья тогда сказал жрецам: «Так, так! Как вы сказали, я поистине наделён этими достоинствами; нет ни одного, которым бы я не обладал. Теперь послушайте, что я скажу: этими же достоинствами обладает отшельник Гаутама, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p28">28. «Отшельник Гаутама происходит от семи поколений истинных [предков] по отцу и матери, так что он не пренебрегаем другими. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p29">29. «Более того, отшельник Гаутама красив лицом и происходит из касты воинов. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p30">30. «Более того, отшельник Гаутама родился в знатном доме и оставил дом ради пути. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p31">31. «Более того, отшельник Гаутама наделён сиянием, его каста и род безупречны, и он оставил дом, чтобы взращивать путь. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p32">32. «Более того, отшельник Гаутама родился в богатой семье, обладавшей великим величием, и оставил дом ради пути. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p33">33. «Более того, отшельник Гаутама обладает благородными заповедями и достиг мудрости. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p34">34. «Более того, речь отшельника Гаутамы искусна, мягка и изысканна. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p35">35. «Более того, отшельник Гаутама — глава собрания, и учеников у него много. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p36">36. «Более того, отшельник Гаутама навсегда уничтожил алчность, не ведая невоздержанности. Он избавился от скорби и страха, и волосы его не встают дыбом. Он радостен и весел. Видя людей, он хвалит их добро. Он искусно учит о плодах поступков и не порицает иные учения. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p37">37. «Более того, отшельника Гаутаму неизменно почитают и одаряют царь Прасенаджит и царь Бимбисара. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p38">38. «Более того, отшельника Гаутаму почитает и одаряет жрец Пушкарасарин, а также почитают его и одаряют жрецы Брахмаю, [Тарукха], Шронатандья и Шукаманава Таудеяпутра. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас»<sup id="ref4"><a href="#n4">[4]</a></sup>.</p>
+<p id="p39">39. «Более того, отшельника Гаутаму почитают, уважают и одаряют его ученики, а также почитают его боги, демоны и иные духи. Роды Шакьев, Куру, Майнея, Вриджи, Малла и Сома тоже чтят его. Достигнув такого положения, мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p40">40. «Более того, отшельник Гаутама даровал три прибежища и пять заповедей царю Прасенаджиту и царю Бимбисаре. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p41">41. «Более того, отшельник Гаутама даровал три прибежища и пять заповедей жрецу Пушкарасарину. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p42">42. «Более того, отшельник Гаутама даровал три прибежища и пять заповедей своим ученикам, а также даровал их богам и родам Шакьев, Куру и иным. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p43">43. «Более того, куда бы отшельник Гаутама ни отправился, все люди почитают его и одаряют. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p44">44. «Более того, когда отшельник Гаутама прибывает в город или деревню, жители остаются невозмутимы и почитают его и одаряют. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p45">45. «Более того, куда бы отшельник Гаутама ни пошёл, нелюди, демоны и духи не смеют его беспокоить. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p46">46. «Более того, куда бы отшельник Гаутама ни пошёл, живущие там люди видят свет и слышат небесную музыку. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p47">47. «Более того, куда бы отшельник Гаутама ни пошёл, толпы людей тоскуют по нему и плачут, глядя, как он уходит. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p48">48. «Более того, когда он впервые оставил дом, родители и родственники отшельника Гаутамы плакали и были убиты горем. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p49">49. «Более того, отшельник Гаутама был ещё юн, когда оставил дом, и он отбросил украшения, слонов, коней, драгоценные колесницы, пять желаний и украшения. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p50">50. «Более того, отшельник Гаутама отказался от положения царя-миродержца и оставил дом ради пути. Если бы он остался дома, он был бы царём четырёх сторон света, властителем всех, и мы были бы его подданными. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p51">51. «Более того, отшельник Гаутама ясно понимает учения Брахмы, разъясняет их другим и посещает Брахму, чтобы беседовать с ним. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p52">52. «Более того, отшельник Гаутама ясно понимает три вида жертвоприношений и шестнадцать жертвенных принадлежностей, но наши прежние поколения и старейшины не способны познать их. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p53">53. «Более того, отшельник Гаутама наделён всеми тридцатью двумя знаками [великого человека]. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p54">54. «Более того, отшельник Гаутама мудр и проницателен, и ему не свойственна робость. Он достиг такого положения, так что это мы должны пойти навестить его; ему не следует приходить навещать нас.</p>
+<p id="p55">55. «Более того, отшельник Гаутама сейчас находится здесь, в [Кхануmate]. Он достоин того, чтобы я [пришёл к нему]. Для меня было бы честью стать его гостем, и подобало бы пойти и получить у него аудиенцию».</p>
+<p id="p56">56. Те пятьсот жрецов тогда сказали Кутатандье: «Удивительно! Необычайно! Неужели он обладает такими достоинствами? Если бы он достиг хотя бы одного из этих достоинств, ему всё равно не следовало бы приходить навещать нас. Как же тогда, если он наделён ими всеми? Подобало бы и нам всем пойти вместе и поприветствовать его».</p>
+<p id="p57">57. Кутатандья ответил: «Если вы хотите пойти, знайте, что сейчас для этого подходящее время».</p>
+    <h4>Кутатандья посещает Будду</h4>
+<p id="p58">58. Кутатандья тогда велел приготовить коней и драгоценную колесницу и отправился в рощу розового дерева в окружении тех пятисот жрецов, а также жрецов, знатных людей и домохозяев [Кхануматы]. Прибыв туда, он сошёл со своей колесницы и пешком направился к Бхагавану. Обменявшись с ним приветствиями, он сел в стороне.</p>
+<p id="p59">59. Некоторые из жрецов, знатных людей и домохозяев поклонились Будде и сели. Некоторые обменялись с ним приветствиями и сели. Некоторые назвали ему своё имя и сели. Некоторые приветствовали Будду со сложенными ладонями и сели. Некоторые молча сели. Когда собрание расселось и успокоилось, Кутатандья сказал Будде: «У меня есть вопрос, который я хотел бы задать, если у тебя есть время и ты позволишь мне». Будда сказал: «Можешь задать свой вопрос».</p>
+<p id="p60">60. Тогда жрец сказал Будде: «Я слышал, что Гаутама ясно понимает три вида жертвоприношений и шестнадцать видов жертвенных принадлежностей. Наши прежние поколения и старейшины не способны познать их, но теперь мы собираемся совершить великое жертвоприношение. Я приготовил пятьсот быков, пятьсот коров, пятьсот бычков, пятьсот тёлочек, пятьсот овец и пятьсот баранов, чтобы принести их в жертву. Сегодня я пришёл спросить о пути трёх жертвоприношений и шестнадцати жертвенных принадлежностях. Если бы мы могли совершить это жертвоприношение, мы обрели бы великую награду, слава разнеслась бы далеко, и боги и люди почитали бы нас».</p>
+<p id="p61">61. Бхагаван тогда сказал Кутатандье: «Теперь слушай внимательно. Слушай внимательно и хорошо обдумай это. Я разъясню это тебе». Жрец сказал: «Конечно, Гаутама! Я рад буду услышать это».</p>
+    <h4>Повесть о великом жертвоприношении прежнего царя</h4>
+<p id="p62">62. Будда сказал Кутатандье: «Давным-давно жил царь-воин из касты, помазанной водой, который хотел устроить великое жертвоприношение. Он встретился со своим жреческим великим советником и сказал ему: „Я обладаю великим богатством и свободно наслаждаюсь пятью удовольствиями, но теперь я стар. Мои воины могущественны; ни один из них не слаб, и казна моя переполнена. Теперь я хочу устроить великое жертвоприношение. Расскажи мне о пути жертвоприношений. Что для этого понадобится?“</p>
+<p id="p63">63. «Его великий советник сказал: „Так, великий царь! Как сказал царь, страна богата, войско сильно, а казна переполнена. Однако люди питают в сердце много злых помыслов и не следуют истинному пути. Если жертвоприношение будет совершено сейчас, оно не достигнет цели, подобно тому как посланный в погоню за вором вор не станет вестником.</p>
+<p id="p64">64. «„Великий царь, не думай: «Это мои люди. Я могу нападать на них, убивать, порицать и останавливать их». Тем, кто приходит к царю, следует давать то, что им нужно. Тем, кто ведёт дело, следует давать богатство. Тем, кто возделывает поля, следует давать скот и семена. Пуская это в дело, каждый будет заботиться о своём деле. Когда царь не притесняет народ, народ будет спокоен. Люди будут растить детей и жить в согласии“».</p>
+<p id="p65">65. Будда сказал Кутатандье: «Услышав слова советников, царь дал одежду и пищу тем, кто был при нём, богатство — торговцам, а скот и семена — земледельцам. Каждый заботился о своём деле, и они не досаждали друг другу. Они растили детей и жили в согласии».</p>
+<p id="p66">66. Будда сказал: «Царь снова созвал советников и сказал им: „Моя страна богата, войско сильно, а казна переполнена. Я обеспечил народ так, что ему ни в чём не нужно. Люди растят детей и живут в согласии. Теперь я хочу устроить великое жертвоприношение. Расскажите мне о пути жертвоприношений. Что для этого понадобится?“</p>
+<p id="p67">67. «Советники сказали царю: „Так, так и есть! Как говорит царь. Страна благоденствует, войско сильно, а казна переполнена. Ты обеспечил народ так, что ему ни в чём не нужно. Люди растят детей и живут в согласии. Если царь желает жертвоприношения, пусть побеседует со своими дворцовыми жёнами и известит их об этом“.</p>
+<p id="p68">68. «Царь поступил так, как сказали советники. Он вошёл во дворец и сказал своим жёнам: „Моя страна богата, войско сильно, а казна переполнена. Я обладаю многими сокровищами. Я хочу устроить великое жертвоприношение“.</p>
+<p id="p69">69. «Тогда жёны сказали царю: „Так, так и есть! Как говорит царь. Страна богата, войско сильно, а казна переполнена. Он обладает многими сокровищами. Если он желает устроить великое жертвоприношение, сейчас для этого подходящее время“.</p>
+<p id="p70">70. «Царь вернулся и сказал советникам: „Моя страна богата, войско сильно, а казна переполнена. Я обеспечил народ так, что ему ни в чём не нужно. Люди растят детей и живут в согласии. Теперь я хочу великого жертвоприношения. Я уже сказал дворцовым жёнам. Скажите мне, что для этого понадобится“.</p>
+<p id="p71">71. «Советники тогда сказали царю: „Так, так и есть! Как говорит царь. Он желает устроить великое жертвоприношение и сказал об этом дворцовым жёнам, но ещё не сказал царевичам, наследному принцу, великому советнику и сановникам. Царю следует сказать им“.</p>
+<p id="p72">72. «Услышав слова советников, царь сказал царевичам, наследному принцу, советникам и сановникам: „Моя страна богата, войско сильно, а казна переполнена. Я хочу устроить великое жертвоприношение“.</p>
+<p id="p73">73. «Царевичи, наследный принц, советники и сановники тогда сказали царю: „Так, так и есть! Великий царь, страна ныне богата, войско сильно, а казна переполнена. Если ты хочешь устроить жертвоприношение, сейчас для этого подходящее время“.</p>
+<p id="p74">74. «Царь снова сказал великому советнику: „Моя страна богата, войско сильно, и я обладаю многими сокровищами. Я поговорил с моими дворцовыми жёнами, царевичами, наследным принцем и даже сановниками. Теперь я хочу устроить великое жертвоприношение. Что для этого понадобится?“</p>
+<p id="p75">75. «Советники сказали: „Как говорит великий царь. Если он хочет устроить жертвоприношение, сейчас для этого подходящее время“.</p>
+<p id="p76">76. «Услышав это, он повелел построить новый дворец к востоку от города. Войдя в этот новый дворец, царь облачился в одеяние из оленьей шкуры и умастил своё тело благовонным очищенным маслом. Он также надел на голову оленьи рога, а на землю была расстелена коровья лепёшка, на которую он сел и лёг. Его первая жена и жреческий великий советник выбрали жёлтую корову. Её доили один раз, чтобы напиться царю, один раз — чтобы напилась его жена, один раз — чтобы напился советник, и один раз — чтобы дать великому собранию. Остальное было отдано её телёнку.</p>
+<p id="p77">77. «Царь совершил восемь дел, а его великий советник — четыре дела. Каковы же восемь дел, что совершил царь? Тот царь-воин происходил от семи поколений истинных [предков] по отцу и матери, так что никто не пренебрегал им. Это было первое дело, которое он совершил. Тот царь был красив лицом и происходил из касты воинов. Это было второе дело. Добродетель заповедей того царя была высока, а мудрость совершенна. Это было третье дело. Тот царь владел разнообразными искусствами, такими как верховая езда на слонах, конях и колесницах, владение мечом, стрельба из лука и иные воинские искусства. Не было ничего, чего бы он не знал в совершенстве. Это было четвёртое дело. Тот царь обладал великой властью, объединявшей меньших царей. Не было никого, кто бы не покорился ему. Это было пятое дело. Тот царь был красноречив. То, что он говорил, было мягким, а его смысл и содержание были совершенны. Это было шестое дело. Тот царь обладал многими сокровищами, и его казна была переполнена. Это было седьмое дело. Тот царь был проницателен, отважен и не имел слабостей. Это было восьмое дело. Тот царь-воин совершил эти восемь дел.</p>
+<p id="p78">78. «Каковы же четыре дела, что совершил тот великий советник? Тот жреческий великий советник происходил от семи поколений истинных [предков] по отцу и матери, так что другие люди не пренебрегали им. Это было первое дело.</p>
+<p id="p79">79. «Далее, тот великий советник в совершенстве постиг три Веды, умел различать все многообразные виды писаний и был учён во всех тонкостях мирской словесности. Он также был искусен в приёмах [распознавания] знаков великого человека, в гадании об удаче и несчастье, а также в обрядах жертвоприношений и этикете. Это было второе дело.</p>
+<p id="p80">80. «Далее, тот великий советник был красноречив. То, что он говорил, было мягким, а его смысл и содержание были совершенны. Это было третье дело.</p>
+<p id="p81">81. «Далее, тот великий советник был проницателен, отважен и не имел слабостей. Не было вопросов о жертвоприношении, которых бы он не понимал. Это было четвёртое дело.</p>
+<p id="p82">82. «Тот царь совершил эти восемь дел, а его жреческий великий советник совершил эти четыре дела. У того царя тогда было четыре опоры, три пути жертвоприношения и шестнадцать жертвенных принадлежностей.</p>
+<p id="p83">83. «Жреческий великий советник пришёл в новый дом царя и раскрыл ему шестнадцать вещей, которые рассеяли сомнения царя. Каковы же эти шестнадцать?</p>
+<p id="p84">84. «Великий советник сказал царю: „Некоторые люди говорят: «Теперь царь-воин желает великого жертвоприношения, но он происходит от семи поколений истинных [предков] по отцу и матери, которые не были истинными, так что его постоянно презирают другие люди». Если бы это было сказано, это не запятнало бы царя. Почему? Царь происходит от семи поколений истинных [предков] по отцу и матери, так что он не пренебрегаем другими людьми.</p>
+<p id="p85">85. «„Иногда люди говорят: «Теперь царь-воин желает великого жертвоприношения, но он безобразен лицом и не принадлежит к касте воинов». Если бы это было сказано, это не запятнало бы царя. Почему? Царь красив лицом и принадлежит к касте воинов.</p>
+<p id="p86">86. «„Иногда люди говорят: «Теперь царь-воин желает великого жертвоприношения, но у него нет высоких заповедей, и он не обладает мудростью». Если бы это было сказано, это не запятнало бы царя. Почему? Добродетель заповедей царя высока, а мудрость его совершенна.</p>
+<p id="p87">87. «„Иногда люди говорят: «Теперь царь-воин желает великого жертвоприношения, но он не развил такие искусства, как верховая езда на слонах, конях и колесницах, и не понимает различных воинских искусств». Если бы это было сказано, это не запятнало бы царя. Почему? Царь развил эти искусства, а также искусства войны и боевые приёмы. Нет ничего, чего бы он не понимал.</p>
+<p id="p88">88. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но у него нет власти, чтобы объединить меньших царей». Если бы это было сказано, это не запятнало бы царя. Почему? Царь действительно обладает великой властью, объединяющей меньших царей.</p>
+<p id="p89">89. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но он не красноречив. Его речь груба, а её содержание и смысл несовершенны». Если бы это было сказано, это не запятнало бы царя. Почему? Царь красноречив. Его речь мягка, а её содержание и смысл совершенны.</p>
+<p id="p90">90. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но у него немного сокровищ». Если бы это было сказано, это не запятнало бы царя. Почему? Казна царя переполнена множеством сокровищ.</p>
+<p id="p91">91. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но ему недостаёт проницательности, а нрав его робок». Если бы это было сказано, это не запятнало бы царя. Почему? Царь проницателен, отважен и лишён всякой робости.</p>
+<p id="p92">92. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но он не посоветовался с женщинами дворца». Если бы это было сказано, это не запятнало бы царя. Почему? Царь желает жертвоприношения, и он заранее посоветовался с женщинами дворца.</p>
+<p id="p93">93. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но он не посоветовался с царевичами или наследным принцем». Если бы это было сказано, это не запятнало бы царя. Почему? Царь желает жертвоприношения, и он заранее посоветовался с царевичами и наследным принцем.</p>
+<p id="p94">94. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но он не посоветовался со своими советниками». Если бы это было сказано, это не запятнало бы царя. Почему? Царь желает жертвоприношения, и он заранее посоветовался со своими советниками.</p>
+<p id="p95">95. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но он не посоветовался со своими сановниками и людьми». Если бы это было сказано, это не запятнало бы царя. Почему? Царь желает жертвоприношения, и он заранее посоветовался со своими сановниками и людьми.</p>
+<p id="p96">96. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но его жреческий великий советник происходит от семи поколений истинных [предков] по отцу и матери, которые не были истинными, так что его всегда презирают другие люди». Если бы это было сказано, это не запятнало бы царя. Почему? Я происхожу от семи поколений истинных [предков] по отцу и матери, так что я не пренебрегаем другими людьми.</p>
+<p id="p97">97. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но его великий советник не постиг три Веды, не может различать многообразные писания и не учён в тонкостях мирской словесности. Он не искусен в приёмах [распознавания] знаков великого человека, в гадании об удаче и несчастье или в обрядах жертвоприношений и этикете». Если бы это было сказано, это не запятнало бы царя. Почему? Я постиг три Веды, умею различать многообразные писания и учён в тонкостях мирской словесности. Я искусен в приёмах [распознавания] знаков великого человека, в гадании об удаче и несчастье, а также в обрядах жертвоприношений и этикете.</p>
+<p id="p98">98. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но его великий советник не красноречив. Его речь груба, а её содержание и смысл несовершенны». Если бы это было сказано, это не запятнало бы царя. Почему? Я красноречив. Моя речь мягка, а её содержание и смысл совершенны.</p>
+<p id="p99">99. «„Иногда люди говорят: «Царь желает великого жертвоприношения, но его жреческий великий советник не проницателен, его нрав робок, и он не понимает пути жертвоприношения». Если бы это было сказано, это не запятнало бы царя. Почему? Я проницателен и отважен, лишён всякой робости, и нет ничего в пути жертвоприношения, чего бы я не понимал“».</p>
+<p id="p100">100. Будда сказал Кутатандье: «У царя были некоторые сомнения по поводу этих шестнадцати пунктов, но великий советник раскрыл ему эти шестнадцать вещей».</p>
+<p id="p101">101. Будда сказал: «В том новом дворце великий советник ясно наставил, облагодетельствовал и порадовал царя, совершив десять вещей. Каковы же эти десять? Великий советник сказал: „Во время жертвоприношения царя соберутся люди, которые убивали и которые не убивали живых существ. Одаряй их всех равно. Если придёт тот, кто убивал живых существ, одари и его. Пусть царь сам знает: «Если придёт тот, кто не убивал живых существ, я одарю и его тоже». Причина даяния — размышлять о щедрости таким образом.</p>
+<p id="p102">102. «„Если же в собрании будут воры, прелюбодеи, те, кто говорит двулично, лживо, грубо и легкомысленно, а также те, кто алчен, ненавистлив и придерживается ложных взглядов, одари и их. Пусть царь сам знает: «Если придут те, кто не крадёт… и придерживается правильных взглядов, я одарю и их тоже». Причина даяния — размышлять о щедрости таким образом“».</p>
+<p id="p103">103. Будда сказал жрецу: «Тот великий советник ясно наставил его, облагодетельствовав и порадовав царя этими десятью делами».</p>
+<p id="p104">104. Будда также сказал жрецу: «У того царя-воина в его новом жилище возникли три сожаления, которые великий советник рассеял. Каковы же эти три? У царя возникло такое сожаление: „Ныне это моё великое жертвоприношение. Мои великие жертвоприношения в прошлом, мои великие жертвоприношения в будущем и мои великие жертвоприношения в настоящем стоили много сокровищ“. Когда эти три мысли пришли ему в голову, он почувствовал сожаление.</p>
+<p id="p105">105. «Великий советник сказал: „Царь совершал великие жертвоприношения, и его щедрость в прошлом, будущем и настоящем принесла заслуги этих жертвоприношений. Тебе не следует сожалеть об этом“. Царь пришёл в своё новое жилище с этими тремя сожалениями, и великий советник рассеял их».</p>
+<p id="p106">106. Будда сказал жрецу: «Тот царь-воин из касты, помазанной водой, вышел из своего нового жилища в пятнадцатый день полнолуния и зажёг на открытой земле перед ним большой костёр. Он поднял сосуд с маслом, вылил его в огонь и воскликнул: „Я приношу это в дар! Я приношу это в дар!“</p>
+<p id="p107">107. «Жена царя услышала, что царь вышел из своего нового жилища в пятнадцатый день полнолуния, зажёг перед ним большой костёр, поднял сосуд с маслом, вылил его на огонь и воскликнул: „Я приношу это в дар! Я приношу это в дар!“ Его жена и наложницы принесли царю много сокровищ и сказали ему: „Эти разнообразные сокровища помогут царю совершить его жертвоприношение“.</p>
+<p id="p108">108. «Жрец, царь тотчас сказал своей жене и наложницам: „Довольно, довольно! Вы уже поддержали меня, а моё собственное богатство велико. Его будет достаточно для жертвоприношения“.</p>
+<p id="p109">109. «Его жена и наложницы тогда подумали про себя: „Было бы неправильно нам забрать эти сокровища обратно во дворец. Если царь устроит великое жертвоприношение на востоке, мы пойдём и пожертвуем их туда“.</p>
+<p id="p110">110. «Жрец, позже царь устроил великое жертвоприношение на востоке, и его жена и наложницы предоставили эти сокровища для него.</p>
+<p id="p111">111. «Царевичи и наследный принц услышали, что царь вышел из нового дворца в пятнадцатый день полнолуния, зажёг перед ним большой костёр, поднял сосуд с маслом, вылил его на огонь и воскликнул: „Я приношу это в дар! Я приношу это в дар!“ Царевичи и наследный принц принесли царю сокровища и сказали ему: „Эти сокровища помогут царю совершить его великое жертвоприношение“.</p>
+<p id="p112">112. «Царь сказал: „Довольно, довольно! Вы уже поддержали меня, а моё собственное богатство велико. Его будет достаточно для жертвоприношения“.</p>
+<p id="p113">113. «Царевичи и наследный принц тогда подумали про себя: „Было бы неправильно нам забрать эти сокровища обратно. Если царь устроит великое жертвоприношение на юге, мы пойдём и пожертвуем их туда“.</p>
+<p id="p114">114. «Так, великий советник принёс сокровище и сказал: „Я хотел помочь царю с жертвоприношением на западе“…</p>
+<p id="p115">115. «Сановники и люди принесли сокровища и сказали: „Мы хотели помочь царю с жертвоприношением на севере“…»</p>
+<p id="p116">116. Будда сказал жрецу: «Когда царь устраивал великое жертвоприношение, он не убивал коров, овец или иных живых существ. Он жертвовал лишь маслом, молоком, кунжутным маслом, мёдом, чёрными сладостями и леденцами».</p>
+<p id="p117">117. Будда сказал жрецу: «Когда тот царь-воин устраивал великое жертвоприношение, оно было радостным в начале, середине и конце. Таков путь совершения жертвоприношения».</p>
+<p id="p118">118. Будда сказал жрецу: «После того великого жертвоприношения тот царь-воин обрезал волосы и бороду, облачился в три рясы Закона и оставил дом ради пути. Он взращивал четыре безмерных состояния ума, пока его тело не распалось и жизнь не окончилась, и он родился на небесах Брахмы.</p>
+<p id="p119">119. «Совершив свой великий дар, жена царя также обрезала волосы, облачилась в три рясы Закона и оставила дом, чтобы взращивать путь. Она практиковала четыре практики Брахмы, пока её тело не распалось и жизнь не окончилась, и она родилась на небесах Брахмы. Обучив царя четырём способам жертвоприношения, жреческий великий советник также совершил великий дар. После этого он обрезал волосы и бороду, облачился в три рясы Закона и оставил дом, чтобы взращивать путь. Он практиковал четыре практики Брахмы, пока его тело не распалось и жизнь не окончилась, и он родился на небесах Брахмы».</p>
+    <h4>Обращение Кутатандьи</h4>
+<p id="p120">120. Будда сказал жрецу: «Тот царь следовал трём путям жертвоприношения, обладал шестнадцатью жертвенными принадлежностями и совершил то великое жертвоприношение. Что ты думаешь об этом?»</p>
+<p id="p121">121. Услышав то, что сказал Будда, Кутатандья молчал и не отвечал. Пятьсот жрецов, что были там, сказали Кутатандье: «Слова отшельника Гаутамы чудесны. Почему великий учитель молчит и не отвечает ему?»</p>
+<p id="p122">122. Кутатандья ответил: «То, чему учил отшельник Гаутама, чудесно. Не то чтобы я не принимал этого. Причина моего молчания в том, что я размышлял об этом. Отшельник Гаутама разъяснил этот предмет, но не сказал, что слышал это от кого-то другого, поэтому я молча размышлял: „Был ли отшельник Гаутама тем царём-воином в то время? Или же он был тем жреческим великим советником?“»</p>
+<p id="p123">123. Бхагаван тогда сказал Кутатандье: «Хорошо, хорошо! Ты испытал Татхагату и верно установил, что он безупречен. Когда тот царь-воин совершал своё великое жертвоприношение, был ли он другим человеком? Не думай так, ибо это был я сам. Именно тогда я достиг высшей мудрости великой щедрости».</p>
+<p id="p124">124. Кутатандья сказал Будде: «Именно эти три пути жертвоприношения и обладание шестнадцатью жертвенными принадлежностями приносят великую награду, но есть ли нечто ещё большее?» Будда сказал: «Есть».</p>
+<p id="p125">125. Жрец спросил: «Что же это?» Будда сказал: «Если кто-то способен постоянно оказывать поддержку Сангхе и не прекращать её, его добродетель больше, чем добродетель трёх путей жертвоприношения и обладания шестнадцатью жертвенными принадлежностями».</p>
+<p id="p126">126. «Есть ли нечто ещё большее, чем эта добродетель постоянной поддержки Сангхи без прекращения, которая сама по себе больше, чем добродетель трёх путей жертвоприношения и обладания шестнадцатью жертвенными принадлежностями?» Будда сказал: «Есть».</p>
+<p id="p127">127. «Что же это?» Будда сказал: «Возведение монастырей и высоких залов для Сангхи в четырёх направлениях — это дар, гораздо больший, чем дар трёх путей жертвоприношения и обладания шестнадцатью жертвенными принадлежностями или поддержки Сангхи без прекращения».</p>
+<p id="p128">128. «Есть ли нечто ещё большее, чем эта добродетель возведения монастырей и высоких залов для Сангхи в четырёх направлениях, которая сама по себе больше, чем добродетель трёх путей жертвоприношения и обладания шестнадцатью жертвенными принадлежностями или поддержки Сангхи без прекращения?» Будда сказал: «Есть».</p>
+<p id="p129">129. «Что же это?» Будда сказал: «Предположим, некто совершает три пути жертвоприношения и обладает шестнадцатью жертвенными принадлежностями, поддерживает Сангху и не прекращает эту поддержку, а также возводит монастыри и высокие залы для Сангхи в четырёх направлениях. Всё это не сравнится с порождением радостного ума и провозглашением: „Я принимаю прибежище в Будде, принимаю прибежище в Законе и принимаю прибежище в Сангхе“. Заслуга этого больше».</p>
+<p id="p130">130. «Есть ли нечто ещё большее, чем награда, обретаемая от этих трёх прибежищ?» Будда сказал: «Есть».</p>
+<p id="p131">131. «Что же это?» Будда сказал: «Предположим, некто с радостным сердцем принимает и соблюдает пять заповедей всю свою жизнь, не убивая, не крадя, не предаваясь похоти, не лжёт и не пьёт хмельного. Эта заслуга больше».</p>
+<p id="p132">132. «Есть ли нечто ещё большее, чем великая награда, обретаемая от этих трёх путей жертвоприношения… пяти заповедей?» Будда сказал: «Есть».</p>
+<p id="p133">133. «Что же это?» Будда сказал: «Предположим, некто способен сострадательно помнить обо всех живых существах хотя бы столько времени, сколько нужно, чтобы выдоить струйку молока из коровы. Заслуга этого много больше».</p>
+<p id="p134">134. «Есть ли нечто ещё большее, чем великая награда, обретаемая от этих трёх путей жертвоприношения… сострадания?» Будда сказал: «Есть».</p>
+<p id="p135">135. «Что же это?» Будда сказал: «Предположим, в мире является Татхагата, Архат и Совершенно Пробуждённый, и некто оставляет дом, чтобы взращивать путь учения того Будды. Это наделяет его разнообразными добродетелями… он в совершенстве обретает три знания, разрушает тьму неведения и обладает светом мудрости. Почему? Заслуга этого много больше, потому что такие люди не бывают беспечны и с радостью пребывают в уединении».</p>
+<p id="p136">136. Кутатандья снова сказал Будде: «Гаутама, я собирался совершить жертвоприношение, для которого требовалось по пятьсот голов скота и овец каждого вида. Теперь я отпущу их всех, чтобы они сами находили воду и траву. Я принимаю прибежище в Будде, принимаю прибежище в Законе и принимаю прибежище в Сангхе. Дозволь мне стать мирянином в истинном учении. Отныне я не буду убивать, красть, предаваться похоти, лгать или пить хмельное всю мою жизнь. Пусть Бхагаван и великое собрание примут мою просьбу!» Бхагаван молча принял её.</p>
+<p id="p137">137. Жрец тогда увидел, что Будда молча принял его просьбу. Он поднялся, поклонился Будде и трижды обошёл его, прежде чем удалиться. Он отправился домой и приготовил разнообразные изысканные яства.</p>
+<p id="p138">138. На следующий день Бхагаван облачился в рясу и взял чашу. В сопровождении великого собрания из 1250 монахов он пришёл в дом жреца, где для них были приготовлены сиденья, и они сели. Жрец затем лично подал им пищу, предложив её Будде и Сангхе. Когда они закончили есть, они удалились со своими чашами. Когда они закончили их мыть, Будда сложил для жреца стихи:</p>
+<ul class="verse"><li>«Огонь — лучшее из жертвоприношений;<br/>
+Поэзия — лучшее для декламации;<br/>
+Царь — лучший среди людей;<br/>
+Океан — лучшее среди рек;<br/>
+Луна — лучшее среди звёзд;<br/>
+И солнце — лучшее среди светил.</li></ul>
+<ul class="verse"><li>Вверху, внизу и в четырёх направлениях,<br/>
+Среди всех живых существ, что есть,<br/>
+Будь то боги или мирские люди,<br/>
+Лишь Будда превосходит всех.<br/>
+Тому, кто ищет великое счастье,<br/>
+Следует поддерживать три драгоценности».</li></ul>
+    <h4>Освобождение Кутатандьи</h4>
+<p id="p139">139. Жрец Кутатандья тогда принёс небольшое сиденье и сел перед Буддой. Бхагаван постепенно учил его Закону. Он ясно наставлял его, приносил ему пользу и радовал его. Он рассуждал о щедрости, заповедях, рождении на небесах, великой опасности желания, препятствии к движению вверх по течению и превосходстве избавления. Он различал и прояснял чистые практики. Затем Бхагаван увидел, что ум жреца стал податлив, его препятствия уменьшились, и он легко поддаётся наставлению. Он учил его истине о страдании согласно вечному учению Будд, различая и проясняя её. Он учил благородной истине о возникновении, благородной истине о прекращении и благородной истине об избавлении.</p>
+<p id="p140">140. Жрец Кутатандья, сидя на своём месте, стал далёк от скверны и отделён от загрязнения, и он обрёл чистое око Закона. Подобно тому как чистая белая ткань легко окрашивается, так же было и с Кутатандьей. Он увидел Закон и обрёл Закон. Обретя его плод, он утвердился в уверенности не из-за веры в кого-то другого и достиг бесстрашия. Он сказал Будде: «Отныне я всецело и трижды принимаю прибежище в Будде, Законе и благородной Сангхе. Пусть Будда дозволит мне стать мирянином в истинном учении. Отныне я не буду убивать, красть, предаваться похоти, лгать или пить хмельное всю мою жизнь».</p>
+<p id="p141">141. Он также всецело сказал Будде: «Пусть Бхагаван примет моё приглашение остаться на семь дней». Бхагаван молча принял его. Жрец лично подавал пищу Будде и Сангхе в течение семи дней. По истечении недели Будда продолжил странствовать среди людей.</p>
+<p id="p142">142. Прошло немного времени после ухода Будды, как Кутатандья заболел, и его жизнь окончилась.</p>
+<p id="p143">143. Группа монахов услышала, что Кутатандья поддерживал Будду семь дней, а затем вскоре заболел и умер. Они подумали про себя: «Жизнь того человека окончилась, но куда же он отправился?»</p>
+<p id="p144">144. Те монахи пришли к Будде, склонили головы к его ногам и сели в стороне. Они спросили: «Теперь, когда жизнь Кутатандьи окончилась, где он родится?»</p>
+<p id="p145">145. Будда сказал монахам: «Тот человек чисто взращивал целомудренную жизнь и достигал одного состояния за другим, и ничто в учении не тревожило его. Поскольку он покончил с пятью низшими оковами, его паринирвана наступила в настоящей жизни. Он не вернётся в этот мир».</p>
+<p id="p146">146. Услышав то, чему учил Будда, монахи возрадовались и одобрили [услышанное].</p>
+
+    <h2>Примечания</h2>
+<p id="n1" data-note-number="1"><span class="note-number">[1]</span> Это 23-я сутра Дīргха Агамы (T1.1.96c16-101b8). Эта сутра параллельна DN 5. <a href="#ref1">[назад]</a></p>
+<p id="n2" data-note-number="2"><span class="note-number">[2]</span> [Кхануmата]. Кит. 佉㝹婆提 (среднекит. K'ia-neu-b'ua-d'iei) предполагает иное произношение, вроде *Khanuvati. Существует санскритское издание, которое дало бы параллельное название этому городу, но оно до сих пор не опубликовано. Я сохраняю палийское название до поры до времени. <a href="#ref2">[назад]</a></p>
+<p id="n3" data-note-number="3"><span class="note-number">[3]</span> Кутатандья. Кит. 究羅檀頭 (среднекит. Kieu-la-d'an-d'eu), пали Kūṭadanta. Я принял санскритское засвидетельствование, но китайская транслитерация предполагает нечто вроде *Kulatandu. <a href="#ref3">[назад]</a></p>
+<p id="n4" data-note-number="4"><span class="note-number">[4]</span> См. примечания к DĀ 20 относительно различных собственных имён в этом и следующих нескольких абзацах. <a href="#ref4">[назад]</a></p>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/da/da22.html" title="DĀ 22 — Шронатандья" aria-label="Предыдущая сутта: DĀ 22 — Шронатандья">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/da/da24.html" title="DĀ 24 — Дхрува" aria-label="Следующая сутта: DĀ 24 — Дхрува">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[411px] flex-[0_0_411px] max-xl:w-[min(420px,90%)] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1791393943"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+          <div class="translation-picker relative w-full" data-translation-picker>
+      <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+      <button
+        type="button"
+        class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-label="Выбор перевода"
+        title="Русский — Anthropic Claude Sonnet 5"
+        data-translation-picker-toggle
+      >
+        <span class="min-w-0 truncate">Русский — Anthropic Claude Sonnet 5</span>
+        <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+      </button>
+      <div class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-translation-picker-menu hidden>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+            type="button"
+            data-translation-picker-option="/chinese_canon/da/da23.html"
+            title="Русский — Anthropic Claude Sonnet 5"
+            disabled          >Русский — Anthropic Claude Sonnet 5</button>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+            type="button"
+            data-translation-picker-option="/en/chinese_canon/da/da23.html"
+            title="English — Dharma Pearls"
+                      >English — Dharma Pearls</button>
+              </div>
+    </div>
+    <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+<script>
+  (() => {
+    const picker = document.querySelector("[data-translation-picker]");
+    const toggle = picker?.querySelector("[data-translation-picker-toggle]");
+    const menu = picker?.querySelector("[data-translation-picker-menu]");
+    const options = picker?.querySelectorAll("[data-translation-picker-option]");
+    const setOpen = (open) => {
+      if (!picker || !toggle || !menu) return;
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+      picker.classList.toggle("is-open", open);
+    };
+    toggle?.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    options?.forEach((option) => option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    }));
+    document.addEventListener("click", (event) => {
+      if (picker && !picker.contains(event.target)) setOpen(false);
+    });
+  })();
+</script>
+</section>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1791393943"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1791393943"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

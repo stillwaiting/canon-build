@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DĀ 9 — Собрание сангхи — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1791393943" />
+    <link rel="icon" href="/assets/favicon.ico?_=1791393943" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1791393943" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1791393943" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Выбор перевода"
+          data-mobile-translation-toggle
+        >
+          <span class="block w-full truncate" title="Русский — Anthropic Claude Sonnet 5">Русский — Anthropic Claude Sonnet 5</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-mobile-translation-menu hidden>
+                                              <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/chinese_canon/da/da9.html"
+              title="English — Dharma Pearls"
+            ><span class="block w-full truncate">English — Dharma Pearls</span></a>
+                  </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/chinese_canon/da.html">Dīrgha Āgama</a>
+                <div class="sutta-breadcrumbs hidden">Dīrgha Āgama · DĀ 9 — Собрание сангхи</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          DĀ 9 — Собрание сангхи        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Перевод: Anthropic Claude Sonnet 5          </p>
+                      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <table>
+      <tr><th class="ch">（九）佛說長阿含 第二分 眾集經第五</th><th class="en">9. Собрание сангхи</th></tr>
+      <tr><td class="ch">如是我聞： 一時，佛於末羅遊行。 與千二百五十比丘俱，漸至波婆城闍頭菴婆園。</td><td id="p1">1. Так я слышал<sup id="ref1"><a href="#n1">1</a></sup>: Однажды Будда странствовал в земле маллов. Его сопровождало великое собрание из тысячи двухсот пятидесяти монахов, и постепенно он достиг Манговой рощи Чунды в городе Папа<sup id="ref2"><a href="#n2">2</a></sup>.</td></tr>
+      <tr><td class="ch">爾時，世尊以十五日月滿時，於露地坐，諸比丘僧前後圍繞。 世尊於夜多說法已，告舍利弗言： 「今者四方諸比丘集，皆共精勤。 捐除睡眠，吾患背痛。 欲暫止息。 汝今可為諸比丘說法。」</td><td id="p2">2. Было пятнадцатое число, ночь полной луны, когда Бхагаван воссел на открытом месте, а собрание монахов окружало его спереди и сзади. Дав вечером многочисленные наставления в Законе, Бхагаван обратился к Шарипутре: «Монахи сегодня собрались с четырёх сторон света, чтобы усердно трудиться вместе. Они ещё не хотят спать, а я же страдаю от боли в спине. Я хотел бы немного отдохнуть. Не мог бы ты теперь наставить монахов в Законе?»</td></tr>
+      <tr><td class="ch">對曰： 「唯然，當如聖教。」</td><td>Шарипутра ответил: «Да, я разъясню благородное учение».</td></tr>
+      <tr><td class="ch">爾時，世尊即四牒僧伽梨，偃右脇如師子，累足而臥。</td><td id="p3">3. Бхагаван четырежды сложил свою верхнюю рясу, лёг на правый бок, точно лев, и соединил стопы.</td></tr>
+      <tr><td class="ch">時，舍利弗告諸比丘： 「今此波婆城有尼乾子命終未久。 其後弟子分為二部，常共諍訟相求長短，迭相罵詈。 各相是非： 『我知此法。汝不知此。汝在邪見。我在正法。言語錯亂，無有前後。』 自稱己言，以為真正： 『我所言勝，汝所言負。我今能為談論之主。汝有所問，可來問我。』</td><td id="p4">4. Тогда Шарипутра обратился к монахам: «Здесь, в городе Папа, не так давно окончилась жизнь Нигрантхи Джнятипутры. С тех пор его ученики разделились на два лагеря, что беспрестанно спорят и ищут друг у друга недостатки, чтобы упрекать друг друга. Они противоречат друг другу, говоря: „Я знаю это учение“. „Ты этого не знаешь“. „Ты держишься ложных взглядов“. „Я держусь верного учения“. „Твои слова спутаны и лишены должного порядка“. Они считают истинными слова, восхваляющие их самих, говоря: „Моё утверждение побеждает, твои слова разбиты. Теперь я тот, кто даёт наставления. Приходи и спрашивай меня, если у тебя есть вопросы“.</td></tr>
+      <tr><td class="ch">「諸比丘，時，國人民奉尼乾者，厭患此輩鬪訟之聲，皆由其法不真正故；法不真正無由出要，譬如朽塔不可復圬，此非三耶三佛所說。諸比丘，唯我釋迦無上尊法，最為真正可得出要，譬如新塔易可嚴飾，此是三耶三佛之所說也。</td><td id="p5">5. «Монахи, люди этой страны, что делают подношения нигрантхам, утомлены и обеспокоены шумом их распрей. Поэтому они считают их учение неистинным. Учение, что неистинно, не даёт пути к избавлению — точно так же, как обветшавшую ступу невозможно заново расписать. Это не учение вполне пробуждённого. Монахи, лишь мы, шакьи, обладаем непревзойдённым, благородным учением, самым истинным и способным привести к избавлению — точно так же, как вновь построенную ступу легко украсить. Это учение вполне пробуждённого.</td></tr>
+      <tr><td class="ch">「諸比丘，我等今者，宜集法、律，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p6">6. «Монахи, сегодня нам следует собрать воедино Закон и Устав, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Единицы</td></tr>
+      <tr><td class="ch">「諸比丘，如來說一正法，一切眾生皆仰食存。</td><td id="p7">7. «Монахи, Татхагата учит одной верной вещи: все живые существа зависят от пищи ради своего существования.</td></tr>
+      <tr><td class="ch">「如來所說復有一法，一切眾生皆由行往，</td><td id="p8">8. «Есть и другая вещь, чему учит Татхагата: все живые существа перерождаются в результате своих деяний<sup id="ref3"><a href="#n3">3</a></sup>.</td></tr>
+      <tr><td class="ch">「是為一法如來所說，當共集之，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p9">9. «Таковы единые вещи, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Двойки</td></tr>
+      <tr><td class="ch">「諸比丘，如來說二正法：一名，二色。</td><td id="p10">10. «Монахи, Татхагата учит двум верным вещам: одно — имя, второе — форма.</td></tr>
+      <tr><td class="ch">「復有二法：一癡，二愛。</td><td id="p11">11. «Есть и другие две вещи: одна — заблуждение, вторая — жажда.</td></tr>
+      <tr><td class="ch">「復有二法：有見、無見。</td><td id="p12">12. «Есть и другие две вещи: взгляд существования и взгляд не-существования.</td></tr>
+      <tr><td class="ch">「復有二法：一無慚，二無愧。</td><td id="p13">13. «Есть и другие две вещи: одна — отсутствие совести, вторая — отсутствие стыда.</td></tr>
+      <tr><td class="ch">「復有二法：一有慚，二有愧。</td><td id="p14">14. «Есть и другие две вещи: одна — наличие совести, вторая — наличие стыда.</td></tr>
+      <tr><td class="ch">「復有二法：一盡智，二無生智。</td><td id="p15">15. «Есть и другие две вещи: одна — знание об окончании [загрязнений], вторая — знание об отсутствии дальнейшего рождения.</td></tr>
+      <tr><td class="ch">「復有二法，二因二緣生於欲愛：一者淨妙色，二者不思惟。</td><td id="p16">16. «Есть и другие две вещи — две причины и два условия, что порождают жажду: одно — чистая и утончённая форма, второе — невнимательность.</td></tr>
+      <tr><td class="ch">「復有二法，二因二緣生於瞋恚：一者怨憎，二者不思惟。</td><td id="p17">17. «Есть и другие две вещи — две причины и два условия, что порождают гнев: одно — ненависть, второе — невнимательность.</td></tr>
+      <tr><td class="ch">「復有二法，二因二緣生於邪見：一者從他聞，二者邪思惟。</td><td id="p18">18. «Есть и другие две вещи — две причины и два условия, что порождают ложные взгляды: одно — слышание их от других, второе — ложное размышление.</td></tr>
+      <tr><td class="ch">「復有二法，二因二緣生於正見：一者從他聞，二者正思惟。</td><td id="p19">19. «Есть и другие две вещи — две причины и два условия, что порождают верные взгляды: одно — слышание их от других, второе — верное размышление.</td></tr>
+      <tr><td class="ch">「復有二法，二因二緣：一者學解脫，二者無學解脫。</td><td id="p20">20. «Есть и другие две вещи — две причины и два условия: одно — обучение освобождению, второе — отсутствие дальнейшего обучения освобождению.</td></tr>
+      <tr><td class="ch">「復有二法，二因二緣：一者有為界，二者無為界。</td><td id="p21">21. «Есть и другие две вещи — две причины и два условия: одно — обусловленная стихия, второе — необусловленная стихия.</td></tr>
+      <tr><td class="ch">「諸比丘，是為如來所說，當共撰集以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p22">22. «Монахи, таковы двойные вещи, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Тройки</td></tr>
+      <tr><td class="ch">「諸比丘，如來說三正法，謂三不善根：一者貪欲，二者瞋恚，三者愚癡。</td><td id="p23">23. «Монахи, Татхагата учит трём верным вещам, что зовутся тремя неблагими корнями: первый — алчность, второй — гнев, третий — неведение.</td></tr>
+      <tr><td class="ch">「復有三法，謂三善根：一者不貪，二者不恚，三者不癡。</td><td id="p24">24. «Есть и другие три вещи, что зовутся тремя благими корнями: первая — отсутствие алчности, вторая — отсутствие гнева, третья — отсутствие неведения.</td></tr>
+      <tr><td class="ch">「復有三法，謂三不善行：一者不善身行，二者不善口行，三者不善意行。</td><td id="p25">25. «Есть и другие три вещи, что зовутся неискусными деяниями: первое — неискусное телесное деяние, второе — неискусное словесное деяние, третье — неискусное умственное деяние.</td></tr>
+      <tr><td class="ch">「復有三法，謂三不善行：身不善行、口不善行、意不善行。</td><td id="p26">26. «Есть и другие три вещи, что зовутся тремя неискусными деяниями: телесное неискусное деяние, словесное неискусное деяние, умственное неискусное деяние.</td></tr>
+      <tr><td class="ch">「復有三法，謂三惡行：身惡行、口惡行、意惡行。</td><td id="p27">27. «Есть и другие три вещи — три дурных деяния: дурное телесное деяние, дурное словесное деяние, дурное умственное деяние.</td></tr>
+      <tr><td class="ch">「復有三法，謂三善行：身善行、口善行、意善行。</td><td id="p28">28. «Есть и другие три вещи — три добрых деяния: доброе телесное деяние, доброе словесное деяние, доброе умственное деяние.</td></tr>
+      <tr><td class="ch">「復有三法，謂三不善想：欲想、瞋想、害想。</td><td id="p29">29. «Есть и другие три вещи — три неискусных помысла: помысел желания, помысел гнева, помысел вредительства.</td></tr>
+      <tr><td class="ch">「復有三法，謂三善想：無欲想、無瞋想、無害想。</td><td id="p30">30. «Есть и другие три вещи — три добрых помысла: помысел без желания, помысел без гнева, помысел без вредительства.</td></tr>
+      <tr><td class="ch">「復有三法，謂三不善思：欲思、恚思、害思。</td><td id="p31">31. «Есть и другие три вещи — три неискусных намерения: намерение желания, намерение гнева, намерение вредительства.</td></tr>
+      <tr><td class="ch">「復有三法，謂三善思：無欲思、無恚思、無害思。</td><td id="p32">32. «Есть и другие три вещи — три добрых намерения: намерение без желания, намерение без гнева, намерение без вредительства.</td></tr>
+      <tr><td class="ch">「復有三法，謂三福業：施業、平等業、思惟業。</td><td id="p33">33. «Есть и другие три вещи — три заслуженных деяния: деяние подаяния, деяние беспристрастия, деяние созерцания.</td></tr>
+      <tr><td class="ch">「復有三法，謂三受：樂受、苦受、不苦不樂受。</td><td id="p34">34. «Есть и другие три вещи — три чувства: приятное чувство, болезненное чувство, ни приятное, ни болезненное чувство.</td></tr>
+      <tr><td class="ch">「復有三法，謂三愛：欲愛、有愛、無有愛。</td><td id="p35">35. «Есть и другие три вещи — три жажды: жажда желаний, жажда существования, жажда не-существования.</td></tr>
+      <tr><td class="ch">「復有三法，謂三有漏：欲漏、有漏、無明漏。</td><td id="p36">36. «Есть и другие три вещи — три скверны: скверна желания, скверна существования, скверна неведения.</td></tr>
+      <tr><td class="ch">「復有三法，謂三火：欲火、恚火、愚癡火。</td><td id="p37">37. «Есть и другие три вещи — три огня: огонь желания, огонь гнева, огонь неведения.</td></tr>
+      <tr><td class="ch">「復有三法，謂三求：欲求、有求、梵行求。</td><td id="p38">38. «Есть и другие три вещи — три устремления: устремление к желаниям, устремление к существованию, устремление к подвижнической жизни.</td></tr>
+      <tr><td class="ch">「復有三法，謂三增盛：我增盛、世增盛、法增盛。</td><td id="p39">39. «Есть и другие три вещи — три возрастания: возрастание собственного „я“, возрастание мира, возрастание Закона.</td></tr>
+      <tr><td class="ch">「復有三法，謂三界：欲界、恚界、害界。</td><td id="p40">40. «Есть и другие три вещи — три стихии: стихия желания, стихия гнева, стихия вредительства.</td></tr>
+      <tr><td class="ch">「復有三法，謂三界：出離界、無恚界、無害界。</td><td id="p41">41. «Есть и другие три вещи — три стихии: стихия избавления, стихия без гнева, стихия без вредительства.</td></tr>
+      <tr><td class="ch">「復有三法，謂三界：色界、無色界、盡界。</td><td id="p42">42. «Есть и другие три вещи — три стихии: стихия формы, стихия бесформенного, стихия прекращения.</td></tr>
+      <tr><td class="ch">「復有三法，謂三聚：戒聚、定聚、慧聚。</td><td id="p43">43. «Есть и другие три вещи — три раздела: раздел заповедей, раздел самадхи, раздел мудрости.</td></tr>
+      <tr><td class="ch">「復有三法，謂三戒：增盛戒、增盛意、增盛慧。</td><td id="p44">44. «Есть и другие три вещи — три заповеди: возрастание заповедей, возрастание ума, возрастание мудрости.</td></tr>
+      <tr><td class="ch">「復有三法，謂三三昧：空三昧、無願三昧、無相三昧。</td><td id="p45">45. «Есть и другие три вещи — три самадхи<sup id="ref4"><a href="#n4">4</a></sup>: самадхи пустоты<sup id="ref5"><a href="#n5">5</a></sup>, самадхи без стремлений<sup id="ref6"><a href="#n6">6</a></sup> и самадхи без признаков<sup id="ref7"><a href="#n7">7</a></sup>.</td></tr>
+      <tr><td class="ch">「復有三法，謂三相：止息相、精勤相、捨相。</td><td id="p46">46. «Есть и другие три вещи — три признака: признак покоя, признак усердия, признак равностности.</td></tr>
+      <tr><td class="ch">「復有三法，謂三明：自識宿命智明、天眼智明、漏盡智明。</td><td id="p47">47. «Есть и другие три вещи — три прозрения: прозрение, что есть знание собственных прошлых жизней, прозрение, что есть знание небесного ока, и прозрение, что есть знание об окончании скверн.</td></tr>
+      <tr><td class="ch">「復有三法，謂三變化：一者神足變化，二者知他心隨意說法，三者教誡。</td><td id="p48">48. «Есть и другие три вещи — три превращения: первое — сверхъестественная способность превращения, второе — знание чужого ума и разъяснение учения по желанию, третье — наставление.</td></tr>
+      <tr><td class="ch">「復有三法，謂三欲生本：一者由現欲生人天，二者由化欲生化自在天，三者由他化欲生他化自在天。</td><td id="p49">49. «Есть и другие три вещи — три корня желания рождения: первый — рождение человеком или богом вследствие нынешнего желания, второй — рождение на небесах Нирманарати вследствие желания превращения, третий — рождение на небесах Паранирмитавашавартин из-за желания превращать [творения] других.</td></tr>
+      <tr><td class="ch">「復有三法，謂三樂生：一者眾生自然成辦，生歡樂心，如梵光音天初始生時。二者有眾生以念為樂，自唱善哉，如光音天。三者得止息樂，如遍淨天。</td><td id="p50">50. «Есть и другие три вещи — три источника отрады: первый — радость, что возникает от естественных свершений живых существ, как у богов Абхасвара при их первом рождении. Второй — некоторые живые существа считают мысль отрадной и сами восклицают: „Прекрасно!“ — как боги Абхасвара. Третий — отрада, что обретается от покоя, как у богов Шубхакритсна.</td></tr>
+      <tr><td class="ch">「復有三法，謂三苦：行苦、苦苦、變易苦。</td><td id="p51">51. «Есть и другие три вещи — три страдания: страдание обусловленности, страдание страдания, страдание изменения.</td></tr>
+      <tr><td class="ch">「復有三法，謂三根：未知欲知根、知根、知已根。</td><td id="p52">52. «Есть и другие три вещи — три способности: способность желания познать непознанное, способность познавания, способность уже познавшего.</td></tr>
+      <tr><td class="ch">「復有三法，謂三堂：賢聖堂、天堂、梵堂。</td><td id="p53">53. «Есть и другие три вещи — три чертога: чертог благородных, небесный чертог, чертог Брахмы.</td></tr>
+      <tr><td class="ch">「復有三法，謂三發：見發、聞發、疑發。</td><td id="p54">54. «Есть и другие три вещи — три повода [для укора]: повод по увиденному, повод по услышанному, повод по сомнению.</td></tr>
+      <tr><td class="ch">「復有三法，謂三論：過去有如此事，有如是論；未來有如此事，有如是論；現在有如此事，有如是論。</td><td id="p55">55. «Есть и другие три вещи — три рассуждения: рассуждения вроде: „В прошлом были такие-то события“. Рассуждения вроде: „В будущем будут такие-то события“. Рассуждения вроде: „В настоящем есть такие-то события“.</td></tr>
+      <tr><td class="ch">「復有三法，謂三聚：正定聚、邪定聚、不定聚。</td><td id="p56">56. «Есть и другие три вещи — три разряда: разряд верного самадхи, разряд ложного самадхи и разряд того, что не есть самадхи.</td></tr>
+      <tr><td class="ch">「復有三法，謂三憂：身憂、口憂、意憂。</td><td id="p57">57. «Есть и другие три вещи — три скорби: телесная скорбь, словесная скорбь, умственная скорбь.</td></tr>
+      <tr><td class="ch">「復有三法，謂三長老：年耆長老、法長老、作長老。</td><td id="p58">58. «Есть и другие три вещи — три старшинства: старшинство по годам, старшинство в Законе, старшинство по деяниям.</td></tr>
+      <tr><td class="ch">「復有三法，謂三眼：肉眼、天眼、慧眼。</td><td id="p59">59. «Есть и другие три вещи — три ока: плотское око, небесное око, око мудрости.</td></tr>
+      <tr><td class="ch">「諸比丘，是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p60">60. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>      <tr><td class="ch"></td><td class="subheading">Четвёрки</td></tr>
+      <tr><td class="ch">「諸比丘，如來說四正法，謂口四惡行：一者妄語，二者兩舌，三者惡口，四者綺語。</td><td id="p61">61. «Монахи, Татхагата учит четырём верным вещам, что зовутся четырьмя дурными словесными деяниями: первое — лживая речь, второе — двуличие, третье — грубая речь, четвёртое — пустословие.</td></tr>
+      <tr><td class="ch">「復有四法，謂口四善行：一者實語，二者軟語，三者不綺語，四者不兩舌。</td><td id="p62">62. «Есть и другие четыре вещи — четыре добрых словесных деяния: первое — правдивая речь, второе — мягкая речь, третье — речь без пустословия, четвёртое — речь без двуличия.</td></tr>
+      <tr><td class="ch">「復有四法，謂四不聖語：不見言見，不聞言聞，不覺言覺，不知言知。</td><td id="p63">63. «Есть и другие четыре вещи — четыре неблагородных вида речи: утверждать, что видел невиденное; утверждать, что слышал неслышанное; утверждать, что воспринял невоспринятое; утверждать, что знал незнаемое.</td></tr>
+      <tr><td class="ch">「復有四法，謂四聖語：見則言見，聞則言聞，覺則言覺，知則言知。</td><td id="p64">64. «Есть и другие четыре вещи — четыре благородных вида речи: утверждать, что видел виденное; утверждать, что слышал слышанное; утверждать, что воспринял воспринятое; утверждать, что знал знаемое.</td></tr>
+      <tr><td class="ch">「復有四法，謂四種食：摶食、觸食、念食、識食。</td><td id="p65">65. «Есть и другие четыре вещи — четыре вида пищи: вещественная пища, пища соприкосновения, пища намерения и пища сознания.</td></tr>
+      <tr><td class="ch">「復有四法，謂四受：有現作苦行後受苦報；有現作苦行後受樂報；有現作樂行後受苦報；有現作樂行後受樂報。</td><td id="p66">66. «Есть и другие четыре вещи — четыре чувства: свершение болезненного ныне и претерпевание боли впоследствии; свершение болезненного ныне и обретение удовольствия впоследствии; свершение приятного ныне и претерпевание боли впоследствии; свершение приятного ныне и обретение удовольствия впоследствии.</td></tr>
+      <tr><td class="ch">「復有四法，謂四受：欲受、我受、戒受、見受。</td><td id="p67">67. «Есть и другие четыре вещи — четыре обретения: обретение желания, обретение собственного „я“, обретение заповедей и обретение взглядов.</td></tr>
+      <tr><td class="ch">「復有四法，謂四縛：貪欲身縛、瞋恚身縛、戒盜身縛、我見身縛。</td><td id="p68">68. «Есть и другие четыре вещи — четыре пута: путы алчности, путы гнева, путы неверно понятых заповедей<sup id="ref8"><a href="#n8">8</a></sup> и путы воззрения о „я“.</td></tr>
+      <tr><td class="ch">「復有四法，謂四刺：欲刺、恚刺、見刺、慢刺。</td><td id="p69">69. «Есть и другие четыре вещи — четыре шипа: шип желания, шип гнева, шип взглядов и шип гордыни.</td></tr>
+      <tr><td class="ch">「復有四法，謂四生：卵生、胎生、濕生、化生。</td><td id="p70">70. «Есть и другие четыре вещи — четыре вида рождения: рождение из яйца, рождение из утробы, рождение из влаги и самозарождение.</td></tr>
+      <tr><td class="ch">「復有四法，謂四念處；於是，比丘內身身觀，精勤不懈，憶念不忘，捨世貪憂；外身身觀，精勤不懈，憶念不忘，捨世貪憂；內外身身觀，精勤不懈，憶念不忘，捨世貪憂。受、意、法觀，亦復如是。</td><td id="p71">71. «Есть и другие четыре вещи — четыре основы памятования. Вот, монах наблюдает внутреннее тело как тело, усердно и неослабно, памятуя и не забывая, отбрасывая мирскую алчность и печаль; наблюдает внешнее тело как тело, усердно и неослабно, памятуя и не забывая, отбрасывая мирскую алчность и печаль; наблюдает внутреннее и внешнее тело как тело, усердно и неослабно, памятуя и не забывая, отбрасывая мирскую алчность и печаль. Так же он наблюдает чувства, ум и явления.</td></tr>
+      <tr><td class="ch">「復有四法，謂四意斷；於是，比丘未起惡法，方便使不起；已起惡法，方便使滅；未起善法，方便使起；已起善法，方便思惟，使其增廣。</td><td id="p72">72. «Есть и другие четыре вещи — четыре умственных отбрасывания. Вот, монах прилагает усилие, чтобы недобрые качества, ещё не возникшие, не возникали; прилагает усилие, чтобы недобрые качества, уже возникшие, прекратились; прилагает усилие, чтобы добрые качества, ещё не возникшие, возникли; прилагает усилие, чтобы добрые качества, уже возникшие, возрастали.</td></tr>
+      <tr><td class="ch">「復有四法，謂四神足；於是，比丘思惟欲定滅行成就；精進定、意定、思惟定，亦復如是。</td><td id="p73">73. «Есть и другие четыре вещи — четыре чудесные способности. Вот, монах созерцает самадхи устремления и осуществляет практику прекращения; так же — самадхи усердия, самадхи ума и самадхи размышления.</td></tr>
+      <tr><td class="ch">「復有四法，謂四禪；於是，比丘除欲、惡不善法，有覺、有觀，離生喜、樂，入於初禪。滅有覺、觀，內信、一心，無覺、無觀，定生喜、樂，入第二禪。離喜修捨、念、進，自知身樂，諸聖所求，憶念、捨、樂，入第三禪。離苦、樂行，先滅憂、喜、不苦不樂、捨、念、清淨，入第四禪。</td><td id="p74">74. «Есть и другие четыре вещи — четыре дхьяны. Вот, монах, избавившись от желаний и дурных, неискусных состояний, при наличии размышления и исследования, обретя радость и счастье, рождённые уединением, входит в первую дхьяну. Прекратив размышление и исследование, с внутренней убеждённостью и единым умом, без размышления и исследования, обретя радость и счастье, рождённые самадхи, входит во вторую дхьяну. Расставшись с радостью, взращивает равностность, памятование и усердие, сам зная о своём телесном счастье, том, что ищут благородные, — памятующий, равностный и счастливый, входит в третью дхьяну. Расставшись с болезненными и приятными состояниями, с прежде прекратившимися печалью и радостью, ни в тягости, ни в счастье, равностный, памятующий и чистый, входит в четвёртую дхьяну.</td></tr>
+      <tr><td class="ch">「復有四法，謂四梵堂：一慈、二悲、三喜、四捨。</td><td id="p75">75. «Есть и другие четыре вещи — четыре чертога Брахмы: во-первых, доброта; во-вторых, сострадание; в-третьих, радость; в-четвёртых, равностность.</td></tr>
+      <tr><td class="ch">「復有四法，謂四無色定；於是，比丘越一切色想，先盡瞋恚想，不念異想，思惟無量空處，捨空處已入識處，捨識處已入不用處，捨不用處已入有想無想處。</td><td id="p76">76. «Есть и другие четыре вещи — четыре бесформенных самадхи. Вот, монах, выйдя за пределы всех представлений о форме, прежде исчерпав представления о гневе, не помышляя о разных представлениях, созерцает беспредельную область пространства; оставив область пространства, входит в область сознания; оставив область сознания, входит в область отсутствия чего-либо; оставив область отсутствия чего-либо, входит в область ни-восприятия-ни-невосприятия.</td></tr>
+      <tr><td class="ch">「復有四法，謂四法足：不貪法足、不瞋法足、正念法足、正定法足。</td><td id="p77">77. «Есть и другие четыре вещи — четыре основы Закона<sup id="ref9"><a href="#n9">9</a></sup>: основа Закона без алчности, основа Закона без гнева, основа Закона верного памятования и основа Закона верного самадхи.</td></tr>
+      <tr><td class="ch">「復有四法，謂四賢聖族；於是，比丘衣服知足，得好不喜，遇惡不憂，不染不著，知所禁忌，知出要路，於此法中精勤不懈，成辦其事，無闕無減，亦能教人成辦此事，是為第一知足住賢聖族。從本至今，未常惱亂；諸天、魔、梵、沙門、婆羅門、天及世間人，無能毀罵；飯食、牀臥具、病瘦醫藥，皆悉知足，亦復如是。</td><td id="p78">78. «Есть и другие четыре вещи — четыре благородных рода. Вот, монах удовлетворён своей одеждой. Он не радуется, получив хорошую одежду, и не печалится, имея плохую. Он не осквернён и не привязан, знает, чего следует избегать, и знает путь к избавлению. Он усерден и неослабен в этих правилах и осуществляет эти дела без изъяна и без убытка. Он также учит других людей осуществлять эти дела. Таков первый из благородных родов — удовлетворённая жизнь. От прошлого и доныне он никогда не был обеспокоен; ни боги, подобные Маре или Брахме, ни аскеты и жрецы, ни духи, ни миряне не способны его упрекнуть. Так же он удовлетворён едой, ложем и лекарствами от недугов.</td></tr>
+      <tr><td class="ch">「復有四法，謂四攝法：惠施、愛語、利人、等利。</td><td id="p79">79. «Есть и другие четыре вещи — четыре основы взаимной поддержки: щедрость в подаянии, ласковая речь, принесение пользы другим и равное разделение выгод.</td></tr>
+      <tr><td class="ch">「復有四法，謂四須陀洹支：比丘於佛得無壞信，於法、於僧、於戒得無壞信。</td><td id="p80">80. «Есть и другие четыре вещи — четыре фактора вхождения в поток: монах обретает непоколебимую веру в Будду… в Закон… в сангху… обретает непоколебимую веру в заповеди.</td></tr>
+      <tr><td class="ch">「復有四法，謂四受證：見色受證、身受滅證、念宿命證、知漏盡證。</td><td id="p81">81. «Есть и другие четыре вещи — четыре свидетельства: свидетельство видения форм, свидетельство прекращения телесных ощущений, свидетельство памятования прошлых жизней и свидетельство знания об окончании скверн.</td></tr>
+      <tr><td class="ch">「復有四法，謂四道：苦遲得、苦速得、樂遲得、樂速得。</td><td id="p82">82. «Есть и другие четыре вещи — четыре пути: обретаемое медленно и с трудом, обретаемое быстро и с трудом, обретаемое медленно и приятно, обретаемое быстро и приятно.</td></tr>
+      <tr><td class="ch">「復有四法，謂四聖諦：苦聖諦、苦集聖諦、苦滅聖諦、苦出要聖諦。</td><td id="p83">83. «Есть и другие четыре вещи — четыре благородные истины: благородная истина о страдании, благородная истина о возникновении страдания, благородная истина о прекращении страдания и благородная истина о пути избавления от страдания.</td></tr>
+      <tr><td class="ch">「復有四法，謂四沙門果：須陀洹果、斯陀含果、阿那含果、阿羅漢果。</td><td id="p84">84. «Есть и другие четыре вещи — четыре плода подвижничества: плод вхождения в поток, плод однажды-возвращения, плод невозвращения и плод архата.</td></tr>
+      <tr><td class="ch">「復有四法，謂四處：實處、施處、智處、止息處。</td><td id="p85">85. «Есть и другие четыре вещи — четыре основания: основание истины, основание щедрости, основание знания и основание покоя.</td></tr>
+      <tr><td class="ch">「復有四法，謂四智：法智、未知智、等智、知他人心智。</td><td id="p86">86. «Есть и другие четыре вещи — четыре знания: знание Закона, знание ещё не познанного, полное знание и знание чужого ума.</td></tr>
+      <tr><td class="ch">「復有四法，謂四辯才：法辯、義辯、詞辯、應辯。</td><td id="p87">87. «Есть и другие четыре вещи — четыре красноречия: красноречие в Законе, красноречие в смысле, красноречие в увещевании и красноречие в наставлении.</td></tr>
+      <tr><td class="ch">「復有四法，謂四識住處：色識住、緣色、住色，與愛俱增長，受、想、行識中亦如是住。</td><td id="p88">88. «Есть и другие четыре вещи — четыре обители сознания: сознание пребывает в форме, обусловлено формой, остаётся в форме и возрастает вместе с жаждой; так же — чувство, представление и воля.</td></tr>
+      <tr><td class="ch">「復有四法，謂四扼：欲扼、有扼、見扼、無明扼。</td><td id="p89">89. «Есть и другие четыре вещи — четыре ярма: ярмо желания, ярмо существования, ярмо взглядов и ярмо неведения.</td></tr>
+      <tr><td class="ch">「復有四法，謂四無扼：無欲扼、無有扼、無見扼、無無明扼。</td><td id="p90">90. «Есть и другие четыре вещи — четыре отсутствия ярма: отсутствие ярма желания, отсутствие ярма существования, отсутствие ярма взглядов и отсутствие ярма неведения.</td></tr>
+      <tr><td class="ch">「復有四法，謂四淨：戒淨、心淨、見淨、度疑淨。</td><td id="p91">91. «Есть и другие четыре вещи — четыре чистоты: чистота заповедей, чистота ума, чистота взглядов и чистота преодоления сомнений.</td></tr>
+      <tr><td class="ch">「復有四法，謂四知：可受知受、可行知行、可樂知樂、可捨知捨。</td><td id="p92">92. «Есть и другие четыре вещи — четыре распознавания: распознавать приемлемое и принимать его, распознавать то, что следует исполнять, и исполнять это, распознавать отрадное и радоваться ему, распознавать то, что следует отвергнуть, и отвергать это.</td></tr>
+      <tr><td class="ch">「復有四法，謂四威儀：可行知行、可住知住、可坐知坐、可臥知臥。</td><td id="p93">93. «Есть и другие четыре вещи — четыре осанки: распознавать, где можно ходить, и ходить; распознавать, где можно стоять, и стоять; распознавать, где можно сидеть, и сидеть; распознавать, где можно лежать, и лежать.</td></tr>
+      <tr><td class="ch">「復有四法，謂四思惟：少思惟、廣思惟、無量思惟、無所有思惟。</td><td id="p94">94. «Есть и другие четыре вещи — четыре созерцания: созерцание малого, созерцание обширного, созерцание безмерного и созерцание отсутствия чего-либо.</td></tr>
+      <tr><td class="ch">「復有四法，謂四記論：決定記論，分別記論、詰問記論、止住記論。</td><td id="p95">95. «Есть и другие четыре вещи — четыре объяснения: определённое объяснение, разъяснительное объяснение, объяснение через вопрошание и объяснение через отклонение.</td></tr>
+      <tr><td class="ch">「復有四法，謂佛四不護法；如來身行清淨，無有闕漏，可自防護；口行清淨、意行清淨、命行清淨，亦復如是。</td><td id="p96">96. «Есть и другие четыре вещи — четыре вещи, от которых Будде не нужно защищаться: телесные деяния Татхагаты чисты и не имеют изъяна, от которого следовало бы защищаться; так же чисты его словесные деяния, умственные деяния и образ жизни.</td></tr>
+      <tr><td class="ch">「是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p97">97. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>      <tr><td class="ch"></td><td class="subheading">Пятёрки</td></tr>
+      <tr><td class="ch">「又，諸比丘，如來說五正法，謂五入：眼色、耳聲、鼻香、舌味、身觸。</td><td id="p98">98. «Кроме того, монахи, Татхагата учит пяти верным вещам, что зовутся пятью вратами: глаз и форма, ухо и звук, нос и запах, язык и вкус, тело и осязаемое.</td></tr>
+      <tr><td class="ch">「復有五法，謂五受陰：色受陰，受⋯想⋯行⋯識受陰。</td><td id="p99">99. «Есть и другие пять вещей — пять групп привязанности: группа привязанности формы, чувства… представления… побуждений… и группа привязанности сознания.</td></tr>
+      <tr><td class="ch">「復有五法，謂五蓋：貪欲蓋、瞋恚蓋、睡眠蓋、掉戲蓋、疑蓋。</td><td id="p100">100. «Есть и другие пять вещей — пять препятствий: препятствие желания, препятствие гнева, препятствие сонливости, препятствие возбуждённости и препятствие сомнения.</td></tr>
+      <tr><td class="ch">「復有五法，謂五下結：身見結、戒盜結、疑結、貪欲結、瞋恚結。</td><td id="p101">101. «Есть и другие пять вещей — пять нижних оков: оковы воззрения о личности, оковы неверно понятых заповедей, оковы сомнения, оковы желания и оковы гнева.</td></tr>
+      <tr><td class="ch">「復有五法，謂五上結：色愛、無色愛、無明、慢、掉。</td><td id="p102">102. «Есть и другие пять вещей — пять высших оков: жажда формы, жажда бесформенного, неведение, гордыня и возбуждённость.</td></tr>
+      <tr><td class="ch">「復有五法，謂五根：信根、精進根、念根、定根、慧根。</td><td id="p103">103. «Есть и другие пять вещей — пять способностей: способность веры, способность усердия, способность памятования, способность самадхи и способность мудрости.</td></tr>
+      <tr><td class="ch">「復有五法，謂五力：信力、精進力、念力、定力、慧力。</td><td id="p104">104. «Есть и другие пять вещей — пять сил: сила веры, сила усердия, сила памятования, сила самадхи и сила мудрости.</td></tr>
+      <tr><td class="ch">「復有五法，謂滅盡枝：一者比丘信佛、如來、至真、等正覺，十號具足。二者比丘無病，身常安隱。三者質直無有諛諂，能如是者，如來則示涅槃徑路。四者自專其心，使不錯亂，昔所諷誦，憶持不忘。五者善於觀察法之起滅，以賢聖行，盡於苦本。</td><td id="p105">105. «Есть и другие пять вещей — пять факторов полного прекращения: во-первых, монах верит в Будду, Татхагату, Архата, Вполне Пробуждённого, обладающего десятью эпитетами в совершенстве. Во-вторых, монах свободен от недугов, и тело его всегда пребывает в благополучии. В-третьих, он честен и лишён всякого лукавства; тот, кто таков, идёт по ясному пути Татхагаты к нирване. В-четвёртых, он сосредоточивает свой ум так, чтобы не впасть в смятение, удерживает в памяти заученное и не забывает его. В-пятых, он искусен в наблюдении за возникновением и исчезновением явлений и благородной практикой исчерпывает корень страдания.</td></tr>
+      <tr><td class="ch">「復有五法，謂五發：非時發、虛發、非義發、虛言發、無慈發。</td><td id="p106">106. «Есть и другие пять вещей — пять поводов [для укора]: несвоевременный повод, ложный повод, бессмысленный повод, повод из пустых слов и немилосердный повод.</td></tr>
+      <tr><td class="ch">「復有五法，謂五善發：時發、實發、義發、和言發、慈心發。</td><td id="p107">107. «Есть и другие пять вещей — пять искусных поводов [для укора]: своевременный повод, истинный повод, осмысленный повод, повод с мягкими словами и милосердный повод.</td></tr>
+      <tr><td class="ch">「復有五法，謂五憎嫉：住處憎嫉、檀越憎嫉、利養憎嫉、色憎嫉、法憎嫉。</td><td id="p108">108. «Есть и другие пять вещей — пять неприязней: неприязнь к месту проживания, неприязнь к дарителю, неприязнь к подношениям, неприязнь к форме и неприязнь к учению.</td></tr>
+      <tr><td class="ch">「復有五法，謂五趣解脫：一者身不淨想，二者食不淨想，三者一切行無常想，四者一切世間不可樂想，五者死想。</td><td id="p109">109. «Есть и другие пять вещей — пять путей к освобождению: во-первых, представление о нечистоте тела; во-вторых, представление о нечистоте пищи; в-третьих, представление о непостоянстве всех формаций; в-четвёртых, представление о том, что весь мир не приносит отрады; в-пятых, представление о смерти.</td></tr>
+      <tr><td class="ch">「復有五法，謂五出要界：一者比丘於欲不樂、不動，亦不親近，但念出要，樂於遠離，親近不怠，其心調柔，出要離欲，彼所因欲起諸漏纏，亦盡捨滅而得解脫，是為欲出要。瞋恚出要、嫉妬出要、色出要、身見出要，亦復如是。</td><td id="p110">110. «Есть и другие пять вещей — пять сфер избавления: во-первых, монах не наслаждается желаниями, не колеблется ими и не сближается с ними, но лишь помнит об избавлении от них, наслаждается уединением и без лени сближается с ним; его ум становится гибким, он покидает и расстаётся с желанием и с тем, что порождает желания, вызывающие сеть скверн; он также исчерпывает, отбрасывает и прекращает их, достигая освобождения. Таково избавление от желания. Избавление от гнева, избавление от зависти, избавление от формы и избавление от воззрения о личности — таковы же.</td></tr>
+      <tr><td class="ch">「復有五法，謂五喜解脫入。若比丘精勤不懈，樂閑靜處，專念一心，未解得解，未盡得盡，未安得安。何謂五？於是，比丘聞如來說法，或聞梵行者說，或聞師長說法，思惟觀察，分別法義，心得歡喜，得歡喜已，得法愛，得法愛已，身心安隱，身心安隱已，則得禪定，得禪定已，得實知見，是為初解脫入。</td><td id="p111">111. «Есть и другие пять вещей — пять видов радости от вступления в освобождение. Если монах усерден и неослабен, радостно пребывает в уединении, сосредоточивает внимание и объединяет свой ум, он постигнет то, чего ещё не постиг, исчерпает то, что ещё не исчерпал, и обретёт покой там, где его ещё нет. Что же это за пять? Во-первых, монах слышит, как Татхагата проповедует Закон, или слышит, как это делает подвижник, или слышит наставление старшего учителя. Он созерцает, исследует и постигает смысл этого Закона, и его ум исполняется радости. Обретя радость, он обретает любовь к Закону. Обретя любовь к Закону, он умиротворён телом и умом. Умиротворённый телом и умом, он обретает самадхи созерцания. Обретя самадхи созерцания, он обретает истинное знание и видение. Таков первый способ вступления в освобождение.</td></tr>
+      <tr><td class="ch">「於是，比丘聞法喜已，受持諷誦，亦復歡喜，為他人說，亦復歡喜，思惟分別，亦復歡喜，於法得定，亦復如是。</td><td id="p112">112. «Во-вторых, услышав Закон и возрадовавшись, монах принимает, удерживает и повторяет его, тоже радуясь; в-третьих, радуясь, наставляет в нём других людей; в-четвёртых, радуясь, созерцает и постигает его; в-пятых, радуясь, обретает самадхи в отношении Закона — таковы же.</td></tr>
+      <tr><td class="ch">「復有五法，謂五人：中般涅槃、生般涅槃、無行般涅槃、有行般涅槃、上流阿迦尼吒。</td><td id="p113">113. «Есть и другие пять вещей — пять родов людей: те, чья паринирвана наступает в промежутке; те, чья паринирвана наступает при рождении; те, чья паринирвана происходит без усилия; те, чья паринирвана происходит с усилием; и те, чей поток восходит к Акaништхе.</td></tr>
+      <tr><td class="ch">「諸比丘，是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p114">114. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Шестёрки</td></tr>
+      <tr><td class="ch">「又，諸比丘，如來說六正法，謂內六入：眼入、耳入、鼻入、舌入、身入、意入。</td><td id="p115">115. «Кроме того, монахи, Татхагата учит шести верным вещам, что зовутся шестью внутренними вратами: врата глаза, врата уха, врата носа, врата языка, врата тела и врата ума.</td></tr>
+      <tr><td class="ch">「復有六法，謂外六入：色入、聲入、香入、味入、觸入、法入。</td><td id="p116">116. «Есть и другие шесть вещей — шесть внешних врат: врата формы, врата звука, врата запаха, врата вкуса, врата осязаемого и врата явлений.</td></tr>
+      <tr><td class="ch">「復有六法，謂六識身：眼識身，耳⋯鼻⋯舌⋯身⋯意識身。</td><td id="p117">117. «Есть и другие шесть вещей — шесть видов сознания: зрительное сознание, слуховое… обонятельное… вкусовое… осязательное… и умственное сознание.</td></tr>
+      <tr><td class="ch">「復有六法，謂六觸身：眼觸身，耳⋯鼻⋯舌⋯身⋯意觸身。</td><td id="p118">118. «Есть и другие шесть вещей — шесть видов соприкосновения: зрительное соприкосновение, слуховое… обонятельное… вкусовое… осязательное… и умственное соприкосновение.</td></tr>
+      <tr><td class="ch">「復有六法，謂六受身：眼受身，耳⋯鼻⋯舌⋯身⋯意受身。</td><td id="p119">119. «Есть и другие шесть вещей — шесть видов чувства: зрительное чувство, слуховое… обонятельное… вкусовое… осязательное… и умственное чувство.</td></tr>
+      <tr><td class="ch">「復有六法，謂六想身：色想、聲想、香想、味想、觸想、法想。</td><td id="p120">120. «Есть и другие шесть вещей — шесть видов представления: представления форм, звуков, запахов, вкусов, осязаемого и явлений.</td></tr>
+      <tr><td class="ch">「復有六法，謂六思身：色思、聲思、香思、味思、觸思、法思。</td><td id="p121">121. «Есть и другие шесть вещей — шесть видов намерения: намерения о форме, о звуке, о запахе, о вкусе, об осязаемом и о явлениях.</td></tr>
+      <tr><td class="ch">「復有六法，謂六愛身：色愛身，耳⋯鼻⋯舌⋯身⋯法愛身。</td><td id="p122">122. «Есть и другие шесть вещей — шесть видов жажды: жажда формы, жажда звука… запаха… вкуса… осязаемого… и жажда явлений.</td></tr>
+      <tr><td class="ch">「復有六法，謂六諍本：若比丘好瞋不捨，不敬如來，亦不敬法，亦不敬眾，於戒穿漏，染汙不淨；好於眾中多生諍訟，人所憎惡，嬈亂淨眾，天、人不安。</td><td id="p123">123. «Есть и другие шесть вещей — шесть источников распрей: во-первых, если монах чрезмерно гневлив и не отпускает гнев, он не почитает Татхагату, не почитает Закон и не почитает сангху. Его заповеди нарушены, он осквернён и нечист. Порождая в собрании многочисленные распри, он становится ненавистен людям, вносит смуту в чистое собрание, и боги и люди не обретают покоя.</td></tr>
+      <tr><td class="ch">「諸比丘，汝等當自內觀，設有瞋恨，如彼嬈亂者，當集和合眾，廣設方便，拔此諍本；汝等又當專念自觀，若結恨已滅，當更方便，遮止其心，勿復使起。</td><td id="p124">124. «Монахи, вам следует всматриваться в самих себя. Если вы обнаружите в себе обиду, подобную той, что вносит смуту, вам следует собраться в согласное собрание и широко применить искусные средства, чтобы вырвать этот источник распрей с корнем. Более того, вам следует сосредоточенно наблюдать за собой: если узел обиды уже развеян, вам следует и далее применять искусные средства, сдерживая свой ум, чтобы не дать ему возникнуть вновь.</td></tr>
+      <tr><td class="ch">「諸比丘，佷戾不諦、慳恡嫉妬、巧偽虛妄、自因己見、謬受不捨、迷於邪見、與邊見俱，亦復如是。</td><td id="p125">125. «Монахи, [во-вторых] упрямая нечестность, [в-третьих] скупая зависть, [в-четвёртых] лукавство и лживость, [в-пятых] неспособность отказаться от ошибки из-за приверженности собственным взглядам, и [в-шестых] заблуждение в ложных и крайних воззрениях — таковы же.</td></tr>
+      <tr><td class="ch">「復有六法，謂六界：地界、火界、水界、風界、空界、識界。</td><td id="p126">126. «Есть и другие шесть вещей — шесть стихий: стихия земли, стихия огня, стихия воды, стихия ветра, стихия пространства и стихия сознания.</td></tr>
+      <tr><td class="ch">「復有六法，謂六察行：眼察色，耳聲、鼻香、舌味、身觸、意察法。</td><td id="p127">127. «Есть и другие шесть вещей — шесть наблюдений: глаз наблюдает формы, ухо — звуки, нос — запахи, язык — вкусы, тело — осязаемое, ум наблюдает явления.</td></tr>
+      <tr><td class="ch">「復有六法，謂六出要界。若比丘作是言：『我修慈心，更生瞋恚。』餘比丘語言：『汝勿作此言，勿謗如來，如來不作是說：欲使修慈解脫，更生瞋恚想，無有是處。佛言：除瞋恚已，然後得慈。』</td><td id="p128">128. «Есть и другие шесть вещей — шесть сфер избавления. Если монах говорит так: „Я взращиваю доброту, но во мне вновь возникает гнев“, — другие монахи должны сказать ему: „Не говори так, не клевещи на Татхагату. Татхагата никогда не говорил: ‚Кто желает взрастить освобождение доброты, у того вновь возникнут помыслы гнева‘ — такого не бывает. Будда сказал: ‚Лишь избавившись от гнева, обретают доброту‘“.</td></tr>
+      <tr><td class="ch">「若比丘言：『我行悲解脫，生憎嫉心；行喜解脫，生憂惱心；行捨解脫，生憎愛心；行無我行，生狐疑心；行無想行，生眾亂想。』亦復如是。</td><td id="p129">129. «Если монах говорит: [во-вторых] „Я взращиваю освобождение сострадания, но во мне возникает ненавистливая зависть“; [в-третьих] „взращиваю освобождение радости, но во мне возникает скорбное уныние“; [в-четвёртых] „взращиваю освобождение равностности, но во мне возникает приязнь и неприязнь“; [в-пятых] „взращиваю практику отсутствия „я“, но во мне возникает сомнение“; [в-шестых] „взращиваю практику без представлений, но во мне возникает множество спутанных представлений“ — таковы же.</td></tr>
+      <tr><td class="ch">「復有六法，謂六無上：見無上、聞無上、利養無上、戒無上、恭敬無上、憶念無上。</td><td id="p130">130. «Есть и другие шесть вещей — шесть непревзойдённых вещей: непревзойдённое видение, непревзойдённое слышание, непревзойдённая поддержка, непревзойдённые заповеди, непревзойдённое почитание и непревзойдённое памятование.</td></tr>
+      <tr><td class="ch">「復有六法，謂六思念：佛念、法念、僧念、戒念、施念、天念。</td><td id="p131">131. «Есть и другие шесть вещей — шесть памятований: памятование о Будде, памятование о Законе, памятование о сангхе, памятование о заповедях, памятование о подаянии и памятование о богах.</td></tr>
+      <tr><td class="ch">「是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p132">132. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>      <tr><td class="ch"></td><td class="subheading">Семёрки</td></tr>
+      <tr><td class="ch">「諸比丘，如來說七正法，謂七非法：無信、無慙、無愧、少聞、懈怠、多忘、無智。</td><td id="p133">133. «Монахи, Татхагата учит семи верным вещам, что зовутся семью не-учениями: отсутствие веры, отсутствие совести, отсутствие стыда, малая учёность, леность, забывчивость и отсутствие мудрости.</td></tr>
+      <tr><td class="ch">「復有七法，謂七正法：有信、有慚、有愧、多聞、精進、總持、多智。</td><td id="p134">134. «Есть и другие семь вещей — семь верных учений: наличие веры, наличие совести, наличие стыда, обширная учёность, усердие, стойкая память и обилие мудрости.</td></tr>
+      <tr><td class="ch">「復有七法，謂七識住：或有眾生，若干種身，若干種想，天及人是，是初識住；或有眾生，若干種身而一想者，梵光音天最初生時是，是二識住；或有眾生，一身若干種想，光音天是，是三識住；或有眾生，一身一想，遍淨天是，是四識住；或有眾生，空處住、識處住、不用處住。</td><td id="p135">135. «Есть и другие семь вещей — семь обителей сознания: порой живые существа обладают многообразными телами и многообразными представлениями — таковы боги и люди; это первая обитель сознания. Порой живые существа обладают многообразными телами, но единым представлением — таковы Брахмы небес Абхасвара при своём первом рождении; это вторая обитель сознания. Порой живые существа обладают единым телом, но многообразными представлениями — таковы боги Абхасвара; это третья обитель сознания. Порой живые существа обладают единым телом и единым представлением — таковы боги Шубхакритсна; это четвёртая обитель сознания. Порой живые существа пребывают в области пространства, пребывают в области сознания, пребывают в области отсутствия чего-либо…</td></tr>
+      <tr><td class="ch">「復有七法，謂七勤法：一者比丘勤於戒行，二者勤滅貪欲，三者勤破邪見，四者勤於多聞，五者勤於精進，六者勤於正念，七者勤於禪定。</td><td id="p136">136. «Есть и другие семь вещей — семь видов усердия: во-первых, монах усерден в соблюдении заповедей; во-вторых, усерден в прекращении алчности; в-третьих, усерден в опровержении ложных взглядов; в-четвёртых, усерден в обширном учении; в-пятых, усерден в приложении усилий; в-шестых, усерден в верном памятовании; в-седьмых, усерден в созерцании.</td></tr>
+      <tr><td class="ch">「復有七法，謂七想：不淨想、食不淨想、一切世間不可樂想，無想、無常想、無常苦想、苦無我想。</td><td id="p137">137. «Есть и другие семь вещей — семь представлений: представление о нечистоте, представление о нечистоте пищи, представление о том, что весь мир не приносит отрады, представление о смерти, представление о непостоянстве, представление о страдании непостоянства и представление об отсутствии „я“ в страдании.</td></tr>
+      <tr><td class="ch">「復有七法，謂七三昧具：正見、正思、正語、正業、正命、正方便、正念。</td><td id="p138">138. «Есть и другие семь вещей — семь условий самадхи: верные взгляды, верное намерение, верная речь, верное деяние, верный образ жизни, верное усердие и верное памятование.</td></tr>
+      <tr><td class="ch">「復有七法，謂七覺意：念覺意、法覺意、精進覺意、喜覺意、猗覺意、定覺意、護覺意。</td><td id="p139">139. «Есть и другие семь вещей — семь факторов пробуждения: фактор памятования, фактор [различения] явлений, фактор усердия, фактор радости, фактор безмятежности, фактор самадхи и фактор равностности.</td></tr>
+      <tr><td class="ch">「是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p140">140. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Восьмёрки</td></tr>
+      <tr><td class="ch">「諸比丘，如來說八正法，謂世八法：利、衰、毀、譽、稱、譏、苦、樂。</td><td id="p141">141. «Монахи, Татхагата учит восьми верным вещам, что зовутся восемью мирскими законами: приобретение, утрата, порицание, похвала, восхваление, осуждение, страдание и удовольствие.</td></tr>
+      <tr><td class="ch">「復有八法，謂八解脫：色觀色，一解脫；內無色想觀外色，二解脫；淨解脫，三解脫；度色想滅瞋恚想住空處解脫，四解脫；度空處住識處，五解脫；度識處住不用處，六解脫；度不用處住有想無想處，七解脫；度有想無想處住想知滅，八解脫。</td><td id="p142">142. «Есть и другие восемь вещей — восемь освобождений: созерцание формы как формы — первое освобождение; созерцание внешней формы без внутренних представлений о форме — второе освобождение; освобождение чистоты — третье освобождение; выход за пределы представлений о форме, прекращение представлений о гневе и пребывание в области пространства — четвёртое освобождение; выход за пределы области пространства и пребывание в области сознания — пятое освобождение; выход за пределы области сознания и пребывание в области отсутствия чего-либо — шестое освобождение; выход за пределы области отсутствия чего-либо и пребывание в области ни-восприятия-ни-невосприятия — седьмое освобождение; выход за пределы области ни-восприятия-ни-невосприятия и пребывание в прекращении восприятия и представлений — восьмое освобождение.</td></tr>
+      <tr><td class="ch">「復有八法，謂八聖道：正見、正志、正語、正業、正命、正方便、正念、正定。</td><td id="p143">143. «Есть и другие восемь вещей — благородный восьмеричный путь: верные взгляды, верное намерение, верная речь, верное деяние, верный образ жизни, верное усердие, верное памятование и верное самадхи.</td></tr>
+      <tr><td class="ch">「復有八法，謂八人：須陀洹向、須陀洹、斯陀含向、斯陀含、阿那含向、阿那含、阿羅漢向、阿羅漢。</td><td id="p144">144. «Есть и другие восемь вещей — восемь родов людей: идущие ко вхождению в поток и вошедшие в поток; идущие к однажды-возвращению и однажды-возвращающиеся; идущие к невозвращению и невозвращающиеся; идущие к архатству и архаты.</td></tr>
+      <tr><td class="ch">「是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p145">145. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Девятка</td></tr>
+      <tr><td class="ch">「諸比丘，如來說九正法，所謂九眾生居：或有眾生，若干種身，若干種想，天及人是，是初眾生居；復有眾生，若干種身而一想者，梵光音天最初生時是，是二眾生居；復有眾生，一身若干種想，光音天是，是三眾生居；復有眾生，一身一想，遍淨天是，是四眾生居；復有眾生，無想無所覺知，無想天是，是五眾生居；復有眾生，空處住，是六眾生居；復有眾生，識處住，是七眾生居；復有眾生，不用處住，是八眾生居；復有眾生，住有想無想處，是九眾生居。</td><td id="p146">146. «Монахи, Татхагата учил девяти верным вещам, что зовутся девятью обителями живых существ: некоторые живые существа обладают многообразными телами и многообразными представлениями — таковы боги и люди; это первая обитель живых существ. Некоторые живые существа обладают многообразными телами, но единым представлением — таковы Брахмы небес Абхасвара при своём первом рождении; это вторая обитель живых существ. Некоторые живые существа обладают единым телом, но многообразными представлениями — таковы боги Абхасвара; это третья обитель живых существ. Некоторые живые существа обладают единым телом и единым представлением — таковы боги Шубхакритсна; это четвёртая обитель живых существ. Некоторые живые существа лишены представлений и всякого восприятия — таковы боги небес Асанджика; это пятая обитель живых существ. Некоторые живые существа пребывают в области пространства — это шестая обитель живых существ. Некоторые живые существа пребывают в области сознания — это седьмая обитель живых существ. Некоторые живые существа пребывают в области отсутствия чего-либо — это восьмая обитель живых существ. Некоторые живые существа пребывают в области ни-восприятия-ни-невосприятия — это девятая обитель живых существ.</td></tr>
+      <tr><td class="ch">「是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。</td><td id="p147">147. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой.</td></tr>
+      <tr><td class="ch"></td><td class="subheading">Десятка</td></tr>
+      <tr><td class="ch">「諸比丘，如來說十正法，所謂十無學法，無學正見、正思、正語、正業、正命、正念、正方便、正定、正智、正解脫。</td><td id="p148">148. «Монахи, Татхагата учит десяти верным вещам, что зовутся десятью [достижениями] отсутствия дальнейшего обучения: отсутствие дальнейшего обучения верным взглядам… верному намерению… верной речи… верному деянию… верному образу жизни… верному памятованию… верному усердию… верному самадхи… верному знанию… верному освобождению.</td></tr>
+      <tr><td class="ch">「是為如來所說正法，當共撰集，以防諍訟，使梵行久立，多所饒益，天、人獲安。」</td><td id="p149">149. «Монахи, таковы верные учения, чему учит Татхагата, что нам следует вместе собрать, чтобы оградить их от споров, надолго утвердить подвижническую жизнь и принести пользу многим людям, чтобы боги и люди обрели покой».</td></tr>
+      <tr><td class="ch">爾時，世尊印可舍利弗所說。時，諸比丘聞舍利弗所說歡喜，奉行。</td><td id="p150">150. Тогда Бхагаван одобрил сказанное Шарипутрой. Монахи же, услышав слова Шарипутры, возрадовались и с почтением приняли их.</td></tr>    </table>
+  
+  <br/>
+  <h2>Примечания</h2>
+    <p id="n1" data-note-number="1"><span class="note-number">[1]</span> Это девятая сутра «Диргха-агамы» (<a href="https://cbetaonline.dila.edu.tw/zh/T01n0001_p0049b26" target="_blank">T1.1.49b26–52c11</a>). Её прямые параллели — <a href="https://suttacentral.net/dn33" target="_blank">DN 33</a> и <a href="https://cbetaonline.dila.edu.tw/zh/T0012_001" target="_blank">T12</a>. Стоит также отметить, что есть значительное совпадение с DN 34, DĀ 10, DĀ 11 и T13. Все эти сутры собирают учения в виде численно организованных перечней. <a href="#ref1">[назад]</a></p>
+    <p id="n2" data-note-number="2"><span class="note-number">[2]</span> Папа. Кит. 波婆 (ср.-кит. pua-b'ua), пали pāvā, санскр. pāpā. Я принял санскритское засвидетельствование, хотя в этом случае китайская транслитерация совпадает с пали. <a href="#ref2">[назад]</a></p>
+    <p id="n3" data-note-number="3"><span class="note-number">[3]</span> Все живые существа перерождаются в результате своих деяний. Кит. 一切眾生皆由行往. В минском издании есть альтернативное чтение этой строки, где вместо 往 стоит 住, что более точно соответствовало бы санскр. sarvasatvāḥ saṃskārasthāyinaḥ. Японские переводчики предпочли исправить текст Тайсё в этом месте, но я не столь убеждён в этом, учитывая, как часто «Диргха-агама» расходится с более поздними санскритскими и палийскими источниками. Если бы я исправил 往 на 住, отрывок читался бы так: «Все живые существа пребывают в результате своих деяний». Разница невелика: оба чтения указывают на обусловленное возникновение существ. <a href="#ref3">[назад]</a></p>
+    <p id="n4" data-note-number="4"><span class="note-number">[4]</span> пустота… отсутствие стремлений… отсутствие признаков. Порядок этих трёх самадхи отличается от того, что встречается в DĀ 10, DĀ 11 и DĀ 12, где местами меняются второе и третье самадхи. Перевод самадхи без стремлений здесь также отличается от того, что дают эти три другие сутры, где вместо этого он переводится как «недеяние» (無作). Это выглядит внутренней непоследовательностью «Диргха-агамы» — возможно, ошибкой переводчика или переписчика, — пока мы не заметим, что тот же порядок встречается в сунском переводе другой версии «Сангити-сутры» (ср. T12.228a19 и далее). Таким образом, здесь, по-видимому, представлена иная версия этих трёх самадхи.<br>
+    Мы также находим самадхи без стремлений переведённым так же, как здесь, в «Абхидхарме Шарипутры» (АШ), однако там порядок обычный (то есть: пустота, отсутствие признаков и отсутствие стремлений).<br>
+    В АШ эти три самадхи представлены как продвинутые ступени созерцания. Например, они помещены после самадхи, обладающих одновременно витаркой и вичарой, обладающих лишь вичарой, и лишённых как витарки, так и вичары, что представляет собой иной способ классификации четырёх ступеней созерцания (T1548.28.598c18); там же говорится, что эти самадхи не связаны с неведущими соприкосновениями, тогда как прочие три самадхи с ними связаны. Хотя в «Диргха-агаме» нет ни комментария, ни рассуждения об этих самадхи, в АШ даётся разъяснение их смысла, которое я обобщил в отдельных примечаниях ниже. <a href="#ref4">[назад]</a></p>
+    <p id="n5" data-note-number="5"><span class="note-number">[5]</span> самадхи пустоты. Кит. 空三昧, пали suññato samādhi, санскр. śūnyatā-samādhi. Комментарий к этому самадхи в «Абхидхарме Шарипутры» (АШ) находится в T1548.28.633a8–b4. Он гласит: «Что такое самадхи пустоты? Здесь монах созерцает, знает, понимает и постигает, что „все вещи, или вещь в одном месте, пусты. Что значит, что они пусты? Поскольку они пусты от „я“, то и принадлежащее „я“ также пусто“. Наблюдая таким образом без нерадивости, он обретает самадхи, и его ум пребывает в надлежащей обители. Это называется самадхи пустоты» (何謂空定？如比丘，一切法、若一處法，思惟空、知空、解空、受空。以何義空？以我空，我所亦空。如是不放逸觀，得定心住正住，是名空定。)<br>
+    Остальная часть комментария разъясняет пустоту шестью различными способами: внутреннюю пустоту, внешнюю пустоту, пустоту как внутреннюю, так и внешнюю одновременно, пустоту пустоты, великую пустоту и пустоту высшей истины.<br>
+    Внутренняя, внешняя и совместная внутренне-внешняя пустота разъясняются как созерцание всех внутренних вещей, всех внешних вещей или всех вещей, будь то внутренних или внешних, как пустых.<br>
+    Пустота пустоты означает признание того, что само осуществление самадхи пустоты также пусто.<br>
+    Великая пустота разъясняется тем же образом, что и самадхи пустоты выше.<br>
+    Пустота высшей истины разъясняется так: «Что такое пустота высшей истины? „Высшее“ означает нирвану. Здесь монах созерцает пустоту нирваны, зная, понимая и постигая её пустоту. Почему она пуста? Поскольку она пуста от „я“, она также пуста от принадлежащего „я“, пуста от постоянства и пуста от неизменности. Наблюдая таким образом без нерадивости, он обретает самадхи, и его ум пребывает в надлежащей обители. Это называется самадхи высшей истины» (何謂第一義空？第一謂涅槃。如比丘思惟涅槃空、知空、解空、受空。以何義空？以我空，我所亦空，常空、不變易空。如是不放逸觀，得定心住正住，是名第一義空。) <a href="#ref5">[назад]</a></p>
+    <p id="n6" data-note-number="6"><span class="note-number">[6]</span> самадхи без стремлений. Кит. 無願三昧, пали appaṇihito samādhi, санскр. apraṇihitaṃ ca samādhi. Комментарий к этому самадхи в АШ находится в T1548.28.633b11–16. Он гласит: «Что такое самадхи без стремлений? Помимо самадхи пустоты, всякое иное самадхи, что берёт своей областью благородную обусловленность, называется самадхи без стремлений. Далее, самадхи без стремлений касается двух видов стремления: привязанности к жажде и привязанности к взглядам. Монах созерцает деяния как болезненные, тягостные, подобные нарывам, стрелам, привязанностям и наслаждению, что опираются на разрушающиеся, неопределённые, недостаточные, разрушимые и во многих отношениях болезненные условия. Не созерцая пустотное отсутствие „я“, он обретает самадхи, и его ум пребывает в надлежащей обители. Монах прекращает жажду и прекращает взгляды; это самадхи способно прекратить жажду и взгляды. Это называется самадхи без стремлений» (何謂無願定？除空定，若餘定，以聖有為為境界，是名無願定。復次無願定，願有二種：愛著、見著。比丘思惟行苦、患、癰、箭、著、味，依緣壞法、不定、不足、可壞、眾苦。不思惟空無我，得定心住正住。比丘愛斷見斷，此定能斷愛見，是名無願定。) <a href="#ref6">[назад]</a></p>
+    <p id="n7" data-note-number="7"><span class="note-number">[7]</span> самадхи без признаков. Кит. 無相三昧, пали animitto samādhi, санскр. animitta samādhi. Комментарий к этому самадхи в АШ находится в T1548.28.633b4–11. Он гласит: «Что такое самадхи без признаков? Помимо самадхи пустоты, всякое иное самадхи, что берёт своей областью благородную нирвану, называется самадхи без признаков. Далее, в самадхи без признаков деяния обладают признаками, а нирвана лишена признаков. Деяния обладают тремя признаками: возникновением, пребыванием и исчезновением. Нирвана лишена этих трёх признаков: она не возникает, не пребывает и не исчезает. Так деяния обладают признаками, а нирвана лишена признаков. Нирвана есть покой, кров, защита, яркий светильник, опора, то, что никогда не угасает, прибежище, то, что лишено палящего жара, лишено скорби, лишено скорби, стенаний, боли и тягот, и всех прочих деяний. Созерцая нирвану, монах обретает самадхи, и его ум пребывает в надлежащей обители. Это называется самадхи без признаков» (何謂無相定？除空定，若餘定，以聖涅槃為境界，是名無相定。復次無相定，行有相、涅槃無相。行有三相，生、住、滅。涅槃無三相，不生、不住、不滅。如是行有相、涅槃無相，涅槃是寂滅、是舍宅、是救護、是燈明、是依止、是不終沒、是歸趣、是無燋熱、是無憂惱、是無憂悲苦惱及餘諸行。思惟涅槃得定心住正住。是名無相定。) <a href="#ref7">[назад]</a></p>
+    <p id="n8" data-note-number="8"><span class="note-number">[8]</span> неверно понятые заповеди. Буквально китайский текст гласит «кража заповедей» (戒盜). <a href="#ref8">[назад]</a></p>
+    <p id="n9" data-note-number="9"><span class="note-number">[9]</span> основы. Китайский переводит санскр. pada буквально как «стопа», но это, вероятно, образное выражение, обозначающее опору — подобно отдельным ножкам стула. <a href="#ref9">[назад]</a></p>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/da/da8.html" title="DĀ 8 — Сандхана" aria-label="Предыдущая сутта: DĀ 8 — Сандхана">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/da/da10.html" title="DĀ 10 — Восхождение до десяти" aria-label="Следующая сутта: DĀ 10 — Восхождение до десяти">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[411px] flex-[0_0_411px] max-xl:w-[min(420px,90%)] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1791393943"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+          <div class="translation-picker relative w-full" data-translation-picker>
+      <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+      <button
+        type="button"
+        class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-label="Выбор перевода"
+        title="Русский — Anthropic Claude Sonnet 5"
+        data-translation-picker-toggle
+      >
+        <span class="min-w-0 truncate">Русский — Anthropic Claude Sonnet 5</span>
+        <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+      </button>
+      <div class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-translation-picker-menu hidden>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+            type="button"
+            data-translation-picker-option="/chinese_canon/da/da9.html"
+            title="Русский — Anthropic Claude Sonnet 5"
+            disabled          >Русский — Anthropic Claude Sonnet 5</button>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+            type="button"
+            data-translation-picker-option="/en/chinese_canon/da/da9.html"
+            title="English — Dharma Pearls"
+                      >English — Dharma Pearls</button>
+              </div>
+    </div>
+    <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+<script>
+  (() => {
+    const picker = document.querySelector("[data-translation-picker]");
+    const toggle = picker?.querySelector("[data-translation-picker-toggle]");
+    const menu = picker?.querySelector("[data-translation-picker-menu]");
+    const options = picker?.querySelectorAll("[data-translation-picker-option]");
+    const setOpen = (open) => {
+      if (!picker || !toggle || !menu) return;
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+      picker.classList.toggle("is-open", open);
+    };
+    toggle?.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    options?.forEach((option) => option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    }));
+    document.addEventListener("click", (event) => {
+      if (picker && !picker.contains(event.target)) setOpen(false);
+    });
+  })();
+</script>
+</section>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1791393943"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1791393943"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

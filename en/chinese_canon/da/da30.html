@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Buddhist Canon Foundation — DĀ 30 — Description of the World</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"For all inquiries regarding the work of the Buddhist Canon Foundation, please write directly to Nara Loka; all contact details can be found on the website <a href=\"https://naraloka.ru/en\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/en</a>","SITE_NAME":"Buddhist Canon Foundation","PAGE_HOME":"Home","NAV_HOME":"Home","PAGE_BOOKMARKS":"My Bookmarks","PAGE_SUTTA":"Sutta","PAGE_PROFILE":"Profile","PAGE_FUND_INFO":"Foundation info","MOBILE_NAV":"Mobile navigation","OPEN_MENU":"Open menu","SEARCH":"Search","TEXT_SIZE":"Text size","SHARE":"Share","BOOKMARKS":"Bookmarks","FONT_LARGER":"Larger text","FONT_SMALLER":"Smaller text","MAIN_NAV":"Main navigation","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Menu","CLOSE_MENU":"Close menu","FUND":"Foundation","CANON":"canon","BUDDHISM":"Buddhism","LOGIN_REGISTER":"Login / Registration","ABOUT_FUND":"About the Foundation","ENABLE_DARK":"Enable Dark Theme","ENABLE_LIGHT":"Enable Light Theme","LEGAL_POLICY_TITLE":"Personal data processing policy","LEGAL_POLICY_SUFFIX":"and user agreement","LEGAL_POLICY_PAGE_HEADING":"Policy regarding personal data processing and user agreement","AUTH_DIALOG":"Sign in and registration","CLOSE_WINDOW":"Close dialog","AUTH_LOGIN":"Sign in","AUTH_REGISTER":"Register","AUTH_FORGOT_PASSWORD":"Forgot password?","PASSWORD":"Password","SIGN_IN":"Sign in","SIGN_UP":"Create account","LOGGED_IN_AS":"Signed in as","SIGN_OUT":"Sign out","FOOTER_COPY_1":"All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission. ","FOOTER_COPY_2":"You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.","FOOTER_COPY_3":"For any questions, write to Nara Loka:","FOOTER_URL":"https://naraloka.ru/en","BOOKMARKS_NOTES":"Notes for yourself","BOOKMARKS_LOADING":"Loading bookmarks...","BOOKMARKS_EMPTY":"No bookmarks yet. Add the first one on a sutta page.","SIGN_OUT_PROFILE":"Sign out","CTA_PALI":"Read the Pāli Canon","CTA_TIBETAN":"Read the Tibetan Canon","CTA_CHINESE":"Read the Chinese Canon","ERROR_SUTTA_MISSING":"No sutta specified in the sutta parameter.","ERROR_SUTTA_NOT_FOUND":"Sutta not found.","ERROR_TRANSLATION_NOT_FOUND":"Translation not found.","PREV_SUTTA":"Previous sutta","NEXT_SUTTA":"Next sutta","ADD_BOOKMARK":"Add to bookmarks","NOTES":"Notes","SELECT_TRANSLATION":"Select translation","CHOOSE_TRANSLATION":"Choose translation / language","TOTAL_SUTTAS":"Total suttas:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Translation file not found.","ERROR_JSON_PARSE":"Failed to parse JSON.","JS_UNTITLED":"Untitled","JS_NOTE_PLACEHOLDER":"Start typing a note","JS_SAVE_NOTE":"Save","JS_SAVE_NOTE_FAILED":"Failed to save note.","JS_DELETE_BOOKMARK":"Delete bookmark","JS_DELETE_BOOKMARK_FAILED":"Failed to delete bookmark.","JS_LOAD_BOOKMARKS_FAILED":"Failed to load bookmarks.","JS_LOGIN_TO_SEE_BOOKMARKS":"Sign in to see bookmarks.","JS_AUTH_LOGIN_REGISTER":"Login / Registration","JS_AUTH_LOGOUT":"Sign out","JS_CHECK_BOOKMARK_FAILED":"Failed to check bookmark.","JS_SIGNED_OUT":"Signed out.","JS_SIGN_OUT_FAILED":"Failed to sign out.","JS_BOOKMARK_REMOVED":"Bookmark removed.","JS_BOOKMARK_EXISTS":"Bookmark already exists.","JS_BOOKMARK_SAVED":"Bookmark saved.","JS_BOOKMARK_SAVE_FAILED":"Failed to save bookmark.","JS_USER":"User","JS_EMAIL_PASSWORD_REQUIRED":"Enter email and password.","JS_EMAIL_REQUIRED":"Enter your email.","JS_ACCOUNT_CREATED":"Account created.","JS_SIGNED_IN":"Signed in.","JS_PASSWORD_RESET_SENT":"Password reset email sent. Check your inbox.","JS_PASSWORD_RESET_FAILED":"Failed to send password reset email.","JS_AUTH_ERROR":"Authentication error.","JS_SHARE_COPIED":"The link is copied. Please share it.","JS_BOOKMARK_TOAST_ADDED":"Bookmark is added","JS_BOOKMARK_TOAST_REMOVED":"Bookmark is removed","PAGE_PALI_CANON":"Pali Canon","PALI_BASKET_SUTTA":"Sutta Pitaka","PALI_BASKET_SUTTA_DESC":"\"Basket of Discourses\"","PALI_BASKET_VINAYA":"Vinaya Pitaka","PALI_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","PALI_BASKET_ABHIDHAMMA":"Abhidhamma Pitaka","PALI_BASKET_ABHIDHAMMA_DESC":"\"Basket of Higher Dhamma\"","PALI_SUTTA_DN":"Digha Nikaya (DN)","PALI_SUTTA_MN":"Majjhima Nikaya (MN)","PALI_SUTTA_SN":"Samyutta Nikaya (SN)","PALI_SUTTA_AN":"Anguttara Nikaya (AN)","PALI_SUTTA_KN":"Khuddaka Nikaya (KN)","PALI_BASKET_EMPTY":"No suttas were found for this basket.","PALI_VINAYA_SUTTA_VIBHANGA":"Sutta-vibhanga","PALI_VINAYA_KHANDHAKA":"Khandhaka","PALI_VINAYA_PARIVARA":"Parivara","PALI_ABHI_DHAMMASANGANI":"Dhammasangani","PALI_ABHI_VIBHANGA":"Vibhanga","PALI_ABHI_DHATUKATHA":"Dhatukatha","PALI_ABHI_PUGGALAPANNATTI":"Puggalapannatti","PALI_ABHI_KATHAVATTHU":"Kathavatthu","PALI_ABHI_YAMAKA":"Yamaka","PALI_ABHI_PATTHANA":"Patthana","PAGE_CHINESE_CANON":"Chinese Canon","PAGE_TIBETAN_CANON":"Tibetan Canon","CHINESE_BASKET_SUTRA":"Sutras 經部","CHINESE_BASKET_SUTRA_DESC":"\"Basket of Sutras\"","CHINESE_BASKET_VINAYA":"Vinaya 律部","CHINESE_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","CHINESE_BASKET_ABHIDHARMA":"Abhidharma and śāstras 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Basket of Higher Dhamma\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Sutras Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Translated words\"","TIBETAN_BASKET_VINAYA":"Vinaya Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Basket of Discipline\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Translated treatises\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Kangyur Translations","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1791393943" />
+    <link rel="icon" href="/assets/favicon.ico?_=1791393943" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1791393943" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1791393943" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Search"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+            <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048538"/>
+              <input type="hidden" name="l10n" value="en"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Share"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <a
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink no-underline"
+          href="/en/bookmarks.html"
+          aria-label="Bookmarks"
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Main navigation"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/index.html"
+            >Home</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/en/bookmarks.html"
+            >My Bookmarks</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="en"
+                aria-expanded="false"
+              >
+                English                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="ru"
+                                  >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="en"
+                  disabled                >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/en/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanonen&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:15048538,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search&quot;,&quot;input_placeholderColor&quot;:&quot;#666666&quot;,&quot;input_borderColor&quot;:&quot;#cccccc&quot;}">
+                <form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048538"/>
+                  <input type="hidden" name="l10n" value="en"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Search"/>
+                </form>
+              </div>
+            </div>
+
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+    <article
+      class="rounded-none border-0 bg-transparent px-5 pt-6 pb-6 shadow-none md:rounded-[2px] md:border md:border-surface md:bg-surface md:px-[34px] md:pt-[28px] md:pb-10 md:shadow-card max-[900px]:px-[14px] max-[900px]:pt-5 max-[900px]:pb-6"
+    >
+              <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/en/chinese_canon/da.html">Dīrgha Āgama</a>
+            <h1
+        class="m-0 text-center font-display text-[32px] font-normal leading-[1.15] text-[#272b2d] dark:text-ink max-[900px]:text-2xl"
+      >
+        DĀ 30 — Description of the World      </h1>
+
+      <div
+        class="mx-auto mt-14 grid w-[min(780px,100%)] gap-8 md:w-[min(860px,100%)] max-[900px]:mt-7 max-[900px]:gap-5"
+      >
+                              <section class="grid gap-3">
+                            <div class="grid gap-3">
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-1.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.1                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 1: The Continent of Jambudvīpa                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-2.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.2                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 2: Uttarakuru                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-3.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.3                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 3: Noble Wheel-Turning Kings                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-4.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.4                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 4: The Hells                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-5.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.5                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 5: Nāgas and Garuḍas                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-6.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.6                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 6: The Asuras                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-7.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.7                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 7: The Four God Kings                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-8.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.8                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 8: The Trāyastriṃśa Gods                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-9.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.9                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 9: The Three Catastrophes                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-10.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.10                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 10: War                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-11.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.11                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 11: Three Interim Eons                    </span>
+                  </a>
+                                  <a
+                    class="flex items-center rounded-[10px] border border-line bg-[#fdfdfd] py-[10px] dark:border-[rgba(255,255,255,0.09)] dark:bg-[rgba(255,255,255,0.03)] min-h-[64px] flex-col justify-center gap-1 whitespace-normal px-3 text-center font-sans text-[14px] font-normal leading-[1.35] text-ink no-underline md:min-h-[52px] md:flex-row md:gap-3 md:whitespace-nowrap md:px-4 dark:text-[#ececec] max-[900px]:text-sm"
+                    href="/en/chinese_canon/da/da30-12.html"
+                  >
+                    <span class="shrink-0 whitespace-normal md:whitespace-nowrap">
+                      DĀ 30.12                    </span>
+                    <span class="shrink-0 whitespace-normal text-center md:whitespace-nowrap">
+                      Chapter 12: The Origins of the World                    </span>
+                  </a>
+                              </div>
+            </section>
+                        </div>
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    All materials on the site are available to everyone and are not protected by copyright. For non-commercial purposes, they may be freely reproduced in any form without the authors’ permission.   </p>
+  <p>
+    You may copy them, post them on websites and social media, quote them, or print them. This is a gift from our foundation to all of humanity.  </p>
+  <p>
+    For any questions, write to Nara Loka:    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/en" target="_blank" rel="noopener">https://naraloka.ru/en</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/en/policy.html">
+      Personal data processing policy and user agreement    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[279px] flex-[0_0_279px] max-xl:w-[min(320px,90%)] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:flex-[0_0_auto]"
+  aria-label="Foundation info"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/en/index.html" aria-label="Home">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1791393943"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Foundation</span>
+    <span class="block text-center">canon</span>
+    <span class="block text-center">Buddhism</span>
+  </div>
+</div>
+    <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Login / Registration</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Enable Dark Theme"
+    data-theme-label-light="Enable Light Theme"
+  >Enable Dark Theme</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/en/about.html">About the Foundation</a>
+</aside>
+</section>
+
+</div>
+
+<script type="application/json" id="chapter-anchor-links">{"ref1":"/en/chinese_canon/da/da30-1.html#ref1","da30-part1-ref1":"/en/chinese_canon/da/da30-1.html#ref1","p1":"/en/chinese_canon/da/da30-1.html#p1","da30-part1-p1":"/en/chinese_canon/da/da30-1.html#p1","p2":"/en/chinese_canon/da/da30-1.html#p2","da30-part1-p2":"/en/chinese_canon/da/da30-1.html#p2","p3":"/en/chinese_canon/da/da30-1.html#p3","da30-part1-p3":"/en/chinese_canon/da/da30-1.html#p3","p4":"/en/chinese_canon/da/da30-1.html#p4","da30-part1-p4":"/en/chinese_canon/da/da30-1.html#p4","p5":"/en/chinese_canon/da/da30-1.html#p5","da30-part1-p5":"/en/chinese_canon/da/da30-1.html#p5","p6":"/en/chinese_canon/da/da30-1.html#p6","da30-part1-p6":"/en/chinese_canon/da/da30-1.html#p6","ref2":"/en/chinese_canon/da/da30-1.html#ref2","da30-part1-ref2":"/en/chinese_canon/da/da30-1.html#ref2","p7":"/en/chinese_canon/da/da30-1.html#p7","da30-part1-p7":"/en/chinese_canon/da/da30-1.html#p7","p8":"/en/chinese_canon/da/da30-1.html#p8","da30-part1-p8":"/en/chinese_canon/da/da30-1.html#p8","ref3":"/en/chinese_canon/da/da30-1.html#ref3","da30-part1-ref3":"/en/chinese_canon/da/da30-1.html#ref3","p9":"/en/chinese_canon/da/da30-1.html#p9","da30-part1-p9":"/en/chinese_canon/da/da30-1.html#p9","p10":"/en/chinese_canon/da/da30-1.html#p10","da30-part1-p10":"/en/chinese_canon/da/da30-1.html#p10","p11":"/en/chinese_canon/da/da30-1.html#p11","da30-part1-p11":"/en/chinese_canon/da/da30-1.html#p11","p12":"/en/chinese_canon/da/da30-1.html#p12","da30-part1-p12":"/en/chinese_canon/da/da30-1.html#p12","p13":"/en/chinese_canon/da/da30-1.html#p13","da30-part1-p13":"/en/chinese_canon/da/da30-1.html#p13","p14":"/en/chinese_canon/da/da30-1.html#p14","da30-part1-p14":"/en/chinese_canon/da/da30-1.html#p14","p15":"/en/chinese_canon/da/da30-1.html#p15","da30-part1-p15":"/en/chinese_canon/da/da30-1.html#p15","p16":"/en/chinese_canon/da/da30-1.html#p16","da30-part1-p16":"/en/chinese_canon/da/da30-1.html#p16","p17":"/en/chinese_canon/da/da30-1.html#p17","da30-part1-p17":"/en/chinese_canon/da/da30-1.html#p17","p18":"/en/chinese_canon/da/da30-1.html#p18","da30-part1-p18":"/en/chinese_canon/da/da30-1.html#p18","p19":"/en/chinese_canon/da/da30-1.html#p19","da30-part1-p19":"/en/chinese_canon/da/da30-1.html#p19","p20":"/en/chinese_canon/da/da30-1.html#p20","da30-part1-p20":"/en/chinese_canon/da/da30-1.html#p20","p21":"/en/chinese_canon/da/da30-1.html#p21","da30-part1-p21":"/en/chinese_canon/da/da30-1.html#p21","p22":"/en/chinese_canon/da/da30-1.html#p22","da30-part1-p22":"/en/chinese_canon/da/da30-1.html#p22","p23":"/en/chinese_canon/da/da30-1.html#p23","da30-part1-p23":"/en/chinese_canon/da/da30-1.html#p23","p24":"/en/chinese_canon/da/da30-1.html#p24","da30-part1-p24":"/en/chinese_canon/da/da30-1.html#p24","p25":"/en/chinese_canon/da/da30-1.html#p25","da30-part1-p25":"/en/chinese_canon/da/da30-1.html#p25","p26":"/en/chinese_canon/da/da30-1.html#p26","da30-part1-p26":"/en/chinese_canon/da/da30-1.html#p26","p27":"/en/chinese_canon/da/da30-1.html#p27","da30-part1-p27":"/en/chinese_canon/da/da30-1.html#p27","p28":"/en/chinese_canon/da/da30-1.html#p28","da30-part1-p28":"/en/chinese_canon/da/da30-1.html#p28","p29":"/en/chinese_canon/da/da30-1.html#p29","da30-part1-p29":"/en/chinese_canon/da/da30-1.html#p29","p30":"/en/chinese_canon/da/da30-1.html#p30","da30-part1-p30":"/en/chinese_canon/da/da30-1.html#p30","p31":"/en/chinese_canon/da/da30-1.html#p31","da30-part1-p31":"/en/chinese_canon/da/da30-1.html#p31","p32":"/en/chinese_canon/da/da30-1.html#p32","da30-part1-p32":"/en/chinese_canon/da/da30-1.html#p32","p33":"/en/chinese_canon/da/da30-1.html#p33","da30-part1-p33":"/en/chinese_canon/da/da30-1.html#p33","p34":"/en/chinese_canon/da/da30-1.html#p34","da30-part1-p34":"/en/chinese_canon/da/da30-1.html#p34","p35":"/en/chinese_canon/da/da30-1.html#p35","da30-part1-p35":"/en/chinese_canon/da/da30-1.html#p35","p36":"/en/chinese_canon/da/da30-1.html#p36","da30-part1-p36":"/en/chinese_canon/da/da30-1.html#p36","p37":"/en/chinese_canon/da/da30-1.html#p37","da30-part1-p37":"/en/chinese_canon/da/da30-1.html#p37","p38":"/en/chinese_canon/da/da30-1.html#p38","da30-part1-p38":"/en/chinese_canon/da/da30-1.html#p38","p39":"/en/chinese_canon/da/da30-1.html#p39","da30-part1-p39":"/en/chinese_canon/da/da30-1.html#p39","p40":"/en/chinese_canon/da/da30-1.html#p40","da30-part1-p40":"/en/chinese_canon/da/da30-1.html#p40","p41":"/en/chinese_canon/da/da30-1.html#p41","da30-part1-p41":"/en/chinese_canon/da/da30-1.html#p41","p42":"/en/chinese_canon/da/da30-1.html#p42","da30-part1-p42":"/en/chinese_canon/da/da30-1.html#p42","p43":"/en/chinese_canon/da/da30-1.html#p43","da30-part1-p43":"/en/chinese_canon/da/da30-1.html#p43","p44":"/en/chinese_canon/da/da30-1.html#p44","da30-part1-p44":"/en/chinese_canon/da/da30-1.html#p44","p45":"/en/chinese_canon/da/da30-1.html#p45","da30-part1-p45":"/en/chinese_canon/da/da30-1.html#p45","p46":"/en/chinese_canon/da/da30-1.html#p46","da30-part1-p46":"/en/chinese_canon/da/da30-1.html#p46","p47":"/en/chinese_canon/da/da30-1.html#p47","da30-part1-p47":"/en/chinese_canon/da/da30-1.html#p47","p48":"/en/chinese_canon/da/da30-1.html#p48","da30-part1-p48":"/en/chinese_canon/da/da30-1.html#p48","p49":"/en/chinese_canon/da/da30-1.html#p49","da30-part1-p49":"/en/chinese_canon/da/da30-1.html#p49","p50":"/en/chinese_canon/da/da30-1.html#p50","da30-part1-p50":"/en/chinese_canon/da/da30-1.html#p50","p51":"/en/chinese_canon/da/da30-1.html#p51","da30-part1-p51":"/en/chinese_canon/da/da30-1.html#p51","p52":"/en/chinese_canon/da/da30-1.html#p52","da30-part1-p52":"/en/chinese_canon/da/da30-1.html#p52","p53":"/en/chinese_canon/da/da30-1.html#p53","da30-part1-p53":"/en/chinese_canon/da/da30-1.html#p53","p54":"/en/chinese_canon/da/da30-1.html#p54","da30-part1-p54":"/en/chinese_canon/da/da30-1.html#p54","p55":"/en/chinese_canon/da/da30-1.html#p55","da30-part1-p55":"/en/chinese_canon/da/da30-1.html#p55","ref4":"/en/chinese_canon/da/da30-1.html#ref4","da30-part1-ref4":"/en/chinese_canon/da/da30-1.html#ref4","p56":"/en/chinese_canon/da/da30-1.html#p56","da30-part1-p56":"/en/chinese_canon/da/da30-1.html#p56","p57":"/en/chinese_canon/da/da30-1.html#p57","da30-part1-p57":"/en/chinese_canon/da/da30-1.html#p57","p58":"/en/chinese_canon/da/da30-1.html#p58","da30-part1-p58":"/en/chinese_canon/da/da30-1.html#p58","p59":"/en/chinese_canon/da/da30-1.html#p59","da30-part1-p59":"/en/chinese_canon/da/da30-1.html#p59","p60":"/en/chinese_canon/da/da30-1.html#p60","da30-part1-p60":"/en/chinese_canon/da/da30-1.html#p60","p61":"/en/chinese_canon/da/da30-1.html#p61","da30-part1-p61":"/en/chinese_canon/da/da30-1.html#p61","p62":"/en/chinese_canon/da/da30-1.html#p62","da30-part1-p62":"/en/chinese_canon/da/da30-1.html#p62","p63":"/en/chinese_canon/da/da30-1.html#p63","da30-part1-p63":"/en/chinese_canon/da/da30-1.html#p63","p64":"/en/chinese_canon/da/da30-1.html#p64","da30-part1-p64":"/en/chinese_canon/da/da30-1.html#p64","p65":"/en/chinese_canon/da/da30-1.html#p65","da30-part1-p65":"/en/chinese_canon/da/da30-1.html#p65","p66":"/en/chinese_canon/da/da30-1.html#p66","da30-part1-p66":"/en/chinese_canon/da/da30-1.html#p66","p67":"/en/chinese_canon/da/da30-1.html#p67","da30-part1-p67":"/en/chinese_canon/da/da30-1.html#p67","p68":"/en/chinese_canon/da/da30-1.html#p68","da30-part1-p68":"/en/chinese_canon/da/da30-1.html#p68","p69":"/en/chinese_canon/da/da30-1.html#p69","da30-part1-p69":"/en/chinese_canon/da/da30-1.html#p69","p70":"/en/chinese_canon/da/da30-1.html#p70","da30-part1-p70":"/en/chinese_canon/da/da30-1.html#p70","p71":"/en/chinese_canon/da/da30-1.html#p71","da30-part1-p71":"/en/chinese_canon/da/da30-1.html#p71","p72":"/en/chinese_canon/da/da30-1.html#p72","da30-part1-p72":"/en/chinese_canon/da/da30-1.html#p72","p73":"/en/chinese_canon/da/da30-1.html#p73","da30-part1-p73":"/en/chinese_canon/da/da30-1.html#p73","ref5":"/en/chinese_canon/da/da30-1.html#ref5","da30-part1-ref5":"/en/chinese_canon/da/da30-1.html#ref5","p74":"/en/chinese_canon/da/da30-1.html#p74","da30-part1-p74":"/en/chinese_canon/da/da30-1.html#p74","p75":"/en/chinese_canon/da/da30-1.html#p75","da30-part1-p75":"/en/chinese_canon/da/da30-1.html#p75","p76":"/en/chinese_canon/da/da30-1.html#p76","da30-part1-p76":"/en/chinese_canon/da/da30-1.html#p76","p77":"/en/chinese_canon/da/da30-1.html#p77","da30-part1-p77":"/en/chinese_canon/da/da30-1.html#p77","p78":"/en/chinese_canon/da/da30-1.html#p78","da30-part1-p78":"/en/chinese_canon/da/da30-1.html#p78","p79":"/en/chinese_canon/da/da30-1.html#p79","da30-part1-p79":"/en/chinese_canon/da/da30-1.html#p79","p80":"/en/chinese_canon/da/da30-1.html#p80","da30-part1-p80":"/en/chinese_canon/da/da30-1.html#p80","p81":"/en/chinese_canon/da/da30-1.html#p81","da30-part1-p81":"/en/chinese_canon/da/da30-1.html#p81","p82":"/en/chinese_canon/da/da30-1.html#p82","da30-part1-p82":"/en/chinese_canon/da/da30-1.html#p82","p83":"/en/chinese_canon/da/da30-1.html#p83","da30-part1-p83":"/en/chinese_canon/da/da30-1.html#p83","p84":"/en/chinese_canon/da/da30-1.html#p84","da30-part1-p84":"/en/chinese_canon/da/da30-1.html#p84","p85":"/en/chinese_canon/da/da30-1.html#p85","da30-part1-p85":"/en/chinese_canon/da/da30-1.html#p85","p86":"/en/chinese_canon/da/da30-1.html#p86","da30-part1-p86":"/en/chinese_canon/da/da30-1.html#p86","p87":"/en/chinese_canon/da/da30-1.html#p87","da30-part1-p87":"/en/chinese_canon/da/da30-1.html#p87","p88":"/en/chinese_canon/da/da30-1.html#p88","da30-part1-p88":"/en/chinese_canon/da/da30-1.html#p88","p89":"/en/chinese_canon/da/da30-1.html#p89","da30-part1-p89":"/en/chinese_canon/da/da30-1.html#p89","p90":"/en/chinese_canon/da/da30-1.html#p90","da30-part1-p90":"/en/chinese_canon/da/da30-1.html#p90","n1":"/en/chinese_canon/da/da30-1.html#n1","da30-part1-n1":"/en/chinese_canon/da/da30-1.html#n1","n2":"/en/chinese_canon/da/da30-1.html#n2","da30-part1-n2":"/en/chinese_canon/da/da30-1.html#n2","n3":"/en/chinese_canon/da/da30-1.html#n3","da30-part1-n3":"/en/chinese_canon/da/da30-1.html#n3","n4":"/en/chinese_canon/da/da30-1.html#n4","da30-part1-n4":"/en/chinese_canon/da/da30-1.html#n4","n5":"/en/chinese_canon/da/da30-1.html#n5","da30-part1-n5":"/en/chinese_canon/da/da30-1.html#n5","da30-part2-ref1":"/en/chinese_canon/da/da30-2.html#ref1","da30-part2-p1":"/en/chinese_canon/da/da30-2.html#p1","da30-part2-p2":"/en/chinese_canon/da/da30-2.html#p2","da30-part2-p3":"/en/chinese_canon/da/da30-2.html#p3","da30-part2-p4":"/en/chinese_canon/da/da30-2.html#p4","da30-part2-p5":"/en/chinese_canon/da/da30-2.html#p5","da30-part2-p6":"/en/chinese_canon/da/da30-2.html#p6","da30-part2-p7":"/en/chinese_canon/da/da30-2.html#p7","da30-part2-p8":"/en/chinese_canon/da/da30-2.html#p8","da30-part2-p9":"/en/chinese_canon/da/da30-2.html#p9","da30-part2-ref2":"/en/chinese_canon/da/da30-2.html#ref2","da30-part2-p10":"/en/chinese_canon/da/da30-2.html#p10","da30-part2-p11":"/en/chinese_canon/da/da30-2.html#p11","da30-part2-p12":"/en/chinese_canon/da/da30-2.html#p12","da30-part2-p13":"/en/chinese_canon/da/da30-2.html#p13","da30-part2-p14":"/en/chinese_canon/da/da30-2.html#p14","da30-part2-p15":"/en/chinese_canon/da/da30-2.html#p15","da30-part2-p16":"/en/chinese_canon/da/da30-2.html#p16","da30-part2-p17":"/en/chinese_canon/da/da30-2.html#p17","da30-part2-p18":"/en/chinese_canon/da/da30-2.html#p18","da30-part2-p19":"/en/chinese_canon/da/da30-2.html#p19","da30-part2-p20":"/en/chinese_canon/da/da30-2.html#p20","da30-part2-p21":"/en/chinese_canon/da/da30-2.html#p21","da30-part2-p22":"/en/chinese_canon/da/da30-2.html#p22","da30-part2-p23":"/en/chinese_canon/da/da30-2.html#p23","da30-part2-p24":"/en/chinese_canon/da/da30-2.html#p24","da30-part2-p25":"/en/chinese_canon/da/da30-2.html#p25","da30-part2-p26":"/en/chinese_canon/da/da30-2.html#p26","da30-part2-p27":"/en/chinese_canon/da/da30-2.html#p27","da30-part2-p28":"/en/chinese_canon/da/da30-2.html#p28","da30-part2-p29":"/en/chinese_canon/da/da30-2.html#p29","da30-part2-p30":"/en/chinese_canon/da/da30-2.html#p30","da30-part2-p31":"/en/chinese_canon/da/da30-2.html#p31","da30-part2-p32":"/en/chinese_canon/da/da30-2.html#p32","da30-part2-p33":"/en/chinese_canon/da/da30-2.html#p33","da30-part2-p34":"/en/chinese_canon/da/da30-2.html#p34","da30-part2-p35":"/en/chinese_canon/da/da30-2.html#p35","da30-part2-p36":"/en/chinese_canon/da/da30-2.html#p36","da30-part2-p37":"/en/chinese_canon/da/da30-2.html#p37","da30-part2-p38":"/en/chinese_canon/da/da30-2.html#p38","da30-part2-p39":"/en/chinese_canon/da/da30-2.html#p39","da30-part2-p40":"/en/chinese_canon/da/da30-2.html#p40","da30-part2-p41":"/en/chinese_canon/da/da30-2.html#p41","da30-part2-p42":"/en/chinese_canon/da/da30-2.html#p42","da30-part2-p43":"/en/chinese_canon/da/da30-2.html#p43","da30-part2-p44":"/en/chinese_canon/da/da30-2.html#p44","da30-part2-p45":"/en/chinese_canon/da/da30-2.html#p45","da30-part2-p46":"/en/chinese_canon/da/da30-2.html#p46","da30-part2-p47":"/en/chinese_canon/da/da30-2.html#p47","da30-part2-p48":"/en/chinese_canon/da/da30-2.html#p48","da30-part2-p49":"/en/chinese_canon/da/da30-2.html#p49","da30-part2-p50":"/en/chinese_canon/da/da30-2.html#p50","da30-part2-p51":"/en/chinese_canon/da/da30-2.html#p51","da30-part2-n1":"/en/chinese_canon/da/da30-2.html#n1","da30-part2-n2":"/en/chinese_canon/da/da30-2.html#n2","da30-part3-ref1":"/en/chinese_canon/da/da30-3.html#ref1","da30-part3-p1":"/en/chinese_canon/da/da30-3.html#p1","da30-part3-p2":"/en/chinese_canon/da/da30-3.html#p2","da30-part3-p3":"/en/chinese_canon/da/da30-3.html#p3","da30-part3-p4":"/en/chinese_canon/da/da30-3.html#p4","da30-part3-p5":"/en/chinese_canon/da/da30-3.html#p5","da30-part3-p6":"/en/chinese_canon/da/da30-3.html#p6","da30-part3-p7":"/en/chinese_canon/da/da30-3.html#p7","da30-part3-p8":"/en/chinese_canon/da/da30-3.html#p8","da30-part3-p9":"/en/chinese_canon/da/da30-3.html#p9","da30-part3-p10":"/en/chinese_canon/da/da30-3.html#p10","da30-part3-p11":"/en/chinese_canon/da/da30-3.html#p11","da30-part3-p12":"/en/chinese_canon/da/da30-3.html#p12","da30-part3-p13":"/en/chinese_canon/da/da30-3.html#p13","da30-part3-p14":"/en/chinese_canon/da/da30-3.html#p14","da30-part3-p15":"/en/chinese_canon/da/da30-3.html#p15","da30-part3-p16":"/en/chinese_canon/da/da30-3.html#p16","da30-part3-p17":"/en/chinese_canon/da/da30-3.html#p17","da30-part3-p18":"/en/chinese_canon/da/da30-3.html#p18","da30-part3-p19":"/en/chinese_canon/da/da30-3.html#p19","da30-part3-p20":"/en/chinese_canon/da/da30-3.html#p20","da30-part3-p21":"/en/chinese_canon/da/da30-3.html#p21","da30-part3-p22":"/en/chinese_canon/da/da30-3.html#p22","da30-part3-p23":"/en/chinese_canon/da/da30-3.html#p23","da30-part3-p24":"/en/chinese_canon/da/da30-3.html#p24","da30-part3-p25":"/en/chinese_canon/da/da30-3.html#p25","da30-part3-p26":"/en/chinese_canon/da/da30-3.html#p26","da30-part3-p27":"/en/chinese_canon/da/da30-3.html#p27","da30-part3-p28":"/en/chinese_canon/da/da30-3.html#p28","da30-part3-p29":"/en/chinese_canon/da/da30-3.html#p29","da30-part3-p30":"/en/chinese_canon/da/da30-3.html#p30","da30-part3-p31":"/en/chinese_canon/da/da30-3.html#p31","da30-part3-p32":"/en/chinese_canon/da/da30-3.html#p32","da30-part3-p33":"/en/chinese_canon/da/da30-3.html#p33","da30-part3-p34":"/en/chinese_canon/da/da30-3.html#p34","da30-part3-p35":"/en/chinese_canon/da/da30-3.html#p35","da30-part3-p36":"/en/chinese_canon/da/da30-3.html#p36","da30-part3-p37":"/en/chinese_canon/da/da30-3.html#p37","da30-part3-p38":"/en/chinese_canon/da/da30-3.html#p38","da30-part3-p39":"/en/chinese_canon/da/da30-3.html#p39","da30-part3-p40":"/en/chinese_canon/da/da30-3.html#p40","da30-part3-p41":"/en/chinese_canon/da/da30-3.html#p41","da30-part3-p42":"/en/chinese_canon/da/da30-3.html#p42","da30-part3-p43":"/en/chinese_canon/da/da30-3.html#p43","da30-part3-p44":"/en/chinese_canon/da/da30-3.html#p44","da30-part3-p45":"/en/chinese_canon/da/da30-3.html#p45","da30-part3-p46":"/en/chinese_canon/da/da30-3.html#p46","da30-part3-p47":"/en/chinese_canon/da/da30-3.html#p47","da30-part3-p48":"/en/chinese_canon/da/da30-3.html#p48","da30-part3-p49":"/en/chinese_canon/da/da30-3.html#p49","da30-part3-p50":"/en/chinese_canon/da/da30-3.html#p50","da30-part3-p51":"/en/chinese_canon/da/da30-3.html#p51","da30-part3-p52":"/en/chinese_canon/da/da30-3.html#p52","da30-part3-p53":"/en/chinese_canon/da/da30-3.html#p53","da30-part3-p54":"/en/chinese_canon/da/da30-3.html#p54","da30-part3-p55":"/en/chinese_canon/da/da30-3.html#p55","da30-part3-p56":"/en/chinese_canon/da/da30-3.html#p56","da30-part3-p57":"/en/chinese_canon/da/da30-3.html#p57","da30-part3-p58":"/en/chinese_canon/da/da30-3.html#p58","da30-part3-n1":"/en/chinese_canon/da/da30-3.html#n1","da30-part4-ref1":"/en/chinese_canon/da/da30-4.html#ref1","da30-part4-p1":"/en/chinese_canon/da/da30-4.html#p1","da30-part4-ref2":"/en/chinese_canon/da/da30-4.html#ref2","da30-part4-p2":"/en/chinese_canon/da/da30-4.html#p2","da30-part4-ref3":"/en/chinese_canon/da/da30-4.html#ref3","da30-part4-p3":"/en/chinese_canon/da/da30-4.html#p3","da30-part4-p4":"/en/chinese_canon/da/da30-4.html#p4","da30-part4-p5":"/en/chinese_canon/da/da30-4.html#p5","da30-part4-p6":"/en/chinese_canon/da/da30-4.html#p6","da30-part4-p7":"/en/chinese_canon/da/da30-4.html#p7","da30-part4-p8":"/en/chinese_canon/da/da30-4.html#p8","da30-part4-p9":"/en/chinese_canon/da/da30-4.html#p9","da30-part4-p10":"/en/chinese_canon/da/da30-4.html#p10","da30-part4-p11":"/en/chinese_canon/da/da30-4.html#p11","da30-part4-p12":"/en/chinese_canon/da/da30-4.html#p12","da30-part4-p13":"/en/chinese_canon/da/da30-4.html#p13","da30-part4-p14":"/en/chinese_canon/da/da30-4.html#p14","da30-part4-p15":"/en/chinese_canon/da/da30-4.html#p15","da30-part4-p16":"/en/chinese_canon/da/da30-4.html#p16","da30-part4-p17":"/en/chinese_canon/da/da30-4.html#p17","da30-part4-p18":"/en/chinese_canon/da/da30-4.html#p18","da30-part4-p19":"/en/chinese_canon/da/da30-4.html#p19","da30-part4-p20":"/en/chinese_canon/da/da30-4.html#p20","da30-part4-p21":"/en/chinese_canon/da/da30-4.html#p21","da30-part4-p22":"/en/chinese_canon/da/da30-4.html#p22","da30-part4-p23":"/en/chinese_canon/da/da30-4.html#p23","da30-part4-p24":"/en/chinese_canon/da/da30-4.html#p24","da30-part4-p25":"/en/chinese_canon/da/da30-4.html#p25","da30-part4-p26":"/en/chinese_canon/da/da30-4.html#p26","da30-part4-p27":"/en/chinese_canon/da/da30-4.html#p27","da30-part4-p28":"/en/chinese_canon/da/da30-4.html#p28","da30-part4-p29":"/en/chinese_canon/da/da30-4.html#p29","da30-part4-p30":"/en/chinese_canon/da/da30-4.html#p30","da30-part4-p31":"/en/chinese_canon/da/da30-4.html#p31","da30-part4-p32":"/en/chinese_canon/da/da30-4.html#p32","da30-part4-p33":"/en/chinese_canon/da/da30-4.html#p33","da30-part4-p34":"/en/chinese_canon/da/da30-4.html#p34","da30-part4-p35":"/en/chinese_canon/da/da30-4.html#p35","da30-part4-p36":"/en/chinese_canon/da/da30-4.html#p36","da30-part4-p37":"/en/chinese_canon/da/da30-4.html#p37","da30-part4-p38":"/en/chinese_canon/da/da30-4.html#p38","da30-part4-p39":"/en/chinese_canon/da/da30-4.html#p39","da30-part4-p40":"/en/chinese_canon/da/da30-4.html#p40","da30-part4-p41":"/en/chinese_canon/da/da30-4.html#p41","da30-part4-p42":"/en/chinese_canon/da/da30-4.html#p42","da30-part4-p43":"/en/chinese_canon/da/da30-4.html#p43","da30-part4-p44":"/en/chinese_canon/da/da30-4.html#p44","da30-part4-p45":"/en/chinese_canon/da/da30-4.html#p45","da30-part4-p46":"/en/chinese_canon/da/da30-4.html#p46","da30-part4-p47":"/en/chinese_canon/da/da30-4.html#p47","da30-part4-p48":"/en/chinese_canon/da/da30-4.html#p48","da30-part4-p49":"/en/chinese_canon/da/da30-4.html#p49","da30-part4-p50":"/en/chinese_canon/da/da30-4.html#p50","da30-part4-p51":"/en/chinese_canon/da/da30-4.html#p51","da30-part4-p52":"/en/chinese_canon/da/da30-4.html#p52","da30-part4-p53":"/en/chinese_canon/da/da30-4.html#p53","da30-part4-p54":"/en/chinese_canon/da/da30-4.html#p54","da30-part4-p55":"/en/chinese_canon/da/da30-4.html#p55","da30-part4-p56":"/en/chinese_canon/da/da30-4.html#p56","da30-part4-p57":"/en/chinese_canon/da/da30-4.html#p57","da30-part4-p58":"/en/chinese_canon/da/da30-4.html#p58","da30-part4-p59":"/en/chinese_canon/da/da30-4.html#p59","da30-part4-p60":"/en/chinese_canon/da/da30-4.html#p60","da30-part4-p61":"/en/chinese_canon/da/da30-4.html#p61","da30-part4-p62":"/en/chinese_canon/da/da30-4.html#p62","da30-part4-p63":"/en/chinese_canon/da/da30-4.html#p63","da30-part4-p64":"/en/chinese_canon/da/da30-4.html#p64","da30-part4-p65":"/en/chinese_canon/da/da30-4.html#p65","da30-part4-p66":"/en/chinese_canon/da/da30-4.html#p66","da30-part4-p67":"/en/chinese_canon/da/da30-4.html#p67","da30-part4-p68":"/en/chinese_canon/da/da30-4.html#p68","da30-part4-p69":"/en/chinese_canon/da/da30-4.html#p69","da30-part4-p70":"/en/chinese_canon/da/da30-4.html#p70","da30-part4-p71":"/en/chinese_canon/da/da30-4.html#p71","da30-part4-p72":"/en/chinese_canon/da/da30-4.html#p72","da30-part4-p73":"/en/chinese_canon/da/da30-4.html#p73","da30-part4-p74":"/en/chinese_canon/da/da30-4.html#p74","da30-part4-p75":"/en/chinese_canon/da/da30-4.html#p75","da30-part4-p76":"/en/chinese_canon/da/da30-4.html#p76","da30-part4-p77":"/en/chinese_canon/da/da30-4.html#p77","da30-part4-p78":"/en/chinese_canon/da/da30-4.html#p78","da30-part4-p79":"/en/chinese_canon/da/da30-4.html#p79","da30-part4-p80":"/en/chinese_canon/da/da30-4.html#p80","da30-part4-p81":"/en/chinese_canon/da/da30-4.html#p81","da30-part4-p82":"/en/chinese_canon/da/da30-4.html#p82","da30-part4-p83":"/en/chinese_canon/da/da30-4.html#p83","da30-part4-p84":"/en/chinese_canon/da/da30-4.html#p84","da30-part4-p85":"/en/chinese_canon/da/da30-4.html#p85","da30-part4-p86":"/en/chinese_canon/da/da30-4.html#p86","da30-part4-p87":"/en/chinese_canon/da/da30-4.html#p87","da30-part4-p88":"/en/chinese_canon/da/da30-4.html#p88","da30-part4-p89":"/en/chinese_canon/da/da30-4.html#p89","da30-part4-p90":"/en/chinese_canon/da/da30-4.html#p90","p91":"/en/chinese_canon/da/da30-4.html#p91","da30-part4-p91":"/en/chinese_canon/da/da30-4.html#p91","p92":"/en/chinese_canon/da/da30-4.html#p92","da30-part4-p92":"/en/chinese_canon/da/da30-4.html#p92","p93":"/en/chinese_canon/da/da30-4.html#p93","da30-part4-p93":"/en/chinese_canon/da/da30-4.html#p93","p94":"/en/chinese_canon/da/da30-4.html#p94","da30-part4-p94":"/en/chinese_canon/da/da30-4.html#p94","p95":"/en/chinese_canon/da/da30-4.html#p95","da30-part4-p95":"/en/chinese_canon/da/da30-4.html#p95","p96":"/en/chinese_canon/da/da30-4.html#p96","da30-part4-p96":"/en/chinese_canon/da/da30-4.html#p96","p97":"/en/chinese_canon/da/da30-4.html#p97","da30-part4-p97":"/en/chinese_canon/da/da30-4.html#p97","p98":"/en/chinese_canon/da/da30-4.html#p98","da30-part4-p98":"/en/chinese_canon/da/da30-4.html#p98","p99":"/en/chinese_canon/da/da30-4.html#p99","da30-part4-p99":"/en/chinese_canon/da/da30-4.html#p99","p100":"/en/chinese_canon/da/da30-4.html#p100","da30-part4-p100":"/en/chinese_canon/da/da30-4.html#p100","p101":"/en/chinese_canon/da/da30-4.html#p101","da30-part4-p101":"/en/chinese_canon/da/da30-4.html#p101","p102":"/en/chinese_canon/da/da30-4.html#p102","da30-part4-p102":"/en/chinese_canon/da/da30-4.html#p102","p103":"/en/chinese_canon/da/da30-4.html#p103","da30-part4-p103":"/en/chinese_canon/da/da30-4.html#p103","p104":"/en/chinese_canon/da/da30-4.html#p104","da30-part4-p104":"/en/chinese_canon/da/da30-4.html#p104","p105":"/en/chinese_canon/da/da30-4.html#p105","da30-part4-p105":"/en/chinese_canon/da/da30-4.html#p105","p106":"/en/chinese_canon/da/da30-4.html#p106","da30-part4-p106":"/en/chinese_canon/da/da30-4.html#p106","p107":"/en/chinese_canon/da/da30-4.html#p107","da30-part4-p107":"/en/chinese_canon/da/da30-4.html#p107","p108":"/en/chinese_canon/da/da30-4.html#p108","da30-part4-p108":"/en/chinese_canon/da/da30-4.html#p108","p109":"/en/chinese_canon/da/da30-4.html#p109","da30-part4-p109":"/en/chinese_canon/da/da30-4.html#p109","p110":"/en/chinese_canon/da/da30-4.html#p110","da30-part4-p110":"/en/chinese_canon/da/da30-4.html#p110","p111":"/en/chinese_canon/da/da30-4.html#p111","da30-part4-p111":"/en/chinese_canon/da/da30-4.html#p111","p112":"/en/chinese_canon/da/da30-4.html#p112","da30-part4-p112":"/en/chinese_canon/da/da30-4.html#p112","p113":"/en/chinese_canon/da/da30-4.html#p113","da30-part4-p113":"/en/chinese_canon/da/da30-4.html#p113","p114":"/en/chinese_canon/da/da30-4.html#p114","da30-part4-p114":"/en/chinese_canon/da/da30-4.html#p114","p115":"/en/chinese_canon/da/da30-4.html#p115","da30-part4-p115":"/en/chinese_canon/da/da30-4.html#p115","p116":"/en/chinese_canon/da/da30-4.html#p116","da30-part4-p116":"/en/chinese_canon/da/da30-4.html#p116","p117":"/en/chinese_canon/da/da30-4.html#p117","da30-part4-p117":"/en/chinese_canon/da/da30-4.html#p117","p118":"/en/chinese_canon/da/da30-4.html#p118","da30-part4-p118":"/en/chinese_canon/da/da30-4.html#p118","p119":"/en/chinese_canon/da/da30-4.html#p119","da30-part4-p119":"/en/chinese_canon/da/da30-4.html#p119","p120":"/en/chinese_canon/da/da30-4.html#p120","da30-part4-p120":"/en/chinese_canon/da/da30-4.html#p120","p121":"/en/chinese_canon/da/da30-4.html#p121","da30-part4-p121":"/en/chinese_canon/da/da30-4.html#p121","p122":"/en/chinese_canon/da/da30-4.html#p122","da30-part4-p122":"/en/chinese_canon/da/da30-4.html#p122","da30-part4-ref4":"/en/chinese_canon/da/da30-4.html#ref4","p123":"/en/chinese_canon/da/da30-4.html#p123","da30-part4-p123":"/en/chinese_canon/da/da30-4.html#p123","p124":"/en/chinese_canon/da/da30-4.html#p124","da30-part4-p124":"/en/chinese_canon/da/da30-4.html#p124","p125":"/en/chinese_canon/da/da30-4.html#p125","da30-part4-p125":"/en/chinese_canon/da/da30-4.html#p125","p126":"/en/chinese_canon/da/da30-4.html#p126","da30-part4-p126":"/en/chinese_canon/da/da30-4.html#p126","p127":"/en/chinese_canon/da/da30-4.html#p127","da30-part4-p127":"/en/chinese_canon/da/da30-4.html#p127","p128":"/en/chinese_canon/da/da30-4.html#p128","da30-part4-p128":"/en/chinese_canon/da/da30-4.html#p128","p129":"/en/chinese_canon/da/da30-4.html#p129","da30-part4-p129":"/en/chinese_canon/da/da30-4.html#p129","p130":"/en/chinese_canon/da/da30-4.html#p130","da30-part4-p130":"/en/chinese_canon/da/da30-4.html#p130","p131":"/en/chinese_canon/da/da30-4.html#p131","da30-part4-p131":"/en/chinese_canon/da/da30-4.html#p131","p132":"/en/chinese_canon/da/da30-4.html#p132","da30-part4-p132":"/en/chinese_canon/da/da30-4.html#p132","p133":"/en/chinese_canon/da/da30-4.html#p133","da30-part4-p133":"/en/chinese_canon/da/da30-4.html#p133","p134":"/en/chinese_canon/da/da30-4.html#p134","da30-part4-p134":"/en/chinese_canon/da/da30-4.html#p134","p135":"/en/chinese_canon/da/da30-4.html#p135","da30-part4-p135":"/en/chinese_canon/da/da30-4.html#p135","p136":"/en/chinese_canon/da/da30-4.html#p136","da30-part4-p136":"/en/chinese_canon/da/da30-4.html#p136","p137":"/en/chinese_canon/da/da30-4.html#p137","da30-part4-p137":"/en/chinese_canon/da/da30-4.html#p137","p138":"/en/chinese_canon/da/da30-4.html#p138","da30-part4-p138":"/en/chinese_canon/da/da30-4.html#p138","p139":"/en/chinese_canon/da/da30-4.html#p139","da30-part4-p139":"/en/chinese_canon/da/da30-4.html#p139","p140":"/en/chinese_canon/da/da30-4.html#p140","da30-part4-p140":"/en/chinese_canon/da/da30-4.html#p140","p141":"/en/chinese_canon/da/da30-4.html#p141","da30-part4-p141":"/en/chinese_canon/da/da30-4.html#p141","p142":"/en/chinese_canon/da/da30-4.html#p142","da30-part4-p142":"/en/chinese_canon/da/da30-4.html#p142","p143":"/en/chinese_canon/da/da30-4.html#p143","da30-part4-p143":"/en/chinese_canon/da/da30-4.html#p143","p144":"/en/chinese_canon/da/da30-4.html#p144","da30-part4-p144":"/en/chinese_canon/da/da30-4.html#p144","da30-part4-n1":"/en/chinese_canon/da/da30-4.html#n1","da30-part4-n2":"/en/chinese_canon/da/da30-4.html#n2","da30-part4-n3":"/en/chinese_canon/da/da30-4.html#n3","da30-part4-n4":"/en/chinese_canon/da/da30-4.html#n4","da30-part5-ref1":"/en/chinese_canon/da/da30-5.html#ref1","da30-part5-p1":"/en/chinese_canon/da/da30-5.html#p1","da30-part5-p2":"/en/chinese_canon/da/da30-5.html#p2","da30-part5-p3":"/en/chinese_canon/da/da30-5.html#p3","da30-part5-p4":"/en/chinese_canon/da/da30-5.html#p4","da30-part5-p5":"/en/chinese_canon/da/da30-5.html#p5","da30-part5-p6":"/en/chinese_canon/da/da30-5.html#p6","da30-part5-p7":"/en/chinese_canon/da/da30-5.html#p7","da30-part5-p8":"/en/chinese_canon/da/da30-5.html#p8","da30-part5-p9":"/en/chinese_canon/da/da30-5.html#p9","da30-part5-p10":"/en/chinese_canon/da/da30-5.html#p10","da30-part5-p11":"/en/chinese_canon/da/da30-5.html#p11","da30-part5-p12":"/en/chinese_canon/da/da30-5.html#p12","da30-part5-p13":"/en/chinese_canon/da/da30-5.html#p13","da30-part5-p14":"/en/chinese_canon/da/da30-5.html#p14","da30-part5-p15":"/en/chinese_canon/da/da30-5.html#p15","da30-part5-p16":"/en/chinese_canon/da/da30-5.html#p16","da30-part5-p17":"/en/chinese_canon/da/da30-5.html#p17","da30-part5-p18":"/en/chinese_canon/da/da30-5.html#p18","da30-part5-p19":"/en/chinese_canon/da/da30-5.html#p19","da30-part5-p20":"/en/chinese_canon/da/da30-5.html#p20","da30-part5-p21":"/en/chinese_canon/da/da30-5.html#p21","da30-part5-p22":"/en/chinese_canon/da/da30-5.html#p22","da30-part5-p23":"/en/chinese_canon/da/da30-5.html#p23","da30-part5-p24":"/en/chinese_canon/da/da30-5.html#p24","da30-part5-p25":"/en/chinese_canon/da/da30-5.html#p25","da30-part5-p26":"/en/chinese_canon/da/da30-5.html#p26","da30-part5-p27":"/en/chinese_canon/da/da30-5.html#p27","da30-part5-p28":"/en/chinese_canon/da/da30-5.html#p28","da30-part5-p29":"/en/chinese_canon/da/da30-5.html#p29","da30-part5-p30":"/en/chinese_canon/da/da30-5.html#p30","da30-part5-p31":"/en/chinese_canon/da/da30-5.html#p31","da30-part5-p32":"/en/chinese_canon/da/da30-5.html#p32","da30-part5-p33":"/en/chinese_canon/da/da30-5.html#p33","da30-part5-p34":"/en/chinese_canon/da/da30-5.html#p34","da30-part5-p35":"/en/chinese_canon/da/da30-5.html#p35","da30-part5-p36":"/en/chinese_canon/da/da30-5.html#p36","da30-part5-p37":"/en/chinese_canon/da/da30-5.html#p37","da30-part5-p38":"/en/chinese_canon/da/da30-5.html#p38","da30-part5-p39":"/en/chinese_canon/da/da30-5.html#p39","da30-part5-p40":"/en/chinese_canon/da/da30-5.html#p40","da30-part5-p41":"/en/chinese_canon/da/da30-5.html#p41","da30-part5-p42":"/en/chinese_canon/da/da30-5.html#p42","da30-part5-p43":"/en/chinese_canon/da/da30-5.html#p43","da30-part5-p44":"/en/chinese_canon/da/da30-5.html#p44","da30-part5-p45":"/en/chinese_canon/da/da30-5.html#p45","da30-part5-p46":"/en/chinese_canon/da/da30-5.html#p46","da30-part5-p47":"/en/chinese_canon/da/da30-5.html#p47","da30-part5-p48":"/en/chinese_canon/da/da30-5.html#p48","da30-part5-p49":"/en/chinese_canon/da/da30-5.html#p49","da30-part5-p50":"/en/chinese_canon/da/da30-5.html#p50","da30-part5-p51":"/en/chinese_canon/da/da30-5.html#p51","da30-part5-p52":"/en/chinese_canon/da/da30-5.html#p52","da30-part5-p53":"/en/chinese_canon/da/da30-5.html#p53","da30-part5-p54":"/en/chinese_canon/da/da30-5.html#p54","da30-part5-n1":"/en/chinese_canon/da/da30-5.html#n1","da30-part6-ref1":"/en/chinese_canon/da/da30-6.html#ref1","da30-part6-p1":"/en/chinese_canon/da/da30-6.html#p1","da30-part6-p2":"/en/chinese_canon/da/da30-6.html#p2","da30-part6-p3":"/en/chinese_canon/da/da30-6.html#p3","da30-part6-p4":"/en/chinese_canon/da/da30-6.html#p4","da30-part6-p5":"/en/chinese_canon/da/da30-6.html#p5","da30-part6-p6":"/en/chinese_canon/da/da30-6.html#p6","da30-part6-p7":"/en/chinese_canon/da/da30-6.html#p7","da30-part6-p8":"/en/chinese_canon/da/da30-6.html#p8","da30-part6-p9":"/en/chinese_canon/da/da30-6.html#p9","da30-part6-p10":"/en/chinese_canon/da/da30-6.html#p10","da30-part6-p11":"/en/chinese_canon/da/da30-6.html#p11","da30-part6-p12":"/en/chinese_canon/da/da30-6.html#p12","da30-part6-p13":"/en/chinese_canon/da/da30-6.html#p13","da30-part6-p14":"/en/chinese_canon/da/da30-6.html#p14","da30-part6-p15":"/en/chinese_canon/da/da30-6.html#p15","da30-part6-p16":"/en/chinese_canon/da/da30-6.html#p16","da30-part6-p17":"/en/chinese_canon/da/da30-6.html#p17","da30-part6-p18":"/en/chinese_canon/da/da30-6.html#p18","da30-part6-p19":"/en/chinese_canon/da/da30-6.html#p19","da30-part6-p20":"/en/chinese_canon/da/da30-6.html#p20","da30-part6-p21":"/en/chinese_canon/da/da30-6.html#p21","da30-part6-p22":"/en/chinese_canon/da/da30-6.html#p22","da30-part6-p23":"/en/chinese_canon/da/da30-6.html#p23","da30-part6-p24":"/en/chinese_canon/da/da30-6.html#p24","da30-part6-p25":"/en/chinese_canon/da/da30-6.html#p25","da30-part6-p26":"/en/chinese_canon/da/da30-6.html#p26","da30-part6-p27":"/en/chinese_canon/da/da30-6.html#p27","da30-part6-p28":"/en/chinese_canon/da/da30-6.html#p28","da30-part6-p29":"/en/chinese_canon/da/da30-6.html#p29","da30-part6-n1":"/en/chinese_canon/da/da30-6.html#n1","da30-part7-ref1":"/en/chinese_canon/da/da30-7.html#ref1","da30-part7-p1":"/en/chinese_canon/da/da30-7.html#p1","da30-part7-p2":"/en/chinese_canon/da/da30-7.html#p2","da30-part7-p3":"/en/chinese_canon/da/da30-7.html#p3","da30-part7-p4":"/en/chinese_canon/da/da30-7.html#p4","da30-part7-p5":"/en/chinese_canon/da/da30-7.html#p5","da30-part7-p6":"/en/chinese_canon/da/da30-7.html#p6","da30-part7-p7":"/en/chinese_canon/da/da30-7.html#p7","da30-part7-p8":"/en/chinese_canon/da/da30-7.html#p8","da30-part7-p9":"/en/chinese_canon/da/da30-7.html#p9","da30-part7-p10":"/en/chinese_canon/da/da30-7.html#p10","da30-part7-p11":"/en/chinese_canon/da/da30-7.html#p11","da30-part7-p12":"/en/chinese_canon/da/da30-7.html#p12","da30-part7-p13":"/en/chinese_canon/da/da30-7.html#p13","da30-part7-p14":"/en/chinese_canon/da/da30-7.html#p14","da30-part7-p15":"/en/chinese_canon/da/da30-7.html#p15","da30-part7-n1":"/en/chinese_canon/da/da30-7.html#n1","da30-part8-ref1":"/en/chinese_canon/da/da30-8.html#ref1","da30-part8-p1":"/en/chinese_canon/da/da30-8.html#p1","da30-part8-p2":"/en/chinese_canon/da/da30-8.html#p2","da30-part8-p3":"/en/chinese_canon/da/da30-8.html#p3","da30-part8-p4":"/en/chinese_canon/da/da30-8.html#p4","da30-part8-p5":"/en/chinese_canon/da/da30-8.html#p5","da30-part8-p6":"/en/chinese_canon/da/da30-8.html#p6","da30-part8-p7":"/en/chinese_canon/da/da30-8.html#p7","da30-part8-p8":"/en/chinese_canon/da/da30-8.html#p8","da30-part8-p9":"/en/chinese_canon/da/da30-8.html#p9","da30-part8-p10":"/en/chinese_canon/da/da30-8.html#p10","da30-part8-p11":"/en/chinese_canon/da/da30-8.html#p11","da30-part8-p12":"/en/chinese_canon/da/da30-8.html#p12","da30-part8-p13":"/en/chinese_canon/da/da30-8.html#p13","da30-part8-ref2":"/en/chinese_canon/da/da30-8.html#ref2","da30-part8-p14":"/en/chinese_canon/da/da30-8.html#p14","da30-part8-p15":"/en/chinese_canon/da/da30-8.html#p15","da30-part8-ref3":"/en/chinese_canon/da/da30-8.html#ref3","da30-part8-p16":"/en/chinese_canon/da/da30-8.html#p16","da30-part8-p17":"/en/chinese_canon/da/da30-8.html#p17","da30-part8-ref4":"/en/chinese_canon/da/da30-8.html#ref4","da30-part8-p18":"/en/chinese_canon/da/da30-8.html#p18","da30-part8-ref5":"/en/chinese_canon/da/da30-8.html#ref5","da30-part8-p19":"/en/chinese_canon/da/da30-8.html#p19","ref6":"/en/chinese_canon/da/da30-8.html#ref6","da30-part8-ref6":"/en/chinese_canon/da/da30-8.html#ref6","da30-part8-p20":"/en/chinese_canon/da/da30-8.html#p20","da30-part8-p21":"/en/chinese_canon/da/da30-8.html#p21","da30-part8-p22":"/en/chinese_canon/da/da30-8.html#p22","da30-part8-p23":"/en/chinese_canon/da/da30-8.html#p23","da30-part8-p24":"/en/chinese_canon/da/da30-8.html#p24","da30-part8-p25":"/en/chinese_canon/da/da30-8.html#p25","da30-part8-p26":"/en/chinese_canon/da/da30-8.html#p26","da30-part8-p27":"/en/chinese_canon/da/da30-8.html#p27","da30-part8-p28":"/en/chinese_canon/da/da30-8.html#p28","da30-part8-p29":"/en/chinese_canon/da/da30-8.html#p29","da30-part8-p30":"/en/chinese_canon/da/da30-8.html#p30","da30-part8-p31":"/en/chinese_canon/da/da30-8.html#p31","da30-part8-p32":"/en/chinese_canon/da/da30-8.html#p32","da30-part8-p33":"/en/chinese_canon/da/da30-8.html#p33","da30-part8-p34":"/en/chinese_canon/da/da30-8.html#p34","da30-part8-p35":"/en/chinese_canon/da/da30-8.html#p35","da30-part8-p36":"/en/chinese_canon/da/da30-8.html#p36","da30-part8-p37":"/en/chinese_canon/da/da30-8.html#p37","da30-part8-p38":"/en/chinese_canon/da/da30-8.html#p38","da30-part8-p39":"/en/chinese_canon/da/da30-8.html#p39","da30-part8-p40":"/en/chinese_canon/da/da30-8.html#p40","da30-part8-p41":"/en/chinese_canon/da/da30-8.html#p41","ref7":"/en/chinese_canon/da/da30-8.html#ref7","da30-part8-ref7":"/en/chinese_canon/da/da30-8.html#ref7","ref8":"/en/chinese_canon/da/da30-8.html#ref8","da30-part8-ref8":"/en/chinese_canon/da/da30-8.html#ref8","da30-part8-p43":"/en/chinese_canon/da/da30-8.html#p43","da30-part8-p44":"/en/chinese_canon/da/da30-8.html#p44","da30-part8-p45":"/en/chinese_canon/da/da30-8.html#p45","da30-part8-p46":"/en/chinese_canon/da/da30-8.html#p46","da30-part8-p47":"/en/chinese_canon/da/da30-8.html#p47","da30-part8-p48":"/en/chinese_canon/da/da30-8.html#p48","ref9":"/en/chinese_canon/da/da30-8.html#ref9","da30-part8-ref9":"/en/chinese_canon/da/da30-8.html#ref9","da30-part8-p49":"/en/chinese_canon/da/da30-8.html#p49","da30-part8-p50":"/en/chinese_canon/da/da30-8.html#p50","ref10":"/en/chinese_canon/da/da30-8.html#ref10","da30-part8-ref10":"/en/chinese_canon/da/da30-8.html#ref10","da30-part8-p51":"/en/chinese_canon/da/da30-8.html#p51","da30-part8-p52":"/en/chinese_canon/da/da30-8.html#p52","da30-part8-p53":"/en/chinese_canon/da/da30-8.html#p53","da30-part8-p54":"/en/chinese_canon/da/da30-8.html#p54","da30-part8-p55":"/en/chinese_canon/da/da30-8.html#p55","da30-part8-p56":"/en/chinese_canon/da/da30-8.html#p56","da30-part8-p57":"/en/chinese_canon/da/da30-8.html#p57","da30-part8-p58":"/en/chinese_canon/da/da30-8.html#p58","da30-part8-p59":"/en/chinese_canon/da/da30-8.html#p59","da30-part8-p60":"/en/chinese_canon/da/da30-8.html#p60","da30-part8-p61":"/en/chinese_canon/da/da30-8.html#p61","da30-part8-p62":"/en/chinese_canon/da/da30-8.html#p62","da30-part8-p63":"/en/chinese_canon/da/da30-8.html#p63","da30-part8-p64":"/en/chinese_canon/da/da30-8.html#p64","da30-part8-p65":"/en/chinese_canon/da/da30-8.html#p65","da30-part8-p66":"/en/chinese_canon/da/da30-8.html#p66","da30-part8-p67":"/en/chinese_canon/da/da30-8.html#p67","da30-part8-p68":"/en/chinese_canon/da/da30-8.html#p68","da30-part8-p69":"/en/chinese_canon/da/da30-8.html#p69","da30-part8-p70":"/en/chinese_canon/da/da30-8.html#p70","da30-part8-p71":"/en/chinese_canon/da/da30-8.html#p71","da30-part8-p72":"/en/chinese_canon/da/da30-8.html#p72","da30-part8-p73":"/en/chinese_canon/da/da30-8.html#p73","da30-part8-p74":"/en/chinese_canon/da/da30-8.html#p74","da30-part8-p75":"/en/chinese_canon/da/da30-8.html#p75","da30-part8-p76":"/en/chinese_canon/da/da30-8.html#p76","da30-part8-p77":"/en/chinese_canon/da/da30-8.html#p77","da30-part8-p78":"/en/chinese_canon/da/da30-8.html#p78","da30-part8-p79":"/en/chinese_canon/da/da30-8.html#p79","da30-part8-p80":"/en/chinese_canon/da/da30-8.html#p80","da30-part8-p81":"/en/chinese_canon/da/da30-8.html#p81","da30-part8-p82":"/en/chinese_canon/da/da30-8.html#p82","da30-part8-p83":"/en/chinese_canon/da/da30-8.html#p83","da30-part8-p84":"/en/chinese_canon/da/da30-8.html#p84","da30-part8-p85":"/en/chinese_canon/da/da30-8.html#p85","da30-part8-p86":"/en/chinese_canon/da/da30-8.html#p86","da30-part8-p87":"/en/chinese_canon/da/da30-8.html#p87","da30-part8-p88":"/en/chinese_canon/da/da30-8.html#p88","da30-part8-p89":"/en/chinese_canon/da/da30-8.html#p89","da30-part8-p90":"/en/chinese_canon/da/da30-8.html#p90","da30-part8-p91":"/en/chinese_canon/da/da30-8.html#p91","da30-part8-p92":"/en/chinese_canon/da/da30-8.html#p92","da30-part8-p93":"/en/chinese_canon/da/da30-8.html#p93","da30-part8-p94":"/en/chinese_canon/da/da30-8.html#p94","da30-part8-p95":"/en/chinese_canon/da/da30-8.html#p95","da30-part8-p96":"/en/chinese_canon/da/da30-8.html#p96","da30-part8-p97":"/en/chinese_canon/da/da30-8.html#p97","da30-part8-p98":"/en/chinese_canon/da/da30-8.html#p98","da30-part8-p99":"/en/chinese_canon/da/da30-8.html#p99","da30-part8-p100":"/en/chinese_canon/da/da30-8.html#p100","da30-part8-p101":"/en/chinese_canon/da/da30-8.html#p101","da30-part8-p102":"/en/chinese_canon/da/da30-8.html#p102","da30-part8-p103":"/en/chinese_canon/da/da30-8.html#p103","da30-part8-p104":"/en/chinese_canon/da/da30-8.html#p104","da30-part8-p105":"/en/chinese_canon/da/da30-8.html#p105","da30-part8-p106":"/en/chinese_canon/da/da30-8.html#p106","da30-part8-p107":"/en/chinese_canon/da/da30-8.html#p107","da30-part8-p108":"/en/chinese_canon/da/da30-8.html#p108","da30-part8-p109":"/en/chinese_canon/da/da30-8.html#p109","da30-part8-p110":"/en/chinese_canon/da/da30-8.html#p110","da30-part8-p111":"/en/chinese_canon/da/da30-8.html#p111","da30-part8-p112":"/en/chinese_canon/da/da30-8.html#p112","da30-part8-p113":"/en/chinese_canon/da/da30-8.html#p113","da30-part8-p114":"/en/chinese_canon/da/da30-8.html#p114","da30-part8-p115":"/en/chinese_canon/da/da30-8.html#p115","da30-part8-p116":"/en/chinese_canon/da/da30-8.html#p116","da30-part8-p117":"/en/chinese_canon/da/da30-8.html#p117","da30-part8-p118":"/en/chinese_canon/da/da30-8.html#p118","da30-part8-p119":"/en/chinese_canon/da/da30-8.html#p119","da30-part8-p120":"/en/chinese_canon/da/da30-8.html#p120","da30-part8-p121":"/en/chinese_canon/da/da30-8.html#p121","da30-part8-p122":"/en/chinese_canon/da/da30-8.html#p122","da30-part8-p123":"/en/chinese_canon/da/da30-8.html#p123","da30-part8-p124":"/en/chinese_canon/da/da30-8.html#p124","da30-part8-p125":"/en/chinese_canon/da/da30-8.html#p125","da30-part8-p126":"/en/chinese_canon/da/da30-8.html#p126","da30-part8-p127":"/en/chinese_canon/da/da30-8.html#p127","da30-part8-p128":"/en/chinese_canon/da/da30-8.html#p128","da30-part8-p129":"/en/chinese_canon/da/da30-8.html#p129","da30-part8-p130":"/en/chinese_canon/da/da30-8.html#p130","da30-part8-p131":"/en/chinese_canon/da/da30-8.html#p131","da30-part8-p132":"/en/chinese_canon/da/da30-8.html#p132","da30-part8-p133":"/en/chinese_canon/da/da30-8.html#p133","da30-part8-p134":"/en/chinese_canon/da/da30-8.html#p134","da30-part8-p135":"/en/chinese_canon/da/da30-8.html#p135","da30-part8-p136":"/en/chinese_canon/da/da30-8.html#p136","ref11":"/en/chinese_canon/da/da30-8.html#ref11","da30-part8-ref11":"/en/chinese_canon/da/da30-8.html#ref11","da30-part8-p137":"/en/chinese_canon/da/da30-8.html#p137","da30-part8-p138":"/en/chinese_canon/da/da30-8.html#p138","da30-part8-p139":"/en/chinese_canon/da/da30-8.html#p139","da30-part8-p140":"/en/chinese_canon/da/da30-8.html#p140","da30-part8-p141":"/en/chinese_canon/da/da30-8.html#p141","da30-part8-p142":"/en/chinese_canon/da/da30-8.html#p142","da30-part8-p143":"/en/chinese_canon/da/da30-8.html#p143","da30-part8-p144":"/en/chinese_canon/da/da30-8.html#p144","p145":"/en/chinese_canon/da/da30-8.html#p145","da30-part8-p145":"/en/chinese_canon/da/da30-8.html#p145","p146":"/en/chinese_canon/da/da30-8.html#p146","da30-part8-p146":"/en/chinese_canon/da/da30-8.html#p146","p147":"/en/chinese_canon/da/da30-8.html#p147","da30-part8-p147":"/en/chinese_canon/da/da30-8.html#p147","p148":"/en/chinese_canon/da/da30-8.html#p148","da30-part8-p148":"/en/chinese_canon/da/da30-8.html#p148","p149":"/en/chinese_canon/da/da30-8.html#p149","da30-part8-p149":"/en/chinese_canon/da/da30-8.html#p149","p150":"/en/chinese_canon/da/da30-8.html#p150","da30-part8-p150":"/en/chinese_canon/da/da30-8.html#p150","p151":"/en/chinese_canon/da/da30-8.html#p151","da30-part8-p151":"/en/chinese_canon/da/da30-8.html#p151","p152":"/en/chinese_canon/da/da30-8.html#p152","da30-part8-p152":"/en/chinese_canon/da/da30-8.html#p152","p153":"/en/chinese_canon/da/da30-8.html#p153","da30-part8-p153":"/en/chinese_canon/da/da30-8.html#p153","p154":"/en/chinese_canon/da/da30-8.html#p154","da30-part8-p154":"/en/chinese_canon/da/da30-8.html#p154","p155":"/en/chinese_canon/da/da30-8.html#p155","da30-part8-p155":"/en/chinese_canon/da/da30-8.html#p155","p156":"/en/chinese_canon/da/da30-8.html#p156","da30-part8-p156":"/en/chinese_canon/da/da30-8.html#p156","p157":"/en/chinese_canon/da/da30-8.html#p157","da30-part8-p157":"/en/chinese_canon/da/da30-8.html#p157","p158":"/en/chinese_canon/da/da30-8.html#p158","da30-part8-p158":"/en/chinese_canon/da/da30-8.html#p158","p159":"/en/chinese_canon/da/da30-8.html#p159","da30-part8-p159":"/en/chinese_canon/da/da30-8.html#p159","p160":"/en/chinese_canon/da/da30-8.html#p160","da30-part8-p160":"/en/chinese_canon/da/da30-8.html#p160","p161":"/en/chinese_canon/da/da30-8.html#p161","da30-part8-p161":"/en/chinese_canon/da/da30-8.html#p161","ref12":"/en/chinese_canon/da/da30-8.html#ref12","da30-part8-ref12":"/en/chinese_canon/da/da30-8.html#ref12","p162":"/en/chinese_canon/da/da30-8.html#p162","da30-part8-p162":"/en/chinese_canon/da/da30-8.html#p162","p163":"/en/chinese_canon/da/da30-8.html#p163","da30-part8-p163":"/en/chinese_canon/da/da30-8.html#p163","p164":"/en/chinese_canon/da/da30-8.html#p164","da30-part8-p164":"/en/chinese_canon/da/da30-8.html#p164","p165":"/en/chinese_canon/da/da30-8.html#p165","da30-part8-p165":"/en/chinese_canon/da/da30-8.html#p165","p166":"/en/chinese_canon/da/da30-8.html#p166","da30-part8-p166":"/en/chinese_canon/da/da30-8.html#p166","p167":"/en/chinese_canon/da/da30-8.html#p167","da30-part8-p167":"/en/chinese_canon/da/da30-8.html#p167","p168":"/en/chinese_canon/da/da30-8.html#p168","da30-part8-p168":"/en/chinese_canon/da/da30-8.html#p168","p169":"/en/chinese_canon/da/da30-8.html#p169","da30-part8-p169":"/en/chinese_canon/da/da30-8.html#p169","da30-part8-n1":"/en/chinese_canon/da/da30-8.html#n1","da30-part8-n2":"/en/chinese_canon/da/da30-8.html#n2","da30-part8-n3":"/en/chinese_canon/da/da30-8.html#n3","da30-part8-n4":"/en/chinese_canon/da/da30-8.html#n4","da30-part8-n5":"/en/chinese_canon/da/da30-8.html#n5","n6":"/en/chinese_canon/da/da30-8.html#n6","da30-part8-n6":"/en/chinese_canon/da/da30-8.html#n6","n7":"/en/chinese_canon/da/da30-8.html#n7","da30-part8-n7":"/en/chinese_canon/da/da30-8.html#n7","n8":"/en/chinese_canon/da/da30-8.html#n8","da30-part8-n8":"/en/chinese_canon/da/da30-8.html#n8","n9":"/en/chinese_canon/da/da30-8.html#n9","da30-part8-n9":"/en/chinese_canon/da/da30-8.html#n9","n10":"/en/chinese_canon/da/da30-8.html#n10","da30-part8-n10":"/en/chinese_canon/da/da30-8.html#n10","n11":"/en/chinese_canon/da/da30-8.html#n11","da30-part8-n11":"/en/chinese_canon/da/da30-8.html#n11","n12":"/en/chinese_canon/da/da30-8.html#n12","da30-part8-n12":"/en/chinese_canon/da/da30-8.html#n12","da30-part9-ref1":"/en/chinese_canon/da/da30-9.html#ref1","da30-part9-p1":"/en/chinese_canon/da/da30-9.html#p1","da30-part9-p2":"/en/chinese_canon/da/da30-9.html#p2","da30-part9-p3":"/en/chinese_canon/da/da30-9.html#p3","da30-part9-p4":"/en/chinese_canon/da/da30-9.html#p4","da30-part9-p5":"/en/chinese_canon/da/da30-9.html#p5","da30-part9-p6":"/en/chinese_canon/da/da30-9.html#p6","da30-part9-p7":"/en/chinese_canon/da/da30-9.html#p7","da30-part9-p8":"/en/chinese_canon/da/da30-9.html#p8","da30-part9-p9":"/en/chinese_canon/da/da30-9.html#p9","da30-part9-ref2":"/en/chinese_canon/da/da30-9.html#ref2","da30-part9-p10":"/en/chinese_canon/da/da30-9.html#p10","da30-part9-p11":"/en/chinese_canon/da/da30-9.html#p11","da30-part9-p12":"/en/chinese_canon/da/da30-9.html#p12","da30-part9-p13":"/en/chinese_canon/da/da30-9.html#p13","da30-part9-p14":"/en/chinese_canon/da/da30-9.html#p14","da30-part9-p15":"/en/chinese_canon/da/da30-9.html#p15","da30-part9-p16":"/en/chinese_canon/da/da30-9.html#p16","da30-part9-p17":"/en/chinese_canon/da/da30-9.html#p17","da30-part9-p18":"/en/chinese_canon/da/da30-9.html#p18","da30-part9-p19":"/en/chinese_canon/da/da30-9.html#p19","da30-part9-p20":"/en/chinese_canon/da/da30-9.html#p20","da30-part9-p21":"/en/chinese_canon/da/da30-9.html#p21","da30-part9-p22":"/en/chinese_canon/da/da30-9.html#p22","da30-part9-p23":"/en/chinese_canon/da/da30-9.html#p23","da30-part9-p24":"/en/chinese_canon/da/da30-9.html#p24","da30-part9-p25":"/en/chinese_canon/da/da30-9.html#p25","da30-part9-p26":"/en/chinese_canon/da/da30-9.html#p26","da30-part9-p27":"/en/chinese_canon/da/da30-9.html#p27","da30-part9-p28":"/en/chinese_canon/da/da30-9.html#p28","da30-part9-p29":"/en/chinese_canon/da/da30-9.html#p29","da30-part9-p30":"/en/chinese_canon/da/da30-9.html#p30","da30-part9-p31":"/en/chinese_canon/da/da30-9.html#p31","da30-part9-p32":"/en/chinese_canon/da/da30-9.html#p32","da30-part9-p33":"/en/chinese_canon/da/da30-9.html#p33","da30-part9-p34":"/en/chinese_canon/da/da30-9.html#p34","da30-part9-p35":"/en/chinese_canon/da/da30-9.html#p35","da30-part9-p36":"/en/chinese_canon/da/da30-9.html#p36","da30-part9-p37":"/en/chinese_canon/da/da30-9.html#p37","da30-part9-p38":"/en/chinese_canon/da/da30-9.html#p38","da30-part9-p39":"/en/chinese_canon/da/da30-9.html#p39","da30-part9-p40":"/en/chinese_canon/da/da30-9.html#p40","da30-part9-p41":"/en/chinese_canon/da/da30-9.html#p41","da30-part9-p42":"/en/chinese_canon/da/da30-9.html#p42","da30-part9-p43":"/en/chinese_canon/da/da30-9.html#p43","da30-part9-p44":"/en/chinese_canon/da/da30-9.html#p44","da30-part9-p45":"/en/chinese_canon/da/da30-9.html#p45","da30-part9-p46":"/en/chinese_canon/da/da30-9.html#p46","da30-part9-p47":"/en/chinese_canon/da/da30-9.html#p47","da30-part9-p48":"/en/chinese_canon/da/da30-9.html#p48","da30-part9-p49":"/en/chinese_canon/da/da30-9.html#p49","da30-part9-p50":"/en/chinese_canon/da/da30-9.html#p50","da30-part9-p51":"/en/chinese_canon/da/da30-9.html#p51","da30-part9-p52":"/en/chinese_canon/da/da30-9.html#p52","da30-part9-p53":"/en/chinese_canon/da/da30-9.html#p53","da30-part9-p54":"/en/chinese_canon/da/da30-9.html#p54","da30-part9-p55":"/en/chinese_canon/da/da30-9.html#p55","da30-part9-p56":"/en/chinese_canon/da/da30-9.html#p56","da30-part9-ref3":"/en/chinese_canon/da/da30-9.html#ref3","da30-part9-p57":"/en/chinese_canon/da/da30-9.html#p57","da30-part9-p58":"/en/chinese_canon/da/da30-9.html#p58","da30-part9-p59":"/en/chinese_canon/da/da30-9.html#p59","da30-part9-p60":"/en/chinese_canon/da/da30-9.html#p60","da30-part9-p61":"/en/chinese_canon/da/da30-9.html#p61","da30-part9-p62":"/en/chinese_canon/da/da30-9.html#p62","da30-part9-p63":"/en/chinese_canon/da/da30-9.html#p63","da30-part9-p64":"/en/chinese_canon/da/da30-9.html#p64","da30-part9-p65":"/en/chinese_canon/da/da30-9.html#p65","da30-part9-p66":"/en/chinese_canon/da/da30-9.html#p66","da30-part9-p67":"/en/chinese_canon/da/da30-9.html#p67","da30-part9-p68":"/en/chinese_canon/da/da30-9.html#p68","da30-part9-p69":"/en/chinese_canon/da/da30-9.html#p69","da30-part9-p70":"/en/chinese_canon/da/da30-9.html#p70","da30-part9-p71":"/en/chinese_canon/da/da30-9.html#p71","da30-part9-p72":"/en/chinese_canon/da/da30-9.html#p72","da30-part9-p73":"/en/chinese_canon/da/da30-9.html#p73","da30-part9-p74":"/en/chinese_canon/da/da30-9.html#p74","da30-part9-p75":"/en/chinese_canon/da/da30-9.html#p75","da30-part9-p76":"/en/chinese_canon/da/da30-9.html#p76","da30-part9-p77":"/en/chinese_canon/da/da30-9.html#p77","da30-part9-p78":"/en/chinese_canon/da/da30-9.html#p78","da30-part9-p79":"/en/chinese_canon/da/da30-9.html#p79","da30-part9-p80":"/en/chinese_canon/da/da30-9.html#p80","da30-part9-p81":"/en/chinese_canon/da/da30-9.html#p81","da30-part9-p82":"/en/chinese_canon/da/da30-9.html#p82","da30-part9-p83":"/en/chinese_canon/da/da30-9.html#p83","da30-part9-p84":"/en/chinese_canon/da/da30-9.html#p84","da30-part9-p85":"/en/chinese_canon/da/da30-9.html#p85","da30-part9-p86":"/en/chinese_canon/da/da30-9.html#p86","da30-part9-p87":"/en/chinese_canon/da/da30-9.html#p87","da30-part9-p88":"/en/chinese_canon/da/da30-9.html#p88","da30-part9-p89":"/en/chinese_canon/da/da30-9.html#p89","da30-part9-p90":"/en/chinese_canon/da/da30-9.html#p90","da30-part9-p91":"/en/chinese_canon/da/da30-9.html#p91","da30-part9-p92":"/en/chinese_canon/da/da30-9.html#p92","da30-part9-p93":"/en/chinese_canon/da/da30-9.html#p93","da30-part9-p94":"/en/chinese_canon/da/da30-9.html#p94","da30-part9-p95":"/en/chinese_canon/da/da30-9.html#p95","da30-part9-p96":"/en/chinese_canon/da/da30-9.html#p96","da30-part9-p97":"/en/chinese_canon/da/da30-9.html#p97","da30-part9-p98":"/en/chinese_canon/da/da30-9.html#p98","da30-part9-p99":"/en/chinese_canon/da/da30-9.html#p99","da30-part9-p100":"/en/chinese_canon/da/da30-9.html#p100","da30-part9-p101":"/en/chinese_canon/da/da30-9.html#p101","da30-part9-p102":"/en/chinese_canon/da/da30-9.html#p102","da30-part9-p103":"/en/chinese_canon/da/da30-9.html#p103","da30-part9-p104":"/en/chinese_canon/da/da30-9.html#p104","da30-part9-p105":"/en/chinese_canon/da/da30-9.html#p105","da30-part9-p106":"/en/chinese_canon/da/da30-9.html#p106","da30-part9-p107":"/en/chinese_canon/da/da30-9.html#p107","da30-part9-p108":"/en/chinese_canon/da/da30-9.html#p108","da30-part9-p109":"/en/chinese_canon/da/da30-9.html#p109","da30-part9-n1":"/en/chinese_canon/da/da30-9.html#n1","da30-part9-n2":"/en/chinese_canon/da/da30-9.html#n2","da30-part9-n3":"/en/chinese_canon/da/da30-9.html#n3","da30-part10-ref1":"/en/chinese_canon/da/da30-10.html#ref1","da30-part10-p1":"/en/chinese_canon/da/da30-10.html#p1","da30-part10-p2":"/en/chinese_canon/da/da30-10.html#p2","da30-part10-p3":"/en/chinese_canon/da/da30-10.html#p3","da30-part10-p4":"/en/chinese_canon/da/da30-10.html#p4","da30-part10-p5":"/en/chinese_canon/da/da30-10.html#p5","da30-part10-p6":"/en/chinese_canon/da/da30-10.html#p6","da30-part10-p7":"/en/chinese_canon/da/da30-10.html#p7","da30-part10-p8":"/en/chinese_canon/da/da30-10.html#p8","da30-part10-p9":"/en/chinese_canon/da/da30-10.html#p9","da30-part10-p10":"/en/chinese_canon/da/da30-10.html#p10","da30-part10-p11":"/en/chinese_canon/da/da30-10.html#p11","da30-part10-p12":"/en/chinese_canon/da/da30-10.html#p12","da30-part10-p13":"/en/chinese_canon/da/da30-10.html#p13","da30-part10-p14":"/en/chinese_canon/da/da30-10.html#p14","da30-part10-p15":"/en/chinese_canon/da/da30-10.html#p15","da30-part10-p16":"/en/chinese_canon/da/da30-10.html#p16","da30-part10-p17":"/en/chinese_canon/da/da30-10.html#p17","da30-part10-p18":"/en/chinese_canon/da/da30-10.html#p18","da30-part10-p19":"/en/chinese_canon/da/da30-10.html#p19","da30-part10-p20":"/en/chinese_canon/da/da30-10.html#p20","da30-part10-p21":"/en/chinese_canon/da/da30-10.html#p21","da30-part10-p22":"/en/chinese_canon/da/da30-10.html#p22","da30-part10-p23":"/en/chinese_canon/da/da30-10.html#p23","da30-part10-p24":"/en/chinese_canon/da/da30-10.html#p24","da30-part10-p25":"/en/chinese_canon/da/da30-10.html#p25","da30-part10-p26":"/en/chinese_canon/da/da30-10.html#p26","da30-part10-p27":"/en/chinese_canon/da/da30-10.html#p27","da30-part10-p28":"/en/chinese_canon/da/da30-10.html#p28","da30-part10-p29":"/en/chinese_canon/da/da30-10.html#p29","da30-part10-p30":"/en/chinese_canon/da/da30-10.html#p30","da30-part10-p31":"/en/chinese_canon/da/da30-10.html#p31","da30-part10-p32":"/en/chinese_canon/da/da30-10.html#p32","da30-part10-p33":"/en/chinese_canon/da/da30-10.html#p33","da30-part10-p34":"/en/chinese_canon/da/da30-10.html#p34","da30-part10-p35":"/en/chinese_canon/da/da30-10.html#p35","da30-part10-p36":"/en/chinese_canon/da/da30-10.html#p36","da30-part10-p37":"/en/chinese_canon/da/da30-10.html#p37","da30-part10-p38":"/en/chinese_canon/da/da30-10.html#p38","da30-part10-p39":"/en/chinese_canon/da/da30-10.html#p39","da30-part10-p40":"/en/chinese_canon/da/da30-10.html#p40","da30-part10-ref2":"/en/chinese_canon/da/da30-10.html#ref2","da30-part10-p41":"/en/chinese_canon/da/da30-10.html#p41","da30-part10-p42":"/en/chinese_canon/da/da30-10.html#p42","da30-part10-p43":"/en/chinese_canon/da/da30-10.html#p43","da30-part10-p44":"/en/chinese_canon/da/da30-10.html#p44","da30-part10-p45":"/en/chinese_canon/da/da30-10.html#p45","da30-part10-p46":"/en/chinese_canon/da/da30-10.html#p46","da30-part10-p47":"/en/chinese_canon/da/da30-10.html#p47","da30-part10-p48":"/en/chinese_canon/da/da30-10.html#p48","da30-part10-p49":"/en/chinese_canon/da/da30-10.html#p49","da30-part10-p50":"/en/chinese_canon/da/da30-10.html#p50","da30-part10-p51":"/en/chinese_canon/da/da30-10.html#p51","da30-part10-p52":"/en/chinese_canon/da/da30-10.html#p52","da30-part10-p53":"/en/chinese_canon/da/da30-10.html#p53","da30-part10-p54":"/en/chinese_canon/da/da30-10.html#p54","da30-part10-p55":"/en/chinese_canon/da/da30-10.html#p55","da30-part10-p56":"/en/chinese_canon/da/da30-10.html#p56","da30-part10-p57":"/en/chinese_canon/da/da30-10.html#p57","da30-part10-p58":"/en/chinese_canon/da/da30-10.html#p58","da30-part10-p59":"/en/chinese_canon/da/da30-10.html#p59","da30-part10-p60":"/en/chinese_canon/da/da30-10.html#p60","da30-part10-p61":"/en/chinese_canon/da/da30-10.html#p61","da30-part10-p62":"/en/chinese_canon/da/da30-10.html#p62","da30-part10-p63":"/en/chinese_canon/da/da30-10.html#p63","da30-part10-p64":"/en/chinese_canon/da/da30-10.html#p64","da30-part10-p65":"/en/chinese_canon/da/da30-10.html#p65","da30-part10-p66":"/en/chinese_canon/da/da30-10.html#p66","da30-part10-n1":"/en/chinese_canon/da/da30-10.html#n1","da30-part10-n2":"/en/chinese_canon/da/da30-10.html#n2","da30-part11-ref1":"/en/chinese_canon/da/da30-11.html#ref1","da30-part11-p1":"/en/chinese_canon/da/da30-11.html#p1","da30-part11-p2":"/en/chinese_canon/da/da30-11.html#p2","da30-part11-p3":"/en/chinese_canon/da/da30-11.html#p3","da30-part11-p4":"/en/chinese_canon/da/da30-11.html#p4","da30-part11-p5":"/en/chinese_canon/da/da30-11.html#p5","da30-part11-p6":"/en/chinese_canon/da/da30-11.html#p6","da30-part11-p7":"/en/chinese_canon/da/da30-11.html#p7","da30-part11-p8":"/en/chinese_canon/da/da30-11.html#p8","da30-part11-p9":"/en/chinese_canon/da/da30-11.html#p9","da30-part11-p10":"/en/chinese_canon/da/da30-11.html#p10","da30-part11-p11":"/en/chinese_canon/da/da30-11.html#p11","da30-part11-p12":"/en/chinese_canon/da/da30-11.html#p12","da30-part11-p13":"/en/chinese_canon/da/da30-11.html#p13","da30-part11-p14":"/en/chinese_canon/da/da30-11.html#p14","da30-part11-p15":"/en/chinese_canon/da/da30-11.html#p15","da30-part11-p16":"/en/chinese_canon/da/da30-11.html#p16","da30-part11-p17":"/en/chinese_canon/da/da30-11.html#p17","da30-part11-p18":"/en/chinese_canon/da/da30-11.html#p18","da30-part11-p19":"/en/chinese_canon/da/da30-11.html#p19","da30-part11-p20":"/en/chinese_canon/da/da30-11.html#p20","da30-part11-p21":"/en/chinese_canon/da/da30-11.html#p21","da30-part11-p22":"/en/chinese_canon/da/da30-11.html#p22","da30-part11-p23":"/en/chinese_canon/da/da30-11.html#p23","da30-part11-p24":"/en/chinese_canon/da/da30-11.html#p24","da30-part11-p25":"/en/chinese_canon/da/da30-11.html#p25","da30-part11-n1":"/en/chinese_canon/da/da30-11.html#n1","da30-part12-ref1":"/en/chinese_canon/da/da30-12.html#ref1","da30-part12-p1":"/en/chinese_canon/da/da30-12.html#p1","da30-part12-p2":"/en/chinese_canon/da/da30-12.html#p2","da30-part12-p3":"/en/chinese_canon/da/da30-12.html#p3","da30-part12-p4":"/en/chinese_canon/da/da30-12.html#p4","da30-part12-p5":"/en/chinese_canon/da/da30-12.html#p5","da30-part12-p6":"/en/chinese_canon/da/da30-12.html#p6","da30-part12-ref2":"/en/chinese_canon/da/da30-12.html#ref2","da30-part12-p7":"/en/chinese_canon/da/da30-12.html#p7","da30-part12-p8":"/en/chinese_canon/da/da30-12.html#p8","da30-part12-p9":"/en/chinese_canon/da/da30-12.html#p9","da30-part12-p10":"/en/chinese_canon/da/da30-12.html#p10","da30-part12-p11":"/en/chinese_canon/da/da30-12.html#p11","da30-part12-p12":"/en/chinese_canon/da/da30-12.html#p12","da30-part12-p13":"/en/chinese_canon/da/da30-12.html#p13","da30-part12-p14":"/en/chinese_canon/da/da30-12.html#p14","da30-part12-p15":"/en/chinese_canon/da/da30-12.html#p15","da30-part12-p16":"/en/chinese_canon/da/da30-12.html#p16","da30-part12-p17":"/en/chinese_canon/da/da30-12.html#p17","da30-part12-p18":"/en/chinese_canon/da/da30-12.html#p18","da30-part12-p19":"/en/chinese_canon/da/da30-12.html#p19","da30-part12-p20":"/en/chinese_canon/da/da30-12.html#p20","da30-part12-p21":"/en/chinese_canon/da/da30-12.html#p21","da30-part12-p22":"/en/chinese_canon/da/da30-12.html#p22","da30-part12-p23":"/en/chinese_canon/da/da30-12.html#p23","da30-part12-p24":"/en/chinese_canon/da/da30-12.html#p24","da30-part12-p25":"/en/chinese_canon/da/da30-12.html#p25","da30-part12-p26":"/en/chinese_canon/da/da30-12.html#p26","da30-part12-p27":"/en/chinese_canon/da/da30-12.html#p27","da30-part12-p28":"/en/chinese_canon/da/da30-12.html#p28","da30-part12-p29":"/en/chinese_canon/da/da30-12.html#p29","da30-part12-ref3":"/en/chinese_canon/da/da30-12.html#ref3","da30-part12-p30":"/en/chinese_canon/da/da30-12.html#p30","da30-part12-p31":"/en/chinese_canon/da/da30-12.html#p31","da30-part12-p32":"/en/chinese_canon/da/da30-12.html#p32","da30-part12-p33":"/en/chinese_canon/da/da30-12.html#p33","da30-part12-p34":"/en/chinese_canon/da/da30-12.html#p34","da30-part12-p35":"/en/chinese_canon/da/da30-12.html#p35","da30-part12-p36":"/en/chinese_canon/da/da30-12.html#p36","da30-part12-p37":"/en/chinese_canon/da/da30-12.html#p37","da30-part12-p38":"/en/chinese_canon/da/da30-12.html#p38","da30-part12-p39":"/en/chinese_canon/da/da30-12.html#p39","da30-part12-p40":"/en/chinese_canon/da/da30-12.html#p40","da30-part12-p41":"/en/chinese_canon/da/da30-12.html#p41","da30-part12-p42":"/en/chinese_canon/da/da30-12.html#p42","da30-part12-p43":"/en/chinese_canon/da/da30-12.html#p43","da30-part12-p44":"/en/chinese_canon/da/da30-12.html#p44","da30-part12-p45":"/en/chinese_canon/da/da30-12.html#p45","da30-part12-p46":"/en/chinese_canon/da/da30-12.html#p46","da30-part12-p47":"/en/chinese_canon/da/da30-12.html#p47","da30-part12-p48":"/en/chinese_canon/da/da30-12.html#p48","da30-part12-p49":"/en/chinese_canon/da/da30-12.html#p49","da30-part12-p50":"/en/chinese_canon/da/da30-12.html#p50","da30-part12-p51":"/en/chinese_canon/da/da30-12.html#p51","da30-part12-p52":"/en/chinese_canon/da/da30-12.html#p52","da30-part12-p53":"/en/chinese_canon/da/da30-12.html#p53","da30-part12-p54":"/en/chinese_canon/da/da30-12.html#p54","da30-part12-p55":"/en/chinese_canon/da/da30-12.html#p55","da30-part12-p56":"/en/chinese_canon/da/da30-12.html#p56","da30-part12-p57":"/en/chinese_canon/da/da30-12.html#p57","da30-part12-p58":"/en/chinese_canon/da/da30-12.html#p58","da30-part12-p59":"/en/chinese_canon/da/da30-12.html#p59","da30-part12-p60":"/en/chinese_canon/da/da30-12.html#p60","da30-part12-p61":"/en/chinese_canon/da/da30-12.html#p61","da30-part12-p62":"/en/chinese_canon/da/da30-12.html#p62","da30-part12-p63":"/en/chinese_canon/da/da30-12.html#p63","da30-part12-p64":"/en/chinese_canon/da/da30-12.html#p64","da30-part12-p65":"/en/chinese_canon/da/da30-12.html#p65","da30-part12-p66":"/en/chinese_canon/da/da30-12.html#p66","da30-part12-p67":"/en/chinese_canon/da/da30-12.html#p67","da30-part12-p68":"/en/chinese_canon/da/da30-12.html#p68","da30-part12-ref4":"/en/chinese_canon/da/da30-12.html#ref4","da30-part12-p69":"/en/chinese_canon/da/da30-12.html#p69","da30-part12-p70":"/en/chinese_canon/da/da30-12.html#p70","da30-part12-p71":"/en/chinese_canon/da/da30-12.html#p71","da30-part12-p72":"/en/chinese_canon/da/da30-12.html#p72","da30-part12-p73":"/en/chinese_canon/da/da30-12.html#p73","da30-part12-p74":"/en/chinese_canon/da/da30-12.html#p74","da30-part12-p75":"/en/chinese_canon/da/da30-12.html#p75","da30-part12-p76":"/en/chinese_canon/da/da30-12.html#p76","da30-part12-p77":"/en/chinese_canon/da/da30-12.html#p77","da30-part12-p78":"/en/chinese_canon/da/da30-12.html#p78","da30-part12-p79":"/en/chinese_canon/da/da30-12.html#p79","da30-part12-p80":"/en/chinese_canon/da/da30-12.html#p80","da30-part12-p81":"/en/chinese_canon/da/da30-12.html#p81","da30-part12-ref5":"/en/chinese_canon/da/da30-12.html#ref5","da30-part12-p82":"/en/chinese_canon/da/da30-12.html#p82","da30-part12-ref6":"/en/chinese_canon/da/da30-12.html#ref6","da30-part12-p83":"/en/chinese_canon/da/da30-12.html#p83","da30-part12-p84":"/en/chinese_canon/da/da30-12.html#p84","da30-part12-p85":"/en/chinese_canon/da/da30-12.html#p85","da30-part12-p86":"/en/chinese_canon/da/da30-12.html#p86","da30-part12-p87":"/en/chinese_canon/da/da30-12.html#p87","da30-part12-p88":"/en/chinese_canon/da/da30-12.html#p88","da30-part12-p89":"/en/chinese_canon/da/da30-12.html#p89","da30-part12-p90":"/en/chinese_canon/da/da30-12.html#p90","da30-part12-p91":"/en/chinese_canon/da/da30-12.html#p91","da30-part12-p92":"/en/chinese_canon/da/da30-12.html#p92","da30-part12-p93":"/en/chinese_canon/da/da30-12.html#p93","da30-part12-p94":"/en/chinese_canon/da/da30-12.html#p94","da30-part12-p95":"/en/chinese_canon/da/da30-12.html#p95","da30-part12-p96":"/en/chinese_canon/da/da30-12.html#p96","da30-part12-p97":"/en/chinese_canon/da/da30-12.html#p97","da30-part12-p98":"/en/chinese_canon/da/da30-12.html#p98","da30-part12-p99":"/en/chinese_canon/da/da30-12.html#p99","da30-part12-p100":"/en/chinese_canon/da/da30-12.html#p100","da30-part12-p101":"/en/chinese_canon/da/da30-12.html#p101","da30-part12-p102":"/en/chinese_canon/da/da30-12.html#p102","da30-part12-p103":"/en/chinese_canon/da/da30-12.html#p103","da30-part12-p104":"/en/chinese_canon/da/da30-12.html#p104","da30-part12-p105":"/en/chinese_canon/da/da30-12.html#p105","da30-part12-p106":"/en/chinese_canon/da/da30-12.html#p106","da30-part12-p107":"/en/chinese_canon/da/da30-12.html#p107","da30-part12-p108":"/en/chinese_canon/da/da30-12.html#p108","da30-part12-p109":"/en/chinese_canon/da/da30-12.html#p109","da30-part12-p110":"/en/chinese_canon/da/da30-12.html#p110","da30-part12-p111":"/en/chinese_canon/da/da30-12.html#p111","da30-part12-ref7":"/en/chinese_canon/da/da30-12.html#ref7","da30-part12-p112":"/en/chinese_canon/da/da30-12.html#p112","da30-part12-p113":"/en/chinese_canon/da/da30-12.html#p113","da30-part12-p114":"/en/chinese_canon/da/da30-12.html#p114","da30-part12-p115":"/en/chinese_canon/da/da30-12.html#p115","da30-part12-p116":"/en/chinese_canon/da/da30-12.html#p116","da30-part12-p117":"/en/chinese_canon/da/da30-12.html#p117","da30-part12-p118":"/en/chinese_canon/da/da30-12.html#p118","da30-part12-p119":"/en/chinese_canon/da/da30-12.html#p119","da30-part12-p120":"/en/chinese_canon/da/da30-12.html#p120","da30-part12-p121":"/en/chinese_canon/da/da30-12.html#p121","da30-part12-p122":"/en/chinese_canon/da/da30-12.html#p122","da30-part12-p123":"/en/chinese_canon/da/da30-12.html#p123","da30-part12-p124":"/en/chinese_canon/da/da30-12.html#p124","da30-part12-p125":"/en/chinese_canon/da/da30-12.html#p125","da30-part12-p126":"/en/chinese_canon/da/da30-12.html#p126","da30-part12-p127":"/en/chinese_canon/da/da30-12.html#p127","da30-part12-p128":"/en/chinese_canon/da/da30-12.html#p128","da30-part12-p129":"/en/chinese_canon/da/da30-12.html#p129","da30-part12-p130":"/en/chinese_canon/da/da30-12.html#p130","da30-part12-p131":"/en/chinese_canon/da/da30-12.html#p131","da30-part12-p132":"/en/chinese_canon/da/da30-12.html#p132","da30-part12-p133":"/en/chinese_canon/da/da30-12.html#p133","da30-part12-n1":"/en/chinese_canon/da/da30-12.html#n1","da30-part12-n2":"/en/chinese_canon/da/da30-12.html#n2","da30-part12-n3":"/en/chinese_canon/da/da30-12.html#n3","da30-part12-n4":"/en/chinese_canon/da/da30-12.html#n4","da30-part12-n5":"/en/chinese_canon/da/da30-12.html#n5","da30-part12-n6":"/en/chinese_canon/da/da30-12.html#n6","da30-part12-n7":"/en/chinese_canon/da/da30-12.html#n7"}</script>
+<script>
+  (() => {
+    const links = JSON.parse(document.getElementById("chapter-anchor-links").textContent);
+    const followAnchor = () => {
+      let fragment;
+      try { fragment = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+      const target = links[fragment];
+      if (typeof target === "string") window.location.replace(target);
+    };
+    followAnchor();
+    window.addEventListener("hashchange", followAnchor);
+  })();
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/en/index.html" aria-label="Home">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1791393943"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Foundation</span>
+          <span class="block text-center">canon</span>
+          <span class="block text-center">Buddhism</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/index.html">Home</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Login / Registration</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/bookmarks.html">My Bookmarks</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/en/about.html">About the Foundation</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">English</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+                      >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+            disabled          >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Enable Dark Theme"
+        data-theme-label-light="Enable Light Theme"
+      >Enable Dark Theme</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/en/policy.html">
+        Personal data processing policy<br />
+        and user agreement      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Sign in and registration">
+    <button class="auth-modal__close" data-auth-close aria-label="Close dialog">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Sign in</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Forgot password?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Password            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Signed in as <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1791393943"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

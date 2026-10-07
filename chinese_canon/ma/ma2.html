@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MĀ 2 — Дерево париджата — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1791393943" />
+    <link rel="icon" href="/assets/favicon.ico?_=1791393943" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1791393943" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1791393943" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Выбор перевода"
+          data-mobile-translation-toggle
+        >
+          <span class="block w-full truncate" title="Русский — Anthropic Claude Sonnet 5">Русский — Anthropic Claude Sonnet 5</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-mobile-translation-menu hidden>
+                                              <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/chinese_canon/ma/ma2.html"
+              title="English — Dharma Pearls"
+            ><span class="block w-full truncate">English — Dharma Pearls</span></a>
+                  </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/chinese_canon/ma.html">Madhyama Āgama</a>
+                <div class="sutta-breadcrumbs hidden">Madhyama Āgama · MĀ 2 — Дерево париджата</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          MĀ 2 — Дерево париджата        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Перевод: Anthropic Claude Sonnet 5          </p>
+                      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <h1><a href="/chinese_canon/ma.html">Мадхьяма-агама</a></h1>
+<h2><a href="/chinese_canon/ma.html">Глава 1. Семёрки</a></h2>
+
+<table class="trans">
+  <tbody><tr><th class="ch">（二）中阿含七法品晝度樹經第二(初一日誦)</th>
+  
+  <th class="en">2. Дерево париджата</th>
+  </tr><tr>
+    <td class="ch" title="t26.1.422a19">我聞如是： 一時，佛遊舍衛國，在勝林、給孤獨園。</td>
+    
+    <td id="p1">1. Так я слышал:<sup id="ref1"><a href="#n1">1</a></sup> однажды Будда странствовал по стране Шравасти и остановился в роще Джеты, в парке Анатхапиндады.</td>
+  </tr>
+<tr>
+  <td class="ch" title="t26.1.422a20"></td>
+  
+  <td class="subheading">Стадии дерева париджата</td>
+</tr>
+  <tr>
+    <td class="ch" title="t26.1.422a20">爾時，世尊告諸比丘： 「若三十三天晝度樹葉萎黄，是時三十三天悦樂、歡喜： 『晝度樹葉不久當落！』</td>
+    
+    <td id="p2">2. И тогда Бхагаван обратился к монахам: «Когда листья дерева париджата<sup id="ref2"><a href="#n2">2</a></sup> на Небесах Тридцати трёх<sup id="ref3"><a href="#n3">3</a></sup> желтеют, боги Тридцати трёх радуются и веселятся: „Скоро листья дерева париджата начнут опадать!“</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422a22">「復次，三十三天晝度樹葉已落，是時三十三天悦樂、歡喜： 『晝度樹葉不久當還生！』</td>
+    
+    <td id="p3">3. «Далее, когда листья дерева париджата на Небесах Тридцати трёх уже опали, боги Тридцати трёх радуются и веселятся: „Скоро листья дерева париджата отрастут заново!“</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422a24">「復次，三十三天晝度樹葉已還生，是時三十三天悦樂、歡喜： 『晝度樹不久當生網！』</td>
+    
+    <td id="p4">4. «Далее, когда листья дерева париджата на Небесах Тридцати трёх уже отросли заново, боги Тридцати трёх радуются и веселятся: „Скоро на дереве париджата появится сеть [почек]!“<sup id="ref4"><a href="#n4">4</a></sup></td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422a26">「復次，三十三天晝度樹已生網，是時三十三天悦樂、歡喜： 『晝度樹不久當生如鳥喙！』</td>
+    
+    <td id="p5">5. «Далее, когда на дереве париджата на Небесах Тридцати трёх уже появилась сеть [почек], боги Тридцати трёх радуются и веселятся: „Скоро почки дерева париджата станут расти, подобно птичьим клювам!“<sup id="ref5"><a href="#n5">5</a></sup></td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422a28">「復次，三十三天晝度樹已生如鳥喙，是時三十三天悦樂、歡喜： 『晝度樹不久當開如鉢！』</td>
+    
+    <td id="p6">6. «Далее, когда почки дерева париджата на Небесах Тридцати трёх уже выросли, подобно птичьим клювам, боги Тридцати трёх радуются и веселятся: „Скоро почки дерева париджата раскроются, подобно чашам!“</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b1">「復次，三十三天晝度樹已開如鉢，是時三十三天悦樂、歡喜： 『晝度樹不久當盡敷開！』</td>
+    
+    <td id="p7">7. «Далее, когда почки дерева париджата на Небесах Тридцати трёх уже раскрылись, подобно чашам, боги Тридцати трёх радуются и веселятся: „Скоро дерево париджата зацветёт в полную силу!“</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b2">「若晝度樹已盡敷開，光所照、色所映、香所熏周百由延。 是時三十三天於中夏四月，以天五欲、功徳具足而自娯樂。 是謂三十三天於晝度樹下集會，娯樂也。</td>
+    
+    <td id="p8">8. «Когда дерево париджата зацветает в полную силу, свет, который оно источает, краски, которые оно отражает, и благоухание, которое оно источает, распространяются на сто йоджан.<sup id="ref6"><a href="#n6">6</a></sup> В течение четырёх месяцев лета боги Тридцати трёх услаждают себя пятью небесными удовольствиями и добродетелями, которыми они наделены. Это называется собранием под деревом париджата на Небесах Тридцати трёх.</td>
+  </tr>
+<tr>
+  <td class="ch" title="t26.1.422b6"></td>
+  
+  <td class="subheading">Стадии благородного ученика</td>
+</tr>
+  <tr>
+    <td class="ch" title="t26.1.422b6">「如是義，聖弟子亦復爾。 思念出家，是時聖弟子名為『葉黄』。 猶三十三天晝度樹葉萎黄也。</td>
+    
+    <td id="p9">9. «Таков же смысл и применительно к благородному ученику. Когда он помышляет об уходе из дома, ученик зовётся „желтеющие листья“. Он подобен дереву париджата на Небесах Тридцати трёх, когда его листья желтеют.</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b8">「復次，聖弟子剃除鬚髮，著袈裟衣，至信，捨家，無家，學道。是時，聖弟子名為『葉落』。 猶三十三天晝度樹葉落也。</td>
+    
+    <td id="p10">10. «Далее, когда он бреет волосы и бороду, надевает одеяния цвета охры, обретает веру и, оставив дом, становится бездомным, обучаясь Пути,<sup id="ref7"><a href="#n7">7</a></sup> благородный ученик зовётся „опадающие листья“. Он подобен дереву париджата на Небесах Тридцати трёх, когда оно сбрасывает листья.</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b11">「復次，聖弟子離欲，離惡、不善之法。 有覺、有觀，離生喜樂，得初禪成就遊。 是時聖弟子名『葉還生』。 猶三十三天晝度樹葉還生也。</td>
+    
+    <td id="p11">11. «Далее, благородный ученик отстранён от желаний, отстранён от дурных и неблагих вещей. Пока он замечает и исследует [вещи], это отстранение порождает в нём радость и счастье, и он достигает первой дхьяны и пребывает в ней.<sup id="ref8"><a href="#n8">8</a></sup> Благородный ученик тогда зовётся „вновь отрастающие листья“. Он подобен дереву париджата на Небесах Тридцати трёх, когда его листья отрастают заново.</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b14">「復次，聖弟子覺、觀已息，内靜、一心。 無覺、無觀，定生喜樂，得第二禪成就遊。 是時聖弟子名為『生網』。 猶三十三天晝度樹生網也。</td>
+    
+    <td id="p12">12. «Далее, когда замечание и исследование [вещей] уже улеглись, у благородного ученика — внутреннее спокойствие и единство ума. Без замечания и исследования [вещей], это самадхи порождает радость и счастье, и он достигает второй дхьяны и пребывает в ней.<sup id="ref9"><a href="#n9">9</a></sup> Благородный ученик тогда зовётся „покрывающаяся сетью [почек]“. Он подобен дереву париджата на Небесах Тридцати трёх, когда оно покрывается сетью [почек].</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b17">「復次，聖弟子離於喜欲，捨、無求遊。 正念、正智而身覺樂，謂聖所說，聖所捨、念、樂住、空。 得第三禪成就遊。 是時聖弟子名『生如鳥喙』。 猶三十三天晝度樹如鳥喙也。</td>
+    
+    <td id="p13">13. «Далее, расставшись с желанием этой радости, благородный ученик пребывает в невозмутимости и ни к чему не стремится. Обладая правильной осознанностью и правильным знанием, он лично переживает счастье, о котором благородные учат как о благородном счастливом пребывании в отстранённости и осознанности. Он достигает третьей дхьяны и пребывает в ней.<sup id="ref10"><a href="#n10">10</a></sup> Благородный ученик тогда зовётся „почки которой растут, подобно птичьим клювам“. Он подобен дереву париджата на Небесах Тридцати трёх, когда его почки растут, подобно птичьим клювам.</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b20">「復次，聖弟子樂滅，苦滅。 喜、憂本已滅，不苦、不樂。 捨、念、清淨，得第四禪成就遊。 是時聖弟子名『生如鉢』。 猶三十三天晝度樹如鉢也。</td>
+    
+    <td id="p14">14. «Далее, у благородного ученика прекращается удовольствие и прекращается страдание. Прежние радость и печаль уже прекратились, и он не испытывает ни страдания, ни удовольствия. С очищением невозмутимости и осознанности он достигает четвёртой дхьяны и пребывает в ней.<sup id="ref11"><a href="#n11">11</a></sup> Благородный ученик тогда зовётся „раскрывающаяся, подобно чаше“. Он подобен дереву париджата на Небесах Тридцати трёх, когда его почки раскрываются, подобно чашам.</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422b23">「復次，聖弟子諸漏已盡，心解脱、慧解脱。 於現法中，自知、自覺、自作證成就遊。 『生已盡，梵行已立，所作已辦， 不更受有，』知如眞。 是時聖弟子名『盡敷開』。 猶三十三天晝度樹盡敷開也。</td>
+    
+    <td id="p15">15. «Далее, когда загрязнения благородного ученика уже исчерпаны, его ум освобождён, и его мудрость освобождена. В нынешней жизни он достигает собственного знания, пробуждения и непосредственного постижения и пребывает в них. Он поистине знает: „Рождения прекращены, святая жизнь утверждена, сделано то, что надлежало сделать, и я больше не буду подвержен [новому] существованию“.<sup id="ref12"><a href="#n12">12</a></sup> Благородный ученик тогда зовётся „расцветшая в полную силу“. Он подобен дереву париджата на Небесах Тридцати трёх, когда оно расцветает в полную силу.</td>
+  </tr>
+<tr>
+  <td class="ch" title="t26.1.422b28"></td>
+  
+  <td class="subheading">Заключение</td>
+</tr>
+  <tr>
+    <td class="ch" title="t26.1.422b28">「彼為漏盡阿羅訶比丘。 三十三天集在善法正殿，咨嗟、稱歎： 『某尊弟子於某村邑剃除鬚髮，著袈裟衣，至信捨家，無家學道。 諸漏已盡，心解脱、慧解脱。 於現法中，自知、自覺自作證成就遊。 「生已盡，梵行已立，所作已辦。 不更受有，知如眞。」』</td>
+    
+    <td id="p16">16. «Он становится монахом-архатом,<sup id="ref13"><a href="#n13">13</a></sup> чьи загрязнения исчерпаны. Боги Тридцати трёх собираются в зале собраний Судхарма, восхищённо вздыхая и восхваляя их: „Некий достойный ученик в некоем селении обрил волосы и бороду, надел одеяния цвета охры, обрёл веру и, оставив дом, стал бездомным, обучаясь Пути. Когда его загрязнения были исчерпаны, его ум был освобождён, и его мудрость была освобождена. В нынешней жизни он достиг собственного знания, пробуждения и непосредственного постижения и пребывал в них. Он поистине знает: «Рождения прекращены, святая жизнь утверждена, сделано то, что надлежало сделать, и я больше не буду подвержен [новому] существованию»“.</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422c4">「是謂漏盡阿羅訶共集會也，如三十三天晝度樹下共集會也。」</td>
+    
+    <td id="p17">17. «Это называется собранием, которое совпадает с исчерпанием загрязнений архата, — подобно собранию, устраиваемому под деревом париджата на Небесах Тридцати трёх».</td>
+  </tr>
+  <tr>
+    <td class="ch" title="t26.1.422c6">佛說如是。 彼諸比丘聞佛所說歡喜，奉行。</td>
+    
+    <td id="p18">18. Так сказал Будда. Услышав сказанное Буддой, те монахи возрадовались и стали ему следовать.</td>
+  </tr>
+</tbody></table>
+  
+  <br/>
+  <h2>Примечания</h2>
+    <ol class="notes-list">
+<li id="n1" data-note-number="1"><p><span class="note-number">[1]</span> Что касается исходного текста, см. <a href="https://cbetaonline.dila.edu.tw/zh/T01n0026_p0422a18" target="_blank">T26.1.422a18-c8</a>. Прямые параллели этой сутре включают <a href="https://suttacentral.net/an7.69" target="_blank">AN 7.69</a>, EĀ 39.2 и T28. [<a href="#ref1">назад</a>]</p></li>
+<li id="n2" data-note-number="2"><p><span class="note-number">[2]</span> <em>Небеса Тридцати трёх</em>. Кит. <span class="ch">三十三天</span>, гандх. <em>trayatriśa</em>, пали <em>tāvatiṃsa</em>, санскр. <em>trāyastriṃśa</em>. Китайский перевод буквально передаёт санскр. <em>trāyastriṃśa</em> как «Небеса тридцати трёх». Это буддийские небеса, где на вершине горы Сумеру обитают тридцать два ведийских бога и Индра. [<a href="#ref2">назад</a>]</p></li>
+<li id="n3" data-note-number="3"><p><span class="note-number">[3]</span> <em>париджата</em>. Кит. <span class="ch">晝度</span> (среднекит. <em>tɪəu-do</em>), гандх. ?, пали <em>pāricchattaka</em>, санскр. <em>pārijātaka</em>. Ранее я полагал, что китайское слово могло быть частичной транслитерацией (<em>-jāta</em>), исходя из мандаринского произношения <span class="ch">晝度</span> (путунхуа <em>zhòudù</em>), однако среднекитайское произношение (<em>tɪəu-do</em>) этому не соответствует. Скорее, это интерпретирующий перевод, буквально означающий «дневное освобождение», который встречается и в «Экоттарика-агаме». В любом случае, я решил заменить китайское название санскритским.</p>
+<p>Это также современное название для <a href="https://en.wikipedia.org/wiki/Nyctanthes_arbor-tristis" target="_blank"><em>Nyctanthes arbor-tristis</em></a>, которое по-английски обычно называют «ночным жасминовым деревом». Однако для этой сутры, возможно, более уместно упомянуть священное дерево Париджат, растущее в современной деревне Кинтур в штате Уттар-Прадеш в Индии. Это дерево на самом деле является баобабом, оценочный возраст которого составляет 800 лет, а сам вид происходит из Африки. Местные индуистские легенды утверждают, что оно происходит от дерева, принесённого с небес Арджуной, либо что оно было даром Господа Кришны. Его существование говорит о том, что традиция почитания священного дерева восходит по меньшей мере к классической эпохе. Возможно, эта сутра представляет собой буддийскую адаптацию этой ведийской традиции. Хотя буддисты создали собственное священное дерево, связанное с пробуждением Будды, они включили в свою традицию и это священное дерево, связанное с ведийскими богами. [<a href="#ref3">назад</a>]</p></li>
+<li id="n4" data-note-number="4"><p><span class="note-number">[4]</span> <em>покрывается сетью [почек]</em>. Кит. <span class="ch">生網</span>. Палийская параллель гласит: <em>Na cirass’eva dāni jālakajāto bhavissati</em>. Бхиккху Бодхи сообщает, что комментарий «Manorathapūraṇī» поясняет: «Момент, когда дерево порождает сети из листьев и цветов, появляющиеся вместе». Кит. <span class="ch">網</span> может также означать «сеть». Я понимаю это как описание общего облика распускающегося дерева, поэтому добавил в перевод слово «почки». [<a href="#ref4">назад</a>]</p></li>
+<li id="n5" data-note-number="5"><p><span class="note-number">[5]</span> <em>растут, подобно птичьим клювам</em>. Кит. <span class="ch">生如鳥喙</span>. Пали: <em>Na cirass’eva dani kharakajato bhavissati</em>. Бхиккху Бодхи переводит комментарий так: «Момент, когда оно обретает сеть из листьев и хорошо разделённых, отдельно растущих цветов». Кит. <span class="ch">鳥喙</span> буквально означает «птичий клюв»; по-видимому, это указывает на форму почек по мере того, как они увеличиваются и готовятся раскрыться. [<a href="#ref5">назад</a>]</p></li>
+<li id="n6" data-note-number="6"><p><span class="note-number">[6]</span> <em>сто йоджан</em>. Кит. <span class="ch">百由延</span> (среднекит. «сто» + <em>yiəu-yiɛn</em> = гандх. <em>śada yoyan[a]</em>). Санскр. <em>yojana</em> — древнеиндийская мера расстояния. Согласно традиционным сведениям, длина одной йоджаны составляла от 7 до 9 миль. [<a href="#ref6">назад</a>]</p></li>
+<li id="n7" data-note-number="7"><p><span class="note-number">[7]</span> <em>бреет волосы и бороду, надевает одеяния цвета охры, обретает веру и, оставив дом, становится бездомным, обучаясь Пути</em>. Кит. <span class="ch">剃除鬚髮，著袈裟衣，至信，捨家，無家，學道</span>, пали <em>kesamassuṁ ohāretvā kāsāyāni vatthāni acchādetvā agārasmā anagāriyaṁ pabbajito</em>, санскр. <em>keśaśmaśru avatārya kāṣāyāṇi vastrāṇy ācchādya samyag eva śraddhayā agārād anagārikāṁ pravrajitaḥ</em>.</p>
+<p>Это стандартное описание того, как исполненный веры человек уходит из дома, чтобы стать монахом, почти полностью совпадает с палийской версией: <span class="ch">剃除鬚髮</span> = <em>kesamassuṁ ohāretvā</em>, <span class="ch">著袈裟衣</span> = <em>kāsāyāni vatthāni acchādetvā</em>, <span class="ch">捨家無家</span> = <em>agārād anagārikāṁ</em>, <span class="ch">學道</span> = <em>pabbajito</em>. Исключение составляет «обретение веры» (<span class="ch">至信</span>, букв. «предельная вера») — это добавление встречается также в «Самьюкта-агаме» и в дошедших до нас санскритских источниках, таких как «Авадана-шатака». С другой стороны, в «Диргха-агаме» есть более краткая версия этого устойчивого оборота: «бреет волосы и бороду, надевает одеяние из трёх частей и, оставив дом, культивирует Путь» (<span class="ch">剃除鬚髮，服三法衣，出家修道</span>). [<a href="#ref7">назад</a>]</p></li>
+<li id="n8" data-note-number="8"><p><span class="note-number">[8]</span> <em>первая дхьяна.</em> Кит. <span class="ch">初禪</span> (среднекит. «первая» + <em>ʒɪɛn</em> = гандх. <em>paḍhama j̄ana</em>), гандх. <em>paḍhama j̄ana</em>, пали <em>paṭhama jhāna</em>, санскр. <em>prathama dhyāna</em>.</p>
+<p>Кит. <span class="ch">聖弟子離欲，離惡、不善之法。有覺、有觀，離生喜樂，得初禪成就遊</span>, пали <em>vivicceva kāmehi vivicca akusalehi dhammehi vivekajaṁ pītisukhaṁ paṭhamaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>viviktaṁ kāmair viviktaṁ pāpakair akuśalair dharmaiḥ vivekajaṁ prītisukhaṁ prathamaṁ dhyānam upasaṁpadya viharati</em>.</p>
+<p>Хотя это и последующие достижения назывались «четырьмя дхьянами», их лучше рассматривать как процесс установления и стабилизации самадхи, разделённый на четыре ступени или стадии. Само слово «самадхи» трудно перевести на другой язык, поскольку оно объединяет в себе как идею сосредоточения, так и идею невозмутимого состояния ума. В результате возникает способность непрерывно удерживать внимание на одном предмете в течение долгого времени. То, что именно было предметом этого внимания, варьировалось. Одни буддийские источники описывают созерцание различных тем Дхармы, например семи факторов пробуждения, другие — созерцание зрительных объектов, а некоторые — созерцание таких метафизических сущностей, как нирвана.</p>
+<p>Сохранившаяся сарвастивадинская экзегетическая традиция весьма обширна, и эта тема освещалась в большинстве основополагающих текстов. Здесь я изложу вкратце комментарий, содержащийся в «Абхидхарма-дхармаскандхе» — одном из основополагающих комментариев сарвастивадинского буддизма. Он был переведён на китайский язык Сюаньцзаном в 659 г. н. э., и часть его сохранилась на санскрите.</p>
+<p><em>отстранён от желаний, отстранён от дурных и неблагих вещей</em>. Кит. <span class="ch">離欲，離惡、不善之法</span>, пали <em>vivicceva kāmehi vivicca akusalehi dhammehi</em>, санскр. <em>viviktaṁ kāmair viviktaṁ pāpakair akuśalair dharmaiḥ</em>. Комментарий вначале отмечает, что слово «желания» (<span class="ch">欲</span>) может относиться к трём вещам: жадности (<span class="ch">貪</span>), миру желаний (<span class="ch">欲界</span>) или сфере пяти превосходных желаний (<span class="ch">五妙欲境</span>). Из них имеется в виду именно третье. Этот термин, по-видимому, соответствует пали <em>pañca kāmaguṇā</em>. Комментатор подробно рассматривает эти пять чувственных желаний и отмечает, что они не являются самой сущностью желания, а лишь его объектами. Отстранение от желаний также рассматривается подробно, вплоть до того, что выделяются четыре вида отстранения (телесное, умственное, ни то ни другое, и оба сразу). Слово «отстранение» (<span class="ch">離</span>) поясняется как означающее «далеко от, весьма далеко от, пустое и недостижимое» (<span class="ch">遠離、極遠離、空、不可得</span>).</p>
+<p>Комментатор также отождествляет «дурные и неблагие вещи» (<span class="ch">惡、不善之法</span>) с пятью помехами (<span class="ch">五蓋</span>): жадностью (<span class="ch">貪欲</span>), ненавистью (<span class="ch">瞋恚</span>), оцепенением (<span class="ch">惛沈</span>) и сонливостью (<span class="ch">睡眠</span>), возбуждённостью (<span class="ch">掉舉</span>) и сомнением (<span class="ch">疑</span>).</p>
+<p><em>пока он замечает и исследует [вещи]</em>. Кит. <span class="ch">有覺、有觀</span>, пали <em>savitakkaṁ savicāraṁ</em>, санскр. <em>savitarkaṁ savicāraṁ</em>. Это выражение буквально означает «имея замечание и имея исследование». Поскольку оно описывает способ практики, я добавил подразумеваемый субъект, обобщённое прямое дополнение и использовал оборот, указывающий на длящееся состояние.</p>
+<p>Сюаньцзан перевёл <em>vitarka</em> и <em>vicāra</em> как <span class="ch">尋</span> и <span class="ch">伺</span>, что означает «искать» и «исследовать». <span class="ch">尋</span> имеет оттенок значения «быстрый, поспешный», тогда как <span class="ch">伺</span> может также означать «поджидать из засады». Таким образом, эти два термина несут в себе представление о коротком и длительном промежутках внимания, что согласуется с идеей начальной и продолженной мысли, встречающейся в некоторых тхеравадинских толкованиях <em>vitakka</em> и <em>vicāra</em>.</p>
+<p>Комментарий «Дхармаскандхи» описывает <em>vitarka</em> следующим образом: «У того, кто отстранён от желаний и дурных, неблагих вещей, ум ищет — ищет повсюду и ищет вблизи. Его ум становится явным, весьма явным, непосредственно явным. Он размышляет, строит предположения, думает и различает вещи. Всё это в целом называется „поиском“» (<span class="ch">離欲惡不善法者，心尋求、遍尋求、近尋求。心顯了、極顯了、現前顯了。推度搆畫、思惟分別，總名為尋。</span>)</p>
+<p><em>Vicāra</em> описывается так: «У того, кто отстранён от желаний и дурных, неблагих вещей, ум исследует — исследует повсюду и исследует вблизи. Он следует за действиями, следует за развитием, следует за потоком и следует за связями. Всё это в целом называется „исследованием“» (<span class="ch">離欲惡不善法者，心伺察、遍伺察、近伺察。隨行隨轉、隨流隨屬，總名為伺。</span>)</p>
+<p>Эти два слова весьма близки по значению. Естественно возникает вопрос: в чём разница между ними? Комментарий отвечает, что <em>vitarka</em> делает мысль грубой по природе, а <em>vicāra</em> — тонкой по природе (<span class="ch">令心麁性是尋，令心細性是伺</span>). Это иллюстрируется рядом конкретных сравнений: когда ударяют в храмовый колокол, звук в первый миг груб, а затем возникает более тонкий звук. Грубый звук подобен <em>vitarka</em>, а более тонкий звук подобен <em>vicāra</em>. То же самое верно и для звуков, издаваемых при потряхивании ручного колокольчика, ударе по чаше, звуке раковины, ударе в барабан, выстреле стрелы и раскате грома. Это сравнивается также со стаей птиц, летящих по небу: взмахи их крыльев подобны <em>vitarka</em>, а взлёт их тел — <em>vicāra</em>.</p>
+<p>После этого рассуждения всё выражение «имея поиск и имея исследование» описывается так: «У того, кто отстранён от желаний и дурных, неблагих вещей, ум обладает как поиском, так и исследованием в отношении сопутствующих составляющих» (<span class="ch">離欲惡不善法者，心相應品具有尋伺。</span>)</p>
+<p><em>это отстранение порождает в нём радость и счастье</em>. Кит. <span class="ch">離生喜樂</span>, пали <em>vivekajaṁ pītisukhaṁ</em>, санскр. <em>vivekajaṁ prītisukhaṁ</em>. Комментарий перечисляет несколько значений, которые может иметь «отстранение» (<span class="ch">離</span>): отстранение от желаний, отстранение от дурных и неблагих вещей, оставление дома, благие корни мира форм и первая дхьяна. Комментатор считает, что здесь имеется в виду последнее значение.</p>
+<p>Радость (<span class="ch">喜</span>) описывается как состояние восхищения, удовлетворения, воодушевления, ликования, восторга и довольства. В сочетании со счастьем она заставляет человека праздновать и радоваться. Счастье (<span class="ch">樂</span>) описывается как отсутствие тяжести и неудобства в теле и уме, а также обретение лёгкости, непринуждённости, соразмерности, отстранённости от помех, безмятежности, невозмутимости и мягкости тела и ума.</p>
+<p>Наконец, комментарий даёт подробное толкование выражения «порождать», говоря, что оно означает причинение, основывание на чём-либо, установление чем-либо, обретение силы от чего-либо, рождение, возникновение и проявление. Именно этими способами отстранение практикующего вызывает радость и счастье.</p>
+<p><em>он достигает первой дхьяны и пребывает в ней</em>. Кит. <span class="ch">得初禪成就遊</span>, пали <em>paṭhamaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>prathamaṁ dhyānam upasaṁpadya viharati</em>. Комментарий к этой заключительной части описания первой дхьяны посвящён главным образом разъяснению значения слова «дхьяна» (<span class="ch">禪</span>). В санскрите это слово — <em>dhyāna</em>, означающее «мысль, размышление, глубокое созерцание, бесчувственность, притупленность». Глагольная форма — <em>dhyāyati</em>, означающая «глубоко медитировать, быть задумчивым, вспоминать, припоминать, созерцать, думать, воображать, размышлять» и так далее.</p>
+<p>Ранняя китайская транслитерация этого слова — <span class="ch">禪</span> (которое звучало как <em>jhān-</em>). Оно стало заимствованным словом, передающим <em>dhyāna</em> (или пракритское <em>jāna</em>) и ставшим синонимом буддийской медитации. Первоначальное значение <span class="ch">禪</span> — выравнивать место для жертвенного ритуала или для царской церемонии освящения земли. Таким образом, <span class="ch">禪</span> было выбрано как из-за коннотации священности, так и из-за созвучия.</p>
+<p>Сюаньцзан, однако, предпочёл перевести <em>dhyāna</em> как <span class="ch">靜慮</span>, что буквально означает «спокойное размышление». Это согласовывалось с общим санскритским пониманием <em>dhyāna</em> как «медитации».</p>
+<p>Обращаясь к комментарию «Дхармаскандхи», отметим, что он начинает с помещения этой первой дхьяны в контекст девяти последовательных самадхи, которые начинаются с четырёх дхьян. Это начало данного ряда достижений. Само слово «дхьяна» поясняется просто как «пребывание в этих самадхи» (<span class="ch">靜慮者，謂在此定中</span>). Когда дхьяна состоит из поиска, исследования, радости, счастья и однонаправленности ума, это первая дхьяна.</p>
+<p>Далее комментарий описывает умственную деятельность в этой дхьяне, из чего становится ясно, что однонаправленность не означала неподвижности ума, а скорее непрерывный предмет созерцания. Комментарий говорит, что в этом самадхи мысль, ум и осознавание возникают совместно в первой дхьяне. Это поясняется рядом слов, обозначающих различные виды умственной деятельности, такие как думание (<span class="ch">思</span>), образование мыслей (<span class="ch">造心</span>) и умственные действия (<span class="ch">意業</span>). Комментарий добавляет, что эта дхьяна включает в себя такие вещи, как ощущение, представление, желание, внимание, памятование, самадхи и мудрость. Таким образом, она считалась сосредоточенным размышлением или обдумыванием в отсутствие желаний и пяти помех. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0482b10" target="_blank">T1537.26.482b10-4a15</a>] [<a href="#ref8">назад</a>]</p></li>
+<li id="n9" data-note-number="9"><p><span class="note-number">[9]</span> <em>вторая дхьяна.</em> Кит. <span class="ch">覺、觀已息，内靜、一心。無覺、無觀，定生喜樂，得第二禪成就遊</span>, пали <em>vitakkavicārānaṁ vūpasamā ajjhattaṁ sampasādanaṁ cetaso ekodibhāvaṁ avitakkaṁ avicāraṁ samādhijaṁ pītisukhaṁ dutiyaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>vitarkavicārāṇāṃ vyupaśamād adhyātmasaṃprasādāc cetasa ekotībhāvād avitarkam avicāraṃ samādhijaṃ prītisukhaṃ dvitīyaṃ dhyānam upasaṃpadya viharati</em>.</p>
+<p>Самадхи устанавливается на второй дхьяне, когда прекращаются познавательные отвлечения, вызванные замечанием и исследованием мыслей и восприятий. Ниже приводится краткое изложение комментария «Дхармаскандхи» к этому описанию.</p>
+<p><em>когда замечание и исследование [вещей] уже улеглись</em>. Кит. <span class="ch">覺、觀已息</span>, пали <em>vitakkavicārānaṁ vūpasamā</em>, санскр. <em>vitarkavicārāṇāṃ vyupaśamād</em>. Комментатор отсылает нас к определениям <em>vitarka</em> и <em>vicāra</em>, данным для первой дхьяны. Термин <em>vyupaśama</em> здесь, в МА, переведён как <span class="ch">息</span> («улечься, прекратиться»), а у Сюаньцзана — как <span class="ch">寂靜</span> («утихнуть, успокоиться»). Комментарий поясняет это так: «эти две вещи утихают, утихают повсюду, утихают вблизи, становятся пустыми и несуществующими» (<span class="ch">此二寂靜、遍寂靜、近寂靜、空、無所有</span>). Можно предположить, что это рассматривалось как естественное улегание или успокоение, а не как внезапная остановка этой познавательной деятельности.</p>
+<p><em>у благородного ученика — внутреннее спокойствие и единство ума</em>. Кит. <span class="ch">聖弟子⋯内靜、一心</span>, пали <em>ajjhattaṁ sampasādanaṁ cetaso ekodibhāvaṁ</em>, санскр. <em>adhyātmasaṃprasādāc cetasa ekotībhāvād</em>. Индийский термин, переданный здесь как <span class="ch">内靜</span>, судя по всему, несколько варьировался в разных источниках. Он состоит из санскр. <em>adhyātma</em> («в самом себе») и <em>saṃprasāda</em> («безмятежность, уверенность»). Однако в палийских источниках второе слово — <em>sampasādana</em> («успокоение, уверенность»). Последнее выглядит менее двусмысленным и скорее означает «успокоение», нежели «уверенность».</p>
+<p>Сюаньцзан переводит термин <em>adhyātmasaṃprasāda</em> как «внутренняя и равная ясность (или чистота)» (<span class="ch">內等淨</span>). Здесь приставка <em>saṃ-</em> и <em>prasāda</em> прочитываются как два отдельных слова. Комментарий «Дхармаскандхи» толкует <em>adhyātmasaṃprasāda</em> так: «Благодаря улеганию поиска и исследования, [ум] становится уверенным, обретает природу уверенности, непосредственно проявленную природу уверенности и согласуется с подтверждённым. [Практикующие] исполнены любви, обладают природой любви, и их ум становится прояснённым и очищенным. Всё это в целом называется внутренней и равной ясностью» (<span class="ch">尋伺寂靜故，諸信信性、現前信性、隨順印可。愛慕愛慕性、心澄心淨。總名內等淨。</span>). Это, разумеется, не согласуется с узким пониманием <em>saṃprasāda</em> как «успокоения», поскольку включает в себя и другие, положительные значения этого слова.</p>
+<p>Сюаньцзан перевёл санскр. <em>cetasa ekotībhāva</em> как «ум с единой направленностью» (<span class="ch">心一趣性</span>). Это поясняется так: «Из-за улегания поиска и исследования ум не рассеян, не смущён и не течёт [вовне]. Он прочно покоится в одной точке, поэтому называется умом с единой направленностью» (<span class="ch">尋伺寂靜故，心不散不亂不流。安住一境，故名心一趣性。</span>)</p>
+<p><em>без замечания и исследования [вещей], это самадхи порождает радость и счастье, и он достигает второй дхьяны и пребывает в ней</em>. Кит. <span class="ch">無覺、無觀，定生喜樂，得第二禪成就遊</span>, пали <em>avitakkaṁ avicāraṁ samādhijaṁ pītisukhaṁ dutiyaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>avitarkam avicāraṃ samādhijaṃ prītisukhaṃ dvitīyaṃ dhyānam upasaṃpadya viharati</em>. На этой второй стадии дхьяны блуждающий ум успокаивается. Это позволяет установиться самадхи, что, в свою очередь, вызывает возобновлённую радость и счастье.</p>
+<p><em>без замечания и исследования [вещей]</em>. Кит. <span class="ch">無覺、無觀</span>, пали <em>avitakkaṁ avicāraṁ</em>, санскр. <em>avitarkam avicāraṃ</em>. Комментарий уточняет, что на второй дхьяне поиск и исследование не обнаруживаются, не проявлены деятельно и не существуют.</p>
+<p><em>самадхи порождает радость и счастье</em>. Кит. <span class="ch">定生喜樂</span>, пали <em>samādhijaṃ prītisukhaṃ</em>, санскр. <em>samādhijaṃ prītisukhaṃ</em>.</p>
+<p>Китайский перевод слова «самадхи» — <span class="ch">定</span>, означающее «зафиксированный, установленный, устоявшийся, стабилизированный», однако англоязычные переводчики обычно не учитывают этого и переводят <span class="ch">定</span> как «сосредоточение». В буддийском словоупотреблении, в этом отношении не сильно отличавшемся от санскритской литературы, «самадхи» означало фиксацию ума на одном предмете без отвлечения, что считалось очищением ума. Оно также описывалось как слияние субъекта и объекта в уме. Учитывая это особое словоупотребление, я решил не переводить этот термин.</p>
+<p>Комментарий «Дхармаскандхи» описывает самадхи как ум, пребывающий в покое, полностью пребывающий в покое, пребывающий в покое вблизи и прочно пребывающий в покое у того, в ком улеглись поиск и исследование. Его ум не рассеян и не отвлечён. Он собран и полностью удерживается, и обладает однонаправленной природой.</p>
+<p>Радость и счастье определяются здесь так же, как и на первой дхьяне, за тем исключением, что здесь именно улегание поиска и исследования порождает то самадхи, которое, в свою очередь, порождает эту радость и счастье.</p>
+<p>Наконец, комментарий определяет эту вторую дхьяну как состоящую из четырёх факторов: внутренней и равной ясности, радости, счастья и однонаправленности ума. Примечательно, что, несмотря на улегание поиска и исследования, дхьяна определяется как включающая в себя те же познавательные действия, что упоминались на первой дхьяне. Похоже, что <em>vitarka</em> и <em>vicāra</em> представляли собой привычные познавательные отвлечения, которые обычно препятствуют самадхи. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0484a16" target="_blank">T1537.26.484a16-b17</a>] [<a href="#ref9">назад</a>]</p></li>
+<li id="n10" data-note-number="10"><p><span class="note-number">[10]</span> <em>третья дхьяна.</em> Кит. (МА) <span class="ch">聖弟子離於喜欲，捨、無求遊。正念、正智而身覺樂，謂聖所說，聖所捨、念、樂住、空。得第三禪成就遊</span>, кит. (Дхармаскандха) <span class="ch">離喜住捨。正念正知，身受樂，聖說應捨。第三靜慮具足住</span>, кит. (T1547) <span class="ch">比丘離喜欲，無求遊。念住、正智，覺受身樂，謂彼聖說、捨、念、安樂遊處。三禪成就遊處</span>, пали <em>pītiyā ca virāgā upekkhako ca viharati sato ca sampajāno, sukhañca kāyena paṭisaṁvedeti, yaṁ taṁ ariyā ācikkhanti: ‘upekkhako satimā sukhavihārī’ti tatiyaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>sa tatprārthayamānas taddhetos tatsaṃvartanīyaṃ prīter virāgād upekṣako viharati / smṛtaḥ saṃprajānan sukhaṃ ca kāyena pratisaṃvedayate / yat tad āryā ācakṣate upekṣakaḥ smṛtimāṃ sukhavihārīti tṛtīyaṃ dhyānam upasaṃpadya viharati</em>.</p>
+<p>Описание этой третьей дхьяны не столь единообразно в разных источниках, как первые два. Сравнивая версии этой третьей дхьяны, встречающиеся в палийских, санскритских и китайских источниках, можно заметить некоторые расхождения в формулировках между традициями. Поэтому я обращусь также к пояснению терминов из другого экзегетического источника, не встречающихся в комментарии «Дхармаскандхи». Этот второй источник, T1547, — комментарий к «Джнянапрастхане», содержащий версию третьей дхьяны, весьма близкую к переведённой здесь, в МА.</p>
+<p><em>расставшись с желанием этой радости, благородный ученик пребывает в невозмутимости и ни к чему не стремится</em>. Кит. <span class="ch">聖弟子離於喜欲，捨、無求遊</span>, пали <em>pītiyā ca virāgā upekkhako ca viharati</em>, санскр. <em>prīter virāgād upekṣako viharati</em>. В версии «Дхармаскандхи» этой фразы желание не упоминается. Там «расставание с радостью» (<span class="ch">離喜</span>) поясняется как высвобождение ума из-под влияния радости, испытанной на двух предыдущих дхьянах. T1547 приводит множество различных объяснений появления слова «желание» в своей версии, совпадающей с нашей, из МА. Там говорится, что желание относится к любому желанию второй дхьяны, а не только к радости. Что касается того, почему эти два [понятия] помещены вместе, предполагается, что радость может стать проблемой для практикующего, и потому он отходит от неё, чтобы достичь третьей дхьяны (ср. T1547.28.489a8-15).</p>
+<p>Остальная часть этой фразы говорит, что практикующий пребывает двояко: в невозмутимости (<span class="ch">捨</span>) и без устремлений (<span class="ch">無求遊</span>). Однако «Дхармаскандха» включает в свой комментарий только невозмутимость, а T1547 — только отсутствие устремлений. Поэтому здесь я объединяю оба варианта. Невозмутимость поясняется как состояние, при котором ум становится ровным, прямым, невозбуждённым и пребывающим в спокойствии по природе, когда расстаётся с радостью (<span class="ch">離喜時心平等性、心正直性、心無警覺寂靜住性</span>). Отсутствие устремлений поясняется как означающее, что практикующий счастлив и не стремится ни к чему иному после достижения третьей дхьяны.</p>
+<p><em>обладая правильной осознанностью и правильным знанием, он лично переживает счастье</em>. Кит. <span class="ch">正念、正智而身覺樂</span>, пали <em>sato ca sampajāno, sukhañca kāyena paṭisaṁvedeti</em>, санскр. <em>smṛtaḥ saṃprajānan sukhaṃ ca kāyena pratisaṃvedayate</em>. Этот отрывок в нашем тексте весьма близок к тому, что находим в «Дхармаскандхе».</p>
+<p>В комментарии правильная осознанность (<span class="ch">正念</span>) толкуется стандартным образом: как мысли, последующие мысли, сосредоточенные мысли и воспоминания, которые не забыты, не утрачены, не отброшены и не утекли прочь. Обладая неутрачивающей природой, ум обретает ясное выражение. Это определение использовалось для осознанности в целом и в других контекстах.</p>
+<p>Правильное знание (<span class="ch">正智</span>) поясняется через общее определение мудрости, описываемой как различение Дхармы, понимание, постижение, разумность, владение [предметом], исследование, проницательность, учёность, мудрое действие и созерцание. Таким образом, это — в сочетании с осознанностью — описывает состояние ясного, мудрого постижения и осознавания после того, как рассеивается возбуждение от предшествующей радости.</p>
+<p>Вторая половина этой фразы буквально гласит: «тело воспринимает счастье» (<span class="ch">身覺樂</span>). Если читать это чисто по-китайски, <span class="ch">身</span> вполне можно было бы понять как «человек» или «личность», особенно в сочетании с психологическим глаголом вроде <span class="ch">覺</span>. Обращаясь к пали и санскриту, мы видим, что <span class="ch">身</span> передаёт <em>kāyena</em> — форму творительного падежа единственного числа от <em>kāya</em>. Это буквально означало бы «телесно» или «посредством тела». Впрочем, слово <em>kāya</em> не обязательно означает тело человека, но и основную часть чего бы то ни было. Это становится ясным, когда мы обращаемся к комментарию, который поясняет «тело» как означающее «тело ума» (<span class="ch">意身</span>). Именно это тело ума и испытывает чувство счастья. Чтобы читатель не усомнился, комментарий добавляет, что и тело четырёх первичных элементов (то есть физическое тело) также становится удобным. Таким образом, наша интуиция при чтении китайского текста, по сути, верна. Этот термин для автора «Дхармаскандхи» фактически означал «всего человека» (ум и тело).</p>
+<p>Комментарий в T1547 ничего не говорит о значении <em>kāya</em>. Он просто утверждает, что воспринимаются два вида счастья: безмятежное счастье и ощущаемое счастье. «Дхармаскандха» схожим образом определяет счастье этой дхьяны и в умственных, и в телесных терминах: она говорит, что счастье означает прекращение физической и умственной тяжести и обретение мягкости ума и тела.</p>
+<p><em>о котором благородные учат как о благородном счастливом пребывании в отстранённости и осознанности</em>. Кит. <span class="ch">謂聖所說，聖所捨、念、樂住、空</span>, кит. (T1547) <span class="ch">謂彼聖說、捨、念、安樂遊處</span>, кит. (Дхармаскандха) <span class="ch">聖說應捨</span>, пали <em>yaṁ taṁ ariyā ācikkhanti: ‘upekkhako satimā sukhavihārī’ti</em>, санскр. <em>yat tad āryā ācakṣate upekṣakaḥ smṛtimāṃ sukhavihārīti</em>. Эта часть описания третьей дхьяны демонстрирует некоторые расхождения между китайскими источниками, которые я рассмотрю по мере обращения к комментариям.</p>
+<p>Первая часть этого отрывка в МА 2 звучит как <span class="ch">謂聖所說</span>, в T1547 — как <span class="ch">謂彼聖說</span>, а в «Дхармаскандхе» — просто <span class="ch">聖說</span>. Здесь я истолковываю <span class="ch">謂</span> («то есть» или «которое называется») как передающее выражение вроде пал. <em>yaṁ taṁ</em> и функционирующее подобно английскому «which is». Комментарии умалчивают об этом слове, поскольку это простая грамматическая частица. «Благородные» (<span class="ch">聖</span>), согласно «Дхармаскандхе», означают будд и их учеников, а «учение» (<span class="ch">說</span>), согласно T1547, означает наставление других.</p>
+<p>В T1547 задаётся вопрос: «Почему наставление благородных упоминается только здесь, на третьей дхьяне?» Даётся такой ответ: удержание третьей дхьяны затруднено по двум причинам. Во-первых, привязанность к радости, испытанной на второй дхьяне, может заставить медитирующего вернуться к ней. Во-вторых, воздействие возвышенного счастья третьей дхьяны, представляющего собой высшую форму счастья во всей сансаре, может привести к тому, что практикующий привяжется к третьей дхьяне. По этим причинам благородные учат практикующих сохранять правильную осознанность и становиться отстранёнными, чтобы уберечься от этих двух опасностей.</p>
+<p>Таким образом, T1547 истолковывает оставшуюся часть этого отрывка как относящуюся к тому, чему благородные учат медитирующих: быть отстранёнными и осознанными, пребывая в этом счастливом состоянии. Этим достигается третья ступень дхьяны. На этом этапе стоит обсудить два текстологических вопроса относительно конца этого отрывка.</p>
+<p>Первый вопрос состоит в том, что в различных официальных изданиях МА существует путаница относительно того, каким должен быть четвёртый иероглиф. По всему тексту МА непоследовательно встречаются три разных варианта: тот, который выбрали редакторы CBETA, добавляет иероглиф «пустота» (<span class="ch">空</span>), давая чтение: «благородные учат благородной отстранённости, осознанности, счастливому пребыванию и пустоте» (<span class="ch">聖所說，聖所捨、念、樂住、空</span>). Два других варианта завершают отрывок вместо этого иероглифом <span class="ch">定</span> («самадхи») либо <span class="ch">室</span> («обитель»). Поскольку эти три иероглифа пишутся сходным образом, расхождения между разными местами, по-видимому, объясняются опечатками переписчиков, что и ставит вопрос о том, какой из них верен. Обратившись к версиям в T1547, мы находим такое чтение: <span class="ch">聖說、捨、念、安樂遊處</span>. Здесь <span class="ch">遊</span> («странствование») передаёт <em>viharati</em>, которое в МА переведено как <span class="ch">住</span> («пребывание»). <span class="ch">處</span> («место, обитель») также соответствовало бы <span class="ch">室</span> («комната, обитель»). Это даёт нам конкретное основание считать, что в МА верным чтением является именно <span class="ch">室</span>. Поэтому мой перевод следует этому заключению.</p>
+<p>Второй текстологический вопрос состоит в том, что версия этого отрывка в «Дхармаскандхе» гласит <span class="ch">聖說應捨</span> («благородные учат, что следует быть отстранённым»). Это чтение не упоминает ни осознанность, ни счастливое пребывание, встречающиеся во всех прочих версиях третьей дхьяны. Комментарий поясняет это выражение так: благородные «различают, раскрывают и побуждают тех, кто взращивает самадхи, к тому, чтобы они были отстранены от его счастья и не предавались ему. Им следует пребывать отстранённо, лишь с правильной осознанностью и правильным знанием». Таким образом, толкование по сути совпадает с тем, что мы находим в T1547.</p>
+<p><em>он достигает третьей дхьяны и пребывает в ней</em>. Кит. <span class="ch">得第三禪成就遊</span>, пали <em>tatiyaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>tṛtīyaṃ dhyānam upasaṃpadya viharati</em>. Завершение этой третьей ступени дхьяны толкуется так же, как и для двух предыдущих ступеней. Эта третья дхьяна анализируется как состоящая из пяти факторов: правильной осознанности, правильного знания, лично переживаемого счастья и однонаправленности ума. Термин «дхьяна» определяется так же, как и в других дхьянах, описывая разнообразную познавательную деятельность, связанную с мудростью. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0484b18" target="_blank">T1537.26.484b18-c16</a> и <a href="https://cbetaonline.dila.edu.tw/zh/T28n1547_p0489a08" target="_blank">T1547.28.489a8-b6</a>] [<a href="#ref10">назад</a>]</p></li>
+<li id="n11" data-note-number="11"><p><span class="note-number">[11]</span> <em>четвёртая дхьяна.</em> Кит. <span class="ch">聖弟子樂滅，苦滅。喜、憂本已滅，不苦、不樂。捨、念、清淨，得第四禪成就遊</span>, пали <em>Sukhassa ca pahānā dukkhassa ca pahānā pubbeva somanassadomanassānaṁ atthaṅgamā adukkhamasukhaṁ upekkhāsatipārisuddhiṁ catutthaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>sa tatprārthayamānas taddhetos tatsaṃvartanīyaṃ sukhasya ca prahāṇād duḥkhasya ca prahāṇāt pūrvam eva ca saumanasyadaurmanasyayor astagamād aduḥkhāsukhaṃ upekṣāsmṛtipariśuddhaṃ caturthaṃ dhyānam upasaṃpadya viharati</em>. Эта четвёртая ступень дхьяны — та точка, в которой медитирующий достигает невозмутимого самадхи, избавившись от радости и счастья, порождённых первоначальным вхождением [в дхьяну]. Отстранившись от этих положительных реакций на неё, он обретает устойчивое и ясное самадхи.</p>
+<p>Описания этой четвёртой дхьяны совпадают в разных источниках, если отвлечься от обычных переводческих вопросов, поэтому здесь я в основном изложу комментарий «Дхармаскандхи», обращаясь к T1547 лишь там, где он добавляет дополнительные сведения.</p>
+<p><em>у благородного ученика прекращается удовольствие и прекращается страдание</em>. Кит. <span class="ch">聖弟子樂滅，苦滅</span>, пали <em>sukhassa ca pahānā dukkhassa ca pahānā</em>, санскр. <em>sukhasya ca prahāṇād duḥkhasya ca prahāṇāt</em>. «Дхармаскандха» определяет удовольствие (<span class="ch">樂</span>) как физическое и умственное удовольствие, возникающее от приятного контакта, а также как счастье, испытываемое на третьей дхьяне. Страдание (<span class="ch">苦</span>) здесь определяется как физическая боль, возникающая от болезненного контакта. Про это удовольствие и страдание точно известно, что они прекратились. Оба они далеки, подавлены, улеглись и исчезли.</p>
+<p>В T1547 поднимается вопрос: как могут сохраняться болезненные ощущения после того, как узы мира желаний и счастье третьей ступени дхьяны уже исчезли? Даётся такой ответ: страдание уже прекратилось до вступления в четвёртую дхьяну. То, что здесь утверждается в описании, — это что медитирующий осознаёт, что достиг прекращения и удовольствия, и страдания, но они прекратились не одновременно. Приводятся и другие объяснения. Одно из них — что медитирующий осознаёт, что окончательное прекращение удовольствия и страдания наступит в будущем. Другое объяснение — что счастье третьей дхьяны само является страданием в том смысле, что оно непостоянно. Цитируется сутра, в которой Будда говорит монахам, что приятные ощущения следует рассматривать как шипы, а нейтральные ощущения — как ядовитых змей. Приводится и другой отрывок из сутры, где говорится, что дыхание — вдох и выдох — считается благородным человеком самым мучительным из всего, тогда как обычные люди считают самыми страшными муки ада. Этот последний довод, несомненно, намекает на прекращение дыхания, часто связываемое с четвёртой дхьяной. Из этого обсуждения в T1547 видно, что данная часть описания понималась по-разному.</p>
+<p><em>прежние радость и печаль уже прекратились, и он не испытывает ни страдания, ни удовольствия</em>. Кит. <span class="ch">喜、憂本已滅，不苦、不樂</span>, пали <em>pubbeva somanassadomanassānaṁ atthaṅgamā adukkhamasukhaṁ</em>, санскр. <em>pūrvam eva ca saumanasyadaurmanasyayor astagamād aduḥkhāsukhaṃ</em>. Комментарий «Дхармаскандхи» просто определяет радость и печаль как умственные ощущения, возникающие от радостного или печального контакта. Эти два состояния уже прежде улеглись. Далее комментатор говорит, что печаль прекращается при вступлении в первую дхьяну, страдание — при вступлении во вторую, а радость — при вступлении в третью. Теперь же, при вступлении в четвёртую дхьяну, удовольствие, страдание, радость и печаль прекратились полностью. Это согласуется с тем, что уже отмечалось в T1547. Комментарий «Дхармаскандхи» заключает, говоря, что болезненные и приятные ощущения прекратились, оставив на четвёртой дхьяне лишь нейтральные ощущения. Комментарий к этому месту в T1547 уточняет, что именно устранение желаний мира желаний прекратило печаль, а устранение желаний второй дхьяны прекратило радость.</p>
+<p><em>с очищением невозмутимости и осознанности он достигает четвёртой дхьяны и пребывает в ней</em>. Кит. <span class="ch">捨、念、清淨，得第四禪成就遊</span>, пали <em>upekkhāsatipārisuddhiṁ catutthaṁ jhānaṁ upasampajja viharati</em>, санскр. <em>upekṣāsmṛtipariśuddhaṃ caturthaṃ dhyānam upasaṃpadya viharati</em>. Комментарий «Дхармаскандхи» определяет невозмутимость (<span class="ch">捨</span>) и осознанность (<span class="ch">念</span>) так же, как и на третьей дхьяне. Далее говорится, что «очищение» (<span class="ch">清淨</span>) здесь относится к очищению невозмутимости и осознанности медитирующего в результате прекращения удовольствия, страдания, радости, печали, поиска и исследования.</p>
+<p>Комментарий в T1547 говорит, что невозмутимость означает, что медитирующий прекратил дыхание и не желает более преследовать какие-либо мысли. Далее говорится, что очищение осознанности относится к чистоте его осознанности восьми предметов. Эти восемь предметов там не перечислены, но то же выражение используется для обозначения восьми освобождений в более позднем разделе T1547.</p>
+<p>В T1547 также содержится рассуждение, объясняющее сущностное качество этой четвёртой дхьяны: в ней больше нет никаких помех для осознанности. Первая дхьяна была потревожена замечанием и исследованием вещей — подобно тому, как тревожат пламя. Вторая дхьяна была потревожена радостью — подобно тому, как водную гладь тревожат волны, вызванные дующим на неё ветром. Третья дхьяна была потревожена дыханием — подобно дующему ветру. Эта же, четвёртая, ступень дхьяны лишена каких-либо помех. Поэтому самадхи, достигаемое на этой ступени, называется невозмутимым.</p>
+<p>«Дхармаскандха» вновь повторяет познавательную деятельность, связанную с мудростью и пониманием, происходящую в самадхи. Она определяет эту четвёртую ступень дхьяны как состоящую из четырёх факторов: нейтрального ощущения, невозмутимости, осознанности и однонаправленности ума. [cf. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1537_p0484c17" target="_blank">T1537.26.484c17-485a25</a> и <a href="https://cbetaonline.dila.edu.tw/zh/T28n1547_p0489b06" target="_blank">T1547.28.489b6-c22</a>] [<a href="#ref11">назад</a>]</p></li>
+<li id="n12" data-note-number="12"><p><span class="note-number">[12]</span> <em>когда загрязнения благородного ученика уже исчерпаны, его ум освобождён, и его мудрость освобождена. В нынешней жизни он достигает собственного знания, пробуждения и непосредственного постижения и пребывает в них</em>. Кит. <span class="ch">聖弟子諸漏已盡，心解脱、慧解脱。於現法中，自知、自覺自作證成就遊</span>, пали <em>bhikkhu āsavānaṁ khayā anāsavaṁ cetovimuttiṁ paññāvimuttiṁ diṭṭheva dhamme sayaṁ abhiññā sacchikatvā upasampajja viharati</em>, санскр. <em>āsravāṇāṃ kṣayād anāsravāṃ cetovimuktiṃ prajñāvimuktiṃ dṛṣṭa eva dharme svayam abhijñāya sākṣīkṛtvopasaṃpadya pravedayati kṣīṇā me jātir uṣitaṃ brahmacaryaṃ kṛtaṃ karaṇīyaṃ nāparam asmād bhavaṃ prajānāmi</em>.</p>
+<p>Первая половина этого китайского отрывка практически совпадает с палийской параллелью, встречающейся и в других источниках. В AN 7.69 она сокращена, но полный палийский текст можно найти в других суттах. Здесь <span class="ch">諸漏已盡</span> = <em>āsavānaṁ khayā</em>, <span class="ch">心解脱、慧解脱</span> = <em>cetovimuttiṁ paññāvimuttiṁ</em>, <span class="ch">於現法中</span> = <em>diṭṭheva dhamme</em>, <span class="ch">自知</span> = <em>sayaṁ abhiññā</em>, <span class="ch">自作證</span> = <em>sacchikatvā</em>, а <span class="ch">成就遊</span> = <em>upasampajja viharati</em>. Единственное отличие — добавление термина <span class="ch">自覺</span>. Пали <em>abhisambujjhati abhisameti</em> соответствует <span class="ch">自知、自覺</span> в параллели к SN 22.94. Возможно, один из этих синонимов был вставлен в версию МА этого часто повторяющегося описания практикующего, осознающего, что он архат.</p>
+<p>«Дхармаскандха» не разбирает этот стандартный отрывок, однако мы находим некоторый комментарий к его основным терминам в других абхидхармических текстах. Прекращение загрязнений (санскр. <em>āsrava</em>) — синоним обретения статуса архата и уверенности в том, что впредь не будет новых рождений. Весь этот отрывок представлял собой стандартизированный способ описания этого.</p>
+<p>Есть три вида загрязнений, прекращаемых архатом: загрязнения желания, существования и неведения. «Сангитипарьяя» (ср. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1536_p0383a04" target="_blank">T1536.26.383a4</a>) определяет эти загрязнения так: загрязнения желания — это узы, оковы, путы, склонности, второстепенные загрязнения и помехи, привязанные к миру желаний, за исключением неведения. Загрязнения существования — тот же набор пагубных вещей, привязанных к мирам форм и не-форм. Здесь, опять же, исключением является неведение, связанное с этими мирами. Загрязнение неведения — это отсутствие знания о трёх мирах. Вместе взятые, эти три вида загрязнений представляют собой омрачённый ум.</p>
+<p>«Сангитипарьяя» (ср. <a href="https://cbetaonline.dila.edu.tw/zh/T26n1536_p0376a02" target="_blank">T1536.26.376a2</a>) также предлагает нам толкование двух видов освобождения. Она говорит, что освобождение ума (<span class="ch">心解脱</span>) относится к убеждённости (санскр. <em>adhimokṣa</em>), связанной с благим корнем отсутствия жадности. Освобождение мудрости относится к убеждённости, связанной с благим корнем отсутствия заблуждения. «Махавибхаша» развивает эту мысль далее: благие корни отсутствия жадности и отсутствия заблуждения являются противоядиями от жадности и заблуждения. Освобождение от жадности освобождает ум человека, а освобождение от заблуждения освобождает его мудрость (ср. <a href="https://cbetaonline.dila.edu.tw/zh/T27n1545_p0758a05" target="_blank">T1545.27.758a5</a>).</p>
+<p><em>Он поистине знает: „Рождения прекращены, святая жизнь утверждена, сделано то, что надлежало сделать, и я больше не буду подвержен [новому] существованию“</em>. Кит. <span class="ch">『生已盡，梵行已立，所作已辦。 不更受有，』知如眞。</span>, пали <em>‘Khīṇā jāti, vusitaṁ brahmacariyaṁ, kataṁ karaṇīyaṁ, nāparaṁ itthattāyā’ti pajānāti.</em>, санскр. <em>kṣīṇā me jātir uṣitaṃ brahmacaryaṃ kṛtaṃ karaṇīyaṃ nāparam asmād bhavaṃ prajānāmi</em>. Вторая половина этого китайского отрывка встречается в палийских источниках практически в идентичной форме, за исключением концовки. <span class="ch">生已盡</span> = <em>khīṇā jāti</em>, <span class="ch">梵行已立</span> = <em>vusitaṁ brahmacariyaṁ</em>, а <span class="ch">所作已辦</span> = <em>kṛtaṃ karaṇīyaṃ</em>. Однако <span class="ch">不更受有</span> лишь приблизительно передаёт значение <em>nāparaṁ itthattāyā</em>, что буквально означает «больше не быть здесь». В частности, последнее слово, <span class="ch">有</span>, скорее всего, передаёт <em>bhava</em> («существование»).</p>
+<p>Санскритские источники сохраняют по меньшей мере два разных варианта окончания этого отрывка: один читает <em>asmād bhavaṃ</em> («моё существование»), а другой — <em>ithyātvam</em> («пребывание здесь»). Иногда они также соотносят наш отрывок из МА, <span class="ch">知如眞</span>, с <em>yathābhūtaṃ prajānāti</em>, тогда как в палийских источниках стоит один глагол — <em>pajānāti</em> или <em>abbhaññāsi</em>. Из этого краткого обзора видно, что последние две части отрывка несколько варьировались между текстологическими традициями.</p>
+<p>Что касается сарвастивадинского толкования этого отрывка, можно обратиться к разделу «Джнянапрастханы». Текст изображает практикующего, размышляющего так о прекращении рождения, утверждении практики и исполнении задачи: «Это путь; это практика. Опираясь на этот путь и эту практику, я полностью познал страдание, навсегда прекратил его возникновение, осуществил его прекращение и взрастил путь». В комментарии это прямо критикуется как форма высокомерия, но это показывает основной смысл, который автор вкладывал в данный отрывок. [<a href="#ref12">назад</a>]</p></li>
+<li id="n13" data-note-number="13"><p><span class="note-number">[13]</span> <em>архат</em>. Кит. <span class="ch">阿羅訶</span> (среднекит. <em>•a-la-ha</em> = гандх. <em>araha</em>), пали <em>arahant</em>, санскр. <em>arhat</em>. Титул санскр. <em>arhat</em> буквально означал «достойный, почтенный, заслуживающий [подаяния]» и иногда толковался в китайских переводах как «непривязанный». Это был титул, который индийские подвижники (буддисты и джайны) использовали для обозначения человека, полностью освобождённого в этой жизни, и один из наиболее распространённых титулов, дававшихся Будде (наряду с Бхагаваном, Татхагатой и Сугатой). Здесь он обозначает полностью освобождённого ученика, которому предстоит паринирвана. Я оставил этот термин непереведённым как титул, обладающий особым религиозным значением. [<a href="#ref13">назад</a>]</p></li>
+</ol>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/ma/ma1.html" title="MĀ 1 — Благие качества" aria-label="Предыдущая сутта: MĀ 1 — Благие качества">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/ma/ma3.html" title="MĀ 3 — Притча о городе" aria-label="Следующая сутта: MĀ 3 — Притча о городе">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[411px] flex-[0_0_411px] max-xl:w-[min(420px,90%)] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1791393943"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+          <div class="translation-picker relative w-full" data-translation-picker>
+      <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+      <button
+        type="button"
+        class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-label="Выбор перевода"
+        title="Русский — Anthropic Claude Sonnet 5"
+        data-translation-picker-toggle
+      >
+        <span class="min-w-0 truncate">Русский — Anthropic Claude Sonnet 5</span>
+        <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+      </button>
+      <div class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-translation-picker-menu hidden>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+            type="button"
+            data-translation-picker-option="/chinese_canon/ma/ma2.html"
+            title="Русский — Anthropic Claude Sonnet 5"
+            disabled          >Русский — Anthropic Claude Sonnet 5</button>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+            type="button"
+            data-translation-picker-option="/en/chinese_canon/ma/ma2.html"
+            title="English — Dharma Pearls"
+                      >English — Dharma Pearls</button>
+              </div>
+    </div>
+    <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+<script>
+  (() => {
+    const picker = document.querySelector("[data-translation-picker]");
+    const toggle = picker?.querySelector("[data-translation-picker-toggle]");
+    const menu = picker?.querySelector("[data-translation-picker-menu]");
+    const options = picker?.querySelectorAll("[data-translation-picker-option]");
+    const setOpen = (open) => {
+      if (!picker || !toggle || !menu) return;
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+      picker.classList.toggle("is-open", open);
+    };
+    toggle?.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    options?.forEach((option) => option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    }));
+    document.addEventListener("click", (event) => {
+      if (picker && !picker.contains(event.target)) setOpen(false);
+    });
+  })();
+</script>
+</section>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1791393943"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1791393943"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>

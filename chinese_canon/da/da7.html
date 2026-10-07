@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DĀ 7 — Падашва — Фонд канона буддизма</title>
+    <script>
+      (() => {
+        try {
+          const themeStorageKey = "canon-theme";
+          const themeUserSetKey = "canon-theme-user-set";
+          const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+          const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+          // Default to light unless the user explicitly picked a theme.
+          if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            return;
+          }
+
+          document.documentElement.setAttribute("data-theme", "light");
+          window.localStorage.setItem(themeStorageKey, "light");
+          if (!isUserSet) {
+            window.localStorage.removeItem(themeUserSetKey);
+          }
+        } catch (error) {
+          // Ignore storage access issues and use default light theme.
+        }
+      })();
+    </script>
+    <script>
+      window.I18N = {"ABOUT_REQUESTS":"По всем вопросам, связанным с работой Фонда канона буддизма, пишите напрямую Нара Лока, все контакты на сайте <a href=\"https://naraloka.ru/\" target=\"_blank\" class=\"underline hover:no-underline\">https://naraloka.ru/</a>","SITE_NAME":"Фонд канона буддизма","PAGE_HOME":"Главная","NAV_HOME":"Главная страница","PAGE_BOOKMARKS":"Мои закладки","PAGE_SUTTA":"Сутта","PAGE_PROFILE":"Профиль","PAGE_FUND_INFO":"Информация о фонде","MOBILE_NAV":"Мобильная навигация","OPEN_MENU":"Открыть меню","SEARCH":"Поиск","TEXT_SIZE":"Размер текста","SHARE":"Поделиться","BOOKMARKS":"Закладки","FONT_LARGER":"Шрифт крупнее","FONT_SMALLER":"Шрифт меньше","MAIN_NAV":"Основная навигация","LANGUAGE_RUSSIAN":"Русский","LANGUAGE_ENGLISH":"English","MENU":"Меню","CLOSE_MENU":"Закрыть меню","FUND":"Фонд","CANON":"канона","BUDDHISM":"буддизма","LOGIN_REGISTER":"Вход / Регистрация","ABOUT_FUND":"О Фонде","ENABLE_DARK":"Включить тёмное оформление","ENABLE_LIGHT":"Включить светлое оформление","LEGAL_POLICY_TITLE":"Политика обработки персональных данных","LEGAL_POLICY_SUFFIX":"и пользовательское соглашение","LEGAL_POLICY_PAGE_HEADING":"Политика в отношении обработки персональных данных и пользовательское соглашение","AUTH_DIALOG":"Вход и регистрация","CLOSE_WINDOW":"Закрыть окно","AUTH_LOGIN":"Вход","AUTH_REGISTER":"Регистрация","AUTH_FORGOT_PASSWORD":"Забыли пароль?","PASSWORD":"Пароль","SIGN_IN":"Войти","SIGN_UP":"Зарегистрироваться","LOGGED_IN_AS":"Вы вошли как","SIGN_OUT":"Выйти","FOOTER_COPY_1":"Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.","FOOTER_COPY_2":"Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.","FOOTER_COPY_3":"По всем вопросам пишите Нара Лока","FOOTER_URL":"https://naraloka.ru/","BOOKMARKS_NOTES":"Пометки для себя","BOOKMARKS_LOADING":"Загрузка закладок...","BOOKMARKS_EMPTY":"Закладок пока нет. Добавьте первую на странице сутты.","SIGN_OUT_PROFILE":"Выйти из профиля","CTA_PALI":"Читать Палийский канон","CTA_TIBETAN":"Читать Тибетский канон","CTA_CHINESE":"Читать Китайский канон","ERROR_SUTTA_MISSING":"Не указана сутта в параметре sutta.","ERROR_SUTTA_NOT_FOUND":"Сутта не найдена.","ERROR_TRANSLATION_NOT_FOUND":"Перевод не найден.","PREV_SUTTA":"Предыдущая сутта","NEXT_SUTTA":"Следующая сутта","ADD_BOOKMARK":"Добавить в закладки","NOTES":"Примечания","SELECT_TRANSLATION":"Выбор перевода","CHOOSE_TRANSLATION":"Выбрать перевод / язык","TOTAL_SUTTAS":"Всего сутт:","ERROR_TRANSLATION_FILE_NOT_FOUND":"Файл перевода не найден.","ERROR_JSON_PARSE":"Не удалось разобрать JSON.","JS_UNTITLED":"Без названия","JS_NOTE_PLACEHOLDER":"Начните писать пометку","JS_SAVE_NOTE":"Сохранить","JS_SAVE_NOTE_FAILED":"Не удалось сохранить пометку.","JS_DELETE_BOOKMARK":"Удалить закладку","JS_DELETE_BOOKMARK_FAILED":"Не удалось удалить закладку.","JS_LOAD_BOOKMARKS_FAILED":"Не удалось загрузить закладки.","JS_LOGIN_TO_SEE_BOOKMARKS":"Войдите, чтобы увидеть закладки.","JS_AUTH_LOGIN_REGISTER":"Вход / Регистрация","JS_AUTH_LOGOUT":"Выйти","JS_CHECK_BOOKMARK_FAILED":"Не удалось проверить закладку.","JS_SIGNED_OUT":"Вы вышли.","JS_SIGN_OUT_FAILED":"Не удалось выйти.","JS_BOOKMARK_REMOVED":"Закладка удалена.","JS_BOOKMARK_EXISTS":"Закладка уже существует.","JS_BOOKMARK_SAVED":"Закладка сохранена.","JS_BOOKMARK_SAVE_FAILED":"Не удалось сохранить закладку.","JS_USER":"Пользователь","JS_EMAIL_PASSWORD_REQUIRED":"Укажите email и пароль.","JS_EMAIL_REQUIRED":"Укажите email.","JS_ACCOUNT_CREATED":"Аккаунт создан.","JS_SIGNED_IN":"Вы вошли.","JS_PASSWORD_RESET_SENT":"Письмо для восстановления пароля отправлено. Проверьте почту.","JS_PASSWORD_RESET_FAILED":"Не удалось отправить письмо для восстановления пароля.","JS_AUTH_ERROR":"Ошибка авторизации.","JS_SHARE_COPIED":"Ссылка скопирована. Пожалуйста, поделитесь ей.","JS_BOOKMARK_TOAST_ADDED":"Закладка сохранена","JS_BOOKMARK_TOAST_REMOVED":"Закладка удалена","PAGE_PALI_CANON":"Палийский канон","PALI_BASKET_SUTTA":"Сутта питака","PALI_BASKET_SUTTA_DESC":"\"Корзина сутт\"","PALI_BASKET_VINAYA":"Виная питака","PALI_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","PALI_BASKET_ABHIDHAMMA":"Абхидхамма питака","PALI_BASKET_ABHIDHAMMA_DESC":"\"Корзина Высшей Дхаммы\"","PALI_SUTTA_DN":"Дигха никая (ДН)","PALI_SUTTA_MN":"Мадджхима никая (МН)","PALI_SUTTA_SN":"Самьютта-никая (СН)","PALI_SUTTA_AN":"Ангуттара-никая (АН)","PALI_SUTTA_KN":"Кхуддака-никая (КН)","PALI_BASKET_EMPTY":"Для этого раздела сутты не найдены.","PALI_VINAYA_SUTTA_VIBHANGA":"Сутта-вибханга","PALI_VINAYA_KHANDHAKA":"Кхандхака","PALI_VINAYA_PARIVARA":"Паривара","PALI_ABHI_DHAMMASANGANI":"Дхаммасангани","PALI_ABHI_VIBHANGA":"Вибханга","PALI_ABHI_DHATUKATHA":"Дхатукатха","PALI_ABHI_PUGGALAPANNATTI":"Пуггалапаннати","PALI_ABHI_KATHAVATTHU":"Каттхаватху","PALI_ABHI_YAMAKA":"Ямака","PALI_ABHI_PATTHANA":"Паттхана","PAGE_CHINESE_CANON":"Китайский канон","PAGE_TIBETAN_CANON":"Тибетский канон","CHINESE_BASKET_SUTRA":"Сутры 經部","CHINESE_BASKET_SUTRA_DESC":"\"Корзина сутр\"","CHINESE_BASKET_VINAYA":"Виная 律部","CHINESE_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","CHINESE_BASKET_ABHIDHARMA":"Абхидхамма и шастры 論部","CHINESE_BASKET_ABHIDHARMA_DESC":"\"Корзина Высшей Дхаммы\"","CHINESE_ITEM_DIRGHA":"Dīrgha Āgama","CHINESE_ITEM_MADHYAMA":"Madhyama Āgama","CHINESE_ITEM_SAMYUKTA":"Saṃyukta Āgama","CHINESE_ITEM_EKOTTARIKA":"Ekottarika Āgama","CHINESE_ITEM_SARIPUTRA":"Śāriputra Abhidharma","TIBETAN_BASKET_SUTRA":"Сутры Kangyur","TIBETAN_BASKET_SUTRA_DESC":"\"Переведённые слова\"","TIBETAN_BASKET_VINAYA":"Виная Kangyur","TIBETAN_BASKET_VINAYA_DESC":"\"Корзина дисциплины\"","TIBETAN_BASKET_TENGYUR":"Tengyur","TIBETAN_BASKET_TENGYUR_DESC":"\"Переведённые трактаты\"","TIBETAN_ITEM_KANGYUR_TRANSLATIONS":"Переводы Кангьюра","TIBETAN_ITEM_DIRGHA":"Dīrgha Āgama","TIBETAN_ITEM_MADHYAMA":"Madhyama Āgama","TIBETAN_ITEM_SAMYUKTA":"Saṃyukta Āgama","TIBETAN_ITEM_EKOTTARIKA":"Ekottarika Āgama"};
+      window.FRONTEND_CONFIG = {"BACKEND_BASE_URL":"https://buddhistcanon.ru/backend"};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?_=1791393943" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?_=1791393943" />
+    <link rel="icon" href="/assets/favicon.ico?_=1791393943" />
+    <link rel="manifest" href="/assets/site.webmanifest?_=1791393943" />
+    <meta name="theme-color" content="#f8f8f8" />
+    <link rel="stylesheet" href="/assets/style.css?_=1791393943" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(97070345, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97070345" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col overflow-x-clip">
+<header class="relative flex h-[65px] items-center border border-[#f8f8f8] bg-[#f8f8f8] shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:border-[rgba(240,242,246,0.08)] dark:bg-[rgba(34,34,36,0.94)] dark:shadow-none">
+                  
+  <div
+    class="mobile-head flex min-w-full w-full items-center justify-start gap-3 px-4 py-[10px] md:hidden"
+    aria-label="Мобильная навигация"
+  >
+    <button
+      class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center border-0 bg-transparent p-0 text-ink"
+      id="mobileMenuOpen"
+      type="button"
+      aria-label="Открыть меню"
+    >
+      <svg viewBox="0 0 24 24" class="h-8 w-8 fill-none stroke-current" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileSearchToggle"
+        type="button"
+        aria-label="Поиск"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M15.97 17.031C14.491 18.269 12.586 19.016 10.509 19.016C5.812 19.016 2 15.204 2 10.508C2 5.812 5.812 2 10.509 2C15.204 2 19.017 5.812 19.017 10.508C19.017 12.586 18.27 14.492 17.032 15.969L21.781 20.719C21.927 20.865 22 21.057 22 21.25C22 21.837 21.463 22 21.25 22C21.058 22 20.866 21.927 20.719 21.78L15.97 17.031ZM10.509 3.501C6.641 3.501 3.502 6.641 3.502 10.508C3.502 14.375 6.641 17.515 10.509 17.515C14.375 17.515 17.516 14.375 17.516 10.508C17.516 6.641 14.375 3.501 10.509 3.501Z" fill="currentColor"/>
+</svg>
+      </button>
+      <div
+        class="mobile-head__search-inline h-[46px] flex-1 items-center gap-2 rounded-[10px] border border-line bg-surface px-2"
+        id="mobileSearchInline"
+        aria-label="Поиск"
+        hidden
+      >
+        <button
+          class="inline-flex h-full w-10 shrink-0 cursor-pointer items-center justify-center rounded-l-[10px] border-0 bg-transparent text-ink"
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="min-w-0 flex-1 yandex-search-scope yandex-search-scope--mobile [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full" data-mobile-search-form>
+          <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+            <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+              <input type="hidden" name="searchid" value="15048351"/>
+              <input type="hidden" name="l10n" value="ru"/>
+              <input type="hidden" name="reqenc" value=""/>
+              <input type="search" id="mobileSearchInput" name="text" value=""/>
+              <input type="submit" value="Найти"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+          <div class="relative">
+        <button
+          class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          id="mobileFontToggle"
+          type="button"
+          aria-label="Размер текста"
+        >
+          <span class="flex items-center gap-0.5 text-[18px] leading-none">
+            A
+            <svg class="h-[14px] w-[14px] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="355 -700 252 440" aria-hidden="true">
+  <path fill="currentColor" d="m480-264.04 123.73-122.58-26.35-25.57-78.73 78.34v-291.53l78.73 77.96 26.35-25.96L480-695.08l-122.58 121.7 25.96 25.96 78.35-77.96v291.53l-78.35-78.34-25.96 25.57L480-264.04Z"/>
+</svg>
+          </span>
+        </button>
+                  <div
+            class="absolute left-0 top-full z-[120] mt-2 grid w-[256px] grid-cols-[44px_minmax(0,1fr)] items-start gap-2 rounded-[12px] border border-line bg-surface p-2 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            id="mobileFontPanel"
+            hidden
+          >
+            <button
+              class="inline-grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+              type="button"
+              data-mobile-utility-close
+              aria-label="Закрыть окно"
+            >
+              <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] fill-none stroke-current" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="grid gap-2" aria-label="Размер текста">
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="up"
+              >
+                <span class="text-[20px] leading-none">A↑</span>
+                <span>Шрифт крупнее</span>
+              </button>
+              <button
+                class="grid min-h-[44px] w-full grid-cols-[34px_minmax(0,1fr)] items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-left text-[15px] text-ink"
+                type="button"
+                data-text-size-dir="down"
+              >
+                <span class="text-[20px] leading-none">A↓</span>
+                <span>Шрифт меньше</span>
+              </button>
+            </div>
+          </div>
+              </div>
+    
+          <button
+        class="inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+        id="mobileShareButton"
+        type="button"
+        aria-label="Поделиться"
+      >
+        <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14 9V5L22 12L14 19V15C14 15 2 14.069 2 19.737C2 8.4 14 9 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+      </button>
+    
+                  <button
+          class="group inline-grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-[10px] border border-line bg-surface text-ink"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+            </div>
+
+   <div class="mx-auto w-[min(1600px,96vw)]">
+        <nav
+            class="hidden w-[min(1281px,96vw)] items-center gap-2 md:flex"
+            aria-label="Основная навигация"
+          >
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/index.html"
+            >Главная страница</a>
+
+            <a
+              class="inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-[10px] border border-line bg-surface px-[18px] text-sm leading-[1.4] text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+              href="/bookmarks.html"
+            >Мои закладки</a>
+
+            <div class="lang-picker relative" data-lang-picker>
+              <button
+                class="inline-flex h-10 min-w-[111px] cursor-pointer items-center justify-between gap-3 whitespace-nowrap rounded-[10px] border border-line bg-surface px-3.5 text-sm leading-[1.4] text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                type="button"
+                data-lang-picker-toggle
+                data-current-lang="ru"
+                aria-expanded="false"
+              >
+                Русский                <span class="nav-btn__caret h-0 w-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+              </button>
+              <div
+                class="absolute left-0 top-[calc(100%+6px)] z-50 min-w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                data-lang-picker-menu
+                hidden
+              >
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint is-current"
+                  type="button"
+                  data-lang-picker-option="ru"
+                  disabled                >
+                  Русский                </button>
+                <button
+                  class="lang-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-2 text-center text-sm leading-none text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent disabled:cursor-default disabled:text-ink-faint"
+                  type="button"
+                  data-lang-picker-option="en"
+                                  >
+                  English                </button>
+              </div>
+            </div>
+
+            <div class="relative flex-1 yandex-search-scope yandex-search-scope--desktop [&_.ya-site-form]:w-full [&_.ya-site-form__form]:w-full">
+              <div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;https://buddhistcanon.ru/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;searchbuddhistcanon&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:false,&quot;searchid&quot;:15048351,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Поиск&quot;,&quot;input_placeholderColor&quot;:&quot;#272B2D&quot;,&quot;input_borderColor&quot;:&quot;#E6E6E6&quot;}">
+                <form action="https://yandex.ru/search/site/" method="get" target="_blank" accept-charset="utf-8">
+                  <input type="hidden" name="searchid" value="15048351"/>
+                  <input type="hidden" name="l10n" value="ru"/>
+                  <input type="hidden" name="reqenc" value=""/>
+                  <input type="search" name="text" value=""/>
+                  <input type="submit" value="Найти"/>
+                </form>
+              </div>
+            </div>
+
+                          <div class="flex gap-6" aria-label="Размер текста">
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="down"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M3.32845 8.35355C3.52372 8.54882 3.8403 8.54882 4.03556 8.35355L7.21754 5.17157C7.4128 4.97631 7.4128 4.65973 7.21754 4.46447C7.02228 4.2692 6.7057 4.2692 6.51043 4.46447L3.68201 7.29289L0.85358 4.46447C0.658317 4.2692 0.341735 4.2692 0.146473 4.46447C-0.0487895 4.65973 -0.0487895 4.97631 0.146473 5.17157L3.32845 8.35355ZM3.18201 -2.18557e-08L3.18201 8L4.18201 8L4.18201 2.18557e-08L3.18201 -2.18557e-08Z" fill="currentColor"/>
+</svg>
+                </button>
+                <button
+                  class="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-[20px] leading-none text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+                  type="button"
+                  data-text-size-dir="up"
+                >
+                  <span class="leading-none">A</span>
+                  <svg class="absolute right-[3px] bottom-[11px] h-[9px] w-2" width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M4.03556 0.146446C3.8403 -0.0488157 3.52372 -0.0488157 3.32845 0.146446L0.146473 3.32843C-0.0487892 3.52369 -0.0487892 3.84027 0.146473 4.03553C0.341735 4.2308 0.658318 4.2308 0.85358 4.03553L3.68201 1.20711L6.51043 4.03553C6.7057 4.2308 7.02228 4.2308 7.21754 4.03553C7.4128 3.84027 7.4128 3.52369 7.21754 3.32843L4.03556 0.146446ZM4.18201 8.5L4.18201 0.5L3.18201 0.5L3.18201 8.5L4.18201 8.5Z" fill="currentColor"/>
+</svg>
+                </button>
+              </div>
+                      </nav>
+    </div>
+
+</header>
+<style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style>
+<script type="text/javascript">
+  (function(w,d,c){
+    var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;
+    if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}
+    s.type='text/javascript';
+    s.async=true;
+    s.charset='utf-8';
+    s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';
+    h.parentNode.insertBefore(s,h);
+    (w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()});
+  })(window,document,'yandex_site_callbacks');
+</script>
+
+<section
+  class="m-0 block min-h-0 w-full p-0 flex-1 flex-nowrap items-start gap-10 md:mx-auto md:my-3 md:flex md:min-h-[850px] md:w-[min(1600px,96vw)] max-xl:flex-col max-xl:items-center md:max-[1200px]:w-[min(100%,92vw)]"
+>
+  <div
+    class="flex min-w-0 flex-1 basis-[1244px] flex-col items-stretch self-stretch md:min-w-[720px] max-xl:w-full max-xl:min-w-0"
+  >
+                <div class="relative mx-5 mt-4 md:hidden" data-mobile-translation>
+        <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+        <button
+          type="button"
+          class="translation-selector group relative flex w-full min-h-[60px] items-center justify-center rounded-[10px] border border-line px-10 text-center text-sm leading-tight text-ink aria-[expanded=true]:rounded-b-none bg-[#F6F6F6] dark:bg-[rgba(255,255,255,0.03)]"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Выбор перевода"
+          data-mobile-translation-toggle
+        >
+          <span class="block w-full truncate" title="Русский — Anthropic Claude Sonnet 5">Русский — Anthropic Claude Sonnet 5</span>
+          <span class="pointer-events-none absolute right-3 top-1/2 inline-block -translate-y-1/2 text-caret transition-transform group-aria-[expanded=true]:rotate-180" aria-hidden="true">▼</span>
+        </button>
+        <div class="absolute left-0 right-0 top-full z-30 -mt-px overflow-hidden rounded-b-[10px] border border-t-0 border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-mobile-translation-menu hidden>
+                                              <a
+              class="flex min-h-[60px] items-center justify-center border-t border-line px-5 py-3 text-center text-sm leading-tight text-ink no-underline bg-[#f6f6f6] dark:bg-[rgba(255,255,255,0.03)] hover:bg-[#fcfcfc] dark:hover:bg-[rgba(255,255,255,0.08)]"
+              href="/en/chinese_canon/da/da7.html"
+              title="English — Dharma Pearls"
+            ><span class="block w-full truncate">English — Dharma Pearls</span></a>
+                  </div>
+      </div>
+        <article
+      class="mt-5 flex flex-1 flex-col rounded-none border-0 bg-surface px-5 pt-5 pb-5 shadow-none md:mt-0 md:rounded-[2px] md:border md:border-surface md:px-[30px] md:pt-[26px] md:pb-[30px] md:shadow-card"
+    >
+      <header class="mb-5">
+        <a class="text-sm text-accent no-underline hover:underline dark:text-[#c784ff]" href="/chinese_canon/da.html">Dīrgha Āgama</a>
+                <div class="sutta-breadcrumbs hidden">Dīrgha Āgama · DĀ 7 — Падашва</div>
+        <h1 class="m-0 mt-2 text-[length:calc(20px*var(--content-scale))] font-normal leading-[1.4] text-ink md:text-[length:calc(25px*var(--content-scale))]">
+          DĀ 7 — Падашва        </h1>
+                  <p class="m-0 mt-2 text-[length:calc(13px*var(--content-scale))] leading-[1.4] text-ink-muted">
+            Перевод: Anthropic Claude Sonnet 5          </p>
+                      </header>
+
+      <div class="dharmapearls-content flex-1 text-[length:calc(16px*var(--content-scale))] leading-[1.5] text-ink">
+                  <h1><a href="/chinese_canon/da.html">Диргха-агама</a></h1>
+<h2><a href="/chinese_canon/da.html">Часть II</a></h2>
+<h3>7. Падашва</h3>
+<p id="p1">1. Однажды<a id="ref1" href="#n1">[1]</a> Каумара Кашьяпа<a id="ref2" href="#n2">[2]</a> отправился с пятью сотнями монахов в Кошалу. Они добрались до брахманского города Шветика. Каумара Кашьяпа остановился в роще розового дерева к северу от города.</p>
+<h4>Ложные воззрения брахмана Падашвы</h4>
+<p id="p2">2. В Шветике жил брахман по имени Падашва.<a id="ref3" href="#n3">[3]</a> Город был обилен и счастлив, народ многочислен, а деревья росли там в изобилии. Царь Прасенаджит пожаловал этот город брахману Падашве как брахманский надел. Этот брахман Падашва постоянно держался превратных воззрений, говоря людям: «Нет иного мира, нет перерождения и нет плодов добрых и дурных деяний».</p>
+<p id="p3">3. Когда жители Шветики услышали, что Каумара Кашьяпа прибыл с пятьюстами монахами из Кошалы в ближнюю рощу розового дерева, они стали говорить друг другу: «Этот Каумара Кашьяпа весьма прославлен. Он — старший, что стал архатом. Он широко учён, разумен и мудр. Он красноречив, сообразно случаю, и искусен в ведении бесед. Не пойти ли нам теперь повидать его?»</p>
+<p id="p4">4. Горожане ежедневно приходили к Кашьяпе. В то время Падашва находился в своей высокой башне. Он увидел толпы горожан, что шли друг за другом, но не знал, куда они направляются. Он спросил своих зонтоносцев: «Почему эти толпы людей идут друг за другом?»</p>
+<p id="p5">5. Его слуги ответили: «Мы слышали, что Каумара Кашьяпа прибыл с пятьюстами монахами из Кошалы в ближнюю рощу розового дерева. Мы также слышали, что он весьма прославлен. Он — старший, что стал архатом. Он широко учён, разумен и мудр. Он красноречив, сообразно случаю, и искусен в ведении бесед. Те люди, что толпами идут друг за другом, направляются повидать Кашьяпу».</p>
+<p id="p6">6. Тогда брахман Падашва отдал слуге такой приказ: «Скорее, пойди и скажи этим людям: ‚Подождите немного! Мы все пойдём к нему вместе!‘ Почему? Эти люди глупы, а он обманывает мир. Он говорит, что есть иной мир, утверждает, что есть перерождение, и говорит, что есть плоды добрых и дурных деяний. На самом же деле нет ни иного мира, ни перерождения, ни плодов добрых и дурных деяний».</p>
+<p id="p7">7. Приняв это наставление, слуга пошёл и сказал жителям Шветики: «Брахман говорит: ‚Подождите немного! Мы все пойдём к нему вместе!‘»</p>
+<p>«Горожане ответили: „Хорошо, хорошо! Если он пойдёт, мы пойдём вместе с ним!“»</p>
+<p>«Слуга поспешно вернулся и сказал: „Люди ждут, чтобы пойти вместе с тобой“».</p>
+<p id="p8">8. Брахман спустился со своей высокой башни и велел слуге приготовить коней. Затем он вместе с горожанами, что окружали его спереди и сзади, отправился в рощу розового дерева. Прибыв туда, он сошёл с колесницы и пешком приблизился к Кашьяпе. Обменявшись приветствиями, он сел в стороне. Некоторые из брахманов и домохозяев города почтили Кашьяпу и сели. Некоторые обменялись с ним приветствиями и сели. Некоторые назвали ему свои имена и сели. Некоторые поклонились ему и сели. Некоторые сели молча.</p>
+<h4>Притча о солнце и луне</h4>
+<p id="p9">9. Тогда брахман Падашва сказал Каумаре Кашьяпе: «Если у тебя есть время, я хотел бы задать вопрос. Можно?»</p>
+<p>«Кашьяпа ответил: „Я выслушаю любые твои вопросы и разъясню их“».</p>
+<p id="p10">10. Брахман спросил: «Я придерживаюсь того взгляда, что нет иного мира, нет перерождения и нет плодов проступков и заслуг. Каков твой взгляд на это?»</p>
+<p id="p11">11. Кашьяпа ответил: «Я задам тебе вопрос. Скажи мне, что ты думаешь. Скажи, солнце и луна принадлежат этому миру или иному? Они люди или боги?»</p>
+<p>«Брахман ответил: „Солнце и луна принадлежат иному миру, а не этому. Они — боги, а не люди“».</p>
+<p id="p12">12. Кашьяпа сказал: «Так мы знаем, что несомненно существует иной мир, существует перерождение и существуют добрые и дурные плоды деяний».</p>
+<p>«Брахман сказал: „Хотя ты и говоришь, что есть иной мир, перерождение и добрые и дурные плоды деяний, ничего из этого не существует в моём образе мыслей“».</p>
+<h4>Притча о воре</h4>
+<p id="p13">13. Кашьяпа спросил: «Есть ли какие-либо причины и условия, по которым мы можем знать, что нет иного мира, нет перерождения и нет добрых и дурных плодов деяний?»</p>
+<p>«Брахман ответил: „Есть“».</p>
+<p id="p14">14. Кашьяпа спросил: «Какова причина или условие, по которым ты говоришь: ‚Нет иного мира‘?»</p>
+<p id="p15">15. Брахман сказал: «Кашьяпа, у меня был родственник, что тяжело заболел. Я пришёл к нему и сказал: ‚Отшельники и брахманы держатся каждый своих превратных воззрений. Они говорят, что тот, кто убивает живых существ, крадёт, вступает в недозволенные связи, говорит двулично, употребляет грубые слова, лжёт или говорит легкомысленно, а также алчен, завистлив и держится ложных воззрений, попадёт в ад, когда его тело разрушится и жизнь окончится. С самого начала я в это не верил. Почему? Прежде всего, я никогда не видел, чтобы кто-то вернулся после смерти, хотя утверждается, что он куда-то попадает. Если бы кто-нибудь вернулся и сказал, куда он попал, я бы, конечно, поверил этому. Ныне ты — мой друг, что совершил десять дурных деяний. Если это так, как говорят отшельники, ты непременно попадёшь в великий ад, когда умрёшь. Мы доверяем друг другу, и я, конечно, приму то, что услышу от тебя. Если ты обнаружишь, что ад существует, ты должен вернуться и рассказать мне об этом. Тогда я поверю‘.</p>
+<p>«Кашьяпа, мой родственник не вернулся ко мне с тех пор, как его жизнь окончилась. Он был моим другом; он бы не солгал мне. Он согласился, но не вернулся. Стало быть, загробной жизни нет».</p>
+<p id="p16">16. Кашьяпа ответил: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Однажды был вор, что постоянно строил козни и нарушал царские законы. Его выследили, и чиновник привёл его к царю. ‚Этот человек — вор. Пусть царь рассудит его‘.</p>
+<p id="p17">17. Царь приказал своим людям: ‚Свяжите этого человека и объявите о его преступлении по всему городу. После этого вынесите его из города и казните‘.</p>
+<p id="p18">18. Вор обратился к своим стражам мягким голосом: ‚Позвольте мне пойти повидать своих родственников и проститься с ними. Я вернусь, когда закончу‘. Как ты думаешь, брахман? Отпустили бы его стражи?»</p>
+<p>«Брахман ответил: „Не смогли бы!“»</p>
+<p id="p19">19. Кашьяпа продолжил: «Такой же человек существует и в нынешнем мире, но его не отпускают. Как же твой друг, что совершил десять злых деяний, мог бы вернуться? Он непременно попал в ад, когда его тело разрушилось и жизнь окончилась. У демонов ада нет милосердия. Они бесчеловечны, а умершие рождаются в ином мире. Предположим, кто-нибудь обратился бы к тем адским демонам с мягкими словами: ‚Прошу, отпустите меня ненадолго вернуться в мир и проститься с моим другом. Я вернусь, когда закончу‘. Отпустили бы они его?»</p>
+<p>«Брахман ответил: „Не смогли бы!“»</p>
+<p>20. Кашьяпа также сказал: «Так у нас достаточно оснований знать [что есть иной мир]. Как можешь ты держаться этого заблуждения и порождать в себе эти ложные воззрения?»</p>
+<p id="p20">«Брахман сказал: „Хотя ты и рассказал эту повесть, чтобы показать, что есть иной мир, я всё же говорю, что его нет“».</p>
+<h4>Притча о нужнике</h4>
+<p id="p21">21. Кашьяпа снова спросил: «Есть ли у тебя какая-то иная причина знать, что нет иного мира?»</p>
+<p>«Брахман ответил: „У меня есть иная причина, по которой я знаю, что нет иного мира“».</p>
+<p id="p22">22. Кашьяпа спросил: «Какова причина, по которой ты это знаешь?»</p>
+<p id="p23">23. Он ответил: «Кашьяпа, у меня был родственник, что тяжело заболел. Я пришёл к нему и сказал: ‚Отшельники и брахманы держатся каждый своих превратных воззрений. Они говорят, что тот, кто не убивает живых существ, не крадёт и не вступает в недозволенные связи, не говорит двулично, не употребляет грубых слов, не лжёт и не говорит легкомысленно, а также не алчен, не завистлив и не держится ложных воззрений, родится на небесах, когда его тело разрушится и жизнь окончится. С самого начала я в это не верил. Почему? Прежде всего, я никогда не видел, чтобы кто-то вернулся после смерти, хотя утверждается, что он куда-то попадает. Если бы кто-нибудь вернулся и сказал, куда он попал, я бы, конечно, поверил этому. Ныне ты — мой друг, что совершил десять добрых деяний. Если это так, как говорят отшельники, ты непременно родишься на небесах, когда твоя жизнь окончится. Мы доверяем друг другу, и я, конечно, приму то, что услышу от тебя. Если ты обнаружишь, что небеса существуют, ты должен вернуться и рассказать мне об этом. Тогда я поверю‘.</p>
+<p>«Кашьяпа, мой родственник не вернулся ко мне с тех пор, как его жизнь окончилась. Он был моим другом; он бы не солгал мне. Он согласился, но не вернулся. Стало быть, иного мира нет».</p>
+<p id="p24">24. Кашьяпа также сказал: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Однажды один человек упал в глубокий нужник и погрузился в него по самую голову. Царь приказал своим людям: ‚Вытащите этого человека. Очистите его бамбуком, трижды отскребите его тело и омойте его бобами и золой. Когда его отмоют, умастите его благовониями и искупайте его тело. Затем осыпьте его тонким благовонным порошком и велите цирюльнику остричь и вымыть ему волосы‘.</p>
+<p id="p25">25. Он также велел своим слугам отвести его в купальню. Они сделали это трижды, омывая его благоуханной водой и осыпая благовонным порошком. Они облачили его в прекрасные одежды и накормили роскошной трапезой, позволив есть то, что ему нравилось. Затем его отвели в высокий зал, где он мог наслаждаться пятью удовольствиями. Вернулся бы тот человек в нужник?»</p>
+<p>«Он ответил: „Не смог бы! Это столь отвратительное место — как он мог бы туда вернуться?“»</p>
+<p id="p26">26. Кашьяпа сказал: «Так же и боги. Земли Джамбудвипы загрязнены и нечисты для тех, кто на небесах. Они чуют дурной запах людей за сто с лишним йоджан, как ужасный нужник. Брахман, тот твой родственник, что исполнил десять добрых деяний, несомненно родился на небесах, где наслаждается пятью удовольствиями. Его счастье непревзойдённо. Вернулся бы он в этот нужник Джамбудвипы?»</p>
+<p>«Он ответил: „Нет“».</p>
+<p id="p27">27. Кашьяпа также сказал: «Так у нас достаточно оснований знать [что есть иной мир]. Как можешь ты держаться этого заблуждения и порождать в себе эти ложные воззрения?»</p>
+<p>«Брахман сказал: „Хотя ты и рассказал эту повесть, чтобы показать, что есть иной мир, я всё же говорю, что его нет“».</p>
+    <h4>Срок жизни богов</h4>
+<p id="p28">28. Кашьяпа вновь спросил: «Есть ли у тебя ещё какая-то иная причина знать, что нет иного мира?»</p>
+<p>«Брахман ответил: „У меня есть иная причина, по которой я знаю, что нет иного мира“».</p>
+<p id="p29">29. Кашьяпа спросил: «Какова причина, по которой ты это знаешь?»</p>
+<p id="p30">30. Он ответил: «Кашьяпа, у меня был родственник, что тяжело заболел. Я пришёл к нему и сказал: ‚Отшельники и брахманы держатся каждый своих превратных воззрений. Они говорят, что тот, кто не убивает живых существ, не крадёт, не вступает в недозволенные связи, не лжёт и не пьёт хмельного, родится на небесах, когда его тело разрушится и жизнь окончится. Я и в это тоже не верю. Почему? Прежде всего, я никогда не видел, чтобы кто-то вернулся после смерти, хотя утверждается, что он куда-то попадает. Если бы кто-нибудь вернулся и сказал, куда он попал, я бы, конечно, поверил этому. Ныне ты — мой друг, что исполнил пять обетов… ты непременно родишься на небесах, когда твоё тело разрушится и жизнь окончится. Мы доверяем друг другу, и я, конечно, приму то, что услышу от тебя. Если ты обнаружишь, что небеса существуют, ты должен вернуться и рассказать мне об этом. Тогда я поверю‘.</p>
+<p>«Кашьяпа, мой родственник не вернулся с тех пор, как его жизнь окончилась. Он был моим другом; он бы не солгал мне. Он согласился, но не вернулся. Стало быть, иного мира нет».</p>
+<p id="p31">31. Кашьяпа ответил: «Сто лет здесь равны ровно одному дню и одной ночи на небе Траястримша. Тридцать таких дней составляют месяц, а двенадцать месяцев составляют год там. Так те боги живут тысячи лет. Как ты думаешь, брахман? Тот твой родственник, что исполнил пять обетов, несомненно родился на небе Траястримша, когда его тело разрушилось и жизнь окончилась. Родившись там, он подумал бы: ‚Прошло лишь два или три дня с тех пор, как я здесь родился. Повеселюсь-ка я и развлекусь. А после спущусь и расскажу ему об этом‘. Увидел бы он тебя?»</p>
+<p>«Он ответил: „Нет. К тому времени я давно бы уже умер. Как мы могли бы вновь увидеться?“»</p>
+<h4>Притча о слепорождённом</h4>
+<p id="p32">32. Брахман сказал: «Но я в это не верю. Кто пришёл и сказал тебе, что есть небо Траястримша и что сроки жизни там таковы?»</p>
+<p id="p33">33. Кашьяпа сказал: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Однажды жил человек, слепой от рождения. Он не знал пяти цветов — синего, жёлтого, красного и белого, — равно как и грубого, тонкого, длинного и короткого. Он никогда не видел солнца, луны, звёзд, холмов или долин. Кто-то спросил его: ‚Что такое пять цветов — синий, жёлтый, красный и белый?‘</p>
+<p id="p34">34. Слепой ответил: ‚Нет никаких пяти цветов‘. То же было и с грубым, тонким, длинным и коротким, или с луной, солнцем, звёздами, холмами и долинами. Слепой говорил, что их не существует. Как ты думаешь, брахман? Правильно ли ответил тот слепец?»</p>
+<p>«Он ответил: „Нет“».</p>
+<p id="p35">35. «Почему? В мире, очевидно, есть пять цветов — синий, жёлтый, красный или белый, — есть грубое, тонкое, длинное и короткое, есть солнце, луна, звёзды, холмы и долины, но тот человек говорил, что их не существует. Брахман, ты таков же. Срок жизни богов Траястримши реален и не ложен. Ты сам не был этому свидетелем, потому и говоришь, что этого не существует».</p>
+<p>«Брахман сказал: „Хотя ты и говоришь, что это существует, я всё же не верю в это“».</p>
+<h4>Притча о сновидении</h4>
+<p id="p36">36. Тогда Кашьяпа сказал: «Есть ли у тебя ещё какая-то иная причина знать, что этого не существует?»</p>
+<p id="p37">37. Он ответил: «Кашьяпа, в городе, что был мне пожалован, жил вор. Его выследили, и чиновник привёл его ко мне. Он сказал: ‚Этот человек — вор. Прошу, рассуди его‘.</p>
+<p id="p38">38. Я ответил: ‚Свяжите его и поместите в большой котёл. Накройте его кожей и толстым слоем глины, чтобы запечатать его внутри. Не дайте ему сбежать. Пусть люди окружат котёл и разожгут под ним огонь‘.</p>
+<p id="p39">39. В то время я хотел увидеть, как его дух покинет тот сосуд. Я велел своим слугам окружить котёл и наблюдать за ним. Никто из них не увидел, как его дух покинул то место. Также, когда мы открыли котёл и заглянули внутрь, мы не увидели, чтобы его дух где-либо возродился. По этой причине я знаю, что иного мира нет».</p>
+<p id="p40">40. Кашьяпа сказал: «Теперь я задам тебе вопрос. Если сможешь ответить, скажи мне, что ты думаешь. Брахман, когда ты спишь в своей высокой башне, снятся ли тебе когда-нибудь горы, леса, реки, парки, озёра, города или улицы?»</p>
+<p>«Он ответил: „Да, они мне снятся“».</p>
+<p id="p41">41. Он вновь спросил: «Брахман, когда тебе это снится, охраняют ли тебя в это время твои домочадцы и слуги?»</p>
+<p>«Он ответил: „Они меня охраняют“».</p>
+<p id="p42">42. Он спросил ещё: «Брахман, видят ли твои слуги, как твой дух покидает тебя и возвращается?»</p>
+<p>«Он ответил: „Они этого не видят“».</p>
+<p id="p43">43. Кашьяпа сказал: «Вот видишь: твой дух покидает тебя и возвращается, пока ты жив, но этого не увидеть. Разве было бы иначе с тем, кто умирает? Невозможно воочию наблюдать это глазами, глядя на живое существо.</p>
+<p id="p44">44. Брахман, предположим, есть монах, что не поддаётся сонливости от начала и до конца ночи. Он усерден и не нерадив, сосредоточен на составляющих Пути. Силой сосредоточения он взращивает чистое небесное око. Силой небесного ока он наблюдает живых существ. Они умирают здесь и рождаются там, и они рождаются здесь оттуда. Их сроки жизни долги и коротки, а облики их прекрасны или безобразны. Согласно плодам своих деяний, они попадают в добрые и дурные уделы. Он в совершенстве это знает и видит. Ты не можешь узреть добрые и дурные уделы живых существ загрязнённым плотским оком, потому и говоришь, что их не существует. Брахман, так мы знаем, что несомненно существует иной мир».</p>
+<p>«Брахман сказал: „Хотя ты и рассказал эту повесть, показывающую, что есть иной мир, я всё же считаю, что его нет“».</p>
+<h4>Притча о поклоняющемся огню</h4>
+<p id="p45">45. Кашьяпа вновь спросил: «Есть ли у тебя ещё какая-то иная причина знать, что нет иного мира?»</p>
+<p>«Брахман сказал: „Есть“».</p>
+<p id="p46">46. Кашьяпа сказал: «Какова причина, по которой ты это знаешь?»</p>
+<p id="p47">47. Брахман сказал: «В городе, что был мне пожалован, жил вор. Его выследили, и чиновник привёл его ко мне. Он сказал: ‚Этот человек — вор. Прошу, рассуди его‘.</p>
+<p id="p48">48. Я приказал своим людям: ‚Свяжите его, сдерите с него кожу и поищите его дух‘. Никто из них его не увидел. Я велел им срезать его плоть и поискать его дух. И вновь они его не увидели. Я велел им рассечь его жилы, артерии и кости, ища его дух. И вновь они его не увидели. Я велел им раздробить его кости, извлечь костный мозг и поискать его дух в мозге. И вновь они его не увидели. Кашьяпа, по этой причине я знаю, что иного мира нет».</p>
+<p id="p49">49. Кашьяпа вновь сказал: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Давным-давно была страна, что подверглась разорению. Она ещё не оправилась от разрухи, когда через те земли проходил торговый караван из пятисот повозок.</p>
+<p id="p50">50. Там был странник, что поклонялся духу огня и всегда останавливался в роще, где те торговцы делали привал на ночь. Когда наутро они уходили, странник, поклонявшийся огню, подумал: ‚Быть может, те торговцы, что останавливались в этой роще, оставили после себя, уходя, какие-нибудь остатки. Пойду-ка я посмотрю‘. Он поспешно отправился туда, где они останавливались, но не увидел ничего, кроме годовалого ребёнка, что сидел там в одиночестве.</p>
+<p id="p51">51. Тогда странник подумал: ‚Как я могу вынести, что это дитя погибнет у меня на глазах? Лучше мне взять ребёнка в свой дом и вырастить его!‘ Странник поднял ребёнка и отнёс его в свою обитель, где вырастил его. Ребёнок вырос и стал старше десяти лет.</p>
+<p id="p52">52. Тогда странник по некоей незначительной надобности собрался отправиться к общине. Он сказал ребёнку: ‚Я отлучусь по небольшому делу. Хорошо береги этот огонь. Смотри, не дай ему погаснуть! Если огонь погаснет, потри дерево о дерево, чтобы вновь его разжечь‘. Дав ребёнку эти наставления, он покинул рощу и отправился в путь.</p>
+<p id="p53">53. После того как странник ушёл, ребёнок проводил время в играх и нечасто проверял огонь, отчего огонь погас. Когда ребёнок вернулся с игр, он увидел, что огонь погас, и ему стало ужасно. Он сказал: ‚Я совершил ошибку. Когда отец уходил, он наказал мне беречь этот огонь и не дать ему погаснуть. Но я провёл время в играх, и теперь огонь потух. Что же мне делать?‘</p>
+<p id="p54">54. Ребёнок дул на золу, ища огонь, но не мог его найти. Он колол дрова, ища огонь, но вновь не смог его найти. Он также молол наколотые дрова, толча их в ступе в поисках огня, но всё равно не смог его найти.</p>
+<p id="p55">55. Странник вернулся от общины и прибыл в свою рощу. Он спросил ребёнка: ‚Разве я не наказывал тебе прежде беречь огонь и не дать ему погаснуть?‘</p>
+<p>«Ребёнок ответил: „Я ушёл играть и не проводил день, присматривая за ним. Теперь огонь погас“».</p>
+<p>56. Он вновь спросил ребёнка: «Каким способом ты искал огонь?»</p>
+<p id="p56">«Ребёнок ответил: „Огонь выходит из дерева, поэтому я колол дерево в поисках огня, но не нашёл его. Я также измельчал его и толок в ступе, ища огонь. Так я тоже ничего не нашёл“».</p>
+<p id="p57">57. Тогда странник потёр дерево о дерево, чтобы высечь огонь, и поджёг груду хвороста. Он сказал ребёнку: ‚Тот, кто ищет огонь, должен пользоваться этим способом. Не следует колоть или молоть дерево, чтобы найти его‘.</p>
+<p id="p58">58. Брахман, ты, подобно этому, не воспользовался верным способом, сдирая кожу с мёртвого человека в поисках его духа. Это не то, что можно увидеть непосредственно глазами, исследуя живых существ.</p>
+<p id="p59">59. Брахман, предположим, есть монах, что не поддаётся сонливости от начала и до конца ночи. Он усерден и не нерадив, сосредоточен на составляющих Пути. Силой сосредоточения он взращивает чистое небесное око, и силой небесного ока он наблюдает живых существ. Они умирают здесь и рождаются там, и они рождаются здесь оттуда. Их сроки жизни долги и коротки, а облики их прекрасны или безобразны. Согласно плодам своих деяний, у них добрые и дурные уделы. Он в совершенстве это знает и видит. Ты не можешь узреть добрые и дурные уделы живых существ загрязнённым плотским оком, потому и говоришь, что их не существует. Брахман, так мы знаем, что несомненно существует иной мир».</p>
+<p>«Брахман сказал: „Хотя ты и рассказал эту повесть, показывающую, что есть иной мир, я всё же считаю, что его нет“».</p>
+    <h4>Притча о железе</h4>
+<p id="p60">60. Кашьяпа вновь сказал: «Есть ли у тебя ещё какая-то иная причина знать, что нет иного мира?»</p>
+<p>«Брахман сказал: „Есть“».</p>
+<p id="p61">61. Кашьяпа спросил: «Какова причина, по которой ты это знаешь?»</p>
+<p id="p62">62. Брахман сказал: «В городе, что был мне пожалован, жил вор. Его выследили, и чиновник привёл его ко мне. Он сказал: ‚Этот человек — вор. Прошу, рассуди его‘.</p>
+<p id="p63">63. Я приказал своим людям: ‚Возьмите этого человека и взвесьте его на весах‘. Мои слуги приняли это повеление и взвесили его на весах.</p>
+<p id="p64">64. Тогда я сказал своим слугам: ‚Возьмите этого человека и умертвите его без насилия, так, чтобы не повредить его кожу и плоть‘. Они приняли моё наставление и умертвили его без насилия.</p>
+<p id="p65">65. Вновь я приказал своим слугам: ‚Взвесьте его ещё раз‘. Тогда они взвесили его тело.</p>
+<p id="p66">66. Кашьяпа, когда они впервые взвешивали того человека, его дух ещё присутствовал. Он выглядел расслабленным, всё ещё мог говорить, и тело его было легче. После того как он умер, его взвесили вновь, когда дух его уже отошёл. У него не было выражения, он не мог говорить, и тело его стало тяжелее. По этой причине я знаю, что иного мира нет».</p>
+<p>67. Кашьяпа сказал брахману: «Теперь я задам тебе вопрос, и ты скажешь мне, что думаешь. Предположим, кто-то взвешивает железо. Сперва он взвешивает его холодным, а затем взвешивает его горячим. Когда оно будет сиять цветом, будет гибким и легче? А когда оно не будет сиять, будет твёрдым и тяжелее?»</p>
+<p id="p67">«Брахман сказал: „Горячее железо имеет цвет и мягко и легко. Холодное железо не имеет цвета и твёрдо и тяжело“».</p>
+<p id="p68">68. Кашьяпа сказал: «Так же и человек. Пока он жив, у него есть цвет, и он мягок и лёгок. Когда он мёртв, у него нет цвета, и он твёрд и тяжёл. Так мы знаем, что несомненно существует иной мир».</p>
+<p>«Брахман сказал: „Хотя ты и использовал это уподобление, чтобы показать, что есть иной мир, я всё же считаю, что его несомненно нет“».</p>
+<h4>Притча о трубящем в раковину</h4>
+<p id="p69">69. Кашьяпа сказал: «Есть ли у тебя ещё какая-то иная причина знать, что нет иного мира?»</p>
+<p id="p70">70. Брахман ответил: «У меня был друг, что тяжело заболел. Я пришёл к нему и подумал [про себя]: ‚Этому больному помогло бы, если повернуть его на правый бок‘. Он смотрел, поворачивался и говорил как обычно. Я попробовал повернуть его на левый бок, а затем вернул обратно. Он поворачивался, смотрел и говорил как обычно. Вскоре его жизнь окончилась. Вновь я велел кому-то помочь повернуть его на левый и правый бок, а затем мы вернули его обратно. Он больше не поворачивался, не смотрел и не говорил. По этой причине я знаю, что иного мира несомненно нет».</p>
+<p id="p71">71. Кашьяпа вновь сказал: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Однажды была страна, где прежде никогда не слышали звука морской раковины. В ту страну прибыл человек, искусный в игре на раковине-трубе. Мужчины и женщины города были потрясены, услышав этот звук. Они пришли и спросили его: ‚Что это за звук, столь печальный и чистый?‘</p>
+<p>«Человек указал на свою раковину и сказал: „Этот звук издаёт вот это“».</p>
+<p id="p72">72. Те селяне коснулись раковины руками и сказали: ‚Ты можешь издать этот звук! Ты можешь издать этот звук!‘</p>
+<p>«Раковина не издала звука. Тогда её владелец поднял её, трижды подул в неё и отложил».</p>
+<p id="p73">73. Селяне тогда сказали: ‚Не сила самой раковины издала прежде этот прекрасный звук. Это его рука, уста и дыхание, дувшие сквозь неё. Тогда-то она и издаёт этот звук!‘</p>
+<p id="p74">74. Люди таковы же. Пока они живы, наделены сознанием и дышат, они могут поворачиваться, смотреть и говорить. Без жизни, без сознания и без дыхания они не поворачиваются, не смотрят и не говорят».</p>
+<p id="p75">75. Он также сказал брахману: «Теперь тебе следовало бы оставить это пагубное воззрение. Не умножай своё собственное страдание на долгое время».</p>
+<h4>Притча о мудреце и глупце</h4>
+<p id="p76">76. Брахман сказал: «Я не собираюсь его оставлять. Почему? Я говорю так уже долгое время и утвердился в этом. Как мне это оставить?»</p>
+<p id="p77">77. Кашьяпа вновь сказал: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Давным-давно была страна, что граничила с варварами. В той стране жили два человека. Один был мудр, а другой глуп. Они сказали друг другу: ‚Я твой друг. Я уйду с тобой из города искать богатство‘.</p>
+<p id="p78">78. Вскоре они вместе пришли в пустую деревню. Увидев, что на той земле растёт конопля, мудрец сказал глупцу: ‚Давай соберём её и отнесём домой‘.</p>
+<p id="p79">79. Каждый из них взял по вязанке. Пройдя следующую деревню впереди, они увидели там конопляную нить. Мудрец сказал: ‚Конопляная нить — готовое изделие, лёгкое и тонкое. Её стоит взять‘.</p>
+<p>«Другой человек сказал: „Я уже связал и закрепил эту коноплю. Не могу её бросить“».</p>
+<p id="p80">80. Тогда мудрец взял конопляную нить и добавил её к своей ноше. Продолжив путь, они увидели конопляную ткань. Мудрец сказал: ‚Конопляная ткань — готовое изделие, лёгкое и тонкое. Её стоит взять‘.</p>
+<p>«Другой человек сказал: „Я уже связал и закрепил эту коноплю. Не могу её бросить“».</p>
+<p id="p81">81. Мудрец отбросил конопляную нить и понёс конопляную ткань сам. Продолжив путь, они увидели хлопок. Мудрец сказал: ‚Хлопок ценен, лёгок и тонок. Его стоит взять‘.</p>
+<p>«Другой человек сказал: „Я уже связал и закрепил эту коноплю и пронёс её долгий путь по дороге. Не могу её бросить“».</p>
+<p id="p82">82. Тогда мудрец отбросил конопляную ткань и взял хлопок. Так, продолжая путь, они увидели хлопковую нить… Затем они увидели белый муслин… они увидели мельхиор… они увидели серебро… они увидели золото. Мудрец сказал: ‚Если бы не было золота, нам следовало бы взять серебро. Если бы не было серебра, нам следовало бы взять мельхиор… Если бы не было конопляной нити, нам следовало бы взять просто коноплю. Теперь же в этой деревне много золота и много превосходных сокровищ. Тебе подобало бы бросить свою коноплю. Я возьму серебро, а ты возьми золото. Мы сами отнесём это домой‘.</p>
+<p>«Тот другой человек сказал: „Я уже связал и закрепил эту коноплю и пронёс её долгий путь по дороге. Не могу её бросить. Если хочешь взять эти вещи, поступай как знаешь“».</p>
+<p id="p83">83. Мудрец отбросил серебро и взял золото, отнеся ношу домой к своей семье. Когда его родичи увидели его издалека с сокровищем золота, они возрадовались и стали смотреть на него с почтением. Видя, что родичи смотрят на него с почтением, принёсший золото человек тоже возрадовался. Невежественный же человек, вернувшись домой, нёс лишь коноплю. Его родичи не были рады и не гордились им, увидев его. Конопля, что он нёс, лишь удвоила его горе и заботы.</p>
+<p id="p84">84. Брахман, тебе подобало бы теперь оставить это пагубное воззрение. Не умножай своё собственное страдание надолго, подобно тому человеку, что нёс коноплю. Привязанный к своей упрямой мысли, он не взял сокровища золота, и конопля, что он принёс домой, стала для него бесполезной ношей. Его родичи не были рады, и он долго оставался бедным. Это лишь умножило его собственное горе и страдание».</p>
+<h4>Притча о двух караванах</h4>
+<p id="p85">85. Брахман сказал: «Я никогда не оставлю этого воззрения. Почему? Я учил этому воззрению многих людей, и многие извлекли из этого пользу. Цари в четырёх сторонах света слышали моё имя, и все они знают, что я — философ-нигилист».</p>
+<p id="p86">86. Кашьяпа вновь сказал: «Мудрые объясняют вещи притчами. Теперь я разъясню это тебе повестью. Давным-давно была далёкая страна, что граничила с землёй варваров. В то время там жил торговец, что проходил через ту землю с караваном в тысячу повозок. У них не хватало воды, зерна, дров и травы. Хозяин каравана подумал: ‚Мы взяли с собой немало, но нашей воды, зерна, дров и травы недостаточно, чтобы нас обеспечить. Быть может, лучше разделиться на две группы, и пусть одна группа выступит первой‘.</p>
+<p id="p87">87. Предводитель той первой группы увидел человека огромного роста. Глаза его были красны, лицо черно, а тело покрыто грязью. Увидев его издалека, предводитель окликнул: ‚Откуда ты пришёл?‘</p>
+<p>«Человек ответил: „Я пришёл из деревни, что впереди“».</p>
+<p id="p88">88. Предводитель спросил его: ‚Много ли воды, зерна, дров и травы там, откуда ты пришёл?‘</p>
+<p>«Человек ответил: „Вода, зерно, дрова и трава изобильны там, откуда я пришёл. По дороге прошёл ливень. В том месте много воды, и дров и травы там в достатке“».</p>
+<p id="p89">89. Он также сказал хозяину каравана: ‚Если ваши повозки везут зерно и траву, вы могли бы всё это выбросить. В том месте всего в достатке, так что вам не нужно обременять свои повозки этим‘.</p>
+<p id="p90">90. Предводитель торговцев сказал своим товарищам-торговцам: ‚Впереди нас есть человек, чьи глаза красны, лицо черно, а тело покрыто грязью. Мы спросили его издалека: «Откуда ты пришёл?»</p>
+<p>«Он ответил нам: „Я пришёл из деревни, что впереди“».</p>
+<p id="p91">91. Мы тотчас же спросили: «Изобильны ли вода, зерно, дрова и трава там, откуда ты пришёл?»</p>
+<p>«Он ответил нам: „Там огромное изобилие“».</p>
+<p id="p92">92. Он также сказал нам: «По дороге, пока я шёл, прошёл ливень. В том месте много воды, и дров и травы там в достатке».</p>
+<p>«Он снова сказал нам: „Господа, если у вас на повозках есть зерно и трава, вы можете всё это выбросить. В том месте всего в достатке, так что вам не нужно обременять свои повозки этим“».</p>
+<p id="p93">93. Каждому из вас следует выбросить своё зерно и траву. Мы продвинемся быстрее с облегчёнными повозками‘. Они поступили так, как он сказал, каждый выбросив своё зерно и траву, и продвинулись быстрее с облегчёнными повозками.</p>
+<p id="p94">94. Так они не увидели ни воды, ни травы в первый день, не увидели их и на второй день… на третий день… на седьмой день. Тогда торговцы нашли свой конец в пустоши и были съедены демоном.</p>
+<p id="p95">95. Группа, что следовала позади них, пошла по той же дороге, и предводитель торговцев увидел впереди человека с красными глазами, чёрным лицом и телом, покрытым грязью. Он спросил его издалека: ‚Откуда ты пришёл?‘</p>
+<p>«Человек ответил: „Я пришёл из деревни, что впереди“».</p>
+<p id="p96">96. Он также спросил: ‚Изобильны ли вода, зерно, дрова и трава там, откуда ты пришёл?‘</p>
+<p>«Тот человек ответил: „Там огромное изобилие“».</p>
+<p id="p97">97. Он также сказал предводителю торговцев: ‚По дороге, пока я шёл, прошёл ливень. В том месте много воды, и дров и травы там в достатке‘.</p>
+<p>«Он снова сказал предводителю торговцев: „Господа, если у вас на повозках есть зерно и трава, вы можете это выбросить. В том месте всего в достатке, так что вам не нужно обременять свои повозки этим“».</p>
+<p id="p98">98. Предводитель торговцев сказал своим товарищам-торговцам: ‚Впереди нас есть человек… [Он сказал:] «Господа, если у вас на повозках есть зерно и трава, вы можете всё это выбросить. В том месте всего в достатке, так что вам не нужно обременять свои повозки этим»‘.</p>
+<p id="p99">99. Предводитель торговцев сказал: ‚Берегитесь, не выбрасывайте своё зерно и траву. Мы выбросим их, когда найдём свежие припасы. Почему? Как только мы заменим их свежими припасами, мы сможем пересечь эту пустошь‘.</p>
+<p id="p100">100. Те торговцы продолжили путь с тяжёлыми повозками. Так они не увидели ни воды, ни травы в первый день, не увидели их и на второй день… на третий день… на седьмой день. Всё, что они увидели от людей, съеденных демоном, были их разбросанные кости.</p>
+<p id="p101">101. Брахман, тот красноглазый и черноликий человек был демоном-ракшасой. Те, кто следует твоему учению, будут долго страдать. Они будут подобны той первой группе торговцев, что последовала словам своего предводителя и лишилась жизни из-за недостатка мудрости.</p>
+<p>102. Брахман, есть отшельники и брахманы, что усердны и мудры. Те, кто претворяют в жизнь учения, что они провозглашают, надолго обретают покой. Они подобны той группе торговцев, что следовала за первой. Они избежали беды, потому что были мудры. Брахман, теперь тебе лучше оставить это пагубное воззрение. Не умножай своё собственное страдание надолго».</p>
+    <h4>Притча о носильщике навоза</h4>
+<p id="p103">103. Жрец сказал: «Я никогда не откажусь от этого взгляда. Если кто-то придёт и станет укорять меня за него, это лишь вызовет во мне досаду. Я никогда не откажусь от этого взгляда».</p>
+<p id="p104">104. Кашьяпа же сказал: «Мудрые объясняют вещи притчами. Теперь я объясню это тебе историей. Давным-давно была далёкая страна, что граничила с землёй варваров. Жил там человек, любивший разводить свиней. Он пришёл в другую пустующую деревню и увидел там сухой навоз. И тотчас подумал: „Это место богато навозом, которым можно кормить моих свиней. Теперь я заверну этот сухой навоз в траву и понесу его домой на голове“».</p>
+<p id="p105">105. «Он взял траву, завернул в неё навоз и понёс его так. Пока он шёл по дороге, начался сильный дождь, и навоз размок и потёк вниз, до самых пяток. Люди, видевшие этого человека, говорили: „Ты сошёл с ума! Ты весь в навозе и смердишь им! Даже если дождь прекратится, тебе не следует нести это дальше. И уж тем более не следует нести это, пока идёшь под дождём!“»</p>
+<p id="p106">106. «Тот человек обиделся на эти слова и закричал в ответ: „Вы все глупцы! Вы не знаете, что дома у меня есть свиньи, которых нужно кормить! Если бы вы знали это, вы бы не называли меня глупцом!“»</p>
+<p>107. «Жрец, тебе лучше отказаться от этого пагубного взгляда. Не храни это заблуждение и не подвергай себя долгому страданию. Иначе ты уподобишься тому глупцу, что нёс навоз по дороге и обиделся на насмехавшуюся над ним толпу, говоря, что они ничего не понимают».</p>
+    <h4>Притча о двух жёнах</h4>
+<p id="p108">108. Жрец сказал Кашьяпе: «Если, по вашим словам, тот, кто творит добро, рождается на небесах, то умереть было бы лучше, чем жить. Вам следовало бы перерезать себе горло ножом или умереть каким-то иным способом. Можно, например, связать себе руки и ноги и броситься с высокого обрыва. Но вы жаждете жизни и не можете убить себя, а значит, я знаю, что смерть не лучше рождения».</p>
+<p id="p109">109. Кашьяпа вновь сказал: «Мудрые объясняют вещи притчами. Теперь я объясню это тебе историей. Однажды в этом городе Швейтике жил старый странник ста двадцати лет от роду. У него было две жены. Одна уже имела ребёнка, а другая только что понесла».</p>
+<p id="p110">110. «Вскоре после этого странник умер. Сын старшей жены сказал младшей жене: „Мне следует унаследовать всё богатство, что было у него. Тебе не достанется ничего“».</p>
+<p>«Младшая жена сказала: „Погоди немного, мне нужна доля для моего ещё не рождённого ребёнка. Если я рожу сына, то он унаследует долю богатства. Если я рожу дочь, то ты женишься на ней, и я получу часть его имущества“».</p>
+<p id="p111">111. «Сын трижды учтиво требовал отцовского богатства, и младшая мать отвечала ему так же, как прежде. Сын попытался принудить её, но не преуспел. Тогда младшая мать взяла острый нож и вонзила его себе в живот, чтобы узнать, кого она носит — мальчика или девочку».</p>
+<p id="p112">112. Кашьяпа сказал жрецу: «Та мать убила себя и погубила дитя в своём чреве. Ты, жрец, поступаешь так же. Ты убьёшь себя и убьёшь других вместе с собой. Если подвижник или жрец усерден, взращивает добродетель и совершенствует добродетель заповедей, он долго пребудет в мире. Он принесёт пользу многим людям, и боги и люди обретут покой».</p>
+    <h4>Притча о жонглёрах</h4>
+<p id="p113">113. «Теперь я расскажу тебе последнюю историю, чтобы ты знал, к какому бедствию приводят дурные взгляды. Однажды здесь, в городе Швейтике, было два скомороха. Оба были искусны в жонглировании<a id="ref4" href="#n4">[4]</a>, но один превосходил другого».</p>
+<p id="p114">114. «Тот, что был менее искусен, сказал: „Сегодня отдохнём, а завтра устроим состязание“».</p>
+<p id="p115">115. «Менее искусный жонглёр пошёл домой и взял свои жонглёрские шарики. Он покрыл их ядовитым растением, а затем оставил сохнуть. Утром он принёс эти шарики более искусному жонглёру и сказал: „Давай жонглировать этими“».</p>
+<p id="p116">116. «Тогда они стали жонглировать друг перед другом, но сперва он передал отравленные шарики более искусному жонглёру, говоря: „Пусть лучший жонглёр их проглотит“. Менее искусный жонглёр снова передал ему отравленные шарики, и более искусный жонглёр проглотил их, поймав. Яд разошёлся по всему его телу и вызвал судороги».</p>
+<p id="p117">117. «Тогда менее искусный жонглёр укорил его такими стихами:»</p>
+<ul class="verse"><li>«Я покрыл шарики ядом,<br>
+Но ты проглотил их и не заметил.<br>
+Когда менее искусный исполнитель глотает его,<br>
+Ему требуется время, чтобы это осознать»</li></ul>
+    <h4>Падашва принимает прибежище</h4>
+<p id="p118">118. Кашьяпа сказал жрецу: «Теперь тебе следует поскорее отказаться от этого дурного взгляда. Не сосредоточивайся на этом заблуждении и не умножай собственное страдание, уподобляясь тому скомороху, что проглотил яд и не заметил этого».</p>
+<p id="p119">119. Жрец сказал Кашьяпе: «Почтенный, я понял тебя ещё когда мы обсуждали первую притчу о луне. Тогда я не принял её, потому что хотел увидеть красноречие и мудрость Кашьяпы и утвердиться в своей вере. Теперь я верю и принимаю [что существует иной мир]. Я принимаю прибежище в Кашьяпе».</p>
+<p>Кашьяпа ответил: «Не принимай прибежище во мне. Тебе следует принять прибежище в непревзойдённом мудреце, в котором моё собственное прибежище».</p>
+<p id="p120">120. Жрец сказал: «Я не уверен насчёт этого непревзойдённого мудреца, в котором твоё прибежище. Где он теперь?»</p>
+<p>Кашьяпа ответил: «Не так давно свершилось окончательное освобождение моего учителя, Бхагавана».</p>
+<p id="p121">121. Жрец сказал: «Если бы Бхагаван ещё существовал, я не избегал бы его, будь он далеко или близко. Он был бы другом, которого стоит навестить. Я принял бы прибежище в нём и почитал бы его. Теперь же, услышав от Кашьяпы о окончательном освобождении Татхагаты, я приму прибежище в до конца освобождённом Татхагате, Законе и сангхе. Кашьяпа, позволь мне стать мирянином в истинном учении. С этого дня и до конца жизни я не буду убивать, красть, предаваться недозволенным связям, лгать или пить хмельное, и прямо сейчас я сделаю щедрое подношение».</p>
+    <h4>Чистое подаяние Мадхуки</h4>
+<p id="p122">122. Кашьяпа сказал: «Если ты убиваешь живых существ и бьёшь своих слуг, но при этом устраиваешь [дарительское] собрание, это не чистая заслуга. Это подобно бесплодной и скудной земле, на которой растут сорняки и колючий кустарник: ничего не получишь, посеяв семена на такой земле. Если ты убиваешь живых существ и бьёшь своих слуг, но устраиваешь собрание и делаешь подношения собраниям с ложными взглядами, это не чистая заслуга. Если ты хочешь сделать щедрое подношение, не причиняй вреда живым существам и не наказывай своих слуг палкой. Если ты радуешься, устраиваешь собрания и подаёшь чистому собранию, ты обретёшь великую заслугу. Это подобно превосходной пахотной земле, что непременно принесёт обильные плоды, когда в неё посеяно семя».</p>
+<p>«Кашьяпа, отныне я всегда буду подавать собранию чисто и не позволю, чтобы эти подношения прекратились».</p>
+<p id="p123">123. Позади Падашвы стоял младший странник по имени Мадхука<a id="ref5" href="#n5">[5]</a>. Падашва посмотрел на него и сказал: «Я хочу устроить щедрое подношение всего, что у меня есть. Ты спланируешь и устроишь это для меня».</p>
+<p>124. Тот младший странник услышал, что сказал Падашва, и спланировал подношение. Когда это щедрое подношение было спланировано, он сказал: «Пусть Падашва не получит заслуженной награды за это ни в нынешней, ни в будущей жизни».</p>
+<p>Падашва услышал, что странник, спланировав подношение, сказал: «Пусть Падашва не получит заслуженной награды за это ни в нынешней, ни в будущей жизни». Он призвал странника и спросил его: «Это ты так сказал?»</p>
+<p id="p125">125. Тот ответил: «Да, я действительно так сказал. Почему? Эта пища, что приготовлена в дар сангхе, груба и скверна. Если бы её показали царю, царь не притронулся бы к ней ни на мгновение. Как он мог бы её есть? То, что сейчас устроено, не доставляет удовольствия. Как можно получить чистую награду в будущей жизни от такого подношения? Царь даёт сангхе одежды, целиком сделанные из пеньковой ткани. Если бы их показали царю, царь не коснулся бы их своей ногой ни на мгновение. Как он мог бы их носить? Это нынешнее подношение не доставляет удовольствия, так как же ты мог бы получить чистую награду в будущей жизни от него?»</p>
+<p>Тогда жрец сказал страннику: «С этого дня давай сангхе ту же пищу, что ем я, и те же одежды, что ношу я».</p>
+<p id="p126">126. Странник принял его наставление и стал подносить сангхе царскую пищу и одежду. Жрец устроил эти чистые дары. Когда его тело распалось и жизнь окончилась, он родился в одном из низших небес. Странник же, что спланировал подношения, родился на небесах Траястримша, когда его тело распалось и жизнь окончилась.</p>
+<p id="p127">127. Жрец Падашва, младший странник, жрецы Швейтики и домохозяева, услышавшие учение Каумары Кашьяпы, возрадовались и одобрили услышанное.</p>
+  
+  <br/>
+  <h2>Примечания</h2>
+    <p id="n1" data-note-number="1"><span class="note-number">[1]</span> Это седьмая сутра «Диргха-агамы» (<a href="https://cbetaonline.dila.edu.tw/zh/T01n0001_p0042b24" target="_blank">T1.1.42b24–7a12</a>). Её параллели включают <a href="https://suttacentral.net/dn23" target="_blank">DN 23</a>, <a href="https://suttacentral.net/ma71" target="_blank">MĀ 71</a> и <a href="https://cbetaonline.dila.edu.tw/zh/T0045_001" target="_blank">T45</a>.<br>
+    Эта сутра не начинается в китайском оригинале со стандартного «Так я слышал», возможно, потому, что Будда никогда не присутствует в этой истории. Стоит также отметить, что предания о Кумаре Кашьяпе представляют его буддистом второго поколения, рождённым монахиней при жизни Будды, но эта сутра изображает его престарелым архатом. Следовательно, описываемые события должны были произойти после париниббаны Будды — возможно, значительно позже, чем предполагает сама сутра. <a href="#ref1">[назад]</a></p>
+    <p id="n2" data-note-number="2"><span class="note-number">[2]</span> Каумара Кашьяпа. Кит. 童女迦葉, пали Kumāra. «Диргха-агама» уникальна тем, что переводит этот эпитет Кашьяпы как 童女 («юная дева»). В других источниках, таких как DN 23 и MĀ 71, его называют Кумара («юноша»). Однако стоит отметить, что в санскрите существует термин Kaumāra (пракритское Komāra), который действительно означает «девичий». Есть история, встречающаяся в «Махасангхика-винае» (T1425.380a23-7) и в палийских источниках, о Кашьяпе, рождённом монахиней, забеременевшей ещё до ухода из дома, которого впоследствии называли 童子迦葉 (Кумара Кашьяпа). Учитывая, насколько близки эти два произношения, возможно, «Диргха-агама» сохраняет особую трактовку его имени, поэтому я принял санскритский эквивалент пракритского Komāra. Другой вариант — женская форма Kumāra, то есть Kumārī. <a href="#ref2">[назад]</a></p>
+    <p id="n3" data-note-number="3"><span class="note-number">[3]</span> Падашва. Кит. 弊宿 (ср.-кит. biɛi-siuk), пали Pāyāsi, санскр. Padāśva.<br>
+    Швейтика. Кит. 斯波醯 (ср.-кит. siĕ-pua-hei), пали Setavyā, санскр. Śvetikā. <a href="#ref3">[назад]</a></p>
+    <p id="n4" data-note-number="4"><span class="note-number">[4]</span> Жонглирование. Кит. 弄丸, пали akkhadhutta. Палийская параллель толкуется как игра в кости, в особенности связанная с азартом. Китайский же термин, по-видимому, обозначает малоизвестную древнюю игру, включавшую подбрасывание или жонглирование мелкими предметами. Я выбрал перевод «жонглирование». Японские переводчики избрали термин для игры, схожей с хакки-сэком. <a href="#ref4">[назад]</a></p>
+    <p id="n5" data-note-number="5"><span class="note-number">[5]</span> Мадхука. Кит. 摩頭 (ср.-кит. mua-dəu), пали Uttara. Альтернативный китайский перевод, MĀ 71, соответствует пали (кит. 優多羅), хотя там он выступает поваром, а не жрецом или странником. Здесь же, в DĀ 7, по-видимому, используется другое имя. Я лишь предположил возможный индийский эквивалент, основываясь на других случаях употребления 摩頭 в китайских источниках. <a href="#ref5">[назад]</a></p>              </div>
+
+      <div class="mt-[40px] flex items-center justify-center gap-3 md:justify-between">
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/da/da6.html" title="DĀ 6 — Подвижничество благородного царя-миродержца" aria-label="Предыдущая сутта: DĀ 6 — Подвижничество благородного царя-миродержца">
+            <span aria-hidden="true" class="text-xl">←</span>
+            <span class="hidden md:inline-flex">Предыдущая сутта</span>
+          </a>
+                <button
+          class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] add-bookmark w-[50px] hidden md:inline-flex group"
+          type="button"
+          aria-label="Добавить в закладки"
+          data-auth-bookmarks
+          data-auth-bookmark-save
+        >
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px] not-group-[.is-bookmarked]:fill-none stroke-current" aria-hidden="true">
+            <path d="M6 4h12a1 1 0 0 1 1 1v16l-7-4-7 4V5a1 1 0 0 1 1-1z" stroke-width="1.5" />
+          </svg>
+        </button>
+                  <a class="h-12 md:h-10 cursor-pointer items-center justify-center rounded-[10px] border border-line text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out bg-[#FBFBFB] hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] disabled:pointer-events-none disabled:opacity-50 dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] grow gap-2 px-5 inline-flex text-center" href="/chinese_canon/da/da8.html" title="DĀ 8 — Сандхана" aria-label="Следующая сутта: DĀ 8 — Сандхана">
+            <span class="hidden md:inline-flex">Следующая сутта</span>
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+              </div>
+
+    </article>
+
+    <footer class="mx-auto mt-[54px] px-5 pb-12 md:text-center text-xs leading-snug text-ink-faint md:px-0 flex flex-col gap-1">
+  <p>
+    Все материалы на сайте, общедоступны и на них не распространяется авторское право. В некоммерческих целях их разрешено свободно воспроизводить в любой форме без разрешения авторов.  </p>
+  <p>
+    Копировать, размещать на сайтах, в социальных сетях, цитировать, печатать. Это дар нашего фонда для всего человечества.  </p>
+  <p>
+    По всем вопросам пишите Нара Лока    <a class="text-inherit underline hover:no-underline" href="https://naraloka.ru/" target="_blank" rel="noopener">https://naraloka.ru/</a>
+  </p>
+  <p>
+    <a class="text-inherit underline hover:no-underline dark:text-[#aaaaaa]" href="/policy.html">
+      Политика обработки персональных данных и пользовательское соглашение    </a>
+  </p>
+</footer>
+  </div>
+
+  <aside
+  class="mt-[10px] hidden w-[411px] flex-[0_0_411px] max-xl:w-[min(420px,90%)] flex-col items-center gap-[30px] md:flex md:sticky md:top-[80px] max-xl:mx-auto max-xl:mt-[30px] max-xl:flex-[0_0_auto]"
+  aria-label="Информация о фонде"
+>
+  <div class="flex flex-col items-center">
+  <a class="block" href="/index.html" aria-label="Главная страница">
+    <img
+      class="mb-6 w-[120px]"
+      src="/assets/sidebar-ornament.svg?_=1791393943"
+      alt=""
+      aria-hidden="true"
+      data-theme-logo
+      data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+      data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+    />
+  </a>
+  <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+    <span class="block text-center">Фонд</span>
+    <span class="block text-center">канона</span>
+    <span class="block text-center">буддизма</span>
+  </div>
+</div>
+          <div class="translation-picker relative w-full" data-translation-picker>
+      <p class="mb-2 text-md text-ink text-center">Выбрать перевод / язык</p>
+      <button
+        type="button"
+        class="flex h-[60px] w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] border border-line bg-surface px-5 text-base text-ink transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)]"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-label="Выбор перевода"
+        title="Русский — Anthropic Claude Sonnet 5"
+        data-translation-picker-toggle
+      >
+        <span class="min-w-0 truncate">Русский — Anthropic Claude Sonnet 5</span>
+        <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+      </button>
+      <div class="absolute left-0 top-[calc(100%+2px)] z-50 w-full overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_8px_18px_rgba(0,0,0,0.06)] dark:shadow-none" data-translation-picker-menu hidden>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent is-current"
+            type="button"
+            data-translation-picker-option="/chinese_canon/da/da7.html"
+            title="Русский — Anthropic Claude Sonnet 5"
+            disabled          >Русский — Anthropic Claude Sonnet 5</button>
+                            <button
+            class="translation-picker__option block w-full cursor-pointer border-0 border-t border-line bg-surface px-[18px] py-3 text-center text-sm leading-snug text-ink first:border-t-0 hover:bg-[#fcfcfc] hover:text-accent"
+            type="button"
+            data-translation-picker-option="/en/chinese_canon/da/da7.html"
+            title="English — Dharma Pearls"
+                      >English — Dharma Pearls</button>
+              </div>
+    </div>
+    <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    data-auth-open  >Вход / Регистрация</button>
+  <button
+    class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full"
+    type="button"
+    data-theme-toggle
+    data-theme-label-dark="Включить тёмное оформление"
+    data-theme-label-light="Включить светлое оформление"
+  >Включить тёмное оформление</button>
+  <a class="inline-flex h-10 w-[279px] cursor-pointer items-center justify-center rounded-[10px] border border-line bg-surface text-sm leading-none text-ink no-underline transition-all duration-[180ms] ease-out hover:bg-[#fcfcfc] hover:border-[rgba(91,7,105,0.55)] hover:shadow-[0_4px_12px_rgba(91,7,105,0.08)] active:translate-y-px active:shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:border-[rgba(91,7,105,0.65)] focus-visible:shadow-[0_0_0_3px_rgba(91,7,105,0.12)] dark:bg-[rgba(255,255,255,0.03)] dark:border-[rgba(240,242,246,0.56)] dark:hover:bg-[rgba(255,255,255,0.08)] dark:hover:border-[rgba(240,242,246,0.74)] dark:hover:shadow-none dark:focus-visible:border-[rgba(240,242,246,0.88)] dark:focus-visible:shadow-[0_0_0_2px_rgba(255,255,255,0.08)] max-xl:w-full" href="/about.html">О Фонде</a>
+</aside>
+<script>
+  (() => {
+    const picker = document.querySelector("[data-translation-picker]");
+    const toggle = picker?.querySelector("[data-translation-picker-toggle]");
+    const menu = picker?.querySelector("[data-translation-picker-menu]");
+    const options = picker?.querySelectorAll("[data-translation-picker-option]");
+    const setOpen = (open) => {
+      if (!picker || !toggle || !menu) return;
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+      picker.classList.toggle("is-open", open);
+    };
+    toggle?.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    options?.forEach((option) => option.addEventListener("click", () => {
+      const href = option.getAttribute("data-translation-picker-option");
+      if (href) window.location.href = href;
+    }));
+    document.addEventListener("click", (event) => {
+      if (picker && !picker.contains(event.target)) setOpen(false);
+    });
+  })();
+</script>
+</section>
+
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector("[data-mobile-translation]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-mobile-translation-toggle]");
+    const menu = root.querySelector("[data-mobile-translation-menu]");
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+    };
+    toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+</script>
+
+<div class="mobile-menu overflow-y-auto" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+    <div class="mobile-menu__logo pt-[19px]">
+      <div class="flex flex-col items-center">
+        <a class="block" href="/index.html" aria-label="Главная страница">
+          <img
+            class="mb-6 w-[120px]"
+            src="/assets/sidebar-ornament.svg?_=1791393943"
+            alt=""
+            aria-hidden="true"
+            data-theme-logo
+            data-logo-light="/assets/sidebar-ornament.svg?_=1791393943"
+            data-logo-dark="/assets/sidebar-ornament-dark.svg?_=1791393943"
+          />
+        </a>
+        <div class="font-display text-[28px] uppercase leading-[1.05] tracking-wide text-ink" aria-hidden="true">
+          <span class="block text-center">Фонд</span>
+          <span class="block text-center">канона</span>
+          <span class="block text-center">буддизма</span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu__list">
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/index.html">Главная страница</a>
+      <button class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" type="button" data-auth-open>Вход / Регистрация</button>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/bookmarks.html">Мои закладки</a>
+      <a class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center" href="/about.html">О Фонде</a>
+      <div class="mobile-menu__lang" data-mobile-lang>
+        <button
+          class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-between px-[18px]"
+          type="button"
+          data-mobile-lang-toggle
+          aria-expanded="false"
+        >
+          <span class="flex-1 text-center">Русский</span>
+          <span class="nav-btn__caret h-0 w-0 shrink-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-caret transition-transform duration-[180ms] ease-out" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-menu__lang-menu" data-mobile-lang-menu hidden>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 border-b border-[#d7dade] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] dark:border-[rgba(255,255,255,0.15)] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="ru"
+            disabled          >Русский</button>
+          <button
+            class="flex w-full min-h-[50px] cursor-pointer items-center justify-center bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] border-0 dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] disabled:cursor-default disabled:text-[#a8afba] dark:disabled:text-[#a8afba]"
+            type="button"
+            data-mobile-lang-option="en"
+                      >English</button>
+        </div>
+      </div>
+      <button
+        class="flex w-full items-center min-h-[50px] rounded-[11px] border border-[#d7dade] bg-[#f2f2f3] text-[15px] leading-[1.3] text-[#2f3236] no-underline dark:border-[rgba(255,255,255,0.9)] dark:bg-[rgba(255,255,255,0.02)] dark:text-[#f3f4f6] justify-center"
+        type="button"
+        data-theme-toggle
+        data-theme-label-dark="Включить тёмное оформление"
+        data-theme-label-light="Включить светлое оформление"
+      >Включить тёмное оформление</button>
+    </div>
+    <div class="mobile-menu__footer">
+      <a class="text-inherit underline hover:no-underline" href="/policy.html">
+        Политика обработки персональных данных<br />
+        и пользовательское соглашение      </a>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-modal__backdrop" data-auth-close></div>
+  <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
+    <button class="auth-modal__close" data-auth-close aria-label="Закрыть окно">×</button>
+    <div class="auth-modal__tabs">
+      <button class="auth-tab is-active" type="button" data-auth-tab="login">Вход</button>
+      <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
+    </div>
+    <div class="auth-modal__content">
+      <p class="auth-message" data-auth-message></p>
+      <div class="auth-forms" data-auth-forms>
+        <form class="auth-form is-active" data-auth-panel="login">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Войти</button>
+          <button class="auth-forgot" type="button" data-auth-reset-password>Забыли пароль?</button>
+        </form>
+        <form class="auth-form" data-auth-panel="register">
+          <label class="auth-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="auth-field">
+            Пароль            <input type="password" name="password" autocomplete="new-password" required />
+          </label>
+          <button class="auth-submit" type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="auth-user" data-auth-user hidden>
+        <p>Вы вошли как <strong data-auth-email></strong></p>
+        <button class="auth-signout" type="button" data-auth-signout>Выйти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/auth.js?_=1791393943"></script>
+
+<script>
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHead = document.querySelector(".mobile-head");
+  const openMenu = document.getElementById("mobileMenuOpen");
+  const closeMenu = document.getElementById("mobileMenuClose");
+  const mobileSearchToggle = document.getElementById("mobileSearchToggle");
+  const mobileSearchInline = document.getElementById("mobileSearchInline");
+  const mobileSearchClose = document.getElementById("mobileSearchClose");
+  const mobileFontToggle = document.getElementById("mobileFontToggle");
+  const mobileShareButton = document.getElementById("mobileShareButton");
+  const mobileTrailToggle = document.querySelector("[data-mobile-trail-toggle]");
+  const mobileFontPanel = document.getElementById("mobileFontPanel");
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileUtilityCloseButtons = document.querySelectorAll("[data-mobile-utility-close]");
+  const mobileTrailPanel = document.querySelector("[data-mobile-trail-panel]");
+  const mobileTrailClose = document.querySelector("[data-mobile-trail-close]");
+  const mobileLangRoot = document.querySelector("[data-mobile-lang]");
+  const mobileLangToggle = document.querySelector("[data-mobile-lang-toggle]");
+  const mobileLangMenu = document.querySelector("[data-mobile-lang-menu]");
+  const mobileLangOptions = document.querySelectorAll("[data-mobile-lang-option]");
+
+  const setMobileLangOpen = (isOpen) => {
+    if (!mobileLangToggle || !mobileLangMenu) {
+      return;
+    }
+    mobileLangToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileLangMenu.hidden = !isOpen;
+    mobileLangRoot?.classList.toggle("is-open", isOpen);
+  };
+
+  const setSearchMode = (isOpen) => {
+    if (!mobileHead) {
+      return;
+    }
+    // Search mode swaps toolbar actions for the inline search input.
+    const nextOpen = Boolean(isOpen);
+    mobileHead.classList.toggle("is-search-open", nextOpen);
+    if (mobileSearchInline) {
+      mobileSearchInline.hidden = !nextOpen;
+    }
+    if (nextOpen) {
+      window.setTimeout(() => mobileSearchInput?.focus(), 0);
+    } else {
+      mobileSearchInput?.blur();
+    }
+  };
+
+  const setMobileUtilityOpen = (panel) => {
+    [mobileFontPanel].forEach((candidate) => {
+      if (!candidate) {
+        return;
+      }
+      candidate.hidden = candidate !== panel;
+    });
+    if (panel) {
+      setSearchMode(false);
+    }
+  };
+
+  const setMenu = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    if (!isOpen) {
+      setMobileLangOpen(false);
+    }
+    if (isOpen) {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+    }
+  };
+
+  openMenu?.addEventListener("click", () => setMenu(true));
+  closeMenu?.addEventListener("click", () => setMenu(false));
+  mobileMenu?.addEventListener("click", (event) => {
+    if (event.target === mobileMenu) setMenu(false);
+  });
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = !mobileHead?.classList.contains("is-search-open");
+    setSearchMode(shouldOpen);
+  });
+
+  mobileSearchClose?.addEventListener("click", () => {
+    setSearchMode(false);
+  });
+
+  mobileFontToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+    const shouldOpen = mobileFontPanel?.hidden !== false;
+    setMobileUtilityOpen(shouldOpen ? mobileFontPanel : null);
+  });
+
+  mobileUtilityCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setMobileUtilityOpen(null));
+  });
+
+  mobileShareButton?.addEventListener("click", async () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    mobileTrailPanel && (mobileTrailPanel.hidden = true);
+    mobileShareButton.classList.add("is-active");
+    window.setTimeout(() => mobileShareButton.classList.remove("is-active"), 900);
+    const shareData = {
+      title: document.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+      }
+    } catch (error) {
+      // Ignore clipboard errors when sharing is unavailable.
+    }
+  });
+
+  const desktopShareButton = document.querySelector(".share-button");
+  desktopShareButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast(window.I18N["JS_SHARE_COPIED"] || "Link copied!");
+    } catch (error) {
+      // Ignore clipboard errors.
+    }
+  });
+
+  mobileTrailToggle?.addEventListener("click", () => {
+    setMenu(false);
+    setMobileUtilityOpen(null);
+    setSearchMode(false);
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = !mobileTrailPanel.hidden;
+    }
+  });
+
+  mobileTrailClose?.addEventListener("click", () => {
+    if (mobileTrailPanel) {
+      mobileTrailPanel.hidden = true;
+    }
+  });
+
+  const normalizeLocalizedPath = (basePath) => {
+    if (basePath === "/pali_canon" || basePath === "/pali_canon.php" || basePath === "/pali_canon.html") {
+      return "/pali_canon.html";
+    }
+    return basePath;
+  };
+
+  const buildLocalizedPath = (nextLang) => {
+    const path = window.location.pathname;
+    const hasEnPrefix = path === "/en" || path.startsWith("/en/");
+    const basePath = hasEnPrefix ? path.slice(3) || "/" : path;
+    const normalizedBasePath = normalizeLocalizedPath(basePath);
+    const nextPath = nextLang === "en"
+      ? (normalizedBasePath === "/" ? "/en" : `/en${normalizedBasePath}`)
+      : normalizedBasePath;
+    return `${nextPath}${window.location.search}${window.location.hash}`;
+  };
+
+  const langPicker = document.querySelector("[data-lang-picker]");
+  const langPickerToggle = document.querySelector("[data-lang-picker-toggle]");
+  const langPickerMenu = document.querySelector("[data-lang-picker-menu]");
+  const langPickerOptions = document.querySelectorAll("[data-lang-picker-option]");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+  const themeLogos = document.querySelectorAll("[data-theme-logo]");
+  const textSizeButtons = document.querySelectorAll("[data-text-size-dir]");
+  const textSizeSteps = [12, 14, 18, 24];
+  const textSizeStorageKey = "canon-text-size";
+  const themeStorageKey = "canon-theme";
+  const themeUserSetKey = "canon-theme-user-set";
+
+  const applyThemeLogos = (theme) => {
+    themeLogos.forEach((logo) => {
+      const nextSrc = theme === "dark"
+        ? logo.getAttribute("data-logo-dark")
+        : logo.getAttribute("data-logo-light");
+      if (nextSrc) {
+        logo.setAttribute("src", nextSrc);
+      }
+    });
+  };
+
+  const applyTheme = (theme, options = {}) => {
+    const persist = options.persist !== false;
+    const userSet = options.userSet === true;
+    const safeTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", safeTheme);
+    applyThemeLogos(safeTheme);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, safeTheme);
+        if (userSet) {
+          window.localStorage.setItem(themeUserSetKey, "1");
+        }
+      } catch (error) {
+        // Ignore storage access issues.
+      }
+    }
+    themeToggleButtons.forEach((button) => {
+      const darkLabel = button.getAttribute("data-theme-label-dark") || "";
+      const lightLabel = button.getAttribute("data-theme-label-light") || "";
+      button.textContent = safeTheme === "dark" ? lightLabel : darkLabel;
+    });
+  };
+
+  const applyTextSize = (value) => {
+    const safeValue = textSizeSteps.includes(value) ? value : textSizeSteps[0];
+    const scale = safeValue / textSizeSteps[0];
+    document.documentElement.style.setProperty("--content-scale", String(scale));
+    window.localStorage.setItem(textSizeStorageKey, String(safeValue));
+  };
+
+  const changeTextSize = (direction) => {
+    const stored = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+    const currentValue = textSizeSteps.includes(stored) ? stored : textSizeSteps[0];
+    const currentIndex = textSizeSteps.indexOf(currentValue);
+    const nextIndex = direction === "up"
+      ? Math.min(textSizeSteps.length - 1, currentIndex + 1)
+      : Math.max(0, currentIndex - 1);
+    applyTextSize(textSizeSteps[nextIndex]);
+  };
+
+  const showToast = (message) => {
+    let toast = document.getElementById("siteToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "siteToast";
+      toast.className = "toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 3000);
+  };
+  window.showToast = showToast;
+
+  const resolveInitialTheme = () => {
+    try {
+      const isUserSet = window.localStorage.getItem(themeUserSetKey) === "1";
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+      if (isUserSet && (savedTheme === "dark" || savedTheme === "light")) {
+        return savedTheme;
+      }
+      return "light";
+    } catch (error) {
+      return "light";
+    }
+  };
+
+  const initialTextSize = Number.parseInt(window.localStorage.getItem(textSizeStorageKey) || "", 10);
+  applyTextSize(textSizeSteps.includes(initialTextSize) ? initialTextSize : textSizeSteps[0]);
+  const initialTheme = resolveInitialTheme();
+  applyTheme(initialTheme, { persist: true, userSet: false });
+
+  const setLangPickerOpen = (isOpen) => {
+    if (!langPickerToggle || !langPickerMenu) {
+      return;
+    }
+    langPickerToggle.setAttribute("aria-expanded", String(isOpen));
+    langPickerMenu.hidden = !isOpen;
+    langPicker?.classList.toggle("is-open", isOpen);
+  };
+
+  langPickerToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = langPickerToggle.getAttribute("aria-expanded") === "true";
+    setLangPickerOpen(!isOpen);
+  });
+
+  langPickerOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-lang-picker-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  mobileLangToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileLangToggle.getAttribute("aria-expanded") === "true";
+    setMobileLangOpen(!isOpen);
+  });
+
+  mobileLangOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const nextLang = option.getAttribute("data-mobile-lang-option");
+      if (!nextLang) {
+        return;
+      }
+      window.location.href = buildLocalizedPath(nextLang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) {
+      return;
+    }
+
+    if (
+      mobileHead?.classList.contains("is-search-open") &&
+      mobileHead &&
+      !mobileHead.contains(event.target)
+    ) {
+      setSearchMode(false);
+    }
+
+    if (
+      mobileFontPanel?.hidden === false &&
+      mobileFontPanel &&
+      !mobileFontPanel.contains(event.target) &&
+      !mobileFontToggle?.contains(event.target)
+    ) {
+      setMobileUtilityOpen(null);
+    }
+
+    if (
+      mobileTrailPanel?.hidden === false &&
+      mobileTrailPanel &&
+      !mobileTrailPanel.contains(event.target) &&
+      event.target !== mobileTrailToggle
+    ) {
+      mobileTrailPanel.hidden = true;
+    }
+
+    if (!langPicker || !langPicker.contains(event.target)) {
+      setLangPickerOpen(false);
+    }
+
+    if (!mobileLangRoot || !mobileLangRoot.contains(event.target)) {
+      setMobileLangOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileUtilityOpen(null);
+      setSearchMode(false);
+      if (mobileTrailPanel) {
+        mobileTrailPanel.hidden = true;
+      }
+      setLangPickerOpen(false);
+      setMobileLangOpen(false);
+    }
+  });
+
+  textSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.getAttribute("data-text-size-dir");
+      if (direction === "up" || direction === "down") {
+        changeTextSize(direction);
+        if (button.closest(".mobile-font-menu")) {
+          setMobileUtilityOpen(null);
+        }
+      }
+    });
+  });
+
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme, { persist: true, userSet: true });
+    });
+  });
+
+  const stickyHeader = document.querySelector("header");
+  const HEADER_HEIGHT = 65;
+  window.addEventListener("scroll", () => {
+    const isSticky = window.scrollY > HEADER_HEIGHT;
+    stickyHeader?.classList.toggle("is-sticky", isSticky);
+    document.body.classList.toggle("has-sticky-header", isSticky);
+  }, { passive: true });
+</script>
+</body>
+</html>
